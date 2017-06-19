@@ -1,6 +1,5 @@
-tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routeParams', '$cookies', 'growl', 'Pergunta', 'Enums', 'PerguntaAnexoService', '$location',
-    function ($scope, $rootScope, $routeParams, $cookies, growl, Pergunta, Enums, PerguntaAnexoService, $location) {
-        $rootScope.usuarioLogado = $cookies.getObject('usuarioLogado');
+tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routeParams', 'growl', 'Pergunta', 'Enums', 'PerguntaAnexoService', '$location',
+    function ($scope, $rootScope, $routeParams, growl, Pergunta, Enums, PerguntaAnexoService, $location) {
         $scope.pergunta = new Pergunta();
         $scope.pergunta.respostas = [];
         $scope.telaCadastro = false;

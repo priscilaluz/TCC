@@ -1,6 +1,5 @@
-tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', '$cookies', 'Pergunta', 'Enums', '$location', 'growl',
-    function ($scope, $rootScope, $cookies, Pergunta, Enums, $location, growl) {
-        $rootScope.usuarioLogado = $cookies.getObject('usuarioLogado');
+tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', 'Pergunta', 'Enums', '$location', 'growl',
+    function ($scope, $rootScope, Pergunta, Enums, $location, growl) {
         $scope.categorias = [];
         $scope.perguntas = [];
         $scope.pesquisar = {};

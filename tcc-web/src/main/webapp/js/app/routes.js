@@ -1,7 +1,16 @@
-tccApp.run(['$rootScope', 'growl', function ($rootScope, growl) {
+tccApp.run(['$rootScope', 'growl', '$cookies', '$location', function ($rootScope, growl, $cookies, $location) {
+    $rootScope.appLoaded = true;
     $rootScope.$on('snRequestException', function (event, data) { 
         growl.error(data.message,{title: 'Error'});
     });
+    
+    $rootScope.usuarioLogado = $cookies.getObject('usuarioLogado');
+    
+    $rootScope.logoff = function() {
+        $rootScope.usuarioLogado = null;
+        $cookies.remove('usuarioLogado');
+        $location.path("/login");
+    };
 }]);
 
 tccApp.config(['$routeProvider', '$httpProvider',
@@ -24,6 +33,10 @@ tccApp.config(['$routeProvider', '$httpProvider',
       when('/salvar-pergunta/:idPergunta?', {
         templateUrl: 'partials/pergunta/salvar/pergunta-salvar.html',
         controller: 'PerguntaSalvarController'
+      }).
+      when('/sobre', {
+        templateUrl: 'partials/home/sobre.html',
+        controller: 'SobreController'
       }).
               
       otherwise({
