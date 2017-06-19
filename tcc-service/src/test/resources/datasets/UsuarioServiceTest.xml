@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset xmlns="TCC">
+    <USUARIO ID = "1" 
+             NOME = "Joao" 
+             LOGIN = "JoaoL"
+             EMAIL = "joao@email.com"
+             SENHA = "1234"
+    />
+                 
+</dataset>

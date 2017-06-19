@@ -1,0 +1,68 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package br.com.tcc.service.impl;
+
+import br.com.tcc.common.entity.Pergunta;
+import br.com.tcc.common.entity.Resposta;
+import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.service.persistence.GenericDao;
+import br.com.tcc.service.query.BuscarPergunta;
+import br.com.tcc.service.query.ExcluirRespostaPorPergunta;
+import br.com.tcc.service.validator.PerguntaValidator;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ *
+ * @author ADM
+ */
+@Component("PerguntaServiceImpl")
+public class PerguntaServiceImpl {
+
+    @Autowired
+    private GenericDao dao;
+    
+    @Autowired
+    private PerguntaValidator validador;
+
+    @Transactional(readOnly = false)
+    public Pergunta salvarPergunta(Pergunta pergunta) {
+        validador.validarSalvarPergunta(pergunta);
+        if (pergunta.getId() != null){
+            dao.executeDML(new ExcluirRespostaPorPergunta(pergunta.getId()));
+        }
+        dao.saveOrUpdate(pergunta);
+        for (Resposta resposta : pergunta.getRespostas()) {
+            resposta.setId(null);
+            resposta.setPergunta(pergunta);
+            dao.saveOrUpdate(resposta);
+        }
+        return pergunta;
+    }
+
+    @Transactional(readOnly = false)
+    public void excluirPergunta(Long idPergunta) {
+        dao.executeDML(new ExcluirRespostaPorPergunta(idPergunta));
+        Pergunta pergunta = dao.get(Pergunta.class, idPergunta);
+        dao.remove(pergunta);
+    }
+
+    @Transactional(readOnly = true)
+    public Pergunta buscarPerguntaPorId(Long idPergunta) {
+        return (Pergunta)dao.uniqueResult(new BuscarPergunta.Entities()
+                .fetchResposta("fetch").whereId(idPergunta));
+    }
+
+    @Transactional(readOnly = true)
+    public List<Pergunta> buscarPerguntaPorFiltro(Long idUsuario, String parteNome, Categoria categoria) {
+        return dao.list(new BuscarPergunta.Entities()
+                .whereUsuario(idUsuario)
+                .whereDescricaoLike(parteNome)
+                .whereCategoria(categoria));
+    }
+}

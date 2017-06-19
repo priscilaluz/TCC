@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property resource="tcc/log.properties" />
+
+    <appender name="logfile-app" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <file>${logpath}/tcc.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${logpath}/tcc/tcc.log.%i</fileNamePattern>
+            <maxIndex>${maxfiles}</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>${maxfilesize}</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%c] - %m%n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="logfile-sql" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <file>${logpath}/tcc-sql.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${logpath}/tcc/tcc-sql.log.%i</fileNamePattern>
+            <maxIndex>${maxfiles}</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>${maxfilesize}</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%c] - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="br.com.tcc">
+        <level value="${severity-app}" />
+        <appender-ref ref="logfile-app" />
+    </logger>
+    
+    <logger name="org.hibernate.SQL" additivity="false">
+        <level value="${severity-sql}" />
+        <appender-ref ref="logfile-sql" />
+    </logger>
+
+</configuration>

@@ -1,0 +1,8 @@
+br\com\tcc\rest\EnumsResource.class
+br\com\tcc\rest\config\StreamDeserializer.class
+br\com\tcc\rest\config\StreamSerializer.class
+br\com\tcc\rest\PerguntaResource.class
+br\com\tcc\rest\UsuarioResource.class
+br\com\tcc\rest\config\TccExceptionHandler.class
+br\com\tcc\rest\config\TccResourceConfig.class
+br\com\tcc\web\ListContainer.class

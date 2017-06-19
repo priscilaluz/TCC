@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-md-12" style="padding-top: 0px;" ng-show="!telaCadastro && !telaLogin"
+         data-ng-include="'partials/login/tela-principal.html'">
+    </div>
+    <div class="col-md-12" ng-show="telaCadastro || telaLogin">
+        <div class="col-md-6" style="padding-top: 56px; padding-left: 150px;">
+            <img src="img/todosIcons.png" alt="logo" style="width: 403px;height: 361px;"/>
+        </div>
+        <div class="col-md-6" style="padding-top: 90px; padding-right: 100px;" ng-show="telaLogin"
+             data-ng-include="'partials/login/logar.html'">
+        </div>
+        <div class="col-md-6" style="padding-top: 90px; padding-right: 100px;" ng-show="telaCadastro"
+             data-ng-include="'partials/login/cadastrar.html'">
+        </div>
+    </div>
+</div>

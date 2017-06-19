@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset xmlns="TCC">
+    <USUARIO ID = "1" 
+             NOME = "Joao" 
+             LOGIN = "JoaoL"
+             EMAIL = "joao@email.com"
+             SENHA = "1234"
+    />
+                 
+    <USUARIO ID = "2" 
+             NOME = "Maria" 
+             LOGIN = "MariaL"
+             EMAIL = "maria@email.com"
+             SENHA = "12345"
+    />
+                 
+    <PERGUNTA ID = "1" 
+             DESCRICAO = "Pergunta 1 da Quanto é atividade de matemática" 
+             JUSTIFICATIVA = "A resposta certa é pq..."
+             CATEGORIA = "M"
+             USUARIO_ID = "1"
+    />
+                 
+    <RESPOSTA ID = "1" 
+             DESCRICAO = "Resposta 1 da: Pergunta 1 da atividade de matemática" 
+             CORRETA = "S"
+             PERGUNTA_ID = "1"
+    />
+                 
+    <RESPOSTA ID = "2" 
+             DESCRICAO = "Resposta 2 da: Pergunta 1 da atividade de matemática" 
+             CORRETA = "N"
+             PERGUNTA_ID = "1"
+    />
+                 
+    <PERGUNTA ID = "2" 
+             DESCRICAO = "Pergunta 2 da atividade de matemática" 
+             JUSTIFICATIVA = "A resposta certa é pq..."
+             CATEGORIA = "M"
+             USUARIO_ID = "2"
+    />
+    
+                 
+    <RESPOSTA ID = "3" 
+             DESCRICAO = "Resposta 1 da: Pergunta 2 da atividade de matemática" 
+             CORRETA = "S"
+             PERGUNTA_ID = "2"
+    />
+                 
+</dataset>
