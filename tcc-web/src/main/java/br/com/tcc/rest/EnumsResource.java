@@ -6,7 +6,7 @@
 package br.com.tcc.rest;
 
 import br.com.tcc.common.enums.Categoria;
-import br.com.tcc.common.enums.Jogos;
+import br.com.tcc.common.enums.Jogo;
 import java.util.Arrays;
 import java.util.List;
 import javax.ws.rs.GET;
@@ -26,8 +26,8 @@ public class EnumsResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/jogos")
-    public List<Jogos> findAllJogos() {
-        return Arrays.asList(Jogos.values());
+    public List<Jogo> findAllJogos() {
+        return Arrays.asList(Jogo.values());
     }
     
     @GET

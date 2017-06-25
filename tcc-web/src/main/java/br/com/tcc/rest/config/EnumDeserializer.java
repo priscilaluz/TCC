@@ -1,4 +1,4 @@
-package br.com.tcc.service.config;
+package br.com.tcc.rest.config;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;

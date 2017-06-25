@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.tcc.service.config;
+package br.com.tcc.rest.config;
 
 import br.com.tcc.common.enums.Categoria;
-import br.com.tcc.common.enums.Jogos;
+import br.com.tcc.common.enums.Jogo;
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
+import java.io.InputStream;
 import java.util.TimeZone;
 import org.springframework.util.ReflectionUtils;
 
@@ -25,7 +26,9 @@ public class ObjectMapperFactory {
             SimpleModule testModule = new SimpleModule("TccModule", new Version(1, 0, 0, null, null, null));
             // Inclusao dos Custom Deserializer para Enums
             testModule.addDeserializer(Categoria.class, new EnumDeserializer(ReflectionUtils.findMethod(Categoria.class, "from", String.class)));
-            testModule.addDeserializer(Jogos.class, new EnumDeserializer(ReflectionUtils.findMethod(Jogos.class, "from", String.class)));
+            testModule.addDeserializer(Jogo.class, new EnumDeserializer(ReflectionUtils.findMethod(Jogo.class, "from", String.class)));
+            testModule.addDeserializer(InputStream.class, new StreamDeserializer());
+            testModule.addSerializer(new StreamSerializer());
             mapper.registerModule(testModule);
             mapper.registerModule(new Hibernate4Module());
             mapper.setTimeZone(TimeZone.getDefault());

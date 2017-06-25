@@ -5,7 +5,6 @@
  */
 package br.com.tcc.rest.config;
 
-import br.com.tcc.service.config.TccJacksonFeature;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 

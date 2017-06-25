@@ -23,6 +23,11 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
         };
 
         $scope.salvarPergunta = function () {
+            if ($scope.anexo) {
+                $scope.pergunta.anexo = {};
+                $scope.pergunta.anexo.nomeArquivo = $scope.anexo.name;
+                $scope.pergunta.anexo.bytes = $scope.anexo;
+            }
             $scope.pergunta.usuario = $rootScope.usuarioLogado;
             $rootScope.appLoaded = false;
             $scope.pergunta.$save(function () {

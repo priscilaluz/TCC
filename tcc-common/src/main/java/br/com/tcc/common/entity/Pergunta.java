@@ -21,6 +21,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import org.hibernate.annotations.Type;
 
 /**
@@ -55,8 +56,15 @@ public class Pergunta extends AbstractIdBean<Long> {
     @JoinColumn(name = "USUARIO_ID", nullable = false)
     private Usuario usuario;
     
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ANEXO_ID", nullable = true)
+    private Anexo anexo;
+    
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pergunta")
     private Set<Resposta> respostas = new HashSet<Resposta>();
+    
+    @Transient
+    private int posicao;
 
     @Override
     public Long getId() {
@@ -106,5 +114,21 @@ public class Pergunta extends AbstractIdBean<Long> {
 
     public void setJustificativa(String justificativa) {
         this.justificativa = justificativa;
+    }
+
+    public Anexo getAnexo() {
+        return anexo;
+    }
+
+    public void setAnexo(Anexo anexo) {
+        this.anexo = anexo;
+    }
+
+    public int getPosicao() {
+        return posicao;
+    }
+
+    public void setPosicao(int posicao) {
+        this.posicao = posicao;
     }
 }

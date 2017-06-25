@@ -16,4 +16,22 @@ public class ConstantesI18N {
     public static final String PERGUNTA_CATEGORIA_OBRIGATORIA = "pergunta.categoria.obrigatoria";
     public static final String PERGUNTA_DESCRICAO_OBRIGATORIA = "pergunta.descricao.obrigatoria";
     public static final String PERGUNTA_RESPOSTA_OBRIGATORIA = "pergunta.resposta.obrigatoria";
+    
+    //Curso
+    public static final String CURSO_OBRIGATORIO = "curso.obrigatorio";
+    public static final String CURSO_USUARIO_OBRIGATORIO = "curso.usuario.obrigatorio";
+    public static final String CURSO_NOME_OBRIGATORIO = "curso.nome.obrigatorio";
+    public static final String CURSO_CODACESSO_OBRIGATORIO = "curso.cod.acesso.obrigatorio";
+    public static final String CURSO_CATEGORIA_OBRIGATORIA = "curso.categoria.obrigatorio";
+    public static final String CURSO_SITUACAO_OBRIGATORIA = "curso.situacao.obrigatorio";
+    public static final String CURSO_ETAPAS_OBRIGATORIO = "curso.etapas.obrigatorio";
+    
+    //Etapa
+    public static final String ETAPA_OBRIGATORIA = "etapa.obrigatoria";
+    public static final String ETAPA_ASSUNTO_OBRIGATORIA = "etapa.assunto.obrigatorio";
+    public static final String ETAPA_NIVEL_OBRIGATORIA = "etapa.nivel.obrigatorio";
+    public static final String ETAPA_JOGO_OBRIGATORIA = "etapa.jogo.obrigatorio";
+    public static final String ETAPA_CURSO_OBRIGATORIA = "etapa.curso.obrigatorio";
+    public static final String ETAPA_PERGUNTAS_OBRIGATORIA = "etapa.perguntas.obrigatorio";
+    
 }

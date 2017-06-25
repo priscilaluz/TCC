@@ -1,0 +1,149 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package br.com.tcc.common.entity;
+
+import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.SituacaoCurso;
+import br.com.tcc.common.support.AbstractIdBean;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import org.hibernate.annotations.Type;
+
+/**
+ *
+ * @author ADM
+ */
+@Entity
+@Table(name = "CURSO", schema = "tcc")
+public class Curso extends AbstractIdBean<Long> {
+
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
+    private Long id;
+    
+    @Column(name = "NOME", nullable = false)
+    private String nome;
+    
+    @Column(name = "ASSUNTO_GERAL", nullable = true)
+    private String assuntoGeral;
+    
+    @Column(name = "COD_ACESSO", nullable = false)
+    private String codAcesso;
+    
+    @Enumerated(EnumType.STRING)
+    @Type(type = "br.com.tcc.common.support.GenericEnumUserType",
+        parameters = {@org.hibernate.annotations.Parameter(name = "enumClass",
+                    value = "br.com.tcc.common.enums.Categoria")})
+    @Column(name = "CATEGORIA", nullable = false)
+    private Categoria categoria;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ANEXO_ID", nullable = true)
+    private Anexo anexo;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USUARIO_ID", nullable = false)
+    private Usuario usuario;
+    
+    @Enumerated(EnumType.STRING)
+    @Type(type = "br.com.tcc.common.support.GenericEnumUserType",
+        parameters = {@org.hibernate.annotations.Parameter(name = "enumClass",
+                    value = "br.com.tcc.common.enums.SituacaoCurso")})
+    @Column(name = "SITUACAO", nullable = false)
+    private SituacaoCurso situacao;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "curso")
+    private Set<Etapa> etapas = new HashSet<Etapa>();
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getAssuntoGeral() {
+        return assuntoGeral;
+    }
+
+    public void setAssuntoGeral(String assuntoGeral) {
+        this.assuntoGeral = assuntoGeral;
+    }
+
+    public String getCodAcesso() {
+        return codAcesso;
+    }
+
+    public void setCodAcesso(String codAcesso) {
+        this.codAcesso = codAcesso;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Anexo getAnexo() {
+        return anexo;
+    }
+
+    public void setAnexo(Anexo anexo) {
+        this.anexo = anexo;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Set<Etapa> getEtapas() {
+        return etapas;
+    }
+
+    public void setEtapas(Set<Etapa> etapas) {
+        this.etapas = etapas;
+    }
+
+    public SituacaoCurso getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoCurso situacao) {
+        this.situacao = situacao;
+    }
+}

@@ -6,7 +6,7 @@
 package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.Pergunta;
-import br.com.tcc.common.entity.PerguntaAnexo;
+import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.service.impl.PerguntaServiceImpl;
 import java.io.InputStream;
@@ -69,27 +69,27 @@ public class PerguntaResource {
     public Pergunta buscarPerguntaPorId(@QueryParam("idPergunta") Long idPergunta) {
         return perguntaService.buscarPerguntaPorId(idPergunta);
     }
-    
-    @POST
-    @Path("/buscarAnexo")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Produces("application/json")
-    public PerguntaAnexo postUnidadeSegurancaAnexo(
-            @FormDataParam("idPergunta") String idPergunta,
-            @FormDataParam("file") InputStream uploadedInputStream,
-            @FormDataParam("file") FormDataContentDisposition contentDispositionHeader,
-            @Context HttpServletRequest httpServletRequest) {
-        PerguntaAnexo perguntaAnexo = new PerguntaAnexo();
-        try {
-            Pergunta pergunta = new Pergunta();
-            pergunta.setId(Long.valueOf(idPergunta));
-            perguntaAnexo.setPergunta(pergunta);
-            perguntaAnexo.setBytes(uploadedInputStream);
-            //liresService.salvarPerguntaAnexo(unidadeAnexo);
-        } catch (Exception e) {
-            LoggerFactory.getLogger(getClass()).error(e.getMessage(), e);
-        }
-
-        return perguntaAnexo;
-    }
+//    
+//    @POST
+//    @Path("/buscarAnexo")
+//    @Consumes(MediaType.MULTIPART_FORM_DATA)
+//    @Produces("application/json")
+//    public PerguntaAnexo postUnidadeSegurancaAnexo(
+//            @FormDataParam("idPergunta") String idPergunta,
+//            @FormDataParam("file") InputStream uploadedInputStream,
+//            @FormDataParam("file") FormDataContentDisposition contentDispositionHeader,
+//            @Context HttpServletRequest httpServletRequest) {
+//        PerguntaAnexo perguntaAnexo = new PerguntaAnexo();
+//        try {
+//            Pergunta pergunta = new Pergunta();
+//            pergunta.setId(Long.valueOf(idPergunta));
+//            perguntaAnexo.setPergunta(pergunta);
+//            perguntaAnexo.setBytes(uploadedInputStream);
+//            //liresService.salvarPerguntaAnexo(unidadeAnexo);
+//        } catch (Exception e) {
+//            LoggerFactory.getLogger(getClass()).error(e.getMessage(), e);
+//        }
+//
+//        return perguntaAnexo;
+//    }
 }
