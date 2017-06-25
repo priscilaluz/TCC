@@ -6,10 +6,8 @@
 package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.Pergunta;
-import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.service.impl.PerguntaServiceImpl;
-import java.io.InputStream;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -18,15 +16,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
-import org.glassfish.jersey.media.multipart.FormDataParam;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  *
