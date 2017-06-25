@@ -8,6 +8,7 @@ package br.com.tcc.common.entity;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.support.AbstractIdBean;
+import br.com.tcc.common.util.ConstantesI18N;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -29,7 +30,7 @@ import org.hibernate.annotations.Type;
  * @author ADM
  */
 @Entity
-@Table(name = "CURSO", schema = "tcc")
+@Table(name = "CURSO", schema = ConstantesI18N.SCHEMA)
 public class Curso extends AbstractIdBean<Long> {
 
     private static final long serialVersionUID = 1L;
@@ -132,6 +133,9 @@ public class Curso extends AbstractIdBean<Long> {
     }
 
     public Set<Etapa> getEtapas() {
+        if (etapas == null) {
+            etapas = new HashSet<>();
+        }
         return etapas;
     }
 

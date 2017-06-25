@@ -6,6 +6,7 @@
 package br.com.tcc.common.entity;
 
 import br.com.tcc.common.support.AbstractIdBean;
+import br.com.tcc.common.util.ConstantesI18N;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +22,7 @@ import javax.persistence.Table;
  * @author ADM
  */
 @Entity
-@Table(name = "ETAPA_PERGUNTA", schema = "tcc")
+@Table(name = "ETAPA_PERGUNTA", schema = ConstantesI18N.SCHEMA)
 public class EtapaPergunta extends AbstractIdBean<Long> {
 
     private static final long serialVersionUID = 1L;

@@ -7,6 +7,7 @@ package br.com.tcc.common.entity;
 
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.support.AbstractIdBean;
+import br.com.tcc.common.util.ConstantesI18N;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -29,7 +30,7 @@ import org.hibernate.annotations.Type;
  * @author ADM
  */
 @Entity
-@Table(name = "PERGUNTA", schema = "tcc")
+@Table(name = "PERGUNTA", schema = ConstantesI18N.SCHEMA)
 public class Pergunta extends AbstractIdBean<Long> {
 
     private static final long serialVersionUID = 1L;

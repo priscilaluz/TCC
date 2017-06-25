@@ -7,6 +7,7 @@ package br.com.tcc.common.entity;
 
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.support.SimNaoType;
+import br.com.tcc.common.util.ConstantesI18N;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ import org.hibernate.annotations.Type;
  * @author ADM
  */
 @Entity
-@Table(name = "RESPOSTA", schema = "tcc")
+@Table(name = "RESPOSTA", schema = ConstantesI18N.SCHEMA)
 public class Resposta extends AbstractIdBean<Long> {
 
     private static final long serialVersionUID = 1L;

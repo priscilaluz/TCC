@@ -4,13 +4,13 @@
 
     <appender name="logfile-app" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <append>true</append>
-        <file>${logpath}/tcc.log</file>
+        <file>C:/tmp/tcc/tcc.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <fileNamePattern>${logpath}/tcc/tcc.log.%i</fileNamePattern>
-            <maxIndex>${maxfiles}</maxIndex>
+            <fileNamePattern>C:/tmp/tcc/tcc/tcc.log.%i</fileNamePattern>
+            <maxIndex>1000</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <maxFileSize>${maxfilesize}</maxFileSize>
+            <maxFileSize>100</maxFileSize>
         </triggeringPolicy>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%c] - %m%n</pattern>
@@ -19,13 +19,13 @@
     
     <appender name="logfile-sql" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <append>true</append>
-        <file>${logpath}/tcc-sql.log</file>
+        <file>C:/tmp/tcc/tcc-sql.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <fileNamePattern>${logpath}/tcc/tcc-sql.log.%i</fileNamePattern>
-            <maxIndex>${maxfiles}</maxIndex>
+            <fileNamePattern>C:/tmp/tcc/tcc/tcc-sql.log.%i</fileNamePattern>
+            <maxIndex>1000</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <maxFileSize>${maxfilesize}</maxFileSize>
+            <maxFileSize>100</maxFileSize>
         </triggeringPolicy>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%c] - %m%n</pattern>

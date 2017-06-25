@@ -8,6 +8,7 @@ package br.com.tcc.service.impl;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.util.ConstantesI18N;
 import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarPergunta;
 import br.com.tcc.service.query.ExcluirRespostaPorPergunta;
@@ -55,7 +56,7 @@ public class PerguntaServiceImpl {
     @Transactional(readOnly = true)
     public Pergunta buscarPerguntaPorId(Long idPergunta) {
         return (Pergunta)dao.uniqueResult(new BuscarPergunta.Entities()
-                .fetchResposta("fetch").whereId(idPergunta));
+                .fetchResposta(ConstantesI18N.FETCH).whereId(idPergunta));
     }
 
     @Transactional(readOnly = true)

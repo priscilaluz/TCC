@@ -6,6 +6,7 @@
 package br.com.tcc.common.entity;
 
 import br.com.tcc.common.support.AbstractIdBean;
+import br.com.tcc.common.util.ConstantesI18N;
 import java.io.InputStream;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import javax.persistence.Transient;
  * @author ADM
  */
 @Entity
-@Table(name = "ANEXO", schema = "tcc")
+@Table(name = "ANEXO", schema = ConstantesI18N.SCHEMA)
 public class Anexo extends AbstractIdBean<Long> {
 
     private static final long serialVersionUID = 1L;

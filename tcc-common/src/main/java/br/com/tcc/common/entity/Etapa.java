@@ -7,6 +7,7 @@ package br.com.tcc.common.entity;
 
 import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.support.AbstractIdBean;
+import br.com.tcc.common.util.ConstantesI18N;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -31,7 +32,7 @@ import org.hibernate.annotations.Type;
  * @author ADM
  */
 @Entity
-@Table(name = "ETAPA", schema = "tcc")
+@Table(name = "ETAPA", schema = ConstantesI18N.SCHEMA)
 public class Etapa extends AbstractIdBean<Long> {
 
     private static final long serialVersionUID = 1L;
@@ -130,6 +131,9 @@ public class Etapa extends AbstractIdBean<Long> {
     }
 
     public Set<EtapaPergunta> getEtapasPerguntas() {
+        if (etapasPerguntas == null) {
+            etapasPerguntas = new HashSet<>();
+        }
         return etapasPerguntas;
     }
 
@@ -138,6 +142,9 @@ public class Etapa extends AbstractIdBean<Long> {
     }
 
     public List<Pergunta> getPerguntas() {
+        if (perguntas == null) {
+            perguntas = new ArrayList<>();
+        }
         return perguntas;
     }
 
