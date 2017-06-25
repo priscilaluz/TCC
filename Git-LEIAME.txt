@@ -1,0 +1,5 @@
+Git comandos
+VER O QUE NÃO FOI ENVIADO: git status
+ENVIAR TUDO QUE NÃO FOI ENVIADO: git add .
+git commit -m 'comentario'
+git push
