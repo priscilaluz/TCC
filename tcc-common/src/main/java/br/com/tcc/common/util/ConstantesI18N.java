@@ -1,8 +1,8 @@
 package br.com.tcc.common.util;
 
 public class ConstantesI18N {
-    //public static final String SCHEMA = "tcc";
-    public static final String SCHEMA = "tcctest";
+    public static final String SCHEMA = "tcc";
+    //public static final String SCHEMA = "tcctest";
     public static final String FETCH = "fetch";
     //Usuario
     public static final String USUARIO_OBRIGATORIA = "usuario.obrigatoria";
