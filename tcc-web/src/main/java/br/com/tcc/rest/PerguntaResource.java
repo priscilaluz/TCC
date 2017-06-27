@@ -22,6 +22,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.apache.commons.io.IOUtils;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +84,7 @@ public class PerguntaResource {
             Pergunta pergunta = new Pergunta();
             pergunta.setId(Long.valueOf(idPergunta));
             anexo.setArquivo(uploadedInputStream);
+            anexo.setBytes(IOUtils.toByteArray(uploadedInputStream));
         } catch (Exception e) {
             String a = e.getMessage();
         }
