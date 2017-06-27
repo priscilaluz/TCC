@@ -17,11 +17,12 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringBean;
+import org.unitils.spring.annotation.SpringBeanByType;
 
 @DataSet("/datasets/PerguntaServiceTest.xml")
 public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
-    @SpringBean("SimpleTestDao")
+    @SpringBeanByType
     private SimpleTestDao dao;
     
     @SpringBean("PerguntaServiceImpl")
@@ -36,6 +37,24 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
         assertEquals(dao.getById(Pergunta.class, pergunta.getId()), pergunta);
         List<Resposta> respostas = dao.query("select r from Resposta r where r.pergunta.id = "+pergunta.getId().toString());
         assertTrue(respostas.size() == 2);
+    }
+    
+    @Test
+    public void deveEditarPergunta(){
+        Pergunta perguntaAntes = perguntaServiceImpl.buscarPerguntaPorId(1L);
+        assertEquals(perguntaAntes.getDescricao(), "Pergunta 1 da Quanto é atividade de matemática");
+        List<Resposta> respostasAntes = dao.query("select r from Resposta r where r.pergunta.id = 1");
+        assertTrue(respostasAntes.size() == 2);
+        
+        perguntaAntes.setDescricao("Pergunta 1 AAA");
+        perguntaAntes.setRespostas(new HashSet<Resposta>());
+        perguntaAntes.getRespostas().add(obterRespostaValida1());
+        perguntaServiceImpl.salvarPergunta(perguntaAntes);
+        
+        Pergunta perguntaEditado = perguntaServiceImpl.buscarPerguntaPorId(1L);
+        assertEquals(perguntaEditado.getDescricao(), "Pergunta 1 AAA");
+        List<Resposta> respostasDepois = dao.query("select r from Resposta r where r.pergunta.id = 1");
+        assertTrue(respostasDepois.size() == 1);
     }
     
     @Test
@@ -76,7 +95,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     @Test
     public void deveRetornarPerguntaPorCategoria(){
         List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(null, null, Categoria.MATEMATICA);
-        assertTrue(perguntas.size()==1);
+        assertTrue(perguntas.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
         for (Pergunta p : perguntas) {
             assertTrue(ids.contains(p.getId()));
@@ -90,6 +109,17 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {
             assertTrue(ids.contains(p.getId()));
+        }
+    }
+    
+    @Test
+    public void deveRetornarPerguntaPorId(){
+        Pergunta pergunta = perguntaServiceImpl.buscarPerguntaPorId(1L);
+        assertNotNull(pergunta);
+        assertTrue(pergunta.getRespostas().size()==2);
+        List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
+        for (Resposta r : pergunta.getRespostas()) {
+            assertTrue(ids.contains(r.getId()));
         }
     }
     

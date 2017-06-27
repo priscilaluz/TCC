@@ -2,7 +2,6 @@ package br.com.tcc.service.impl;
 
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
-import br.com.tcc.common.entity.EtapaPergunta;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.entity.Usuario;
@@ -13,10 +12,6 @@ import br.com.tcc.service.persistence.SimpleTestDao;
 import br.com.tcc.test.IntegrationBaseTestClass;
 import br.com.tcc.test.builder.CursoBuilder;
 import br.com.tcc.test.builder.EtapaBuilder;
-import br.com.tcc.test.builder.EtapaPerguntaBuilder;
-import br.com.tcc.test.builder.PerguntaBuilder;
-import br.com.tcc.test.builder.RespostaBuilder;
-import br.com.tcc.test.builder.UsuarioBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -28,15 +23,47 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringBean;
+import org.unitils.spring.annotation.SpringBeanByType;
 
 @DataSet("/datasets/CursoServiceTest.xml")
 public class CursoServiceIT extends IntegrationBaseTestClass{
     
-    @SpringBean("SimpleTestDao")
+    @SpringBeanByType
     private SimpleTestDao dao;
     
     @SpringBean("CursoServiceImpl")
     private CursoServiceImpl cursoServiceImpl;
+    
+    @Test
+    public void deveSalvarRascunhoCurso(){
+        Curso curso = obterCursoValida();
+        curso.setSituacao(SituacaoCurso.RASCUNHO);
+        curso.setEtapas(new HashSet<Etapa>());
+        
+        curso = cursoServiceImpl.salvarCurso(curso);
+        assertNotNull(curso.getId());
+        assertEquals(dao.getById(Curso.class, curso.getId()), curso);
+        List<Etapa> etapas = dao.query("select e from Etapa e where e.curso.id = "+curso.getId().toString());
+        assertTrue(etapas.isEmpty());
+    }
+    
+    @Test
+    public void deveEditarCurso(){        
+        Curso cursoAtual = cursoServiceImpl.buscarCursoPorId(1L);
+        assertEquals(cursoAtual.getNome(), "Curso História");
+        List<Etapa> etapasAntes = dao.query("select e from Etapa e where e.curso.id = 1");
+        assertTrue(etapasAntes.size() == 2);
+        
+        cursoAtual.setNome("Curso Nome Novo");
+        cursoAtual.setEtapas(new HashSet<Etapa>());
+        cursoAtual.getEtapas().add(obterEtapaValida1());
+        cursoServiceImpl.salvarCurso(cursoAtual);
+        
+        Curso cursoEditado = cursoServiceImpl.buscarCursoPorId(1L);
+        assertEquals(cursoEditado.getNome(), "Curso Nome Novo");
+        List<Etapa> etapasDepois = dao.query("select e from Etapa e where e.curso.id = 1");
+        assertTrue(etapasDepois.size() == 1);
+    }
     
     @Test
     public void deveSalvarCurso(){
@@ -44,9 +71,20 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         
         curso = cursoServiceImpl.salvarCurso(curso);
         assertNotNull(curso.getId());
-        assertEquals(dao.getById(Pergunta.class, curso.getId()), curso);
+        assertEquals(dao.getById(Curso.class, curso.getId()), curso);
         List<Etapa> etapas = dao.query("select e from Etapa e where e.curso.id = "+curso.getId().toString());
         assertTrue(etapas.size() == 2);
+    }
+    
+    @Test
+    public void deveRetornarCursoPorId(){
+        Curso curso = cursoServiceImpl.buscarCursoPorId(1L);
+        assertNotNull(curso);
+        assertTrue(curso.getEtapas().size() == 2);
+        for (Etapa etapa : curso.getEtapas()) {
+            assertTrue(etapa.getEtapasPerguntas().size() == 1);
+            assertTrue(etapa.getPerguntas().size() == 1);
+        }
     }
     
     @Test
@@ -65,21 +103,10 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     }
     
     @Test
-    public void deveRetornarCursoPorId(){
-        Curso curso = cursoServiceImpl.buscarCursoPorId(1L);
-        assertNotNull(curso);
-        assertTrue(curso.getEtapas().size() == 2);
-        for (Etapa etapa : curso.getEtapas()) {
-            assertTrue(etapa.getEtapasPerguntas().size() == 2);
-            assertTrue(etapa.getPerguntas().size() == 2);
-        }
-    }
-    
-    @Test
     public void deveRetornarCursoPorUsuario(){
         List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(1L, null, null);
-        assertTrue(cursos.size()==1);
-        List<Long> ids = new ArrayList<>(Arrays.asList(1L));
+        assertTrue(cursos.size()==2);
+        List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
         for (Curso c : cursos) {
             assertTrue(ids.contains(c.getId()));
         }
@@ -87,9 +114,9 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorParteDaDescricao(){
-        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, "Curso", null);
+        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, "Matemática", null);
         assertTrue(cursos.size()==1);
-        List<Long> ids = new ArrayList<>(Arrays.asList(1L));
+        List<Long> ids = new ArrayList<>(Arrays.asList(2L));
         for (Curso c : cursos) {
             assertTrue(ids.contains(c.getId()));
         }
@@ -97,13 +124,14 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorCategoria(){
-        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, null, Categoria.BIOLOGIA);
+        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, null, Categoria.GEOGRAFIA);
         assertTrue(cursos.size()==1);
-        List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
+        List<Long> ids = new ArrayList<>(Arrays.asList(3L));
         for (Curso c : cursos) {
             assertTrue(ids.contains(c.getId()));
         }
     }
+    
     //<editor-fold defaultstate="collapsed" desc="Entidades Validas">
     private Curso obterCursoValida() {
         Set<Etapa> etapas = new HashSet<>();
@@ -111,7 +139,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         etapas.add(obterEtapaValida2());
         
         Curso curso = CursoBuilder.nova()
-                .comUsuario(obterUsuarioValido())
+                .comUsuario(dao.getById(Usuario.class, 1L))
                 .comCategoria(Categoria.MATEMATICA)
                 .comNome("Nome")
                 .comCodAcesso("CodAcesso")
@@ -122,120 +150,40 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     }
     
     private Etapa obterEtapaValida1() {
-        Set<EtapaPergunta> etapasPerguntas = new HashSet<>();
-        etapasPerguntas.add(obterEtapaPerguntaValida1());
-        etapasPerguntas.add(obterEtapaPerguntaValida2());
+        List<Pergunta> perguntas = new ArrayList<>();
+        Pergunta pergunta1 = dao.getById(Pergunta.class, 1L);
+        pergunta1.setPosicao(1);
+        perguntas.add(pergunta1);
+        Pergunta pergunta2 = dao.getById(Pergunta.class, 2L);
+        pergunta1.setPosicao(2);
+        perguntas.add(pergunta2);
         
         Etapa etapa = EtapaBuilder.nova()
                 .comAssunto("Assunto 1.")
                 .comNivel(1)
                 .comJogo(Jogo.POKER)
                 .comCurso(new Curso())
-                .comEtapasPerguntas(etapasPerguntas)
+                .comPerguntas(perguntas)
                 .build();
         return etapa;
     }
     
     private Etapa obterEtapaValida2() {
-        Set<EtapaPergunta> etapasPerguntas = new HashSet<>();
-        etapasPerguntas.add(obterEtapaPerguntaValida1());
-        etapasPerguntas.add(obterEtapaPerguntaValida2());
+        List<Pergunta> perguntas = new ArrayList<>();
+        Pergunta pergunta1 = dao.getById(Pergunta.class, 1L);
+        pergunta1.setPosicao(1);
+        perguntas.add(pergunta1);
+        Pergunta pergunta2 = dao.getById(Pergunta.class, 2L);
+        pergunta1.setPosicao(2);
+        perguntas.add(pergunta2);
         
         Etapa etapa = EtapaBuilder.nova()
                 .comAssunto("Assunto 2.")
                 .comNivel(2)
                 .comJogo(Jogo.QUIZ)
-                .comEtapasPerguntas(etapasPerguntas)
+                .comPerguntas(perguntas)
                 .build();
         return etapa;
-    }
-    
-    private EtapaPergunta obterEtapaPerguntaValida1() {
-        EtapaPergunta etapaPergunta = EtapaPerguntaBuilder.nova()
-                .comPergunta(obterPerguntaValida1())
-                .comPosicao(1)
-                .build();
-        return etapaPergunta;
-    }
-    
-    private EtapaPergunta obterEtapaPerguntaValida2() {
-        EtapaPergunta etapaPergunta = EtapaPerguntaBuilder.nova()
-                .comPergunta(obterPerguntaValida2())
-                .comPosicao(2)
-                .build();
-        return etapaPergunta;
-    }
-    
-    private Pergunta obterPerguntaValida1() {
-        Set<Resposta> respostas = new HashSet<>();
-        respostas.add(obterRespostaValida1());
-        respostas.add(obterRespostaValida2());
-        
-        Pergunta pergunta = PerguntaBuilder.nova()
-                .comCategoria(Categoria.MATEMATICA)
-                .comDescricao("Descricao")
-                .comJustificativa("Justificativa")
-                .comUsuario(obterUsuarioValido())
-                .comRespostas(respostas)
-                .build();
-        return pergunta;
-    }
-    
-    private Resposta obterRespostaValida1() {
-        Resposta resposta = RespostaBuilder.nova()
-                .comDescricao("Pergunta 1?")
-                .comCorreta(Boolean.TRUE)
-                .build();
-        return resposta;
-    }
-    
-    private Resposta obterRespostaValida2() {
-        Resposta resposta = RespostaBuilder.nova()
-                .comDescricao("Pergunta 2?")
-                .comCorreta(Boolean.FALSE)
-                .build();
-        return resposta;
-    }
-    
-    private Pergunta obterPerguntaValida2() {
-        Set<Resposta> respostas = new HashSet<>();
-        respostas.add(obterRespostaValida3());
-        respostas.add(obterRespostaValida4());
-        
-        Pergunta pergunta = PerguntaBuilder.nova()
-                .comCategoria(Categoria.BIOLOGIA)
-                .comDescricao("Descricao BIOLOGIA")
-                .comJustificativa("Justificativa BIOLOGIA")
-                .comUsuario(obterUsuarioValido())
-                .comRespostas(respostas)
-                .build();
-        return pergunta;
-    }
-    
-    private Resposta obterRespostaValida3() {
-        Resposta resposta = RespostaBuilder.nova()
-                .comDescricao("Pergunta 1?")
-                .comCorreta(Boolean.TRUE)
-                .build();
-        return resposta;
-    }
-    
-    private Resposta obterRespostaValida4() {
-        Resposta resposta = RespostaBuilder.nova()
-                .comDescricao("Pergunta 2?")
-                .comCorreta(Boolean.FALSE)
-                .build();
-        return resposta;
-    }
-    
-    private Usuario obterUsuarioValido() {
-        Usuario usuario = UsuarioBuilder.nova()
-                .comNome("Usuario 1")
-                .comEmail("teste@a.com")
-                .comLogin("TesteLogin")
-                .comSenha("1234")
-                .build();
-        return usuario;
     }
     //</editor-fold>
 }

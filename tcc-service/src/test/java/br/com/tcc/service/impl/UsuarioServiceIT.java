@@ -10,11 +10,12 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringBean;
+import org.unitils.spring.annotation.SpringBeanByType;
 
 @DataSet("/datasets/UsuarioServiceTest.xml")
 public class UsuarioServiceIT extends IntegrationBaseTestClass{
     
-    @SpringBean("SimpleTestDao")
+    @SpringBeanByType
     private SimpleTestDao dao;
     
     @SpringBean("UsuarioServiceImpl")
@@ -31,7 +32,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarUsuariosPorLogin(){
-        List<Usuario> usuarios = dao.executeBusinnesQuery(new BuscarUsuario.Entities().whereLogin("Joao"));
+        List<Usuario> usuarios = dao.executeBusinnesQuery(new BuscarUsuario.Entities().whereLogin("JoaoL"));
         assertTrue(usuarios.size()==1);
     }
     

@@ -2,7 +2,6 @@ package br.com.tcc.test.validator;
 
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
-import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
@@ -19,7 +18,9 @@ import br.com.tcc.test.builder.EtapaPerguntaBuilder;
 import br.com.tcc.test.builder.PerguntaBuilder;
 import br.com.tcc.test.builder.RespostaBuilder;
 import br.com.tcc.test.builder.UsuarioBuilder;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -166,7 +167,7 @@ public class CursoValidatorTest {
     public void naoDeveSalvarEtapaSemPerguntas(){
         Etapa e = obterEtapaValida1();
         try {
-            e.setEtapasPerguntas(new HashSet<EtapaPergunta>());
+            e.setPerguntas(new ArrayList<Pergunta>());
             validator.validarSalvarEtapa(e);
             fail();
         } catch (BusinessException ex) {
@@ -193,30 +194,30 @@ public class CursoValidatorTest {
     }
     
     private Etapa obterEtapaValida1() {
-        Set<EtapaPergunta> etapasPerguntas = new HashSet<>();
-        etapasPerguntas.add(obterEtapaPerguntaValida1());
-        etapasPerguntas.add(obterEtapaPerguntaValida2());
+        List<Pergunta> perguntas = new ArrayList<>();
+        perguntas.add(obterPerguntaValida1());
+        perguntas.add(obterPerguntaValida2());
         
         Etapa etapa = EtapaBuilder.nova()
                 .comAssunto("Assunto 1.")
                 .comNivel(1)
                 .comJogo(Jogo.POKER)
                 .comCurso(new Curso())
-                .comEtapasPerguntas(etapasPerguntas)
+                .comPerguntas(perguntas)
                 .build();
         return etapa;
     }
     
     private Etapa obterEtapaValida2() {
-        Set<EtapaPergunta> etapasPerguntas = new HashSet<>();
-        etapasPerguntas.add(obterEtapaPerguntaValida1());
-        etapasPerguntas.add(obterEtapaPerguntaValida2());
+        List<Pergunta> perguntas = new ArrayList<>();
+        perguntas.add(obterPerguntaValida1());
+        perguntas.add(obterPerguntaValida2());
         
         Etapa etapa = EtapaBuilder.nova()
                 .comAssunto("Assunto 2.")
                 .comNivel(2)
                 .comJogo(Jogo.QUIZ)
-                .comEtapasPerguntas(etapasPerguntas)
+                .comPerguntas(perguntas)
                 .build();
         return etapa;
     }

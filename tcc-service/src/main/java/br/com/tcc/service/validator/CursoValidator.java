@@ -32,7 +32,7 @@ public class CursoValidator {
         pm.assertNotNull(etapa.getNivel()).orRegister(ConstantesI18N.ETAPA_NIVEL_OBRIGATORIA);
         pm.assertNotNull(etapa.getJogo()).orRegister(ConstantesI18N.ETAPA_JOGO_OBRIGATORIA);
         pm.assertNotNull(etapa.getCurso()).orRegister(ConstantesI18N.ETAPA_CURSO_OBRIGATORIA);
-        pm.assertNotEmpty(etapa.getEtapasPerguntas()).orRegister(ConstantesI18N.ETAPA_PERGUNTAS_OBRIGATORIA);
+        pm.assertNotEmpty(etapa.getPerguntas()).orRegister(ConstantesI18N.ETAPA_PERGUNTAS_OBRIGATORIA);
         pm.verifyAll();
     }
 }
