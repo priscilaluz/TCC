@@ -15,7 +15,7 @@ import org.springframework.util.ReflectionUtils;
  * {"id":"valor","descricao":"valor"} Essa classe realiza o parse do JSON para
  * recuperar o id e utiliza o factory method para recuperar o Enum
  * correspondente. Cada Enum deve registrar o EnumDeserializer informando o
- * factory method na classe LiresJacksonFeature.
+ * factory method na classe TccJacksonFeature.
  */
 public class EnumDeserializer<E> extends JsonDeserializer<E> {
 

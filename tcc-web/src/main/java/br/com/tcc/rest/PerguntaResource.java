@@ -6,9 +6,12 @@
 package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.Pergunta;
+import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.service.impl.PerguntaServiceImpl;
+import java.io.InputStream;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -16,8 +19,11 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -62,27 +68,25 @@ public class PerguntaResource {
     public Pergunta buscarPerguntaPorId(@QueryParam("idPergunta") Long idPergunta) {
         return perguntaService.buscarPerguntaPorId(idPergunta);
     }
-//    
-//    @POST
-//    @Path("/buscarAnexo")
-//    @Consumes(MediaType.MULTIPART_FORM_DATA)
-//    @Produces("application/json")
-//    public PerguntaAnexo postUnidadeSegurancaAnexo(
-//            @FormDataParam("idPergunta") String idPergunta,
-//            @FormDataParam("file") InputStream uploadedInputStream,
-//            @FormDataParam("file") FormDataContentDisposition contentDispositionHeader,
-//            @Context HttpServletRequest httpServletRequest) {
-//        PerguntaAnexo perguntaAnexo = new PerguntaAnexo();
-//        try {
-//            Pergunta pergunta = new Pergunta();
-//            pergunta.setId(Long.valueOf(idPergunta));
-//            perguntaAnexo.setPergunta(pergunta);
-//            perguntaAnexo.setBytes(uploadedInputStream);
-//            //liresService.salvarPerguntaAnexo(unidadeAnexo);
-//        } catch (Exception e) {
-//            LoggerFactory.getLogger(getClass()).error(e.getMessage(), e);
-//        }
-//
-//        return perguntaAnexo;
-//    }
+
+    @POST
+    @Path("/buscarAnexo")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces("application/json")
+    public Anexo postUnidadeSegurancaAnexo(
+            @FormDataParam("idPergunta") String idPergunta,
+            @FormDataParam("file") InputStream uploadedInputStream,
+            @FormDataParam("file") FormDataContentDisposition contentDispositionHeader,
+            @Context HttpServletRequest httpServletRequest) {
+        Anexo anexo = new Anexo();
+        try {
+            Pergunta pergunta = new Pergunta();
+            pergunta.setId(Long.valueOf(idPergunta));
+            anexo.setArquivo(uploadedInputStream);
+        } catch (Exception e) {
+            String a = e.getMessage();
+        }
+
+        return anexo;
+    }
 }

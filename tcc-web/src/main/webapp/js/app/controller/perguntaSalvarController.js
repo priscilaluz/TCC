@@ -47,7 +47,7 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
             if ($scope.anexo.size !== 0){
                 $rootScope.appLoaded = false;
                 var parametros = "1";
-                var uploadUrl = "/lires/rest/pergunta/buscarAnexo";
+                var uploadUrl = "/tcc/rest/pergunta/buscarAnexo";
                 PerguntaAnexoService.uploadFileToUrl($scope.anexo, uploadUrl, parametros, uploadSucess, uploadError);
             }else{
                 toasterAlert("warning", "Arquivo inválido", "Esse arquivo está vazio.");
