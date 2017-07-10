@@ -4,7 +4,6 @@ import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
 import br.com.tcc.common.entity.Pergunta;
-import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.Jogo;
@@ -79,7 +78,6 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         assertTrue(curso.getEtapas().size() == 2);
         for (Etapa etapa : curso.getEtapas()) {
             assertTrue(etapa.getEtapasPerguntas().size() == 1);
-            assertTrue(etapa.getPerguntas().size() == 1);
         }
     }
     
@@ -152,9 +150,16 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         assertTrue(perguntasAntes.size() == 1);
         
         etapaAtual.setAssunto("Etapa Nome Novo");
-        etapaAtual.setPerguntas(new ArrayList<Pergunta>());
-        etapaAtual.getPerguntas().add(dao.getById(Pergunta.class, 1L));
-        etapaAtual.getPerguntas().add(dao.getById(Pergunta.class, 2L));
+        etapaAtual.setEtapasPerguntas(new HashSet<EtapaPergunta>());
+        
+        EtapaPergunta ep1 = new EtapaPergunta();
+        ep1.setPergunta(dao.getById(Pergunta.class, 1L));
+        etapaAtual.getEtapasPerguntas().add(ep1);
+        
+        EtapaPergunta ep2 = new EtapaPergunta();
+        ep2.setPergunta(dao.getById(Pergunta.class, 1L));
+        etapaAtual.getEtapasPerguntas().add(ep2);
+        
         cursoServiceImpl.salvarEtapa(etapaAtual);
         
         Etapa etapaEditado = dao.getById(Etapa.class, 1L);
@@ -235,38 +240,50 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     }
     
     private Etapa obterEtapaValida1() {
-        List<Pergunta> perguntas = new ArrayList<>();
+        Set<EtapaPergunta> etapaPergunta = new HashSet<>();
+        
+        EtapaPergunta ep1 = new EtapaPergunta();
         Pergunta pergunta1 = dao.getById(Pergunta.class, 1L);
         pergunta1.setPosicao(1);
-        perguntas.add(pergunta1);
+        ep1.setPergunta(pergunta1);
+        etapaPergunta.add(ep1);
+                
+        EtapaPergunta ep2 = new EtapaPergunta();
         Pergunta pergunta2 = dao.getById(Pergunta.class, 2L);
         pergunta1.setPosicao(2);
-        perguntas.add(pergunta2);
+        ep2.setPergunta(pergunta2);
+        etapaPergunta.add(ep2);
         
         Etapa etapa = EtapaBuilder.nova()
                 .comAssunto("Assunto 1.")
                 .comNivel(1)
                 .comJogo(Jogo.POKER)
                 .comCurso(new Curso())
-                .comPerguntas(perguntas)
+                .comEtapasPerguntas(etapaPergunta)
                 .build();
         return etapa;
     }
     
     private Etapa obterEtapaValida2() {
-        List<Pergunta> perguntas = new ArrayList<>();
+        Set<EtapaPergunta> etapaPergunta = new HashSet<>();
+        
+        EtapaPergunta ep1 = new EtapaPergunta();
         Pergunta pergunta1 = dao.getById(Pergunta.class, 1L);
         pergunta1.setPosicao(1);
-        perguntas.add(pergunta1);
+        ep1.setPergunta(pergunta1);
+        etapaPergunta.add(ep1);
+                
+        EtapaPergunta ep2 = new EtapaPergunta();
         Pergunta pergunta2 = dao.getById(Pergunta.class, 2L);
         pergunta1.setPosicao(2);
-        perguntas.add(pergunta2);
+        ep2.setPergunta(pergunta2);
+        etapaPergunta.add(ep2);
         
         Etapa etapa = EtapaBuilder.nova()
                 .comAssunto("Assunto 2.")
                 .comNivel(2)
                 .comJogo(Jogo.QUIZ)
-                .comPerguntas(perguntas)
+                .comEtapasPerguntas(etapaPergunta)
                 .build();
         return etapa;
     }

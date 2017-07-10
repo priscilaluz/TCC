@@ -60,6 +60,11 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
         
         $scope.salvarEtapa = function (proximaEtapa) {
             $rootScope.appLoaded = false;
+            $scope.etapa.etapasPerguntas = [];
+            for (var i = 0; i < $scope.etapa.perguntas.length; i++) {
+                $scope.etapa.etapasPerguntas.push({'pergunta': $scope.etapa.perguntas[i]});
+            }
+            
             $scope.etapa.$save(function () {
                 if (proximaEtapa) {
                     novaEtapa();
@@ -107,6 +112,9 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
         $scope.curso = {id: 2, categoria:{id: 'P'}};
         novaEtapa();
         carregarCombos();
+        $scope.etapa.perguntas.push({id:'1'});
+        $scope.etapa.perguntas.push({id:'2'});
+        $scope.etapa.perguntas.push({id:'23'});
         //FIM: Só p teste
 
     }]);

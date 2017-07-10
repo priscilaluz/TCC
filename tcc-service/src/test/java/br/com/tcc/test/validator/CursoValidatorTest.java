@@ -167,7 +167,7 @@ public class CursoValidatorTest {
     public void naoDeveSalvarEtapaSemPerguntas(){
         Etapa e = obterEtapaValida1();
         try {
-            e.setPerguntas(new ArrayList<Pergunta>());
+            e.setEtapasPerguntas(new HashSet<EtapaPergunta>());
             validator.validarSalvarEtapa(e);
             fail();
         } catch (BusinessException ex) {
@@ -194,30 +194,30 @@ public class CursoValidatorTest {
     }
     
     private Etapa obterEtapaValida1() {
-        List<Pergunta> perguntas = new ArrayList<>();
-        perguntas.add(obterPerguntaValida1());
-        perguntas.add(obterPerguntaValida2());
+        Set<EtapaPergunta> etapasperguntas = new HashSet<>();
+        etapasperguntas.add(obterEtapaPerguntaValida1());
+        etapasperguntas.add(obterEtapaPerguntaValida1());
         
         Etapa etapa = EtapaBuilder.nova()
                 .comAssunto("Assunto 1.")
                 .comNivel(1)
                 .comJogo(Jogo.POKER)
                 .comCurso(new Curso())
-                .comPerguntas(perguntas)
+                .comEtapasPerguntas(etapasperguntas)
                 .build();
         return etapa;
     }
     
     private Etapa obterEtapaValida2() {
-        List<Pergunta> perguntas = new ArrayList<>();
-        perguntas.add(obterPerguntaValida1());
-        perguntas.add(obterPerguntaValida2());
+        Set<EtapaPergunta> etapasperguntas = new HashSet<>();
+        etapasperguntas.add(obterEtapaPerguntaValida1());
+        etapasperguntas.add(obterEtapaPerguntaValida1());
         
         Etapa etapa = EtapaBuilder.nova()
                 .comAssunto("Assunto 2.")
                 .comNivel(2)
                 .comJogo(Jogo.QUIZ)
-                .comPerguntas(perguntas)
+                .comEtapasPerguntas(etapasperguntas)
                 .build();
         return etapa;
     }

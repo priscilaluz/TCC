@@ -54,11 +54,6 @@ public class EtapaBuilder {
         return this;
     }
     
-    public EtapaBuilder comPerguntas(List<Pergunta> perguntas){
-        etapa.setPerguntas(perguntas);
-        return this;
-    }
-    
     public EtapaBuilder comEtapasPerguntas(Set<EtapaPergunta> etapasPerguntas){
         etapa.setEtapasPerguntas(etapasPerguntas);
         return this;

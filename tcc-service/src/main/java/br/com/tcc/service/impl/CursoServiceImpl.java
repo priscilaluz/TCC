@@ -46,13 +46,6 @@ public class CursoServiceImpl {
             etapa.setCurso(curso);
             validador.validarSalvarEtapa(etapa);
             dao.saveOrUpdate(etapa);
-            for (Pergunta pergunta : etapa.getPerguntas()) {
-                EtapaPergunta etapaPergunta = new EtapaPergunta();
-                etapaPergunta.setEtapa(etapa);
-                etapaPergunta.setPergunta(pergunta);
-                etapaPergunta.setPosicao(pergunta.getPosicao());
-                dao.saveOrUpdate(etapaPergunta);
-            }
         }
         return curso;
     }
@@ -72,17 +65,6 @@ public class CursoServiceImpl {
                 .fetchEtapasPerguntas(ConstantesI18N.FETCH)
                 .fetchPergunta(ConstantesI18N.FETCH)
                 .whereId(idCurso));
-        if (curso != null && !curso.getEtapas().isEmpty()) {
-            for (Etapa etapa : curso.getEtapas()) {
-                List<Pergunta> perguntas = new ArrayList<>();
-                for (EtapaPergunta etapasPergunta : etapa.getEtapasPerguntas()) {
-                    Pergunta pergunta = etapasPergunta.getPergunta();
-                    pergunta.setPosicao(etapasPergunta.getPosicao());
-                    perguntas.add(pergunta);
-                }
-                etapa.setPerguntas(perguntas);
-            }
-        }
         return curso;
     }
 
@@ -103,11 +85,9 @@ public class CursoServiceImpl {
             dao.executeDML(new ExcluirEtapaPerguntaPorEtapa(etapa.getId()));
         }
         dao.saveOrUpdate(etapa);
-        for (Pergunta pergunta : etapa.getPerguntas()) {
-            EtapaPergunta etapaPergunta = new EtapaPergunta();
+        for (EtapaPergunta etapaPergunta : etapa.getEtapasPerguntas()) {
             etapaPergunta.setEtapa(etapa);
-            etapaPergunta.setPergunta(pergunta);
-            etapaPergunta.setPosicao(pergunta.getPosicao());
+            etapaPergunta.setPosicao(etapaPergunta.getPergunta().getPosicao());
             dao.saveOrUpdate(etapaPergunta);
         }
         return etapa;

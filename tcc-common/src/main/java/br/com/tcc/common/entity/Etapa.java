@@ -68,9 +68,6 @@ public class Etapa extends AbstractIdBean<Long> {
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "etapa")
     private Set<EtapaPergunta> etapasPerguntas = new HashSet<EtapaPergunta>();
-    
-    @Transient
-    private List<Pergunta> perguntas = new ArrayList<Pergunta>();
 
     @Override
     public Long getId() {
@@ -139,16 +136,5 @@ public class Etapa extends AbstractIdBean<Long> {
 
     public void setEtapasPerguntas(Set<EtapaPergunta> etapasPerguntas) {
         this.etapasPerguntas = etapasPerguntas;
-    }
-
-    public List<Pergunta> getPerguntas() {
-        if (perguntas == null) {
-            perguntas = new ArrayList<>();
-        }
-        return perguntas;
-    }
-
-    public void setPerguntas(List<Pergunta> perguntas) {
-        this.perguntas = perguntas;
     }
 }
