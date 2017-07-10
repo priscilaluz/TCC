@@ -11,11 +11,17 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
         
         $scope.voltar = function () {
             $scope.numeroEtapa = $scope.numeroEtapa - 1;
-            if ($scope.numeroEtapa === 0){
+            if ($scope.numeroEtapa === 0) {
                 $scope.abaEtapa = false;
             } else {
                 $scope.etapa.nivel = $scope.numeroEtapa;
-                //Buscar Etapa com Nivel = $scope.numeroEtapa e CursoId = $scope.curso.id
+                Etapa.buscar({'idCurso': $scope.curso.id, 'nivel': $scope.numeroEtapa}, function (result) {
+                    $scope.etapa = result;
+                    carregarCombos();
+                    $rootScope.appLoaded = true;
+                }, function (error) {
+                    $rootScope.appLoaded = true;
+                });
             }
         };
         
@@ -37,7 +43,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
             $scope.etapa = new Etapa();
             $scope.numeroEtapa = $scope.numeroEtapa + 1;
             $scope.etapa.nivel = $scope.numeroEtapa;
-            $scope.etapa.perguntas = [];
+            $scope.perguntasEtapa = [];
             $scope.etapa.curso = {id: $scope.curso.id};
         };
         
@@ -61,8 +67,8 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
         $scope.salvarEtapa = function (proximaEtapa) {
             $rootScope.appLoaded = false;
             $scope.etapa.etapasPerguntas = [];
-            for (var i = 0; i < $scope.etapa.perguntas.length; i++) {
-                $scope.etapa.etapasPerguntas.push({'pergunta': $scope.etapa.perguntas[i]});
+            for (var i = 0; i < $scope.perguntasEtapa.length; i++) {
+                $scope.etapa.etapasPerguntas.push({'pergunta': $scope.perguntasEtapa[i]});
             }
             
             $scope.etapa.$save(function () {
@@ -79,8 +85,8 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
         };
         
         $scope.excluirPergunta = function (index) {
-            $scope.perguntas.push($scope.etapa.perguntas[index]);
-            $scope.etapa.perguntas.splice(index, 1);
+            $scope.perguntas.push($scope.perguntasEtapa[index]);
+            $scope.perguntasEtapa.splice(index, 1);
         };
         
         $scope.addPergunta = function () {
@@ -92,7 +98,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
                 }
             }
             $scope.perguntas.splice(posicao, 1);
-            $scope.etapa.perguntas.push($scope.model.pergunta);
+            $scope.perguntasEtapa.push($scope.model.pergunta);
         };
         
         var init = function () {
@@ -108,13 +114,13 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
         
         
         //INICIO: Só p teste
-        $scope.abaEtapa = true;
-        $scope.curso = {id: 2, categoria:{id: 'P'}};
-        novaEtapa();
-        carregarCombos();
-        $scope.etapa.perguntas.push({id:'1'});
-        $scope.etapa.perguntas.push({id:'2'});
-        $scope.etapa.perguntas.push({id:'23'});
+//        $scope.abaEtapa = true;
+//        $scope.curso = {id: 2, categoria:{id: 'P'}};
+//        novaEtapa();
+//        carregarCombos();
+//        $scope.perguntasEtapa.push({id:'1'});
+//        $scope.perguntasEtapa.push({id:'2'});
+//        $scope.perguntasEtapa.push({id:'23'});
         //FIM: Só p teste
 
     }]);

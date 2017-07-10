@@ -44,7 +44,7 @@
                         <i class="glyphicon glyphicon-plus-sign" style="font-size: 26px;"></i></button>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12" style="overflow: auto; height: 150px !important;" ng-show="etapa.perguntas.length > 0">
+            <div class="col-xs-12 col-sm-12 col-md-12" style="overflow: auto; height: 150px !important;" ng-show="perguntasEtapa.length > 0">
                 <table class="table table-condensed" id="tabela">
                     <thead>
                         <tr>
@@ -54,7 +54,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="pergunta in etapa.perguntas">
+                        <tr ng-repeat="pergunta in perguntasEtapa">
                             <td><a ng-click="excluirPergunta($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove handCurso"></i></a></td>
                             <td>{{pergunta.descricao}}</td>
                             <td>

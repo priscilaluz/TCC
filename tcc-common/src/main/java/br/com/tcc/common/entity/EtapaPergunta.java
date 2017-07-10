@@ -7,6 +7,7 @@ package br.com.tcc.common.entity;
 
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,6 +36,7 @@ public class EtapaPergunta extends AbstractIdBean<Long> {
     @Column(name = "POSICAO", nullable = true)
     private Integer posicao;
     
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ETAPA_ID", nullable = false)
     private Etapa etapa;

@@ -8,9 +8,7 @@ package br.com.tcc.common.entity;
 import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +22,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import org.hibernate.annotations.Type;
 
 /**

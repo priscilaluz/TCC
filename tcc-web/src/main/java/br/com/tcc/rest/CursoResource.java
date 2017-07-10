@@ -57,7 +57,7 @@ public class CursoResource {
     }
     
     @GET
-    @Path("etapa/buscar")
+    @Path("/etapa/buscar")
     @Produces(MediaType.APPLICATION_JSON)
     public Etapa buscarEtapaPorId(@QueryParam("idCurso") Long idCurso, @QueryParam("nivel") Integer nivel) {
         List<Etapa> etapas = cursoService.buscarEtapa(idCurso, nivel);
