@@ -14,8 +14,8 @@ public enum Jogo {
     /**
      * Id.
      */
-    private String id;
-    private String descricao;
+    private final String id;
+    private final String descricao;
 
     /**
      * Construtor padrao.

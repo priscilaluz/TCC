@@ -1,3 +1,8 @@
+.botao-add{
+    border-radius: 22px;
+    color: #ff6624;
+}
+
 .nav-menu{
     display: inline;
     list-style-type: none;

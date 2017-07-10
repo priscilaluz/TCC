@@ -6,6 +6,7 @@
 package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.Curso;
+import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.service.impl.CursoServiceImpl;
 import java.util.List;
@@ -38,6 +39,29 @@ public class CursoResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Curso save(Curso curso) {
         return cursoService.salvarCurso(curso);
+    }
+    
+    @POST
+    @Path("/etapa/save")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Etapa save(Etapa etapa) {
+        return cursoService.salvarEtapa(etapa);
+    }
+    
+    @DELETE
+    @Path("/etapa/deletar")
+    public Response excluirEtapa(@QueryParam("idCurso") Long idCurso, @QueryParam("idEtapa") Long idEtapa) {
+        cursoService.excluirEtapa(idCurso, idEtapa);
+        return Response.noContent().build();
+    }
+    
+    @GET
+    @Path("etapa/buscar")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Etapa buscarEtapaPorId(@QueryParam("idCurso") Long idCurso, @QueryParam("nivel") Integer nivel) {
+        List<Etapa> etapas = cursoService.buscarEtapa(idCurso, nivel);
+        return etapas.get(0);
     }
     
     @DELETE

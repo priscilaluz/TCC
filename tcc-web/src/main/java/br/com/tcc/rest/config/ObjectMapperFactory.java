@@ -7,6 +7,7 @@ package br.com.tcc.rest.config;
 
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.Jogo;
+import br.com.tcc.common.enums.SituacaoCurso;
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -27,6 +28,7 @@ public class ObjectMapperFactory {
             // Inclusao dos Custom Deserializer para Enums
             testModule.addDeserializer(Categoria.class, new EnumDeserializer(ReflectionUtils.findMethod(Categoria.class, "from", String.class)));
             testModule.addDeserializer(Jogo.class, new EnumDeserializer(ReflectionUtils.findMethod(Jogo.class, "from", String.class)));
+            testModule.addDeserializer(SituacaoCurso.class, new EnumDeserializer(ReflectionUtils.findMethod(SituacaoCurso.class, "from", String.class)));
             testModule.addDeserializer(InputStream.class, new StreamDeserializer());
             testModule.addSerializer(new StreamSerializer());
             mapper.registerModule(testModule);

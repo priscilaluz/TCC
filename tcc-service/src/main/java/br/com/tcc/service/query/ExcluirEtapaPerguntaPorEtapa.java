@@ -6,15 +6,14 @@ package br.com.tcc.service.query;
 import br.com.tcc.service.persistence.BusinessQuery;
 
 /**
- * ExcluirRespostaPorPergunta
+ * ExcluirEtapaPerguntaPorEtapa
  * @author Priscila
  */
 public class ExcluirEtapaPerguntaPorEtapa extends BusinessQuery {
     
-    public ExcluirEtapaPerguntaPorEtapa(Long idCurso) {
-        appendText(" delete from EtapaPergunta ep where ep.etapa.id in ");
-        appendText(" (select e.id from Etapa e where e.curso.id = :idCurso) ");
-        addParameter("idCurso", idCurso);
+    public ExcluirEtapaPerguntaPorEtapa(Long idEtapa) {
+        appendText(" delete from EtapaPergunta ep where ep.etapa.id = :idEtapa");
+        addParameter("idEtapa", idEtapa);
     }
     
 }

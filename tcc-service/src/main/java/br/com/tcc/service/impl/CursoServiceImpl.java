@@ -13,6 +13,8 @@ import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.util.ConstantesI18N;
 import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarCurso;
+import br.com.tcc.service.query.BuscarEtapa;
+import br.com.tcc.service.query.ExcluirEtapaPerguntaPorCurso;
 import br.com.tcc.service.query.ExcluirEtapaPerguntaPorEtapa;
 import br.com.tcc.service.query.ExcluirEtapaPorCurso;
 import br.com.tcc.service.validator.CursoValidator;
@@ -37,10 +39,6 @@ public class CursoServiceImpl {
 
     @Transactional(readOnly = false)
     public Curso salvarCurso(Curso curso) {
-        if (curso.getId() != null) {
-            dao.executeDML(new ExcluirEtapaPerguntaPorEtapa(curso.getId()));
-            dao.executeDML(new ExcluirEtapaPorCurso(curso.getId()));
-        }
         validador.validarSalvarCurso(curso);
         dao.saveOrUpdate(curso);
         for (Etapa etapa : curso.getEtapas()) {
@@ -61,7 +59,7 @@ public class CursoServiceImpl {
 
     @Transactional(readOnly = false)
     public void excluirCurso(Long idCurso) {
-        dao.executeDML(new ExcluirEtapaPerguntaPorEtapa(idCurso));
+        dao.executeDML(new ExcluirEtapaPerguntaPorCurso(idCurso));
         dao.executeDML(new ExcluirEtapaPorCurso(idCurso));
         Curso curso = dao.get(Curso.class, idCurso);
         dao.remove(curso);
@@ -94,5 +92,47 @@ public class CursoServiceImpl {
                 .whereUsuario(idUsuario)
                 .whereNomeLike(parteNome)
                 .whereCategoria(categoria));
+    }
+    
+    
+    
+    @Transactional(readOnly = false)
+    public Etapa salvarEtapa(Etapa etapa) {
+        validador.validarSalvarEtapa(etapa);
+        if (etapa.getId() != null) {
+            dao.executeDML(new ExcluirEtapaPerguntaPorEtapa(etapa.getId()));
+        }
+        dao.saveOrUpdate(etapa);
+        for (Pergunta pergunta : etapa.getPerguntas()) {
+            EtapaPergunta etapaPergunta = new EtapaPergunta();
+            etapaPergunta.setEtapa(etapa);
+            etapaPergunta.setPergunta(pergunta);
+            etapaPergunta.setPosicao(pergunta.getPosicao());
+            dao.saveOrUpdate(etapaPergunta);
+        }
+        return etapa;
+    }
+
+    @Transactional(readOnly = false)
+    public void excluirEtapa(Long idCurso, Long idEtapa) {
+        dao.executeDML(new ExcluirEtapaPerguntaPorEtapa(idEtapa));
+        Etapa etapaRemover = dao.get(Etapa.class, idEtapa);
+        dao.remove(etapaRemover);
+        
+        int nivel = 1;
+        List<Etapa> etapas = buscarEtapa(idCurso, null);
+        for (Etapa etapa : etapas) {
+            etapa.setNivel(nivel);
+            dao.saveOrUpdate(etapa);
+            nivel++;
+        }
+    }
+    
+    @Transactional(readOnly = true)
+    public List<Etapa> buscarEtapa(Long idCurso, Integer nivel) {
+        return dao.list(new BuscarEtapa.Entities()
+                .whereIdCurso(idCurso)
+                .whereNivel(nivel)
+                .orderByNivel());
     }
 }

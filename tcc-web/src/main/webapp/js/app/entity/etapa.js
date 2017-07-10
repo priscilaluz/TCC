@@ -1,11 +1,9 @@
-tccApp.factory('Pergunta', ['$resource', function ($resource) {
+tccApp.factory('Etapa', ['$resource', function ($resource) {
 
-        var Pergunta = $resource('/tcc/rest/pergunta/:verbo', {}, {
+        var Etapa = $resource('/tcc/rest/curso/etapa/:verbo', {}, {
             save: {method: 'POST', params: {verbo: 'save'}, isArray: false},
-            buscarPerguntaPorId: {method: 'GET', params: {verbo: 'buscarPorId'}, isArray: false},
-            buscarPerguntas: {method: 'GET', params: {verbo: 'buscarPergunta'}, isArray: true},
-            deletarPergunta: {method: 'DELETE', params: {verbo: 'deletarPergunta'}, isArray: false}
+            deletar: {method: 'DELETE', params: {verbo: 'deletar'}, isArray: false}
         });
 
-        return Pergunta;
+        return Etapa;
 }]);

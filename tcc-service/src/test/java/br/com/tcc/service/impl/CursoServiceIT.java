@@ -2,6 +2,7 @@ package br.com.tcc.service.impl;
 
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
+import br.com.tcc.common.entity.EtapaPergunta;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.entity.Usuario;
@@ -34,6 +35,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     @SpringBean("CursoServiceImpl")
     private CursoServiceImpl cursoServiceImpl;
     
+    //<editor-fold defaultstate="collapsed" desc="Curso">
     @Test
     public void deveSalvarRascunhoCurso(){
         Curso curso = obterCursoValida();
@@ -51,18 +53,12 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     public void deveEditarCurso(){        
         Curso cursoAtual = cursoServiceImpl.buscarCursoPorId(1L);
         assertEquals(cursoAtual.getNome(), "Curso História");
-        List<Etapa> etapasAntes = dao.query("select e from Etapa e where e.curso.id = 1");
-        assertTrue(etapasAntes.size() == 2);
         
         cursoAtual.setNome("Curso Nome Novo");
-        cursoAtual.setEtapas(new HashSet<Etapa>());
-        cursoAtual.getEtapas().add(obterEtapaValida1());
         cursoServiceImpl.salvarCurso(cursoAtual);
         
         Curso cursoEditado = cursoServiceImpl.buscarCursoPorId(1L);
         assertEquals(cursoEditado.getNome(), "Curso Nome Novo");
-        List<Etapa> etapasDepois = dao.query("select e from Etapa e where e.curso.id = 1");
-        assertTrue(etapasDepois.size() == 1);
     }
     
     @Test
@@ -91,15 +87,15 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     public void deveExcluirCursoPorId(){
         List<Curso> curso = dao.query("select c from Curso c where c.id = 1");
         assertTrue(curso.size() == 1);
-        List<Resposta> respostas = dao.query("select e from Etapa e where e.curso.id = 1");
-        assertTrue(respostas.size() == 2);
+        List<Etapa> etapa = dao.query("select e from Etapa e where e.curso.id = 1");
+        assertTrue(etapa.size() == 2);
         
         cursoServiceImpl.excluirCurso(1L);
         
-        List<Pergunta> perguntaExcluida = dao.query("select c from Curso c where c.id = 1");
-        assertTrue(perguntaExcluida.isEmpty());
-        List<Resposta> respostasExcluida = dao.query("select e from Etapa e where e.curso.id = 1");
-        assertTrue(respostasExcluida.isEmpty());
+        List<Curso> cursoExcluida = dao.query("select c from Curso c where c.id = 1");
+        assertTrue(cursoExcluida.isEmpty());
+        List<Etapa> etapasExcluida = dao.query("select e from Etapa e where e.curso.id = 1");
+        assertTrue(etapasExcluida.isEmpty());
     }
     
     @Test
@@ -131,6 +127,95 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
             assertTrue(ids.contains(c.getId()));
         }
     }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Etapa">
+    @Test
+    public void deveSalvarEtapa(){
+        Curso curso = new Curso();
+        curso.setId(1L);
+        Etapa etapa = obterEtapaValida1();
+        etapa.setCurso(curso);
+        
+        etapa = cursoServiceImpl.salvarEtapa(etapa);
+        assertNotNull(etapa.getId());
+        assertEquals(dao.getById(Etapa.class, etapa.getId()), etapa);
+        List<EtapaPergunta> perguntas = dao.query("select e from EtapaPergunta e where e.etapa.id = "+etapa.getId().toString());
+        assertTrue(perguntas.size() == 2);
+    }
+    
+    @Test
+    public void deveEditarEtapa(){
+        Etapa etapaAtual = dao.getById(Etapa.class, 1L);
+        assertEquals(etapaAtual.getAssunto(), "Assunto C1 E1");
+        List<EtapaPergunta> perguntasAntes = dao.query("select e from EtapaPergunta e where e.etapa.id = 1");
+        assertTrue(perguntasAntes.size() == 1);
+        
+        etapaAtual.setAssunto("Etapa Nome Novo");
+        etapaAtual.setPerguntas(new ArrayList<Pergunta>());
+        etapaAtual.getPerguntas().add(dao.getById(Pergunta.class, 1L));
+        etapaAtual.getPerguntas().add(dao.getById(Pergunta.class, 2L));
+        cursoServiceImpl.salvarEtapa(etapaAtual);
+        
+        Etapa etapaEditado = dao.getById(Etapa.class, 1L);
+        assertEquals(etapaEditado.getAssunto(), "Etapa Nome Novo");
+        List<EtapaPergunta> perguntasDepois = dao.query("select e from EtapaPergunta e where e.etapa.id = 1");
+        assertTrue(perguntasDepois.size() == 2);
+    }
+    
+    @Test
+    public void deveExcluirEtapaPorId(){
+        List<Etapa> etapa = dao.query("select e from Etapa e where e.id = 1");
+        assertTrue(etapa.size() == 1);
+        List<EtapaPergunta> etapasPerguntas = dao.query("select ep from EtapaPergunta ep where ep.etapa.id = 1");
+        assertTrue(etapasPerguntas.size() == 1);
+        
+        List<Etapa> etapaComNivelAtualizado = dao.query("select e from Etapa e where e.id = 2");
+        assertTrue(!etapaComNivelAtualizado.isEmpty());
+        assertEquals(etapaComNivelAtualizado.get(0).getNivel(), new Integer(2));
+        
+        cursoServiceImpl.excluirEtapa(1L, 1L);
+        
+        List<Etapa> etapaExcluida = dao.query("select e from Etapa e where e.id = 1");
+        assertTrue(etapaExcluida.isEmpty());
+        List<EtapaPergunta> etapasPerguntasExcluida = dao.query("select ep from EtapaPergunta ep where ep.etapa.id = 1");
+        assertTrue(etapasPerguntasExcluida.isEmpty());
+        
+        etapaComNivelAtualizado = dao.query("select e from Etapa e where e.id = 2");
+        assertTrue(!etapaComNivelAtualizado.isEmpty());
+        assertEquals(etapaComNivelAtualizado.get(0).getNivel(), new Integer(1));
+    }
+    
+    @Test
+    public void deveRetornarEtapaPorIdCurso(){
+        List<Etapa> etapas = cursoServiceImpl.buscarEtapa(1L, null);
+        assertTrue(etapas.size()==2);
+        List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
+        for (Etapa e : etapas) {
+            assertTrue(ids.contains(e.getId()));
+        }
+    }
+    
+    @Test
+    public void deveRetornarEtapaPorNivel(){
+        List<Etapa> etapas = cursoServiceImpl.buscarEtapa(null, 1);
+        assertTrue(etapas.size()==3);
+        List<Long> ids = new ArrayList<>(Arrays.asList(1L, 3L, 4L));
+        for (Etapa e : etapas) {
+            assertTrue(ids.contains(e.getId()));
+        }
+    }
+    
+    @Test
+    public void deveRetornarEtapaPorIdCursoNivel(){
+        List<Etapa> etapas = cursoServiceImpl.buscarEtapa(1L, 1);
+        assertTrue(etapas.size()==1);
+        List<Long> ids = new ArrayList<>(Arrays.asList(1L));
+        for (Etapa e : etapas) {
+            assertTrue(ids.contains(e.getId()));
+        }
+    }
+    //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Entidades Validas">
     private Curso obterCursoValida() {

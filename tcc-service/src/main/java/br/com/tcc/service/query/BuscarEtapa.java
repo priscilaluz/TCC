@@ -5,73 +5,38 @@
  */
 package br.com.tcc.service.query;
 
-import br.com.tcc.common.entity.Curso;
-import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.service.persistence.BusinessFluentQuery;
 import java.io.Serializable;
 
-public abstract class BuscarCurso<T extends Serializable> extends BusinessFluentQuery<T, BuscarCurso> {
+public abstract class BuscarEtapa<T extends Serializable> extends BusinessFluentQuery<T, BuscarEtapa> {
 
-    public static class Entities extends BuscarCurso<Curso> {
+    public static class Entities extends BuscarEtapa<Etapa> {
         public Entities() {
-            appendText("select c from Curso c ");
+            appendText("select e from Etapa e ");
         }
     }
-    
-    public static class Count extends BuscarCurso<Long> {
-        public Count() {
-            appendText("select count(c) from Curso c ");
-        }
-    }
-    
-    public BuscarCurso fetchEtapas(String fetch) {
-        appendText(" left join "+fetch+" c.etapas e ");
-        return this;
-    }
-    
-    public BuscarCurso fetchEtapasPerguntas(String fetch) {
-        appendText(" left join "+fetch+" e.etapasPerguntas ep ");
-        return this;
-    }
-    
-    public BuscarCurso fetchPergunta(String fetch) {
-        appendText(" left join "+fetch+" ep.pergunta p ");
+
+    public BuscarEtapa whereIdCurso(Long idCurso) {
+        if (idCurso != null) {
+            appendText(getPreffixFilter());
+            appendText(" e.curso.id = :idCurso ");
+            addParameter("idCurso", idCurso);
+        }    
         return this;
     }
 
-    public BuscarCurso whereId(Long id) {
-        if (id != null) {
+    public BuscarEtapa whereNivel(Integer nivel) {
+        if (nivel != null) {
             appendText(getPreffixFilter());
-            appendText(" c.id = :id ");
-            addParameter("id", id);
+            appendText(" e.nivel = :nivel ");
+            addParameter("nivel", nivel);
         }    
         return this;
     }
     
-    public BuscarCurso whereUsuario(Long idUsuario) {
-        if (idUsuario != null) {
-            appendText(getPreffixFilter());
-            appendText(" c.usuario.id = :idUsuario ");
-            addParameter("idUsuario", idUsuario);
-        }    
-        return this;
-    }
-    
-    public BuscarCurso whereNomeLike(String nome) {
-        if (nome != null) {
-            appendText(getPreffixFilter());
-            appendText(" upper(c.nome) like upper(:nome) ");
-            addParameter("nome", "%"+nome+"%");
-        }    
-        return this;
-    }
-    
-    public BuscarCurso whereCategoria(Categoria categoria) {
-        if (categoria != null) {
-            appendText(getPreffixFilter());
-            appendText(" c.categoria = :categoria ");
-            addParameter("categoria", categoria);
-        }    
+    public BuscarEtapa orderByNivel() { 
+        appendText(" order by e.nivel ");
         return this;
     }
 }
