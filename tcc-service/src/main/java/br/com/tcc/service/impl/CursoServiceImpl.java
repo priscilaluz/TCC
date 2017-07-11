@@ -8,8 +8,8 @@ package br.com.tcc.service.impl;
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
-import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.util.ConstantesI18N;
 import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarCurso;
@@ -18,7 +18,6 @@ import br.com.tcc.service.query.ExcluirEtapaPerguntaPorCurso;
 import br.com.tcc.service.query.ExcluirEtapaPerguntaPorEtapa;
 import br.com.tcc.service.query.ExcluirEtapaPorCurso;
 import br.com.tcc.service.validator.CursoValidator;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -69,11 +68,12 @@ public class CursoServiceImpl {
     }
 
     @Transactional(readOnly = true)
-    public List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, Categoria categoria) {
+    public List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, Categoria categoria, SituacaoCurso situacaoCurso) {
         return dao.list(new BuscarCurso.Entities()
                 .whereUsuario(idUsuario)
                 .whereNomeLike(parteNome)
-                .whereCategoria(categoria));
+                .whereCategoria(categoria)
+                .whereSituacaoCurso(situacaoCurso));
     }
     
     
@@ -111,6 +111,8 @@ public class CursoServiceImpl {
     @Transactional(readOnly = true)
     public List<Etapa> buscarEtapa(Long idCurso, Integer nivel) {
         return dao.list(new BuscarEtapa.Entities()
+                .fetchEtapaPergunta(ConstantesI18N.FETCH)
+                .fetchPergunta(ConstantesI18N.FETCH)
                 .whereIdCurso(idCurso)
                 .whereNivel(nivel)
                 .orderByNivel());

@@ -7,6 +7,7 @@ package br.com.tcc.service.query;
 
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.service.persistence.BusinessFluentQuery;
 import java.io.Serializable;
 
@@ -71,6 +72,15 @@ public abstract class BuscarCurso<T extends Serializable> extends BusinessFluent
             appendText(getPreffixFilter());
             appendText(" c.categoria = :categoria ");
             addParameter("categoria", categoria);
+        }    
+        return this;
+    }
+    
+    public BuscarCurso whereSituacaoCurso(SituacaoCurso situacao) {
+        if (situacao != null) {
+            appendText(getPreffixFilter());
+            appendText(" c.situacao = :situacao ");
+            addParameter("situacao", situacao);
         }    
         return this;
     }

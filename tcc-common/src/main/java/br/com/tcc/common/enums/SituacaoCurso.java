@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public enum SituacaoCurso {
 
     RASCUNHO ("R", "Rascunho"),
-    CONCLUIDA  ("C", "Concluída");
+    CONCLUIDA  ("C", "Concluído");
 
     /**
      * Id.

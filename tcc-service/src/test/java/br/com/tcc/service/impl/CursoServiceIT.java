@@ -98,7 +98,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorUsuario(){
-        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(1L, null, null);
+        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(1L, null, null, null);
         assertTrue(cursos.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
         for (Curso c : cursos) {
@@ -108,7 +108,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorParteDaDescricao(){
-        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, "Matemática", null);
+        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, "Matemática", null, null);
         assertTrue(cursos.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(2L));
         for (Curso c : cursos) {
@@ -118,9 +118,19 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorCategoria(){
-        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, null, Categoria.GEOGRAFIA);
+        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, null, Categoria.GEOGRAFIA, null);
         assertTrue(cursos.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(3L));
+        for (Curso c : cursos) {
+            assertTrue(ids.contains(c.getId()));
+        }
+    }
+    
+    @Test
+    public void deveRetornarCursoPorSituacao(){
+        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, null, null, SituacaoCurso.CONCLUIDA);
+        assertTrue(cursos.size()==2);
+        List<Long> ids = new ArrayList<>(Arrays.asList(2L, 3L));
         for (Curso c : cursos) {
             assertTrue(ids.contains(c.getId()));
         }

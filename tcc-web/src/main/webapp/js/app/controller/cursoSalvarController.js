@@ -14,34 +14,56 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
             if ($scope.numeroEtapa === 0) {
                 $scope.abaEtapa = false;
             } else {
-                $scope.etapa.nivel = $scope.numeroEtapa;
-                Etapa.buscar({'idCurso': $scope.curso.id, 'nivel': $scope.numeroEtapa}, function (result) {
-                    $scope.etapa = result;
-                    carregarCombos();
-                    $rootScope.appLoaded = true;
-                }, function (error) {
-                    $rootScope.appLoaded = true;
-                });
+                buscarEtapaAtual($scope.numeroEtapa);
             }
         };
         
-        $scope.salvarRascunho = function () {
-            $scope.curso.usuario = $rootScope.usuarioLogado;
-            $scope.curso.situacao = {id: "R", descricao: "Rascunho"};
-            $rootScope.appLoaded = false;
-            $scope.curso.$save(function () {
+        var buscarEtapaAtual = function (numeroEtapa) {
+            Etapa.buscar({'idCurso': $scope.curso.id, 'nivel': numeroEtapa}, function (result) {
+                if (result) {
+                    $scope.etapa = result;
+                    $scope.etapa.nivel = numeroEtapa;
+                    $scope.perguntasEtapa = [];
+                    if ($scope.etapa.etapasPerguntas) {
+                        for (var i = 0; i < $scope.etapa.etapasPerguntas.length; i++) {
+                            $scope.perguntasEtapa.push($scope.etapa.etapasPerguntas[i].pergunta);
+                        }
+                    }
+                    carregarCombos();
+                } else {
+                    novaEtapa(numeroEtapa);
+                }
                 $rootScope.appLoaded = true;
-                novaEtapa();
-                carregarCombos();
-                $scope.abaEtapa = true;
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
         };
         
-        var novaEtapa = function () {
+        $scope.salvarCurso = function (situacao) {
+            $scope.curso.usuario = $rootScope.usuarioLogado;
+            if (situacao === 'R'){
+                $scope.curso.situacao = {id: "R", descricao: "Rascunho"};
+            } else {
+                $scope.curso.situacao = {id: "C", descricao: "Concluído"};
+            }
+            $rootScope.appLoaded = false;
+            $scope.curso.$save(function () {
+                $rootScope.appLoaded = true;
+                if (situacao === 'R') {
+                    $scope.numeroEtapa = $scope.numeroEtapa + 1;
+                    buscarEtapaAtual($scope.numeroEtapa);
+                    $scope.abaEtapa = true;
+                } else {
+                    buscarCurso($scope.curso.id);
+                }
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        };
+        
+        var novaEtapa = function (numeroEtapa) {
             $scope.etapa = new Etapa();
-            $scope.numeroEtapa = $scope.numeroEtapa + 1;
+            $scope.numeroEtapa = numeroEtapa;
             $scope.etapa.nivel = $scope.numeroEtapa;
             $scope.perguntasEtapa = [];
             $scope.etapa.curso = {id: $scope.curso.id};
@@ -54,11 +76,36 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
                 $scope.jogos = result;
                 Pergunta.buscarPerguntas({'idUsuario': $scope.usuarioLogado.id, 'parteNome': null,
                     'categoria': $scope.curso.categoria.id}, function (result) {
-                    $scope.perguntas = result;
+                    $scope.perguntas = [];
+                    if ($scope.perguntasEtapa && $scope.perguntasEtapa.length > 0) {
+                        for (var i = 0; i < result.length; i++) {
+                            var existe = false;
+                            for (var j = 0; j < $scope.perguntasEtapa.length; j++) {
+                                if (result[i].id == $scope.perguntasEtapa[j].id) {
+                                    existe = true;
+                                }
+                            }
+                            if (!existe) {
+                                $scope.perguntas.push(result[i]);
+                            }
+                        }
+                    } else {
+                        $scope.perguntas = result;
+                    }
                     $rootScope.appLoaded = true;
                 }, function (error) {
                     $rootScope.appLoaded = true;
                 });
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        };
+        
+        var buscarCurso = function (id) {
+            $rootScope.appLoaded = false;
+            Curso.buscarCursoPorId({'idCurso': id}, function (result) {
+                $scope.curso = result;
+                $rootScope.appLoaded = true;
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
@@ -73,8 +120,10 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
             
             $scope.etapa.$save(function () {
                 if (proximaEtapa) {
-                    novaEtapa();
+                    $scope.numeroEtapa = $scope.etapa.nivel+1;
+                    buscarEtapaAtual($scope.numeroEtapa);
                 } else {
+                    $scope.salvarCurso('C');
                     $scope.cursoCompleto = true;
                 }
                 $rootScope.appLoaded = true;
@@ -114,13 +163,9 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
         
         
         //INICIO: Só p teste
-//        $scope.abaEtapa = true;
-//        $scope.curso = {id: 2, categoria:{id: 'P'}};
-//        novaEtapa();
-//        carregarCombos();
-//        $scope.perguntasEtapa.push({id:'1'});
-//        $scope.perguntasEtapa.push({id:'2'});
-//        $scope.perguntasEtapa.push({id:'23'});
+        $scope.cursoCompleto = true;
+        var id = 15;
+        buscarCurso(15);
         //FIM: Só p teste
 
     }]);

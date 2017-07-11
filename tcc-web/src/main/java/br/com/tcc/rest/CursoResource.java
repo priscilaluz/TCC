@@ -8,6 +8,7 @@ package br.com.tcc.rest;
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.service.impl.CursoServiceImpl;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -61,7 +62,10 @@ public class CursoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Etapa buscarEtapaPorId(@QueryParam("idCurso") Long idCurso, @QueryParam("nivel") Integer nivel) {
         List<Etapa> etapas = cursoService.buscarEtapa(idCurso, nivel);
-        return etapas.get(0);
+        if (!etapas.isEmpty()) {
+            return etapas.get(0);
+        }
+        return null;
     }
     
     @DELETE
@@ -75,9 +79,11 @@ public class CursoResource {
     @Path("/buscarCurso")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Curso> buscarCursoPorFiltro(@QueryParam("idUsuario") Long idUsuario, 
-            @QueryParam("parteNome") String parteNome, @QueryParam("categoria") String idCategoria) {
+            @QueryParam("parteNome") String parteNome, @QueryParam("categoria") String idCategoria,
+            @QueryParam("situacao") String idSituacao) {
         Categoria categoria = idCategoria!=null?Categoria.from(idCategoria):null;
-        return cursoService.buscarCursoPorFiltro(idUsuario, parteNome, categoria);
+        SituacaoCurso situacaoCurso = idSituacao!=null?SituacaoCurso.from(idSituacao):null;
+        return cursoService.buscarCursoPorFiltro(idUsuario, parteNome, categoria, situacaoCurso);
     }
     
     @GET

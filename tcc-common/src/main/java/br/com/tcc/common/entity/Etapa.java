@@ -8,6 +8,7 @@ package br.com.tcc.common.entity;
 import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -59,6 +60,7 @@ public class Etapa extends AbstractIdBean<Long> {
     @JoinColumn(name = "ANEXO_ID", nullable = true)
     private Anexo anexo;
     
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CURSO_ID", nullable = false)
     private Curso curso;
