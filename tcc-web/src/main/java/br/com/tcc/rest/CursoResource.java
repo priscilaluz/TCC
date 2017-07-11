@@ -47,6 +47,7 @@ public class CursoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Etapa save(Etapa etapa) {
+        etapa.setCurso(new Curso(etapa.getIdCurso()));
         return cursoService.salvarEtapa(etapa);
     }
     

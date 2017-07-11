@@ -74,6 +74,13 @@ public class Curso extends AbstractIdBean<Long> {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "curso")
     private Set<Etapa> etapas = new HashSet<Etapa>();
 
+    public Curso() {
+    }
+
+    public Curso(Long id) {
+        this.id = id;
+    }
+    
     @Override
     public Long getId() {
         return id;

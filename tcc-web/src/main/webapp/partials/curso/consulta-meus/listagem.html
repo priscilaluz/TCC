@@ -1,0 +1,32 @@
+<div class="col-xs-12 col-sm-12 col-md-12" style="background-color: #dff0d8; border: #cbe8ba solid 1px; padding-top: 20px;">
+    <form class="form-horizontal" name="cursoForm" ng-submit="curso()">
+        <fieldset>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="table table-condensed" id="tabela">
+                    <thead class="table-font-title">
+                        <tr>
+                            <th width="10"></th>
+                            <th width="10"></th>
+                            <th>Curso</th>
+                            <th width="100">Situação</th>
+                            <th width="100">Categoria</th>
+                        </tr>
+                    </thead>
+                    <tbody  class="table-font">
+                        <tr ng-repeat="curso in cursos">
+                            <td>
+                                <a ng-click="excluirCurso($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove handCurso"></i></a>
+                            </td>
+                            <td>
+                                <a ng-click="telaNovaEditarCurso(curso.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-pencil handCurso"></i></a>
+                            </td>
+                            <td>{{curso.nome}}</td>
+                            <td>{{curso.situacao.descricao}}</td>
+                            <td>{{curso.categoria.descricao}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+    </form>
+</div>

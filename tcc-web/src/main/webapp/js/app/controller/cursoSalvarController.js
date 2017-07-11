@@ -66,12 +66,12 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
             $scope.numeroEtapa = numeroEtapa;
             $scope.etapa.nivel = $scope.numeroEtapa;
             $scope.perguntasEtapa = [];
-            $scope.etapa.curso = {id: $scope.curso.id};
+            $scope.etapa.idCurso = $scope.curso.id;
         };
         
         var carregarCombos = function () {
             $rootScope.appLoaded = false;
-            $scope.etapa.curso = $scope.curso;
+            $scope.etapa.idCurso = $scope.curso.id;
             Enums.getJogos(function (result) {
                 $scope.jogos = result;
                 Pergunta.buscarPerguntas({'idUsuario': $scope.usuarioLogado.id, 'parteNome': null,
@@ -163,9 +163,9 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
         
         
         //INICIO: Só p teste
-        $scope.cursoCompleto = true;
-        var id = 15;
-        buscarCurso(15);
+//        $scope.cursoCompleto = true;
+//        var id = 15;
+//        buscarCurso(15);
         //FIM: Só p teste
 
     }]);

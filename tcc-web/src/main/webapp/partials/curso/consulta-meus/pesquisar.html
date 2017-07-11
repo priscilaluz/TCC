@@ -1,0 +1,36 @@
+<h1 style="font-family: 'Balthazar'; color: #ffffff">Consultar Cursos</h1>
+<div class="col-xs-12 col-sm-12 col-md-12" style="background-color: #dff0d8; border: #cbe8ba solid 1px; padding-top: 20px;">
+    <form class="form-horizontal" name="pesqCursoForm" ng-submit="pesquisarCurso()">
+        <fieldset>
+            <div class="form-group">
+                <label for="inputDescricao" class="col-lg-1 control-label label-font">Curso:</label>
+                <div class="col-lg-11">
+                    <input type="text" maxlength="1000" name="descricao" ng-model="pesquisar.descricao" class="form-control" id="inputDescricao" placeholder="Curso">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputCategoria" class="col-lg-1 control-label label-font">Categoria:</label>
+                <div class="col-lg-2">
+                    <select id="inputCategoria" name="categoria" class="form-control" ng-model="pesquisar.categoria"
+                            ng-options="categoria.descricao for categoria in categorias track by categoria.id">
+                        <option value="">Categoria</option>
+                    </select>
+                </div>
+                <label for="situacao" class="col-lg-1 control-label label-font">Situação:</label>
+                <div class="col-lg-2">
+                    <select id="situacao" name="situacao" class="form-control" ng-model="pesquisar.situacao"
+                            ng-options="situacao.descricao for situacao in situacoes track by situacao.id">
+                        <option value="">Situação</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-6">
+                    <button type="submit" class="btn btn-modelo pull-right">
+                        <i class="glyphicon glyphicon-search"></i>&nbsp;Pesquisar</button>
+                    <button type="button" class="btn btn-modelo pull-right" style="margin-right: 5px;" ng-click="telaNovaEditarCurso()">
+                        <i class="glyphicon glyphicon-plus"></i>&nbsp;Nova Curso</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
