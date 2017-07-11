@@ -69,7 +69,8 @@ public class Etapa extends AbstractIdBean<Long> {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "etapa")
     private Set<EtapaPergunta> etapasPerguntas = new HashSet<EtapaPergunta>();
     
-    @Transient Long idCurso;
+    @Transient
+    private Long idCurso;
 
     @Override
     public Long getId() {
