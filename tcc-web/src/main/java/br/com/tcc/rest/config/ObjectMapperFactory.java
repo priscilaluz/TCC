@@ -12,6 +12,7 @@ import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
+import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module.Feature;
 import java.io.InputStream;
 import java.util.TimeZone;
 import org.springframework.util.ReflectionUtils;
@@ -32,7 +33,9 @@ public class ObjectMapperFactory {
             testModule.addDeserializer(InputStream.class, new StreamDeserializer());
             testModule.addSerializer(new StreamSerializer());
             mapper.registerModule(testModule);
-            mapper.registerModule(new Hibernate4Module());
+            Hibernate4Module hm = new Hibernate4Module();
+            hm.disable(Feature.USE_TRANSIENT_ANNOTATION);
+            mapper.registerModule(hm);
             mapper.setTimeZone(TimeZone.getDefault());
             return mapper;
     }

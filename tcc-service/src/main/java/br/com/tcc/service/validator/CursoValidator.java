@@ -2,7 +2,6 @@ package br.com.tcc.service.validator;
 
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
-import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.exception.PendencyManager;
 import br.com.tcc.common.util.ConstantesI18N;
 import br.com.tcc.common.support.AssertUtils;
@@ -19,9 +18,6 @@ public class CursoValidator {
         pm.assertNotNull(curso.getCodAcesso()).orRegister(ConstantesI18N.CURSO_CODACESSO_OBRIGATORIO);
         pm.assertNotNull(curso.getCategoria()).orRegister(ConstantesI18N.CURSO_CATEGORIA_OBRIGATORIA);
         pm.assertNotNull(curso.getSituacao()).orRegister(ConstantesI18N.CURSO_SITUACAO_OBRIGATORIA);
-        if (curso.getSituacao() != null && SituacaoCurso.CONCLUIDA.equals(curso.getSituacao())){
-            pm.assertNotEmpty(curso.getEtapas()).orRegister(ConstantesI18N.CURSO_ETAPAS_OBRIGATORIO);
-        }
         pm.verifyAll();
     }
 
