@@ -11,7 +11,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
         
         $scope.deletarEtapa = function (id) {
             $rootScope.appLoaded = false;
-            Etapa.deletar({'id': id}).$promise.then(function (result) {
+            Etapa.deletar({'idCurso': $scope.curso.id, 'idEtapa':id}).$promise.then(function (result) {
                 growl.success('Etapa excluída com sucesso.',{title: 'Operação bem sucedida'});
                 $scope.voltar();
                 $rootScope.appLoaded = true;

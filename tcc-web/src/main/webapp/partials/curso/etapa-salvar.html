@@ -71,8 +71,10 @@
                         <i class="glyphicon glyphicon-arrow-left"></i>&nbsp;Voltar</button>
                     <button type="submit" class="btn btn-modelo pull-right" ng-disabled="etapaForm.$invalid" style="margin-left: 5px;">
                         <i class="glyphicon glyphicon-ok"></i>&nbsp;Concluir</button>
-                    <button type="button" ng-click="salvarEtapa('P')" class="btn btn-modelo pull-right" ng-disabled="etapaForm.$invalid">
+                    <button type="button" ng-click="salvarEtapa('P')" class="btn btn-modelo pull-right" ng-disabled="etapaForm.$invalid" style="margin-left: 5px;">
                         <i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Próximo Etapa</button>
+                    <button type="button" ng-click="deletarEtapa(etapa.id)" class="btn btn-modelo pull-right" ng-show="etapa.id">
+                        <i class="glyphicon glyphicon-trash"></i>&nbsp;Excluir</button>
                 </div>
             </div>
         </fieldset>
