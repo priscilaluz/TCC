@@ -38,7 +38,7 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/curso/consulta-meus/curso-consulta.html',
         controller: 'CursoConsultarCrieiController'
       }).
-      when('/criar-curso', {
+      when('/criar-curso/:idCurso?', {
         templateUrl: 'partials/curso/curso-tab.html',
         controller: 'CursoSalvarController'
       }).

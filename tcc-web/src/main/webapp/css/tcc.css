@@ -36,6 +36,10 @@ li {
 display: inline;
 }
 
+.menu-fonte-glyphicon{
+    font-size: 20px;
+}
+
 .menu-fonte{
     color: #ffffff;
     font-size: 30px;

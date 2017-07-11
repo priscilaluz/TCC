@@ -18,11 +18,12 @@ tccApp.controller('CursoConsultarCrieiController', ['$scope', '$rootScope', 'Cur
         };
 
         $scope.excluirCurso = function (index) {
+            $rootScope.appLoaded = false;
             Curso.deletarCurso({'id': $scope.cursos[index].id}).$promise.then(function (result) {
                 growl.success('Curso excluída com sucesso.',{title: 'Operação bem sucedida'});
                 $scope.pesquisarCurso();
             }, function (error) {
-                $rootScope.appLoaded = 'ok';
+                $rootScope.appLoaded = true;
             });
         };
         

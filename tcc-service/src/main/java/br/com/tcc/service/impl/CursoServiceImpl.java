@@ -40,12 +40,6 @@ public class CursoServiceImpl {
     public Curso salvarCurso(Curso curso) {
         validador.validarSalvarCurso(curso);
         dao.saveOrUpdate(curso);
-        for (Etapa etapa : curso.getEtapas()) {
-            etapa.setId(null);
-            etapa.setCurso(curso);
-            validador.validarSalvarEtapa(etapa);
-            dao.saveOrUpdate(etapa);
-        }
         return curso;
     }
 

@@ -18,11 +18,12 @@ tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', 'Pergun
         };
 
         $scope.excluirPergunta = function (index) {
+            $rootScope.appLoaded = false;
             Pergunta.deletarPergunta({'id': $scope.perguntas[index].id}).$promise.then(function (result) {
                 growl.success('Pergunta excluída com sucesso.',{title: 'Operação bem sucedida'});
                 $scope.pesquisarPergunta();
             }, function (error) {
-                $rootScope.appLoaded = 'ok';
+                $rootScope.appLoaded = true;
             });
         };
         

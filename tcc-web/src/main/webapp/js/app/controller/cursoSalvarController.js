@@ -1,5 +1,5 @@
-tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'Enums', 'Curso', 'Etapa', 'Pergunta',
-    function ($scope, $rootScope, growl, Enums, Curso, Etapa, Pergunta) {
+tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParams', 'growl', 'Enums', 'Curso', 'Etapa', 'Pergunta',
+    function ($scope, $rootScope, $routeParams, growl, Enums, Curso, Etapa, Pergunta) {
         $scope.categorias = [];
         $scope.curso = new Curso();
         $scope.model = {
@@ -8,6 +8,17 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
         $scope.cursoCompleto = false;
         $scope.abaEtapa = false;
         $scope.numeroEtapa = 0;
+        
+        $scope.deletarEtapa = function (id) {
+            $rootScope.appLoaded = false;
+            Etapa.deletar({'id': id}).$promise.then(function (result) {
+                growl.success('Etapa excluída com sucesso.',{title: 'Operação bem sucedida'});
+                $scope.voltar();
+                $rootScope.appLoaded = true;
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        };
         
         $scope.voltar = function () {
             $scope.numeroEtapa = $scope.numeroEtapa - 1;
@@ -155,17 +166,12 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', 'growl', 'En
             Enums.getCategorias(function (result) {
                 $scope.categorias = result;
                 $rootScope.appLoaded = true;
+                if ($routeParams.idCurso) {
+                    buscarCurso($routeParams.idCurso);
+                }
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
         };
         init();
-        
-        
-        //INICIO: Só p teste
-//        $scope.cursoCompleto = true;
-//        var id = 15;
-//        buscarCurso(15);
-        //FIM: Só p teste
-
     }]);
