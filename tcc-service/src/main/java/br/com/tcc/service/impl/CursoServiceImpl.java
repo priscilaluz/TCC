@@ -57,6 +57,7 @@ public class CursoServiceImpl {
                 .fetchEtapas(ConstantesI18N.FETCH)
                 .fetchEtapasPerguntas(ConstantesI18N.FETCH)
                 .fetchPergunta(ConstantesI18N.FETCH)
+                .fetchResposta(ConstantesI18N.FETCH)
                 .whereId(idCurso));
         return curso;
     }

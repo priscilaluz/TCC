@@ -1,3 +1,13 @@
+.verdadeiro{
+     color: green;
+}
+.falso{
+     color: red;
+}
+.title-fonte{
+     font-family: 'Balthazar';
+     color: #ffffff;
+}
 .botao-add{
     border-radius: 22px;
     color: #ff6624;
@@ -20,6 +30,25 @@
     color: #522e2e;
     font-size: 16px;
     font-family:'Balthazar';
+}
+
+.curso-titulo-concluido{
+    color: #ff6624;
+    font-size: 21px;
+    font-family:'Balthazar';
+}
+
+.curso-nao-titulo-concluido{
+    color: #5d0f0f;
+    font-size: 18px;
+    font-family:'Balthazar';
+}
+
+.curso-etapa-concluido{
+    color: #5d0f0f;
+    font-size: 23px;
+    font-family:'Balthazar';
+    font-weight: bold;
 }
 
 .label-font{

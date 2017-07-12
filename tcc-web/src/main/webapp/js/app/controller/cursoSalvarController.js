@@ -116,6 +116,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
             $rootScope.appLoaded = false;
             Curso.buscarCursoPorId({'idCurso': id}, function (result) {
                 $scope.curso = result;
+                $scope.cursoCompleto = $scope.curso.situacao.id==='C';
                 $rootScope.appLoaded = true;
             }, function (error) {
                 $rootScope.appLoaded = true;

@@ -39,6 +39,11 @@ public abstract class BuscarCurso<T extends Serializable> extends BusinessFluent
         appendText(" left join "+fetch+" ep.pergunta p ");
         return this;
     }
+    
+    public BuscarCurso fetchResposta(String fetch) {
+        appendText(" left join "+fetch+" p.respostas r ");
+        return this;
+    }
 
     public BuscarCurso whereId(Long id) {
         if (id != null) {
