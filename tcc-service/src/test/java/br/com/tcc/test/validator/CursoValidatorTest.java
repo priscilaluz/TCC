@@ -95,17 +95,6 @@ public class CursoValidatorTest {
             assertEquals(ConstantesI18N.CURSO_SITUACAO_OBRIGATORIA, ex.getMessage());
         }
     }
-    @Test
-    public void naoDeveSalvarCursoSemEtapas(){
-        Curso c = obterCursoValida();
-        try {
-            c.setEtapas(new HashSet<Etapa>());
-            validator.validarSalvarCurso(c);
-            fail();
-        } catch (BusinessException ex) {
-            assertEquals(ConstantesI18N.CURSO_ETAPAS_OBRIGATORIO, ex.getMessage());
-        }
-    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Salvar etapa">

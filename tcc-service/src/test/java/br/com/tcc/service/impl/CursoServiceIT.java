@@ -67,8 +67,6 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         curso = cursoServiceImpl.salvarCurso(curso);
         assertNotNull(curso.getId());
         assertEquals(dao.getById(Curso.class, curso.getId()), curso);
-        List<Etapa> etapas = dao.query("select e from Etapa e where e.curso.id = "+curso.getId().toString());
-        assertTrue(etapas.size() == 2);
     }
     
     @Test
