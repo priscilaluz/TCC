@@ -7,7 +7,9 @@ package br.com.tcc.rest;
 
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.Jogo;
+import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.SituacaoCurso;
+import br.com.tcc.common.enums.TipoPergunta;
 import java.util.Arrays;
 import java.util.List;
 import javax.ws.rs.GET;
@@ -43,5 +45,19 @@ public class EnumsResource {
     @Path("/situacaoCurso")
     public List<SituacaoCurso> findAllSituacoesCurso() {
         return Arrays.asList(SituacaoCurso.values());
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/nivelPergunta")
+    public List<NivelPergunta> findAllNivelPergunta() {
+        return Arrays.asList(NivelPergunta.values());
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/tipoPergunta")
+    public List<TipoPergunta> findAllTipoPergunta() {
+        return Arrays.asList(TipoPergunta.values());
     }
 }

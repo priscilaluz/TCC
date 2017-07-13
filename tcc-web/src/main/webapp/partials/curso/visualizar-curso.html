@@ -13,7 +13,6 @@
         <p class="col-lg-12"><span class="curso-nao-titulo-concluido">{{etapa.assunto}}</span></p>
         
         <p class="col-lg-12 curso-titulo-concluido" ng-show="etapa.anexo">Anexo: <span class="curso-nao-titulo-concluido">{{etapa.anexo}}</span></p>
-        <p class="col-lg-6 curso-titulo-concluido">Pulo: <span class="curso-nao-titulo-concluido">{{etapa.pulo}}</span></p>
         <div class="col-lg-12" ng-repeat="etapaPergunta in etapa.etapasPerguntas">
             <hr style="border: 1px dotted #d07171; margin-top: 0px;">
             <p class="col-lg-12 curso-titulo-concluido">Pergunta {{etapaPergunta.posicao}}:</p>

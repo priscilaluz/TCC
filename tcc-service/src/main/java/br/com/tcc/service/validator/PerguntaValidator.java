@@ -15,6 +15,8 @@ public class PerguntaValidator {
         pm.assertNotNull(pergunta.getUsuario()).orRegister(ConstantesI18N.PERGUNTA_USUARIO_OBRIGATORIA);
         pm.assertNotNull(pergunta.getCategoria()).orRegister(ConstantesI18N.PERGUNTA_CATEGORIA_OBRIGATORIA);
         pm.assertNotNull(pergunta.getDescricao()).orRegister(ConstantesI18N.PERGUNTA_DESCRICAO_OBRIGATORIA);
+        pm.assertNotNull(pergunta.getTipo()).orRegister(ConstantesI18N.PERGUNTA_TIPO_OBRIGATORIA);
+        pm.assertNotNull(pergunta.getNivel()).orRegister(ConstantesI18N.PERGUNTA_NIVEL_OBRIGATORIA);
         pm.assertNotEmpty(pergunta.getRespostas()).orRegister(ConstantesI18N.PERGUNTA_RESPOSTA_OBRIGATORIA);
         pm.verifyAll();
     }

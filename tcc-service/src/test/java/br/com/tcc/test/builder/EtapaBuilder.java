@@ -34,11 +34,6 @@ public class EtapaBuilder {
         return this;
     }
     
-    public EtapaBuilder comPulo(Integer pulo){
-        etapa.setPulo(pulo);
-        return this;
-    }
-    
     public EtapaBuilder comJogo(Jogo jogo){
         etapa.setJogo(jogo);
         return this;

@@ -265,7 +265,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         Etapa etapa = EtapaBuilder.nova()
                 .comAssunto("Assunto 1.")
                 .comNivel(1)
-                .comJogo(Jogo.POKER)
+                .comJogo(Jogo.FORCA)
                 .comCurso(new Curso())
                 .comEtapasPerguntas(etapaPergunta)
                 .build();

@@ -54,9 +54,6 @@ public class Etapa extends AbstractIdBean<Long> {
     @Column(name = "JOGO", nullable = false)
     private Jogo jogo;
     
-    @Column(name = "PULO", nullable = true)
-    private Integer pulo;
-    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ANEXO_ID", nullable = true)
     private Anexo anexo;
@@ -104,14 +101,6 @@ public class Etapa extends AbstractIdBean<Long> {
 
     public void setJogo(Jogo jogo) {
         this.jogo = jogo;
-    }
-
-    public Integer getPulo() {
-        return pulo;
-    }
-
-    public void setPulo(Integer pulo) {
-        this.pulo = pulo;
     }
 
     public Anexo getAnexo() {

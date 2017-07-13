@@ -6,25 +6,24 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * Enumeração Tipo Target
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum Jogo {
+public enum NivelPergunta {
 
-    APOSTA ("A", "Aposta"),
-    FORCA ("F", "Forca"),
-    CACA_PALAVRA ("C", "Caça Palavra"),
-    QUIZ  ("Q", "Quiz");
-
+    FACIL ("F", "Fácil"),
+    MEDIO ("M", "Médio"),
+    DIFICIL ("D", "Difícil");
+    
     /**
      * Id.
      */
-    private final String id;
-    private final String descricao;
+    private String id;
+    private String descricao;
 
     /**
      * Construtor padrao.
      *
      * @param newId O identificador desta Enumeração
      */
-    private Jogo(final String newId, final String descricao) {
+    private NivelPergunta(final String newId, final String descricao) {
         this.id = newId;
         this.descricao = descricao;
     }
@@ -54,12 +53,12 @@ public enum Jogo {
      *          <code>null</code> ou não estiver dentro dos valores
      *          possÃ­veis da enumeração.
      */
-    public static Jogo from(final String valor) {
+    public static NivelPergunta from(final String valor) {
         if (valor == null) {
             throw new NullPointerException();
         }
 
-        for (Jogo e : Jogo.values()) {
+        for (NivelPergunta e : NivelPergunta.values()) {
             if (valor.equals(e.id) || valor.equals(e.name())) {
                 return e;
             }

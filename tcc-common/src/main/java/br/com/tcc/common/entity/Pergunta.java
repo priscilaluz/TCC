@@ -6,6 +6,8 @@
 package br.com.tcc.common.entity;
 
 import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.NivelPergunta;
+import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;
 import java.util.HashSet;
@@ -43,8 +45,11 @@ public class Pergunta extends AbstractIdBean<Long> {
     @Column(name = "DESCRICAO", nullable = false)
     private String descricao;
 
-    @Column(name = "JUSTIFICATIVA", nullable = false)
+    @Column(name = "JUSTIFICATIVA", nullable = true)
     private String justificativa;
+
+    @Column(name = "DICA", nullable = true)
+    private String dica;
     
     @Enumerated(EnumType.STRING)
     @Type(type = "br.com.tcc.common.support.GenericEnumUserType",
@@ -52,6 +57,20 @@ public class Pergunta extends AbstractIdBean<Long> {
                     value = "br.com.tcc.common.enums.Categoria")})
     @Column(name = "CATEGORIA", nullable = false)
     private Categoria categoria;
+    
+    @Enumerated(EnumType.STRING)
+    @Type(type = "br.com.tcc.common.support.GenericEnumUserType",
+        parameters = {@org.hibernate.annotations.Parameter(name = "enumClass",
+                    value = "br.com.tcc.common.enums.TipoPergunta")})
+    @Column(name = "TIPO", nullable = false)
+    private TipoPergunta tipo;
+    
+    @Enumerated(EnumType.STRING)
+    @Type(type = "br.com.tcc.common.support.GenericEnumUserType",
+        parameters = {@org.hibernate.annotations.Parameter(name = "enumClass",
+                    value = "br.com.tcc.common.enums.NivelPergunta")})
+    @Column(name = "NIVEL", nullable = false)
+    private NivelPergunta nivel;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USUARIO_ID", nullable = false)
@@ -131,5 +150,29 @@ public class Pergunta extends AbstractIdBean<Long> {
 
     public void setPosicao(int posicao) {
         this.posicao = posicao;
+    }
+
+    public String getDica() {
+        return dica;
+    }
+
+    public void setDica(String dica) {
+        this.dica = dica;
+    }
+
+    public TipoPergunta getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoPergunta tipo) {
+        this.tipo = tipo;
+    }
+
+    public NivelPergunta getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(NivelPergunta nivel) {
+        this.nivel = nivel;
     }
 }

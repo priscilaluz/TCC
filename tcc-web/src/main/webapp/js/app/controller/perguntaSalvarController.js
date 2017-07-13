@@ -4,6 +4,7 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
         $scope.pergunta.respostas = [];
         $scope.telaCadastro = false;
         $scope.anexo = null;
+        $scope.respostaUnica = null;
         $scope.opcao = null;
         $scope.categorias = [];
 
@@ -28,6 +29,10 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
                 $scope.pergunta.anexo.nomeArquivo = $scope.anexo.name;
                 $scope.pergunta.anexo.bytes = $scope.anexo;
             }
+            if ($scope.respostaUnica && $scope.pergunta.tipo.id==='CL'){
+                $scope.pergunta.respostas = [];
+                $scope.pergunta.respostas.push({'descricao': $scope.respostaUnica, 'correta': true});
+            }
             $scope.pergunta.usuario = $rootScope.usuarioLogado;
             $rootScope.appLoaded = false;
             $scope.pergunta.$save(function () {
@@ -37,6 +42,16 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
+        };
+
+        $scope.changeTipo = function () {
+            if ($scope.pergunta.tipo.id === 'ME') {
+                $scope.respostaUnica = null;
+            }
+            if ($scope.pergunta.tipo.id === 'CL') {
+                $scope.opcao = null;
+                $scope.pergunta.respostas = [];
+            }
         };
 
         $scope.voltarConsulta = function () {
@@ -66,6 +81,10 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
             $rootScope.appLoaded = false;
             Pergunta.buscarPerguntaPorId({'idPergunta': id}).$promise.then(function (pergunta) {
                 $scope.pergunta = pergunta;
+                if ($scope.pergunta.tipo.id === 'CL' && $scope.pergunta.respostas && $scope.pergunta.respostas.length > 0){
+                    $scope.respostaUnica = $scope.pergunta.respostas[0].descricao;
+                    $scope.pergunta.respostas = [];
+                }
                 $rootScope.appLoaded = true;
             }, function (error) {
                 $rootScope.appLoaded = true;
@@ -74,15 +93,19 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
 
         var init = function () {
             $rootScope.appLoaded = false;
-            Enums.getCategorias(function (result) {
-                $scope.categorias = result;
-                $rootScope.appLoaded = true;
-                if ($routeParams.idPergunta) {
-                    buscarPerguntaPorId($routeParams.idPergunta);
-                }
-            }, function (error) {
-                $rootScope.appLoaded = true;
-            });
+            Enums.getCategorias(function (categorias) {
+                $scope.categorias = categorias;
+                Enums.getTiposPergunta(function (tipos) {
+                    $scope.tipos = tipos;
+                    Enums.getNiveisPergunta(function (niveis) {
+                        $scope.niveis = niveis;
+                        $rootScope.appLoaded = true;
+                        if ($routeParams.idPergunta) {
+                            buscarPerguntaPorId($routeParams.idPergunta);
+                        }
+                    }, function (error) {$rootScope.appLoaded = true;});
+                }, function (error) {$rootScope.appLoaded = true;});
+            }, function (error) {$rootScope.appLoaded = true;});
         };
         init();
 

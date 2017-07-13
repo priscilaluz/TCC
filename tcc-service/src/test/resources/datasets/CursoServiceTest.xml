@@ -16,10 +16,10 @@
     <CURSO ID = "2" NOME = "Curso Matemática" ASSUNTO_GERAL = "AssuntoM" CATEGORIA = "M" COD_ACESSO = "12345ABCDE" USUARIO_ID = "1" SITUACAO = "C"/>
     <CURSO ID = "3" NOME = "Curso Geografia" ASSUNTO_GERAL = "AssuntoG" CATEGORIA = "G" COD_ACESSO = "12345ABCDE" USUARIO_ID = "2" SITUACAO = "C"/>
     
-    <ETAPA ID = "1" ASSUNTO = "Assunto C1 E1" NIVEL = "1" JOGO = "P" PULO = "2" CURSO_ID = "1"/>
-    <ETAPA ID = "2" ASSUNTO = "Assunto C1 E2" NIVEL = "2" JOGO = "Q" PULO = "1" CURSO_ID = "1"/>
-    <ETAPA ID = "3" ASSUNTO = "Assunto C2 E1" NIVEL = "1" JOGO = "Q" PULO = "1" CURSO_ID = "2"/>
-    <ETAPA ID = "4" ASSUNTO = "Assunto C3 E1" NIVEL = "1" JOGO = "Q" PULO = "1" CURSO_ID = "3"/>
+    <ETAPA ID = "1" ASSUNTO = "Assunto C1 E1" NIVEL = "1" JOGO = "F" CURSO_ID = "1"/>
+    <ETAPA ID = "2" ASSUNTO = "Assunto C1 E2" NIVEL = "2" JOGO = "Q" CURSO_ID = "1"/>
+    <ETAPA ID = "3" ASSUNTO = "Assunto C2 E1" NIVEL = "1" JOGO = "Q" CURSO_ID = "2"/>
+    <ETAPA ID = "4" ASSUNTO = "Assunto C3 E1" NIVEL = "1" JOGO = "Q" CURSO_ID = "3"/>
     
     <ETAPA_PERGUNTA ID = "1" POSICAO = "1" ETAPA_ID = "1" PERGUNTA_ID = "1"/>
     <ETAPA_PERGUNTA ID = "2" POSICAO = "1" ETAPA_ID = "2" PERGUNTA_ID = "1"/>

@@ -4,6 +4,8 @@ import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.NivelPergunta;
+import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.service.persistence.SimpleTestDao;
 import br.com.tcc.test.IntegrationBaseTestClass;
 import br.com.tcc.test.builder.PerguntaBuilder;
@@ -74,7 +76,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorUsuario(){
-        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(1L, null, null);
+        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(1L, null, null, null, null);
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {
@@ -84,7 +86,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorParteDaDescricao(){
-        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(null, "Quanto é", null);
+        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(null, "Quanto é", null, null, null);
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {
@@ -94,7 +96,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorCategoria(){
-        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(null, null, Categoria.MATEMATICA);
+        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(null, null, Categoria.MATEMATICA, null, null);
         assertTrue(perguntas.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
         for (Pergunta p : perguntas) {
@@ -103,8 +105,28 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     }
     
     @Test
+    public void deveRetornarPerguntaPorTipo(){
+        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null);
+        assertTrue(perguntas.size()==1);
+        List<Long> ids = new ArrayList<>(Arrays.asList(1L));
+        for (Pergunta p : perguntas) {
+            assertTrue(ids.contains(p.getId()));
+        }
+    }
+    
+    @Test
+    public void deveRetornarPerguntaPorNivel(){
+        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null);
+        assertTrue(perguntas.size()==1);
+        List<Long> ids = new ArrayList<>(Arrays.asList(1L));
+        for (Pergunta p : perguntas) {
+            assertTrue(ids.contains(p.getId()));
+        }
+    }
+    
+    @Test
     public void deveRetornarPerguntaPorUsuarioDescricaoCategoria(){
-        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(1L, "Quanto é", Categoria.MATEMATICA);
+        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(1L, "Quanto é", Categoria.MATEMATICA, TipoPergunta.MULTIPLAS_ESCOLHAS, NivelPergunta.FACIL);
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {
@@ -132,6 +154,9 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
                 .comCategoria(Categoria.MATEMATICA)
                 .comDescricao("Descricao")
                 .comJustificativa("Justificativa")
+                .comTipo(TipoPergunta.MULTIPLAS_ESCOLHAS)
+                .comNivel(NivelPergunta.FACIL)
+                .comDica("Dica")
                 .comUsuario(dao.getById(Usuario.class, 1L))
                 .comRespostas(respostas)
                 .build();

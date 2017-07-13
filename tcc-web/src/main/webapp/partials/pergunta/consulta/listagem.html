@@ -8,10 +8,12 @@
                             <th width="10"></th>
                             <th width="10"></th>
                             <th>Pergunta</th>
+                            <th width="130">Nível</th>
+                            <th width="100">Tipo</th>
                             <th width="100">Categoria</th>
                         </tr>
                     </thead>
-                    <tbody  class="table-font">
+                    <tbody class="table-font">
                         <tr ng-repeat="pergunta in perguntas">
                             <td>
                                 <a ng-click="excluirPergunta($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove handCurso"></i></a>
@@ -19,7 +21,9 @@
                             <td>
                                 <a ng-click="telaNovaEditarPergunta(pergunta.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-pencil handCurso"></i></a>
                             </td>
-                            <td>{{pergunta.descricao}}</td>
+                            <td>{{pergunta.descricao.substring(0, 220)+(pergunta.descricao.length>220?'...':'')}}</td>
+                            <td>{{pergunta.tipo.descricao}}</td>
+                            <td>{{pergunta.nivel.descricao}}</td>
                             <td>{{pergunta.categoria.descricao}}</td>
                         </tr>
                     </tbody>

@@ -18,9 +18,7 @@ import br.com.tcc.test.builder.EtapaPerguntaBuilder;
 import br.com.tcc.test.builder.PerguntaBuilder;
 import br.com.tcc.test.builder.RespostaBuilder;
 import br.com.tcc.test.builder.UsuarioBuilder;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -190,7 +188,7 @@ public class CursoValidatorTest {
         Etapa etapa = EtapaBuilder.nova()
                 .comAssunto("Assunto 1.")
                 .comNivel(1)
-                .comJogo(Jogo.POKER)
+                .comJogo(Jogo.FORCA)
                 .comCurso(new Curso())
                 .comEtapasPerguntas(etapasperguntas)
                 .build();

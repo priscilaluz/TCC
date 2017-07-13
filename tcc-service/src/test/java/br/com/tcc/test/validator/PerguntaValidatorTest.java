@@ -4,6 +4,8 @@ import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.NivelPergunta;
+import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.common.exception.BusinessException;
 import br.com.tcc.common.util.ConstantesI18N;
 import br.com.tcc.service.validator.PerguntaValidator;
@@ -53,6 +55,28 @@ public class PerguntaValidatorTest {
         }
     }
     @Test
+    public void naoDeveSalvarSemTipo(){
+        Pergunta p = obterPerguntaValida();
+        try {
+            p.setTipo(null);
+            validator.validarSalvarPergunta(p);
+            fail();
+        } catch (BusinessException ex) {
+            assertEquals(ConstantesI18N.PERGUNTA_TIPO_OBRIGATORIA, ex.getMessage());
+        }
+    }
+    @Test
+    public void naoDeveSalvarSemNivel(){
+        Pergunta p = obterPerguntaValida();
+        try {
+            p.setNivel(null);
+            validator.validarSalvarPergunta(p);
+            fail();
+        } catch (BusinessException ex) {
+            assertEquals(ConstantesI18N.PERGUNTA_NIVEL_OBRIGATORIA, ex.getMessage());
+        }
+    }
+    @Test
     public void naoDeveSalvarSemUsuario(){
         Pergunta p = obterPerguntaValida();
         try {
@@ -85,6 +109,9 @@ public class PerguntaValidatorTest {
                 .comCategoria(Categoria.MATEMATICA)
                 .comDescricao("Descricao")
                 .comJustificativa("Justificativa")
+                .comTipo(TipoPergunta.MULTIPLAS_ESCOLHAS)
+                .comNivel(NivelPergunta.FACIL)
+                .comDica("Dica")
                 .comUsuario(obterUsuarioValido())
                 .comRespostas(respostas)
                 .build();

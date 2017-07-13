@@ -4,6 +4,8 @@ import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.NivelPergunta;
+import br.com.tcc.common.enums.TipoPergunta;
 import java.util.Set;
 
 public class PerguntaBuilder {
@@ -38,6 +40,21 @@ public class PerguntaBuilder {
     
     public PerguntaBuilder comUsuario(Usuario usuario){
         pergunta.setUsuario(usuario);
+        return this;
+    }
+    
+    public PerguntaBuilder comTipo(TipoPergunta tipo){
+        pergunta.setTipo(tipo);
+        return this;
+    }
+    
+    public PerguntaBuilder comNivel(NivelPergunta nivel){
+        pergunta.setNivel(nivel);
+        return this;
+    }
+    
+    public PerguntaBuilder comDica(String dica){
+        pergunta.setDica(dica);
         return this;
     }
     

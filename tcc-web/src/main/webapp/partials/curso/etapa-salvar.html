@@ -24,12 +24,6 @@
                         <option value="">Jogo</option>
                     </select>
                 </div>
-                
-                <label for="inputPulo" class="col-lg-1 control-label label-font">Pulo:</label>
-                <div class="col-lg-5" ng-class="{'has-error': etapaForm.pulo.$error.required}">
-                    <input type="text" name="pulo" maxlength="2" ng-model="etapa.pulo" class="form-control" 
-                           numbers-only id="inputPulo" required placeholder="Pulo">
-                </div>
             </div>
             <div class="form-group">
                 <label for="pergunta" class="col-lg-1 control-label label-font">Pergunta:</label>
@@ -46,14 +40,14 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12" style="overflow: auto; height: 150px !important;" ng-show="perguntasEtapa.length > 0">
                 <table class="table table-condensed" id="tabela">
-                    <thead>
+                    <thead class="table-font-title">
                         <tr>
                             <th width="1"></th>
                             <th>Pergunta</th>
                             <th width="50">Dica</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-font">
                         <tr ng-repeat="pergunta in perguntasEtapa">
                             <td><a ng-click="excluirPergunta($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove handCurso"></i></a></td>
                             <td>{{pergunta.descricao}}</td>

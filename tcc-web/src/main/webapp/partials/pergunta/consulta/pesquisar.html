@@ -10,14 +10,28 @@
             </div>
             <div class="form-group">
                 <label for="inputCategoria" class="col-lg-1 control-label label-font">Categoria:</label>
-                <div class="col-lg-5">
+                <div class="col-lg-3">
                     <select id="inputCategoria" name="categoria" class="form-control" ng-model="pesquisar.categoria"
                             ng-options="categoria.descricao for categoria in categorias track by categoria.id">
                         <option value="">Categoria</option>
                     </select>
                 </div>
+                <label for="tipo" class="col-lg-1 control-label label-font">Tipo:</label>
+                <div class="col-lg-3">
+                    <select id="tipo" name="tipos" class="form-control" ng-model="pesquisar.tipo"
+                            ng-options="tipo.descricao for tipo in tipos track by tipo.id">
+                        <option value="">Tipo</option>
+                    </select>
+                </div>
+                <label for="nivel" class="col-lg-1 control-label label-font">Nível:</label>
+                <div class="col-lg-3">
+                    <select id="nivel" name="nivel" class="form-control" ng-model="pesquisar.nivel"
+                            ng-options="nivel.descricao for nivel in niveis track by nivel.id">
+                        <option value="">Nível</option>
+                    </select>
+                </div>
 
-                <div class="col-lg-6">
+                <div class="col-lg-12" style="margin-top: 15px;">
                     <button type="submit" class="btn btn-modelo pull-right">
                         <i class="glyphicon glyphicon-search"></i>&nbsp;Pesquisar</button>
                     <button type="button" class="btn btn-modelo pull-right" style="margin-right: 5px;" ng-click="telaNovaEditarPergunta()">

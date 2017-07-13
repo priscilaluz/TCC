@@ -1,3 +1,7 @@
+.no-padding-right-left{
+    padding-right: 0px;
+    padding-left: 0px;
+}
 .verdadeiro{
      color: green;
 }
