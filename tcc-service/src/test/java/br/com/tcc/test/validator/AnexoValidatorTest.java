@@ -45,6 +45,29 @@ public class AnexoValidatorTest {
             assertEquals(ConstantesI18N.ANEXO_NOME_ARQUIVO_OBRIGATORIO, ex.getMessage());
         }
     }
+    @Test
+    public void naoDeveSalvarComFormatoInvalido(){
+        Anexo c = obterAnexoValida();
+        try {
+            c.setNomeArquivo("a.pdf");
+            validator.validarSalvarAnexo(c);
+            fail();
+        } catch (BusinessException ex) {
+            assertEquals(ConstantesI18N.ANEXO_EXTENSAO_INVALIDA, ex.getMessage());
+        }
+    }
+    
+    @Test
+    public void naoDeveSalvarComFormatoInvalido2(){
+        Anexo c = obterAnexoValida();
+        try {
+            c.setNomeArquivo("apdf");
+            validator.validarSalvarAnexo(c);
+            fail();
+        } catch (BusinessException ex) {
+            assertEquals(ConstantesI18N.ANEXO_EXTENSAO_INVALIDA, ex.getMessage());
+        }
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Entidades Validas">
@@ -52,7 +75,7 @@ public class AnexoValidatorTest {
          byte[] bytes = "Teste".getBytes();
         
         Anexo anexo = AnexoBuilder.nova()
-                .comNomeArquivo("nomeArquivo")
+                .comNomeArquivo("nomeArquivo.jpg")
                 .comBytes(bytes)
                 .build();
         return anexo;

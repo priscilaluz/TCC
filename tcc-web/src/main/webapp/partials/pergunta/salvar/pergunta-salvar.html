@@ -62,7 +62,7 @@
                     <tbody class="table-font">
                         <tr ng-repeat="resposta in pergunta.respostas">
                             <td ng-show="editar">
-                                <a ng-click="excluirOpcao($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove handCurso"></i></a>
+                                <a ng-click="excluirOpcao($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove handCursor"></i></a>
                             </td>
                             <td>{{resposta.descricao}}</td>
                             <td ng-show="editar">
@@ -87,18 +87,20 @@
             </div>
             <div class="form-group">
                 <div class="col-lg-12">
-                    <a target="_blank" href="rest/anexo/download?arquivo={{pergunta.anexo.nomeArquivo}}&idAnexo={{pergunta.anexo.id}}"
-                       style="color: #065d00" ng-show="!editar">&nbsp;{{pergunta.anexo.nomeArquivo}}</a>
-                    
                     <span class="btn btn-default btn-file" ng-show="editar">
                         <i class="glyphicon glyphicon-save"></i>&nbsp;Anexo
                         <input id="file" name="file" type="file" ng-model="anexo" file-model="anexo"/>
                     </span>
-                    <label style="color: #065d00" ng-show="editar && !pergunta.anexo.id">&nbsp;{{pergunta.anexo.nomeArquivo}}
-                        <i class="glyphicon glyphicon-remove" ng-click="removerArquivo()" ng-show="pergunta.anexo"></i>
+                    
+                    <label style="color: #065d00">
+                        <span ng-show="!pergunta.anexo.id">&nbsp;{{pergunta.anexo.nomeArquivo}}</span>
+                        <a ng-show="pergunta.anexo.id" target="_blank" style="color: #065d00"
+                           href="rest/anexo/download?arquivo={{pergunta.anexo.nomeArquivo}}&idAnexo={{pergunta.anexo.id}}">
+                            &nbsp;{{pergunta.anexo.nomeArquivo}}
+                        </a>
+                        &nbsp;<i ng-show="pergunta.anexo" class="glyphicon glyphicon-remove handCursor"
+                           ng-click="removerArquivo()"></i>
                     </label>
-                    <a target="_blank" href="rest/anexo/download?arquivo={{pergunta.anexo.nomeArquivo}}&idAnexo={{pergunta.anexo.id}}"
-                       style="color: #065d00" ng-show="editar && pergunta.anexo.id">&nbsp;{{pergunta.anexo.nomeArquivo}}</a>
                     
                     <button type="submit" class="btn btn-modelo pull-right" ng-show="editar">
                         <i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Salvar</button>

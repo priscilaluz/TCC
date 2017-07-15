@@ -46,6 +46,9 @@ public class CursoServiceImpl {
         if (anexo != null) {
             anexo.setId(curso.getIdAnexo());
             curso.setAnexo(anexoService.salvarAnexo(anexo));
+        } else if (curso.getIdAnexo() != null) {
+            Anexo anexoRemover = dao.get(Anexo.class, curso.getIdAnexo());
+            dao.remove(anexoRemover);
         }
         validador.validarSalvarCurso(curso);
         dao.saveOrUpdate(curso);
@@ -54,9 +57,12 @@ public class CursoServiceImpl {
 
     @Transactional(readOnly = false)
     public void excluirCurso(Long idCurso) {
+        Curso curso = buscarCursoPorId(idCurso);
         dao.executeDML(new ExcluirEtapaPerguntaPorCurso(idCurso));
         dao.executeDML(new ExcluirEtapaPorCurso(idCurso));
-        Curso curso = dao.get(Curso.class, idCurso);
+        if (curso.getAnexo() != null) {
+            dao.remove(curso.getAnexo());
+        }
         dao.remove(curso);
     }
 
@@ -68,8 +74,26 @@ public class CursoServiceImpl {
                 .fetchPergunta(ConstantesI18N.FETCH)
                 .fetchResposta(ConstantesI18N.FETCH)
                 .fetchAnexo(ConstantesI18N.FETCH)
-                .whereId(idCurso));
+                .whereId(idCurso)
+                .orderByNivel());
         curso.setIdAnexo(curso.getAnexo()!=null?curso.getAnexo().getId():null);
+        curso.setUltimaEtapa(curso.getEtapas().size());
+        return curso;
+    }
+
+    @Transactional(readOnly = true)
+    public Curso buscarCursoPorIdConcluido(Long idCurso) {
+        Curso curso = (Curso) dao.uniqueResult(new BuscarCurso.Entities()
+                .fetchEtapas(ConstantesI18N.FETCH)
+                .fetchEtapasPerguntas(ConstantesI18N.FETCH)
+                .fetchPergunta(ConstantesI18N.FETCH)
+                .fetchResposta(ConstantesI18N.FETCH)
+                .fetchAnexo(ConstantesI18N.FETCH)
+                .fetchAnexoEtapa(ConstantesI18N.FETCH)
+                .whereId(idCurso)
+                .orderByNivel());
+        curso.setIdAnexo(curso.getAnexo()!=null?curso.getAnexo().getId():null);
+        curso.setUltimaEtapa(curso.getEtapas().size());
         return curso;
     }
 
@@ -82,8 +106,6 @@ public class CursoServiceImpl {
                 .whereSituacaoCurso(situacaoCurso));
     }
     
-    
-    
     @Transactional(readOnly = false)
     public Etapa salvarEtapa(Etapa etapa) {
         validador.validarSalvarEtapa(etapa);
@@ -91,6 +113,9 @@ public class CursoServiceImpl {
         if (anexo != null) {
             anexo.setId(etapa.getIdAnexo());
             etapa.setAnexo(anexoService.salvarAnexo(anexo));
+        } else if (etapa.getIdAnexo() != null) {
+            Anexo anexoRemover = dao.get(Anexo.class, etapa.getIdAnexo());
+            dao.remove(anexoRemover);
         }
         if (etapa.getId() != null) {
             dao.executeDML(new ExcluirEtapaPerguntaPorEtapa(etapa.getId()));

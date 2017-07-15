@@ -34,11 +34,17 @@
                         <i class="glyphicon glyphicon-save"></i>&nbsp;Anexo
                         <input id="file" name="file" type="file" ng-model="model.anexo" file-model="model.anexo"/>
                     </span>
-                    <label style="color: #065d00" ng-show="!curso.anexo.id">&nbsp;{{curso.anexo.nomeArquivo}}
-                        <i class="glyphicon glyphicon-remove" ng-click="removerArquivo()" ng-show="curso.anexo"></i>
+                    
+                    <label style="color: #065d00">
+                        <span ng-show="!curso.anexo.id">&nbsp;{{curso.anexo.nomeArquivo}}</span>
+                        <a ng-show="curso.anexo.id" target="_blank" style="color: #065d00"
+                           href="rest/anexo/download?arquivo={{curso.anexo.nomeArquivo}}&idAnexo={{curso.anexo.id}}">
+                            &nbsp;{{curso.anexo.nomeArquivo}}
+                        </a>
+                        &nbsp;<i ng-show="curso.anexo" class="glyphicon glyphicon-remove handCursor"
+                           ng-click="removerArquivo()"></i>
                     </label>
-                    <a target="_blank" href="rest/anexo/download?arquivo={{curso.anexo.nomeArquivo}}&idAnexo={{curso.anexo.id}}"
-                       style="color: #065d00" ng-show="curso.anexo.id">&nbsp;{{curso.anexo.nomeArquivo}}</a>
+                    
                     <button type="submit" class="btn btn-modelo pull-right">
                         <i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Próximo</button>
                 </div>

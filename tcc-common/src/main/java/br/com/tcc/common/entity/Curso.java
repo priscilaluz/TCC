@@ -78,6 +78,9 @@ public class Curso extends AbstractIdBean<Long> {
     @Transient
     private Long idAnexo;
     
+    @Transient
+    private int ultimaEtapa;
+    
     public Curso() {
     }
 
@@ -168,5 +171,13 @@ public class Curso extends AbstractIdBean<Long> {
 
     public void setIdAnexo(Long idAnexo) {
         this.idAnexo = idAnexo;
+    }
+
+    public int getUltimaEtapa() {
+        return ultimaEtapa;
+    }
+
+    public void setUltimaEtapa(int ultimaEtapa) {
+        this.ultimaEtapa = ultimaEtapa;
     }
 }

@@ -15,10 +15,10 @@
                     <tbody  class="table-font">
                         <tr ng-repeat="curso in cursos">
                             <td>
-                                <a ng-click="excluirCurso($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove handCurso"></i></a>
+                                <a ng-click="excluirCurso($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove handCursor"></i></a>
                             </td>
                             <td>
-                                <a ng-click="telaNovaEditarCurso(curso.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-pencil handCurso"></i></a>
+                                <a ng-click="telaNovaEditarCurso(curso.id, curso.situacao.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-pencil handCursor"></i></a>
                             </td>
                             <td>{{curso.nome}}</td>
                             <td>{{curso.situacao.descricao}}</td>

@@ -27,8 +27,11 @@ tccApp.controller('CursoConsultarCrieiController', ['$scope', '$rootScope', 'Cur
             });
         };
         
-        $scope.telaNovaEditarCurso = function (idCurso) {
-            var comId = idCurso?"/"+idCurso:"";
+        $scope.telaNovaEditarCurso = function (idCurso, situacao) {
+            var comId = "";
+            if (idCurso) {
+                comId = "/"+idCurso+"/"+situacao;
+            }
             $location.path("/criar-curso"+comId);
         };
 

@@ -43,6 +43,9 @@ public class PerguntaServiceImpl {
         if (anexo != null) {
             anexo.setId(pergunta.getIdAnexo());
             pergunta.setAnexo(anexoService.salvarAnexo(anexo));
+        } else if (pergunta.getIdAnexo() != null) {
+            Anexo anexoRemover = dao.get(Anexo.class, pergunta.getIdAnexo());
+            dao.remove(anexoRemover);
         }
         validador.validarSalvarPergunta(pergunta);
         if (pergunta.getId() != null){

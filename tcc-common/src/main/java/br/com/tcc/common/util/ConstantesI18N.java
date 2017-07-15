@@ -42,6 +42,7 @@ public class ConstantesI18N {
     //Anexo
     public static final String ANEXO_OBRIGATORIO = "anexo.obrigatorio";
     public static final String ANEXO_NOME_ARQUIVO_OBRIGATORIO = "anexo.nome.arquivo.obrigatorio";
+    public static final String ANEXO_EXTENSAO_INVALIDA = "anexo.extensao.invalida";
     public static final String ANEXO_BYTES_OBRIGATORIO = "anexo.bytes.obrigatorio";
     
 }

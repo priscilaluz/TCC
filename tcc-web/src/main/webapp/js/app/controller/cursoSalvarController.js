@@ -3,9 +3,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
         $scope.categorias = [];
         $scope.curso = new Curso();
         $scope.model = {
-            anexo: null
-        }
-        $scope.model = {
+            anexo: null,
             pergunta: null
         };
         $scope.cursoCompleto = false;
@@ -28,6 +26,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
             $scope.numeroEtapa = $scope.numeroEtapa - 1;
             if ($scope.numeroEtapa === 0) {
                 $scope.abaEtapa = false;
+                buscarCurso($routeParams.idCurso);
             } else {
                 buscarEtapaAtual($scope.numeroEtapa);
             }
@@ -122,9 +121,32 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
                 $scope.curso = result;
                 $scope.cursoCompleto = $scope.curso.situacao.id==='C';
                 $rootScope.appLoaded = true;
+                if (carregarTela && !$scope.cursoCompleto) {
+                    carregarEtapaIncial(result);
+                }
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
+        };
+        
+        var buscarCursoConcluido = function (id) {
+            $rootScope.appLoaded = false;
+            Curso.buscarCursoCompletoPorId({'idCurso': id}, function (result) {
+                $scope.curso = result;
+                $scope.cursoCompleto = $scope.curso.situacao.id==='C';
+                $rootScope.appLoaded = true;
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        };
+        
+        var carregarEtapaIncial = function (curso) {
+            $scope.numeroEtapa = curso.ultimaEtapa;
+            $scope.abaEtapa = (curso.ultimaEtapa && curso.ultimaEtapa > 0);
+            carregarTela = false;
+            if ($scope.abaEtapa) {
+                buscarEtapaAtual($scope.numeroEtapa);
+            }
         };
         
         $scope.salvarEtapa = function (proximaEtapa) {
@@ -207,15 +229,25 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
             }
             $rootScope.appLoaded = true;
         };
+        
+        $scope.exibirAnexo = function (anexo) {
+            return "data:image/"+"jpg"+";base64"+anexo.bytes;
+        };
+        
         //=== === === === === === ANEXO === === === === === ===//
         
+        var carregarTela = true;
         var init = function () {
             $rootScope.appLoaded = false;
             Enums.getCategorias(function (result) {
                 $scope.categorias = result;
                 $rootScope.appLoaded = true;
                 if ($routeParams.idCurso) {
-                    buscarCurso($routeParams.idCurso);
+                    if ($routeParams.situacao && $routeParams.situacao === 'C'){
+                        buscarCursoConcluido($routeParams.idCurso);
+                    } else {
+                        buscarCurso($routeParams.idCurso);
+                    }
                 }
             }, function (error) {
                 $rootScope.appLoaded = true;

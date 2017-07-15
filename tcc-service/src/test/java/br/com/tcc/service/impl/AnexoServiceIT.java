@@ -55,7 +55,7 @@ public class AnexoServiceIT extends IntegrationBaseTestClass{
          byte[] bytes = "Teste".getBytes();
         
         Anexo anexo = AnexoBuilder.nova()
-                .comNomeArquivo("nomeArquivo")
+                .comNomeArquivo("nomeArquivo.jpg")
                 .comBytes(bytes)
                 .build();
         return anexo;

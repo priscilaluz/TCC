@@ -49,6 +49,11 @@ public abstract class BuscarCurso<T extends Serializable> extends BusinessFluent
         appendText(" left join "+fetch+" c.anexo a ");
         return this;
     }
+    
+    public BuscarCurso fetchAnexoEtapa(String fetch) {
+        appendText(" left join "+fetch+" e.anexo a ");
+        return this;
+    }
 
     public BuscarCurso whereId(Long id) {
         if (id != null) {
@@ -92,6 +97,11 @@ public abstract class BuscarCurso<T extends Serializable> extends BusinessFluent
             appendText(" c.situacao = :situacao ");
             addParameter("situacao", situacao);
         }    
+        return this;
+    }
+    
+    public BuscarCurso orderByNivel() { 
+        appendText(" order by e.nivel ");
         return this;
     }
 }

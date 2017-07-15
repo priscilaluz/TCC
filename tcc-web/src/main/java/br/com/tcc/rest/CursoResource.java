@@ -93,4 +93,11 @@ public class CursoResource {
     public Curso buscarCursoPorId(@QueryParam("idCurso") Long idCurso) {
         return cursoService.buscarCursoPorId(idCurso);
     }
+    
+    @GET
+    @Path("/buscarCompletoPorId")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Curso buscarCursoCompletoPorId(@QueryParam("idCurso") Long idCurso) {
+        return cursoService.buscarCursoPorIdConcluido(idCurso);
+    }
 }
