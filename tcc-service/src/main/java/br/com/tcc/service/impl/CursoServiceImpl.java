@@ -5,6 +5,7 @@
  */
 package br.com.tcc.service.impl;
 
+import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
@@ -36,8 +37,16 @@ public class CursoServiceImpl {
     @Autowired
     private CursoValidator validador;
 
+    @Autowired
+    private AnexoServiceImpl anexoService;
+    
     @Transactional(readOnly = false)
     public Curso salvarCurso(Curso curso) {
+        Anexo anexo = curso.getAnexo();
+        if (anexo != null) {
+            anexo.setId(curso.getIdAnexo());
+            curso.setAnexo(anexoService.salvarAnexo(anexo));
+        }
         validador.validarSalvarCurso(curso);
         dao.saveOrUpdate(curso);
         return curso;
@@ -58,7 +67,9 @@ public class CursoServiceImpl {
                 .fetchEtapasPerguntas(ConstantesI18N.FETCH)
                 .fetchPergunta(ConstantesI18N.FETCH)
                 .fetchResposta(ConstantesI18N.FETCH)
+                .fetchAnexo(ConstantesI18N.FETCH)
                 .whereId(idCurso));
+        curso.setIdAnexo(curso.getAnexo()!=null?curso.getAnexo().getId():null);
         return curso;
     }
 
@@ -76,6 +87,11 @@ public class CursoServiceImpl {
     @Transactional(readOnly = false)
     public Etapa salvarEtapa(Etapa etapa) {
         validador.validarSalvarEtapa(etapa);
+        Anexo anexo = etapa.getAnexo();
+        if (anexo != null) {
+            anexo.setId(etapa.getIdAnexo());
+            etapa.setAnexo(anexoService.salvarAnexo(anexo));
+        }
         if (etapa.getId() != null) {
             dao.executeDML(new ExcluirEtapaPerguntaPorEtapa(etapa.getId()));
         }
@@ -105,11 +121,16 @@ public class CursoServiceImpl {
     
     @Transactional(readOnly = true)
     public List<Etapa> buscarEtapa(Long idCurso, Integer nivel) {
-        return dao.list(new BuscarEtapa.Entities()
+        List<Etapa> etapas = dao.list(new BuscarEtapa.Entities()
                 .fetchEtapaPergunta(ConstantesI18N.FETCH)
                 .fetchPergunta(ConstantesI18N.FETCH)
+                .fetchAnexo(ConstantesI18N.FETCH)
                 .whereIdCurso(idCurso)
                 .whereNivel(nivel)
                 .orderByNivel());
+        for (Etapa etapa : etapas) {
+            etapa.setIdAnexo(etapa.getAnexo()!=null?etapa.getAnexo().getId():null);
+        }
+        return etapas;
     }
 }

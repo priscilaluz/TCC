@@ -60,8 +60,11 @@ public class PerguntaServiceImpl {
     @Transactional(readOnly = false)
     public void excluirPergunta(Long idPergunta) {
         dao.executeDML(new ExcluirRespostaPorPergunta(idPergunta));
-        Pergunta pergunta = dao.get(Pergunta.class, idPergunta);
+        Pergunta pergunta = buscarPerguntaPorId(idPergunta);
         dao.remove(pergunta);
+        if (pergunta.getAnexo() != null){
+            dao.remove(pergunta.getAnexo());
+        }
     }
 
     @Transactional(readOnly = true)

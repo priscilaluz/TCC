@@ -23,6 +23,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import org.hibernate.annotations.Type;
 
 /**
@@ -74,6 +75,9 @@ public class Curso extends AbstractIdBean<Long> {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "curso")
     private Set<Etapa> etapas = new HashSet<Etapa>();
 
+    @Transient
+    private Long idAnexo;
+    
     public Curso() {
     }
 
@@ -156,5 +160,13 @@ public class Curso extends AbstractIdBean<Long> {
 
     public void setSituacao(SituacaoCurso situacao) {
         this.situacao = situacao;
+    }
+
+    public Long getIdAnexo() {
+        return idAnexo;
+    }
+
+    public void setIdAnexo(Long idAnexo) {
+        this.idAnexo = idAnexo;
     }
 }

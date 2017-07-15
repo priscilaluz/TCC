@@ -32,7 +32,7 @@ public abstract class BuscarPergunta<T extends Serializable> extends BusinessFlu
     }
     
     public BuscarPergunta fetchAnexo(String fetch) {
-        appendText(" left join "+fetch+" p.anexo r ");
+        appendText(" left join "+fetch+" p.anexo a ");
         return this;
     }
     

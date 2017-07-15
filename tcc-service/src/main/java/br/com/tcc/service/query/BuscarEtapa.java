@@ -26,6 +26,11 @@ public abstract class BuscarEtapa<T extends Serializable> extends BusinessFluent
         appendText(" left join "+fetch+" ep.pergunta p ");
         return this;
     }
+    
+    public BuscarEtapa fetchAnexo(String fetch) {
+        appendText(" left join "+fetch+" e.anexo a ");
+        return this;
+    }
 
     public BuscarEtapa whereIdCurso(Long idCurso) {
         if (idCurso != null) {

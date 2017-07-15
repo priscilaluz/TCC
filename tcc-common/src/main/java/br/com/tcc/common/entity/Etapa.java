@@ -67,6 +67,9 @@ public class Etapa extends AbstractIdBean<Long> {
     private Set<EtapaPergunta> etapasPerguntas = new HashSet<EtapaPergunta>();
     
     @Transient
+    private Long idAnexo;
+    
+    @Transient
     private Long idCurso;
 
     @Override
@@ -136,5 +139,13 @@ public class Etapa extends AbstractIdBean<Long> {
 
     public void setIdCurso(Long idCurso) {
         this.idCurso = idCurso;
+    }
+
+    public Long getIdAnexo() {
+        return idAnexo;
+    }
+
+    public void setIdAnexo(Long idAnexo) {
+        this.idAnexo = idAnexo;
     }
 }
