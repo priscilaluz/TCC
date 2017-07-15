@@ -109,6 +109,8 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
                         $rootScope.appLoaded = true;
                         if ($routeParams.idPergunta) {
                             buscarPerguntaPorId($routeParams.idPergunta);
+                        } else {
+                            $scope.editar = true;
                         }
                     }, function (error) {$rootScope.appLoaded = true;});
                 }, function (error) {$rootScope.appLoaded = true;});

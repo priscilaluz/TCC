@@ -1,7 +1,10 @@
-tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParams', 'growl', 'Enums', 'Curso', 'Etapa', 'Pergunta',
-    function ($scope, $rootScope, $routeParams, growl, Enums, Curso, Etapa, Pergunta) {
+tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParams', 'growl', 'Enums', 'Curso', 'Etapa', 'Pergunta', 'AnexoService',
+    function ($scope, $rootScope, $routeParams, growl, Enums, Curso, Etapa, Pergunta, AnexoService) {
         $scope.categorias = [];
         $scope.curso = new Curso();
+        $scope.model = {
+            anexo: null
+        }
         $scope.model = {
             pergunta: null
         };
@@ -21,6 +24,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
         };
         
         $scope.voltar = function () {
+            $scope.removerArquivo();
             $scope.numeroEtapa = $scope.numeroEtapa - 1;
             if ($scope.numeroEtapa === 0) {
                 $scope.abaEtapa = false;
@@ -161,6 +165,49 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
             $scope.perguntas.splice(posicao, 1);
             $scope.perguntasEtapa.push($scope.model.pergunta);
         };
+        
+        //=== === === === === === ANEXO === === === === === ===//
+        $scope.removerArquivo = function () {
+            document.getElementById('file').value = "";
+            $scope.model.anexo = null;
+            if ($scope.etapa) {
+                $scope.etapa.anexo = null;
+            }
+            if ($scope.curso) {
+                $scope.curso.anexo = null;
+            }
+        };
+        
+        $scope.$watch('model.anexo', function() {
+            upload();
+        });
+        
+        var upload = function() {
+            if ($scope.model.anexo && $scope.model.anexo.size !== 0){
+                $rootScope.appLoaded = false;
+                var uploadUrl = "/tcc/rest/anexo/buscarAnexo";
+                AnexoService.uploadFileToUrl($scope.model.anexo, uploadUrl, $scope.model.anexo.name, uploadSucess, uploadError);
+            }
+        };
+
+        var uploadSucess = function(retorno) {
+            if ($scope.abaEtapa) {
+                $scope.etapa.anexo = retorno;
+            } else {
+                $scope.curso.anexo = retorno;
+            }
+            $rootScope.appLoaded = true;
+        };
+
+        var uploadError = function(erro) {
+            if ($scope.abaEtapa) {
+                $scope.etapa.anexo = null;
+            } else {
+                $scope.curso.anexo = null;
+            }
+            $rootScope.appLoaded = true;
+        };
+        //=== === === === === === ANEXO === === === === === ===//
         
         var init = function () {
             $rootScope.appLoaded = false;
