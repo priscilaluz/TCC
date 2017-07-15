@@ -1,6 +1,6 @@
 <h1 class="title-fonte">Etapa {{etapa.nivel}}</h1>
 <div class="col-xs-12 col-sm-12 col-md-12" style="background-color: #dff0d8; border: #cbe8ba solid 1px; padding-top: 20px;">
-    <form class="form-horizontal" name="etapaForm" ng-submit="salvarEtapa()">
+    <form class="form-horizontal" name="etapaForm" ng-submit="salvarEtapa()" enctype="multipart/form-data">
         <fieldset>
             <div class="form-group">
                 <label for="inputAssunto" class="col-lg-1 control-label label-font">Assunto:</label>
@@ -11,8 +11,12 @@
             </div>
             <div class="form-group">
                 <div class="col-lg-12">
-                    <button type="button" ng-click="voltar()" class="btn btn-modelo pull-right">
-                        <i class="glyphicon glyphicon-download-alt"></i>&nbsp;Anexo</button>
+                    <label style="color: #065d00" class=" pull-right">&nbsp;{{etapa.anexo.nomeArquivo}}
+                        <i class="glyphicon glyphicon-remove" ng-click="removerArquivo()" ng-show="etapa.anexo"></i>
+                    </label><span class="btn btn-default btn-file pull-right">
+                        <i class="glyphicon glyphicon-save"></i>&nbsp;Anexo
+                        <input id="file" name="file" type="file" ng-model="model.anexo" file-model="model.anexo"/>
+                    </span>
                 </div>
             </div>
             <hr style="border: 1px dashed #d07171; margin-top: 0px;">
