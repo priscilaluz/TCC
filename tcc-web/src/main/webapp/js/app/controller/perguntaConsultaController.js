@@ -4,14 +4,15 @@ tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', 'Pergun
         $scope.perguntas = [];
         $scope.tipos = [];
         $scope.niveis = [];
-        $scope.pesquisar = {};
+        $scope.pesquisar = {'minhasPerguntas': false};
 
         $scope.pesquisarPergunta = function () {
             $rootScope.appLoaded = false;
             var idCategoria = $scope.pesquisar.categoria ? $scope.pesquisar.categoria.id : null;
             var idNivel = $scope.pesquisar.nivel ? $scope.pesquisar.nivel.id : null;
             var idTipo = $scope.pesquisar.tipo ? $scope.pesquisar.tipo.id : null;
-            Pergunta.buscarPerguntas({'idUsuario': $scope.usuarioLogado.id,'parteNome': $scope.pesquisar.descricao,
+            var idUsuario = $scope.pesquisar.minhasPerguntas ? $scope.usuarioLogado.id : null;
+            Pergunta.buscarPerguntas({'idUsuario': idUsuario,'parteNome': $scope.pesquisar.descricao,
                 'categoria': idCategoria,'nivel': idNivel,'tipo': idTipo}, function (result) {
                 $scope.perguntas = result;
                 $rootScope.appLoaded = true;

@@ -48,14 +48,31 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
                 $scope.pergunta.respostas = [];
             }
         };
-
-        $scope.removerArquivo = function () {
-            $scope.anexo = null;
-            $scope.pergunta.anexo = null;
-        };
         
         $scope.voltarConsulta = function () {
             $location.path("/consultar-pergunta");
+        };
+
+        var buscarPerguntaPorId = function (id) {
+            $rootScope.appLoaded = false;
+            Pergunta.buscarPerguntaPorId({'idPergunta': id}).$promise.then(function (pergunta) {
+                $scope.pergunta = pergunta;
+                $scope.editar = $scope.pergunta.usuario.id === $rootScope.usuarioLogado.id;
+                if ($scope.pergunta.tipo.id === 'CL' && $scope.pergunta.respostas && $scope.pergunta.respostas.length > 0){
+                    $scope.respostaUnica = $scope.pergunta.respostas[0].descricao;
+                    $scope.pergunta.respostas = [];
+                }
+                $rootScope.appLoaded = true;
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        };
+        
+        //=== === === === === === ANEXO === === === === === ===//
+        $scope.removerArquivo = function () {
+            document.getElementById('file').value = "";
+            $scope.anexo = null;
+            $scope.pergunta.anexo = null;
         };
         
         $scope.$watch('anexo', function() {
@@ -79,20 +96,7 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
             $scope.pergunta.anexo = null;
             $rootScope.appLoaded = true;
         };
-
-        var buscarPerguntaPorId = function (id) {
-            $rootScope.appLoaded = false;
-            Pergunta.buscarPerguntaPorId({'idPergunta': id}).$promise.then(function (pergunta) {
-                $scope.pergunta = pergunta;
-                if ($scope.pergunta.tipo.id === 'CL' && $scope.pergunta.respostas && $scope.pergunta.respostas.length > 0){
-                    $scope.respostaUnica = $scope.pergunta.respostas[0].descricao;
-                    $scope.pergunta.respostas = [];
-                }
-                $rootScope.appLoaded = true;
-            }, function (error) {
-                $rootScope.appLoaded = true;
-            });
-        };
+        //=== === === === === === ANEXO === === === === === ===//
 
         var init = function () {
             $rootScope.appLoaded = false;

@@ -30,6 +30,16 @@ public abstract class BuscarPergunta<T extends Serializable> extends BusinessFlu
         appendText(" left join "+fetch+" p.respostas r ");
         return this;
     }
+    
+    public BuscarPergunta fetchAnexo(String fetch) {
+        appendText(" left join "+fetch+" p.anexo r ");
+        return this;
+    }
+    
+    public BuscarPergunta fetchUsuario(String fetch) {
+        appendText(" left join "+fetch+" p.usuario u ");
+        return this;
+    }
 
     public BuscarPergunta whereId(Long id) {
         if (id != null) {
@@ -43,7 +53,7 @@ public abstract class BuscarPergunta<T extends Serializable> extends BusinessFlu
     public BuscarPergunta whereUsuario(Long idUsuario) {
         if (idUsuario != null) {
             appendText(getPreffixFilter());
-            appendText(" p.usuario.id = :idUsuario ");
+            appendText(" u.id = :idUsuario ");
             addParameter("idUsuario", idUsuario);
         }    
         return this;

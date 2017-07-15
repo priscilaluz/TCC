@@ -84,6 +84,9 @@ public class Pergunta extends AbstractIdBean<Long> {
     private Set<Resposta> respostas = new HashSet<Resposta>();
     
     @Transient
+    private Long idAnexo;
+    
+    @Transient
     private int posicao;
 
     @Override
@@ -174,5 +177,13 @@ public class Pergunta extends AbstractIdBean<Long> {
 
     public void setNivel(NivelPergunta nivel) {
         this.nivel = nivel;
+    }
+
+    public Long getIdAnexo() {
+        return idAnexo;
+    }
+
+    public void setIdAnexo(Long idAnexo) {
+        this.idAnexo = idAnexo;
     }
 }

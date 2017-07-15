@@ -41,6 +41,7 @@ public class PerguntaServiceImpl {
     public Pergunta salvarPergunta(Pergunta pergunta) {
         Anexo anexo = pergunta.getAnexo();
         if (anexo != null) {
+            anexo.setId(pergunta.getIdAnexo());
             pergunta.setAnexo(anexoService.salvarAnexo(anexo));
         }
         validador.validarSalvarPergunta(pergunta);
@@ -65,13 +66,18 @@ public class PerguntaServiceImpl {
 
     @Transactional(readOnly = true)
     public Pergunta buscarPerguntaPorId(Long idPergunta) {
-        return (Pergunta)dao.uniqueResult(new BuscarPergunta.Entities()
+        Pergunta pergunta = (Pergunta)dao.uniqueResult(new BuscarPergunta.Entities()
+                .fetchUsuario(ConstantesI18N.FETCH)
+                .fetchAnexo(ConstantesI18N.FETCH)
                 .fetchResposta(ConstantesI18N.FETCH).whereId(idPergunta));
+        pergunta.setIdAnexo(pergunta.getAnexo()!=null?pergunta.getAnexo().getId():null);
+        return pergunta;
     }
 
     @Transactional(readOnly = true)
     public List<Pergunta> buscarPerguntaPorFiltro(Long idUsuario, String parteNome, Categoria categoria, TipoPergunta tipo, NivelPergunta nivel) {
         return dao.list(new BuscarPergunta.Entities()
+                .fetchUsuario(ConstantesI18N.FETCH)
                 .whereNivel(nivel)
                 .whereTipo(tipo)
                 .whereUsuario(idUsuario)
