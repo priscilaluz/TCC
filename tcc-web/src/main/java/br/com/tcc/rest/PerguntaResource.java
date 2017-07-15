@@ -11,6 +11,7 @@ import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.service.impl.PerguntaServiceImpl;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -75,25 +76,4 @@ public class PerguntaResource {
         return perguntaService.buscarPerguntaPorId(idPergunta);
     }
 
-    @POST
-    @Path("/buscarAnexo")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Produces("application/json")
-    public Anexo postUnidadeSegurancaAnexo(
-            @FormDataParam("idPergunta") String idPergunta,
-            @FormDataParam("file") InputStream uploadedInputStream,
-            @FormDataParam("file") FormDataContentDisposition contentDispositionHeader,
-            @Context HttpServletRequest httpServletRequest) {
-        Anexo anexo = new Anexo();
-        try {
-            Pergunta pergunta = new Pergunta();
-            pergunta.setId(Long.valueOf(idPergunta));
-            anexo.setArquivo(uploadedInputStream);
-            anexo.setBytes(IOUtils.toByteArray(uploadedInputStream));
-        } catch (Exception e) {
-            String a = e.getMessage();
-        }
-
-        return anexo;
-    }
 }

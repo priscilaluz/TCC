@@ -5,6 +5,7 @@
  */
 package br.com.tcc.service.impl;
 
+import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.enums.Categoria;
@@ -31,10 +32,17 @@ public class PerguntaServiceImpl {
     private GenericDao dao;
     
     @Autowired
+    private AnexoServiceImpl anexoService;
+    
+    @Autowired
     private PerguntaValidator validador;
 
     @Transactional(readOnly = false)
     public Pergunta salvarPergunta(Pergunta pergunta) {
+        Anexo anexo = pergunta.getAnexo();
+        if (anexo != null) {
+            pergunta.setAnexo(anexoService.salvarAnexo(anexo));
+        }
         validador.validarSalvarPergunta(pergunta);
         if (pergunta.getId() != null){
             dao.executeDML(new ExcluirRespostaPorPergunta(pergunta.getId()));

@@ -39,4 +39,9 @@ public class ConstantesI18N {
     public static final String ETAPA_CURSO_OBRIGATORIA = "etapa.curso.obrigatorio";
     public static final String ETAPA_PERGUNTAS_OBRIGATORIA = "etapa.perguntas.obrigatorio";
     
+    //Anexo
+    public static final String ANEXO_OBRIGATORIO = "anexo.obrigatorio";
+    public static final String ANEXO_NOME_ARQUIVO_OBRIGATORIO = "anexo.nome.arquivo.obrigatorio";
+    public static final String ANEXO_BYTES_OBRIGATORIO = "anexo.bytes.obrigatorio";
+    
 }

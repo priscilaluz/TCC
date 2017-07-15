@@ -1,5 +1,5 @@
-tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routeParams', 'growl', 'Pergunta', 'Enums', 'PerguntaAnexoService', '$location',
-    function ($scope, $rootScope, $routeParams, growl, Pergunta, Enums, PerguntaAnexoService, $location) {
+tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routeParams', 'growl', 'Pergunta', 'Enums', 'AnexoService', '$location',
+    function ($scope, $rootScope, $routeParams, growl, Pergunta, Enums, AnexoService, $location) {
         $scope.pergunta = new Pergunta();
         $scope.pergunta.respostas = [];
         $scope.telaCadastro = false;
@@ -24,11 +24,6 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
         };
 
         $scope.salvarPergunta = function () {
-            if ($scope.anexo) {
-                $scope.pergunta.anexo = {};
-                $scope.pergunta.anexo.nomeArquivo = $scope.anexo.name;
-                $scope.pergunta.anexo.bytes = $scope.anexo;
-            }
             if ($scope.respostaUnica && $scope.pergunta.tipo.id==='CL'){
                 $scope.pergunta.respostas = [];
                 $scope.pergunta.respostas.push({'descricao': $scope.respostaUnica, 'correta': true});
@@ -54,26 +49,34 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
             }
         };
 
+        $scope.removerArquivo = function () {
+            $scope.anexo = null;
+            $scope.pergunta.anexo = null;
+        };
+        
         $scope.voltarConsulta = function () {
             $location.path("/consultar-pergunta");
         };
         
-        $scope.upload = function() {
-            if ($scope.anexo.size !== 0){
+        $scope.$watch('anexo', function() {
+            upload();
+        });
+        
+        var upload = function() {
+            if ($scope.anexo && $scope.anexo.size !== 0){
                 $rootScope.appLoaded = false;
-                var parametros = "1";
-                var uploadUrl = "/tcc/rest/pergunta/buscarAnexo";
-                PerguntaAnexoService.uploadFileToUrl($scope.anexo, uploadUrl, parametros, uploadSucess, uploadError);
-            }else{
-                toasterAlert("warning", "Arquivo inválido", "Esse arquivo está vazio.");
+                var uploadUrl = "/tcc/rest/anexo/buscarAnexo";
+                AnexoService.uploadFileToUrl($scope.anexo, uploadUrl, $scope.anexo.name, uploadSucess, uploadError);
             }
         };
 
         var uploadSucess = function(retorno) {
+            $scope.pergunta.anexo = retorno;
             $rootScope.appLoaded = true;
         };
 
         var uploadError = function(erro) {
+            $scope.pergunta.anexo = null;
             $rootScope.appLoaded = true;
         };
 
