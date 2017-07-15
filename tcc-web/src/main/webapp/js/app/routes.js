@@ -46,7 +46,15 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/home/sobre.html',
         controller: 'SobreController'
       }).
-              
+      when('/jogos', {
+        templateUrl: 'partials/jogo/jogos.html',
+        controller: 'JogoController'
+      }).
+      when('/jogos-simulado/quiz', {
+        templateUrl: 'partials/jogo/quiz.html',
+        controller: 'QuizController'
+      }).
+
       otherwise({
         redirectTo: '/home'
       });

@@ -1,3 +1,31 @@
+.fundo-todas-telas {
+    background-color: #dff0d8;
+    border: #cbe8ba solid 1px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.img-jogos-menu{
+     height:150px;
+     display: block;
+     margin: 0 auto;
+}
+.jogos-menu{
+    background-color: #8ac4ae;
+    border: #dff0d8 solid 1px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+.jogos-menu:hover {
+    background-color: #295444;
+    border: #dff0d8 solid 1px;
+}
+.jogos-font{
+    color: #522e2e;
+    font-size: 22px;
+    font-family:'Balthazar';
+    background-color: #f2ffed;
+}
 .btn-file {
     position: relative;
     overflow: hidden;
