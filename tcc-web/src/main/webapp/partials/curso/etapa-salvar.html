@@ -11,12 +11,15 @@
             </div>
             <div class="form-group">
                 <div class="col-lg-12">
-                    <label style="color: #065d00" class=" pull-right">&nbsp;{{etapa.anexo.nomeArquivo}}
+                    <label style="color: #065d00" class=" pull-right" ng-show="!etapa.anexo.id">&nbsp;{{etapa.anexo.nomeArquivo}}
                         <i class="glyphicon glyphicon-remove" ng-click="removerArquivo()" ng-show="etapa.anexo"></i>
-                    </label><span class="btn btn-default btn-file pull-right">
+                    </label>
+                    <span class="btn btn-default btn-file pull-right">
                         <i class="glyphicon glyphicon-save"></i>&nbsp;Anexo
                         <input id="file" name="file" type="file" ng-model="model.anexo" file-model="model.anexo"/>
                     </span>
+                    <a target="_blank" href="rest/anexo/download?arquivo={{etapa.anexo.nomeArquivo}}&idAnexo={{etapa.anexo.id}}"
+                       style="color: #065d00" ng-show="etapa.anexo.id">&nbsp;{{etapa.anexo.nomeArquivo}}</a>
                 </div>
             </div>
             <hr style="border: 1px dashed #d07171; margin-top: 0px;">

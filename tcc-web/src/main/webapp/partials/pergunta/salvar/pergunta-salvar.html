@@ -87,13 +87,18 @@
             </div>
             <div class="form-group">
                 <div class="col-lg-12">
-                    <a ng-click="abrirAnexo()" style="color: #065d00" ng-show="!editar">&nbsp;{{pergunta.anexo.nomeArquivo}}</a>
+                    <a target="_blank" href="rest/anexo/download?arquivo={{pergunta.anexo.nomeArquivo}}&idAnexo={{pergunta.anexo.id}}"
+                       style="color: #065d00" ng-show="!editar">&nbsp;{{pergunta.anexo.nomeArquivo}}</a>
+                    
                     <span class="btn btn-default btn-file" ng-show="editar">
                         <i class="glyphicon glyphicon-save"></i>&nbsp;Anexo
                         <input id="file" name="file" type="file" ng-model="anexo" file-model="anexo"/>
-                    </span><label style="color: #065d00" ng-show="editar">&nbsp;{{pergunta.anexo.nomeArquivo}}
+                    </span>
+                    <label style="color: #065d00" ng-show="editar && !pergunta.anexo.id">&nbsp;{{pergunta.anexo.nomeArquivo}}
                         <i class="glyphicon glyphicon-remove" ng-click="removerArquivo()" ng-show="pergunta.anexo"></i>
                     </label>
+                    <a target="_blank" href="rest/anexo/download?arquivo={{pergunta.anexo.nomeArquivo}}&idAnexo={{pergunta.anexo.id}}"
+                       style="color: #065d00" ng-show="editar && pergunta.anexo.id">&nbsp;{{pergunta.anexo.nomeArquivo}}</a>
                     
                     <button type="submit" class="btn btn-modelo pull-right" ng-show="editar">
                         <i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Salvar</button>
