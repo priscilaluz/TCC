@@ -25,7 +25,7 @@ public class AnexoValidator {
         if (nomeArquivo != null) {
             List<String> extensoesOk = new ArrayList<>(Arrays.asList(".gif",".jpg",".jpeg",".png",".gif",".bmp"));
             int posicaoInicial = nomeArquivo.indexOf(".")>0?nomeArquivo.indexOf("."):0;
-            String extensao = nomeArquivo.substring(posicaoInicial);
+            String extensao = nomeArquivo.substring(posicaoInicial).toLowerCase();
             return extensoesOk.contains(extensao);
         }
         return true;
