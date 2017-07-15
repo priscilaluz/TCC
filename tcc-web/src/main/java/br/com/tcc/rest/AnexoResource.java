@@ -7,18 +7,23 @@ package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.service.impl.AnexoServiceImpl;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import org.apache.commons.io.IOUtils;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,9 +34,9 @@ import org.springframework.stereotype.Component;
 @Path("/anexo")
 @Component
 public class AnexoResource {
-//    
-//    @Autowired
-//    private AnexoServiceImpl anexoService;
+    
+    @Autowired
+    private AnexoServiceImpl anexoService;
 
     @POST
     @Path("/buscarAnexo")
@@ -53,5 +58,19 @@ public class AnexoResource {
         }
 
         return anexo;
+    }
+    
+    @GET
+    @Path("/download")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public Response getAnexo(@QueryParam("idAnexo") Long idAnexo, @QueryParam("arquivo") String arquivo) throws FileNotFoundException {
+        try {
+            InputStream anexo = anexoService.obterBytesAnexo(idAnexo);
+            return Response.ok(anexo, MediaType.APPLICATION_OCTET_STREAM_TYPE).
+                    header("Content-Disposition", "attachment; filename=\"" + arquivo + "\"").build();
+        } catch (Exception e) {
+            LoggerFactory.getLogger(getClass()).error(e.getMessage(), e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).type(MediaType.TEXT_HTML).build();
+        }
     }
 }

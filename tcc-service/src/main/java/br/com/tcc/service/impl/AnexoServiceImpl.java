@@ -9,6 +9,8 @@ import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarAnexo;
 import br.com.tcc.service.validator.AnexoValidator;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,7 +43,12 @@ public class AnexoServiceImpl {
 
     @Transactional(readOnly = true)
     public Anexo buscarAnexoPorId(Long idAnexo) {
+        return (Anexo) dao.uniqueResult(new BuscarAnexo.Entities().whereId(idAnexo));
+    }
+
+    @Transactional(readOnly = true)
+    public InputStream obterBytesAnexo(Long idAnexo) {
         Anexo anexo = (Anexo) dao.uniqueResult(new BuscarAnexo.Entities().whereId(idAnexo));
-        return anexo;
+        return new ByteArrayInputStream(anexo.getBytes());
     }
 }
