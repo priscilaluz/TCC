@@ -1,0 +1,32 @@
+<h1 class="title-fonte" ng-show="!contagem || telaInit">Quiz</h1>
+<div class="progress" ng-show="!contagem && !telaInit">
+    <div class="progress-bar" role="progressbar" ng-style="barraProgresso">
+        {{barraProgresso.width}}
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" ng-show="!contagem && !telaInit" style="margin-bottom: 30px;">
+    <div class="form-group">
+        <div class="col-md-3">
+            <p class="col-lg-12 curso-titulo-concluido" style="font-size: 30px;">Pontuação: {{model.pontuacao}}</p>
+        </div>
+        <div class="col-md-6">
+            <p class="col-lg-12 curso-titulo-concluido text-center" style="font-size: 40px; color: #291606">Pergunta {{model.pergunta.posicao}}</p>
+        </div>
+        <div class="col-md-3">
+            <p class="col-lg-12 curso-titulo-concluido text-right" style="font-size: 30px;">Tempo: {{model.tempo}}</p>
+        </div>
+        <div class="col-lg-8 col-md-offset-2" style="border-radius: 20px;background-color: #1b6d85; padding-bottom: 30px;">
+            <h3 class="title-fonte text-center">{{model.pergunta.descricao}}</h3>
+
+            <button  ng-repeat="resposta in model.pergunta.respostas" style="margin-top: 10px;" ng-style="resposta.correta?respostaCorreta:(idReposta==resposta.id)?respostaIncorreta:{}"
+                     type="button" ng-click="selecionarResposta(resposta)" class="btn btn-resposta-quiz btn-block">{{resposta.descricao}}</button>
+        </div>
+        <div class="col-md-12" style="padding-top: 25px;">
+            <button type="button" ng-click="pularPergunta()" class="btn btn-pular-dica pull-right">
+                <i class="glyphicon glyphicon-share-alt"></i>&nbsp;Pular</button>
+            <button type="button" ng-click="dicaPergunta()" class="btn btn-pular-dica pull-right">
+                <i class="fa fa-lightbulb-o"></i>&nbsp;Dica</button>
+        </div>
+    </div>
+</div>

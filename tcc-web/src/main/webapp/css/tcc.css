@@ -3,6 +3,41 @@
     border: #cbe8ba solid 1px;
     padding-bottom: 20px;
     padding-top: 20px;
+    border-radius: 8px;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.btn-resposta-quiz {
+    font-family:"Balthazar";
+    font-size: 130%;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #61a5b9;
+    border: #c3dad7 dotted 3px;
+    
+}
+
+.btn-resposta-quiz:hover {
+    color: #ffffff;
+    background-color: #74c4dc;
+    border-color: #adadad;
+}
+.btn-pular-dica {
+    font-family:"Balthazar";
+    font-size: 130%;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #398439;
+    border-color: #0fca1d;
+}
+
+.btn-pular-dica:hover {
+    color: #ffffff;
+    background-color: #63c563;
+    border-color: #adadad;
 }
 .img-jogos-menu{
      height:150px;

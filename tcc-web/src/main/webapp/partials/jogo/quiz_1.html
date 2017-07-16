@@ -1,0 +1,43 @@
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" ng-show="contagem && !telaInit" style="padding-bottom: 400px;">
+    <div class="form-group">
+        <h1 class="title-fonte text-center" style="font-size: 100px;color: #ff8f00;">Pronto?</h1>
+        <div data-ng-show="contagem" style="z-index: 999; width: 100%; height: 100%; position: absolute; top: 0px ; left: 0px;">
+            <p style="text-align:center; margin: auto; position: absolute;top: 30%;left: 37%;">
+                <img src="img/contagem-regressiva.gif" style="height:300px;">
+            </p>
+        </div>
+    </div>
+</div>
+
+<h1 class="title-fonte" ng-show="!contagem || telaInit">Quiz</h1>
+<div class="progress" ng-show="!contagem && !telaInit">
+  <div class="progress-bar" role="progressbar" style="min-width: 2em; width: 20%;">
+    20%
+  </div>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" ng-show="!contagem && !telaInit" style="margin-bottom: 30px;">
+    <div class="form-group">
+        <div class="col-md-3">
+            <p class="col-lg-12 curso-titulo-concluido" style="font-size: 30px;">Pontuação: {{model.pontuacao}}</p>
+        </div>
+        <div class="col-md-6">
+            <p class="col-lg-12 curso-titulo-concluido text-center" style="font-size: 40px; color: #291606">Pergunta {{model.pergunta.posicao}}</p>
+        </div>
+        <div class="col-md-3">
+            <p class="col-lg-12 curso-titulo-concluido text-right" style="font-size: 30px;">Tempo: {{model.tempo}}</p>
+        </div>
+        <div class="col-lg-8 col-md-offset-2" style="border-radius: 20px;background-color: #1b6d85; padding-bottom: 30px;">
+            <h3 class="title-fonte text-center">{{model.pergunta.descricao}}</h3>
+            
+            <button  ng-repeat="resposta in model.pergunta.respostas" style="margin-top: 10px;"
+                type="button" ng-click="selecionarResposta('1')" class="btn btn-resposta-quiz btn-block">{{resposta.descricao}}</button>
+        </div>
+        <div class="col-md-12" style="padding-top: 25px;">
+            <button type="button" ng-click="pularPergunta()" class="btn btn-pular-dica pull-right">
+                <i class="glyphicon glyphicon-share-alt"></i>&nbsp;Pular</button>
+            <button type="button" ng-click="dicaPergunta()" class="btn btn-pular-dica pull-right">
+                <i class="fa fa-lightbulb-o"></i>&nbsp;Dica</button>
+        </div>
+    </div>
+</div>
