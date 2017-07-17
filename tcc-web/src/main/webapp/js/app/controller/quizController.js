@@ -111,7 +111,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
             $scope.model.qntDica--;
         }
         $modal.open({
-            templateUrl: 'partials/jogo/quiz/dica.html',
+            templateUrl: 'partials/jogo/dica.html',
             controller: 'DicaController',
             resolve: {dica: function () {return dica;}}
         }).result.then(function (result) {
