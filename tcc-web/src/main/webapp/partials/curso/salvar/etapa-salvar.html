@@ -56,7 +56,7 @@
                         <tr>
                             <th width="1"></th>
                             <th>Pergunta</th>
-                            <th width="50">Dica</th>
+                            <th width="50">Dados</th>
                         </tr>
                     </thead>
                     <tbody class="table-font">
@@ -64,7 +64,7 @@
                             <td><a ng-click="excluirPergunta($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove handCursor"></i></a></td>
                             <td>{{pergunta.descricao}}</td>
                             <td>
-                                <a href="" ng-click="addDica"><i class="glyphicon glyphicon-info-sign botao-add" style="font-size: 26px;"></i></a>
+                                <a href="" ng-click="dadosPergunta(pergunta)"><i class="glyphicon glyphicon-info-sign botao-add" style="font-size: 26px;"></i></a>
                             </td>
                         </tr>
                     </tbody>

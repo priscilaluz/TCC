@@ -10,6 +10,11 @@ function ($scope, $rootScope, $location, $timeout, Jogo) {
         tempo: tempoPergunta,
         pergunta: null,
         perguntas: [],
+        resultados: [],
+        qntPulo:1,
+        pulo:false,
+        qntDica: 1,
+        dica: false,
         resultado: false
     };
     
@@ -36,8 +41,17 @@ function ($scope, $rootScope, $location, $timeout, Jogo) {
         $scope.respostaCorreta = {
             'background-color': '#51ec3e'
         };
+        
+        var respostaCorreta = null;
+        for (var i = 0; i < $scope.model.pergunta.respostas.length; i++) {
+            if ($scope.model.pergunta.respostas[i].correta) {
+                respostaCorreta = $scope.model.pergunta.respostas[i];
+                break;
+            }
+        }
+        $scope.model.resultados.push({'respostaEscolhida': resposta, 'respostaCorreta': respostaCorreta,
+            'pergunta': $scope.model.pergunta, 'pulo':  $scope.model.pulo, 'dica':  $scope.model.dica});
         $timeout(proximaPergunta, 400);
-        //proximaPergunta();
     };
     
     $scope.tempoPergunta = function () {
@@ -52,6 +66,8 @@ function ($scope, $rootScope, $location, $timeout, Jogo) {
     var proximaPergunta = function (){
         $scope.respostaIncorreta = {};
         $scope.respostaCorreta = {};
+        $scope.model.dica = false;
+        $scope.model.pulo = false;
         $scope.idReposta = null;
         $scope.model.tempo = tempoPergunta;
         $scope.model.posicao++;
@@ -77,6 +93,13 @@ function ($scope, $rootScope, $location, $timeout, Jogo) {
         }
     };
     
+    $scope.pularPergunta = function () {
+        
+    };
+    
+    $scope.dicaPergunta = function () {
+        
+    };
     var init = function () {
         $rootScope.appLoaded = false;
         $scope.telaInit = true;

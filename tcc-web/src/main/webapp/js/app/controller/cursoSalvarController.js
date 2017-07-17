@@ -1,5 +1,5 @@
-tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParams', 'growl', 'Enums', 'Curso', 'Etapa', 'Pergunta', 'AnexoService',
-    function ($scope, $rootScope, $routeParams, growl, Enums, Curso, Etapa, Pergunta, AnexoService) {
+tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParams', '$modal', 'growl', 'Enums', 'Curso', 'Etapa', 'Pergunta', 'AnexoService',
+    function ($scope, $rootScope, $routeParams, $modal, growl, Enums, Curso, Etapa, Pergunta, AnexoService) {
         $scope.categorias = [];
         $scope.curso = new Curso();
         $scope.model = {
@@ -233,8 +233,20 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
         $scope.exibirAnexo = function (anexo) {
             return "data:image/"+"jpg"+";base64"+anexo.bytes;
         };
-        
         //=== === === === === === ANEXO === === === === === ===//
+        
+        $scope.dadosPergunta = function (pergunta) {
+            $modal.open({
+                templateUrl: 'partials/curso/salvar/dados-pergunta.html',
+                controller: 'DadoPerguntaController',
+                size: 'lg',
+                resolve: {pergunta: function () {return pergunta;}}
+            }).result.then(function (result) {
+                // Modal retorno
+            }, function () {
+                // Modal cancelado
+            });                       
+        };
         
         var carregarTela = true;
         var init = function () {

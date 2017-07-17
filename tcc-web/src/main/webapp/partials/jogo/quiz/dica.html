@@ -1,0 +1,26 @@
+<!-- loagind app -->
+<div class="loading_app" data-ng-hide="appLoaded" style="z-index: 999; width: 100%; height: 100%; position: absolute; top: 0px ; left: 0px;">
+    <p style="text-align:center; margin: auto; position: absolute;top: 50%;left: 41%;">
+        <img src="img/reload.gif">
+    </p>
+</div>
+<div class="modal-header" style="background-color: #cbe8ba;">
+    <h3 class="modal-title title-fonte">Pergunta</h3>
+</div>
+<div class="modal-body">
+    <form role="form" name="perguntaForm" class="form-horizontal" enctype="multipart/form-data">
+        <p class="curso-nao-titulo-concluido"><span style="font-weight: bold">Pergunta:</span>
+                {{model.pergunta.descricao}}</p>
+        <p class="curso-nao-titulo-concluido"><span style="font-weight: bold">Respostas</span></p>
+        <p class="curso-nao-titulo-concluido" ng-repeat="resposta in model.pergunta.respostas">
+            <span ng-class="{'verdadeiro': resposta.correta, 'falso':!resposta.correta}">
+            {{resposta.descricao}}</span></p>
+        <p class="curso-nao-titulo-concluido"><span style="font-weight: bold">Dica:</span>
+                {{model.pergunta.dica}}</p>
+        <p class="curso-nao-titulo-concluido"><span style="font-weight: bold">Justificativa:</span>
+                {{model.pergunta.justificativa}}</p>
+    </form>
+</div>
+<div class="modal-footer" style="background-color: #cbe8ba;">
+    <button type="button" class="btn btn-default" data-ng-click="fechar()"><i class="glyphicon glyphicon-remove-sign"></i>&nbsp;Fechar</button>
+</div>

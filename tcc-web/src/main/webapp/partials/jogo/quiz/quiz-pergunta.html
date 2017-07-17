@@ -23,9 +23,9 @@
                      type="button" ng-click="selecionarResposta(resposta)" class="btn btn-resposta-quiz btn-block">{{resposta.descricao}}</button>
         </div>
         <div class="col-md-12" style="padding-top: 25px;">
-            <button type="button" ng-click="pularPergunta()" class="btn btn-pular-dica pull-right">
+            <button type="button" ng-click="pularPergunta()" ng-show="model.qntPulo>0" class="btn btn-pular-dica pull-right">
                 <i class="glyphicon glyphicon-share-alt"></i>&nbsp;Pular</button>
-            <button type="button" ng-click="dicaPergunta()" class="btn btn-pular-dica pull-right">
+            <button type="button" ng-click="dicaPergunta()" ng-show="model.qntDica>0" class="btn btn-pular-dica pull-right">
                 <i class="fa fa-lightbulb-o"></i>&nbsp;Dica</button>
         </div>
     </div>
