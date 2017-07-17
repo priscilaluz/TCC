@@ -245,7 +245,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
                 // Modal retorno
             }, function () {
                 // Modal cancelado
-            });                       
+            });
         };
         
         var carregarTela = true;

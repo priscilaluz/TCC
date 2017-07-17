@@ -1,5 +1,5 @@
-tccApp.controller('QuizController', ['$scope', '$rootScope', '$location', '$timeout', 'Jogo',
-function ($scope, $rootScope, $location, $timeout, Jogo) {
+tccApp.controller('QuizController', ['$scope', '$rootScope', '$modal', '$location', '$timeout', 'Jogo',
+function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     $rootScope.contagem = true;
     $scope.count = 0;
     var timeoutTempoPorPergunta = null;
@@ -12,7 +12,6 @@ function ($scope, $rootScope, $location, $timeout, Jogo) {
         perguntas: [],
         resultados: [],
         qntPulo:1,
-        pulo:false,
         qntDica: 1,
         dica: false,
         resultado: false
@@ -34,24 +33,8 @@ function ($scope, $rootScope, $location, $timeout, Jogo) {
         if (resposta.correta) {
             $scope.model.pontuacao = $scope.model.pontuacao+50;
         }
-        $scope.idReposta = resposta.id;
-        $scope.respostaIncorreta = {
-            'background-color': '#ec3e3e'
-        };
-        $scope.respostaCorreta = {
-            'background-color': '#51ec3e'
-        };
         
-        var respostaCorreta = null;
-        for (var i = 0; i < $scope.model.pergunta.respostas.length; i++) {
-            if ($scope.model.pergunta.respostas[i].correta) {
-                respostaCorreta = $scope.model.pergunta.respostas[i];
-                break;
-            }
-        }
-        $scope.model.resultados.push({'respostaEscolhida': resposta, 'respostaCorreta': respostaCorreta,
-            'pergunta': $scope.model.pergunta, 'pulo':  $scope.model.pulo, 'dica':  $scope.model.dica});
-        $timeout(proximaPergunta, 400);
+        addAoRelatorioFinal(resposta, false, $scope.model.dica);
     };
     
     $scope.tempoPergunta = function () {
@@ -59,15 +42,13 @@ function ($scope, $rootScope, $location, $timeout, Jogo) {
         if ($scope.model.tempo !== 0) {
             timeoutTempoPorPergunta = $timeout($scope.tempoPergunta, 1000);
         } else {
-            proximaPergunta();
+            addAoRelatorioFinal(null, false, false);
         }
     };
     
     var proximaPergunta = function (){
         $scope.respostaIncorreta = {};
         $scope.respostaCorreta = {};
-        $scope.model.dica = false;
-        $scope.model.pulo = false;
         $scope.idReposta = null;
         $scope.model.tempo = tempoPergunta;
         $scope.model.posicao++;
@@ -93,13 +74,55 @@ function ($scope, $rootScope, $location, $timeout, Jogo) {
         }
     };
     
-    $scope.pularPergunta = function () {
+    var addAoRelatorioFinal = function (resposta, pulo, dica) {
+        $scope.idReposta = resposta?resposta.id: null;
+        $scope.respostaIncorreta = {
+            'background-color': '#ec3e3e'
+        };
+        $scope.respostaCorreta = {
+            'background-color': '#51ec3e'
+        };
         
+        var respostaCorreta = null;
+        for (var i = 0; i < $scope.model.pergunta.respostas.length; i++) {
+            if ($scope.model.pergunta.respostas[i].correta) {
+                respostaCorreta = $scope.model.pergunta.respostas[i];
+                break;
+            }
+        }
+        $scope.model.resultados.push({'respostaEscolhida': resposta, 'respostaCorreta': respostaCorreta,
+            'pergunta': $scope.model.pergunta, 'pulo':  pulo, 'dica':  dica});
+        $scope.model.dica = false;
+        $timeout(proximaPergunta, 400);
+    };
+    
+    $scope.pularPergunta = function () {
+        $scope.model.pulo = true;
+        $scope.model.qntPulo--;
+        addAoRelatorioFinal(null, true, false);
     };
     
     $scope.dicaPergunta = function () {
-        
+        $timeout.cancel(timeoutTempoPorPergunta);
+        var dica = "Essa pergunta não tem dica.";
+        if ($scope.model.pergunta.dica){
+            dica = $scope.model.pergunta.dica;
+            $scope.model.dica = true;
+            $scope.model.qntDica--;
+        }
+        $modal.open({
+            templateUrl: 'partials/jogo/quiz/dica.html',
+            controller: 'DicaController',
+            resolve: {dica: function () {return dica;}}
+        }).result.then(function (result) {
+            // Modal retorno
+            $scope.tempoPergunta();
+        }, function () {
+            // Modal cancelado
+            $scope.tempoPergunta();
+        });
     };
+    
     var init = function () {
         $rootScope.appLoaded = false;
         $scope.telaInit = true;
