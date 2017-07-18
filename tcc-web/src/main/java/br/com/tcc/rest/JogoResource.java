@@ -308,7 +308,7 @@ public class JogoResource {
         Resposta resposta = new Resposta();
         resposta.setId(1L);
         resposta.setCorreta(Boolean.TRUE);
-        resposta.setDescricao("Célula");
+        resposta.setDescricao("Juscelino Kubitschek");
         respostas.add(resposta);
         
         pergunta.setRespostas(respostas);

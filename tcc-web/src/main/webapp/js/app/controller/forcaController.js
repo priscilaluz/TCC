@@ -2,6 +2,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
     function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         //$rootScope.contagem = true;
         var imgCampoVazio = "img/jogos/forca/Letras/CampoVazio.png";
+        var espaco = "img/jogos/forca/Letras/espaco.png";
         $scope.count = 0;
         $scope.model = {
             pontuacao: 0,
@@ -172,8 +173,13 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
         var inicializarLetras = function () {
             $scope.model.letras = $scope.model.pergunta.respostas[0].letras;
             for (var i = 0; i < $scope.model.letras.length; i++) {
-                $scope.model.letras[i].imagem = imgCampoVazio;
-                $scope.model.letras[i].escolhida = false;
+                if ($scope.model.letras[i].letra === " ") {
+                    $scope.model.letras[i].imagem = espaco;
+                    $scope.model.letras[i].escolhida = true;
+                } else {
+                    $scope.model.letras[i].imagem = imgCampoVazio;
+                    $scope.model.letras[i].escolhida = false;
+                }
             }
         };
 
