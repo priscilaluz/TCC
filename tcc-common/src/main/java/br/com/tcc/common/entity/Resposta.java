@@ -8,7 +8,10 @@ package br.com.tcc.common.entity;
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.support.SimNaoType;
 import br.com.tcc.common.util.ConstantesI18N;
+import br.com.tcc.common.vo.Letra;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,6 +52,9 @@ public class Resposta extends AbstractIdBean<Long> {
     
     @Transient
     private int posicao;
+    
+    @Transient
+    private List<Letra> letras;
 
     @Override
     public Long getId() {
@@ -91,4 +97,17 @@ public class Resposta extends AbstractIdBean<Long> {
     public void setPosicao(int posicao) {
         this.posicao = posicao;
     }
+
+    public List<Letra> getLetras() {
+        letras = new ArrayList<>();
+        if (descricao != null) {
+            for (int i = 0; i < descricao.length(); i++) {
+                String letra = ""+descricao.charAt(i);
+                letras.add(new Letra(i, letra.toUpperCase()));
+            }
+        }
+        return letras;
+    }
+
+    public void setLetras(List<Letra> letras) {}
 }

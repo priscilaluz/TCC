@@ -126,7 +126,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     var init = function () {
         $rootScope.appLoaded = false;
         $scope.telaInit = true;
-        Jogo.buscarPerguntaDaApresentacaoDoJogo(function (perguntas) {
+        Jogo.buscarPerguntaDaApresentacaoDoJogoQuiz(function (perguntas) {
             $scope.model.perguntas = perguntas;
             $scope.model.pergunta = perguntas[$scope.model.posicao];
             $rootScope.appLoaded = true;

@@ -33,16 +33,27 @@ public class JogoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Pergunta> buscarPerguntaDaApresentacaoDoJogo() {
         List<Pergunta> perguntas = new ArrayList<>();
-        perguntas.add(obterPerguntaModelo1());
-        perguntas.add(obterPerguntaModelo2());
-        perguntas.add(obterPerguntaModelo3());
-        perguntas.add(obterPerguntaModelo4());
-        perguntas.add(obterPerguntaModelo5());
+        perguntas.add(obterPerguntaQuizModelo1());
+        perguntas.add(obterPerguntaQuizModelo2());
+        perguntas.add(obterPerguntaQuizModelo3());
+        perguntas.add(obterPerguntaQuizModelo4());
+        perguntas.add(obterPerguntaQuizModelo5());
         return perguntas;
     }
     
-    //<editor-fold defaultstate="collapsed" desc="Perguntas do Simuldao Modelo">
-    private Pergunta obterPerguntaModelo1() {
+    @GET
+    @Path("/forcaApresentacao")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Pergunta> buscarPerguntasDaApresentacaoDoJogoForca() {
+        List<Pergunta> perguntas = new ArrayList<>();
+        perguntas.add(obterPerguntaForcaModelo1());
+        perguntas.add(obterPerguntaForcaModelo2());
+        perguntas.add(obterPerguntaForcaModelo3());
+        return perguntas;
+    }
+    
+    //<editor-fold defaultstate="collapsed" desc="Perguntas do Quiz Simuldao Modelo">
+    private Pergunta obterPerguntaQuizModelo1() {
         Pergunta pergunta = new Pergunta();
         pergunta.setPosicao(1);
         pergunta.setDescricao("Quanto é o valor de x na equação: x-5=10?");
@@ -84,7 +95,7 @@ public class JogoResource {
         
         return pergunta;
     }
-    private Pergunta obterPerguntaModelo2() {
+    private Pergunta obterPerguntaQuizModelo2() {
         Pergunta pergunta = new Pergunta();
         pergunta.setPosicao(2);
         pergunta.setDescricao("Como se escreve o substantivo que significa aquilo que se desvia ou exclui de regras e padrões?");
@@ -125,7 +136,7 @@ public class JogoResource {
         
         return pergunta;
     }
-    private Pergunta obterPerguntaModelo3() {
+    private Pergunta obterPerguntaQuizModelo3() {
         Pergunta pergunta = new Pergunta();
         pergunta.setPosicao(3);
         pergunta.setDescricao("\"Cinquenta anos em cinco\" foi o bordão de qual popular presidente?");
@@ -167,7 +178,7 @@ public class JogoResource {
         
         return pergunta;
     }
-    private Pergunta obterPerguntaModelo4() {
+    private Pergunta obterPerguntaQuizModelo4() {
         Pergunta pergunta = new Pergunta();
         pergunta.setPosicao(5);
         pergunta.setDescricao("O Brasil é de que continente?");
@@ -209,7 +220,7 @@ public class JogoResource {
         
         return pergunta;
     }
-    private Pergunta obterPerguntaModelo5() {
+    private Pergunta obterPerguntaQuizModelo5() {
         Pergunta pergunta = new Pergunta();
         pergunta.setPosicao(5);
         pergunta.setDescricao("Quem é o pintor desse quadro e qual o nome dessa obra?");
@@ -264,6 +275,63 @@ public class JogoResource {
             }
         } catch (IOException e) {}
         return out.toByteArray();
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Perguntas do Forca Simuldao Modelo">
+    private Pergunta obterPerguntaForcaModelo1() {
+        Pergunta pergunta = new Pergunta();
+        pergunta.setPosicao(1);
+        pergunta.setDescricao("São consideradas a menor parte dos organismos vivos, sendo, portanto, elementos estruturais e funcionais.");
+        pergunta.setJustificativa("O corpo humano é formado por uma quantidade enorme de células. As células são consideradas a menor parte dos organismos vivos, sendo, portanto, elementos estruturais e funcionais.");
+        pergunta.setDica("O corpo humano é pluricelular");
+        
+        Set<Resposta> respostas = new HashSet<>();
+        Resposta resposta = new Resposta();
+        resposta.setId(1L);
+        resposta.setCorreta(Boolean.TRUE);
+        resposta.setDescricao("Célula");
+        respostas.add(resposta);
+        
+        pergunta.setRespostas(respostas);
+        
+        return pergunta;
+    }
+    private Pergunta obterPerguntaForcaModelo2() {
+        Pergunta pergunta = new Pergunta();
+        pergunta.setPosicao(1);
+        pergunta.setDescricao("Foi o 20º Presidente do Brasil. O destaque do governo de foi a chamada política desenvolvimentista, ou seja, fazer o Brasil crescer e se desenvolver “cinqüenta anos em cinco”.");
+        pergunta.setJustificativa("Mineiro de Diamantina, Juscelino Kubitschek de Oliveira foi o 20º Presidente do Brasil. Mas seus feitos o consagraram como um dos principais dentre muitos que já passaram por este cargo.");
+        pergunta.setDica("Era conhecido como JK.");
+        
+        Set<Resposta> respostas = new HashSet<>();
+        Resposta resposta = new Resposta();
+        resposta.setId(1L);
+        resposta.setCorreta(Boolean.TRUE);
+        resposta.setDescricao("Célula");
+        respostas.add(resposta);
+        
+        pergunta.setRespostas(respostas);
+        
+        return pergunta;
+    }
+    private Pergunta obterPerguntaForcaModelo3() {
+        Pergunta pergunta = new Pergunta();
+        pergunta.setPosicao(1);
+        pergunta.setDescricao("A palavra 'cachorro' é o que na frase: 'O cachorro era pequeno'.");
+        pergunta.setJustificativa("Substantivos são palavras que dão nomes aos seres. O significado de “seres”, porém, não é o biológico. Seres, neste contexto, pode significar pessoas, lugares, grupos, indivíduos, animais, elementos mitológicos ou da natureza. O conceito de seres é muito mais abrangente do que aquele ao qual estamos habituados. Em termos gerais, os substantivos são nomes, não só de seres, mas também de emoções, sensações e diversos outros elementos que podem ser nomeados.");
+        pergunta.setDica("Pode ser pronome, substantivo, adjetivo ou verbo.");
+        
+        Set<Resposta> respostas = new HashSet<>();
+        Resposta resposta = new Resposta();
+        resposta.setId(1L);
+        resposta.setCorreta(Boolean.TRUE);
+        resposta.setDescricao("Substantivo");
+        respostas.add(resposta);
+        
+        pergunta.setRespostas(respostas);
+        
+        return pergunta;
     }
     //</editor-fold>
     
