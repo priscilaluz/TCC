@@ -1,6 +1,6 @@
 tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$location', '$timeout', 'Jogo',
     function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
-        //$rootScope.contagem = true;
+        $rootScope.contagem = true;
         var imgCampoVazio = "img/jogos/forca/Letras/CampoVazio.png";
         var espaco = "img/jogos/forca/Letras/espaco.png";
         $scope.count = 0;
@@ -50,8 +50,8 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
             var resposta = ganhou?respostaCorreta:null;
             for (var i = 0; i < $scope.model.letras.length; i++) {
                 if (!$scope.model.letras[i].escolhida) {
-                    var letra = buscarLetrasComAcentos($scope.model.letras[i])[0];
-                    var letraCerta = buscarImgLetrasComAcentos($scope.model.letras[i].letra, letra.letra);
+                    var letra = buscarLetrasComAcentos($scope.model.letras[i].letra)[0];
+                    var letraCerta = buscarImgLetrasComAcentos($scope.model.letras[i].letra, letra);
                     $scope.model.letras[i].imagem = "img/jogos/forca/Letras/" + letraCerta + "-incorreto.png";
                 }
             }
@@ -67,7 +67,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
         var proximaPergunta = function (){
             $scope.model.posicao++;
             barraDeProgresso();
-            if (($scope.model.posicao+1) < $scope.model.perguntas.length) {
+            if (($scope.model.posicao+1) <= $scope.model.perguntas.length) {
                 $scope.model.pergunta = $scope.model.perguntas[$scope.model.posicao];
                 $scope.model.letrasEscolhidas = [];
                 inicializarLetras();
@@ -141,6 +141,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
                 }
             }
             if (todasLetra) {
+                $scope.model.pontuacao = $scope.model.pontuacao + 50;
                 addAoRelatorioFinal(true);
             }
             if (!contemLetra) {
@@ -195,7 +196,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
                 $rootScope.appLoaded = true;
                 $scope.telaInit = false;
                 barraDeProgresso();
-                //$scope.contagemInicial();
+                $scope.contagemInicial();
             }, function (error) {
                 $rootScope.appLoaded = true;
             });

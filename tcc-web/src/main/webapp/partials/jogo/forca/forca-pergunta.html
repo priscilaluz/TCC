@@ -6,6 +6,9 @@
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" ng-show="!contagem" style="margin-bottom: 30px;">
     <div class="form-group">
+        <div class="col-md-12">
+            <p class="col-lg-12 curso-titulo-concluido" style="font-size: 30px;">Pontuação: {{model.pontuacao}}</p>
+        </div>
         <div class="col-md-12" style="background-color: #1b6d85; margin-bottom: 25px;">
             <h3 class="title-fonte text-center">{{model.pergunta.descricao}}</h3>
         </div>
@@ -14,7 +17,7 @@
         </div>
         <div class="col-md-8">
             <div class="col-md-12" style="padding-bottom: 30px;">
-                <img ng-repeat="letra in model.letras" ng-src="{{letra.imagem}}" style="height:70px;">
+                <img ng-repeat="letra in model.letras" ng-src="{{letra.imagem}}" style="height:65px;">
             </div>
             <div class="col-md-12">
                 <div class="row" data-ng-include="'partials/jogo/forca/forca-teclado.html'"></div>
