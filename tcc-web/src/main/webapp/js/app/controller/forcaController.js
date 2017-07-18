@@ -51,7 +51,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
             for (var i = 0; i < $scope.model.letras.length; i++) {
                 if (!$scope.model.letras[i].escolhida) {
                     var letra = buscarLetrasComAcentos($scope.model.letras[i])[0];
-                    var letraCerta = buscarImgLetrasComAcentos($scope.model.letras[i].letra, letra);
+                    var letraCerta = buscarImgLetrasComAcentos($scope.model.letras[i].letra, letra.letra);
                     $scope.model.letras[i].imagem = "img/jogos/forca/Letras/" + letraCerta + "-incorreto.png";
                 }
             }
@@ -181,6 +181,8 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
                     $scope.model.letras[i].escolhida = false;
                 }
             }
+            erro = 1;
+            $scope.model.forcaImg = "img/jogos/forca/Bonecos/forca" + erro + ".png";
         };
 
         var init = function () {
