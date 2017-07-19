@@ -12,6 +12,8 @@ package br.com.tcc.common.vo;
 public class Letra {
     private int posicao;
     private String letra;
+    private boolean pintada;
+    private boolean selecionada;
 
     public Letra(int posicao, String letra) {
         this.posicao = posicao;
@@ -32,5 +34,21 @@ public class Letra {
 
     public void setLetra(String letra) {
         this.letra = letra;
+    }
+
+    public boolean isPintada() {
+        return pintada;
+    }
+
+    public void setPintada(boolean pintada) {
+        this.pintada = pintada;
+    }
+
+    public boolean isSelecionada() {
+        return selecionada;
+    }
+
+    public void setSelecionada(boolean selecionada) {
+        this.selecionada = selecionada;
     }
 }

@@ -58,6 +58,10 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/jogo/forca/forca.html',
         controller: 'ForcaController'
       }).
+      when('/jogos-simulado/caca-palavra', {
+        templateUrl: 'partials/jogo/caca-palavra/caca-palavra.html',
+        controller: 'CacaPalavraController'
+      }).
 
       otherwise({
         redirectTo: '/home'

@@ -1,0 +1,19 @@
+<h1 class="title-fonte" ng-show="!contagem">Caça Palavra</h1>
+<div class="progress" ng-show="!contagem">
+    <div class="progress-bar" role="progressbar" ng-style="barraProgresso">
+        {{barraProgresso.width}}
+    </div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" ng-show="!contagem" style="margin-bottom: 30px;">
+    <div class="form-group">
+        <div class="col-md-6">
+            <div class="col-md-12" ng-repeat="linha in model.matrizCompleta">
+                <div class="col-md-1 cedula handCursor" ng-repeat="dado in linha" ng-style="dado.style"
+                     ng-mouseover="mouseOverCelula($parent.$index, $index)"
+                     ng-mouseleave="mouseLeaveCelula($parent.$index, $index)">
+                    {{dado.letra}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

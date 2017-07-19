@@ -1,3 +1,16 @@
+.cedula {
+    border: 1px double #d2d2d2;
+    padding-top: 10px;
+    height: 38px;
+    width: 38px;
+    border-radius: 3px;
+    font-family:"Balthazar";
+    font-size: 15px;
+    color: #ffffff;
+} 
+.cedula-selcionada {
+    background-color: #9bcffd;
+} 
 .fundo-todas-telas {
     background-color: #dff0d8;
     border: #cbe8ba solid 1px;
@@ -17,7 +30,7 @@
     color: #ffffff;
     background-color: #61a5b9;
     border: #c3dad7 dotted 3px;
-    
+
 }
 
 .btn-resposta-quiz:hover {
@@ -40,9 +53,9 @@
     border-color: #adadad;
 }
 .img-jogos-menu{
-     height:150px;
-     display: block;
-     margin: 0 auto;
+    height:150px;
+    display: block;
+    margin: 0 auto;
 }
 .jogos-menu{
     background-color: #8ac4ae;
@@ -97,14 +110,14 @@
     padding-left: 0px;
 }
 .verdadeiro{
-     color: green;
+    color: green;
 }
 .falso{
-     color: red;
+    color: red;
 }
 .title-fonte{
-     font-family: 'Balthazar';
-     color: #ffffff;
+    font-family: 'Balthazar';
+    color: #ffffff;
 }
 .botao-add{
     border-radius: 22px;
@@ -160,7 +173,7 @@
 }
 
 li {
-display: inline;
+    display: inline;
 }
 
 .menu-fonte-glyphicon{
@@ -391,4 +404,41 @@ li{
     background-color: #b4bcc2;
     border-color: #b4bcc2;
     color: #000000;
-}    
+}
+
+
+
+/* Application */
+
+#types {
+    margin: 0 0 40px 0px;
+    padding: 10px;
+    list-style: none;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f3f3f3;
+}
+#types li {
+    display: inline-block;
+    padding: 10px;
+    margin-right: 40px;
+}
+#types li a {
+    font-size: 22pt;
+    color: #999;
+}
+#types li.selected {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #999;
+    -webkit-box-shadow: 0 0 5px #999;
+    -moz-box-shadow: 0 0 5px #999;
+}
+#types li.selected a {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}

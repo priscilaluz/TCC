@@ -7,13 +7,14 @@ package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
-import br.com.tcc.common.entity.Anexo;
+import br.com.tcc.common.vo.Letra;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -50,6 +51,29 @@ public class JogoResource {
         perguntas.add(obterPerguntaForcaModelo2());
         perguntas.add(obterPerguntaForcaModelo3());
         return perguntas;
+    }
+    
+    @GET
+    @Path("/cacaPalavraApresentacao")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Letra[][] buscarPerguntasDaApresentacaoDoJogoCacaPalavra() {
+        Letra[][] matrix = new Letra[10][10];
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                matrix[i][j] = new Letra(-1, getLetraAleatoria());
+            }
+        }
+        return matrix;
+    }
+    
+    private String getLetraAleatoria() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+        salt.append(SALTCHARS.charAt(index));
+        return salt.toString();
+
     }
     
     //<editor-fold defaultstate="collapsed" desc="Perguntas do Quiz Simuldao Modelo">

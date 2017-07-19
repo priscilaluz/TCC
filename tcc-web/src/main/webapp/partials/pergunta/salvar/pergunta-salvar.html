@@ -35,7 +35,7 @@
             <div class="form-group" ng-show="pergunta.tipo&&pergunta.tipo.id==='CL'">
                 <label for="resposta" class="col-lg-1 control-label label-font">Resposta:</label>
                 <div class="col-lg-11" ng-class="{'has-error': perguntaForm.resposta.$error.required}">
-                    <input type="text" maxlength="20" name="resposta" ng-model="respostaUnica" class="form-control" ng-disabled="!editar"
+                    <input type="text" maxlength="12" name="resposta" ng-model="respostaUnica" class="form-control" ng-disabled="!editar"
                            ng-required="pergunta.tipo&&pergunta.tipo.id==='CL'" id="resposta" placeholder="Resposta">
                 </div>
             </div>
