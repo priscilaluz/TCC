@@ -4,11 +4,13 @@
         {{barraProgresso.width}}
     </div>
 </div>
-<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" ng-show="!contagem" style="margin-bottom: 30px;">
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" ng-show="!contagem" style="margin-bottom: 30px;" ng-mouseup="mouseUpCelula()">
     <div class="form-group">
         <div class="col-md-6">
             <div class="col-md-12" ng-repeat="linha in model.matrizCompleta">
-                <div class="col-md-1 cedula handCursor" ng-repeat="dado in linha" ng-style="dado.style"
+                <div class="col-md-1 cedula handCursor noselect" ng-repeat="dado in linha" ng-style="dado.style"
+                     ng-mousedown="mouseDownCelula($parent.$index, $index)"
+                     ng-mouseup="mouseUpCelula($parent.$index, $index)"
                      ng-mouseover="mouseOverCelula($parent.$index, $index)"
                      ng-mouseleave="mouseLeaveCelula($parent.$index, $index)">
                     {{dado.letra}}
@@ -17,3 +19,4 @@
         </div>
     </div>
 </div>
+

@@ -31,23 +31,20 @@
 
 
 
-<div ng-mouseenter="count1 = count1 + 1" style="background-color: red;" ng-init="count1=0">Mouse over me!</div>
+<div ng-mouseenter="count1 = count1 + 1" style="background-color: red; color: black;" ng-init="count1=0">Aumenta o count se entrar na div</div>
 <h1 style="color: red;">count1 - {{count1}}</h1>
 
-<div ng-mouseover="count2 = count2 + 1" style="background-color: blue;" ng-init="count2=0">Mouse over me!</div>
+<div ng-mouseover="count2 = count2 + 1" style="background-color: blue; color: white;" ng-init="count2=0">Aumenta o count se entrar na div</div>
 <h1 style="color: blue;">count2 - {{count2}}</h1>
 
-<div ng-mousedown="count3 = count3 + 1" style="background-color: green;" ng-init="count3=0">Click me!</div>
-<h1 style="color: green;">count3 - {{count3}}</h1>
+<div ng-mouseleave="count3 = count3 + 1" style="background-color: grey; color: white;" ng-init="count3=0">Aumenta o count se sair da div</div>
+<h1 style="color: grey;">count3 - {{count3}}</h1>
 
-<div ng-mouseleave="count4 = count4 + 1" style="background-color: grey;" ng-init="count4=0">Mouse over me! (and mouse away from me...)</div>
-<h1 style="color: grey;">count4 - {{count4}}</h1>
+<div ng-mousemove="count4 = count4 + 1" style="background-color: yellow; color: black;" ng-init="count4=0">Aumenta o count se fizer qualquer movimento dentro da div</div>
+<h1 style="color: yellow;">count4- {{count4}}</h1>
 
-<div ng-mousemove="count5 = count5 + 1" style="background-color: yellow;" ng-init="count5=0">Mouse over me!</div>
-<h1 style="color: yellow;">count5- {{count5}}</h1>
+<div ng-mousedown="count5 = count5 + 1" style="background-color: green; color: white;" ng-init="count5=0">Aumenta o count se clicar</div>
+<h1 style="color: green;">count5 - {{count5}}</h1>
 
-<div ng-mouseover="count6 = count6 + 1" style="background-color: yellowgreen;" ng-init="count6=0">Mouse over me!</div>
-<h1 style="color: yellowgreen;">count6 - {{count6}}</h1>
-
-<div ng-mouseup="count7 = count7 + 1" style="background-color: purple;" ng-init="count7=0">Click me!</div>
-<h1 style="color: purple;">count7- {{count7}}</h1>
+<div ng-mouseup="count6 = count6 + 1" style="background-color: purple; color: white;" ng-init="count6=0">Aumenta o count se soltar o click</div>
+<h1 style="color: purple;">count6- {{count6}}</h1>
