@@ -3,15 +3,12 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     $scope.model = {
         primeiraCedula: null,
         matrizCompleta: null,
-        perguntas: [],
-        formarPalavra: []
+        perguntas: []
     };
-    var tamanhoMatriz = 10;
+    var tamanhoMatriz = 12;
     var corSelecionada = '#5396d4';
     var corQuandoPassarPor = '#9bcffd';
     var corInicial = '#8ab7de';
-    
-//$scope.model.formarPalavra.push({x:i, y:j, letra: angular.copy($scope.model.matrizCompleta[i][j])});
     
     $scope.mouseDownCelula = function (i, j) {
         $scope.model.primeiraCedula = null;
@@ -22,18 +19,21 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     };
     
     $scope.mouseUpCelula = function (i, j) {
+        var listaDeXY = [];
         if (j >= 0 && i >= 0 && $scope.model.primeiraCedula){
             var palavra = "";
             if (i === $scope.model.primeiraCedula.x) {
                 var yMenor = $scope.model.primeiraCedula.y < j ? $scope.model.primeiraCedula.y : j;
                 var yMaior = $scope.model.primeiraCedula.y > j ? $scope.model.primeiraCedula.y : j;
                 for (var b = yMenor; b <= yMaior; b++) {
+                    listaDeXY.push({x:i, y:b});
                     palavra = palavra + $scope.model.matrizCompleta[i][b].letra;
                 }
             } else if (j === $scope.model.primeiraCedula.y) {
                 var xMenor = $scope.model.primeiraCedula.x < i ? $scope.model.primeiraCedula.x : i;
                 var xMaior = $scope.model.primeiraCedula.x > i ? $scope.model.primeiraCedula.x : i;
                 for (var a = xMenor; a <= xMaior; a++) {
+                    listaDeXY.push({x:a, y:j});
                     palavra = palavra + $scope.model.matrizCompleta[a][j].letra;
                 }
             } else {
@@ -47,6 +47,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
                     var yMenor = $scope.model.primeiraCedula.y < j ? $scope.model.primeiraCedula.y : j;
 
                     for (var a = 0; a <= diagonal; a++) {
+                        listaDeXY.push({x:xMenor+a, y:yMenor+a});
                         palavra = palavra + $scope.model.matrizCompleta[xMenor+a][yMenor+a].letra;
                     }
                 } else {
@@ -65,6 +66,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
                         }
 
                         for (var a = 0; a <= diagonal; a++) {
+                            listaDeXY.push({x:xInicio+a, y:yInicio-a});
                             palavra = palavra + $scope.model.matrizCompleta[xInicio+a][yInicio-a].letra;
                         }
 
@@ -72,10 +74,27 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
                 }
             }
             $scope.palavra = palavra;
-
+            var palavraExiste = false;
+            for (var k = 0; k < $scope.model.perguntas.length; k++) {
+                var resposta = $scope.model.perguntas[k].respostas[0].descricao.toUpperCase();
+                if (resposta == palavra || resposta == reverse(palavra)) {
+                    palavraExiste = true;
+                }
+            }
+            if (palavraExiste) {
+                for (var k = 0; k < listaDeXY.length; k++) {
+                    var posicaoX = listaDeXY[k].x;
+                    var posicaoY = listaDeXY[k].y;
+                    $scope.model.matrizCompleta[posicaoX][posicaoY].comPalavra = true;
+                    $scope.model.matrizCompleta[posicaoX][posicaoY].style = {'background-color': 'red'};
+                }
+            }
             $scope.model.primeiraCedula = null;
             backgroundMatrix();
         }
+    };
+    var reverse = function (s){
+        return s.split("").reverse().join("");
     };
     
     $scope.mouseOverCelula = function (i, j) {
@@ -133,7 +152,9 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
                 }
             }
         } else {
-            $scope.model.matrizCompleta[i][j].style = {'background-color': corQuandoPassarPor};
+            if (!$scope.model.matrizCompleta[i][j].comPalavra) {
+                $scope.model.matrizCompleta[i][j].style = {'background-color': corQuandoPassarPor};
+            }
         }
     };
     
@@ -149,6 +170,8 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
                 $scope.model.matrizCompleta[i][j].selecionado = false;
                 if (!$scope.model.matrizCompleta[i][j].comPalavra) {
                     $scope.model.matrizCompleta[i][j].style = {'background-color': corInicial};
+                } else {
+                    $scope.model.matrizCompleta[i][j].style = {'background-color': '#215003'};
                 }
             }
         }

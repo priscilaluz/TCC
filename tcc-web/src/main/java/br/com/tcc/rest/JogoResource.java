@@ -60,7 +60,7 @@ public class JogoResource {
     @Path("/cacaPalavraApresentacao")
     @Produces(MediaType.APPLICATION_JSON)
     public CacaPalavra buscarPerguntasDaApresentacaoDoJogoCacaPalavra() {
-        Integer tamanhoMatriz = 10;
+        Integer tamanhoMatriz = 12;
         List<Pergunta> perguntas = new ArrayList<>();
         perguntas.add(obterPerguntaCacaPalavraModelo1());
 //        perguntas.add(obterPerguntaCacaPalavraModelo2());

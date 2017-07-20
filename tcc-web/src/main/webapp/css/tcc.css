@@ -10,9 +10,10 @@
 
 .cedula {
     border: 1px double #d2d2d2;
-    padding-top: 10px;
-    height: 38px;
-    width: 38px;
+    padding-top: 7px;
+    padding-left: 13px;
+    height: 32px;
+    width: 32px;
     border-radius: 3px;
     font-family:"Balthazar";
     font-size: 15px;
