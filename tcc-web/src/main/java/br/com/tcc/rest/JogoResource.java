@@ -7,6 +7,9 @@ package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
+import br.com.tcc.common.enums.OrdemCacaPalavra;
+import br.com.tcc.common.enums.OrientacaoCacaPalavra;
+import br.com.tcc.common.vo.CacaPalavra;
 import br.com.tcc.common.vo.Letra;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -56,24 +59,68 @@ public class JogoResource {
     @GET
     @Path("/cacaPalavraApresentacao")
     @Produces(MediaType.APPLICATION_JSON)
-    public Letra[][] buscarPerguntasDaApresentacaoDoJogoCacaPalavra() {
-        Letra[][] matrix = new Letra[10][10];
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+    public CacaPalavra buscarPerguntasDaApresentacaoDoJogoCacaPalavra() {
+        Integer tamanhoMatriz = 10;
+        List<Pergunta> perguntas = new ArrayList<>();
+        perguntas.add(obterPerguntaCacaPalavraModelo1());
+//        perguntas.add(obterPerguntaCacaPalavraModelo2());
+//        perguntas.add(obterPerguntaCacaPalavraModelo3());
+        
+        Letra[][] matrix = new Letra[tamanhoMatriz][tamanhoMatriz];
+        for (int i = 0; i < tamanhoMatriz; i++) {
+            for (int j = 0; j < tamanhoMatriz; j++) {
                 matrix[i][j] = new Letra(-1, getLetraAleatoria());
             }
         }
-        return matrix;
+        for (Pergunta pergunta : perguntas) {
+            Resposta resposta = pergunta.getRespostas().iterator().next();
+            String palavra = resposta.getDescricao().toUpperCase();
+            OrdemCacaPalavra ordem = OrdemCacaPalavra.from(getIntAleatoria(2).toString());
+            if (OrdemCacaPalavra.INVERSA.equals(ordem)) {
+                StringBuilder s = new StringBuilder(palavra);
+                palavra = s.reverse().toString();
+            }
+            OrientacaoCacaPalavra orientacao = OrientacaoCacaPalavra.from(getIntAleatoria(3).toString());
+            int x = 0, y = 0;
+            int espacoSobrando = tamanhoMatriz - palavra.length();
+            if ((OrientacaoCacaPalavra.DIAGONAL.equals(orientacao)) || (OrientacaoCacaPalavra.VERTICAL.equals(orientacao))){
+                y = getIntAleatoria(espacoSobrando);
+            }
+            if ((OrientacaoCacaPalavra.DIAGONAL.equals(orientacao)) || (OrientacaoCacaPalavra.HORIZONTAL.equals(orientacao))){
+                x = getIntAleatoria(espacoSobrando);
+            }
+            if (OrientacaoCacaPalavra.VERTICAL.equals(orientacao)) {
+                for (int i = 0; i < palavra.length(); i++) {
+                    matrix[x+i][y] = new Letra(-1, ""+palavra.charAt(i));
+                }
+            }
+            if (OrientacaoCacaPalavra.HORIZONTAL.equals(orientacao)) {
+                for (int i = 0; i < palavra.length(); i++) {
+                    matrix[x][y+i] = new Letra(-1, ""+palavra.charAt(i));
+                }
+            }
+            if (OrientacaoCacaPalavra.DIAGONAL.equals(orientacao)) {
+                for (int i = 0; i < palavra.length(); i++) {
+                    matrix[x+i][y+i] = new Letra(-1, ""+palavra.charAt(i));
+                }
+            }
+        }
+        
+        return new CacaPalavra(matrix, perguntas, tamanhoMatriz);
+    }
+    
+    private Integer getIntAleatoria(int ateNum) {
+        Random rnd = new Random();
+        return (Integer) rnd.nextInt(ateNum);
     }
     
     private String getLetraAleatoria() {
-        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÃÕ";
         StringBuilder salt = new StringBuilder();
         Random rnd = new Random();
         int index = (int) (rnd.nextFloat() * SALTCHARS.length());
         salt.append(SALTCHARS.charAt(index));
         return salt.toString();
-
     }
     
     //<editor-fold defaultstate="collapsed" desc="Perguntas do Quiz Simuldao Modelo">
@@ -351,6 +398,63 @@ public class JogoResource {
         resposta.setId(1L);
         resposta.setCorreta(Boolean.TRUE);
         resposta.setDescricao("Substantivo");
+        respostas.add(resposta);
+        
+        pergunta.setRespostas(respostas);
+        
+        return pergunta;
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Perguntas do Caça Palavra Simuldao Modelo">
+    private Pergunta obterPerguntaCacaPalavraModelo1() {
+        Pergunta pergunta = new Pergunta();
+        pergunta.setPosicao(1);
+        pergunta.setDescricao("São consideradas a menor parte dos organismos vivos, sendo, portanto, elementos estruturais e funcionais.");
+        pergunta.setJustificativa("O corpo humano é formado por uma quantidade enorme de células. As células são consideradas a menor parte dos organismos vivos, sendo, portanto, elementos estruturais e funcionais.");
+        pergunta.setDica("O corpo humano é pluricelular");
+        
+        Set<Resposta> respostas = new HashSet<>();
+        Resposta resposta = new Resposta();
+        resposta.setId(1L);
+        resposta.setCorreta(Boolean.TRUE);
+        resposta.setDescricao("Célula");
+        respostas.add(resposta);
+        
+        pergunta.setRespostas(respostas);
+        
+        return pergunta;
+    }
+    private Pergunta obterPerguntaCacaPalavraModelo2() {
+        Pergunta pergunta = new Pergunta();
+        pergunta.setPosicao(1);
+        pergunta.setDescricao("Primeiro nome do 20º Presidente do Brasil. O destaque do governo de foi a chamada política desenvolvimentista, ou seja, fazer o Brasil crescer e se desenvolver “cinqüenta anos em cinco”.");
+        pergunta.setJustificativa("Mineiro de Diamantina, Juscelino Kubitschek de Oliveira foi o 20º Presidente do Brasil. Mas seus feitos o consagraram como um dos principais dentre muitos que já passaram por este cargo.");
+        pergunta.setDica("Kubitschek");
+        
+        Set<Resposta> respostas = new HashSet<>();
+        Resposta resposta = new Resposta();
+        resposta.setId(1L);
+        resposta.setCorreta(Boolean.TRUE);
+        resposta.setDescricao("Juscelino");
+        respostas.add(resposta);
+        
+        pergunta.setRespostas(respostas);
+        
+        return pergunta;
+    }
+    private Pergunta obterPerguntaCacaPalavraModelo3() {
+        Pergunta pergunta = new Pergunta();
+        pergunta.setPosicao(1);
+        pergunta.setDescricao("A palavra 'pequeno' é o que na frase: 'O cachorro era pequeno'.");
+        pergunta.setJustificativa("Substantivos são palavras que dão nomes aos seres. O significado de “seres”, porém, não é o biológico. Seres, neste contexto, pode significar pessoas, lugares, grupos, indivíduos, animais, elementos mitológicos ou da natureza. O conceito de seres é muito mais abrangente do que aquele ao qual estamos habituados. Em termos gerais, os substantivos são nomes, não só de seres, mas também de emoções, sensações e diversos outros elementos que podem ser nomeados.");
+        pergunta.setDica("Pode ser pronome, substantivo, adjetivo ou verbo.");
+        
+        Set<Resposta> respostas = new HashSet<>();
+        Resposta resposta = new Resposta();
+        resposta.setId(1L);
+        resposta.setCorreta(Boolean.TRUE);
+        resposta.setDescricao("Adjetivo");
         respostas.add(resposta);
         
         pergunta.setRespostas(respostas);

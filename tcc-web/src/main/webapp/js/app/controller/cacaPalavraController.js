@@ -3,8 +3,10 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     $scope.model = {
         primeiraCedula: null,
         matrizCompleta: null,
+        perguntas: [],
         formarPalavra: []
     };
+    var tamanhoMatriz = 10;
     var corSelecionada = '#5396d4';
     var corQuandoPassarPor = '#9bcffd';
     var corInicial = '#8ab7de';
@@ -20,7 +22,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     };
     
     $scope.mouseUpCelula = function (i, j) {
-        if (j >= 0 && i >= 0){
+        if (j >= 0 && i >= 0 && $scope.model.primeiraCedula){
             var palavra = "";
             if (i === $scope.model.primeiraCedula.x) {
                 var yMenor = $scope.model.primeiraCedula.y < j ? $scope.model.primeiraCedula.y : j;
@@ -142,8 +144,8 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     };
     
     var backgroundMatrix = function () {
-        for (var i = 0; i < 10; i++) {
-            for (var j = 0; j < 10; j++) {
+        for (var i = 0; i < tamanhoMatriz; i++) {
+            for (var j = 0; j < tamanhoMatriz; j++) {
                 $scope.model.matrizCompleta[i][j].selecionado = false;
                 if (!$scope.model.matrizCompleta[i][j].comPalavra) {
                     $scope.model.matrizCompleta[i][j].style = {'background-color': corInicial};
@@ -154,8 +156,10 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     
     var init = function () {
         $rootScope.appLoaded = false;
-        Jogo.buscarPerguntasDaApresentacaoDoJogoCacaPalavra(function (matriz) {
-            $scope.model.matrizCompleta = matriz;
+        Jogo.buscarPerguntasDaApresentacaoDoJogoCacaPalavra(function (cacaPalavra) {
+            $scope.model.matrizCompleta = cacaPalavra.matriz;
+            $scope.model.perguntas = cacaPalavra.perguntas;
+            tamanhoMatriz = cacaPalavra.tamanhoMatriz;
             backgroundMatrix();
             $rootScope.appLoaded = true;
         }, function (error) {
