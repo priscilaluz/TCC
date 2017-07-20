@@ -83,12 +83,18 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
                         var diagonal = ($scope.model.primeiraCedula.x-i);
                         diagonal = (diagonal>=0)?diagonal:diagonal*(-1);
 
-                        var xMenor = $scope.model.primeiraCedula.x < i ? $scope.model.primeiraCedula.x : i;
-                        var yMenor = $scope.model.primeiraCedula.y < j ? $scope.model.primeiraCedula.y : j;
-
-                        for (var a = 0; a <= diagonal; a++) {
-                            $scope.model.matrizCompleta[xMenor-a][yMenor-a].style = {'background-color': corSelecionada};
+                        var xInicio = i;
+                        var yInicio = j;
+                        
+                        if ($scope.model.primeiraCedula.x < i) {
+                            xInicio = $scope.model.primeiraCedula.x;
+                            yInicio = $scope.model.primeiraCedula.y;
                         }
+                        
+                        for (var a = 0; a <= diagonal; a++) {
+                            $scope.model.matrizCompleta[xInicio+a][yInicio-a].style = {'background-color': corSelecionada};
+                        }
+
                     }
                 }
             }
