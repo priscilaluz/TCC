@@ -86,7 +86,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
             var m = 0;
             for (var m = 0; m < $scope.model.perguntas.length; m++) {
                 var resposta = $scope.model.perguntas[m].respostas[0].descricao.toUpperCase();
-                if (resposta === palavra || resposta === reverse(palavra)) {
+                if ((resposta === palavra || resposta === reverse(palavra)) && !$scope.model.perguntas[m].style) {
                     palavraExiste = true;
                     break;
                 }
@@ -167,9 +167,9 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
                 }
             }
         } else {
-            //if (!$scope.model.matrizCompleta[i][j].comPalavra) {
+            if (!$scope.model.matrizCompleta[i][j].comPalavra) {
                 $scope.model.matrizCompleta[i][j].style = {'background-color': corQuandoPassarPor};
-            //}
+            }
         }
     };
     
@@ -213,10 +213,10 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     var mudarMatriz = function () {
         indexMatriz++;
         palavrasEncontradas = 0;
-        if (indexMatriz <= $scope.model.cacaPalavraLista.length) {
-            $scope.model.matrizCompleta = $scope.model.cacaPalavraLista[indexMatriz].matriz;
-            $scope.model.perguntas = $scope.model.cacaPalavraLista[indexMatriz].perguntas;
-            tamanhoMatriz = $scope.model.cacaPalavraLista[indexMatriz].tamanhoMatriz;
+        if (indexMatriz <= $scope.model.cacaPalavraLista.cacaPalavra.length) {
+            $scope.model.matrizCompleta = $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].matriz;
+            $scope.model.perguntas = $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].perguntas;
+            tamanhoMatriz = $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].tamanhoMatriz;
             backgroundMatriz();
         }
     };

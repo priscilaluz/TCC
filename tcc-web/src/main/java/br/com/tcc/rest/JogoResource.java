@@ -82,31 +82,42 @@ public class JogoResource {
         perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
-        if ((perguntasTodas.size()/tamanhoMatriz) > 1){
-            int a = (16/12);
-        }
-        
-        
+        Integer qntPerguntas = perguntasTodas.size();
         List<CacaPalavra> lista = new ArrayList<>();
-        List<String> respostas = new ArrayList<>();
-        for (Pergunta pergunta : perguntasTodas) {
-            for (Resposta resposta : pergunta.getRespostas()) {
-                if (resposta.getCorreta()){
-                    respostas.add(resposta.getDescricao().toUpperCase());
-                }
+        if ((new Double(qntPerguntas)/tamanhoMatriz) > 1){
+            int qntMatriz = (qntPerguntas/tamanhoMatriz) + 1;
+            int qntPerguntaPorMatriz = (qntPerguntas/qntMatriz);
+            int resto = qntPerguntas % qntMatriz;
+            for (int i = 0; i < qntMatriz; i++) {
+                int tamanhoSubList = qntPerguntaPorMatriz-1+(i*qntPerguntaPorMatriz);
+                tamanhoSubList = (i == (qntMatriz-1))?tamanhoSubList+resto:tamanhoSubList;
+                List<Pergunta> perguntas = perguntasTodas.subList(i*qntPerguntaPorMatriz, tamanhoSubList);
+                lista.add(new CacaPalavra(null, perguntas, tamanhoMatriz));
             }
         }
-        Letra[][] matriz = criarMatriz(respostas);
         
-        for (int i = 0; i < tamanhoMatriz; i++) {
-            for (int j = 0; j < tamanhoMatriz; j++) {
-                if (matriz[i][j] == null){
-                    matriz[i][j] = new Letra(-1, getLetraAleatoria());
+        for (CacaPalavra cacaPalavra : lista) {
+            List<String> respostas = new ArrayList<>();
+            for (Pergunta pergunta : cacaPalavra.getPerguntas()) {
+                for (Resposta resposta : pergunta.getRespostas()) {
+                    if (resposta.getCorreta()){
+                        respostas.add(resposta.getDescricao().toUpperCase());
+                    }
                 }
             }
+            Letra[][] matriz = criarMatriz(respostas);
+
+            for (int i = 0; i < tamanhoMatriz; i++) {
+                for (int j = 0; j < tamanhoMatriz; j++) {
+                    if (matriz[i][j] == null){
+                        matriz[i][j] = new Letra(-1, getLetraAleatoria());
+                    }
+                }
+            }
+            cacaPalavra.setMatriz(matriz);
+            //lista.add(new CacaPalavra(matriz, perguntasTodas, tamanhoMatriz));
         }
-        lista.add(new CacaPalavra(matriz, perguntasTodas, tamanhoMatriz));
-        return new CacaPalavraLista(lista, perguntasTodas.size());
+        return new CacaPalavraLista(lista, qntPerguntas);
     }
     
     private Letra[][] criarMatriz(List<String> respostas) {
