@@ -113,6 +113,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
             for (var m = 0; m < $scope.model.perguntas.length; m++) {
                 var resposta = $scope.model.perguntas[m].respostas[0].descricao.toUpperCase();
                 if ((resposta === palavra || resposta === reverse(palavra)) && !$scope.model.perguntas[m].style) {
+                    $scope.model.pontuacao = $scope.model.pontuacao + 50;
                     palavraExiste = true;
                     break;
                 }

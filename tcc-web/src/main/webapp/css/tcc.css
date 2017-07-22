@@ -74,6 +74,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     margin-bottom: 30px;
+    border-radius: 8px;
 }
 .jogos-menu:hover {
     background-color: #295444;
