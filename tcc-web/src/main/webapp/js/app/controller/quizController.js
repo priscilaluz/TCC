@@ -110,10 +110,11 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
             $scope.model.dica = true;
             $scope.model.qntDica--;
         }
+        var obj = {'dica': dica};
         $modal.open({
             templateUrl: 'partials/jogo/dica.html',
             controller: 'DicaController',
-            resolve: {dica: function () {return dica;}}
+            resolve: {obj: function () {return obj;}}
         }).result.then(function (result) {
             // Modal retorno
             $scope.tempoPergunta();

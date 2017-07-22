@@ -3,7 +3,8 @@
 </div>
 <div class="modal-body">
     <form role="form" name="dicaForm" class="form-horizontal" enctype="multipart/form-data">
-        <p class="curso-nao-titulo-concluido">{{model.dica}}</p>
+        <p class="curso-nao-titulo-concluido" ng-show="model.pergunta"><b>Pergunta: </b>{{model.pergunta}}</p>
+        <p class="curso-nao-titulo-concluido"><b ng-show="model.pergunta">Dica: </b>{{model.dica}}</p>
     </form>
 </div>
 <div class="modal-footer" style="background-color: #cbe8ba;">

@@ -30,12 +30,11 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
                 $scope.model.dica = true;
                 $scope.model.qntDica--;
             }
+            var obj = {'dica': dica};
             $modal.open({
                 templateUrl: 'partials/jogo/dica.html',
                 controller: 'DicaController',
-                resolve: {dica: function () {
-                        return dica;
-                    }}
+                resolve: {obj: function () {return obj;}}
             }).result.then(function (result) {}, function () {});
         };
 

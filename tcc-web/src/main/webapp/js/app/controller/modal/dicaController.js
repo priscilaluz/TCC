@@ -1,7 +1,8 @@
-tccApp.controller('DicaController', ['$scope', '$modalInstance', 'dica',
-    function ($scope, $modalInstance, dica) {
+tccApp.controller('DicaController', ['$scope', '$modalInstance', 'obj',
+    function ($scope, $modalInstance, obj) {
         $scope.model = {
-            dica: dica
+            pergunta: obj.pergunta,
+            dica: obj.dica
         };
 
         $scope.fechar = function () {

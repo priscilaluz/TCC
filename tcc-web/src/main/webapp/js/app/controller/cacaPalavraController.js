@@ -7,6 +7,8 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         primeiraCedula: null,
         matrizCompleta: null,
         resultado: false,
+        qntPulo: 1,
+        qntDica: 1,
         cacaPalavraLista: [],
         perguntas: []
     };
@@ -17,6 +19,26 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     var perguntasTotaisEncontradas = 0;
     var palavrasEncontradas = 0;
     var coresSelecionadas = ['#5f3257','#356b23','#9e9b22','#de968a','#be8ade','#9a5316','#7da938','#d856ce','#5356ca','#04c71c','#ec0b7e','#ec7d1d'];
+    
+    $scope.dicaPergunta = function () {
+        var dica = "Não existe dicas disponíveis.";
+        var obj = {'dica': dica};
+        for (var x = 0; x <= $scope.model.perguntas.length; x++) {
+            if (!$scope.model.perguntas[x].style && $scope.model.perguntas[x].dica){
+                var pergunta = "Pergunta: "+$scope.model.perguntas[x].descricao;
+                dica = $scope.model.perguntas[x].dica;
+                obj = {'dica': dica, 'pergunta': pergunta};
+                $scope.model.dica = true;
+                $scope.model.qntDica--;
+                break;
+            }
+        }
+        $modal.open({
+            templateUrl: 'partials/jogo/dica.html',
+            controller: 'DicaController',
+            resolve: {obj: function () {return obj;}}
+        }).result.then(function (result) {}, function () {});
+    };
     
     $scope.mouseDownCelula = function (i, j) {
         $scope.model.primeiraCedula = null;
@@ -100,6 +122,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
                 $scope.model.perguntas[m].style = {'background-color': coresSelecionadas[palavrasEncontradas], 'color':'#fff'};
                 perguntasTotaisEncontradas++;
                 palavrasEncontradas++;
+                barraDeProgresso();
             }
             $scope.model.primeiraCedula = null;
             backgroundMatriz();
@@ -204,10 +227,20 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     };
     
     var barraDeProgresso = function () {
-        var porcentagem = (perguntasTotaisEncontradas + 1) / $scope.model.cacaPalavraLista.qntPergunta * 100;
+        var porcentagem = (perguntasTotaisEncontradas) / $scope.model.cacaPalavraLista.qntPergunta * 100;
         $scope.barraProgresso = {
             width: porcentagem + '%'
         };
+    };
+    
+    $scope.passarParaProxMatriz = function () {
+        perguntasTotaisEncontradas = 0;
+        for (var i = 0; i <= indexMatriz; i++) {
+            perguntasTotaisEncontradas = perguntasTotaisEncontradas + 
+                    $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].perguntas.length;
+        }
+        barraDeProgresso();
+        mudarMatriz();
     };
     
     var mudarMatriz = function () {
