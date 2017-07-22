@@ -1,6 +1,5 @@
 tccApp.controller('CacaPalavraController', ['$scope', '$rootScope', '$modal', '$location', '$timeout', 'Jogo',
 function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
-    $rootScope.contagem = true;
     $scope.count = 0;
     var indexMatriz = -1;
     $scope.model = {
@@ -10,7 +9,8 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         matrizCompleta: null,
         resultado: false,
         cacaPalavraLista: [],
-        perguntas: []
+        perguntas: [],
+        resultados: []
     };
     var tamanhoMatriz = 12;
     var corSelecionada = '#5396d4';
@@ -37,6 +37,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
                 break;
             }
         }
+        //$scope.obj = obj;
         $modal.open({
             templateUrl: 'partials/jogo/dica.html',
             controller: 'DicaController',
@@ -136,6 +137,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
             }
         }
     };
+    
     var reverse = function (s){
         return s.split("").reverse().join("");
     };
@@ -248,7 +250,21 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         mudarMatriz();
     };
     
+    var addRelatorioFinal = function () {
+        if (indexMatriz >= 0) {
+            for (var i = 0; i < $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].perguntas.length; i++) {
+                var pergunta = $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].perguntas[i];
+                var ganhou = pergunta.style?true:false;
+                var respostaCorreta = pergunta.respostas[0];
+                var resposta = ganhou?respostaCorreta:null;
+                $scope.model.resultados.push({'respostaEscolhida': resposta, 'respostaCorreta': respostaCorreta, 'ganhou':ganhou,
+                    'pergunta': pergunta});
+            }
+        }
+    };
+    
     var mudarMatriz = function () {
+        addRelatorioFinal();
         indexMatriz++;
         palavrasEncontradas = 0;
         if (indexMatriz < $scope.model.cacaPalavraLista.cacaPalavra.length) {
@@ -268,8 +284,9 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
             $scope.model.cacaPalavraLista = cacaPalavraLista;
             mudarMatriz();
             barraDeProgresso();
-            contagemInicial();
             $rootScope.appLoaded = true;
+            $rootScope.contagem = true;
+            contagemInicial();
         }, function (error) {
             $rootScope.appLoaded = true;
         });

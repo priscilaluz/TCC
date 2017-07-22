@@ -469,7 +469,7 @@ public class JogoResource {
     }
     private Pergunta obterPerguntaCacaPalavraModelo2() {
         Pergunta pergunta = new Pergunta();
-        pergunta.setPosicao(1);
+        pergunta.setPosicao(2);
         pergunta.setDescricao("Primeiro nome do 20º Presidente do Brasil. O destaque do governo de foi a chamada política desenvolvimentista, ou seja, fazer o Brasil crescer e se desenvolver “cinqüenta anos em cinco”.");
         pergunta.setJustificativa("Mineiro de Diamantina, Juscelino Kubitschek de Oliveira foi o 20º Presidente do Brasil. Mas seus feitos o consagraram como um dos principais dentre muitos que já passaram por este cargo.");
         pergunta.setDica("Kubitschek");
@@ -487,7 +487,7 @@ public class JogoResource {
     }
     private Pergunta obterPerguntaCacaPalavraModelo3() {
         Pergunta pergunta = new Pergunta();
-        pergunta.setPosicao(1);
+        pergunta.setPosicao(3);
         pergunta.setDescricao("A palavra 'pequeno' é o que na frase: 'O cachorro era pequeno'.");
         pergunta.setJustificativa("Substantivos são palavras que dão nomes aos seres. O significado de “seres”, porém, não é o biológico. Seres, neste contexto, pode significar pessoas, lugares, grupos, indivíduos, animais, elementos mitológicos ou da natureza. O conceito de seres é muito mais abrangente do que aquele ao qual estamos habituados. Em termos gerais, os substantivos são nomes, não só de seres, mas também de emoções, sensações e diversos outros elementos que podem ser nomeados.");
         pergunta.setDica("Pode ser pronome, substantivo, adjetivo ou verbo.");
