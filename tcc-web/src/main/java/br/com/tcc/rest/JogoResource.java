@@ -10,6 +10,7 @@ import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.enums.OrdemCacaPalavra;
 import br.com.tcc.common.enums.OrientacaoCacaPalavra;
 import br.com.tcc.common.vo.CacaPalavra;
+import br.com.tcc.common.vo.CacaPalavraLista;
 import br.com.tcc.common.vo.Letra;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -62,15 +63,33 @@ public class JogoResource {
     @GET
     @Path("/cacaPalavraApresentacao")
     @Produces(MediaType.APPLICATION_JSON)
-    public CacaPalavra buscarPerguntasDaApresentacaoDoJogoCacaPalavra() {
+    public CacaPalavraLista buscarPerguntasDaApresentacaoDoJogoCacaPalavra() {
         
-        List<Pergunta> perguntas = new ArrayList<>();
-        perguntas.add(obterPerguntaCacaPalavraModelo1());
-        perguntas.add(obterPerguntaCacaPalavraModelo2());
-        perguntas.add(obterPerguntaCacaPalavraModelo3());
+        List<Pergunta> perguntasTodas = new ArrayList<>();
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo1());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo2());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo1());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo2());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo1());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo2());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
+        if ((perguntasTodas.size()/tamanhoMatriz) > 1){
+            int a = (16/12);
+        }
         
+        
+        List<CacaPalavra> lista = new ArrayList<>();
         List<String> respostas = new ArrayList<>();
-        for (Pergunta pergunta : perguntas) {
+        for (Pergunta pergunta : perguntasTodas) {
             for (Resposta resposta : pergunta.getRespostas()) {
                 if (resposta.getCorreta()){
                     respostas.add(resposta.getDescricao().toUpperCase());
@@ -86,7 +105,8 @@ public class JogoResource {
                 }
             }
         }
-        return new CacaPalavra(matriz, perguntas, tamanhoMatriz);
+        lista.add(new CacaPalavra(matriz, perguntasTodas, tamanhoMatriz));
+        return new CacaPalavraLista(lista, perguntasTodas.size());
     }
     
     private Letra[][] criarMatriz(List<String> respostas) {
@@ -104,7 +124,6 @@ public class JogoResource {
         }
         return matriz;
     }
-    
     private Letra[][] inserirPalavra(Letra[][] matriz, String palavra, OrientacaoCacaPalavra orientacao, int espacoSobrandoCima, int linhaOuColunaPalavra) {
         OrdemCacaPalavra ordem = OrdemCacaPalavra.from(getIntAleatoria(2).toString());
         if (OrdemCacaPalavra.INVERSA.equals(ordem)) {
@@ -126,7 +145,6 @@ public class JogoResource {
         Random rnd = new Random();
         return (Integer) rnd.nextInt(ateNum);
     }
-    
     private String getLetraAleatoria() {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÃÕ";
         StringBuilder salt = new StringBuilder();

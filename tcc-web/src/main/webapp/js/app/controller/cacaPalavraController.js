@@ -1,21 +1,26 @@
 tccApp.controller('CacaPalavraController', ['$scope', '$rootScope', '$modal', '$location', '$timeout', 'Jogo',
 function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
+    $rootScope.contagem = true;
+    $scope.count = 0;
+    var indexMatriz = -1;
     $scope.model = {
         primeiraCedula: null,
         matrizCompleta: null,
+        resultado: false,
+        cacaPalavraLista: [],
         perguntas: []
     };
     var tamanhoMatriz = 12;
     var corSelecionada = '#5396d4';
     var corQuandoPassarPor = '#9bcffd';
     var corInicial = '#8ab7de';
+    var perguntasTotaisEncontradas = 0;
     var palavrasEncontradas = 0;
-    var coresSelecionadas = ['#5f3257','#356b23','#9e9b22','#de968a','#be8ade','#9a5316',
-        '#7da938','#d856ce','#5356ca','#04c71c','#ec0b7e','#ec7d1d'];
+    var coresSelecionadas = ['#5f3257','#356b23','#9e9b22','#de968a','#be8ade','#9a5316','#7da938','#d856ce','#5356ca','#04c71c','#ec0b7e','#ec7d1d'];
     
     $scope.mouseDownCelula = function (i, j) {
         $scope.model.primeiraCedula = null;
-        backgroundMatrix();
+        backgroundMatriz();
         $scope.model.primeiraCedula = {x:i, y:j, letra: angular.copy($scope.model.matrizCompleta[i][j])};
         $scope.model.matrizCompleta[i][j].selecionado=true;
         $scope.model.matrizCompleta[i][j].style = {'background-color': corSelecionada};
@@ -78,10 +83,12 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
             }
             $scope.palavra = palavra;
             var palavraExiste = false;
-            for (var k = 0; k < $scope.model.perguntas.length; k++) {
-                var resposta = $scope.model.perguntas[k].respostas[0].descricao.toUpperCase();
+            var m = 0;
+            for (var m = 0; m < $scope.model.perguntas.length; m++) {
+                var resposta = $scope.model.perguntas[m].respostas[0].descricao.toUpperCase();
                 if (resposta === palavra || resposta === reverse(palavra)) {
                     palavraExiste = true;
+                    break;
                 }
             }
             if (palavraExiste && !$scope.model.matrizCompleta[listaDeXY[0].x][listaDeXY[0].y].comPalavra) {
@@ -89,12 +96,16 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
                     var posicaoX = listaDeXY[k].x;
                     var posicaoY = listaDeXY[k].y;
                     $scope.model.matrizCompleta[posicaoX][posicaoY].comPalavra = coresSelecionadas[palavrasEncontradas];
-                    $scope.model.matrizCompleta[posicaoX][posicaoY].style = {'background-color': coresSelecionadas[palavrasEncontradas]};
                 }
+                $scope.model.perguntas[m].style = {'background-color': coresSelecionadas[palavrasEncontradas], 'color':'#fff'};
+                perguntasTotaisEncontradas++;
                 palavrasEncontradas++;
             }
             $scope.model.primeiraCedula = null;
-            backgroundMatrix();
+            backgroundMatriz();
+            if (palavrasEncontradas === $scope.model.perguntas.length) {
+                mudarMatriz();
+            }
         }
     };
     var reverse = function (s){
@@ -103,7 +114,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     
     $scope.mouseOverCelula = function (i, j) {
         if ($scope.model.primeiraCedula) {
-            backgroundMatrix();
+            backgroundMatriz();
             if (i === $scope.model.primeiraCedula.x) {
                 var yMenor = $scope.model.primeiraCedula.y < j ? $scope.model.primeiraCedula.y : j;
                 var yMaior = $scope.model.primeiraCedula.y > j ? $scope.model.primeiraCedula.y : j;
@@ -170,7 +181,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         }
     };
     
-    var backgroundMatrix = function () {
+    var backgroundMatriz = function () {
         for (var i = 0; i < tamanhoMatriz; i++) {
             for (var j = 0; j < tamanhoMatriz; j++) {
                 $scope.model.matrizCompleta[i][j].selecionado = false;
@@ -183,13 +194,41 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         }
     };
     
+    var contagemInicial = function () {
+        $scope.count++;
+        if ($scope.count < 5) {
+            $timeout(contagemInicial, 1000);
+        } else {
+            $rootScope.contagem = false;
+        }
+    };
+    
+    var barraDeProgresso = function () {
+        var porcentagem = (perguntasTotaisEncontradas + 1) / $scope.model.cacaPalavraLista.qntPergunta * 100;
+        $scope.barraProgresso = {
+            width: porcentagem + '%'
+        };
+    };
+    
+    var mudarMatriz = function () {
+        indexMatriz++;
+        palavrasEncontradas = 0;
+        if (indexMatriz <= $scope.model.cacaPalavraLista.length) {
+            $scope.model.matrizCompleta = $scope.model.cacaPalavraLista[indexMatriz].matriz;
+            $scope.model.perguntas = $scope.model.cacaPalavraLista[indexMatriz].perguntas;
+            tamanhoMatriz = $scope.model.cacaPalavraLista[indexMatriz].tamanhoMatriz;
+            backgroundMatriz();
+        }
+    };
+    
     var init = function () {
+        $scope.telaInit = false;
         $rootScope.appLoaded = false;
-        Jogo.buscarPerguntasDaApresentacaoDoJogoCacaPalavra(function (cacaPalavra) {
-            $scope.model.matrizCompleta = cacaPalavra.matriz;
-            $scope.model.perguntas = cacaPalavra.perguntas;
-            tamanhoMatriz = cacaPalavra.tamanhoMatriz;
-            backgroundMatrix();
+        Jogo.buscarPerguntasDaApresentacaoDoJogoCacaPalavra(function (cacaPalavraLista) {
+            $scope.model.cacaPalavraLista = cacaPalavraLista;
+            mudarMatriz();
+            barraDeProgresso();
+            contagemInicial();
             $rootScope.appLoaded = true;
         }, function (error) {
             $rootScope.appLoaded = true;

@@ -155,10 +155,10 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
             }
         };
 
-        $scope.contagemInicial = function () {
+        var contagemInicial = function () {
             $scope.count++;
             if ($scope.count < 5) {
-                $timeout($scope.contagemInicial, 1000);
+                $timeout(contagemInicial, 1000);
             } else {
                 $rootScope.contagem = false;
             }
@@ -196,7 +196,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
                 $rootScope.appLoaded = true;
                 $scope.telaInit = false;
                 barraDeProgresso();
-                $scope.contagemInicial();
+                contagemInicial();
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
