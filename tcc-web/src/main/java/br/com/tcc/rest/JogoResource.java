@@ -15,6 +15,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -32,6 +33,8 @@ import org.springframework.stereotype.Component;
 @Path("/jogoPerguntas")
 @Component
 public class JogoResource {
+    private final Integer tamanhoMatriz = 12;
+    
     @GET
     @Path("/quizApresentacao")
     @Produces(MediaType.APPLICATION_JSON)
@@ -60,55 +63,65 @@ public class JogoResource {
     @Path("/cacaPalavraApresentacao")
     @Produces(MediaType.APPLICATION_JSON)
     public CacaPalavra buscarPerguntasDaApresentacaoDoJogoCacaPalavra() {
-        Integer tamanhoMatriz = 12;
+        
         List<Pergunta> perguntas = new ArrayList<>();
         perguntas.add(obterPerguntaCacaPalavraModelo1());
-//        perguntas.add(obterPerguntaCacaPalavraModelo2());
-//        perguntas.add(obterPerguntaCacaPalavraModelo3());
+        perguntas.add(obterPerguntaCacaPalavraModelo2());
+        perguntas.add(obterPerguntaCacaPalavraModelo3());
         
-        Letra[][] matrix = new Letra[tamanhoMatriz][tamanhoMatriz];
+        List<String> respostas = new ArrayList<>();
+        for (Pergunta pergunta : perguntas) {
+            for (Resposta resposta : pergunta.getRespostas()) {
+                if (resposta.getCorreta()){
+                    respostas.add(resposta.getDescricao().toUpperCase());
+                }
+            }
+        }
+        Letra[][] matriz = criarMatriz(respostas);
+        
         for (int i = 0; i < tamanhoMatriz; i++) {
             for (int j = 0; j < tamanhoMatriz; j++) {
-                matrix[i][j] = new Letra(-1, getLetraAleatoria());
-            }
-        }
-        for (Pergunta pergunta : perguntas) {
-            Resposta resposta = pergunta.getRespostas().iterator().next();
-            String palavra = resposta.getDescricao().toUpperCase();
-            OrdemCacaPalavra ordem = OrdemCacaPalavra.from(getIntAleatoria(2).toString());
-            if (OrdemCacaPalavra.INVERSA.equals(ordem)) {
-                StringBuilder s = new StringBuilder(palavra);
-                palavra = s.reverse().toString();
-            }
-            OrientacaoCacaPalavra orientacao = OrientacaoCacaPalavra.from(getIntAleatoria(3).toString());
-            int x = 0, y = 0;
-            int espacoSobrando = tamanhoMatriz - palavra.length();
-            if ((OrientacaoCacaPalavra.DIAGONAL.equals(orientacao)) || (OrientacaoCacaPalavra.VERTICAL.equals(orientacao))){
-                y = getIntAleatoria(espacoSobrando);
-            }
-            if ((OrientacaoCacaPalavra.DIAGONAL.equals(orientacao)) || (OrientacaoCacaPalavra.HORIZONTAL.equals(orientacao))){
-                x = getIntAleatoria(espacoSobrando);
-            }
-            if (OrientacaoCacaPalavra.VERTICAL.equals(orientacao)) {
-                for (int i = 0; i < palavra.length(); i++) {
-                    matrix[x+i][y] = new Letra(-1, ""+palavra.charAt(i));
-                }
-            }
-            if (OrientacaoCacaPalavra.HORIZONTAL.equals(orientacao)) {
-                for (int i = 0; i < palavra.length(); i++) {
-                    matrix[x][y+i] = new Letra(-1, ""+palavra.charAt(i));
-                }
-            }
-            if (OrientacaoCacaPalavra.DIAGONAL.equals(orientacao)) {
-                for (int i = 0; i < palavra.length(); i++) {
-                    matrix[x+i][y+i] = new Letra(-1, ""+palavra.charAt(i));
+                if (matriz[i][j] == null){
+                    matriz[i][j] = new Letra(-1, getLetraAleatoria());
                 }
             }
         }
-        
-        return new CacaPalavra(matrix, perguntas, tamanhoMatriz);
+        return new CacaPalavra(matriz, perguntas, tamanhoMatriz);
     }
     
+    private Letra[][] criarMatriz(List<String> respostas) {
+        Letra[][] matriz = new Letra[tamanhoMatriz][tamanhoMatriz];
+        int qntOrientacao = (respostas.size() > 1)?2:3;
+        OrientacaoCacaPalavra orientacao = OrientacaoCacaPalavra.from(getIntAleatoria(qntOrientacao).toString());
+        List<Integer> linhasColunaPalavra = new ArrayList<>(Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11));
+        for (String palavra : respostas) {
+            Integer indexLinhaColuna = getIntAleatoria(linhasColunaPalavra.size());
+            Integer linhaOuColunaPalavra = linhasColunaPalavra.get(indexLinhaColuna);
+            int espacoSobrandoCima = getIntAleatoria(tamanhoMatriz - palavra.length());
+            
+            inserirPalavra(matriz, palavra, orientacao, espacoSobrandoCima, linhaOuColunaPalavra);
+            linhasColunaPalavra.remove(indexLinhaColuna);
+        }
+        return matriz;
+    }
+    
+    private Letra[][] inserirPalavra(Letra[][] matriz, String palavra, OrientacaoCacaPalavra orientacao, int espacoSobrandoCima, int linhaOuColunaPalavra) {
+        OrdemCacaPalavra ordem = OrdemCacaPalavra.from(getIntAleatoria(2).toString());
+        if (OrdemCacaPalavra.INVERSA.equals(ordem)) {
+            StringBuilder s = new StringBuilder(palavra);
+            palavra = s.reverse().toString();
+        }
+        
+        int x = (OrientacaoCacaPalavra.VERTICAL.equals(orientacao))?linhaOuColunaPalavra:espacoSobrandoCima;
+        int y = (OrientacaoCacaPalavra.HORIZONTAL.equals(orientacao))?linhaOuColunaPalavra:espacoSobrandoCima;
+        
+        for (int i = 0; i < palavra.length(); i++) {
+            int a = (OrientacaoCacaPalavra.VERTICAL.equals(orientacao))?x:x+i;
+            int b = (OrientacaoCacaPalavra.HORIZONTAL.equals(orientacao))?y:y+i;
+            matriz[a][b] = new Letra(-1, ""+palavra.charAt(i));
+        }
+        return matriz;
+    }
     private Integer getIntAleatoria(int ateNum) {
         Random rnd = new Random();
         return (Integer) rnd.nextInt(ateNum);

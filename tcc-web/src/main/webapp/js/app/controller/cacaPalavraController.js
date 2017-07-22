@@ -9,6 +9,9 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     var corSelecionada = '#5396d4';
     var corQuandoPassarPor = '#9bcffd';
     var corInicial = '#8ab7de';
+    var palavrasEncontradas = 0;
+    var coresSelecionadas = ['#5f3257','#356b23','#9e9b22','#de968a','#be8ade','#9a5316',
+        '#7da938','#d856ce','#5356ca','#04c71c','#ec0b7e','#ec7d1d'];
     
     $scope.mouseDownCelula = function (i, j) {
         $scope.model.primeiraCedula = null;
@@ -77,17 +80,18 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
             var palavraExiste = false;
             for (var k = 0; k < $scope.model.perguntas.length; k++) {
                 var resposta = $scope.model.perguntas[k].respostas[0].descricao.toUpperCase();
-                if (resposta == palavra || resposta == reverse(palavra)) {
+                if (resposta === palavra || resposta === reverse(palavra)) {
                     palavraExiste = true;
                 }
             }
-            if (palavraExiste) {
+            if (palavraExiste && !$scope.model.matrizCompleta[listaDeXY[0].x][listaDeXY[0].y].comPalavra) {
                 for (var k = 0; k < listaDeXY.length; k++) {
                     var posicaoX = listaDeXY[k].x;
                     var posicaoY = listaDeXY[k].y;
-                    $scope.model.matrizCompleta[posicaoX][posicaoY].comPalavra = true;
-                    $scope.model.matrizCompleta[posicaoX][posicaoY].style = {'background-color': 'red'};
+                    $scope.model.matrizCompleta[posicaoX][posicaoY].comPalavra = coresSelecionadas[palavrasEncontradas];
+                    $scope.model.matrizCompleta[posicaoX][posicaoY].style = {'background-color': coresSelecionadas[palavrasEncontradas]};
                 }
+                palavrasEncontradas++;
             }
             $scope.model.primeiraCedula = null;
             backgroundMatrix();
@@ -152,15 +156,17 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
                 }
             }
         } else {
-            if (!$scope.model.matrizCompleta[i][j].comPalavra) {
+            //if (!$scope.model.matrizCompleta[i][j].comPalavra) {
                 $scope.model.matrizCompleta[i][j].style = {'background-color': corQuandoPassarPor};
-            }
+            //}
         }
     };
     
     $scope.mouseLeaveCelula = function (i, j) {
         if (!$scope.model.primeiraCedula && !$scope.model.matrizCompleta[i][j].comPalavra) {
             $scope.model.matrizCompleta[i][j].style = {'background-color': corInicial};
+        } else if ($scope.model.matrizCompleta[i][j].comPalavra) {
+            $scope.model.matrizCompleta[i][j].style = {'background-color': $scope.model.matrizCompleta[i][j].comPalavra};
         }
     };
     
@@ -168,10 +174,10 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         for (var i = 0; i < tamanhoMatriz; i++) {
             for (var j = 0; j < tamanhoMatriz; j++) {
                 $scope.model.matrizCompleta[i][j].selecionado = false;
-                if (!$scope.model.matrizCompleta[i][j].comPalavra) {
-                    $scope.model.matrizCompleta[i][j].style = {'background-color': corInicial};
+                if ($scope.model.matrizCompleta[i][j].comPalavra) {
+                    $scope.model.matrizCompleta[i][j].style = {'background-color': $scope.model.matrizCompleta[i][j].comPalavra};
                 } else {
-                    $scope.model.matrizCompleta[i][j].style = {'background-color': '#215003'};
+                    $scope.model.matrizCompleta[i][j].style = {'background-color': corInicial};
                 }
             }
         }
