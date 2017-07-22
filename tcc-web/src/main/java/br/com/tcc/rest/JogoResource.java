@@ -70,18 +70,19 @@ public class JogoResource {
         perguntasTodas.add(obterPerguntaCacaPalavraModelo2());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo4());
-        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo5());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo6());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo7());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo8());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo1());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo2());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
-        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
-        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
-        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
-        perguntasTodas.add(obterPerguntaCacaPalavraModelo1());
-        perguntasTodas.add(obterPerguntaCacaPalavraModelo2());
-        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
-        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
-        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo4());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo5());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo6());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo7());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo8());
+        
         Integer qntPerguntas = perguntasTodas.size();
         List<CacaPalavra> lista = new ArrayList<>();
         if ((new Double(qntPerguntas)/tamanhoMatriz) > 1){
@@ -128,7 +129,8 @@ public class JogoResource {
         for (String palavra : respostas) {
             int indexLinhaColuna = getIntAleatoria(linhasColunaPalavra.size());
             int linhaOuColunaPalavra = linhasColunaPalavra.get(indexLinhaColuna);
-            int espacoSobrandoCima = getIntAleatoria(tamanhoMatriz - palavra.length());
+            int espacoSobrando = tamanhoMatriz - palavra.length();
+            int espacoSobrandoCima = espacoSobrando>0?getIntAleatoria(espacoSobrando):0;
             
             inserirPalavra(matriz, palavra, orientacao, espacoSobrandoCima, linhaOuColunaPalavra);
             linhasColunaPalavra.remove(indexLinhaColuna);
@@ -515,6 +517,78 @@ public class JogoResource {
         resposta.setId(1L);
         resposta.setCorreta(Boolean.TRUE);
         resposta.setDescricao("Temer");
+        respostas.add(resposta);
+        
+        pergunta.setRespostas(respostas);
+        
+        return pergunta;
+    }
+    private Pergunta obterPerguntaCacaPalavraModelo5() {
+        Pergunta pergunta = new Pergunta();
+        pergunta.setPosicao(3);
+        pergunta.setDescricao("É uma série sobre seis amigos em Nova York, seus caminhos pela vida e como eles aprendem a crescer enquanto eles se aproximam da terceira década da vida deles. Tudo com a ajuda de cada um deles para conseguirem passar pelos obstáculos que a vida naturalmente traz a nós. Os amigos são: Monica, Rachel, Phoebe, Ross, Joey e Chandler. ");
+        pergunta.setJustificativa("justificativa.");
+        pergunta.setDica("Amigos em Inglês.");
+        
+        Set<Resposta> respostas = new HashSet<>();
+        Resposta resposta = new Resposta();
+        resposta.setId(1L);
+        resposta.setCorreta(Boolean.TRUE);
+        resposta.setDescricao("Friends");
+        respostas.add(resposta);
+        
+        pergunta.setRespostas(respostas);
+        
+        return pergunta;
+    }
+    private Pergunta obterPerguntaCacaPalavraModelo6() {
+        Pergunta pergunta = new Pergunta();
+        pergunta.setPosicao(3);
+        pergunta.setDescricao("O Brasil é de que continente?");
+        pergunta.setDica("O Brasil fica na America.");
+        pergunta.setJustificativa("O Brasil fica na América, mais precisamente no subcontinente América do Sul. A Argentina, Bolívia, Chile, Colômbia, Equador, Guiana, Paraguai, Peru, Suriname, Uruguai e Venezuela são outros países localizados na América do Sul.");
+        
+        Set<Resposta> respostas = new HashSet<>();
+        Resposta resposta = new Resposta();
+        resposta.setId(1L);
+        resposta.setCorreta(Boolean.TRUE);
+        resposta.setDescricao("Americadosul");
+        respostas.add(resposta);
+        
+        pergunta.setRespostas(respostas);
+        
+        return pergunta;
+    }
+    private Pergunta obterPerguntaCacaPalavraModelo7() {
+        Pergunta pergunta = new Pergunta();
+        pergunta.setPosicao(3);
+        pergunta.setDescricao("Foi um pintor, escultor, poeta e arquiteto italiano, considerado um dos maiores criadores da história da arte do ocidente. Algumas de suas obras são: A escultura 'David', 'Teto da Capela Sistina' e 'A Criação de Adão'.");
+        pergunta.setDica("Começa com M.");
+        pergunta.setJustificativa("Michelangelo di Lodovico Buonarroti Simoni (Caprese, 6 de março de 1475 — Roma, 18 de fevereiro de 1564), mais conhecido simplesmente como Michelangelo ou Miguel Ângelo, foi um pintor, escultor, poeta e arquiteto italiano, considerado um dos maiores criadores da história da arte do ocidente..");
+        
+        Set<Resposta> respostas = new HashSet<>();
+        Resposta resposta = new Resposta();
+        resposta.setId(1L);
+        resposta.setCorreta(Boolean.TRUE);
+        resposta.setDescricao("Michelangelo");
+        respostas.add(resposta);
+        
+        pergunta.setRespostas(respostas);
+        
+        return pergunta;
+    }
+    private Pergunta obterPerguntaCacaPalavraModelo8() {
+        Pergunta pergunta = new Pergunta();
+        pergunta.setPosicao(3);
+        pergunta.setDescricao("Foi um cantor, ator, e produtor americano, amplamente considerado um dos mais populares e influentes artistas musicais do século 20. O seu primeiro nome é Frank e algumas de suas músicas são: 'New York, New York' e 'Fly Me to the Moon'.");
+        pergunta.setDica("Começa com S.");
+        pergunta.setJustificativa("Sinatra");
+        
+        Set<Resposta> respostas = new HashSet<>();
+        Resposta resposta = new Resposta();
+        resposta.setId(1L);
+        resposta.setCorreta(Boolean.TRUE);
+        resposta.setDescricao("Sinatra");
         respostas.add(resposta);
         
         pergunta.setRespostas(respostas);
