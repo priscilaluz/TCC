@@ -89,7 +89,7 @@ public class JogoResource {
             int qntPerguntaPorMatriz = (qntPerguntas/qntMatriz);
             int resto = qntPerguntas % qntMatriz;
             for (int i = 0; i < qntMatriz; i++) {
-                int tamanhoSubList = qntPerguntaPorMatriz-1+(i*qntPerguntaPorMatriz);
+                int tamanhoSubList = qntPerguntaPorMatriz+(i*qntPerguntaPorMatriz);
                 tamanhoSubList = (i == (qntMatriz-1))?tamanhoSubList+resto:tamanhoSubList;
                 List<Pergunta> perguntas = perguntasTodas.subList(i*qntPerguntaPorMatriz, tamanhoSubList);
                 lista.add(new CacaPalavra(null, perguntas, tamanhoMatriz));
@@ -126,8 +126,8 @@ public class JogoResource {
         OrientacaoCacaPalavra orientacao = OrientacaoCacaPalavra.from(getIntAleatoria(qntOrientacao).toString());
         List<Integer> linhasColunaPalavra = new ArrayList<>(Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11));
         for (String palavra : respostas) {
-            Integer indexLinhaColuna = getIntAleatoria(linhasColunaPalavra.size());
-            Integer linhaOuColunaPalavra = linhasColunaPalavra.get(indexLinhaColuna);
+            int indexLinhaColuna = getIntAleatoria(linhasColunaPalavra.size());
+            int linhaOuColunaPalavra = linhasColunaPalavra.get(indexLinhaColuna);
             int espacoSobrandoCima = getIntAleatoria(tamanhoMatriz - palavra.length());
             
             inserirPalavra(matriz, palavra, orientacao, espacoSobrandoCima, linhaOuColunaPalavra);

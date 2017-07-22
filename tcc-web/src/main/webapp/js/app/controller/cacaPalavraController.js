@@ -213,11 +213,13 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     var mudarMatriz = function () {
         indexMatriz++;
         palavrasEncontradas = 0;
-        if (indexMatriz <= $scope.model.cacaPalavraLista.cacaPalavra.length) {
+        if (indexMatriz < $scope.model.cacaPalavraLista.cacaPalavra.length) {
             $scope.model.matrizCompleta = $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].matriz;
             $scope.model.perguntas = $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].perguntas;
             tamanhoMatriz = $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].tamanhoMatriz;
             backgroundMatriz();
+        } else {
+            $scope.model.resultado = true;
         }
     };
     
