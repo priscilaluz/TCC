@@ -1,10 +1,20 @@
-<h1 class="title-fonte" ng-show="!contagem">Caça Palavra</h1>
+<div class="col-md-8" ng-show="!contagem"><h1 class="title-fonte">Caça Palavra</h1></div>
+<div class="col-md-4" ng-show="!contagem" style="margin-top: 20px;">
+    <button type="button" ng-click="voltar()" class="btn btn-pular-dica pull-right">
+            <i class="glyphicon glyphicon-arrow-left"></i>&nbsp;Voltar</button>
+</div>
 <div class="progress" ng-show="!contagem">
     <div class="progress-bar" role="progressbar" ng-style="barraProgresso">
         {{barraProgresso.width}}
     </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" ng-show="!contagem" style="margin-bottom: 30px;" ng-mouseup="mouseUpCelula()">
+    <div class="col-md-5">
+        <p class="col-lg-12 curso-titulo-concluido" style="font-size: 30px;">Pontuação: {{model.pontuacao}}</p>
+    </div>
+    <div class="col-md-7">
+        <p class="col-lg-12 curso-titulo-concluido text-center" style="font-size:35px; color: #291606">Perguntas</p>
+    </div>
     <div class="form-group">
         <div class="col-md-5">
             <div class="col-md-12" ng-repeat="linha in model.matrizCompleta">
@@ -26,7 +36,7 @@
         </div>
     </div>
     <div class="col-md-12" style="padding-top: 25px;">
-        <button type="button" ng-click="passarParaProxMatriz()" ng-show="model.qntPulo>0" class="btn btn-pular-dica pull-right">
+        <button type="button" ng-click="passarParaProxMatriz()" class="btn btn-pular-dica pull-right">
             <i class="glyphicon glyphicon-share-alt"></i>&nbsp;Passar</button>
         <button type="button" ng-click="dicaPergunta()" ng-show="model.qntDica>0" class="btn btn-pular-dica pull-right">
             <i class="fa fa-lightbulb-o"></i>&nbsp;Dica</button>

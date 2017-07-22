@@ -4,11 +4,11 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     $scope.count = 0;
     var indexMatriz = -1;
     $scope.model = {
+        pontuacao: 0,
+        qntDica: 1,
         primeiraCedula: null,
         matrizCompleta: null,
         resultado: false,
-        qntPulo: 1,
-        qntDica: 1,
         cacaPalavraLista: [],
         perguntas: []
     };
@@ -20,6 +20,10 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     var palavrasEncontradas = 0;
     var coresSelecionadas = ['#5f3257','#356b23','#9e9b22','#de968a','#be8ade','#9a5316','#7da938','#d856ce','#5356ca','#04c71c','#ec0b7e','#ec7d1d'];
     
+    $scope.voltar = function () {
+        $location.path("/jogos");
+    };
+
     $scope.dicaPergunta = function () {
         var dica = "Não existe dicas disponíveis.";
         var obj = {'dica': dica};

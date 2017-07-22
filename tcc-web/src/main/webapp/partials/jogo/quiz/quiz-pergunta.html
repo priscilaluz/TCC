@@ -1,4 +1,8 @@
-<h1 class="title-fonte" ng-show="!contagem || telaInit">Quiz</h1>
+<div class="col-md-8" ng-show="!contagem || telaInit"><h1 class="title-fonte">Quiz</h1></div>
+<div class="col-md-4" ng-show="!contagem || telaInit" style="margin-top: 20px;">
+    <button type="button" ng-click="voltar()" class="btn btn-pular-dica pull-right">
+            <i class="glyphicon glyphicon-arrow-left"></i>&nbsp;Voltar</button>
+</div>
 <div class="progress" ng-show="!contagem && !telaInit">
     <div class="progress-bar" role="progressbar" ng-style="barraProgresso">
         {{barraProgresso.width}}
