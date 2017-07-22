@@ -69,7 +69,7 @@ public class JogoResource {
         perguntasTodas.add(obterPerguntaCacaPalavraModelo1());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo2());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
-        perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo4());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo1());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo2());
@@ -497,6 +497,24 @@ public class JogoResource {
         resposta.setId(1L);
         resposta.setCorreta(Boolean.TRUE);
         resposta.setDescricao("Adjetivo");
+        respostas.add(resposta);
+        
+        pergunta.setRespostas(respostas);
+        
+        return pergunta;
+    }
+    private Pergunta obterPerguntaCacaPalavraModelo4() {
+        Pergunta pergunta = new Pergunta();
+        pergunta.setPosicao(3);
+        pergunta.setDescricao("Qual o sobrenome do presidente do Brasil?");
+        pergunta.setJustificativa("Era vice de Dilma e virou presidente após o impeachment.");
+        pergunta.setDica("Michel é o primeiro nome.");
+        
+        Set<Resposta> respostas = new HashSet<>();
+        Resposta resposta = new Resposta();
+        resposta.setId(1L);
+        resposta.setCorreta(Boolean.TRUE);
+        resposta.setDescricao("Temer");
         respostas.add(resposta);
         
         pergunta.setRespostas(respostas);
