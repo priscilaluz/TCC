@@ -1,3 +1,17 @@
+.etapa {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top left;
+    background-origin:content-box;
+    background-color: transparent;
+    padding: 40px;
+    margin:auto;
+    
+}
+
+.etapa-inicial{background-image: url('../img/tabuleiro/1-1.png');}
+.etapa-inicial:hover {background-image: url('../img/tabuleiro/1-1-on.png');}
+
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */

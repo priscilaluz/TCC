@@ -4,7 +4,9 @@
         <h1 class="title-fonte" style="padding-left: 125px;">Curso:</h1>
         <table style="border-radius: 5px; width: 50%; margin: 0px auto; float: none;">
             <tr>
-                <td><img src="img/tabuleiro/1-1.png" alt="tabuleiro" style="width: 200px;"/></td>
+                <td><img ng-src="{{etapa1}}" class="handCursor" alt="tabuleiro" ng-click="entrarNaFase()"
+                    ng-mouseover="etapa1='img/tabuleiro/1-1-on.png'"
+                     ng-mouseleave="etapa1='img/tabuleiro/1-1.png'" style="width: 200px;"/></td>
                 <td><img src="img/tabuleiro/2.png" alt="tabuleiro" style="width: 200px;"/></td>
                 <td><img src="img/tabuleiro/2.png" alt="tabuleiro" style="width: 200px;"/></td>
                 <td><img src="img/tabuleiro/2.png" alt="tabuleiro" style="width: 200px;"/></td>
