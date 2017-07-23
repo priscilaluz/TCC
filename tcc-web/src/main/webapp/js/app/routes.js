@@ -62,6 +62,10 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/jogo/caca-palavra/caca-palavra.html',
         controller: 'CacaPalavraController'
       }).
+      when('/tabuleiro', {
+        templateUrl: 'partials/tabuleiro/tabuleiro.html',
+        controller: 'TabuleiroController'
+      }).
 
       otherwise({
         redirectTo: '/home'
