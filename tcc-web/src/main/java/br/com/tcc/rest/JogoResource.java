@@ -12,6 +12,7 @@ import br.com.tcc.common.enums.OrientacaoCacaPalavra;
 import br.com.tcc.common.vo.CacaPalavra;
 import br.com.tcc.common.vo.CacaPalavraLista;
 import br.com.tcc.common.vo.Letra;
+import br.com.tcc.service.impl.AnexoServiceImpl;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +26,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -35,11 +37,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class JogoResource {
     private final Integer tamanhoMatriz = 12;
+    @Autowired
+    private AnexoServiceImpl anexoService;
     
     @GET
     @Path("/quizApresentacao")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Pergunta> buscarPerguntaDaApresentacaoDoJogoQuiz() {
+        InputStream is = anexoService.downloadImg();
         List<Pergunta> perguntas = new ArrayList<>();
         perguntas.add(obterPerguntaQuizModelo1());
         perguntas.add(obterPerguntaQuizModelo2());

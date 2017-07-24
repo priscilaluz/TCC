@@ -51,4 +51,8 @@ public class AnexoServiceImpl {
         Anexo anexo = (Anexo) dao.uniqueResult(new BuscarAnexo.Entities().whereId(idAnexo));
         return new ByteArrayInputStream(anexo.getBytes());
     }
+    
+    public InputStream downloadImg(){
+        return getClass().getResourceAsStream("/icons/menu-acesso.png");
+    }
 }
