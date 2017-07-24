@@ -1,0 +1,64 @@
+<div class="col-md-8"><h1 class="title-fonte">Aposta</h1></div>
+<div class="col-md-4" style="margin-top: 20px;">
+    <button type="button" ng-click="voltar()" class="btn btn-pular-dica pull-right">
+            <i class="glyphicon glyphicon-arrow-left"></i>&nbsp;Voltar</button>
+</div>
+<div class="col-md-12 noPadding">
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" ng-style="barraProgresso">
+            {{barraProgresso.width}}
+        </div>
+    </div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" style="margin-bottom: 30px;">
+    <div class="form-group">
+        <div class="col-lg-12">
+            <div class="col-md-1 text-center noPadding">
+                <img class="col-lg-12 noPadding" src="img/jogos/aposta/fichas.png" alt="fichas" style="height: 60px;"/>
+                <p class="col-md-12" style="font-family:'Balthazar';font-size: 15px;color: #193542;">{{model.maxFichas}}</p>
+                <div class="col-md-12">
+                    <div class="col-md-12 noPadding" style="background-image: url('img/jogos/aposta/barra.png');border-radius: 4px;height: 400px;">
+                        <div ng-style="model.barraPontos">
+                            <span style="font-family:'Balthazar'; font-size: 15px; color: #ffffff;">{{model.pontuacao}}</span>
+                            <img src="img/jogos/aposta/barraProgresso.png" alt="barraProgresso" style="height: 10.3px;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<button type="button" ng-click="aumentarPontuacao()">TESTE</button>-->
+            <div class="col-md-11">
+                <h3 class="col-md-12 title-fonte text-center" style="border-radius: 20px;background-color: #1b6d85; padding-bottom: 15px; padding-top: 15px;">
+                {{model.pergunta.descricao}}</h3>
+                <div class="col-md-12" ng-repeat="resposta in model.pergunta.respostas">
+                    <div class="col-md-10">
+                        <button style="margin-top: 10px;" ng-style="resposta.correta?respostaCorreta:(idReposta==resposta.id)?respostaIncorreta:{}"
+                         type="button" ng-click="selecionarResposta(resposta)" class="btn btn-resposta-quiz btn-block">{{resposta.descricao}}</button>
+                    </div>
+                    <div class="col-md-2" style="background-color: #d8e0c8; border-radius: 8px; margin-top: 8px; padding-top: 8px;">
+                        <div class="col-md-3 noPadding" style="padding-left: 0px;">
+                            <img ng-src="{{model.imgDiminuir[$index]}}" alt="diminuir" style="height: 25px;" class="handCursor"
+                            ng-mouseover="model.imgDiminuir[$index]='img/jogos/aposta/botaoDiminuir-on.png'"
+                            ng-mouseleave="model.imgDiminuir[$index]='img/jogos/aposta/botaoDiminuir-off.png'"/>
+                        </div>
+                        <div class="col-md-6 text-center noPadding" style="font-size: 25px; color: #193542;"><b>{{model.valorAposta[$index]}}</b></div>
+                        <div class="col-md-3 noPadding">
+                            <img ng-src="{{model.imgAumentar[$index]}}" alt="aumentar" style="height: 25px;" class="handCursor"
+                            ng-mouseover="model.imgAumentar[$index]='img/jogos/aposta/botaoAumentar-on.png'"
+                            ng-mouseleave="model.imgAumentar[$index]='img/jogos/aposta/botaoAumentar-off.png'"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="col-md-12" style="padding-top: 25px;">
+            <button type="button" ng-click="pularPergunta()" ng-show="model.qntPulo>0" class="btn btn-pular-dica pull-right">
+                <i class="glyphicon glyphicon-share-alt"></i>&nbsp;Pular</button>
+            <button type="button" ng-click="dicaPergunta()" ng-show="model.qntDica>0" class="btn btn-pular-dica pull-right">
+                <i class="fa fa-lightbulb-o"></i>&nbsp;Dica</button>
+            <button type="button" ng-click="dicaPergunta()" ng-disabled="false" class="btn btn-pular-dica pull-right">
+                &nbsp;APOSTAR</button>
+        </div>
+    </div>
+</div>

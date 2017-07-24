@@ -1,0 +1,3 @@
+<div class="row" data-ng-include="'partials/jogo/contagem.html'" ng-show="!model.resultado"></div>
+<div class="row" data-ng-include="'partials/jogo/aposta/aposta-pergunta.html'" ng-show="!model.resultado && !contagem && !telaInit"></div>
+<div class="row" data-ng-include="'partials/jogo/aposta/aposta-resultado.html'" ng-show="model.resultado"></div>

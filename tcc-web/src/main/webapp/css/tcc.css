@@ -1,3 +1,7 @@
+.noPadding {
+    padding-left: 0px;
+    padding-right: 0px;
+}
 .etapa {
     background-repeat: no-repeat;
     background-size: contain;
@@ -6,7 +10,6 @@
     background-color: transparent;
     padding: 40px;
     margin:auto;
-    
 }
 
 .etapa-inicial{background-image: url('../img/tabuleiro/1-1.png');}

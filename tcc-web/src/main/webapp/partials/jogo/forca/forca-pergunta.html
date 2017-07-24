@@ -3,9 +3,11 @@
     <button type="button" ng-click="voltar()" class="btn btn-pular-dica pull-right">
             <i class="glyphicon glyphicon-arrow-left"></i>&nbsp;Voltar</button>
 </div>
-<div class="progress" ng-show="!contagem && !telaInit">
-    <div class="progress-bar" role="progressbar" ng-style="barraProgresso">
-        {{barraProgresso.width}}
+<div class="col-md-12 noPadding">
+    <div class="progress" ng-show="!contagem && !telaInit">
+        <div class="progress-bar" role="progressbar" ng-style="barraProgresso">
+            {{barraProgresso.width}}
+        </div>
     </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" ng-show="!contagem" style="margin-bottom: 30px;">
