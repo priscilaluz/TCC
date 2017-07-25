@@ -3,6 +3,7 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
         $scope.pergunta = new Pergunta();
         $scope.pergunta.respostas = [];
         $scope.telaCadastro = false;
+        $scope.idCorreta = null;
         $scope.anexo = null;
         $scope.respostaUnica = null;
         $scope.opcao = null;

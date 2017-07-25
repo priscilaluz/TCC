@@ -52,7 +52,7 @@ public class AnexoServiceImpl {
         return new ByteArrayInputStream(anexo.getBytes());
     }
     
-    public InputStream downloadImg(){
-        return getClass().getResourceAsStream("/icons/menu-acesso.png");
+    public InputStream downloadImgMonaLisa(String imagem){
+        return getClass().getResourceAsStream("/icons/".concat(imagem));
     }
 }

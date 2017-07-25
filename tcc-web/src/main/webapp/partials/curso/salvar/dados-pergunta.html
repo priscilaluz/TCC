@@ -14,7 +14,7 @@
         <p class="curso-nao-titulo-concluido"><span style="font-weight: bold">Respostas</span></p>
         <p class="curso-nao-titulo-concluido" ng-repeat="resposta in model.pergunta.respostas">
             <span ng-class="{'verdadeiro': resposta.correta, 'falso':!resposta.correta}">
-            {{resposta.descricao}}</span></p>
+            ({{($index+1}}){{resposta.descricao}}</span></p>
         <p class="curso-nao-titulo-concluido"><span style="font-weight: bold">Dica:</span>
                 {{model.pergunta.dica}}</p>
         <p class="curso-nao-titulo-concluido"><span style="font-weight: bold">Justificativa:</span>

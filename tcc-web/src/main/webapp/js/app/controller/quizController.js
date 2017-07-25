@@ -53,8 +53,9 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         $scope.model.tempo = tempoPergunta;
         $scope.model.posicao++;
         barraDeProgresso();
-        if (($scope.model.posicao+1) < $scope.model.perguntas.length) {
+        if (($scope.model.posicao) < $scope.model.perguntas.length) {
             $scope.model.pergunta = $scope.model.perguntas[$scope.model.posicao];
+            $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
             $scope.tempoPergunta();
         } else {
             $scope.model.pergunta = null;
@@ -124,12 +125,20 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         });
     };
     
+    var exibirAnexo = function (anexo) {
+        if (anexo && anexo.bytes) {
+            return "data:image/"+"jpg"+";base64,"+anexo.bytes;
+        }
+        return null;
+    };
+    
     var init = function () {
         $rootScope.appLoaded = false;
         $scope.telaInit = true;
         Jogo.buscarPerguntaDaApresentacaoDoJogoQuiz(function (perguntas) {
             $scope.model.perguntas = perguntas;
             $scope.model.pergunta = perguntas[$scope.model.posicao];
+            $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
             $rootScope.appLoaded = true;
             $scope.telaInit = false;
             barraDeProgresso();

@@ -2,6 +2,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
     function ($scope, $rootScope, $routeParams, $modal, growl, Enums, Curso, Etapa, Pergunta, AnexoService) {
         $scope.categorias = [];
         $scope.curso = new Curso();
+        var idCurso = null;
         $scope.model = {
             anexo: null,
             pergunta: null
@@ -26,7 +27,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
             $scope.numeroEtapa = $scope.numeroEtapa - 1;
             if ($scope.numeroEtapa === 0) {
                 $scope.abaEtapa = false;
-                buscarCurso($routeParams.idCurso);
+                buscarCurso(idCurso);
             } else {
                 buscarEtapaAtual($scope.numeroEtapa);
             }
@@ -61,6 +62,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
                 $scope.curso.situacao = {id: "C", descricao: "Concluído"};
             }
             $rootScope.appLoaded = false;
+            $scope.curso.etapas = [];
             $scope.curso.$save(function () {
                 $rootScope.appLoaded = true;
                 if (situacao === 'R') {
@@ -68,8 +70,9 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
                     buscarEtapaAtual($scope.numeroEtapa);
                     $scope.abaEtapa = true;
                 } else {
-                    buscarCurso($scope.curso.id);
+                    buscarCursoConcluido($scope.curso.id);
                 }
+                idCurso = $scope.curso.id;
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
@@ -255,10 +258,11 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
                 $scope.categorias = result;
                 $rootScope.appLoaded = true;
                 if ($routeParams.idCurso) {
+                    idCurso = $routeParams.idCurso;
                     if ($routeParams.situacao && $routeParams.situacao === 'C'){
-                        buscarCursoConcluido($routeParams.idCurso);
+                        buscarCursoConcluido(idCurso);
                     } else {
-                        buscarCurso($routeParams.idCurso);
+                        buscarCurso(idCurso);
                     }
                 }
             }, function (error) {

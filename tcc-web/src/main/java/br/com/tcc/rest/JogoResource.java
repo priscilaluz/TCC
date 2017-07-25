@@ -5,6 +5,7 @@
  */
 package br.com.tcc.rest;
 
+import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.enums.OrdemCacaPalavra;
@@ -44,7 +45,6 @@ public class JogoResource {
     @Path("/quizApresentacao")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Pergunta> buscarPerguntaDaApresentacaoDoJogoQuiz() {
-        InputStream is = anexoService.downloadImg();
         List<Pergunta> perguntas = new ArrayList<>();
         perguntas.add(obterPerguntaQuizModelo1());
         perguntas.add(obterPerguntaQuizModelo2());
@@ -192,6 +192,10 @@ public class JogoResource {
         pergunta.setDescricao("Quanto é o valor de x na equação: x-5=10?");
         pergunta.setJustificativa("x=10+5/n x=15");
         pergunta.setDica("x=10+5");
+//        Anexo anexo = new Anexo();
+//        anexo.setNomeArquivo("paisagens.jpg");
+//        anexo.setBytes(ReadImageAsByteArray("paisagens.jpg"));
+//        pergunta.setAnexo(anexo);
         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta1 = new Resposta();
@@ -313,7 +317,7 @@ public class JogoResource {
     }
     private Pergunta obterPerguntaQuizModelo4() {
         Pergunta pergunta = new Pergunta();
-        pergunta.setPosicao(5);
+        pergunta.setPosicao(4);
         pergunta.setDescricao("O Brasil é de que continente?");
         pergunta.setDica("O Brasil fica na America.");
         pergunta.setJustificativa("O Brasil fica na América, mais precisamente no subcontinente América do Sul. A Argentina, Bolívia, Chile, Colômbia, Equador, Guiana, Paraguai, Peru, Suriname, Uruguai e Venezuela são outros países localizados na América do Sul.");
@@ -357,11 +361,12 @@ public class JogoResource {
         Pergunta pergunta = new Pergunta();
         pergunta.setPosicao(5);
         pergunta.setDescricao("Quem é o pintor desse quadro e qual o nome dessa obra?");
-        pergunta.setDica("O quadro também é conhecido como A Gioconda (em italiano: La Gioconda, \"a sorridente\"; em francês, La Joconde) ");
-        pergunta.setJustificativa("O sorriso dela é muito famoso.");
-//        Anexo anexo = new Anexo();
-//        anexo.setBytes(ReadImageAsByteArray());
-//        pergunta.setAnexo(anexo);
+        pergunta.setDica("O sorriso dela é muito famoso.");
+        pergunta.setJustificativa("O quadro também é conhecido como A Gioconda (em italiano: La Gioconda, \"a sorridente\"; em francês, La Joconde)");
+        Anexo anexo = new Anexo();
+        anexo.setNomeArquivo("MonaLisa.jpg");
+        anexo.setBytes(ReadImageAsByteArray("MonaLisa.jpg"));
+        pergunta.setAnexo(anexo);
         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta1 = new Resposta();
@@ -398,11 +403,11 @@ public class JogoResource {
         
         return pergunta;
     }
-    private byte[] ReadImageAsByteArray (){
+    private byte[] ReadImageAsByteArray (String imagem){
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         try {
             byte []buffer = new byte[1024];
-            InputStream is = getClass().getResourceAsStream("MonaLisa.jpg");
+            InputStream is = anexoService.downloadImgMonaLisa(imagem);
             while (is.read( buffer ) != -1)  {
                 out.write( buffer );
             }
