@@ -177,6 +177,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
         $scope.excluirPergunta = function (index) {
             $scope.perguntas.push($scope.perguntasEtapa[index]);
             $scope.perguntasEtapa.splice(index, 1);
+            definirPosicaoPerguntas();
         };
         
         $scope.addPergunta = function () {
@@ -189,6 +190,13 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
             }
             $scope.perguntas.splice(posicao, 1);
             $scope.perguntasEtapa.push($scope.model.pergunta);
+            definirPosicaoPerguntas();
+        };
+        
+        var definirPosicaoPerguntas = function () {
+            for (var i = 0; i < $scope.perguntasEtapa.length; i++) {
+                $scope.perguntasEtapa[i].posicao = i+1;
+            }
         };
         
         //=== === === === === === ANEXO === === === === === ===//
