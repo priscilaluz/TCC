@@ -15,6 +15,7 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.springframework.stereotype.Component;
 
@@ -59,5 +60,15 @@ public class EnumsResource {
     @Path("/tipoPergunta")
     public List<TipoPergunta> findAllTipoPergunta() {
         return Arrays.asList(TipoPergunta.values());
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/tipoPerguntaPorJogo")
+    public TipoPergunta findTipoPerguntaPorJogo(@QueryParam("idJogo") String idJogo) {
+        if (Jogo.CACA_PALAVRA.getId().equals(idJogo) || Jogo.FORCA.getId().equals(idJogo)) {
+            return TipoPergunta.COMPLETAR_LACUNA;
+        }
+        return TipoPergunta.MULTIPLAS_ESCOLHAS;
     }
 }

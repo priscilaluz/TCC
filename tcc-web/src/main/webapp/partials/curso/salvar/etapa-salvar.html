@@ -36,18 +36,9 @@
                         <option value="">Jogo</option>
                     </select>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="pergunta" class="col-lg-1 control-label label-font">Pergunta:</label>
-                <div class="col-lg-10">
-                    <select id="pergunta" name="pergunta" class="form-control" ng-model="model.pergunta"
-                            ng-options="pergunta.descricao for pergunta in perguntas track by pergunta.id">
-                        <option value="">Perguntas</option>
-                    </select>
-                </div>
-                <div class="col-lg-1">
-                    <button type="button" class="btn btn-default pull-right botao-add" data-ng-click="addPergunta()" ng-disabled="!model.pergunta">
-                        <i class="glyphicon glyphicon-plus-sign" style="font-size: 26px;"></i></button>
+                <div class="col-lg-6">
+                    <button type="button" ng-click="addPergunta()" class="btn btn-modelo pull-right" ng-disabled="!etapa.jogo">
+                        <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Adicionar Perguntas</button>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12" style="overflow: auto; height: 150px !important;" ng-show="perguntasEtapa.length > 0">

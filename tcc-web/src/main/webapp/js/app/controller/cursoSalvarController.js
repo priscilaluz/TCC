@@ -91,28 +91,6 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
             $scope.etapa.idCurso = $scope.curso.id;
             Enums.getJogos(function (result) {
                 $scope.jogos = result;
-                Pergunta.buscarPerguntas({'idUsuario': $scope.usuarioLogado.id, 'parteNome': null,
-                    'categoria': $scope.curso.categoria.id}, function (result) {
-                    $scope.perguntas = [];
-                    if ($scope.perguntasEtapa && $scope.perguntasEtapa.length > 0) {
-                        for (var i = 0; i < result.length; i++) {
-                            var existe = false;
-                            for (var j = 0; j < $scope.perguntasEtapa.length; j++) {
-                                if (result[i].id == $scope.perguntasEtapa[j].id) {
-                                    existe = true;
-                                }
-                            }
-                            if (!existe) {
-                                $scope.perguntas.push(result[i]);
-                            }
-                        }
-                    } else {
-                        $scope.perguntas = result;
-                    }
-                    $rootScope.appLoaded = true;
-                }, function (error) {
-                    $rootScope.appLoaded = true;
-                });
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
@@ -175,22 +153,24 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
         };
         
         $scope.excluirPergunta = function (index) {
-            $scope.perguntas.push($scope.perguntasEtapa[index]);
             $scope.perguntasEtapa.splice(index, 1);
             definirPosicaoPerguntas();
         };
         
         $scope.addPergunta = function () {
-            var posicao;
-            for (var i = 0; i < $scope.perguntas.length; i++) {
-                if ($scope.perguntas[i].id === $scope.model.pergunta.id) {
-                    posicao = i;
-                    break;
-                }
-            }
-            $scope.perguntas.splice(posicao, 1);
-            $scope.perguntasEtapa.push($scope.model.pergunta);
-            definirPosicaoPerguntas();
+            var obj = {idCategoria: $scope.curso.categoria.id, perguntasEtapa:$scope.perguntasEtapa, 
+                idUsuario: $scope.usuarioLogado.id, jogo: $scope.etapa.jogo.id};
+            $modal.open({
+                templateUrl: 'partials/curso/salvar/add-perguntas.html',
+                controller: 'AdicionarPerguntaController',
+                size: 'lg',
+                resolve: {obj: function () {return obj;}}
+            }).result.then(function (result) {
+                $scope.perguntasEtapa = result;
+                definirPosicaoPerguntas();
+            }, function () {
+                // Modal cancelado
+            });
         };
         
         var definirPosicaoPerguntas = function () {
