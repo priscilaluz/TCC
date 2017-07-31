@@ -2,6 +2,7 @@ tccApp.controller('ApostaController', ['$scope', '$rootScope', '$modal', '$locat
 function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     var tempoPadraoPergunta = 60;
     var pontuacaoInicial = 1000;
+    var pontuacaoInicialFase = pontuacaoInicial;
     var timeoutTempoPorPergunta = null;
     $scope.model = {
         barraPontos: {},
@@ -14,6 +15,22 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         qntPulo:1,
         qntDica: 1,
         posicao: 0
+    };
+    
+    $scope.diminuirAposta = function (index) {
+        var pontuacaoDepois = $scope.model.pontuacao + 100;
+        if (pontuacaoDepois <= pontuacaoInicialFase){
+            $scope.model.pontuacao = pontuacaoDepois;
+            $scope.model.valorAposta[index] = $scope.model.valorAposta[index] - 100;
+        }
+    };
+    
+    $scope.aumentarAposta = function (index) {
+        var pontuacaoDepois = $scope.model.pontuacao - 100;
+        if (pontuacaoDepois >= 0){
+            $scope.model.pontuacao = $scope.model.pontuacao - 100;
+            $scope.model.valorAposta[index] = $scope.model.valorAposta[index] + 100;
+        }
     };
     
     var tempoPergunta = function () {

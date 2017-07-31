@@ -36,13 +36,13 @@
                     </div>
                     <div class="col-md-2" style="background-color: #d8e0c8; border-radius: 8px; margin-top: 8px; padding-top: 8px;">
                         <div class="col-md-3 noPadding" style="padding-left: 0px;">
-                            <img ng-src="{{model.imgDiminuir[$index]}}" alt="diminuir" style="height: 25px;" class="handCursor"
+                            <img ng-src="{{model.imgDiminuir[$index]}}" ng-click="diminuirAposta($index)" alt="diminuir" style="height: 25px;" class="handCursor"
                             ng-mouseover="model.imgDiminuir[$index]='img/jogos/aposta/botaoDiminuir-on.png'"
                             ng-mouseleave="model.imgDiminuir[$index]='img/jogos/aposta/botaoDiminuir-off.png'"/>
                         </div>
                         <div class="col-md-6 text-center noPadding" style="font-size: 25px; color: #193542;"><b>{{model.valorAposta[$index]}}</b></div>
                         <div class="col-md-3 noPadding">
-                            <img ng-src="{{model.imgAumentar[$index]}}" alt="aumentar" style="height: 25px;" class="handCursor"
+                            <img ng-src="{{model.imgAumentar[$index]}}" ng-click="aumentarAposta($index)" alt="aumentar" style="height: 25px;" class="handCursor"
                             ng-mouseover="model.imgAumentar[$index]='img/jogos/aposta/botaoAumentar-on.png'"
                             ng-mouseleave="model.imgAumentar[$index]='img/jogos/aposta/botaoAumentar-off.png'"/>
                         </div>
