@@ -17,11 +17,28 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         posicao: 0
     };
     
+    $scope.apostar = function () {
+        //$scope.model.valorAposta.push(0);
+        for (var i = 0; i < $scope.model.pergunta.respostas.length; i++) {
+            if ($scope.model.pergunta.respostas[i].correta) {
+                pontuacaoInicialFase = $scope.model.pontuacao + ($scope.model.valorAposta[i]*2);
+                $scope.model.pontuacao = pontuacaoInicialFase;
+            }
+        }
+        $scope.model.valorAposta = [];
+        $scope.model.posicao++;
+        $scope.model.pergunta = $scope.model.perguntas[$scope.model.posicao];
+        inicializarBotao();
+        atualizarPorcentagemBarra();
+        barraDeProgresso();
+    };
+    
     $scope.diminuirAposta = function (index) {
         var pontuacaoDepois = $scope.model.pontuacao + 100;
-        if (pontuacaoDepois <= pontuacaoInicialFase){
+        var pontuacaoLinhaDepois = $scope.model.valorAposta[index] - 100;
+        if (pontuacaoDepois <= pontuacaoInicialFase && pontuacaoLinhaDepois >= 0){
             $scope.model.pontuacao = pontuacaoDepois;
-            $scope.model.valorAposta[index] = $scope.model.valorAposta[index] - 100;
+            $scope.model.valorAposta[index] = pontuacaoLinhaDepois;
         }
     };
     

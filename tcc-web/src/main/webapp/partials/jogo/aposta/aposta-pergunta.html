@@ -27,26 +27,35 @@
             </div>
             <!--<button type="button" ng-click="aumentarPontuacao()">TESTE</button>-->
             <div class="col-md-11">
-                <h3 class="col-md-12 title-fonte text-center" style="border-radius: 20px;background-color: #1b6d85; padding-bottom: 15px; padding-top: 15px;">
-                {{model.pergunta.descricao}}</h3>
-                <div class="col-md-12" ng-repeat="resposta in model.pergunta.respostas">
-                    <div class="col-md-10">
-                        <button style="margin-top: 10px;" ng-style="resposta.correta?respostaCorreta:(idReposta==resposta.id)?respostaIncorreta:{}"
-                         type="button" ng-click="selecionarResposta(resposta)" class="btn btn-resposta-quiz btn-block">{{resposta.descricao}}</button>
-                    </div>
-                    <div class="col-md-2" style="background-color: #d8e0c8; border-radius: 8px; margin-top: 8px; padding-top: 8px;">
-                        <div class="col-md-3 noPadding" style="padding-left: 0px;">
-                            <img ng-src="{{model.imgDiminuir[$index]}}" ng-click="diminuirAposta($index)" alt="diminuir" style="height: 25px;" class="handCursor"
-                            ng-mouseover="model.imgDiminuir[$index]='img/jogos/aposta/botaoDiminuir-on.png'"
-                            ng-mouseleave="model.imgDiminuir[$index]='img/jogos/aposta/botaoDiminuir-off.png'"/>
+                <div class="col-md-12">
+                    <h3 class="col-md-12 title-fonte text-center" style="border-radius: 20px;background-color: #1b6d85; padding-bottom: 15px; padding-top: 15px;">
+                    {{model.pergunta.descricao}}</h3>
+                    <div class="col-md-12" ng-repeat="resposta in model.pergunta.respostas">
+                        <div class="col-md-10" style="background-color: #b1f1a7; color: #46393d; border: 1px double #5bd24d; margin-top: 8px; 
+                                font-size: 25px; border-radius: 15px; font-family:'Curlz MT'"
+                                 ng-style="resposta.correta?respostaCorreta:(idReposta==resposta.id)?respostaIncorreta:{}">
+                            {{resposta.descricao}}
                         </div>
-                        <div class="col-md-6 text-center noPadding" style="font-size: 25px; color: #193542;"><b>{{model.valorAposta[$index]}}</b></div>
-                        <div class="col-md-3 noPadding">
-                            <img ng-src="{{model.imgAumentar[$index]}}" ng-click="aumentarAposta($index)" alt="aumentar" style="height: 25px;" class="handCursor"
-                            ng-mouseover="model.imgAumentar[$index]='img/jogos/aposta/botaoAumentar-on.png'"
-                            ng-mouseleave="model.imgAumentar[$index]='img/jogos/aposta/botaoAumentar-off.png'"/>
+                        <div class="col-md-2" style="margin-top: 8px; padding-top: 8px;">
+                            <div class="col-md-3 noPadding" style="padding-left: 0px;">
+                                <img ng-src="{{model.imgDiminuir[$index]}}" ng-click="diminuirAposta($index)" alt="diminuir" style="height: 25px;" class="handCursor"
+                                ng-mouseover="model.imgDiminuir[$index]='img/jogos/aposta/botaoDiminuir-on.png'"
+                                ng-mouseleave="model.imgDiminuir[$index]='img/jogos/aposta/botaoDiminuir-off.png'"/>
+                            </div>
+                            <div class="col-md-6 text-center noPadding" style="font-size: 25px; color: #193542;"><b>{{model.valorAposta[$index]}}</b></div>
+                            <div class="col-md-3 noPadding">
+                                <img ng-src="{{model.imgAumentar[$index]}}" ng-click="aumentarAposta($index)" alt="aumentar" style="height: 25px;" class="handCursor"
+                                ng-mouseover="model.imgAumentar[$index]='img/jogos/aposta/botaoAumentar-on.png'"
+                                ng-mouseleave="model.imgAumentar[$index]='img/jogos/aposta/botaoAumentar-off.png'"/>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-12" style="padding-left: 45px; padding-right: 30px; margin-top: 20px;">
+                    <button type="button" ng-click="apostar()" ng-disabled="false" class="btn btn-block btn-pular-dica"
+                            style="background-color: #3c0a69; color: #ffffff; border: 1px double #d2d2d2; 
+                            padding-top: 20px; padding-bottom: 20px; font-size: 45px; border-radius: 20px; font-family:'Curlz MT'">
+                        &nbsp;APOSTAR</button>
                 </div>
             </div>
         </div>
@@ -57,8 +66,6 @@
                 <i class="glyphicon glyphicon-share-alt"></i>&nbsp;Pular</button>
             <button type="button" ng-click="dicaPergunta()" ng-show="model.qntDica>0" class="btn btn-pular-dica pull-right">
                 <i class="fa fa-lightbulb-o"></i>&nbsp;Dica</button>
-            <button type="button" ng-click="dicaPergunta()" ng-disabled="false" class="btn btn-pular-dica pull-right">
-                &nbsp;APOSTAR</button>
         </div>
     </div>
 </div>
