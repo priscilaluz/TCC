@@ -25,15 +25,19 @@
                     </div>
                 </div>
             </div>
-            <!--<button type="button" ng-click="aumentarPontuacao()">TESTE</button>-->
             <div class="col-md-11">
+                <div class="col-md-12">
+                <div class="col-md-3 pull-right">
+                    <p class="col-lg-12 curso-titulo-concluido text-right" style="font-size: 30px;">Tempo: {{model.tempo}}</p>
+                </div>
+                </div>
                 <div class="col-md-12">
                     <h3 class="col-md-12 title-fonte text-center" style="border-radius: 20px;background-color: #1b6d85; padding-bottom: 15px; padding-top: 15px;">
                     {{model.pergunta.descricao}}</h3>
                     <div class="col-md-12" ng-repeat="resposta in model.pergunta.respostas">
                         <div class="col-md-10" style="background-color: #b1f1a7; color: #46393d; border: 1px double #5bd24d; margin-top: 8px; 
-                                font-size: 25px; border-radius: 15px; font-family:'Curlz MT'"
-                                 ng-style="resposta.correta?respostaCorreta:(idReposta==resposta.id)?respostaIncorreta:{}">
+                                font-size: 20px; border-radius: 15px;"
+                                 ng-style="resposta.correta?respostaCorreta:(model.valorAposta[$index]>0)?respostaIncorreta:{}">
                             {{resposta.descricao}}
                         </div>
                         <div class="col-md-2" style="margin-top: 8px; padding-top: 8px;">
@@ -52,9 +56,9 @@
                     </div>
                 </div>
                 <div class="col-md-12" style="padding-left: 45px; padding-right: 30px; margin-top: 20px;">
-                    <button type="button" ng-click="apostar()" ng-disabled="false" class="btn btn-block btn-pular-dica"
-                            style="background-color: #3c0a69; color: #ffffff; border: 1px double #d2d2d2; 
-                            padding-top: 20px; padding-bottom: 20px; font-size: 45px; border-radius: 20px; font-family:'Curlz MT'">
+                    <button type="button" ng-click="apostar()" ng-disabled="!apostou()" class="btn btn-block btn-pular-dica"
+                            style="background-color: #134033; color: #ffffff; border: 1px double #d2d2d2; 
+                            padding-top: 10px; padding-bottom: 10px; font-size: 35px; border-radius: 20px;">
                         &nbsp;APOSTAR</button>
                 </div>
             </div>
