@@ -16,6 +16,7 @@ import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.util.ConstantesI18N;
 import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarCurso;
+import br.com.tcc.service.query.BuscarCursoAluno;
 import br.com.tcc.service.query.BuscarEtapa;
 import br.com.tcc.service.query.ExcluirEtapaPerguntaPorCurso;
 import br.com.tcc.service.query.ExcluirEtapaPerguntaPorEtapa;
@@ -164,8 +165,11 @@ public class CursoServiceImpl {
     
     @Transactional(readOnly = false)
     public CursoAluno entrarCurso(Long idCurso, Long idAluno, String codAcesso) {
+        CursoAluno cursoAlunoJaSalvo = (CursoAluno) dao.uniqueResult(new BuscarCursoAluno.Entities()
+                .fetchAluno(ConstantesI18N.FETCH).fetchCurso(ConstantesI18N.FETCH)
+                .whereIdAluno(idAluno).whereIdCurso(idCurso));
         Curso curso = dao.get(Curso.class, idCurso);
-        validador.validarSalvarEtapa(curso, codAcesso);
+        validador.validarSalvarEtapa(curso, codAcesso, cursoAlunoJaSalvo);
         CursoAluno cursoAluno = new CursoAluno();
         cursoAluno.setAluno(new Usuario(idAluno));
         cursoAluno.setCurso(new Curso(idCurso));

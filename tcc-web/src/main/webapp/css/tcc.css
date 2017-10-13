@@ -234,6 +234,11 @@ li {
     color: #ffffff;
 }
 
+.fontBaltazarPreta{
+    font-family:'Balthazar';
+    color: #393939;
+}
+
 .linhaBranca{
     margin-top: -10px;
     padding-top: 2px;

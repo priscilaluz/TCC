@@ -168,7 +168,7 @@ public class CursoValidatorTest {
     @Test
     public void naoDeveSalvarCursoAlunoSemCodAcesso(){
         try {
-            validator.validarSalvarEtapa(obterCursoValida(), null);
+            validator.validarSalvarEtapa(obterCursoValida(), null, null);
             fail();
         } catch (BusinessException ex) {
             assertEquals(ConstantesI18N.CODIGO_ACESSO_OBRIGATORIO, ex.getMessage());
@@ -178,10 +178,20 @@ public class CursoValidatorTest {
     @Test
     public void naoDeveSalvarCursoAlunoComCodAcessoInvalido(){
         try {
-            validator.validarSalvarEtapa(obterCursoValida(), "CodInvalido");
+            validator.validarSalvarEtapa(obterCursoValida(), "CodInvalido", null);
             fail();
         } catch (BusinessException ex) {
             assertEquals(ConstantesI18N.CODIGO_ACESSO_INVALIDO, ex.getMessage());
+        }
+    }
+    
+    @Test
+    public void naoDeveSalvarCursoAlunoJaSalvo(){
+        try {
+            validator.validarSalvarEtapa(obterCursoValida(), "CodAcesso", new CursoAluno());
+            fail();
+        } catch (BusinessException ex) {
+            assertEquals(ConstantesI18N.CURSO_ALUNO_JA_SALVO, ex.getMessage());
         }
     }
     //</editor-fold>

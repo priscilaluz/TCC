@@ -1,4 +1,21 @@
-Cursos em Andamento
-<div class="row" data-ng-include="'partials/curso/meus-cursos-aluno/cursos-andamento.html'"></div>
-Cursos Concluídos
-<div class="row" data-ng-include="'partials/curso/meus-cursos-aluno/cursos-concluido.html'"></div>
+<h1 class="title-fonte">Meus Cursos</h1>
+<div class="col-xs-12 col-sm-12 col-md-12" style="background-color: #dff0d8; border: #cbe8ba solid 1px; padding-bottom: 20px;">
+    <form class="form-horizontal" name="meusCursosForm">
+
+        <h3 class="fontBaltazarPreta handCursor" data-toggle="collapse" data-target="#cursoAndamento"
+            ng-click="model.andamento = !model.andamento">
+            Cursos em Andamento 
+            <i class="glyphicon glyphicon-chevron-up" ng-show="!model.andamento"></i>
+            <i class="glyphicon glyphicon-chevron-down" ng-show="model.andamento"></i>
+        </h3>
+        <div class="row collapse" id="cursoAndamento" data-ng-include="'partials/curso/meus-cursos-aluno/cursos-andamento.html'"></div>
+
+        <h3 class="fontBaltazarPreta handCursor" data-toggle="collapse" data-target="#cursoConcluido"
+            ng-click="model.concluido = !model.concluido">
+            Cursos Concluídos
+            <i class="glyphicon glyphicon-chevron-up" ng-show="!model.concluido"></i>
+            <i class="glyphicon glyphicon-chevron-down" ng-show="model.concluido"></i>
+        </h3>
+        <div class="row collapse" id="cursoConcluido" data-ng-include="'partials/curso/meus-cursos-aluno/cursos-concluido.html'"></div>
+    </form>
+</div>

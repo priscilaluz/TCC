@@ -1,5 +1,5 @@
-tccApp.controller('EntrarCursoController', ['$scope', '$rootScope', '$modalInstance', 'Curso', 'idCurso',
-    function ($scope, $rootScope, $modalInstance, Curso, idCurso) {
+tccApp.controller('EntrarCursoController', ['$scope', '$rootScope', '$modalInstance', '$location', 'Curso', 'idCurso', 'growl',
+    function ($scope, $rootScope, $modalInstance, $location, Curso, idCurso, growl) {
         $scope.model = {
             idCurso: idCurso,
             curso: null
@@ -9,8 +9,10 @@ tccApp.controller('EntrarCursoController', ['$scope', '$rootScope', '$modalInsta
             $rootScope.appLoaded = false;
             Curso.entrarCurso({'idCurso': $scope.model.idCurso, 'idAluno': $rootScope.usuarioLogado.id,
                 'codAcesso': $scope.model.codAcesso}, function (cursoUsuario) {
-                
+                growl.success('Acesso ao curso concedido com sucesso.',{title: 'Operação bem sucedida'});
                 $rootScope.appLoaded = true;
+                $location.path("/curso-estudar/"+cursoUsuario.id);
+                $scope.fechar();
             }, function (error) {
                 $rootScope.appLoaded = true;
             });

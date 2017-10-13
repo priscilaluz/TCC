@@ -46,6 +46,7 @@ public class ConstantesI18N {
     public static final String ANEXO_BYTES_OBRIGATORIO = "anexo.bytes.obrigatorio";
     
     //CursoAluno
+    public static final String CURSO_ALUNO_JA_SALVO = "curso.aluno.ja.salvo";
     public static final String CODIGO_ACESSO_OBRIGATORIO = "codigo.acesso.obrigatorio";
     public static final String CODIGO_ACESSO_INVALIDO = "codigo.acesso.invalido";
     
