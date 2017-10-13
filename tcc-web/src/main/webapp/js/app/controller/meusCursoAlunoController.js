@@ -1,5 +1,5 @@
-tccApp.controller('MeusCursoAlunoController', ['$scope', '$rootScope', 'Curso', 'Enums',
-    function ($scope, $rootScope, Curso, Enums) {
+tccApp.controller('MeusCursoAlunoController', ['$scope', '$rootScope', 'Curso',
+    function ($scope, $rootScope, Curso) {
         $scope.cursos = [];
         $scope.pesquisar = {};
 
