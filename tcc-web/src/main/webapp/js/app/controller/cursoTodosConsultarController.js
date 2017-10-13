@@ -17,7 +17,7 @@ tccApp.controller('CursoTodosConsultarController', ['$scope', '$rootScope', 'Cur
 
         $scope.entrarNoCurso = function (idCurso) {
             $modal.open({
-                templateUrl: 'partials/curso/consultar-todos/entrar-curso.html',
+                templateUrl: 'partials/curso/consultar-todos-aluno/entrar-curso.html',
                 controller: 'EntrarCursoController',
                 resolve: {idCurso: function () {return idCurso;}}
             }).result.then(function (result) {

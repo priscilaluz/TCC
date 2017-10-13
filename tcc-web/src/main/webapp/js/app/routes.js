@@ -35,7 +35,7 @@ tccApp.config(['$routeProvider', '$httpProvider',
         controller: 'PerguntaSalvarController'
       }).
       when('/consultar-curso-criei', {
-        templateUrl: 'partials/curso/consultar-meus/curso-consulta.html',
+        templateUrl: 'partials/curso/consultar-meus-professor/curso-consulta.html',
         controller: 'CursoConsultarCrieiController'
       }).
       when('/criar-curso/:idCurso?/:situacao?', {
@@ -43,8 +43,12 @@ tccApp.config(['$routeProvider', '$httpProvider',
         controller: 'CursoSalvarController'
       }).
       when('/consultar-todos-curso', {
-        templateUrl: 'partials/curso/consultar-todos/curso-consulta.html',
+        templateUrl: 'partials/curso/consultar-todos-aluno/curso-consulta.html',
         controller: 'CursoTodosConsultarController'
+      }).
+      when('/meus-cursos-aluno', {
+        templateUrl: 'partials/curso/meus-cursos-aluno/cursos.html',
+        controller: 'MeusCursoAlunoController'
       }).
       when('/sobre', {
         templateUrl: 'partials/home/sobre.html',
