@@ -6,6 +6,7 @@ tccApp.controller('EntrarCursoController', ['$scope', '$rootScope', '$modalInsta
         };
 
         $scope.entrar = function () {
+            $rootScope.appLoaded = false;
             Curso.entrarCurso({'idCurso': $scope.model.idCurso, 'idAluno': $rootScope.usuarioLogado.id,
                 'codAcesso': $scope.model.codAcesso}, function (cursoUsuario) {
                 
