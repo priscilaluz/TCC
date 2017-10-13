@@ -7,8 +7,10 @@ package br.com.tcc.service.impl;
 
 import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Curso;
+import br.com.tcc.common.entity.CursoAluno;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
+import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.util.ConstantesI18N;
@@ -88,6 +90,7 @@ public class CursoServiceImpl {
                 .fetchEtapasPerguntas(ConstantesI18N.FETCH)
                 .fetchPergunta(ConstantesI18N.FETCH)
                 .fetchResposta(ConstantesI18N.FETCH)
+                .fetchUsuario(ConstantesI18N.FETCH)
                 .fetchAnexo(ConstantesI18N.FETCH)
                 .fetchAnexoEtapa(ConstantesI18N.FETCH)
                 .whereId(idCurso)
@@ -157,5 +160,18 @@ public class CursoServiceImpl {
             etapa.setIdAnexo(etapa.getAnexo()!=null?etapa.getAnexo().getId():null);
         }
         return etapas;
+    }
+    
+    @Transactional(readOnly = false)
+    public CursoAluno entrarCurso(Long idCurso, Long idAluno, String codAcesso) {
+        Curso curso = dao.get(Curso.class, idCurso);
+        validador.validarSalvarEtapa(curso, codAcesso);
+        CursoAluno cursoAluno = new CursoAluno();
+        cursoAluno.setAluno(new Usuario(idAluno));
+        cursoAluno.setCurso(new Curso(idCurso));
+        cursoAluno.setPontuacao(0);
+        cursoAluno.setPosicaoAtual(1);
+        dao.saveOrUpdate(cursoAluno);
+        return cursoAluno;
     }
 }

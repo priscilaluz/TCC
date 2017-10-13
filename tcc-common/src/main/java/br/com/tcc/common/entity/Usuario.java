@@ -41,6 +41,13 @@ public class Usuario extends AbstractIdBean<Long> {
     @Column(name = "SENHA", nullable = false)
     private String senha;
 
+    public Usuario() {
+    }
+
+    public Usuario(Long id) {
+        this.id = id;
+    }
+    
     @Override
     public Long getId() {
         return id;

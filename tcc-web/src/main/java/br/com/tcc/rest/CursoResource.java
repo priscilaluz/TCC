@@ -6,6 +6,7 @@
 package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.Curso;
+import br.com.tcc.common.entity.CursoAluno;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.SituacaoCurso;
@@ -88,6 +89,15 @@ public class CursoResource {
     }
     
     @GET
+    @Path("/buscarCursosAluno")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Curso> buscarCursoPorFiltro(@QueryParam("parteNome") String parteNome, 
+            @QueryParam("categoria") String idCategoria) {
+        Categoria categoria = idCategoria!=null?Categoria.from(idCategoria):null;
+        return cursoService.buscarCursoPorFiltro(null, parteNome, categoria, SituacaoCurso.CONCLUIDA);
+    }
+    
+    @GET
     @Path("/buscarPorId")
     @Produces(MediaType.APPLICATION_JSON)
     public Curso buscarCursoPorId(@QueryParam("idCurso") Long idCurso) {
@@ -99,5 +109,13 @@ public class CursoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Curso buscarCursoCompletoPorId(@QueryParam("idCurso") Long idCurso) {
         return cursoService.buscarCursoPorIdConcluido(idCurso);
+    }
+    
+    @GET
+    @Path("/entrarCurso")
+    @Produces(MediaType.APPLICATION_JSON)
+    public CursoAluno entrarCurso(@QueryParam("idCurso") Long idCurso, @QueryParam("idAluno") Long idAluno,
+            @QueryParam("codAcesso") String codAcesso) {
+        return cursoService.entrarCurso(idCurso, idAluno, codAcesso);
     }
 }

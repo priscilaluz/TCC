@@ -1,6 +1,7 @@
 package br.com.tcc.service.impl;
 
 import br.com.tcc.common.entity.Curso;
+import br.com.tcc.common.entity.CursoAluno;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
 import br.com.tcc.common.entity.Pergunta;
@@ -227,6 +228,15 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         for (Etapa e : etapas) {
             assertTrue(ids.contains(e.getId()));
         }
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Salvar curso aluno">
+    @Test
+    public void deveEntrarNoCurso(){
+        CursoAluno cursoAluno = cursoServiceImpl.entrarCurso(1L, 1L, "ABCDE12345");
+        assertNotNull(cursoAluno.getId());
+        assertEquals(dao.getById(CursoAluno.class, cursoAluno.getId()), cursoAluno);
     }
     //</editor-fold>
     

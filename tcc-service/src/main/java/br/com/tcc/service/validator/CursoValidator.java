@@ -31,4 +31,11 @@ public class CursoValidator {
         pm.assertNotEmpty(etapa.getEtapasPerguntas()).orRegister(ConstantesI18N.ETAPA_PERGUNTAS_OBRIGATORIA);
         pm.verifyAll();
     }
+
+    public void validarSalvarEtapa(Curso curso, String codAcesso){
+        PendencyManager pm = new PendencyManager();
+        pm.assertNotNull(codAcesso).orRegister(ConstantesI18N.CODIGO_ACESSO_OBRIGATORIO);
+        pm.assertThat(codAcesso==null||curso.getCodAcesso().equals(codAcesso)).orRegister(ConstantesI18N.CODIGO_ACESSO_INVALIDO);
+        pm.verifyAll();
+    }
 }

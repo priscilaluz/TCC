@@ -1,6 +1,7 @@
 package br.com.tcc.test.validator;
 
 import br.com.tcc.common.entity.Curso;
+import br.com.tcc.common.entity.CursoAluno;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
 import br.com.tcc.common.entity.Pergunta;
@@ -159,6 +160,28 @@ public class CursoValidatorTest {
             fail();
         } catch (BusinessException ex) {
             assertEquals(ConstantesI18N.ETAPA_PERGUNTAS_OBRIGATORIA, ex.getMessage());
+        }
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Salvar curso aluno">
+    @Test
+    public void naoDeveSalvarCursoAlunoSemCodAcesso(){
+        try {
+            validator.validarSalvarEtapa(obterCursoValida(), null);
+            fail();
+        } catch (BusinessException ex) {
+            assertEquals(ConstantesI18N.CODIGO_ACESSO_OBRIGATORIO, ex.getMessage());
+        }
+    }
+    
+    @Test
+    public void naoDeveSalvarCursoAlunoComCodAcessoInvalido(){
+        try {
+            validator.validarSalvarEtapa(obterCursoValida(), "CodInvalido");
+            fail();
+        } catch (BusinessException ex) {
+            assertEquals(ConstantesI18N.CODIGO_ACESSO_INVALIDO, ex.getMessage());
         }
     }
     //</editor-fold>

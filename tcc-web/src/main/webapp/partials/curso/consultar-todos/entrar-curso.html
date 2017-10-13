@@ -1,0 +1,20 @@
+<div class="modal-header" style="background-color: #cbe8ba;">
+    <h3 class="modal-title title-fonte">Entrar no curso</h3>
+</div>
+<div class="modal-body">
+    <form role="form" name="dicaForm" class="form-horizontal" enctype="multipart/form-data">
+        <p class="curso-nao-titulo-concluido"><b>Curso: </b>{{model.curso.nome}}</p>
+        <p class="curso-nao-titulo-concluido"><b>Descricao: </b>{{model.curso.assuntoGeral}}</p>
+        <p class="curso-nao-titulo-concluido"><b>Professor: </b>{{model.curso.usuario.nome}}</p>
+        <p class="curso-nao-titulo-concluido"><b>Quantidade de etapas: </b>{{model.curso.etapas.length}}</p>
+        <br>
+        <p class="curso-nao-titulo-concluido"><b>Código de Acesso:</b></p>
+        <input type="text" maxlength="10" name="codigo" ng-model="model.codAcesso" class="form-control" id="inputCodigo" placeholder="Código de Acesso">
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-ng-click="fechar()" style="font-size: 120%;">
+        <i class="glyphicon glyphicon-remove-sign"></i>&nbsp;Fechar</button>
+    <button type="button" class="btn btn-modelo" data-ng-click="entrar()" style="font-size: 120%;">
+        <i class="glyphicon glyphicon-log-in"></i>&nbsp;Entrar</button>
+</div>

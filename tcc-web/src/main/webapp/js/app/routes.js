@@ -42,6 +42,10 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/curso/salvar/curso.html',
         controller: 'CursoSalvarController'
       }).
+      when('/consultar-todos-curso', {
+        templateUrl: 'partials/curso/consultar-todos/curso-consulta.html',
+        controller: 'CursoTodosConsultarController'
+      }).
       when('/sobre', {
         templateUrl: 'partials/home/sobre.html',
         controller: 'SobreController'
