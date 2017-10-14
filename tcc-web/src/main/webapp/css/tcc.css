@@ -28,11 +28,11 @@
 .cedula {
     border: 1px double #d2d2d2;
     padding-top: 7px;
-    padding-left: 13px;
+    padding-left: 9px;
     height: 32px;
     width: 32px;
     border-radius: 3px;
-    font-family:"Balthazar";
+    font-family:cursive;
     font-size: 15px;
     color: #ffffff;
 } 
@@ -52,7 +52,7 @@
     width: 100%;
 }
 .btn-resposta-quiz {
-    font-family:"Balthazar";
+    font-family:cursive;
     font-size: 130%;
     font-weight: bold;
     color: #ffffff;
@@ -67,7 +67,7 @@
     border-color: #adadad;
 }
 .btn-pular-dica {
-    font-family:"Balthazar";
+    font-family:cursive;
     font-size: 130%;
     font-weight: bold;
     color: #ffffff;
@@ -100,7 +100,7 @@
 .jogos-font{
     color: #522e2e;
     font-size: 22px;
-    font-family:'Balthazar';
+    font-family:cursive;
     background-color: #f2ffed;
 }
 .btn-file {
@@ -109,7 +109,7 @@
     background-color: #ff8f00;
     border-color: #ff6f00;
     color: #ffffff;
-    font-family: "Balthazar";
+    font-family: cursive;
     font-size: 125%;
     font-weight: bold;
 }
@@ -145,7 +145,7 @@
     color: red;
 }
 .title-fonte{
-    font-family: 'Balthazar';
+    font-family: cursive;
     color: #ffffff;
 }
 .botao-add{
@@ -161,7 +161,7 @@
 .table-font{
     color: #522e2e;
     font-size: 15px;
-    font-family:'Balthazar';
+    font-family:cursive;
     background-color: #f2ffed;
 }
 
@@ -169,32 +169,32 @@
     background-color: #c5dabd;
     color: #522e2e;
     font-size: 16px;
-    font-family:'Balthazar';
+    font-family:cursive;
 }
 
 .curso-titulo-concluido{
     color: #ff6624;
     font-size: 21px;
-    font-family:'Balthazar';
+    font-family:cursive;
 }
 
 .curso-nao-titulo-concluido{
     color: #5d0f0f;
-    font-size: 18px;
-    font-family:'Balthazar';
+    font-size:20px;
+    font-family:cursive;
 }
 
 .curso-etapa-concluido{
     color: #5d0f0f;
     font-size: 23px;
-    font-family:'Balthazar';
+    font-family:cursive;
     font-weight: bold;
 }
 
 .label-font{
     color: #ff6624;
     font-size: 19px;
-    font-family:'Balthazar';
+    font-family:cursive;
 }
 
 .handCursor{
@@ -212,7 +212,7 @@ li {
 .menu-fonte{
     color: #ffffff;
     font-size: 30px;
-    font-family:'Balthazar';
+    font-family:cursive;
     font-weight: bold;
     background-color: transparent;
 }
@@ -230,13 +230,69 @@ li {
 }
 
 .fontBaltazar{
-    font-family:'Balthazar';
+    font-family:cursive;
     color: #ffffff;
 }
 
-.fontBaltazarPreta{
-    font-family:'Balthazar';
-    color: #393939;
+.menuCursosParticipoH3{
+    font-family:cursive;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.menuCursosParticipoDiv{
+    background-color: rgb(37, 198, 205);
+    border-radius: 40px;
+    margin-top: 20px;
+}
+
+.grad1 {
+    background: rgb(37, 198, 205); /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #6dcf55, #0b9ca2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #6dcf55, #0b9ca2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #6dcf55, #0b9ca2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #6dcf55, #0b9ca2); /* Standard syntax (must be last) */
+}
+
+.grad1:hover {
+    background: #0b9ca2; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #0b9ca2, #6dcf55); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #0b9ca2, #6dcf55); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #0b9ca2, #6dcf55); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #0b9ca2, #6dcf55); /* Standard syntax (must be last) */
+}
+.menu-cursos-font{
+    color: #ffffff;
+    font-size: 16px;
+    font-family:cursive;
+}
+
+.cursos-menu{
+    border: #dff0d8 solid 1px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-radius: 119px;
+    
+    background: #d35e4c; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #53d4a3, #37b2ce); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #53d4a3, #37b2ce); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #53d4a3, #37b2ce); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #53d4a3, #37b2ce); /* Standard syntax (must be last) */
+}
+.cursos-menu:hover {
+    background: #d35e4c; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #37b2ce, #53d4a3); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #37b2ce, #53d4a3); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #37b2ce, #53d4a3); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #37b2ce, #53d4a3); /* Standard syntax (must be last) */
+    border: #dff0d8 solid 1px;
+}
+
+.img-cursos-menu{
+    height:65px;
+    display: block;
+    margin: 0 auto;
 }
 
 .linhaBranca{
@@ -247,7 +303,7 @@ li {
 }
 
 .btn-modelo {
-    font-family:"Balthazar";
+    font-family:cursive;
     font-size: 125%;
     font-weight: bold;
     color: #ffffff;
@@ -262,7 +318,7 @@ li {
 }
 
 .btn-modelo-voltar {
-    font-family:"Balthazar";
+    font-family:cursive;
     font-size: 125%;
     font-weight: bold;
     color: #0d1318;
@@ -277,7 +333,7 @@ li {
 }
 
 .btn-default1 {
-    font-family:"Balthazar";
+    font-family:cursive;
     font-size: 125%;
     font-weight: bold;
     color: #333;
@@ -330,7 +386,7 @@ li {
 }
 
 .btn-circle {
-    font-family:'Balthazar';
+    font-family:cursive;
     text-align: center;
     padding: 7px 20px;
     font-size: 16px;
@@ -379,13 +435,13 @@ li {
 .fonte-titulo-opcoes{
     color: #810000;
     font-size: 25px;
-    font-family:'Balthazar';
+    font-family:cursive;
 }
 
 li{
     color: #fc4b00;
     font-size: 17px;
-    font-family:'Balthazar';
+    font-family:cursive;
 }
 
 /* Os estilos abaixo foram extendidos do bootstrap para atender aos campos textarea de texto formatado*/
