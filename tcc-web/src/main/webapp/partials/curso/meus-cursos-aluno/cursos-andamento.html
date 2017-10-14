@@ -2,7 +2,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12" style="padding-top: 10px;">
         <p class="curso-nao-titulo-concluido" ng-show="model.cursosAndamento.length==0"><b>Você não tem nenhum curso em andamento.</b></p>
         <div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="cursoAluno in model.cursosAndamento">
-            <div class="col-xs-12 cursos-menu handCursor" ng-click="estudarCurso(cursoAluno)" style="width: 250px;height: 110px;">
+            <div class="col-xs-12 cursos-menu handCursor" ng-click="estudarCurso(cursoAluno.id)" style="width: 250px;height: 110px;">
                 <p class="text-center menu-cursos-font">{{cursoAluno.curso.nome}}</p>
             </div>
         </div>

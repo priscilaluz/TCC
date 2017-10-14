@@ -232,35 +232,6 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     }
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="CursoAluno">
-    @Test
-    public void deveEntrarNoCurso(){
-        CursoAluno cursoAluno = cursoServiceImpl.entrarCurso(1L, 1L, "ABCDE12345");
-        assertNotNull(cursoAluno.getId());
-        assertEquals(dao.getById(CursoAluno.class, cursoAluno.getId()), cursoAluno);
-    }
-    
-    @Test
-    public void deveRetornarCursoAlunoPorUsuario(){
-        List<CursoAluno> cursosAlunos = cursoServiceImpl.buscarCursoAlunoPorAlunoSituacao(2L, null);
-        assertTrue(cursosAlunos.size()==1);
-        List<Long> ids = new ArrayList<>(Arrays.asList(1L));
-        for (CursoAluno c : cursosAlunos) {
-            assertTrue(ids.contains(c.getId()));
-        }
-    }
-    
-    @Test
-    public void deveRetornarCursoAlunoPorSituacao(){
-        List<CursoAluno> cursosAlunos = cursoServiceImpl.buscarCursoAlunoPorAlunoSituacao(null, SituacaoCursoAluno.EM_ANDAMENTO);
-        assertTrue(cursosAlunos.size()==2);
-        List<Long> ids = new ArrayList<>(Arrays.asList(1L, 3L));
-        for (CursoAluno c : cursosAlunos) {
-            assertTrue(ids.contains(c.getId()));
-        }
-    }
-    //</editor-fold>
-    
     //<editor-fold defaultstate="collapsed" desc="Entidades Validas">
     private Curso obterCursoValida() {
         Set<Etapa> etapas = new HashSet<>();

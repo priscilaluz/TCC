@@ -9,7 +9,9 @@ import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -80,6 +82,9 @@ public class Curso extends AbstractIdBean<Long> {
     
     @Transient
     private int ultimaEtapa;
+    
+    @Transient
+    private List<Etapa> etapasLista = new ArrayList<Etapa>();
     
     public Curso() {
     }
@@ -179,5 +184,13 @@ public class Curso extends AbstractIdBean<Long> {
 
     public void setUltimaEtapa(int ultimaEtapa) {
         this.ultimaEtapa = ultimaEtapa;
+    }
+
+    public List<Etapa> getEtapasLista() {
+        return etapasLista;
+    }
+
+    public void setEtapasLista(List<Etapa> etapasLista) {
+        this.etapasLista = etapasLista;
     }
 }

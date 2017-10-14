@@ -78,6 +78,10 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/tabuleiro/tabuleiro.html',
         controller: 'TabuleiroController'
       }).
+      when('/aluno-cursando/:id', {
+        templateUrl: 'partials/aluno-cursando/tabuleiro.html',
+        controller: 'AlunoCursandoController'
+      }).
 
       otherwise({
         redirectTo: '/home'

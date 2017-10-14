@@ -15,6 +15,7 @@ import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.common.util.ConstantesI18N;
+import br.com.tcc.common.vo.TabuleiroCurso;
 import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarCurso;
 import br.com.tcc.service.query.BuscarCursoAluno;
@@ -165,32 +166,5 @@ public class CursoServiceImpl {
             etapa.setIdAnexo(etapa.getAnexo()!=null?etapa.getAnexo().getId():null);
         }
         return etapas;
-    }
-    
-    @Transactional(readOnly = false)
-    public CursoAluno entrarCurso(Long idCurso, Long idAluno, String codAcesso) {
-        CursoAluno cursoAlunoJaSalvo = (CursoAluno) dao.uniqueResult(new BuscarCursoAluno.Entities()
-                .fetchAluno(ConstantesI18N.FETCH).fetchCurso(ConstantesI18N.FETCH)
-                .whereIdAluno(idAluno).whereIdCurso(idCurso));
-        Curso curso = dao.get(Curso.class, idCurso);
-        validador.validarSalvarEtapa(curso, codAcesso, cursoAlunoJaSalvo);
-        CursoAluno cursoAluno = new CursoAluno();
-        cursoAluno.setAluno(new Usuario(idAluno));
-        cursoAluno.setCurso(new Curso(idCurso));
-        cursoAluno.setSituacao(SituacaoCursoAluno.EM_ANDAMENTO);
-        cursoAluno.setPontuacao(0);
-        cursoAluno.setPosicaoAtual(1);
-        dao.saveOrUpdate(cursoAluno);
-        return cursoAluno;
-    }
-    
-    @Transactional(readOnly = true)
-    public List<CursoAluno> buscarCursoAlunoPorAlunoSituacao(Long idAluno, SituacaoCursoAluno situacao) {
-        List<CursoAluno> cursosAlunos = dao.list(new BuscarCursoAluno.Entities()
-                .fetchAluno(ConstantesI18N.FETCH).fetchCurso(ConstantesI18N.FETCH)
-                .fetchEtapas(ConstantesI18N.FETCH)
-                .whereIdAluno(idAluno).whereSituacaoCursoAluno(situacao));
-        Set<CursoAluno> list = new HashSet<>(cursosAlunos);
-        return new ArrayList<>(list);
     }
 }

@@ -33,6 +33,15 @@ public abstract class BuscarCursoAluno<T extends Serializable> extends BusinessF
         return this;
     }
 
+    public BuscarCursoAluno whereIdCursoAluno(Long id) {
+        if (id != null) {
+            appendText(getPreffixFilter());
+            appendText(" ca.id = :idCursoAluno ");
+            addParameter("idCursoAluno", id);
+        }    
+        return this;
+    }
+
     public BuscarCursoAluno whereIdCurso(Long id) {
         if (id != null) {
             appendText(getPreffixFilter());

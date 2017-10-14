@@ -6,12 +6,13 @@
 package br.com.tcc.common.vo;
 
 import br.com.tcc.common.enums.OrderByArrayTipo;
+import java.util.Comparator;
 
 /**
  *
  * @author ADM
  */
-public class OrdenarPorString implements java.util.Comparator<String> {
+public class OrdenarPorString implements Comparator<String> {
 
     private final OrderByArrayTipo tipo;
     private final boolean crescente;

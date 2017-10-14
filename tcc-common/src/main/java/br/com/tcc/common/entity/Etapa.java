@@ -9,6 +9,7 @@ import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -32,7 +33,7 @@ import org.hibernate.annotations.Type;
  */
 @Entity
 @Table(name = "ETAPA", schema = ConstantesI18N.SCHEMA)
-public class Etapa extends AbstractIdBean<Long> {
+public class Etapa extends AbstractIdBean<Long> implements Comparator<Etapa> {
 
     private static final long serialVersionUID = 1L;
     
@@ -147,5 +148,13 @@ public class Etapa extends AbstractIdBean<Long> {
 
     public void setIdAnexo(Long idAnexo) {
         this.idAnexo = idAnexo;
+    }
+
+    @Override
+    public int compare(Etapa e1, Etapa e2) {
+        if (e1 == null || e2 == null) {
+            return 0;
+        }
+        return (e1.getId() > e2.getId()) ? 1 : 1;
     }
 }

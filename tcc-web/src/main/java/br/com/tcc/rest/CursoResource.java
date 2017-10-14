@@ -111,20 +111,4 @@ public class CursoResource {
     public Curso buscarCursoCompletoPorId(@QueryParam("idCurso") Long idCurso) {
         return cursoService.buscarCursoPorIdConcluido(idCurso);
     }
-    
-    @GET
-    @Path("/entrarCurso")
-    @Produces(MediaType.APPLICATION_JSON)
-    public CursoAluno entrarCurso(@QueryParam("idCurso") Long idCurso, @QueryParam("idAluno") Long idAluno,
-            @QueryParam("codAcesso") String codAcesso) {
-        return cursoService.entrarCurso(idCurso, idAluno, codAcesso);
-    }
-    
-    @GET
-    @Path("/buscarCursoAlunoPorAlunoSituacao")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<CursoAluno> buscarCursoAlunoPorAlunoSituacao(@QueryParam("idAluno") Long idAluno,
-            @QueryParam("idSituacao") String idSituacao) {
-        return cursoService.buscarCursoAlunoPorAlunoSituacao(idAluno, SituacaoCursoAluno.from(idSituacao));
-    }
 }
