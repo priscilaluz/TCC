@@ -5,12 +5,15 @@
  */
 package br.com.tcc.common.entity;
 
+import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +22,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 
 /**
  *
@@ -40,6 +44,13 @@ public class CursoAluno extends AbstractIdBean<Long> {
     
     @Column(name = "POSICAO_ATUAL", nullable = false)
     private Integer posicaoAtual;
+    
+    @Enumerated(EnumType.STRING)
+    @Type(type = "br.com.tcc.common.support.GenericEnumUserType",
+        parameters = {@org.hibernate.annotations.Parameter(name = "enumClass",
+                    value = "br.com.tcc.common.enums.SituacaoCursoAluno")})
+    @Column(name = "SITUACAO", nullable = false)
+    private SituacaoCursoAluno situacao;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CURSO_ID", nullable = false)
@@ -76,6 +87,14 @@ public class CursoAluno extends AbstractIdBean<Long> {
 
     public void setPosicaoAtual(Integer posicaoAtual) {
         this.posicaoAtual = posicaoAtual;
+    }
+
+    public SituacaoCursoAluno getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoCursoAluno situacao) {
+        this.situacao = situacao;
     }
 
     public Curso getCurso() {

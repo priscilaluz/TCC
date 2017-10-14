@@ -9,6 +9,7 @@ import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.enums.SituacaoCurso;
+import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.service.persistence.SimpleTestDao;
 import br.com.tcc.test.IntegrationBaseTestClass;
 import br.com.tcc.test.builder.CursoBuilder;
@@ -231,12 +232,32 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     }
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Salvar curso aluno">
+    //<editor-fold defaultstate="collapsed" desc="CursoAluno">
     @Test
     public void deveEntrarNoCurso(){
         CursoAluno cursoAluno = cursoServiceImpl.entrarCurso(1L, 1L, "ABCDE12345");
         assertNotNull(cursoAluno.getId());
         assertEquals(dao.getById(CursoAluno.class, cursoAluno.getId()), cursoAluno);
+    }
+    
+    @Test
+    public void deveRetornarCursoAlunoPorUsuario(){
+        List<CursoAluno> cursosAlunos = cursoServiceImpl.buscarCursoAlunoPorAlunoSituacao(2L, null);
+        assertTrue(cursosAlunos.size()==1);
+        List<Long> ids = new ArrayList<>(Arrays.asList(1L));
+        for (CursoAluno c : cursosAlunos) {
+            assertTrue(ids.contains(c.getId()));
+        }
+    }
+    
+    @Test
+    public void deveRetornarCursoAlunoPorSituacao(){
+        List<CursoAluno> cursosAlunos = cursoServiceImpl.buscarCursoAlunoPorAlunoSituacao(null, SituacaoCursoAluno.EM_ANDAMENTO);
+        assertTrue(cursosAlunos.size()==2);
+        List<Long> ids = new ArrayList<>(Arrays.asList(1L, 3L));
+        for (CursoAluno c : cursosAlunos) {
+            assertTrue(ids.contains(c.getId()));
+        }
     }
     //</editor-fold>
     

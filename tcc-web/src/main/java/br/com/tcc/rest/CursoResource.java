@@ -10,6 +10,7 @@ import br.com.tcc.common.entity.CursoAluno;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.SituacaoCurso;
+import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.service.impl.CursoServiceImpl;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -117,5 +118,13 @@ public class CursoResource {
     public CursoAluno entrarCurso(@QueryParam("idCurso") Long idCurso, @QueryParam("idAluno") Long idAluno,
             @QueryParam("codAcesso") String codAcesso) {
         return cursoService.entrarCurso(idCurso, idAluno, codAcesso);
+    }
+    
+    @GET
+    @Path("/buscarCursoAlunoPorAlunoSituacao")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CursoAluno> buscarCursoAlunoPorAlunoSituacao(@QueryParam("idAluno") Long idAluno,
+            @QueryParam("idSituacao") String idSituacao) {
+        return cursoService.buscarCursoAlunoPorAlunoSituacao(idAluno, SituacaoCursoAluno.from(idSituacao));
     }
 }

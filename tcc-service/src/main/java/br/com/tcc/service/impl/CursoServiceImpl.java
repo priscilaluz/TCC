@@ -13,6 +13,7 @@ import br.com.tcc.common.entity.EtapaPergunta;
 import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.SituacaoCurso;
+import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.common.util.ConstantesI18N;
 import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarCurso;
@@ -173,9 +174,18 @@ public class CursoServiceImpl {
         CursoAluno cursoAluno = new CursoAluno();
         cursoAluno.setAluno(new Usuario(idAluno));
         cursoAluno.setCurso(new Curso(idCurso));
+        cursoAluno.setSituacao(SituacaoCursoAluno.EM_ANDAMENTO);
         cursoAluno.setPontuacao(0);
         cursoAluno.setPosicaoAtual(1);
         dao.saveOrUpdate(cursoAluno);
         return cursoAluno;
+    }
+    
+    @Transactional(readOnly = true)
+    public List<CursoAluno> buscarCursoAlunoPorAlunoSituacao(Long idAluno, SituacaoCursoAluno situacao) {
+        return dao.list(new BuscarCursoAluno.Entities()
+                .fetchAluno(ConstantesI18N.FETCH).fetchCurso(ConstantesI18N.FETCH)
+                .fetchEtapas(ConstantesI18N.FETCH)
+                .whereIdAluno(idAluno).whereSituacaoCursoAluno(situacao));
     }
 }
