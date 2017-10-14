@@ -1,5 +1,11 @@
 <div class="col-xs-12 col-sm-12 col-md-12">
-<div class="col-xs-12 col-sm-12 col-md-12" style="background-color: #bbdcbe;">
-    <br><br>{{model.cursosAndamento}}<br><br><br>
-</div>
+    <div class="col-xs-12 col-sm-12 col-md-12" style="background-color: #bbdcbe; padding-top: 30px;">
+        <p class="curso-nao-titulo-concluido" ng-show="model.cursosAndamento.length==0">Você não tem nenhum curso em andamento.</p>
+        <div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="cursoAluno in model.cursosAndamento">
+            <div class="col-xs-12 jogos-menu handCursor" ng-click="estudarCurso(cursoAluno)">
+                <img src="img/jogos/Quiz.png" class="img-responsive img-jogos-menu"/>
+                <p class="jogos-font text-center">{{cursoAluno.curso.nome}}</p>
+            </div>
+        </div>
+    </div>
 </div>

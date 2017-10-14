@@ -23,7 +23,10 @@ import br.com.tcc.service.query.ExcluirEtapaPerguntaPorCurso;
 import br.com.tcc.service.query.ExcluirEtapaPerguntaPorEtapa;
 import br.com.tcc.service.query.ExcluirEtapaPorCurso;
 import br.com.tcc.service.validator.CursoValidator;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -183,9 +186,11 @@ public class CursoServiceImpl {
     
     @Transactional(readOnly = true)
     public List<CursoAluno> buscarCursoAlunoPorAlunoSituacao(Long idAluno, SituacaoCursoAluno situacao) {
-        return dao.list(new BuscarCursoAluno.Entities()
+        List<CursoAluno> cursosAlunos = dao.list(new BuscarCursoAluno.Entities()
                 .fetchAluno(ConstantesI18N.FETCH).fetchCurso(ConstantesI18N.FETCH)
                 .fetchEtapas(ConstantesI18N.FETCH)
                 .whereIdAluno(idAluno).whereSituacaoCursoAluno(situacao));
+        Set<CursoAluno> list = new HashSet<>(cursosAlunos);
+        return new ArrayList<>(list);
     }
 }
