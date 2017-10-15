@@ -76,6 +76,7 @@ public class CursoAlunoServiceImpl {
         tabuleiroCurso.setAssuntoGeral(cursoAluno.getCurso().getAssuntoGeral());
         tabuleiroCurso.setAnexo(cursoAluno.getCurso().getAnexo());
         tabuleiroCurso.setIdCurso(cursoAluno.getCurso().getId());
+        tabuleiroCurso.setPontuacao(cursoAluno.getPontuacao());
         tabuleiroCurso.setAluno(cursoAluno.getAluno());
         tabuleiroCurso.setEtapaAtual(cursoAluno.getPosicaoAtual());
         

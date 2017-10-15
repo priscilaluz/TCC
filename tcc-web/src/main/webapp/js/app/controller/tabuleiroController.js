@@ -1,6 +1,6 @@
 tccApp.controller('TabuleiroController', ['$scope',
     function ($scope) {
-        $scope.etapa1='img/tabuleiro/1-1.png';
+        $scope.etapa1='img/tabuleiro/desabilitada/1.png';
         $scope.model = {
         };
 

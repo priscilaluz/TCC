@@ -1,23 +1,39 @@
-<h1 class="title-fonte">Tabuleiro 1</h1>
+<h1 class="title-fonte">Curso: {{model.tabuleiroCurso.nome}}</h1>
 <div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" style="margin-bottom: 50px;">
     <div class="col-md-12" style="background-image: url('img/tabuleiro/background/aventura3.jpeg'); height: 500px; width: 1106px;border-radius: 150px;">
-        <h1 class="title-fonte" style="padding-left: 125px;">Curso:</h1>
+        <h1 class="title-fonte" style="padding-left: 125px;"><b>Pontuação:</b> {{model.tabuleiroCurso.pontuacao}}</h1>
         <table style="border-radius: 5px; width: 50%; margin: 0px auto; float: none;">
-            <tr>
-                <td><img ng-src="{{etapa1}}" class="handCursor" alt="tabuleiro" ng-click="entrarNaFase()"
-                    ng-mouseover="etapa1='img/tabuleiro/1-on.png'"
-                     ng-mouseleave="etapa1='img/tabuleiro/1.png'" style="width: 200px;"/></td>
-                <td><img src="img/tabuleiro/2.png" alt="tabuleiro" style="width: 200px;"/></td>
-                <td><img src="img/tabuleiro/3.png" alt="tabuleiro" style="width: 200px;"/></td>
-                <td><img src="img/tabuleiro/4.png" alt="tabuleiro" style="width: 200px;"/></td>
-                <td><img src="img/tabuleiro/5.png" alt="tabuleiro" style="width: 200px;"/></td>
-            </tr>
-            <tr>
-                <td><img src="" alt="" style="width: 200px;"/></td>
-                <td><img src="" alt="" style="width: 200px;"/></td>
-                <td><img src="" alt="" style="width: 200px;"/></td>
-                <td><img src="" alt="" style="width: 200px;"/></td>
-                <td><img src="img/tabuleiro/6-1.png" alt="tabuleiro" style="width: 200px;"/></td>
+            <tr ng-repeat="etapa in model.tabuleiroCurso.tdEtapas">
+                <td>
+                    <img class="handCursor" alt="tabuleiro" ng-click="entrarNaFase()" style="width: 200px;"
+                        ng-src="{{etapa.etapa1.imagem}}"
+                        ng-mouseover="mouseover($index, 1)"
+                        ng-mouseleave="mouseleave($index, 1)"/>
+                </td>
+                <td>
+                    <img class="handCursor" alt="tabuleiro" ng-click="entrarNaFase()" style="width: 200px;"
+                        ng-src="{{etapa.etapa2.imagem}}"
+                        ng-mouseover="mouseover($index, 2)"
+                        ng-mouseleave="mouseleave($index, 2)"/>
+                </td>
+                <td>
+                    <img class="handCursor" alt="tabuleiro" ng-click="entrarNaFase()" style="width: 200px;"
+                        ng-src="{{etapa.etapa3.imagem}}"
+                        ng-mouseover="mouseover($index, 3)"
+                        ng-mouseleave="mouseleave($index, 3)"/>
+                </td>
+                <td>
+                    <img class="handCursor" alt="tabuleiro" ng-click="entrarNaFase()" style="width: 200px;"
+                        ng-src="{{etapa.etapa4.imagem}}"
+                        ng-mouseover="mouseover($index, 4)"
+                        ng-mouseleave="mouseleave($index, 4)"/>
+                </td>
+                <td>
+                    <img class="handCursor" alt="tabuleiro" ng-click="entrarNaFase()" style="width: 200px;"
+                        ng-src="{{etapa.etapa5.imagem}}"
+                        ng-mouseover="mouseover($index, 5)"
+                        ng-mouseleave="mouseleave($index, 5)"/>
+                </td>
             </tr>
         </table>
     </div>

@@ -57,4 +57,13 @@ public class TabuleiroEtapa {
     public void setDesbloquada(boolean desbloquada) {
         this.desbloquada = desbloquada;
     }
+
+    public String getImagem() {
+        if (desbloquada){
+            return imagemOff;
+        }
+        return imagemDesabilitado;
+    }
+
+    public void setImagem(String imagem) {}
 }

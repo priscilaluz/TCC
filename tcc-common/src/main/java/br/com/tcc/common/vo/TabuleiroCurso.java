@@ -19,6 +19,7 @@ public class TabuleiroCurso {
     private Anexo anexo;
     private String assuntoGeral;
     private Integer etapaAtual;
+    private Integer pontuacao;
     private Usuario aluno;
     private List<TdHtmlEtapa> tdEtapas;
 
@@ -62,6 +63,14 @@ public class TabuleiroCurso {
 
     public void setEtapaAtual(Integer etapaAtual) {
         this.etapaAtual = etapaAtual;
+    }
+
+    public Integer getPontuacao() {
+        return pontuacao;
+    }
+
+    public void setPontuacao(Integer pontuacao) {
+        this.pontuacao = pontuacao;
     }
 
     public Usuario getAluno() {
