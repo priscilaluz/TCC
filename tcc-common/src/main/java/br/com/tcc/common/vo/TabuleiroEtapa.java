@@ -14,6 +14,7 @@ public class TabuleiroEtapa {
     private String imagemOff;
     private String imagemOn;
     private String imagemDesabilitado;
+    private boolean desbloquada;
 
     public TabuleiroEtapa() {}
 
@@ -47,5 +48,13 @@ public class TabuleiroEtapa {
 
     public void setImagemDesabilitado(String imagemDesabilitado) {
         this.imagemDesabilitado = imagemDesabilitado;
+    }
+
+    public boolean isDesbloquada() {
+        return desbloquada;
+    }
+
+    public void setDesbloquada(boolean desbloquada) {
+        this.desbloquada = desbloquada;
     }
 }

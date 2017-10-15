@@ -5,6 +5,8 @@
  */
 package br.com.tcc.common.vo;
 
+import br.com.tcc.common.entity.Anexo;
+import br.com.tcc.common.entity.Usuario;
 import java.util.List;
 
 /**
@@ -14,8 +16,11 @@ import java.util.List;
 public class TabuleiroCurso {
     private Long idCurso;
     private String nome;
-    private Long etapaAtual;
-    private List<TabuleiroEtapa> etapas;
+    private Anexo anexo;
+    private String assuntoGeral;
+    private Integer etapaAtual;
+    private Usuario aluno;
+    private List<TdHtmlEtapa> tdEtapas;
 
     public TabuleiroCurso() {}
 
@@ -35,19 +40,43 @@ public class TabuleiroCurso {
         this.nome = nome;
     }
 
-    public Long getEtapaAtual() {
+    public Anexo getAnexo() {
+        return anexo;
+    }
+
+    public void setAnexo(Anexo anexo) {
+        this.anexo = anexo;
+    }
+
+    public String getAssuntoGeral() {
+        return assuntoGeral;
+    }
+
+    public void setAssuntoGeral(String assuntoGeral) {
+        this.assuntoGeral = assuntoGeral;
+    }
+
+    public Integer getEtapaAtual() {
         return etapaAtual;
     }
 
-    public void setEtapaAtual(Long etapaAtual) {
+    public void setEtapaAtual(Integer etapaAtual) {
         this.etapaAtual = etapaAtual;
     }
 
-    public List<TabuleiroEtapa> getEtapas() {
-        return etapas;
+    public Usuario getAluno() {
+        return aluno;
     }
 
-    public void setEtapas(List<TabuleiroEtapa> etapas) {
-        this.etapas = etapas;
+    public void setAluno(Usuario aluno) {
+        this.aluno = aluno;
+    }
+
+    public List<TdHtmlEtapa> getTdEtapas() {
+        return tdEtapas;
+    }
+
+    public void setTdEtapas(List<TdHtmlEtapa> tdEtapas) {
+        this.tdEtapas = tdEtapas;
     }
 }

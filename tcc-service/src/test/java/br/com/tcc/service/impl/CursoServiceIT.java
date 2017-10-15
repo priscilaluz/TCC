@@ -1,7 +1,6 @@
 package br.com.tcc.service.impl;
 
 import br.com.tcc.common.entity.Curso;
-import br.com.tcc.common.entity.CursoAluno;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
 import br.com.tcc.common.entity.Pergunta;
@@ -9,7 +8,6 @@ import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.enums.SituacaoCurso;
-import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.service.persistence.SimpleTestDao;
 import br.com.tcc.test.IntegrationBaseTestClass;
 import br.com.tcc.test.builder.CursoBuilder;

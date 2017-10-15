@@ -1,9 +1,14 @@
 package br.com.tcc.common.util;
 
 public class ConstantesI18N {
-    public static final String SCHEMA = "tcc";
-    //public static final String SCHEMA = "test";
+    //public static final String SCHEMA = "tcc";
+    public static final String SCHEMA = "test";
     public static final String FETCH = "fetch";
+    
+    public static final String TABULEIRO_IMG_ON = "img/tabuleiro/on/*.png";
+    public static final String TABULEIRO_IMG_OFF = "img/tabuleiro/off/*.png";
+    public static final String TABULEIRO_IMG_DESABILITADO = "img/desabilitada/tabuleiro/*.png";
+    
     //Usuario
     public static final String USUARIO_OBRIGATORIA = "usuario.obrigatoria";
     public static final String USUARIO_NOME_OBRIGATORIA = "usuario.nome.obrigatoria";
