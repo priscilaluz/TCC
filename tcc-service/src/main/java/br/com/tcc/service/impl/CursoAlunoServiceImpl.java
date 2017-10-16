@@ -8,6 +8,7 @@ package br.com.tcc.service.impl;
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.CursoAluno;
 import br.com.tcc.common.entity.Etapa;
+import br.com.tcc.common.entity.EtapaAluno;
 import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.common.util.ConstantesI18N;
@@ -16,6 +17,7 @@ import br.com.tcc.common.vo.TabuleiroEtapa;
 import br.com.tcc.common.vo.TdHtmlEtapa;
 import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarCursoAluno;
+import br.com.tcc.service.query.BuscarEtapaAluno;
 import br.com.tcc.service.validator.CursoValidator;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,6 +41,9 @@ public class CursoAlunoServiceImpl {
 
     @Autowired
     private CursoValidator validador;
+    
+    @Autowired
+    private CursoServiceImpl cursoService;
     
     @Transactional(readOnly = false)
     public CursoAluno entrarCurso(Long idCurso, Long idAluno, String codAcesso) {
@@ -180,5 +185,19 @@ public class CursoAlunoServiceImpl {
             }
         }
         return tabuleiros;
+    }
+    
+    @Transactional(readOnly = true)
+    public EtapaAluno buscarEtapaAlunoPorCursoAlunoEEtapa(Long idCursoAluno, Long idEtapa) {
+        EtapaAluno etapaAluno = (EtapaAluno) dao.uniqueResult(new BuscarEtapaAluno.Entities()
+                .fetchCursoAluno(ConstantesI18N.FETCH).fetchEtapa(ConstantesI18N.FETCH)
+                .whereIdCursoAluno(idCursoAluno).whereIdEtapa(idEtapa));
+        if (etapaAluno == null) {
+            etapaAluno = new EtapaAluno();
+            etapaAluno.setCursoAluno(dao.get(CursoAluno.class, idEtapa));
+            etapaAluno.setEtapa(cursoService.buscarEtapaPorId(idEtapa));
+            etapaAluno.setPontuacao(0);
+        }
+        return etapaAluno;
     }
 }

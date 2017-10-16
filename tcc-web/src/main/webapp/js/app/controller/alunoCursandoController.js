@@ -18,7 +18,9 @@ tccApp.controller('AlunoCursandoController', ['$scope', '$rootScope', '$routePar
         };
         
         $scope.entrarNaFase = function (etapa) {
-            $location.path("/cursar-etapa/"+idCursoAluno+"/"+etapa.id);
+            if (etapa.desbloquada) {
+                $location.path("/cursar-etapa/"+idCursoAluno+"/"+etapa.idEtapa);
+            }
         };
 
         $scope.mouseover = function (index, coluna) {

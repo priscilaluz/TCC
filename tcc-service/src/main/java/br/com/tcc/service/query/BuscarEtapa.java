@@ -40,6 +40,15 @@ public abstract class BuscarEtapa<T extends Serializable> extends BusinessFluent
         }    
         return this;
     }
+    
+    public BuscarEtapa whereIdEtapa(Long idEtapa) {
+        if (idEtapa != null) {
+            appendText(getPreffixFilter());
+            appendText(" e.id = :idEtapa ");
+            addParameter("idEtapa", idEtapa);
+        }    
+        return this;
+    }
 
     public BuscarEtapa whereNivel(Integer nivel) {
         if (nivel != null) {

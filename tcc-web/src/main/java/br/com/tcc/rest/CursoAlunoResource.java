@@ -6,6 +6,7 @@
 package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.CursoAluno;
+import br.com.tcc.common.entity.EtapaAluno;
 import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.common.vo.TabuleiroCurso;
 import br.com.tcc.service.impl.CursoAlunoServiceImpl;
@@ -50,5 +51,13 @@ public class CursoAlunoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public TabuleiroCurso buscarCursoAlunoPorIdCursoAluno(@QueryParam("idCursoAluno") Long idCursoAluno) {
         return cursoAlunoService.buscarCursoAlunoPorIdCursoAluno(idCursoAluno);
+    }
+    
+    @GET
+    @Path("/buscarEtapaAlunoPorCursoAlunoEEtapa")
+    @Produces(MediaType.APPLICATION_JSON)
+    public EtapaAluno buscarEtapaAlunoPorCursoAlunoEEtapa(@QueryParam("idCursoAluno") Long idCursoAluno,
+            @QueryParam("idEtapa") Long idEtapa) {
+        return cursoAlunoService.buscarEtapaAlunoPorCursoAlunoEEtapa(idCursoAluno, idEtapa);
     }
 }

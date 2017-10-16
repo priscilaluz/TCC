@@ -7,27 +7,19 @@ package br.com.tcc.service.impl;
 
 import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Curso;
-import br.com.tcc.common.entity.CursoAluno;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
-import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.SituacaoCurso;
-import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.common.util.ConstantesI18N;
-import br.com.tcc.common.vo.TabuleiroCurso;
 import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarCurso;
-import br.com.tcc.service.query.BuscarCursoAluno;
 import br.com.tcc.service.query.BuscarEtapa;
 import br.com.tcc.service.query.ExcluirEtapaPerguntaPorCurso;
 import br.com.tcc.service.query.ExcluirEtapaPerguntaPorEtapa;
 import br.com.tcc.service.query.ExcluirEtapaPorCurso;
 import br.com.tcc.service.validator.CursoValidator;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -166,5 +158,14 @@ public class CursoServiceImpl {
             etapa.setIdAnexo(etapa.getAnexo()!=null?etapa.getAnexo().getId():null);
         }
         return etapas;
+    }
+    
+    @Transactional(readOnly = true)
+    public Etapa buscarEtapaPorId(Long idEtapa) {
+        return (Etapa) dao.uniqueResult(new BuscarEtapa.Entities()
+                .fetchEtapaPergunta(ConstantesI18N.FETCH)
+                .fetchPergunta(ConstantesI18N.FETCH)
+                .fetchAnexo(ConstantesI18N.FETCH)
+                .whereIdEtapa(idEtapa));
     }
 }
