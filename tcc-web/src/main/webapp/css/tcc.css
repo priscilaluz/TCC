@@ -317,6 +317,21 @@ li {
     border-color: #adadad;
 }
 
+.btn-modelo-tabuleiros {
+    font-family:cursive;
+    font-size: 125%;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #305c07;
+    border-color: #53dc3a;
+}
+
+.btn-modelo-tabuleiros:hover {
+    color: #ffffff;
+    background-color: #558925;
+    border-color: #53dc3a;
+}
+
 .btn-modelo-voltar {
     font-family:cursive;
     font-size: 125%;

@@ -3,7 +3,7 @@
     <div class="col-md-12" style="background-image: url('img/tabuleiro/background/aventura3.jpeg'); height: 500px; width: 1106px;border-radius: 150px;">
         <h1 class="title-fonte" style="padding-left: 125px;"><b>Pontuação:</b> {{model.tabuleiroCurso.pontuacao}}</h1>
         <table style="border-radius: 5px; width: 50%; margin: 0px auto; float: none;">
-            <tr ng-repeat="etapa in model.tabuleiroCurso.tdEtapas">
+            <tr ng-repeat="etapa in model.paginaAtual">
                 <td>
                     <img class="handCursor" alt="tabuleiro" ng-click="entrarNaFase(etapa.etapa1)" style="width: 200px;"
                         ng-src="{{etapa.etapa1.imagem}}"
@@ -36,5 +36,13 @@
                 </td>
             </tr>
         </table>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 10px;">
+        <button type="button" class="btn btn-modelo-tabuleiros pull-left" ng-show="model.tabuleiroCurso.tabuleiros[model.pagina-1]"
+                ng-click="anterior()">
+            <i class="glyphicon glyphicon-arrow-left"></i>&nbsp;Anterior</button>
+        <button type="button" class="btn btn-modelo-tabuleiros pull-right" ng-show="model.tabuleiroCurso.tabuleiros[model.pagina+1]"
+                ng-click="proximo()">
+            <i class="glyphicon glyphicon-arrow-right pull-right"></i>Próximo&nbsp;</button>
     </div>
 </div>
