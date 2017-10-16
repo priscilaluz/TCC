@@ -58,7 +58,7 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/jogo/jogos.html',
         controller: 'JogoController'
       }).
-      when('/jogos-simulado/quiz', {
+      when('/jogos-simulado/quiz/:idPergunta?', {
         templateUrl: 'partials/jogo/quiz/quiz.html',
         controller: 'QuizController'
       }).
@@ -71,6 +71,22 @@ tccApp.config(['$routeProvider', '$httpProvider',
         controller: 'CacaPalavraController'
       }).
       when('/jogos-simulado/aposta', {
+        templateUrl: 'partials/jogo/aposta/aposta.html',
+        controller: 'ApostaController'
+      }).
+      when('/jogos-simulado/q/:idCursoAluno/:idEtapa', {
+        templateUrl: 'partials/jogo/quiz/quiz.html',
+        controller: 'QuizController'
+      }).
+      when('/jogos-simulado/f/:idCursoAluno/:idEtapa', {
+        templateUrl: 'partials/jogo/forca/forca.html',
+        controller: 'ForcaController'
+      }).
+      when('/jogos-simulado/c/:idCursoAluno/:idEtapa', {
+        templateUrl: 'partials/jogo/caca-palavra/caca-palavra.html',
+        controller: 'CacaPalavraController'
+      }).
+      when('/jogos-simulado/a/:idCursoAluno/:idEtapa', {
         templateUrl: 'partials/jogo/aposta/aposta.html',
         controller: 'ApostaController'
       }).

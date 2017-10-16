@@ -6,6 +6,8 @@
 package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.Anexo;
+import br.com.tcc.common.entity.Etapa;
+import br.com.tcc.common.entity.EtapaPergunta;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.enums.OrdemCacaPalavra;
@@ -14,6 +16,7 @@ import br.com.tcc.common.vo.CacaPalavra;
 import br.com.tcc.common.vo.CacaPalavraLista;
 import br.com.tcc.common.vo.Letra;
 import br.com.tcc.service.impl.AnexoServiceImpl;
+import br.com.tcc.service.impl.CursoServiceImpl;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,6 +29,7 @@ import java.util.Set;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -40,6 +44,8 @@ public class JogoResource {
     private final Integer tamanhoMatriz = 12;
     @Autowired
     private AnexoServiceImpl anexoService;
+    @Autowired
+    private CursoServiceImpl cursoService;
     
     @GET
     @Path("/quizApresentacao")
@@ -101,6 +107,30 @@ public class JogoResource {
         perguntasTodas.add(obterPerguntaCacaPalavraModelo7());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo8());
         
+        return gerarCacaPalavra(perguntasTodas);
+    }
+    
+    @GET
+    @Path("/quizForcaAposta")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Pergunta> buscarPerguntaDosJogosQuizForcaAposta(@QueryParam("idEtapa") Long idEtapa) {
+        Etapa etapa = cursoService.buscarEtapaPorId(idEtapa, true);
+        Set<EtapaPergunta> etapasPerguntas = etapa.getEtapasPerguntas();
+        List<Pergunta> perguntas = new ArrayList<>();
+        for (EtapaPergunta etapaPergunta : etapasPerguntas) {
+            perguntas.add(etapaPergunta.getPergunta());
+        }
+        return perguntas;
+    }
+    
+    @GET
+    @Path("/cacaPalavra")
+    public CacaPalavraLista buscarPerguntasDoJogoCacaPalavra(@QueryParam("idEtapa") Long idEtapa) {
+        List<Pergunta> perguntas = buscarPerguntaDosJogosQuizForcaAposta(idEtapa);
+        return gerarCacaPalavra(perguntas);
+    }
+    
+    private CacaPalavraLista gerarCacaPalavra(List<Pergunta> perguntasTodas) {
         Integer qntPerguntas = perguntasTodas.size();
         List<CacaPalavra> lista = new ArrayList<>();
         if ((new Double(qntPerguntas)/tamanhoMatriz) > 1){
@@ -134,11 +164,9 @@ public class JogoResource {
                 }
             }
             cacaPalavra.setMatriz(matriz);
-            //lista.add(new CacaPalavra(matriz, perguntasTodas, tamanhoMatriz));
         }
         return new CacaPalavraLista(lista, qntPerguntas);
     }
-    
     private Letra[][] criarMatriz(List<String> respostas) {
         Letra[][] matriz = new Letra[tamanhoMatriz][tamanhoMatriz];
         int qntOrientacao = (respostas.size() > 1)?2:3;

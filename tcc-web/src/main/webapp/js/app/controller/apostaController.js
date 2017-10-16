@@ -1,9 +1,12 @@
-tccApp.controller('ApostaController', ['$scope', '$rootScope', '$modal', '$location', '$timeout', 'Jogo',
-function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
+tccApp.controller('ApostaController', ['$scope', '$rootScope', '$routeParams', '$modal', '$location', '$timeout', 'Jogo',
+function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo) {
     var tempoPadraoPergunta = 60;
     var pontuacaoInicial = 1000;
     var pontuacaoInicialFase = pontuacaoInicial;
     var timeoutTempoPorPergunta = null;
+    var idCursoAluno = $routeParams.idCursoAluno;
+    var idEtapa = $routeParams.idEtapa;
+    
     $scope.model = {
         perdeuJogo: false,
         pulo: false,
@@ -22,7 +25,11 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     };
     
     $scope.voltar = function () {
-        $location.path("/jogos");
+        if (idCursoAluno && idEtapa){
+            $location.path("/cursar-etapa/"+idCursoAluno+"/"+idEtapa);
+        } else {
+            $location.path("/jogos");
+        }
     };
     
     $scope.apostou = function () {
@@ -174,22 +181,34 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         $scope.apostar(false);
     };
     
+    var iniciarJogo = function (perguntas) {
+        $scope.model.perguntas = perguntas;
+        $scope.model.pergunta = perguntas[$scope.model.posicao];
+        $scope.model.maxFichas = pontuacaoInicial * Math.pow(2, $scope.model.perguntas.length);
+        $scope.telaInit = false;
+        inicializarBotao();
+        atualizarPorcentagemBarra();
+        barraDeProgresso();
+        contagemInicial();
+    };
+    
     var init = function () {
         $rootScope.appLoaded = false;
         $scope.telaInit = true;
-        Jogo.buscarPerguntaDaApresentacaoDoJogoAposta(function (perguntas) {
-            $scope.model.perguntas = perguntas;
-            $scope.model.pergunta = perguntas[$scope.model.posicao];
-            $scope.model.maxFichas = pontuacaoInicial * Math.pow(2, $scope.model.perguntas.length);
-            $rootScope.appLoaded = true;
-            $scope.telaInit = false;
-            inicializarBotao();
-            atualizarPorcentagemBarra();
-            barraDeProgresso();
-            contagemInicial();
-        }, function (error) {
-            $rootScope.appLoaded = true;
-        });
+        if (idCursoAluno && idEtapa) {
+            Jogo.buscarPerguntaDosJogosQuizForcaAposta({'idEtapa': idEtapa}).$promise.then(function (perguntas) {
+                iniciarJogo(perguntas);
+                $rootScope.appLoaded = true;
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        } else {
+            Jogo.buscarPerguntaDaApresentacaoDoJogoAposta(function (perguntas) {
+                iniciarJogo(perguntas);
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        }
     };
     init();
 }]);

@@ -195,7 +195,7 @@ public class CursoAlunoServiceImpl {
         if (etapaAluno == null) {
             etapaAluno = new EtapaAluno();
             etapaAluno.setCursoAluno(dao.get(CursoAluno.class, idEtapa));
-            etapaAluno.setEtapa(cursoService.buscarEtapaPorId(idEtapa));
+            etapaAluno.setEtapa(cursoService.buscarEtapaPorId(idEtapa, false));
             etapaAluno.setPontuacao(0);
         }
         return etapaAluno;

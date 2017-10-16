@@ -4,9 +4,6 @@
         <p class="col-lg-12 curso-titulo-concluido">Assunto:</p>
         <p class="col-lg-12"><span class="curso-nao-titulo-concluido">{{model.etapaAluno.etapa.assunto}}</span></p>
         <img ng-src="data:image/png;base64,{{etapa.anexo.bytes}}"><br>
-        <button type="button" ng-click="jogar()" ng-disabled="!apostou()" class="btn btn-block btn-pular-dica"
-                            style="background-color: #134033; color: #ffffff; border: 1px double #d2d2d2; 
-                            padding-top: 10px; padding-bottom: 10px; font-size: 35px; border-radius: 20px;">
-                        &nbsp;JOGAR</button>
+        <button type="button" ng-click="jogar()" class="btn btn-block jogar-etapa">&nbsp;JOGAR</button>
     </form>
 </div>

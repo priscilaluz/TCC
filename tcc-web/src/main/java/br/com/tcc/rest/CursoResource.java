@@ -6,11 +6,9 @@
 package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.Curso;
-import br.com.tcc.common.entity.CursoAluno;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.SituacaoCurso;
-import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.service.impl.CursoServiceImpl;
 import java.util.List;
 import javax.ws.rs.Consumes;

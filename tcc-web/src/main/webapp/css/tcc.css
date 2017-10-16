@@ -97,6 +97,27 @@
     background-color: #295444;
     border: #dff0d8 solid 1px;
 }
+.jogar-etapa{
+    color: #ffffff;
+    border: 1px double #d2d2d2; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 35px;
+    border-radius: 20px;
+    font-family: cursive;
+    background: #d35e4c; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #00311f, #37b2ce); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #00311f, #37b2ce); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #00311f, #37b2ce); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #00311f, #37b2ce); /* Standard syntax (must be last) */
+}
+.jogar-etapa:hover {
+    color: #ffffff;
+    background: -webkit-linear-gradient(left top, #37b2ce, #26ad37); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #37b2ce, #26ad37); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #37b2ce, #26ad37); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #37b2ce, #26ad37); /* Standard syntax (must be last) */
+}
 .jogos-font{
     color: #522e2e;
     font-size: 22px;

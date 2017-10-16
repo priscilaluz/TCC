@@ -161,10 +161,11 @@ public class CursoServiceImpl {
     }
     
     @Transactional(readOnly = true)
-    public Etapa buscarEtapaPorId(Long idEtapa) {
+    public Etapa buscarEtapaPorId(Long idEtapa, boolean resposta) {
         return (Etapa) dao.uniqueResult(new BuscarEtapa.Entities()
                 .fetchEtapaPergunta(ConstantesI18N.FETCH)
                 .fetchPergunta(ConstantesI18N.FETCH)
+                .fetchResposta(ConstantesI18N.FETCH, resposta)
                 .fetchAnexo(ConstantesI18N.FETCH)
                 .whereIdEtapa(idEtapa));
     }
