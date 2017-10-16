@@ -6,6 +6,7 @@
 package br.com.tcc.service.impl;
 
 import br.com.tcc.common.entity.Usuario;
+import br.com.tcc.common.enums.TipoUsuario;
 import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarUsuario;
 import br.com.tcc.service.validator.UsuarioValidator;
@@ -30,6 +31,7 @@ public class UsuarioServiceImpl {
     public Usuario salvarUsuario(Usuario usuario) {
         Long emailJaExistente = (Long) dao.uniqueResult(new BuscarUsuario.Count().whereEmail(usuario.getEmail()));
         Long loginJaExistente = (Long) dao.uniqueResult(new BuscarUsuario.Count().whereLogin(usuario.getLogin()));
+        usuario.setTipo(TipoUsuario.ALUNO);
         validador.validarSalvarUsuario(usuario, emailJaExistente, loginJaExistente);
         return dao.saveOrUpdate(usuario);
     }

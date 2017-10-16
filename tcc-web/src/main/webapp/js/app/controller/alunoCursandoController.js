@@ -3,7 +3,10 @@ tccApp.controller('AlunoCursandoController', ['$scope', '$rootScope', '$routePar
         $scope.model = {
             tabuleiroCurso: null
         };
-        var primeiraImg = "img/tabuleiro/desabilitada/1.png";
+        
+        $scope.entrarNaFase = function (etapa) {
+            
+        };
 
         $scope.mouseover = function (index, coluna) {
             if (coluna === 1) {

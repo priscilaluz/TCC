@@ -7,38 +7,45 @@
 <div class="modal-header" style="background-color: #cbe8ba;">
     <h3 class="modal-title title-fonte">Adicionar Perguntas a Etapa</h3>
 </div>
-<div class="modal-body">
+<div class="modal-body" style="height: 400px;">
     <form role="form" name="perguntaForm" class="form-horizontal" enctype="multipart/form-data" ng-submit="buscarPerguntas()">
-        <label for="parteNome" class="col-lg-2 control-label label-font">Pergunta:</label>
-        <div class="col-lg-10">
-            <input type="text" maxlength="1000" name="parteNome" ng-model="pesquisar.parteNome" class="form-control" id="parteNome" placeholder="Pergunta">
+        <div class="col-md-12" style="padding-left: 0px; padding-right: 0px;">
+            <label for="parteNome" class="col-md-2 control-label label-font">Pergunta:</label>
+            <div class="col-md-10">
+                <input type="text" maxlength="1000" name="parteNome" ng-model="pesquisar.parteNome" class="form-control" id="parteNome" placeholder="Pergunta">
+            </div>
         </div>
-        <label for="nivel" class="col-lg-1 control-label label-font">Nível:</label>
-        <div class="col-lg-3">
-            <select id="nivel" name="nivel" class="form-control" ng-model="pesquisar.nivel"
-                    ng-options="nivel.descricao for nivel in niveis track by nivel.id">
-                <option value="">Nível</option>
-            </select>
+        <div class="col-md-12" style="padding-left: 0px; padding-right: 0px; padding-top: 10px;">
+            <label for="nivel" class="col-md-2 control-label label-font">Nível:</label>
+            <div class="col-md-3">
+                <select id="nivel" name="nivel" class="form-control" ng-model="pesquisar.nivel"
+                        ng-options="nivel.descricao for nivel in niveis track by nivel.id">
+                    <option value="">Nível</option>
+                </select>
+            </div>
+            <label for="minha" class="col-md-3 label-font" style="padding-right: 0px; margin-top: 8px;">
+                <input id="minha" class="pull-left" type="checkbox" name="minha" style="margin-top: 10px;"
+                       ng-model="pesquisar.minhasPerguntas">&nbsp;Minhas Perguntas
+            </label>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-modelo pull-right">
+                    <i class="glyphicon glyphicon-search"></i>&nbsp;Pesquisar</button>
+            </div>
         </div>
-        <label for="minha" class="col-lg-2 control-label label-font" style="padding-right: 0px; padding-left: 0px;">
-            <input id="minha" class="pull-left" type="checkbox" name="minha" ng-model="pesquisar.minhasPerguntas">&nbsp;Minhas Perguntas
-        </label>
-        <div class="col-lg-5" style="margin-top: 15px;">
-            <button type="submit" class="btn btn-modelo pull-right">
-                <i class="glyphicon glyphicon-search"></i>&nbsp;Pesquisar</button>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12" style="padding-left: 0px; padding-right: 0px; padding-top: 10px; overflow: auto; height: 200px !important;">
             <table class="table table-condensed" id="tabela">
                 <thead class="table-font-title">
                     <tr>
-                        <th width="10"></th>
+                        <th width="10">
+                            <input class="pull-right" ng-change="selecionarTodas()" id="selecionar" type="checkbox" name="selecionar" ng-model="model.todos">
+                        </th>
                         <th>Pergunta</th>
                         <th width="130">Nível</th>
                     </tr>
                 </thead>
                 <tbody class="table-font">
                     <tr ng-repeat="pergunta in model.perguntas">
-                        <td><input class="pull-right" id="selecionar" type="checkbox" name="selecionar" ng-model="pergunta.selecionar"></td>
+                        <td><input class="pull-right" id="selecionar" type="checkbox" name="selecionar" ng-change="selecionar()" ng-model="pergunta.selecionar"></td>
                         <td>{{pergunta.descricao.substring(0, 220)+(pergunta.descricao.length>220?'...':'')}}</td>
                         <td>{{pergunta.nivel.descricao}}</td>
                     </tr>
@@ -49,6 +56,8 @@
     </form>
 </div>
 <div class="modal-footer" style="background-color: #cbe8ba;">
-    <button type="button" class="btn btn-default" data-ng-click="fechar()"><i class="glyphicon glyphicon-remove-sign"></i>&nbsp;Fechar</button>
-    <button type="button" ng-click="adicionar()" class="btn btn-modelo pull-right"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Adicionar</button>
+    <button type="button" class="btn btn-default" data-ng-click="fechar()" style="font-size: 120%;">
+        <i class="glyphicon glyphicon-remove-sign"></i>&nbsp;Fechar</button>
+    <button type="button" class="btn btn-modelo" data-ng-click="adicionar()" style="font-size: 120%;">
+        <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Adicionar</button>
 </div>

@@ -10,6 +10,7 @@ import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.enums.TipoPergunta;
+import br.com.tcc.common.enums.TipoUsuario;
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -34,6 +35,7 @@ public class ObjectMapperFactory {
             testModule.addDeserializer(SituacaoCurso.class, new EnumDeserializer(ReflectionUtils.findMethod(SituacaoCurso.class, "from", String.class)));
             testModule.addDeserializer(NivelPergunta.class, new EnumDeserializer(ReflectionUtils.findMethod(NivelPergunta.class, "from", String.class)));
             testModule.addDeserializer(TipoPergunta.class, new EnumDeserializer(ReflectionUtils.findMethod(TipoPergunta.class, "from", String.class)));
+            testModule.addDeserializer(TipoUsuario.class, new EnumDeserializer(ReflectionUtils.findMethod(TipoUsuario.class, "from", String.class)));
             testModule.addDeserializer(InputStream.class, new StreamDeserializer());
             testModule.addSerializer(new StreamSerializer());
             mapper.registerModule(testModule);

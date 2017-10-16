@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset xmlns="test">
-    <USUARIO ID = "1" NOME = "Joao" LOGIN = "JoaoL" EMAIL = "joao@email.com" SENHA = "1234"/>
-    <USUARIO ID = "2" NOME = "Maria" LOGIN = "MariaL" EMAIL = "maria@email.com" SENHA = "12345"/>
-    <USUARIO ID = "3" NOME = "Aluno1" LOGIN = "Aluno1" EMAIL = "aluno1@email.com" SENHA = "12345"/>
-    <USUARIO ID = "4" NOME = "Aluno2" LOGIN = "Aluno2" EMAIL = "aluno2@email.com" SENHA = "12345"/>
+    <USUARIO ID = "1" NOME = "Joao" LOGIN = "JoaoL" EMAIL = "joao@email.com" SENHA = "1234" TIPO = "T"/>
+    <USUARIO ID = "2" NOME = "Maria" LOGIN = "MariaL" EMAIL = "maria@email.com" SENHA = "12345" TIPO = "T"/>
+    <USUARIO ID = "3" NOME = "Aluno1" LOGIN = "Aluno1" EMAIL = "aluno1@email.com" SENHA = "12345" TIPO = "T"/>
+    <USUARIO ID = "4" NOME = "Aluno2" LOGIN = "Aluno2" EMAIL = "aluno2@email.com" SENHA = "12345" TIPO = "T"/>
     
     <CURSO ID = "1" NOME = "Curso História" ASSUNTO_GERAL = "AssuntoH" CATEGORIA = "H" COD_ACESSO = "ABCDE12345" USUARIO_ID = "1" SITUACAO = "C"/>
     <CURSO ID = "2" NOME = "Curso Matemática" ASSUNTO_GERAL = "AssuntoM" CATEGORIA = "M" COD_ACESSO = "12345ABCDE" USUARIO_ID = "1" SITUACAO = "C"/>

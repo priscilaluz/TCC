@@ -6,6 +6,7 @@ tccApp.controller('AdicionarPerguntaController', ['$scope', '$rootScope', '$moda
             parteNome: null
         };
         $scope.model = {
+            todos:false,
             perguntas: []
         };
         var perguntasEtapa = obj.perguntasEtapa;
@@ -13,6 +14,22 @@ tccApp.controller('AdicionarPerguntaController', ['$scope', '$rootScope', '$moda
         var idUsuario = obj.idUsuario;
         var jogo = obj.jogo;
         var tipoPergunta = null;
+
+        $scope.selecionarTodas = function () {
+            for (var i = 0; i < $scope.model.perguntas.length; i++) {
+                $scope.model.perguntas[i].selecionar = $scope.model.todos;
+            }
+        };
+
+        $scope.selecionar = function () {
+            $scope.model.todos = true;
+            for (var i = 0; i < $scope.model.perguntas.length; i++) {
+                if (!$scope.model.perguntas[i].selecionar) {
+                    $scope.model.todos = false;
+                    break;
+                }
+            }
+        };
 
         $scope.buscarPerguntas = function () {
             var idNivel = $scope.pesquisar.nivel ? $scope.pesquisar.nivel.id : null;

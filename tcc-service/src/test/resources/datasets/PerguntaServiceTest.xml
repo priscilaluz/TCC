@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset xmlns="test">
-    <USUARIO ID = "1" NOME = "Joao" LOGIN = "JoaoL" EMAIL = "joao@email.com" SENHA = "1234"/>
-    <USUARIO ID = "2" NOME = "Maria" LOGIN = "MariaL" EMAIL = "maria@email.com" SENHA = "12345"/>
+    <USUARIO ID = "1" NOME = "Joao" LOGIN = "JoaoL" EMAIL = "joao@email.com" SENHA = "1234" TIPO = "T"/>
+    <USUARIO ID = "2" NOME = "Maria" LOGIN = "MariaL" EMAIL = "maria@email.com" SENHA = "12345" TIPO = "T"/>
                  
     <PERGUNTA ID = "1" DESCRICAO = "Pergunta 1 da Quanto é atividade de matemática" JUSTIFICATIVA = "A resposta certa é pq..." CATEGORIA = "M" USUARIO_ID = "1" TIPO = "ME" NIVEL = "F" DICA="Dica2"/>
     <PERGUNTA ID = "2" DESCRICAO = "Pergunta 2 da atividade de matemática" JUSTIFICATIVA = "A resposta certa é pq..." CATEGORIA = "M" USUARIO_ID = "2" TIPO = "CL" NIVEL = "M" DICA="Dica1"/>

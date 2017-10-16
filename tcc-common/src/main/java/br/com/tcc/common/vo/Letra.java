@@ -15,6 +15,9 @@ public class Letra {
     private boolean pintada;
     private boolean selecionada;
 
+    public Letra() {
+    }
+    
     public Letra(int posicao, String letra) {
         this.posicao = posicao;
         this.letra = letra;

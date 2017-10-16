@@ -1,6 +1,7 @@
 package br.com.tcc.service.impl;
 
 import br.com.tcc.common.entity.Usuario;
+import br.com.tcc.common.enums.TipoUsuario;
 import br.com.tcc.service.persistence.SimpleTestDao;
 import br.com.tcc.service.query.BuscarUsuario;
 import br.com.tcc.test.IntegrationBaseTestClass;
@@ -46,7 +47,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     public void deveRetornarUsuarioPorLoginSenha(){
         Usuario usuario = usuarioServiceImpl.buscarUsuarioPorLoginSenha("JoaoL", "1234");
         assertNotNull(usuario);
-        assertTrue(usuario.getId().equals(new Long(1L)));
+        assertTrue(usuario.getId().equals(1L));
     }
     
     private Usuario obterUsuarioValido() {
@@ -55,6 +56,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
                 .comEmail("teste@a.com")
                 .comLogin("TesteLogin")
                 .comSenha("1234")
+                .comTipoUsuario(TipoUsuario.PROFESSOR)
                 .build();
         return categoria;
     }

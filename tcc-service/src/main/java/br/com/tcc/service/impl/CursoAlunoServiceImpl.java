@@ -18,8 +18,10 @@ import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarCursoAluno;
 import br.com.tcc.service.validator.CursoValidator;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -81,8 +83,9 @@ public class CursoAlunoServiceImpl {
         tabuleiroCurso.setEtapaAtual(cursoAluno.getPosicaoAtual());
         
         List<TabuleiroEtapa> etapas = etapasPorCursoAluno(cursoAluno);
-        List<TdHtmlEtapa> tdEtapas = tdEtapasPorTabuleiroEtapa(etapas);
-        tabuleiroCurso.setTdEtapas(tdEtapas);
+        List<TdHtmlEtapa> todasEtapas = tdEtapasPorTabuleiroEtapa(etapas);
+        tabuleiroCurso.setTabuleiros(mapearTabuleiros(todasEtapas));
+        
         return tabuleiroCurso;
     }
     
@@ -157,5 +160,25 @@ public class CursoAlunoServiceImpl {
             tdHtmlEtapas.add(tdHtmlEtapa);
         }
         return tdHtmlEtapas;
+    }
+    
+    private Map<Integer,List<TdHtmlEtapa>> mapearTabuleiros(List<TdHtmlEtapa> todasEtapas) {
+        Map<Integer,List<TdHtmlEtapa>> tabuleiros = new HashMap<>();
+        int numTabuleiro = 1;
+        int qntItens = 0;
+        int quantidade = 0;
+        List<TdHtmlEtapa> tabuleiro = new ArrayList<>();
+        for (TdHtmlEtapa linhaColuna : todasEtapas) {
+            tabuleiro.add(linhaColuna);
+            qntItens++;
+            quantidade++;
+            if (qntItens == 3 || quantidade == todasEtapas.size()) {
+                tabuleiros.put(numTabuleiro, tabuleiro);
+                tabuleiro = new ArrayList<>();
+                numTabuleiro++;
+                qntItens = 0;
+            }
+        }
+        return tabuleiros;
     }
 }

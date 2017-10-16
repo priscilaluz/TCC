@@ -265,6 +265,63 @@ CREATE TABLE IF NOT EXISTS `tcc`.`RESPOSTA_ALUNO` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+ALTER TABLE `tcc`.`usuario` 
+ADD COLUMN `TIPO` ENUM('A', 'P') NULL DEFAULT NULL AFTER `SENHA`;
+
+ALTER TABLE `tcc`.`usuario` 
+CHANGE COLUMN `TIPO` `TIPO` ENUM('A', 'P', 'T') NOT NULL DEFAULT 'A' COMMENT '\'A\'- Aluno, \'P\'- Professor, \'T\'- Ambos, aluno e professor' ;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+-- MySQL Workbench Synchronization
+-- Generated: 2017-10-15 19:11
+-- Model: New Model
+-- Version: 1.0
+-- Project: Name of the project
+-- Author: Priscila
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+ALTER TABLE `tcc`.`resposta_aluno` 
+DROP FOREIGN KEY `fk_RESPOSTA_ALUNO_PERGUNTA_ALUNO1`,
+DROP FOREIGN KEY `fk_RESPOSTA_ALUNO_RESPOSTA1`;
+
+ALTER TABLE `tcc`.`curso` 
+CHANGE COLUMN `SITUACAO` `SITUACAO` ENUM('R', 'C') NOT NULL COMMENT '\'R\'-Rascunho, \'C\'-Completo' ;
+
+ALTER TABLE `tcc`.`curso_aluno` 
+CHANGE COLUMN `SITUACAO` `SITUACAO` ENUM('A', 'C') NOT NULL COMMENT '\'A\'-Em Andamento, \'C\'-Concluído' ;
+
+ALTER TABLE `tcc`.`etapa` 
+CHANGE COLUMN `JOGO` `JOGO` ENUM('Q', 'A', 'F', 'C') NOT NULL COMMENT 'Tipo de Jogo: \'Q\'-Quiz, \'A\'-Aposta, \'F\'-Forca, \'C\'-Caça Palavras' ;
+
+ALTER TABLE `tcc`.`pergunta` 
+CHANGE COLUMN `CATEGORIA` `CATEGORIA` ENUM('P', 'M', 'H', 'G', 'B', 'F', 'Q', 'I') NOT NULL COMMENT '\'P\'-Português, \'M\'-Matemática, \'H\'-História, \'G\'-Geografia, \'B\'-Biologia, \'F\'-Física, \'Q\'-Química, \'I\'-Inglês)' ,
+CHANGE COLUMN `TIPO` `TIPO` ENUM('ME', 'CL') NOT NULL COMMENT 'Tipo de Pergunta: \'ME\'-multiplas escolhas, \'CL\'-completar lacuna' ,
+CHANGE COLUMN `NIVEL` `NIVEL` ENUM('F', 'M', 'D') NOT NULL COMMENT '\'F\'-fácil, \'M\'-médio, \'D\'-difícil' ;
+
+ALTER TABLE `tcc`.`resposta_aluno` 
+CHANGE COLUMN `PERGUNTA_ALUNO_ID` `PERGUNTA_ALUNO_ID` INT(11) NOT NULL COMMENT 'ID de Pergunta Aluno' ,
+CHANGE COLUMN `RESPOSTA_ID` `RESPOSTA_ID` INT(11) NOT NULL COMMENT 'ID da Resposta' ;
+
+ALTER TABLE `tcc`.`resposta_aluno` 
+ADD CONSTRAINT `fk_RESPOSTA_ALUNO_PERGUNTA_ALUNO1`
+  FOREIGN KEY (`PERGUNTA_ALUNO_ID`)
+  REFERENCES `tcc`.`pergunta_aluno` (`ID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_RESPOSTA_ALUNO_RESPOSTA1`
+  FOREIGN KEY (`RESPOSTA_ID`)
+  REFERENCES `tcc`.`resposta` (`ID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

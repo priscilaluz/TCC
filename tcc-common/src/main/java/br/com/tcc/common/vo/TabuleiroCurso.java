@@ -8,6 +8,7 @@ package br.com.tcc.common.vo;
 import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Usuario;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -21,7 +22,7 @@ public class TabuleiroCurso {
     private Integer etapaAtual;
     private Integer pontuacao;
     private Usuario aluno;
-    private List<TdHtmlEtapa> tdEtapas;
+    private Map<Integer,List<TdHtmlEtapa>> tabuleiros;
 
     public TabuleiroCurso() {}
 
@@ -81,11 +82,11 @@ public class TabuleiroCurso {
         this.aluno = aluno;
     }
 
-    public List<TdHtmlEtapa> getTdEtapas() {
-        return tdEtapas;
+    public Map<Integer, List<TdHtmlEtapa>> getTabuleiros() {
+        return tabuleiros;
     }
 
-    public void setTdEtapas(List<TdHtmlEtapa> tdEtapas) {
-        this.tdEtapas = tdEtapas;
+    public void setTabuleiros(Map<Integer, List<TdHtmlEtapa>> tabuleiros) {
+        this.tabuleiros = tabuleiros;
     }
 }

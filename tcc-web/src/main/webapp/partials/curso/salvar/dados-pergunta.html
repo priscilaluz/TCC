@@ -14,7 +14,7 @@
         <p class="curso-nao-titulo-concluido"><span style="font-weight: bold">Respostas</span></p>
         <p class="curso-nao-titulo-concluido" ng-repeat="resposta in model.pergunta.respostas">
             <span ng-class="{'verdadeiro': resposta.correta, 'falso':!resposta.correta}">
-            ({{($index+1}}){{resposta.descricao}}</span></p>
+            ({{($index+1)}}){{resposta.descricao}}</span></p>
         <p class="curso-nao-titulo-concluido"><span style="font-weight: bold">Dica:</span>
                 {{model.pergunta.dica}}</p>
         <p class="curso-nao-titulo-concluido"><span style="font-weight: bold">Justificativa:</span>
@@ -22,5 +22,6 @@
     </form>
 </div>
 <div class="modal-footer" style="background-color: #cbe8ba;">
-    <button type="button" class="btn btn-default" data-ng-click="fechar()"><i class="glyphicon glyphicon-remove-sign"></i>&nbsp;Fechar</button>
+    <button type="button" class="btn btn-default" data-ng-click="fechar()" style="font-size: 120%;">
+        <i class="glyphicon glyphicon-remove-sign"></i>&nbsp;Fechar</button>
 </div>

@@ -10,6 +10,7 @@ import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -33,6 +34,7 @@ import org.hibernate.annotations.Type;
  */
 @Entity
 @Table(name = "PERGUNTA", schema = ConstantesI18N.SCHEMA)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Pergunta extends AbstractIdBean<Long> {
 
     private static final long serialVersionUID = 1L;

@@ -11,7 +11,10 @@ import br.com.tcc.service.persistence.SimpleTestDao;
 import br.com.tcc.test.IntegrationBaseTestClass;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -61,77 +64,81 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
     public void deveRetornarAlunoPorIdCursoAluno1(){
         TabuleiroCurso tabuleiroCursoAtual = cursoAlunoServiceImpl.buscarCursoAlunoPorIdCursoAluno(1L);
         TabuleiroCurso tabuleiroEsperado = obterTabuleiroCursoCorreto1();
-        validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado, 1);
+        validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado);
     }
     
     @Test
     public void deveRetornarAlunoPorIdCursoAluno2(){
         TabuleiroCurso tabuleiroCursoAtual = cursoAlunoServiceImpl.buscarCursoAlunoPorIdCursoAluno(2L);
         TabuleiroCurso tabuleiroEsperado = obterTabuleiroCursoCorreto2();
-        validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado, 1);
+        validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado);
     }
     
     @Test
     public void deveRetornarAlunoPorIdCursoAluno3(){
         TabuleiroCurso tabuleiroCursoAtual = cursoAlunoServiceImpl.buscarCursoAlunoPorIdCursoAluno(3L);
         TabuleiroCurso tabuleiroEsperado = obterTabuleiroCursoCorreto3();
-        validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado, 5);
+        validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado);
     }
     
     @Test
     public void deveRetornarAlunoPorIdCursoAluno4(){
         TabuleiroCurso tabuleiroCursoAtual = cursoAlunoServiceImpl.buscarCursoAlunoPorIdCursoAluno(4L);
         TabuleiroCurso tabuleiroEsperado = obterTabuleiroCursoCorreto4();
-        validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado, 3);
+        validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado);
     }
     
     @Test
     public void deveRetornarAlunoPorIdCursoAluno5(){
         TabuleiroCurso tabuleiroCursoAtual = cursoAlunoServiceImpl.buscarCursoAlunoPorIdCursoAluno(5L);
         TabuleiroCurso tabuleiroEsperado = obterTabuleiroCursoCorreto5();
-        validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado, 2);
+        validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado);
     }
     //</editor-fold>
-    private void validarTabuleiro(TabuleiroCurso tabuleiroCursoAtual, TabuleiroCurso tabuleiroEsperado, int size) {
-        assertEquals(tabuleiroEsperado.getAluno().getId(), tabuleiroCursoAtual.getAluno().getId());
-        assertEquals(tabuleiroEsperado.getAssuntoGeral(), tabuleiroCursoAtual.getAssuntoGeral());
-        assertEquals(tabuleiroEsperado.getEtapaAtual(), tabuleiroCursoAtual.getEtapaAtual());
-        assertEquals(tabuleiroEsperado.getIdCurso(), tabuleiroCursoAtual.getIdCurso());
-        assertEquals(tabuleiroEsperado.getNome(), tabuleiroCursoAtual.getNome());
-        assertTrue(tabuleiroCursoAtual.getTdEtapas().size()==size);
-        int i;
-        for (i = 0; i < size; i++) {
-            TdHtmlEtapa tdHtmlEtapaEsperado = tabuleiroEsperado.getTdEtapas().get(i);
-            TdHtmlEtapa tdHtmlEtapaAtual = tabuleiroCursoAtual.getTdEtapas().get(i);
-            assertEquals(tdHtmlEtapaEsperado.getEtapa1().getIdEtapa(), tdHtmlEtapaAtual.getEtapa1().getIdEtapa());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa1().getImagemDesabilitado(), tdHtmlEtapaAtual.getEtapa1().getImagemDesabilitado());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa1().getImagemOff(), tdHtmlEtapaAtual.getEtapa1().getImagemOff());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa1().getImagemOn(), tdHtmlEtapaAtual.getEtapa1().getImagemOn());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa1().isDesbloquada(), tdHtmlEtapaAtual.getEtapa1().isDesbloquada());
-            
-            assertEquals(tdHtmlEtapaEsperado.getEtapa2().getIdEtapa(), tdHtmlEtapaAtual.getEtapa2().getIdEtapa());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa2().getImagemDesabilitado(), tdHtmlEtapaAtual.getEtapa2().getImagemDesabilitado());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa2().getImagemOff(), tdHtmlEtapaAtual.getEtapa2().getImagemOff());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa2().getImagemOn(), tdHtmlEtapaAtual.getEtapa2().getImagemOn());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa2().isDesbloquada(), tdHtmlEtapaAtual.getEtapa2().isDesbloquada());
-            
-            assertEquals(tdHtmlEtapaEsperado.getEtapa3().getIdEtapa(), tdHtmlEtapaAtual.getEtapa3().getIdEtapa());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa3().getImagemDesabilitado(), tdHtmlEtapaAtual.getEtapa3().getImagemDesabilitado());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa3().getImagemOff(), tdHtmlEtapaAtual.getEtapa3().getImagemOff());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa3().getImagemOn(), tdHtmlEtapaAtual.getEtapa3().getImagemOn());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa3().isDesbloquada(), tdHtmlEtapaAtual.getEtapa3().isDesbloquada());
-            
-            assertEquals(tdHtmlEtapaEsperado.getEtapa4().getIdEtapa(), tdHtmlEtapaAtual.getEtapa4().getIdEtapa());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa4().getImagemDesabilitado(), tdHtmlEtapaAtual.getEtapa4().getImagemDesabilitado());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa4().getImagemOff(), tdHtmlEtapaAtual.getEtapa4().getImagemOff());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa4().getImagemOn(), tdHtmlEtapaAtual.getEtapa4().getImagemOn());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa4().isDesbloquada(), tdHtmlEtapaAtual.getEtapa4().isDesbloquada());
-            
-            assertEquals(tdHtmlEtapaEsperado.getEtapa5().getIdEtapa(), tdHtmlEtapaAtual.getEtapa5().getIdEtapa());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa5().getImagemDesabilitado(), tdHtmlEtapaAtual.getEtapa5().getImagemDesabilitado());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa5().getImagemOff(), tdHtmlEtapaAtual.getEtapa5().getImagemOff());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa5().getImagemOn(), tdHtmlEtapaAtual.getEtapa5().getImagemOn());
-            assertEquals(tdHtmlEtapaEsperado.getEtapa5().isDesbloquada(), tdHtmlEtapaAtual.getEtapa5().isDesbloquada());
+    private void validarTabuleiro(TabuleiroCurso tabuleirosCursoAtual, TabuleiroCurso tabuleirosEsperado) {
+        assertEquals(tabuleirosEsperado.getAluno().getId(), tabuleirosCursoAtual.getAluno().getId());
+        assertEquals(tabuleirosEsperado.getAssuntoGeral(), tabuleirosCursoAtual.getAssuntoGeral());
+        assertEquals(tabuleirosEsperado.getEtapaAtual(), tabuleirosCursoAtual.getEtapaAtual());
+        assertEquals(tabuleirosEsperado.getIdCurso(), tabuleirosCursoAtual.getIdCurso());
+        assertEquals(tabuleirosEsperado.getNome(), tabuleirosCursoAtual.getNome());
+        assertTrue(tabuleirosEsperado.getTabuleiros().size()==tabuleirosCursoAtual.getTabuleiros().size());
+        for (Integer numTabuleiro : tabuleirosEsperado.getTabuleiros().keySet()) {
+            List<TdHtmlEtapa> tabuleiroEsperado = tabuleirosEsperado.getTabuleiros().get(numTabuleiro);
+            List<TdHtmlEtapa> tabuleiroCursoAtual = tabuleirosCursoAtual.getTabuleiros().get(numTabuleiro);
+            assertTrue(tabuleiroEsperado.size()==tabuleiroCursoAtual.size());
+            for (int i = 0; i < tabuleiroEsperado.size(); i++) {
+                TdHtmlEtapa tdHtmlEtapaEsperado = tabuleiroEsperado.get(i);
+                TdHtmlEtapa tdHtmlEtapaAtual = tabuleiroCursoAtual.get(i);
+                assertEquals(tdHtmlEtapaEsperado.getEtapa1().getIdEtapa(), tdHtmlEtapaAtual.getEtapa1().getIdEtapa());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa1().getImagemDesabilitado(), tdHtmlEtapaAtual.getEtapa1().getImagemDesabilitado());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa1().getImagemOff(), tdHtmlEtapaAtual.getEtapa1().getImagemOff());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa1().getImagemOn(), tdHtmlEtapaAtual.getEtapa1().getImagemOn());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa1().isDesbloquada(), tdHtmlEtapaAtual.getEtapa1().isDesbloquada());
+
+                assertEquals(tdHtmlEtapaEsperado.getEtapa2().getIdEtapa(), tdHtmlEtapaAtual.getEtapa2().getIdEtapa());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa2().getImagemDesabilitado(), tdHtmlEtapaAtual.getEtapa2().getImagemDesabilitado());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa2().getImagemOff(), tdHtmlEtapaAtual.getEtapa2().getImagemOff());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa2().getImagemOn(), tdHtmlEtapaAtual.getEtapa2().getImagemOn());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa2().isDesbloquada(), tdHtmlEtapaAtual.getEtapa2().isDesbloquada());
+
+                assertEquals(tdHtmlEtapaEsperado.getEtapa3().getIdEtapa(), tdHtmlEtapaAtual.getEtapa3().getIdEtapa());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa3().getImagemDesabilitado(), tdHtmlEtapaAtual.getEtapa3().getImagemDesabilitado());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa3().getImagemOff(), tdHtmlEtapaAtual.getEtapa3().getImagemOff());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa3().getImagemOn(), tdHtmlEtapaAtual.getEtapa3().getImagemOn());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa3().isDesbloquada(), tdHtmlEtapaAtual.getEtapa3().isDesbloquada());
+
+                assertEquals(tdHtmlEtapaEsperado.getEtapa4().getIdEtapa(), tdHtmlEtapaAtual.getEtapa4().getIdEtapa());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa4().getImagemDesabilitado(), tdHtmlEtapaAtual.getEtapa4().getImagemDesabilitado());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa4().getImagemOff(), tdHtmlEtapaAtual.getEtapa4().getImagemOff());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa4().getImagemOn(), tdHtmlEtapaAtual.getEtapa4().getImagemOn());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa4().isDesbloquada(), tdHtmlEtapaAtual.getEtapa4().isDesbloquada());
+
+                assertEquals(tdHtmlEtapaEsperado.getEtapa5().getIdEtapa(), tdHtmlEtapaAtual.getEtapa5().getIdEtapa());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa5().getImagemDesabilitado(), tdHtmlEtapaAtual.getEtapa5().getImagemDesabilitado());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa5().getImagemOff(), tdHtmlEtapaAtual.getEtapa5().getImagemOff());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa5().getImagemOn(), tdHtmlEtapaAtual.getEtapa5().getImagemOn());
+                assertEquals(tdHtmlEtapaEsperado.getEtapa5().isDesbloquada(), tdHtmlEtapaAtual.getEtapa5().isDesbloquada());
+            }
         }
     }
     
@@ -151,7 +158,10 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         tdHtmlEtapa.setEtapa4(new TabuleiroEtapa());
         tdHtmlEtapa.setEtapa5(new TabuleiroEtapa());
         tdHtmlEtapas.add(tdHtmlEtapa);
-        tabuleiroCurso.setTdEtapas(tdHtmlEtapas);
+        
+        Map<Integer,List<TdHtmlEtapa>> tabuleiros = new HashMap<>();
+        tabuleiros.put(1, tdHtmlEtapas);
+        tabuleiroCurso.setTabuleiros(tabuleiros);
         return tabuleiroCurso;
     }
     
@@ -170,7 +180,11 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         tdHtmlEtapa.setEtapa4(new TabuleiroEtapa());
         tdHtmlEtapa.setEtapa5(new TabuleiroEtapa());
         tdHtmlEtapas.add(tdHtmlEtapa);
-        tabuleiroCurso.setTdEtapas(tdHtmlEtapas);
+        
+        Map<Integer,List<TdHtmlEtapa>> tabuleiros = new HashMap<>();
+        tabuleiros.put(1, tdHtmlEtapas);
+        
+        tabuleiroCurso.setTabuleiros(tabuleiros);
         return tabuleiroCurso;
     }
     
@@ -181,14 +195,17 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         tabuleiroCurso.setNome("Curso Geografia");
         tabuleiroCurso.setAssuntoGeral("AssuntoG");
         tabuleiroCurso.setAluno(new Usuario(3L));
-        List<TdHtmlEtapa> tdHtmlEtapas = new ArrayList<>();
+        
+        Map<Integer,List<TdHtmlEtapa>> tabuleiros = new HashMap<>();
+        
+        List<TdHtmlEtapa> tdHtmlEtapas1 = new ArrayList<>();
         TdHtmlEtapa tdHtmlEtapa1 = new TdHtmlEtapa();
         tdHtmlEtapa1.setEtapa1(objTabuleiroEtapa(4L, true, "1"));
         tdHtmlEtapa1.setEtapa2(objTabuleiroEtapa(5L, true, "2"));
         tdHtmlEtapa1.setEtapa3(objTabuleiroEtapa(6L, true, "3"));
         tdHtmlEtapa1.setEtapa4(objTabuleiroEtapa(7L, false, "4"));
         tdHtmlEtapa1.setEtapa5(objTabuleiroEtapa(8L, false, "5"));
-        tdHtmlEtapas.add(tdHtmlEtapa1);
+        tdHtmlEtapas1.add(tdHtmlEtapa1);
         
         TdHtmlEtapa tdHtmlEtapa2 = new TdHtmlEtapa();
         tdHtmlEtapa2.setEtapa1(objTabuleiroEtapa(13L, false, "10"));
@@ -196,7 +213,7 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         tdHtmlEtapa2.setEtapa3(objTabuleiroEtapa(11L, false, "8"));
         tdHtmlEtapa2.setEtapa4(objTabuleiroEtapa(10L, false, "7"));
         tdHtmlEtapa2.setEtapa5(objTabuleiroEtapa(9L, false, "6"));
-        tdHtmlEtapas.add(tdHtmlEtapa2);
+        tdHtmlEtapas1.add(tdHtmlEtapa2);
         
         TdHtmlEtapa tdHtmlEtapa3 = new TdHtmlEtapa();
         tdHtmlEtapa3.setEtapa1(objTabuleiroEtapa(14L, false, "11"));
@@ -204,7 +221,10 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         tdHtmlEtapa3.setEtapa3(objTabuleiroEtapa(16L, false, "13"));
         tdHtmlEtapa3.setEtapa4(objTabuleiroEtapa(17L, false, "14"));
         tdHtmlEtapa3.setEtapa5(objTabuleiroEtapa(18L, false, "2"));
-        tdHtmlEtapas.add(tdHtmlEtapa3);
+        tdHtmlEtapas1.add(tdHtmlEtapa3);
+        
+        tabuleiros.put(1, tdHtmlEtapas1);
+        List<TdHtmlEtapa> tdHtmlEtapas2 = new ArrayList<>();
         
         TdHtmlEtapa tdHtmlEtapa4 = new TdHtmlEtapa();
         tdHtmlEtapa4.setEtapa1(objTabuleiroEtapa(19L, false, "2"));
@@ -212,7 +232,7 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         tdHtmlEtapa4.setEtapa3(objTabuleiroEtapa(21L, false, "3"));
         tdHtmlEtapa4.setEtapa4(objTabuleiroEtapa(22L, false, "4"));
         tdHtmlEtapa4.setEtapa5(objTabuleiroEtapa(23L, false, "5"));
-        tdHtmlEtapas.add(tdHtmlEtapa4);
+        tdHtmlEtapas2.add(tdHtmlEtapa4);
         
         TdHtmlEtapa tdHtmlEtapa5 = new TdHtmlEtapa();
         tdHtmlEtapa5.setEtapa1(new TabuleiroEtapa());
@@ -220,9 +240,11 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         tdHtmlEtapa5.setEtapa3(new TabuleiroEtapa());
         tdHtmlEtapa5.setEtapa4(new TabuleiroEtapa());
         tdHtmlEtapa5.setEtapa5(objTabuleiroEtapa(24L, false, "17"));
-        tdHtmlEtapas.add(tdHtmlEtapa5);
+        tdHtmlEtapas2.add(tdHtmlEtapa5);
         
-        tabuleiroCurso.setTdEtapas(tdHtmlEtapas);
+        tabuleiros.put(2, tdHtmlEtapas2);
+        
+        tabuleiroCurso.setTabuleiros(tabuleiros);
         return tabuleiroCurso;
     }
     
@@ -259,7 +281,10 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         tdHtmlEtapa3.setEtapa5(new TabuleiroEtapa());
         tdHtmlEtapas.add(tdHtmlEtapa3);
         
-        tabuleiroCurso.setTdEtapas(tdHtmlEtapas);
+        Map<Integer,List<TdHtmlEtapa>> tabuleiros = new HashMap<>();
+        tabuleiros.put(1, tdHtmlEtapas);
+        
+        tabuleiroCurso.setTabuleiros(tabuleiros);
         return tabuleiroCurso;
     }
     
@@ -288,7 +313,10 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         tdHtmlEtapa2.setEtapa5(objTabuleiroEtapa(41L, false, "6"));
         tdHtmlEtapas.add(tdHtmlEtapa2);
         
-        tabuleiroCurso.setTdEtapas(tdHtmlEtapas);
+        Map<Integer,List<TdHtmlEtapa>> tabuleiros = new HashMap<>();
+        tabuleiros.put(1, tdHtmlEtapas);
+        
+        tabuleiroCurso.setTabuleiros(tabuleiros);
         return tabuleiroCurso;
     }
     

@@ -5,14 +5,19 @@
  */
 package br.com.tcc.common.entity;
 
+import br.com.tcc.common.enums.SituacaoCursoAluno;
+import br.com.tcc.common.enums.TipoUsuario;
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 
 /**
  *
@@ -40,6 +45,13 @@ public class Usuario extends AbstractIdBean<Long> {
     
     @Column(name = "SENHA", nullable = false)
     private String senha;
+    
+    @Enumerated(EnumType.STRING)
+    @Type(type = "br.com.tcc.common.support.GenericEnumUserType",
+        parameters = {@org.hibernate.annotations.Parameter(name = "enumClass",
+                    value = "br.com.tcc.common.enums.TipoUsuario")})
+    @Column(name = "TIPO", nullable = false)
+    private TipoUsuario tipo;
 
     public Usuario() {
     }
@@ -88,6 +100,14 @@ public class Usuario extends AbstractIdBean<Long> {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public TipoUsuario getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoUsuario tipo) {
+        this.tipo = tipo;
     }
 
 }
