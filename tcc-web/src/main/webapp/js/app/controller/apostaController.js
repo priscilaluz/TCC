@@ -186,10 +186,13 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo) {
         $scope.model.pergunta = perguntas[$scope.model.posicao];
         $scope.model.maxFichas = pontuacaoInicial * Math.pow(2, $scope.model.perguntas.length);
         $scope.telaInit = false;
+        $rootScope.contagem = true;
+        $scope.count = 0;
         inicializarBotao();
         atualizarPorcentagemBarra();
         barraDeProgresso();
         contagemInicial();
+        $rootScope.appLoaded = true;
     };
     
     var init = function () {
@@ -198,7 +201,6 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo) {
         if (idCursoAluno && idEtapa) {
             Jogo.buscarPerguntaDosJogosQuizForcaAposta({'idEtapa': idEtapa}).$promise.then(function (perguntas) {
                 iniciarJogo(perguntas);
-                $rootScope.appLoaded = true;
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
