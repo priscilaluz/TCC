@@ -113,6 +113,11 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo) {
         }
     };
     
+    $scope.aumentarApostaTudo = function (index) {
+        $scope.model.valorAposta[index] = $scope.model.valorAposta[index] + $scope.model.pontuacao;
+        $scope.model.pontuacao = 0;
+    };
+    
     var tempoPergunta = function () {
         $scope.model.tempo--;
         if ($scope.model.tempo !== 0) {
@@ -146,10 +151,12 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo) {
         $scope.model.valorAposta = [];
         $scope.model.imgAumentar = [];
         $scope.model.imgDiminuir = [];
+        $scope.model.imgAumentarTudo = [];
         for (var i = 0; i < $scope.model.pergunta.respostas.length; i++) {
             $scope.model.valorAposta.push(0);
             $scope.model.imgAumentar.push("img/jogos/aposta/botaoAumentar-off.png");
             $scope.model.imgDiminuir.push("img/jogos/aposta/botaoDiminuir-off.png");
+            $scope.model.imgAumentarTudo.push("img/jogos/aposta/tudo-off.png");
         }
     };
     

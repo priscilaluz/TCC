@@ -35,7 +35,7 @@
                     <h3 class="col-md-12 title-fonte text-center" style="border-radius: 20px;background-color: #1b6d85; padding-bottom: 15px; padding-top: 15px;">
                     {{model.pergunta.descricao}}</h3>
                     <div class="col-md-12" ng-repeat="resposta in model.pergunta.respostas">
-                        <div class="col-md-10" style="background-color: #b1f1a7; color: #46393d; border: 1px double #5bd24d; margin-top: 8px; 
+                        <div class="col-md-9" style="background-color: #b1f1a7; color: #46393d; border: 1px double #5bd24d; margin-top: 8px; 
                                 font-size: 20px; border-radius: 15px;"
                                  ng-style="resposta.correta?respostaCorreta:(model.valorAposta[$index]>0)?respostaIncorreta:{}">
                             {{resposta.descricao}}
@@ -52,6 +52,12 @@
                                 ng-mouseover="model.imgAumentar[$index]='img/jogos/aposta/botaoAumentar-on.png'"
                                 ng-mouseleave="model.imgAumentar[$index]='img/jogos/aposta/botaoAumentar-off.png'"/>
                             </div>
+                        </div>
+                        <div class="col-md-1 noPadding">
+                            <img ng-src="{{model.imgAumentarTudo[$index]}}" ng-click="aumentarApostaTudo($index)" alt="aumentar" 
+                                 style="height: 38px;padding-top: 0px;margin-top: 10px;" class="handCursor"
+                                ng-mouseover="model.imgAumentarTudo[$index]='img/jogos/aposta/tudo-on.png'"
+                                ng-mouseleave="model.imgAumentarTudo[$index]='img/jogos/aposta/tudo-off.png'"/>
                         </div>
                     </div>
                 </div>
