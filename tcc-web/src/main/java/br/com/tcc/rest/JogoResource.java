@@ -65,6 +65,7 @@ public class JogoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Pergunta> buscarPerguntasDaApresentacaoDoJogoForca() {
         List<Pergunta> perguntas = new ArrayList<>();
+        perguntas.add(obterPerguntaForcaModelo4());
         perguntas.add(obterPerguntaForcaModelo1());
         perguntas.add(obterPerguntaForcaModelo2());
         perguntas.add(obterPerguntaForcaModelo3());
@@ -102,10 +103,10 @@ public class JogoResource {
         perguntasTodas.add(obterPerguntaCacaPalavraModelo2());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo3());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo4());
+        perguntasTodas.add(obterPerguntaCacaPalavraModelo9());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo5());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo6());
         perguntasTodas.add(obterPerguntaCacaPalavraModelo7());
-        perguntasTodas.add(obterPerguntaCacaPalavraModelo8());
         
         return gerarCacaPalavra(perguntasTodas);
     }
@@ -483,7 +484,7 @@ public class JogoResource {
     }
     private Pergunta obterPerguntaForcaModelo3() {
         Pergunta pergunta = new Pergunta();
-        pergunta.setPosicao(1);
+        pergunta.setPosicao(3);
         pergunta.setDescricao("A palavra 'cachorro' é o que na frase: 'O cachorro era pequeno'.");
         pergunta.setJustificativa("Substantivos são palavras que dão nomes aos seres. O significado de “seres”, porém, não é o biológico. Seres, neste contexto, pode significar pessoas, lugares, grupos, indivíduos, animais, elementos mitológicos ou da natureza. O conceito de seres é muito mais abrangente do que aquele ao qual estamos habituados. Em termos gerais, os substantivos são nomes, não só de seres, mas também de emoções, sensações e diversos outros elementos que podem ser nomeados.");
         pergunta.setDica("Pode ser pronome, substantivo, adjetivo ou verbo.");
@@ -499,6 +500,31 @@ public class JogoResource {
         
         return pergunta;
     }
+    private Pergunta obterPerguntaForcaModelo4() {
+        
+        
+        Pergunta pergunta = new Pergunta();
+        pergunta.setPosicao(4);
+        pergunta.setDescricao("Qual é o nome dessa obra?");
+        pergunta.setDica("O sorriso dela é muito famoso.");
+        pergunta.setJustificativa("O quadro também é conhecido como A Gioconda (em italiano: La Gioconda, \"a sorridente\"; em francês, La Joconde)");
+        Anexo anexo = new Anexo();
+        anexo.setNomeArquivo("MonaLisa.jpg");
+        anexo.setBytes(ReadImageAsByteArray("MonaLisa.jpg"));
+        pergunta.setAnexo(anexo);
+        
+        Set<Resposta> respostas = new HashSet<>();
+        Resposta resposta = new Resposta();
+        resposta.setId(1L);
+        resposta.setCorreta(Boolean.TRUE);
+        resposta.setDescricao("MonaLisa");
+        respostas.add(resposta);
+        
+        pergunta.setRespostas(respostas);
+        
+        return pergunta;
+    }
+    
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Perguntas do Aposta Simuldao Modelo">
@@ -651,9 +677,10 @@ public class JogoResource {
         pergunta.setDescricao("Quem é o pintor desse quadro e qual o nome dessa obra?");
         pergunta.setDica("O quadro também é conhecido como A Gioconda (em italiano: La Gioconda, \"a sorridente\"; em francês, La Joconde) ");
         pergunta.setJustificativa("O sorriso dela é muito famoso.");
-//        Anexo anexo = new Anexo();
-//        anexo.setBytes(ReadImageAsByteArray());
-//        pergunta.setAnexo(anexo);
+        Anexo anexo = new Anexo();
+        anexo.setNomeArquivo("MonaLisa.jpg");
+        anexo.setBytes(ReadImageAsByteArray("MonaLisa.jpg"));
+        pergunta.setAnexo(anexo);
         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta1 = new Resposta();
@@ -825,6 +852,28 @@ public class JogoResource {
         resposta.setId(1L);
         resposta.setCorreta(Boolean.TRUE);
         resposta.setDescricao("Sinatra");
+        respostas.add(resposta);
+        
+        pergunta.setRespostas(respostas);
+        
+        return pergunta;
+    }
+    private Pergunta obterPerguntaCacaPalavraModelo9() {
+        Pergunta pergunta = new Pergunta();
+        pergunta.setPosicao(9);
+        pergunta.setDescricao("Qual é o nome dessa obra?");
+        pergunta.setDica("O sorriso dela é muito famoso.");
+        pergunta.setJustificativa("O quadro também é conhecido como A Gioconda (em italiano: La Gioconda, \"a sorridente\"; em francês, La Joconde)");
+        Anexo anexo = new Anexo();
+        anexo.setNomeArquivo("MonaLisa.jpg");
+        anexo.setBytes(ReadImageAsByteArray("MonaLisa.jpg"));
+        pergunta.setAnexo(anexo);
+        
+        Set<Resposta> respostas = new HashSet<>();
+        Resposta resposta = new Resposta();
+        resposta.setId(1L);
+        resposta.setCorreta(Boolean.TRUE);
+        resposta.setDescricao("MonaLisa");
         respostas.add(resposta);
         
         pergunta.setRespostas(respostas);

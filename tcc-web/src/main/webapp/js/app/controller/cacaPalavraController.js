@@ -2,12 +2,15 @@ tccApp.controller('CacaPalavraController', ['$scope', '$rootScope', '$modal', '$
 function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     $scope.count = 0;
     var indexMatriz = -1;
+    var pontuacaoMinima = 0;
     $scope.model = {
         pontuacao: 0,
         qntDica: 1,
         primeiraCedula: null,
         matrizCompleta: null,
+        perdeuJogo: false,
         resultado: false,
+        anexosString: [],
         cacaPalavraLista: [],
         perguntas: [],
         resultados: []
@@ -114,7 +117,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
             for (var m = 0; m < $scope.model.perguntas.length; m++) {
                 var resposta = $scope.model.perguntas[m].respostas[0].descricao.toUpperCase();
                 if ((resposta === palavra || resposta === reverse(palavra)) && !$scope.model.perguntas[m].style) {
-                    $scope.model.pontuacao = $scope.model.pontuacao + 50;
+                    $scope.model.pontuacao = $scope.model.pontuacao + 100;
                     palavraExiste = true;
                     break;
                 }
@@ -270,11 +273,24 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         if (indexMatriz < $scope.model.cacaPalavraLista.cacaPalavra.length) {
             $scope.model.matrizCompleta = $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].matriz;
             $scope.model.perguntas = $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].perguntas;
+            $scope.model.anexosString = [];
+            for (var i = 0; i < $scope.model.perguntas.length; i++) {
+                $scope.model.anexosString.push(exibirAnexo($scope.model.perguntas[i].anexo));
+            }
             tamanhoMatriz = $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].tamanhoMatriz;
             backgroundMatriz();
+        } else if ($scope.model.pontuacao < pontuacaoMinima) {
+            $scope.model.perdeuJogo = true;
         } else {
             $scope.model.resultado = true;
         }
+    };
+    
+    var exibirAnexo = function (anexo) {
+        if (anexo && anexo.bytes) {
+            return "data:image/"+"jpg"+";base64,"+anexo.bytes;
+        }
+        return null;
     };
     
     var init = function () {
@@ -282,6 +298,8 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         $rootScope.appLoaded = false;
         Jogo.buscarPerguntasDaApresentacaoDoJogoCacaPalavra(function (cacaPalavraLista) {
             $scope.model.cacaPalavraLista = cacaPalavraLista;
+            var pontuacaoMaxima = cacaPalavraLista.qntPergunta*100;
+            pontuacaoMinima = pontuacaoMaxima*7/10;
             mudarMatriz();
             barraDeProgresso();
             $rootScope.appLoaded = true;

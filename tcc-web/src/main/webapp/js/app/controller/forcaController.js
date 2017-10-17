@@ -4,6 +4,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
         var imgCampoVazio = "img/jogos/forca/Letras/CampoVazio.png";
         var espaco = "img/jogos/forca/Letras/espaco.png";
         $scope.count = 0;
+        var pontuacaoMinima = 0;
         $scope.model = {
             pontuacao: 0,
             posicao: 0,
@@ -13,6 +14,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
             resultados: [],
             qntPulo: 1,
             qntDica: 1,
+            perdeuJogo: false,
             dica: false,
             resultado: false
         };
@@ -68,9 +70,13 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
             barraDeProgresso();
             if (($scope.model.posicao+1) <= $scope.model.perguntas.length) {
                 $scope.model.pergunta = $scope.model.perguntas[$scope.model.posicao];
+                $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
                 $scope.model.letrasEscolhidas = [];
                 inicializarLetras();
+            } else if ($scope.model.pontuacao < pontuacaoMinima) {
+                $scope.model.perdeuJogo = true;
             } else {
+                $scope.model.anexoString = null;
                 $scope.model.pergunta = null;
                 $scope.model.resultado = true;
             }
@@ -140,7 +146,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
                 }
             }
             if (todasLetra) {
-                $scope.model.pontuacao = $scope.model.pontuacao + 50;
+                $scope.model.pontuacao = $scope.model.pontuacao + 100;
                 addAoRelatorioFinal(true);
             }
             if (!contemLetra) {
@@ -184,6 +190,13 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
             erro = 1;
             $scope.model.forcaImg = "img/jogos/forca/Bonecos/forca" + erro + ".png";
         };
+        
+        var exibirAnexo = function (anexo) {
+            if (anexo && anexo.bytes) {
+                return "data:image/"+"jpg"+";base64,"+anexo.bytes;
+            }
+            return null;
+        };
 
         var init = function () {
             $rootScope.appLoaded = false;
@@ -191,6 +204,9 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$modal', '$locati
             Jogo.buscarPerguntaDaApresentacaoDoJogoForca(function (perguntas) {
                 $scope.model.perguntas = perguntas;
                 $scope.model.pergunta = perguntas[$scope.model.posicao];
+                $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
+                var pontuacaoMaxima = perguntas.length*100;
+                pontuacaoMinima = pontuacaoMaxima*7/10;
                 inicializarLetras();
                 $rootScope.appLoaded = true;
                 $scope.telaInit = false;

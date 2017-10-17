@@ -32,8 +32,10 @@
         <div class="col-md-7" style="padding-left: 0px;padding-right: 0px;">
             <div class="col-md-12" style="border: #cbe8ba solid 1px; margin-bottom: 3px;" ng-style="pergunta.style"
                  ng-repeat="pergunta in model.perguntas">
-                <p class="title-fonte text-center" style="color: black"
-                    ng-style="pergunta.style">{{pergunta.descricao}}</p>
+                <p class="title-fonte text-center" style="color: black" ng-style="pergunta.style">{{pergunta.descricao}}</p>
+                <div class="col-md-12" style="padding-bottom: 5px;text-align: center;">
+                    <img id="imgPergunta" alt="imgPergunta" ng-show="model.anexosString[$index]" ng-src="{{model.anexosString[$index]}}" style="text-align: center;"/>
+                </div>
             </div>
         </div>
     </div>

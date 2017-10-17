@@ -6,6 +6,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo) {
     var timeoutTempoPorPergunta = null;
     var idCursoAluno = $routeParams.idCursoAluno;
     var idEtapa = $routeParams.idEtapa;
+    var pontuacaoMinima = 0;
     
     $scope.model = {
         perdeuJogo: false,
@@ -82,15 +83,20 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo) {
         $scope.model.dica = false;
         $scope.respostaIncorreta = {};
         $scope.respostaCorreta = {};
-        $scope.model.tempo = tempoPadraoPergunta;
+        $scope.model.tempo = tempoPadraoPergunta+1;
         $scope.model.posicao++;
         atualizarPorcentagemBarra();
         barraDeProgresso();
         if (($scope.model.posicao) < $scope.model.perguntas.length) {
             $scope.model.pergunta = $scope.model.perguntas[$scope.model.posicao];
+            $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
             inicializarBotao();
+            tempoPergunta();
+        } else if ($scope.model.pontuacao < pontuacaoMinima) {
+            $scope.model.perdeuJogo = true;
         } else {
             $scope.model.pergunta = null;
+            $scope.model.anexoString = null;
             $timeout.cancel(timeoutTempoPorPergunta);
             $scope.model.resultado = true;
         }
@@ -191,7 +197,9 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo) {
     var iniciarJogo = function (perguntas) {
         $scope.model.perguntas = perguntas;
         $scope.model.pergunta = perguntas[$scope.model.posicao];
+        $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
         $scope.model.maxFichas = pontuacaoInicial * Math.pow(2, $scope.model.perguntas.length);
+        pontuacaoMinima = $scope.model.maxFichas*7/10;
         $scope.telaInit = false;
         $rootScope.contagem = true;
         $scope.count = 0;
@@ -200,6 +208,13 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo) {
         barraDeProgresso();
         contagemInicial();
         $rootScope.appLoaded = true;
+    };
+    
+    var exibirAnexo = function (anexo) {
+        if (anexo && anexo.bytes) {
+            return "data:image/"+"jpg"+";base64,"+anexo.bytes;
+        }
+        return null;
     };
     
     var init = function () {

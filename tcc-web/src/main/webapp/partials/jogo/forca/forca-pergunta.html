@@ -17,6 +17,9 @@
         </div>
         <div class="col-md-12" style="background-color: #1b6d85; margin-bottom: 25px;">
             <h3 class="title-fonte text-center">{{model.pergunta.descricao}}</h3>
+            <div class="col-md-12" style="background-color: #1b6d85; padding-bottom: 25px;text-align: center;">
+                <img id="imgPergunta" alt="imgPergunta" ng-show="model.anexoString" ng-src="{{model.anexoString}}" style="text-align: center;"/>
+            </div>
         </div>
         <div class="col-md-4">
             <img ng-src="{{model.forcaImg}}" style="height:300px;">

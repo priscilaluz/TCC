@@ -4,6 +4,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     $scope.count = 0;
     var timeoutTempoPorPergunta = null;
     var tempoPergunta = 30;
+    var pontuacaoMinima = 0;
     $scope.model = {
         pontuacao: 0,
         posicao: 0,
@@ -13,6 +14,7 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         resultados: [],
         qntPulo:1,
         qntDica: 1,
+        perdeuJogo: false,
         dica: false,
         resultado: false
     };
@@ -57,6 +59,8 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
             $scope.model.pergunta = $scope.model.perguntas[$scope.model.posicao];
             $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
             $scope.tempoPergunta();
+        } else if ($scope.model.pontuacao < pontuacaoMinima) {
+            $scope.model.perdeuJogo = true;
         } else {
             $scope.model.pergunta = null;
             $timeout.cancel(timeoutTempoPorPergunta);
@@ -138,6 +142,8 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         Jogo.buscarPerguntaDaApresentacaoDoJogoQuiz(function (perguntas) {
             $scope.model.perguntas = perguntas;
             $scope.model.pergunta = perguntas[$scope.model.posicao];
+            var pontuacaoMaxima = perguntas.length*100;
+            pontuacaoMinima = pontuacaoMaxima*7/10;
             $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
             $rootScope.appLoaded = true;
             $scope.telaInit = false;
