@@ -5,7 +5,6 @@
  */
 package br.com.tcc.common.entity;
 
-import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.common.enums.TipoUsuario;
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;

@@ -1,13 +1,14 @@
+package br.com.tcc.common.entity;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.tcc.common.entity;
+
 
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -26,30 +27,24 @@ import javax.persistence.Table;
  * @author ADM
  */
 @Entity
-@Table(name = "ETAPA_ALUNO", schema = ConstantesI18N.SCHEMA)
-public class EtapaAluno extends AbstractIdBean<Long> {
+@Table(name = "RELATORIO_ETAPA", schema = ConstantesI18N.SCHEMA)
+public class RelatorioEtapa extends AbstractIdBean<Long> {
 
     private static final long serialVersionUID = 1L;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Long id;
-    
+
     @Column(name = "PONTUACAO", nullable = false)
     private Integer pontuacao;
     
-    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CURSO_ALUNO_ID", nullable = false)
-    private CursoAluno cursoAluno;
+    @JoinColumn(name = "ETAPA_ALUNO_ID", nullable = false)
+    private EtapaAluno etapaAluno;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ETAPA_ID", nullable = false)
-    private Etapa etapa;
-    
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "etapaAluno")
-    private Set<RelatorioEtapa> relatorios = new HashSet<RelatorioEtapa>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "relatorioEtapa")
+    private Set<PerguntaEtapaAluno> perguntasEtapasAlunos = new HashSet<PerguntaEtapaAluno>();
     
     @Override
     public Long getId() {
@@ -69,27 +64,20 @@ public class EtapaAluno extends AbstractIdBean<Long> {
         this.pontuacao = pontuacao;
     }
 
-    public CursoAluno getCursoAluno() {
-        return cursoAluno;
+    public EtapaAluno getEtapaAluno() {
+        return etapaAluno;
     }
 
-    public void setCursoAluno(CursoAluno cursoAluno) {
-        this.cursoAluno = cursoAluno;
+    public void setEtapaAluno(EtapaAluno etapaAluno) {
+        this.etapaAluno = etapaAluno;
     }
 
-    public Etapa getEtapa() {
-        return etapa;
+    public Set<PerguntaEtapaAluno> getPerguntasEtapasAlunos() {
+        return perguntasEtapasAlunos;
     }
 
-    public void setEtapa(Etapa etapa) {
-        this.etapa = etapa;
+    public void setPerguntasEtapasAlunos(Set<PerguntaEtapaAluno> perguntasEtapasAlunos) {
+        this.perguntasEtapasAlunos = perguntasEtapasAlunos;
     }
 
-    public Set<RelatorioEtapa> getRelatorios() {
-        return relatorios;
-    }
-
-    public void setRelatorios(Set<RelatorioEtapa> relatorios) {
-        this.relatorios = relatorios;
-    }
 }

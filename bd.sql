@@ -326,6 +326,113 @@ ALTER TABLE `tcc`.`curso` CHANGE COLUMN `ASSUNTO_GERAL` `ASSUNTO_GERAL` VARCHAR(
 
 ALTER TABLE `tcc`.`etapa` CHANGE COLUMN `ASSUNTO` `ASSUNTO` VARCHAR(5000) NOT NULL ;
 
+ALTER TABLE `tcc`.`pergunta_aluno` DROP FOREIGN KEY `fk_PERGUNTA_ALUNO_ETAPA_ALUNO1`;
+
+ALTER TABLE `tcc`.`pergunta_aluno` DROP COLUMN `ETAPA_ALUNO_ID`, DROP INDEX `fk_PERGUNTA_ALUNO_ETAPA_ALUNO1_idx` ;
+
+DROP TABLE IF EXISTS `tcc`.`resposta_aluno` ;
+
+CREATE TABLE `tcc`.`relatorio_etapa` (
+  `ID` INT NOT NULL,
+  `PONTUACAO` VARCHAR(45) NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC));
+
+ALTER TABLE `tcc`.`pergunta_aluno` 
+ADD COLUMN `TEMPO_ACABOU` VARCHAR(1) NULL AFTER `DICA`,
+ADD COLUMN `APOSTAS` VARCHAR(45) NULL AFTER `TEMPO_ACABOU`, RENAME TO  `tcc`.`pergunta_etapa_aluno` ;
+
+ALTER TABLE `tcc`.`pergunta_etapa_aluno` 
+ADD COLUMN `relatorio_etapa_ID` INT(11) NOT NULL AFTER `PERGUNTA_ID`,
+ADD INDEX `fk_pergunta_etapa_aluno_relatorio_etapa1_idx` (`relatorio_etapa_ID` ASC);
+
+ALTER TABLE `tcc`.`relatorio_etapa` 
+ADD COLUMN `etapa_aluno_ID` INT(11) NOT NULL AFTER `PONTUACAO`,
+ADD INDEX `fk_relatorio_etapa_etapa_aluno1_idx` (`etapa_aluno_ID` ASC);
+
+ALTER TABLE `tcc`.`resposta` 
+ADD COLUMN `pergunta_etapa_aluno_ID` INT(11) NOT NULL AFTER `PERGUNTA_ID`,
+ADD INDEX `fk_resposta_pergunta_etapa_aluno1_idx` (`pergunta_etapa_aluno_ID` ASC);
+
+ALTER TABLE `tcc`.`pergunta_etapa_aluno` 
+ADD CONSTRAINT `fk_pergunta_etapa_aluno_relatorio_etapa1`
+  FOREIGN KEY (`relatorio_etapa_ID`)
+  REFERENCES `tcc`.`relatorio_etapa` (`ID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `tcc`.`relatorio_etapa` 
+ADD CONSTRAINT `fk_relatorio_etapa_etapa_aluno1`
+  FOREIGN KEY (`etapa_aluno_ID`)
+  REFERENCES `tcc`.`etapa_aluno` (`ID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `tcc`.`resposta` 
+ADD CONSTRAINT `fk_resposta_pergunta_etapa_aluno1`
+  FOREIGN KEY (`pergunta_etapa_aluno_ID`)
+  REFERENCES `tcc`.`pergunta_etapa_aluno` (`ID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+ALTER TABLE `tcc`.`pergunta_etapa_aluno` 
+DROP FOREIGN KEY `fk_pergunta_etapa_aluno_relatorio_etapa1`;
+ALTER TABLE `tcc`.`pergunta_etapa_aluno` 
+CHANGE COLUMN `relatorio_etapa_ID` `RELATORIO_ETAPA_ID` INT(11) NOT NULL ;
+ALTER TABLE `tcc`.`pergunta_etapa_aluno` 
+ADD CONSTRAINT `fk_pergunta_etapa_aluno_relatorio_etapa1`
+  FOREIGN KEY (`RELATORIO_ETAPA_ID`)
+  REFERENCES `tcc`.`relatorio_etapa` (`ID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+
+ALTER TABLE `tcc`.`relatorio_etapa` 
+DROP FOREIGN KEY `fk_relatorio_etapa_etapa_aluno1`;
+ALTER TABLE `tcc`.`relatorio_etapa` 
+CHANGE COLUMN `etapa_aluno_ID` `ETAPA_ALUNO_ID` INT(11) NOT NULL ;
+ALTER TABLE `tcc`.`relatorio_etapa` 
+ADD CONSTRAINT `fk_relatorio_etapa_etapa_aluno1`
+  FOREIGN KEY (`ETAPA_ALUNO_ID`)
+  REFERENCES `tcc`.`etapa_aluno` (`ID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+ALTER TABLE `tcc`.`resposta` 
+DROP FOREIGN KEY `fk_resposta_pergunta_etapa_aluno1`;
+
+ALTER TABLE `tcc`.`pergunta_etapa_aluno` 
+ADD COLUMN `resposta_ID` INT(11) NOT NULL AFTER `RELATORIO_ETAPA_ID`,
+ADD INDEX `fk_pergunta_etapa_aluno_resposta1_idx` (`resposta_ID` ASC);
+
+ALTER TABLE `tcc`.`resposta` 
+DROP COLUMN `pergunta_etapa_aluno_ID`,
+DROP INDEX `fk_resposta_pergunta_etapa_aluno1_idx` ;
+
+ALTER TABLE `tcc`.`pergunta_etapa_aluno` 
+ADD CONSTRAINT `fk_pergunta_etapa_aluno_resposta1`
+  FOREIGN KEY (`resposta_ID`)
+  REFERENCES `tcc`.`resposta` (`ID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+ALTER TABLE `tcc`.`pergunta_etapa_aluno` 
+DROP FOREIGN KEY `fk_pergunta_etapa_aluno_resposta1`;
+ALTER TABLE `tcc`.`pergunta_etapa_aluno` 
+CHANGE COLUMN `resposta_ID` `RESPOSTA_ID` INT(11) NOT NULL ;
+ALTER TABLE `tcc`.`pergunta_etapa_aluno` 
+ADD CONSTRAINT `fk_pergunta_etapa_aluno_resposta1`
+  FOREIGN KEY (`RESPOSTA_ID`)
+  REFERENCES `tcc`.`resposta` (`ID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

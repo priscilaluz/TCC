@@ -1,16 +1,16 @@
+package br.com.tcc.common.entity;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.tcc.common.entity;
+
 
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.support.SimNaoType;
 import br.com.tcc.common.util.ConstantesI18N;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +19,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
@@ -28,24 +27,14 @@ import org.hibernate.annotations.Type;
  * @author ADM
  */
 @Entity
-@Table(name = "PERGUNTA_ALUNO", schema = ConstantesI18N.SCHEMA)
-public class PerguntaAluno extends AbstractIdBean<Long> {
+@Table(name = "PERGUNTA_ETAPA_ALUNO", schema = ConstantesI18N.SCHEMA)
+public class PerguntaEtapaAluno extends AbstractIdBean<Long> {
 
     private static final long serialVersionUID = 1L;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Long id;
-    
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ETAPA_ALUNO_ID", nullable = false)
-    private EtapaAluno etapaAluno;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PERGUNTA_ID", nullable = false)
-    private Pergunta pergunta;
     
     @Type(type = SimNaoType.TYPE_CLASS)
     @Column(name = "PULO", nullable = false)
@@ -55,11 +44,28 @@ public class PerguntaAluno extends AbstractIdBean<Long> {
     @Column(name = "DICA", nullable = false)
     private Boolean dica;
     
+    @Type(type = SimNaoType.TYPE_CLASS)
+    @Column(name = "TEMPO_ACABOU", nullable = false)
+    private Boolean tempoAcabou;
+    
     @Column(name = "PONTUACAO", nullable = false)
     private Integer pontuacao;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "perguntaAluno")
-    private Set<RespostaAluno> respostasAlunos = new HashSet<RespostaAluno>();
+    @Column(name = "APOSTAS", nullable = false)
+    private String apostas;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PERGUNTA_ID", nullable = false)
+    private Pergunta pergunta;
+    
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "RELATORIO_ETAPA_ID", nullable = false)
+    private RelatorioEtapa relatorioEtapa;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "RESPOSTA_ID", nullable = false)
+    private Resposta resposta;
     
     @Override
     public Long getId() {
@@ -69,22 +75,6 @@ public class PerguntaAluno extends AbstractIdBean<Long> {
     @Override
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public EtapaAluno getEtapaAluno() {
-        return etapaAluno;
-    }
-
-    public void setEtapaAluno(EtapaAluno etapaAluno) {
-        this.etapaAluno = etapaAluno;
-    }
-
-    public Pergunta getPergunta() {
-        return pergunta;
-    }
-
-    public void setPergunta(Pergunta pergunta) {
-        this.pergunta = pergunta;
     }
 
     public Boolean getPulo() {
@@ -103,6 +93,14 @@ public class PerguntaAluno extends AbstractIdBean<Long> {
         this.dica = dica;
     }
 
+    public Boolean getTempoAcabou() {
+        return tempoAcabou;
+    }
+
+    public void setTempoAcabou(Boolean tempoAcabou) {
+        this.tempoAcabou = tempoAcabou;
+    }
+
     public Integer getPontuacao() {
         return pontuacao;
     }
@@ -111,11 +109,35 @@ public class PerguntaAluno extends AbstractIdBean<Long> {
         this.pontuacao = pontuacao;
     }
 
-    public Set<RespostaAluno> getRespostasAlunos() {
-        return respostasAlunos;
+    public String getApostas() {
+        return apostas;
     }
 
-    public void setRespostasAlunos(Set<RespostaAluno> respostasAlunos) {
-        this.respostasAlunos = respostasAlunos;
+    public void setApostas(String apostas) {
+        this.apostas = apostas;
+    }
+
+    public Pergunta getPergunta() {
+        return pergunta;
+    }
+
+    public void setPergunta(Pergunta pergunta) {
+        this.pergunta = pergunta;
+    }
+
+    public RelatorioEtapa getRelatorioEtapa() {
+        return relatorioEtapa;
+    }
+
+    public void setRelatorioEtapa(RelatorioEtapa relatorioEtapa) {
+        this.relatorioEtapa = relatorioEtapa;
+    }
+
+    public Resposta getResposta() {
+        return resposta;
+    }
+
+    public void setResposta(Resposta resposta) {
+        this.resposta = resposta;
     }
 }
