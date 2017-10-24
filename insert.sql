@@ -159,3 +159,359 @@ INSERT INTO `tcc`.`etapa` (`ID`, `ASSUNTO`, `NIVEL`, `JOGO`, `CURSO_ID`) VALUES 
 INSERT INTO `tcc`.`etapa` (`ID`, `ASSUNTO`, `NIVEL`, `JOGO`, `CURSO_ID`) VALUES ('35', 'Etapa 35t vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Etapa 35t vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Etapa 35t vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Etapa 35t vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentiu', '35', 'C', '1');
 INSERT INTO `tcc`.`etapa` (`ID`, `ASSUNTO`, `NIVEL`, `JOGO`, `CURSO_ID`) VALUES ('36', 'Secţiunea 1.10.33 din \"de Finibus Bonorum et Malorum\", scrisă de către Cicerone în anul 45 î.e.n.\n\n\"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.\"Secţiunea 1.10.33 din \"de Finibus Bonorum et Malorum\",', '36', 'C', '1');
 UPDATE `tcc`.`etapa` SET `ASSUNTO`='É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de \"Conteúdo aqui, conteúdo aqui\", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por \'lorem ipsum\' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de \"Conteúdo aqui, conteúdo aqui\", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por \'lorem ipsum\' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de \"Conteúdo aqui, conteúdo aqui\", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por \'lorem ipsum\' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de \"Conteúdo aqui, conteúdo aqui\", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por \'lorem ipsum\' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de \"Conteúdo aqui, conteúdo aqui\", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por \'lorem ipsum\' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de \"Conteúdo aqui, conteúdo aqui\", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por \'lorem ipsum\' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por \'lorem ipsum\' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por lorem ipsum mostra vários websites aindaa.' WHERE `ID`='1';
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('1', '1', '1', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('2', '2', '1', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('3', '3', '1', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('4', '4', '1', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('5', '5', '1', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('6', '6', '1', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('7', '7', '1', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('8', '8', '1', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('9', '9', '1', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('10', '10', '1', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('11', '1', '2', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('12', '2', '2', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('13', '3', '2', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('14', '4', '2', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('15', '5', '2', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('16', '6', '2', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('17', '7', '2', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('18', '8', '2', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('19', '9', '2', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('20', '1', '3', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('21', '2', '3', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('22', '3', '3', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('23', '4', '3', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('24', '5', '3', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('25', '6', '3', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('26', '7', '3', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('27', '8', '3', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('28', '9', '3', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('29', '1', '4', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('30', '2', '4', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('31', '3', '4', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('32', '4', '4', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('33', '5', '4', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('34', '6', '4', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('35', '7', '4', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('36', '8', '4', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('37', '9', '4', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('38', '10', '4', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('39', '1', '5', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('40', '2', '5', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('41', '3', '5', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('42', '4', '5', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('43', '5', '5', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('44', '6', '5', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('45', '7', '5', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('46', '8', '5', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('47', '1', '6', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('48', '2', '6', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('49', '3', '6', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('50', '4', '6', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('51', '5', '6', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('52', '6', '6', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('53', '7', '6', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('54', '8', '6', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('55', '1', '7', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('56', '2', '7', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('57', '3', '7', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('58', '4', '7', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('59', '5', '7', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('60', '6', '7', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('61', '7', '7', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('62', '8', '7', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('63', '9', '7', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('64', '10', '7', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('65', '1', '8', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('66', '2', '8', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('67', '3', '8', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('68', '4', '8', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('69', '5', '8', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('70', '6', '8', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('71', '7', '8', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('72', '8', '8', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('73', '9', '8', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('74', '10', '8', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('75', '1', '9', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('76', '2', '9', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('77', '3', '9', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('78', '4', '9', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('79', '5', '9', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('80', '6', '9', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('81', '7', '9', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('82', '8', '9', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('83', '9', '9', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('84', '1', '10', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('85', '2', '10', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('86', '6', '10', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('87', '7', '10', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('88', '8', '10', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('89', '9', '10', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('90', '1', '11', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('91', '2', '11', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('92', '3', '11', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('93', '4', '11', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('94', '5', '11', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('95', '6', '11', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('96', '7', '11', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('97', '8', '11', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('98', '9', '11', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('99', '1', '12', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('100', '2', '12', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('101', '4', '12', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('102', '5', '12', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('103', '6', '12', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('104', '8', '12', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('105', '9', '12', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('106', '1', '13', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('107', '2', '13', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('108', '3', '13', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('109', '4', '13', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('110', '5', '13', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('111', '6', '13', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('112', '7', '13', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('113', '8', '13', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('114', '9', '13', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('115', '10', '13', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('116', '1', '14', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('117', '2', '14', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('118', '3', '14', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('119', '4', '14', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('120', '5', '14', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('121', '6', '14', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('122', '7', '14', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('123', '8', '14', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('124', '9', '14', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('125', '1', '15', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('126', '2', '15', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('127', '3', '15', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('128', '4', '15', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('129', '5', '15', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('130', '6', '15', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('131', '7', '15', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('132', '8', '15', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('133', '9', '15', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('134', '10', '15', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('135', '1', '16', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('136', '2', '16', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('137', '3', '16', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('138', '4', '16', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('139', '5', '16', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('140', '6', '16', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('141', '7', '16', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('142', '8', '16', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('143', '9', '16', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('144', '10', '16', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('145', '1', '17', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('146', '2', '17', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('147', '3', '17', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('148', '4', '17', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('149', '5', '17', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('150', '6', '17', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('151', '7', '17', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('152', '8', '17', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('153', '9', '17', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('154', '1', '18', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('155', '2', '18', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('156', '3', '18', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('157', '4', '18', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('158', '5', '18', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('159', '6', '18', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('160', '7', '18', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('161', '8', '18', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('162', '9', '18', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('163', '10', '18', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('164', '1', '19', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('165', '2', '19', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('166', '3', '19', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('167', '4', '19', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('168', '5', '19', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('169', '6', '19', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('170', '7', '19', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('171', '8', '19', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('172', '9', '19', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('173', '10', '19', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('174', '1', '20', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('175', '2', '20', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('176', '3', '20', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('177', '4', '20', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('178', '5', '20', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('179', '6', '20', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('180', '7', '20', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('181', '8', '20', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('182', '9', '20', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('183', '1', '21', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('184', '2', '21', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('185', '3', '21', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('186', '4', '21', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('187', '5', '21', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('188', '6', '21', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('189', '7', '21', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('190', '8', '21', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('191', '9', '21', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('192', '1', '22', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('193', '2', '22', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('194', '3', '22', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('195', '4', '22', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('196', '5', '22', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('197', '6', '22', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('198', '7', '22', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('199', '8', '22', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('200', '9', '22', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('201', '10', '22', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('202', '1', '23', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('203', '2', '23', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('204', '3', '23', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('205', '4', '23', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('206', '5', '23', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('207', '6', '23', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('208', '7', '23', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('209', '8', '23', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('210', '9', '23', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('211', '10', '23', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('212', '2', '24', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('213', '3', '24', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('214', '5', '24', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('215', '6', '24', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('216', '8', '24', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('217', '9', '24', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('218', '2', '25', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('219', '3', '25', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('220', '4', '25', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('221', '6', '25', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('222', '7', '25', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('223', '8', '25', '8');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('224', '1', '26', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('225', '2', '26', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('226', '3', '26', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('227', '4', '26', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('228', '5', '26', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('229', '6', '26', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('230', '7', '26', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('231', '8', '26', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('232', '9', '26', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('233', '10', '26', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('234', '1', '27', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('235', '3', '27', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('236', '4', '27', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('237', '8', '27', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('238', '9', '27', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('239', '1', '28', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('240', '2', '28', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('241', '3', '28', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('242', '4', '28', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('243', '5', '28', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('244', '6', '28', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('245', '7', '28', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('246', '8', '28', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('247', '9', '28', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('248', '10', '28', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('249', '1', '29', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('250', '2', '29', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('251', '3', '29', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('252', '4', '29', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('253', '5', '29', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('254', '6', '29', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('255', '7', '29', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('256', '8', '29', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('257', '9', '29', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('258', '10', '29', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('259', '1', '30', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('260', '2', '30', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('261', '3', '30', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('262', '4', '30', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('263', '5', '30', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('264', '6', '30', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('265', '7', '30', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('266', '8', '30', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('267', '9', '30', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('268', '1', '31', '1');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('269', '2', '31', '2');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('270', '3', '31', '3');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('271', '4', '31', '4');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('272', '5', '31', '5');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('273', '6', '31', '6');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('274', '7', '31', '7');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('275', '8', '31', '8');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('276', '9', '31', '9');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('277', '10', '31', '10');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('278', '1', '32', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('279', '2', '32', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('280', '3', '32', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('281', '4', '32', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('282', '5', '32', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('283', '6', '32', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('284', '7', '32', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('285', '8', '32', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('286', '9', '32', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('287', '1', '33', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('288', '2', '33', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('289', '3', '33', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('290', '4', '33', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('291', '5', '33', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('292', '6', '33', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('293', '7', '33', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('294', '8', '33', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('295', '9', '33', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('296', '1', '34', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('297', '2', '34', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('298', '3', '34', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('299', '4', '34', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('300', '5', '34', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('301', '6', '34', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('302', '7', '34', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('303', '1', '35', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('304', '2', '35', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('305', '3', '35', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('306', '4', '35', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('307', '5', '35', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('308', '6', '35', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('309', '7', '35', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('310', '8', '35', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('311', '9', '35', '19');
+
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('312', '1', '36', '11');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('313', '2', '36', '12');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('314', '3', '36', '13');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('315', '4', '36', '14');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('316', '5', '36', '15');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('317', '6', '36', '16');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('318', '7', '36', '17');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('319', '8', '36', '18');
+INSERT INTO `tcc`.`etapa_pergunta` (`ID`, `POSICAO`, `ETAPA_ID`, `PERGUNTA_ID`) VALUES ('320', '9', '36', '19');
