@@ -76,6 +76,6 @@ public class CursoAlunoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public RelatorioEtapa salvarRelatorioEtapa(RelatorioEtapa relatorioEtapa) {
-        return relatorioEtapa;
+        return cursoAlunoService.salvarRelatorioEtapa(relatorioEtapa);
     }
 }

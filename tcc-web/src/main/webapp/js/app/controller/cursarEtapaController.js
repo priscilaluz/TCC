@@ -5,10 +5,11 @@ tccApp.controller('CursarEtapaController', ['$scope', '$rootScope', '$routeParam
         };
         var idCursoAluno = $routeParams.idCursoAluno;
         var idEtapa = $routeParams.idEtapa;
+        var idEtapaAluno = $routeParams.idEtapaAluno;
         
         $scope.jogar = function () {
             var jogo = $scope.model.etapaAluno.etapa.jogo.id.toLowerCase();
-            $location.path("/jogos-simulado/"+jogo+"/"+idCursoAluno+"/"+idEtapa);
+            $location.path("/jogos-simulado/"+jogo+"/"+idCursoAluno+"/"+idEtapa+"/"+idEtapaAluno);
         };
         
         var init = function () {

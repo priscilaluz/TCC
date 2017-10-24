@@ -44,6 +44,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
     };
     
     $scope.apostar = function (tempoAcabou) {
+        $timeout.cancel(timeoutTempoPorPergunta);
         var respostaCorreta;
         var apostasFase = angular.copy($scope.model.valorAposta);
         for (var i = 0; i < $scope.model.pergunta.respostas.length; i++) {
@@ -92,6 +93,9 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             inicializarBotao();
             tempoPergunta();
         } else {
+            $timeout.cancel(timeoutTempoPorPergunta);
+            $scope.model.pergunta = null;
+            $scope.model.anexoString = null;
             var relatorioEtapa = new RelatorioEtapa();
             relatorioEtapa.etapaAluno = {'id': idEtapaAluno};
             relatorioEtapa.pontuacao = $scope.model.pontuacao;
@@ -101,9 +105,6 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
                 if ($scope.model.pontuacao < pontuacaoMinima) {
                     $scope.model.perdeuJogo = true;
                 } else {
-                    $scope.model.pergunta = null;
-                    $scope.model.anexoString = null;
-                    $timeout.cancel(timeoutTempoPorPergunta);
                     $scope.model.resultado = true;
                 }
                 $rootScope.appLoaded = true;

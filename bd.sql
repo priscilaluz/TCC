@@ -333,7 +333,7 @@ ALTER TABLE `tcc`.`pergunta_aluno` DROP COLUMN `ETAPA_ALUNO_ID`, DROP INDEX `fk_
 DROP TABLE IF EXISTS `tcc`.`resposta_aluno` ;
 
 CREATE TABLE `tcc`.`relatorio_etapa` (
-  `ID` INT NOT NULL,
+  `ID` INT NOT NULL AUTO_INCREMENT,
   `PONTUACAO` VARCHAR(45) NULL,
   PRIMARY KEY (`ID`),
   UNIQUE INDEX `ID_UNIQUE` (`ID` ASC));
