@@ -431,6 +431,16 @@ ADD CONSTRAINT `fk_pergunta_etapa_aluno_resposta1`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
+ALTER TABLE `tcc`.`pergunta_etapa_aluno` 
+DROP FOREIGN KEY `fk_pergunta_etapa_aluno_resposta1`;
+ALTER TABLE `tcc`.`pergunta_etapa_aluno` 
+CHANGE COLUMN `RESPOSTA_ID` `RESPOSTA_ESCOLHIDA_ID` INT(11) NULL ;
+ALTER TABLE `tcc`.`pergunta_etapa_aluno` 
+ADD CONSTRAINT `fk_pergunta_etapa_aluno_resposta1`
+  FOREIGN KEY (`RESPOSTA_ESCOLHIDA_ID`)
+  REFERENCES `tcc`.`resposta` (`ID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

@@ -12,7 +12,7 @@
         <div class="col-lg-12" style="padding-top: 15px;">
             <p class="curso-nao-titulo-concluido" ng-repeat="resposta in resultado.pergunta.respostas">
                 <span ng-class="{'verdadeiro': resposta.correta, 'falso':!resposta.correta}">
-                    <b>({{resultado.apostas[$index]}})</b>{{resposta.descricao}}
+                    <b>({{resultado.apostasFase[$index]}})</b>{{resposta.descricao}}
                 </span>
             </p>
         </div>

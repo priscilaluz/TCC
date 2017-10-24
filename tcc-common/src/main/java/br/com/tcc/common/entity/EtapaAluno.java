@@ -50,6 +50,12 @@ public class EtapaAluno extends AbstractIdBean<Long> {
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "etapaAluno")
     private Set<RelatorioEtapa> relatorios = new HashSet<RelatorioEtapa>();
+
+    public EtapaAluno(Long id) {
+        this.id = id;
+    }
+
+    public EtapaAluno() {}
     
     @Override
     public Long getId() {

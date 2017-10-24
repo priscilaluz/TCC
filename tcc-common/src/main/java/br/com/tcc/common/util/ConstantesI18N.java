@@ -1,8 +1,8 @@
 package br.com.tcc.common.util;
 
 public class ConstantesI18N {
-    public static final String SCHEMA = "tcc";
-   //public static final String SCHEMA = "test";
+    //public static final String SCHEMA = "tcc";
+    public static final String SCHEMA = "test";
     public static final String FETCH = "fetch";
     
     public static final String TABULEIRO_IMG_ON = "img/tabuleiro/on/*.png";
@@ -54,5 +54,16 @@ public class ConstantesI18N {
     public static final String CURSO_ALUNO_JA_SALVO = "curso.aluno.ja.salvo";
     public static final String CODIGO_ACESSO_OBRIGATORIO = "codigo.acesso.obrigatorio";
     public static final String CODIGO_ACESSO_INVALIDO = "codigo.acesso.invalido";
+    
+    //RelatorioEtapa
+    public static final String RELATORIO_ETAPA_ETAPA_ALUNO_OBRIGATORIO = "relatorio.etapa.etapa.aluno.obrigatorio";
+    public static final String RELATORIO_ETAPA_PONTUACAO_OBRIGATORIO = "relatorio.etapa.pontuacao.obrigatorio";
+    
+    public static final String PERGUNTA_ETAPA_ALUNO_PULO_OBRIGATORIO = "pergunta.etapa.aluno.pulo.obrigatorio";
+    public static final String PERGUNTA_ETAPA_ALUNO_DICA_OBRIGATORIO = "pergunta.etapa.aluno.dica.obrigatorio";
+    public static final String PERGUNTA_ETAPA_ALUNO_TEMPOACABOU_OBRIGATORIO = "pergunta.etapa.aluno.tempoacabou.obrigatorio";
+    public static final String PERGUNTA_ETAPA_ALUNO_PONTUACAO_OBRIGATORIO = "pergunta.etapa.aluno.pontuacao.obrigatorio";
+    public static final String PERGUNTA_ETAPA_ALUNO_PERGUNTA_OBRIGATORIO = "pergunta.etapa.aluno.pergunta.obrigatorio";
+    public static final String PERGUNTA_ETAPA_ALUNO_RELATORIOETAPA_OBRIGATORIO = "pergunta.etapa.aluno.relatorioetapa.obrigatorio";
     
 }

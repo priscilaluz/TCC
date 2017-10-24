@@ -9,6 +9,8 @@ import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.CursoAluno;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaAluno;
+import br.com.tcc.common.entity.PerguntaEtapaAluno;
+import br.com.tcc.common.entity.RelatorioEtapa;
 import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.common.util.ConstantesI18N;
@@ -18,7 +20,7 @@ import br.com.tcc.common.vo.TdHtmlEtapa;
 import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarCursoAluno;
 import br.com.tcc.service.query.BuscarEtapaAluno;
-import br.com.tcc.service.validator.CursoValidator;
+import br.com.tcc.service.validator.CursoAlunoValidator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -40,7 +42,7 @@ public class CursoAlunoServiceImpl {
     private GenericDao dao;
 
     @Autowired
-    private CursoValidator validador;
+    private CursoAlunoValidator validador;
     
     @Autowired
     private CursoServiceImpl cursoService;
@@ -51,7 +53,7 @@ public class CursoAlunoServiceImpl {
                 .fetchAluno(ConstantesI18N.FETCH).fetchCurso(ConstantesI18N.FETCH)
                 .whereIdAluno(idAluno).whereIdCurso(idCurso));
         Curso curso = dao.get(Curso.class, idCurso);
-        validador.validarSalvarEtapa(curso, codAcesso, cursoAlunoJaSalvo);
+        validador.validarAlunoEntrarCurso(curso, codAcesso, cursoAlunoJaSalvo);
         CursoAluno cursoAluno = new CursoAluno();
         cursoAluno.setAluno(new Usuario(idAluno));
         cursoAluno.setCurso(new Curso(idCurso));
@@ -194,10 +196,31 @@ public class CursoAlunoServiceImpl {
                 .whereIdCursoAluno(idCursoAluno).whereIdEtapa(idEtapa));
         if (etapaAluno == null) {
             etapaAluno = new EtapaAluno();
-            etapaAluno.setCursoAluno(dao.get(CursoAluno.class, idEtapa));
+            etapaAluno.setCursoAluno(dao.get(CursoAluno.class, idCursoAluno));
             etapaAluno.setEtapa(cursoService.buscarEtapaPorId(idEtapa, false));
             etapaAluno.setPontuacao(0);
         }
         return etapaAluno;
+    }
+    
+    @Transactional(readOnly = false)
+    public EtapaAluno salvarEtapaAluno(Long idCursoAluno, Long idEtapa) {
+        EtapaAluno etapaAluno = buscarEtapaAlunoPorCursoAlunoEEtapa(idCursoAluno, idEtapa);
+        return dao.saveOrUpdate(etapaAluno);
+    }
+    
+    @Transactional(readOnly = false)
+    public RelatorioEtapa salvarRelatorioEtapa(RelatorioEtapa relatorioEtapa) {
+        validador.validarRelatorioEtapa(relatorioEtapa);
+        dao.saveOrUpdate(relatorioEtapa);
+        for (PerguntaEtapaAluno perguntaEtapaAluno : relatorioEtapa.getPerguntasEtapasAlunos()) {
+            perguntaEtapaAluno.setRelatorioEtapa(relatorioEtapa);
+            perguntaEtapaAluno.setPulo(perguntaEtapaAluno.getPulo()!=null?perguntaEtapaAluno.getPulo():false);
+            perguntaEtapaAluno.setDica(perguntaEtapaAluno.getDica()!=null?perguntaEtapaAluno.getDica():false);
+            perguntaEtapaAluno.setTempoAcabou(perguntaEtapaAluno.getTempoAcabou()!=null?perguntaEtapaAluno.getTempoAcabou():false);
+            validador.validarPerguntaEtapaAluno(perguntaEtapaAluno);
+            dao.saveOrUpdate(perguntaEtapaAluno);
+        }
+        return relatorioEtapa;
     }
 }

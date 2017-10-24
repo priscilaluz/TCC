@@ -7,11 +7,14 @@ package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.CursoAluno;
 import br.com.tcc.common.entity.EtapaAluno;
+import br.com.tcc.common.entity.RelatorioEtapa;
 import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.common.vo.TabuleiroCurso;
 import br.com.tcc.service.impl.CursoAlunoServiceImpl;
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -59,5 +62,20 @@ public class CursoAlunoResource {
     public EtapaAluno buscarEtapaAlunoPorCursoAlunoEEtapa(@QueryParam("idCursoAluno") Long idCursoAluno,
             @QueryParam("idEtapa") Long idEtapa) {
         return cursoAlunoService.buscarEtapaAlunoPorCursoAlunoEEtapa(idCursoAluno, idEtapa);
+    }
+    
+    @GET
+    @Path("/salvarEtapaAluno")
+    @Produces(MediaType.APPLICATION_JSON)
+    public EtapaAluno salvarEtapaAluno(@QueryParam("idCursoAluno") Long idCursoAluno, @QueryParam("idEtapa") Long idEtapa) {
+        return cursoAlunoService.salvarEtapaAluno(idCursoAluno, idEtapa);
+    }
+    
+    @POST
+    @Path("/relatorioEtapa/save")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public RelatorioEtapa salvarRelatorioEtapa(RelatorioEtapa relatorioEtapa) {
+        return relatorioEtapa;
     }
 }

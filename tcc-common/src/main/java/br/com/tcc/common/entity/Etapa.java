@@ -73,6 +73,12 @@ public class Etapa extends AbstractIdBean<Long> implements Comparator<Etapa> {
     @Transient
     private Long idCurso;
 
+    public Etapa(Long id) {
+        this.id = id;
+    }
+
+    public Etapa() {}
+
     @Override
     public Long getId() {
         return id;

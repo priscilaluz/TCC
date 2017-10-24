@@ -1,6 +1,10 @@
 package br.com.tcc.service.impl;
 
 import br.com.tcc.common.entity.CursoAluno;
+import br.com.tcc.common.entity.EtapaAluno;
+import br.com.tcc.common.entity.Pergunta;
+import br.com.tcc.common.entity.PerguntaEtapaAluno;
+import br.com.tcc.common.entity.RelatorioEtapa;
 import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.common.util.ConstantesI18N;
@@ -9,9 +13,11 @@ import br.com.tcc.common.vo.TabuleiroEtapa;
 import br.com.tcc.common.vo.TdHtmlEtapa;
 import br.com.tcc.service.persistence.SimpleTestDao;
 import br.com.tcc.test.IntegrationBaseTestClass;
+import br.com.tcc.test.builder.PerguntaEtapaAlunoBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -94,7 +100,49 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         TabuleiroCurso tabuleiroEsperado = obterTabuleiroCursoCorreto5();
         validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado);
     }
+    
+    @Test
+    public void deveRetornarEtapaAlunoPorCursoAlunoEEtapaNovo(){
+        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, 2L);
+        assertNotNull(etapaAluno);
+        assertTrue(etapaAluno.getId()==null);
+    }
+    
+    @Test
+    public void deveRetornarEtapaAlunoPorCursoAlunoEEtapa(){
+        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, 1L);
+        assertNotNull(etapaAluno);
+        assertEquals(new Long(1), etapaAluno.getId());
+    }
+    
+    @Test
+    public void deveSalvarEtapaAluno(){
+        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, 2L);
+        assertNotNull(etapaAluno);
+        assertTrue(etapaAluno.getId()==null);
+        
+        cursoAlunoServiceImpl.salvarEtapaAluno(1L, 2L);
+        
+        EtapaAluno etapaAlunaSalva = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, 2L);
+        assertNotNull(etapaAlunaSalva);
+        assertTrue(etapaAlunaSalva.getId()!=null);
+    }
+    
+    @Test
+    public void deveSalvarRelatorioEtapa(){
+        RelatorioEtapa relatorioEtapa = new RelatorioEtapa();
+        relatorioEtapa.setEtapaAluno(new EtapaAluno(1L));
+        relatorioEtapa.setPontuacao(100);
+        Set<PerguntaEtapaAluno> perguntasEtapasAlunos = new HashSet<>();
+        perguntasEtapasAlunos.add(obterPerguntaEtapaAlunoValida1());
+        perguntasEtapasAlunos.add(obterPerguntaEtapaAlunoValida2());
+        relatorioEtapa.setPerguntasEtapasAlunos(perguntasEtapasAlunos);
+        RelatorioEtapa salvo = cursoAlunoServiceImpl.salvarRelatorioEtapa(relatorioEtapa);
+        assertNotNull(salvo);
+        assertTrue(salvo.getId()!=null);
+    }
     //</editor-fold>
+    
     private void validarTabuleiro(TabuleiroCurso tabuleirosCursoAtual, TabuleiroCurso tabuleirosEsperado) {
         assertEquals(tabuleirosEsperado.getAluno().getId(), tabuleirosCursoAtual.getAluno().getId());
         assertEquals(tabuleirosEsperado.getAssuntoGeral(), tabuleirosCursoAtual.getAssuntoGeral());
@@ -328,6 +376,30 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         e1.setImagemOn(ConstantesI18N.TABULEIRO_IMG_ON.replace("*", posicao));
         e1.setDesbloquada(desbloqueado);
         return e1;
+    }
+    
+    private PerguntaEtapaAluno obterPerguntaEtapaAlunoValida1() {
+        PerguntaEtapaAluno perguntaEtapaAluno = PerguntaEtapaAlunoBuilder.novo()
+                .comPontuacao(100)
+                .comDica(Boolean.FALSE)
+                .comPulo(Boolean.FALSE)
+                .comTempoAcabou(Boolean.FALSE)
+                .comPergunta(new Pergunta(1L))
+                .comRelatorioEtapa(new RelatorioEtapa())
+                .build();
+        return perguntaEtapaAluno;
+    }
+    
+    private PerguntaEtapaAluno obterPerguntaEtapaAlunoValida2() {
+        PerguntaEtapaAluno perguntaEtapaAluno = PerguntaEtapaAlunoBuilder.novo()
+                .comPontuacao(0)
+                .comDica(Boolean.FALSE)
+                .comPulo(Boolean.FALSE)
+                .comTempoAcabou(Boolean.FALSE)
+                .comPergunta(new Pergunta(2L))
+                .comRelatorioEtapa(new RelatorioEtapa())
+                .build();
+        return perguntaEtapaAluno;
     }
     //</editor-fold>
 }

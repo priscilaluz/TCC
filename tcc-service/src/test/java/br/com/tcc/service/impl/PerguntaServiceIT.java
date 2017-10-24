@@ -1,5 +1,6 @@
 package br.com.tcc.service.impl;
 
+import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.entity.Usuario;
@@ -8,6 +9,7 @@ import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.service.persistence.SimpleTestDao;
 import br.com.tcc.test.IntegrationBaseTestClass;
+import br.com.tcc.test.builder.AnexoBuilder;
 import br.com.tcc.test.builder.PerguntaBuilder;
 import br.com.tcc.test.builder.RespostaBuilder;
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     public void deveSalvarPergunta(){
         Pergunta pergunta = obterPerguntaValida();
         
+        pergunta.setAnexo(obterAnexoValida());
         pergunta = perguntaServiceImpl.salvarPergunta(pergunta);
         assertNotNull(pergunta.getId());
         assertEquals(dao.getById(Pergunta.class, pergunta.getId()), pergunta);
@@ -51,6 +54,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
         perguntaAntes.setDescricao("Pergunta 1 AAA");
         perguntaAntes.setRespostas(new HashSet<Resposta>());
         perguntaAntes.getRespostas().add(obterRespostaValida1());
+        perguntaAntes.setIdAnexo(1L);
         perguntaServiceImpl.salvarPergunta(perguntaAntes);
         
         Pergunta perguntaEditado = perguntaServiceImpl.buscarPerguntaPorId(1L);
@@ -177,6 +181,16 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
                 .comCorreta(Boolean.FALSE)
                 .build();
         return resposta;
+    }
+    
+    private Anexo obterAnexoValida() {
+         byte[] bytes = "Teste".getBytes();
+        
+        Anexo anexo = AnexoBuilder.nova()
+                .comNomeArquivo("nomeArquivo.jpg")
+                .comBytes(bytes)
+                .build();
+        return anexo;
     }
     
 }

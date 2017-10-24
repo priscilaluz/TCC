@@ -164,38 +164,6 @@ public class CursoValidatorTest {
     }
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Salvar curso aluno">
-    @Test
-    public void naoDeveSalvarCursoAlunoSemCodAcesso(){
-        try {
-            validator.validarSalvarEtapa(obterCursoValida(), null, null);
-            fail();
-        } catch (BusinessException ex) {
-            assertEquals(ConstantesI18N.CODIGO_ACESSO_OBRIGATORIO, ex.getMessage());
-        }
-    }
-    
-    @Test
-    public void naoDeveSalvarCursoAlunoComCodAcessoInvalido(){
-        try {
-            validator.validarSalvarEtapa(obterCursoValida(), "CodInvalido", null);
-            fail();
-        } catch (BusinessException ex) {
-            assertEquals(ConstantesI18N.CODIGO_ACESSO_INVALIDO, ex.getMessage());
-        }
-    }
-    
-    @Test
-    public void naoDeveSalvarCursoAlunoJaSalvo(){
-        try {
-            validator.validarSalvarEtapa(obterCursoValida(), "CodAcesso", new CursoAluno());
-            fail();
-        } catch (BusinessException ex) {
-            assertEquals(ConstantesI18N.CURSO_ALUNO_JA_SALVO, ex.getMessage());
-        }
-    }
-    //</editor-fold>
-    
     //<editor-fold defaultstate="collapsed" desc="Entidades Validas">
     private Curso obterCursoValida() {
         Set<Etapa> etapas = new HashSet<>();
@@ -250,14 +218,6 @@ public class CursoValidatorTest {
         return etapaPergunta;
     }
     
-    private EtapaPergunta obterEtapaPerguntaValida2() {
-        EtapaPergunta etapaPergunta = EtapaPerguntaBuilder.nova()
-                .comPergunta(obterPerguntaValida2())
-                .comPosicao(2)
-                .build();
-        return etapaPergunta;
-    }
-    
     private Pergunta obterPerguntaValida1() {
         Set<Resposta> respostas = new HashSet<>();
         respostas.add(obterRespostaValida1());
@@ -282,37 +242,6 @@ public class CursoValidatorTest {
     }
     
     private Resposta obterRespostaValida2() {
-        Resposta resposta = RespostaBuilder.nova()
-                .comDescricao("Pergunta 2?")
-                .comCorreta(Boolean.FALSE)
-                .build();
-        return resposta;
-    }
-    
-    private Pergunta obterPerguntaValida2() {
-        Set<Resposta> respostas = new HashSet<>();
-        respostas.add(obterRespostaValida3());
-        respostas.add(obterRespostaValida4());
-        
-        Pergunta pergunta = PerguntaBuilder.nova()
-                .comCategoria(Categoria.BIOLOGIA)
-                .comDescricao("Descricao BIOLOGIA")
-                .comJustificativa("Justificativa BIOLOGIA")
-                .comUsuario(obterUsuarioValido())
-                .comRespostas(respostas)
-                .build();
-        return pergunta;
-    }
-    
-    private Resposta obterRespostaValida3() {
-        Resposta resposta = RespostaBuilder.nova()
-                .comDescricao("Pergunta 1?")
-                .comCorreta(Boolean.TRUE)
-                .build();
-        return resposta;
-    }
-    
-    private Resposta obterRespostaValida4() {
         Resposta resposta = RespostaBuilder.nova()
                 .comDescricao("Pergunta 2?")
                 .comCorreta(Boolean.FALSE)

@@ -133,6 +133,23 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
             assertTrue(ids.contains(c.getId()));
         }
     }
+    
+    @Test
+    public void deveRetornarCursoConcluidoPorId(){
+        Curso curso = cursoServiceImpl.buscarCursoPorIdConcluido(1L);
+        assertNotNull(curso);
+        assertTrue(curso.getEtapas().size() == 2);
+        for (Etapa etapa : curso.getEtapas()) {
+            assertTrue(etapa.getEtapasPerguntas().size() == 1);
+        }
+    }
+    
+    @Test
+    public void deveRetornarEtapaPorId(){
+        Etapa etapa = cursoServiceImpl.buscarEtapaPorId(1L, true);
+        assertNotNull(etapa);
+        assertTrue(etapa.getEtapasPerguntas().size() == 1);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Etapa">

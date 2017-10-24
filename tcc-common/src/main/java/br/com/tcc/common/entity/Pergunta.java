@@ -91,6 +91,12 @@ public class Pergunta extends AbstractIdBean<Long> {
     @Transient
     private int posicao;
 
+    public Pergunta() {}
+
+    public Pergunta(Long id) {
+        this.id = id;
+    }
+
     @Override
     public Long getId() {
         return id;

@@ -11,6 +11,7 @@ import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.support.SimNaoType;
 import br.com.tcc.common.util.ConstantesI18N;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,6 +28,7 @@ import org.hibernate.annotations.Type;
  * @author ADM
  */
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "PERGUNTA_ETAPA_ALUNO", schema = ConstantesI18N.SCHEMA)
 public class PerguntaEtapaAluno extends AbstractIdBean<Long> {
 
@@ -51,7 +53,7 @@ public class PerguntaEtapaAluno extends AbstractIdBean<Long> {
     @Column(name = "PONTUACAO", nullable = false)
     private Integer pontuacao;
     
-    @Column(name = "APOSTAS", nullable = false)
+    @Column(name = "APOSTAS", nullable = true)
     private String apostas;
     
     @ManyToOne(fetch = FetchType.LAZY)
@@ -64,8 +66,8 @@ public class PerguntaEtapaAluno extends AbstractIdBean<Long> {
     private RelatorioEtapa relatorioEtapa;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "RESPOSTA_ID", nullable = false)
-    private Resposta resposta;
+    @JoinColumn(name = "RESPOSTA_ESCOLHIDA_ID", nullable = true)
+    private Resposta respostaEscolhida;
     
     @Override
     public Long getId() {
@@ -133,11 +135,11 @@ public class PerguntaEtapaAluno extends AbstractIdBean<Long> {
         this.relatorioEtapa = relatorioEtapa;
     }
 
-    public Resposta getResposta() {
-        return resposta;
+    public Resposta getRespostaEscolhida() {
+        return respostaEscolhida;
     }
 
-    public void setResposta(Resposta resposta) {
-        this.resposta = resposta;
+    public void setRespostaEscolhida(Resposta respostaEscolhida) {
+        this.respostaEscolhida = respostaEscolhida;
     }
 }

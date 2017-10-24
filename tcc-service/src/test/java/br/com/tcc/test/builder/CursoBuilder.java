@@ -3,7 +3,6 @@ package br.com.tcc.test.builder;
 import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
-import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.Categoria;
 import br.com.tcc.common.enums.SituacaoCurso;

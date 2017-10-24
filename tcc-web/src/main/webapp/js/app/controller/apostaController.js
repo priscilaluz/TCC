@@ -1,11 +1,12 @@
-tccApp.controller('ApostaController', ['$scope', '$rootScope', '$routeParams', '$modal', '$location', '$timeout', 'Jogo',
-function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo) {
+tccApp.controller('ApostaController', ['$scope', '$rootScope', '$routeParams', '$modal', '$location', '$timeout', 'Jogo', 'RelatorioEtapa',
+function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, RelatorioEtapa) {
     var tempoPadraoPergunta = 60;
     var pontuacaoInicial = 1000;
     var pontuacaoInicialFase = pontuacaoInicial;
     var timeoutTempoPorPergunta = null;
     var idCursoAluno = $routeParams.idCursoAluno;
     var idEtapa = $routeParams.idEtapa;
+    var idEtapaAluno = $routeParams.idEtapaAluno;
     var pontuacaoMinima = 0;
     
     $scope.model = {
@@ -44,11 +45,8 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo) {
     
     $scope.apostar = function (tempoAcabou) {
         var respostaCorreta;
-        var apostasFase = ($scope.model.pulo)?[]:angular.copy($scope.model.valorAposta);
+        var apostasFase = angular.copy($scope.model.valorAposta);
         for (var i = 0; i < $scope.model.pergunta.respostas.length; i++) {
-            if ($scope.model.pulo) {
-                apostasFase.push(0);
-            }
             if ($scope.model.pergunta.respostas[i].correta) {
                 pontuacaoInicialFase = $scope.model.pontuacao + ($scope.model.valorAposta[i]*2);
                 $scope.model.pontuacao = pontuacaoInicialFase;
@@ -69,7 +67,8 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo) {
                 'background-color': '#51ec3e'
             };
 
-            $scope.model.resultados.push({'apostas': apostasFase, 'respostaCorreta': respostaCorreta,
+            $scope.model.resultados.push({'apostasFase': apostasFase, 'apostas': apostasFase.toString(),
+                'respostaCorreta': respostaCorreta, 'pontuacao': $scope.model.pontuacao,
                 'pergunta': $scope.model.pergunta, 'pulo':  $scope.model.pulo, 'dica':  $scope.model.dica, 'tempoAcabou': tempoAcabou});
             $scope.model.dica = false;
             $timeout(proximaPergunta, 400);
@@ -92,16 +91,28 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo) {
             $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
             inicializarBotao();
             tempoPergunta();
-        } else if ($scope.model.pontuacao < pontuacaoMinima) {
-            $scope.model.perdeuJogo = true;
         } else {
-            $scope.model.pergunta = null;
-            $scope.model.anexoString = null;
-            $timeout.cancel(timeoutTempoPorPergunta);
-            $scope.model.resultado = true;
+            var relatorioEtapa = new RelatorioEtapa();
+            relatorioEtapa.etapaAluno = {'id': idEtapaAluno};
+            relatorioEtapa.pontuacao = $scope.model.pontuacao;
+            relatorioEtapa.perguntasEtapasAlunos = $scope.model.resultados;
+            $rootScope.appLoaded = false;
+            relatorioEtapa.$save(function () {
+                if ($scope.model.pontuacao < pontuacaoMinima) {
+                    $scope.model.perdeuJogo = true;
+                } else {
+                    $scope.model.pergunta = null;
+                    $scope.model.anexoString = null;
+                    $timeout.cancel(timeoutTempoPorPergunta);
+                    $scope.model.resultado = true;
+                }
+                $rootScope.appLoaded = true;
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
         }
-    };
-    
+    };       
+                
     $scope.diminuirAposta = function (index) {
         var pontuacaoDepois = $scope.model.pontuacao + 100;
         var pontuacaoLinhaDepois = $scope.model.valorAposta[index] - 100;

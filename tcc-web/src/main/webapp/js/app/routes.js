@@ -98,7 +98,7 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/aluno-cursando/tabuleiro.html',
         controller: 'AlunoCursandoController'
       }).
-      when('/cursar-etapa/:idCursoAluno/:idEtapa', {
+      when('/cursar-etapa/:idCursoAluno/:idEtapa/:idEtapaAluno', {
         templateUrl: 'partials/cursar-etapa/etapa.html',
         controller: 'CursarEtapaController'
       }).

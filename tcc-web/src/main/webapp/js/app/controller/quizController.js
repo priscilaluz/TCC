@@ -48,6 +48,28 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         }
     };
     
+    var addAoRelatorioFinal = function (resposta, pulo, dica) {
+        $scope.idReposta = resposta?resposta.id: null;
+        $scope.respostaIncorreta = {
+            'background-color': '#ec3e3e'
+        };
+        $scope.respostaCorreta = {
+            'background-color': '#51ec3e'
+        };
+        
+        var respostaCorreta = null;
+        for (var i = 0; i < $scope.model.pergunta.respostas.length; i++) {
+            if ($scope.model.pergunta.respostas[i].correta) {
+                respostaCorreta = $scope.model.pergunta.respostas[i];
+                break;
+            }
+        }
+        $scope.model.resultados.push({'respostaEscolhida': resposta, 'respostaCorreta': respostaCorreta,
+            'pergunta': $scope.model.pergunta, 'pulo':  pulo, 'dica':  dica});
+        $scope.model.dica = false;
+        $timeout(proximaPergunta, 400);
+    };
+    
     var proximaPergunta = function (){
         $scope.respostaIncorreta = {};
         $scope.respostaCorreta = {};
@@ -77,28 +99,6 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
             $scope.tempoPergunta();
             //Quando acabar a contagem começar o tempo de cada pergunta
         }
-    };
-    
-    var addAoRelatorioFinal = function (resposta, pulo, dica) {
-        $scope.idReposta = resposta?resposta.id: null;
-        $scope.respostaIncorreta = {
-            'background-color': '#ec3e3e'
-        };
-        $scope.respostaCorreta = {
-            'background-color': '#51ec3e'
-        };
-        
-        var respostaCorreta = null;
-        for (var i = 0; i < $scope.model.pergunta.respostas.length; i++) {
-            if ($scope.model.pergunta.respostas[i].correta) {
-                respostaCorreta = $scope.model.pergunta.respostas[i];
-                break;
-            }
-        }
-        $scope.model.resultados.push({'respostaEscolhida': resposta, 'respostaCorreta': respostaCorreta,
-            'pergunta': $scope.model.pergunta, 'pulo':  pulo, 'dica':  dica});
-        $scope.model.dica = false;
-        $timeout(proximaPergunta, 400);
     };
     
     $scope.pularPergunta = function () {

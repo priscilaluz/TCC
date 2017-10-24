@@ -19,7 +19,13 @@ tccApp.controller('AlunoCursandoController', ['$scope', '$rootScope', '$routePar
         
         $scope.entrarNaFase = function (etapa) {
             if (etapa.desbloquada) {
-                $location.path("/cursar-etapa/"+idCursoAluno+"/"+etapa.idEtapa);
+                $rootScope.appLoaded = false;
+                CursoAluno.salvarEtapaAluno({'idCursoAluno': idCursoAluno, 'idEtapa': etapa.idEtapa}).$promise.then(function (etapaAluno) {
+                    $rootScope.appLoaded = true;
+                    $location.path("/cursar-etapa/"+idCursoAluno+"/"+etapa.idEtapa+"/"+etapaAluno.id);
+                }, function (error) {
+                    $rootScope.appLoaded = true;
+                });
             }
         };
 
