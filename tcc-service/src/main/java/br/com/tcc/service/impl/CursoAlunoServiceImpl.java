@@ -190,10 +190,10 @@ public class CursoAlunoServiceImpl {
     }
     
     @Transactional(readOnly = true)
-    public EtapaAluno buscarEtapaAlunoPorCursoAlunoEEtapa(Long idCursoAluno, Long idEtapa) {
+    public EtapaAluno buscarEtapaAlunoPorCursoAlunoEEtapa(Long idEtapaAluno, Long idCursoAluno, Long idEtapa) {
         EtapaAluno etapaAluno = (EtapaAluno) dao.uniqueResult(new BuscarEtapaAluno.Entities()
                 .fetchCursoAluno(ConstantesI18N.FETCH).fetchEtapa(ConstantesI18N.FETCH)
-                .whereIdCursoAluno(idCursoAluno).whereIdEtapa(idEtapa));
+                .whereIdEtapaAluno(idEtapaAluno).whereIdCursoAluno(idCursoAluno).whereIdEtapa(idEtapa));
         if (etapaAluno == null) {
             etapaAluno = new EtapaAluno();
             etapaAluno.setCursoAluno(dao.get(CursoAluno.class, idCursoAluno));
@@ -205,7 +205,7 @@ public class CursoAlunoServiceImpl {
     
     @Transactional(readOnly = false)
     public EtapaAluno salvarEtapaAluno(Long idCursoAluno, Long idEtapa) {
-        EtapaAluno etapaAluno = buscarEtapaAlunoPorCursoAlunoEEtapa(idCursoAluno, idEtapa);
+        EtapaAluno etapaAluno = buscarEtapaAlunoPorCursoAlunoEEtapa(null, idCursoAluno, idEtapa);
         return dao.saveOrUpdate(etapaAluno);
     }
     
@@ -220,6 +220,13 @@ public class CursoAlunoServiceImpl {
             perguntaEtapaAluno.setTempoAcabou(perguntaEtapaAluno.getTempoAcabou()!=null?perguntaEtapaAluno.getTempoAcabou():false);
             validador.validarPerguntaEtapaAluno(perguntaEtapaAluno);
             dao.saveOrUpdate(perguntaEtapaAluno);
+        }
+        if (relatorioEtapa.getGanhou()) {
+            Integer nivelEtapa = relatorioEtapa.getEtapaAluno().getEtapa().getNivel()+1;
+            
+            CursoAluno cursoAluno = dao.get(CursoAluno.class, relatorioEtapa.getIdCursoAluno());
+            cursoAluno.setPosicaoAtual((cursoAluno.getPosicaoAtual()>nivelEtapa)?cursoAluno.getPosicaoAtual():nivelEtapa);
+            dao.saveOrUpdate(cursoAluno);
         }
         return relatorioEtapa;
     }

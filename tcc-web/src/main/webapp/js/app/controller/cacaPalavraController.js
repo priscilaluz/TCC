@@ -1,9 +1,21 @@
-tccApp.controller('CacaPalavraController', ['$scope', '$rootScope', '$modal', '$location', '$timeout', 'Jogo',
-function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
-    $scope.count = 0;
+tccApp.controller('CacaPalavraController', ['$scope', '$rootScope', '$routeParams', '$modal', '$location', '$timeout', 'Jogo', 'RelatorioEtapa',
+function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, RelatorioEtapa) {
+    var tamanhoMatriz = 12;
     var indexMatriz = -1;
+    var corSelecionada = '#5396d4';
+    var corQuandoPassarPor = '#9bcffd';
+    var corInicial = '#8ab7de';
+    var perguntasTotaisEncontradas = 0;
+    var palavrasEncontradas = 0;
+    var coresSelecionadas = ['#5f3257','#356b23','#9e9b22','#de968a','#be8ade','#9a5316','#7da938','#d856ce','#5356ca','#04c71c','#ec0b7e','#ec7d1d'];
     var pontuacaoMinima = 0;
+    var idCursoAluno = $routeParams.idCursoAluno;
+    var idEtapa = $routeParams.idEtapa;
+    var idEtapaAluno = $routeParams.idEtapaAluno;
+    $scope.count = 0;
+    $scope.imagem1 = true;
     $scope.model = {
+        jogo:"Caça Palavra",
         pontuacao: 0,
         qntDica: 1,
         primeiraCedula: null,
@@ -15,23 +27,22 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         perguntas: [],
         resultados: []
     };
-    var tamanhoMatriz = 12;
-    var corSelecionada = '#5396d4';
-    var corQuandoPassarPor = '#9bcffd';
-    var corInicial = '#8ab7de';
-    var perguntasTotaisEncontradas = 0;
-    var palavrasEncontradas = 0;
-    var coresSelecionadas = ['#5f3257','#356b23','#9e9b22','#de968a','#be8ade','#9a5316','#7da938','#d856ce','#5356ca','#04c71c','#ec0b7e','#ec7d1d'];
     
     $scope.voltar = function () {
-        $location.path("/jogos");
+        if (idCursoAluno && idEtapa){
+            $location.path("/cursar-etapa/"+idCursoAluno+"/"+idEtapa+"/"+idEtapaAluno);
+        } else {
+            $location.path("/jogos");
+        }
     };
 
+    var posicaoDicaPergunta = -1;
     $scope.dicaPergunta = function () {
         var dica = "Não existe dicas disponíveis.";
         var obj = {'dica': dica};
         for (var x = 0; x <= $scope.model.perguntas.length; x++) {
             if (!$scope.model.perguntas[x].style && $scope.model.perguntas[x].dica){
+                posicaoDicaPergunta = x;
                 var pergunta = "Pergunta: "+$scope.model.perguntas[x].descricao;
                 dica = $scope.model.perguntas[x].dica;
                 obj = {'dica': dica, 'pergunta': pergunta};
@@ -260,7 +271,14 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
                 var ganhou = pergunta.style?true:false;
                 var respostaCorreta = pergunta.respostas[0];
                 var resposta = ganhou?respostaCorreta:null;
-                $scope.model.resultados.push({'respostaEscolhida': resposta, 'respostaCorreta': respostaCorreta, 'ganhou':ganhou,
+                $scope.model.resultados.push({
+                    'pulo': false,
+                    'dica': posicaoDicaPergunta===i,
+                    'tempoAcabou': false,
+                    'pontuacao': ganhou?100:0,
+                    'respostaEscolhida': resposta, 
+                    'respostaCorreta': respostaCorreta, 
+                    'ganhou':ganhou,
                     'pergunta': pergunta});
             }
         }
@@ -279,10 +297,33 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
             }
             tamanhoMatriz = $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].tamanhoMatriz;
             backgroundMatriz();
-        } else if ($scope.model.pontuacao < pontuacaoMinima) {
-            $scope.model.perdeuJogo = true;
         } else {
-            $scope.model.resultado = true;
+            $scope.model.anexoString = null;
+            $scope.model.pergunta = null;
+            var relatorioEtapa = new RelatorioEtapa();
+            relatorioEtapa.etapaAluno = {'id': idEtapaAluno};
+            relatorioEtapa.pontuacao = $scope.model.pontuacao;
+            relatorioEtapa.perguntasEtapasAlunos = $scope.model.resultados;
+            relatorioEtapa.idCursoAluno = idCursoAluno;
+            relatorioEtapa.ganhou = ($scope.model.pontuacao >= pontuacaoMinima);
+            $rootScope.appLoaded = false;
+            if ($scope.model.pontuacao < pontuacaoMinima) {
+                $scope.model.perdeuJogo = true;
+                tempoImagemFimDeJogo();
+            } else {
+                $scope.model.resultado = true;
+            }
+            relatorioEtapa.$save(function () {
+                if ($scope.model.pontuacao < pontuacaoMinima) {
+                    $scope.model.perdeuJogo = true;
+                    tempoImagemFimDeJogo();
+                } else {
+                    $scope.model.resultado = true;
+                }
+                $rootScope.appLoaded = true;
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
         }
     };
     
@@ -293,21 +334,38 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         return null;
     };
     
+    var tempoImagemFimDeJogo = function () {
+        $scope.imagem1 = !$scope.imagem1;
+        $timeout(tempoImagemFimDeJogo, 500);
+    };
+    
+    var iniciarJogo = function (cacaPalavraLista) {
+        $scope.model.cacaPalavraLista = cacaPalavraLista;
+        var pontuacaoMaxima = cacaPalavraLista.qntPergunta*100;
+        pontuacaoMinima = pontuacaoMaxima*7/10;
+        mudarMatriz();
+        barraDeProgresso();
+        $rootScope.appLoaded = true;
+        $rootScope.contagem = true;
+        contagemInicial();
+    };
+    
     var init = function () {
         $scope.telaInit = false;
         $rootScope.appLoaded = false;
-        Jogo.buscarPerguntasDaApresentacaoDoJogoCacaPalavra(function (cacaPalavraLista) {
-            $scope.model.cacaPalavraLista = cacaPalavraLista;
-            var pontuacaoMaxima = cacaPalavraLista.qntPergunta*100;
-            pontuacaoMinima = pontuacaoMaxima*7/10;
-            mudarMatriz();
-            barraDeProgresso();
-            $rootScope.appLoaded = true;
-            $rootScope.contagem = true;
-            contagemInicial();
-        }, function (error) {
-            $rootScope.appLoaded = true;
-        });
+        if (idCursoAluno && idEtapa) {
+            Jogo.buscarPerguntasDoJogoCacaPalavra({'idEtapa': idEtapa}).$promise.then(function (cacaPalavraLista) {
+                iniciarJogo(cacaPalavraLista);
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        } else {
+            Jogo.buscarPerguntasDaApresentacaoDoJogoCacaPalavra(function (cacaPalavraLista) {
+                iniciarJogo(cacaPalavraLista);
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        }
     };
     init();
 }]);

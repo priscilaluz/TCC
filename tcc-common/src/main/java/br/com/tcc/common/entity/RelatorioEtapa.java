@@ -8,6 +8,7 @@ package br.com.tcc.common.entity;
 
 
 import br.com.tcc.common.support.AbstractIdBean;
+import br.com.tcc.common.support.SimNaoType;
 import br.com.tcc.common.util.ConstantesI18N;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +22,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import org.hibernate.annotations.Type;
 
 /**
  *
@@ -45,6 +48,13 @@ public class RelatorioEtapa extends AbstractIdBean<Long> {
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "relatorioEtapa")
     private Set<PerguntaEtapaAluno> perguntasEtapasAlunos = new HashSet<PerguntaEtapaAluno>();
+    
+    @Type(type = SimNaoType.TYPE_CLASS)
+    @Column(name = "GANHOU", nullable = false)
+    private Boolean ganhou;
+    
+    @Transient
+    private Long idCursoAluno;
     
     @Override
     public Long getId() {
@@ -80,4 +90,19 @@ public class RelatorioEtapa extends AbstractIdBean<Long> {
         this.perguntasEtapasAlunos = perguntasEtapasAlunos;
     }
 
+    public Boolean getGanhou() {
+        return ganhou;
+    }
+
+    public void setGanhou(Boolean ganhou) {
+        this.ganhou = ganhou;
+    }
+
+    public Long getIdCursoAluno() {
+        return idCursoAluno;
+    }
+
+    public void setIdCursoAluno(Long idCursoAluno) {
+        this.idCursoAluno = idCursoAluno;
+    }
 }

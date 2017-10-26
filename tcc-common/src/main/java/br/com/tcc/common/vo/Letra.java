@@ -5,10 +5,13 @@
  */
 package br.com.tcc.common.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  *
  * @author ADM
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Letra {
     private int posicao;
     private String letra;

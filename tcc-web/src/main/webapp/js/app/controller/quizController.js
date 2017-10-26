@@ -1,11 +1,17 @@
-tccApp.controller('QuizController', ['$scope', '$rootScope', '$modal', '$location', '$timeout', 'Jogo',
-function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
+tccApp.controller('QuizController', ['$scope', '$rootScope', '$routeParams', '$modal', '$location', '$timeout', 'Jogo', 'RelatorioEtapa',
+function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, RelatorioEtapa) {
     $rootScope.contagem = true;
     $scope.count = 0;
+    var idCursoAluno = $routeParams.idCursoAluno;
+    var idEtapa = $routeParams.idEtapa;
+    var idEtapaAluno = $routeParams.idEtapaAluno;
     var timeoutTempoPorPergunta = null;
     var tempoPergunta = 30;
+    var pontuacaoPorPergunta = 100;
     var pontuacaoMinima = 0;
+    $scope.imagem1 = true;
     $scope.model = {
+        jogo:"Quiz",
         pontuacao: 0,
         posicao: 0,
         tempo: tempoPergunta,
@@ -27,13 +33,17 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
     };
     
     $scope.voltar = function () {
-        $location.path("/jogos");
+        if (idCursoAluno && idEtapa){
+            $location.path("/cursar-etapa/"+idCursoAluno+"/"+idEtapa+"/"+idEtapaAluno);
+        } else {
+            $location.path("/jogos");
+        }
     };
     
     $scope.selecionarResposta = function(resposta) {
         $timeout.cancel(timeoutTempoPorPergunta);
         if (resposta.correta) {
-            $scope.model.pontuacao = $scope.model.pontuacao+50;
+            $scope.model.pontuacao = $scope.model.pontuacao+pontuacaoPorPergunta;
         }
         
         addAoRelatorioFinal(resposta, false, $scope.model.dica);
@@ -64,8 +74,8 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
                 break;
             }
         }
-        $scope.model.resultados.push({'respostaEscolhida': resposta, 'respostaCorreta': respostaCorreta,
-            'pergunta': $scope.model.pergunta, 'pulo':  pulo, 'dica':  dica});
+        $scope.model.resultados.push({'respostaEscolhida': resposta, 'respostaCorreta': respostaCorreta, 'pontuacao': $scope.model.pontuacao,
+            'pergunta': $scope.model.pergunta, 'pulo':  pulo, 'dica':  dica, 'tempoAcabou': resposta!==null});
         $scope.model.dica = false;
         $timeout(proximaPergunta, 400);
     };
@@ -81,12 +91,28 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
             $scope.model.pergunta = $scope.model.perguntas[$scope.model.posicao];
             $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
             $scope.tempoPergunta();
-        } else if ($scope.model.pontuacao < pontuacaoMinima) {
-            $scope.model.perdeuJogo = true;
         } else {
+            $scope.model.anexoString = null;
             $scope.model.pergunta = null;
-            $timeout.cancel(timeoutTempoPorPergunta);
-            $scope.model.resultado = true;
+            var relatorioEtapa = new RelatorioEtapa();
+            relatorioEtapa.etapaAluno = {'id': idEtapaAluno};
+            relatorioEtapa.pontuacao = $scope.model.pontuacao;
+            relatorioEtapa.perguntasEtapasAlunos = $scope.model.resultados;
+            relatorioEtapa.idCursoAluno = idCursoAluno;
+            relatorioEtapa.ganhou = ($scope.model.pontuacao >= pontuacaoMinima);
+            $rootScope.appLoaded = false;
+            relatorioEtapa.$save(function () {
+                if ($scope.model.pontuacao < pontuacaoMinima) {
+                    $scope.model.perdeuJogo = true;
+                    tempoImagemFimDeJogo();
+                } else {
+                    $timeout.cancel(timeoutTempoPorPergunta);
+                    $scope.model.resultado = true;
+                }
+                $rootScope.appLoaded = true;
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
         }
     };
     
@@ -136,22 +162,39 @@ function ($scope, $rootScope, $modal, $location, $timeout, Jogo) {
         return null;
     };
     
-    var init = function () {
-        $rootScope.appLoaded = false;
-        $scope.telaInit = true;
-        Jogo.buscarPerguntaDaApresentacaoDoJogoQuiz(function (perguntas) {
-            $scope.model.perguntas = perguntas;
+    var tempoImagemFimDeJogo = function () {
+        $scope.imagem1 = !$scope.imagem1;
+        $timeout(tempoImagemFimDeJogo, 500);
+    };
+    
+    var iniciarJogo = function (perguntas) {
+        $scope.model.perguntas = perguntas;
             $scope.model.pergunta = perguntas[$scope.model.posicao];
-            var pontuacaoMaxima = perguntas.length*100;
+            var pontuacaoMaxima = perguntas.length*pontuacaoPorPergunta;
             pontuacaoMinima = pontuacaoMaxima*7/10;
             $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
             $rootScope.appLoaded = true;
             $scope.telaInit = false;
             barraDeProgresso();
             $scope.contagemInicial();
-        }, function (error) {
-            $rootScope.appLoaded = true;
-        });
+    };
+    
+    var init = function () {
+        $rootScope.appLoaded = false;
+        $scope.telaInit = true;
+        if (idCursoAluno && idEtapa) {
+            Jogo.buscarPerguntaDosJogosQuizForcaAposta({'idEtapa': idEtapa}).$promise.then(function (perguntas) {
+                iniciarJogo(perguntas);
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        } else {
+            Jogo.buscarPerguntaDaApresentacaoDoJogoQuiz(function (perguntas) {
+                iniciarJogo(perguntas);
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        }
     };
     init();
 }]);

@@ -103,27 +103,34 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarEtapaAlunoPorCursoAlunoEEtapaNovo(){
-        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, 2L);
+        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 2L);
         assertNotNull(etapaAluno);
         assertTrue(etapaAluno.getId()==null);
     }
     
     @Test
     public void deveRetornarEtapaAlunoPorCursoAlunoEEtapa(){
-        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, 1L);
+        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 1L);
+        assertNotNull(etapaAluno);
+        assertEquals(new Long(1), etapaAluno.getId());
+    }
+    
+    @Test
+    public void deveRetornarEtapaAlunoPorEtapaAlunoId(){
+        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, null, null);
         assertNotNull(etapaAluno);
         assertEquals(new Long(1), etapaAluno.getId());
     }
     
     @Test
     public void deveSalvarEtapaAluno(){
-        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, 2L);
+        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 2L);
         assertNotNull(etapaAluno);
         assertTrue(etapaAluno.getId()==null);
         
         cursoAlunoServiceImpl.salvarEtapaAluno(1L, 2L);
         
-        EtapaAluno etapaAlunaSalva = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, 2L);
+        EtapaAluno etapaAlunaSalva = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 2L);
         assertNotNull(etapaAlunaSalva);
         assertTrue(etapaAlunaSalva.getId()!=null);
     }

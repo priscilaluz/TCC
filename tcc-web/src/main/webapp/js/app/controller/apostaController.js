@@ -8,8 +8,9 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
     var idEtapa = $routeParams.idEtapa;
     var idEtapaAluno = $routeParams.idEtapaAluno;
     var pontuacaoMinima = 0;
-    
+    $scope.imagem1 = true;
     $scope.model = {
+        jogo:"Aposta",
         perdeuJogo: false,
         pulo: false,
         dica: false,
@@ -28,7 +29,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
     
     $scope.voltar = function () {
         if (idCursoAluno && idEtapa){
-            $location.path("/cursar-etapa/"+idCursoAluno+"/"+idEtapa);
+            $location.path("/cursar-etapa/"+idCursoAluno+"/"+idEtapa+"/"+idEtapaAluno);
         } else {
             $location.path("/jogos");
         }
@@ -100,10 +101,19 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             relatorioEtapa.etapaAluno = {'id': idEtapaAluno};
             relatorioEtapa.pontuacao = $scope.model.pontuacao;
             relatorioEtapa.perguntasEtapasAlunos = $scope.model.resultados;
+            relatorioEtapa.idCursoAluno = idCursoAluno;
+            relatorioEtapa.ganhou = ($scope.model.pontuacao >= pontuacaoMinima);
             $rootScope.appLoaded = false;
             relatorioEtapa.$save(function () {
                 if ($scope.model.pontuacao < pontuacaoMinima) {
                     $scope.model.perdeuJogo = true;
+                    tempoImagemFimDeJogo();
+                } else {
+                    $scope.model.resultado = true;
+                }
+                if ($scope.model.pontuacao < pontuacaoMinima) {
+                    $scope.model.perdeuJogo = true;
+                    tempoImagemFimDeJogo();
                 } else {
                     $scope.model.resultado = true;
                 }
@@ -227,6 +237,11 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             return "data:image/"+"jpg"+";base64,"+anexo.bytes;
         }
         return null;
+    };
+    
+    var tempoImagemFimDeJogo = function () {
+        $scope.imagem1 = !$scope.imagem1;
+        $timeout(tempoImagemFimDeJogo, 500);
     };
     
     var init = function () {

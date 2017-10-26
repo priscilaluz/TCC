@@ -35,4 +35,9 @@ public class RelatorioEtapaBuilder {
         return this;
     }
     
+    public RelatorioEtapaBuilder comGanhou(Boolean ganhou){
+        relatorioEtapa.setGanhou(ganhou);
+        return this;
+    }
+    
 }

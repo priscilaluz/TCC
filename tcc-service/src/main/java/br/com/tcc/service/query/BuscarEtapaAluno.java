@@ -44,5 +44,13 @@ public abstract class BuscarEtapaAluno<T extends Serializable> extends BusinessF
         }    
         return this;
     }
-
+    
+    public BuscarEtapaAluno whereIdEtapaAluno(Long id) {
+        if (id != null) {
+            appendText(getPreffixFilter());
+            appendText(" ea.id = :id ");
+            addParameter("id", id);
+        }    
+        return this;
+    }
 }

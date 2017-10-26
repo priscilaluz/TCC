@@ -1,4 +1,8 @@
-<h1 class="title-fonte" ng-show="!contagem || telaInit">Quiz</h1>
+<div class="col-md-8" ng-show="!contagem || telaInit"><h1 class="title-fonte">Quiz</h1></div>
+<div class="col-md-4" ng-show="!contagem || telaInit" style="margin-top: 20px;">
+    <button type="button" ng-click="voltar()" class="btn btn-pular-dica pull-right">
+            <i class="glyphicon glyphicon-arrow-left"></i>&nbsp;Voltar</button>
+</div>
 <div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" ng-show="!contagem && !telaInit" style="margin-bottom: 30px;">
     <h3>Pontos: {{model.pontuacao}}</h3>
     <div class="col-lg-12" ng-repeat="resultado in model.resultados" style="padding-top: 20px;">

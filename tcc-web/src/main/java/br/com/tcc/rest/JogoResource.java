@@ -134,16 +134,15 @@ public class JogoResource {
     private CacaPalavraLista gerarCacaPalavra(List<Pergunta> perguntasTodas) {
         Integer qntPerguntas = perguntasTodas.size();
         List<CacaPalavra> lista = new ArrayList<>();
-        if ((new Double(qntPerguntas)/tamanhoMatriz) > 1){
-            int qntMatriz = (qntPerguntas/tamanhoMatriz) + 1;
-            int qntPerguntaPorMatriz = (qntPerguntas/qntMatriz);
-            int resto = qntPerguntas % qntMatriz;
-            for (int i = 0; i < qntMatriz; i++) {
-                int tamanhoSubList = qntPerguntaPorMatriz+(i*qntPerguntaPorMatriz);
-                tamanhoSubList = (i == (qntMatriz-1))?tamanhoSubList+resto:tamanhoSubList;
-                List<Pergunta> perguntas = perguntasTodas.subList(i*qntPerguntaPorMatriz, tamanhoSubList);
-                lista.add(new CacaPalavra(null, perguntas, tamanhoMatriz));
-            }
+        
+        int qntMatriz = (qntPerguntas/tamanhoMatriz) + 1;
+        int qntPerguntaPorMatriz = (qntPerguntas/qntMatriz);
+        int resto = qntPerguntas % qntMatriz;
+        for (int i = 0; i < qntMatriz; i++) {
+            int tamanhoSubList = qntPerguntaPorMatriz+(i*qntPerguntaPorMatriz);
+            tamanhoSubList = (i == (qntMatriz-1))?tamanhoSubList+resto:tamanhoSubList;
+            List<Pergunta> perguntas = perguntasTodas.subList(i*qntPerguntaPorMatriz, tamanhoSubList);
+            lista.add(new CacaPalavra(null, perguntas, tamanhoMatriz));
         }
         
         for (CacaPalavra cacaPalavra : lista) {

@@ -268,6 +268,7 @@ public class CursoAlunoValidatorTest {
         RelatorioEtapa relatorioEtapa = RelatorioEtapaBuilder.novo()
                 .comPontuacao(0)
                 .comEtapaAluno(new EtapaAluno(1L))
+                .comGanhou(Boolean.TRUE)
                 .comPerguntasEtapasAlunos(perguntasEtapasAlunos)
                 .build();
         return relatorioEtapa;

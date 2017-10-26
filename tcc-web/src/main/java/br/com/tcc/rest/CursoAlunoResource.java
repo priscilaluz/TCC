@@ -61,7 +61,7 @@ public class CursoAlunoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public EtapaAluno buscarEtapaAlunoPorCursoAlunoEEtapa(@QueryParam("idCursoAluno") Long idCursoAluno,
             @QueryParam("idEtapa") Long idEtapa) {
-        return cursoAlunoService.buscarEtapaAlunoPorCursoAlunoEEtapa(idCursoAluno, idEtapa);
+        return cursoAlunoService.buscarEtapaAlunoPorCursoAlunoEEtapa(null, idCursoAluno, idEtapa);
     }
     
     @GET
@@ -76,6 +76,8 @@ public class CursoAlunoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public RelatorioEtapa salvarRelatorioEtapa(RelatorioEtapa relatorioEtapa) {
+        EtapaAluno etapaAluno = cursoAlunoService.buscarEtapaAlunoPorCursoAlunoEEtapa(relatorioEtapa.getEtapaAluno().getId(), null, null);
+        relatorioEtapa.setEtapaAluno(etapaAluno);
         return cursoAlunoService.salvarRelatorioEtapa(relatorioEtapa);
     }
 }
