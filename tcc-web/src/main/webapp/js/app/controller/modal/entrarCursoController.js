@@ -11,7 +11,7 @@ tccApp.controller('EntrarCursoController', ['$scope', '$rootScope', '$modalInsta
                 'codAcesso': $scope.model.codAcesso}, function (cursoUsuario) {
                 growl.success('Acesso ao curso concedido com sucesso.',{title: 'Operação bem sucedida'});
                 $rootScope.appLoaded = true;
-                $location.path("/curso-estudar/"+cursoUsuario.id);
+                $location.path("/aluno-cursando/"+cursoUsuario.id);
                 $scope.fechar();
             }, function (error) {
                 $rootScope.appLoaded = true;

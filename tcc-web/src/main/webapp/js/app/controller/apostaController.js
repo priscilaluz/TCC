@@ -221,7 +221,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
         $scope.model.pergunta = perguntas[$scope.model.posicao];
         $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
         $scope.model.maxFichas = pontuacaoInicial * Math.pow(2, $scope.model.perguntas.length);
-        pontuacaoMinima = $scope.model.maxFichas*7/10;
+        pontuacaoMinima = $scope.model.maxFichas*5/10;
         $scope.telaInit = false;
         $rootScope.contagem = true;
         $scope.count = 0;

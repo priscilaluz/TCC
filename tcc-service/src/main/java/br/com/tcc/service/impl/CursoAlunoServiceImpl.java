@@ -222,10 +222,19 @@ public class CursoAlunoServiceImpl {
             dao.saveOrUpdate(perguntaEtapaAluno);
         }
         if (relatorioEtapa.getGanhou()) {
-            Integer nivelEtapa = relatorioEtapa.getEtapaAluno().getEtapa().getNivel()+1;
+            EtapaAluno etapaAluno = relatorioEtapa.getEtapaAluno();
+            Integer pontuacaoPartida = relatorioEtapa.getPontuacao();
+            Integer pontuacaoSalva = etapaAluno.getPontuacao();
+            etapaAluno.setPontuacao(pontuacaoPartida);
+            dao.saveOrUpdate(etapaAluno);
+            
+            Integer nivelEtapa = etapaAluno.getEtapa().getNivel()+1;
             
             CursoAluno cursoAluno = dao.get(CursoAluno.class, relatorioEtapa.getIdCursoAluno());
             cursoAluno.setPosicaoAtual((cursoAluno.getPosicaoAtual()>nivelEtapa)?cursoAluno.getPosicaoAtual():nivelEtapa);
+            
+            Integer pontuacao = pontuacaoPartida - pontuacaoSalva;
+            cursoAluno.setPontuacao(cursoAluno.getPontuacao()+pontuacao);
             dao.saveOrUpdate(cursoAluno);
         }
         return relatorioEtapa;
