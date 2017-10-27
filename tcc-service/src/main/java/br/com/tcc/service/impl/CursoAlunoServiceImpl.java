@@ -20,6 +20,7 @@ import br.com.tcc.common.vo.TdHtmlEtapa;
 import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarCursoAluno;
 import br.com.tcc.service.query.BuscarEtapaAluno;
+import br.com.tcc.service.query.BuscarRelatorioEtapa;
 import br.com.tcc.service.validator.CursoAlunoValidator;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -238,5 +239,11 @@ public class CursoAlunoServiceImpl {
             dao.saveOrUpdate(cursoAluno);
         }
         return relatorioEtapa;
+    }
+    
+    @Transactional(readOnly = false)
+    public List<RelatorioEtapa> buscarRelatoriosEtapaPorIdEtapaAluno(Long idEtapaAluno) {
+        BuscarRelatorioEtapa consulta = new BuscarRelatorioEtapa.Entities().whereIdEtapaAluno(idEtapaAluno);
+        return dao.list(consulta);
     }
 }

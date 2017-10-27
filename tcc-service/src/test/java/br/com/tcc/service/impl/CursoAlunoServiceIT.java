@@ -100,10 +100,12 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         TabuleiroCurso tabuleiroEsperado = obterTabuleiroCursoCorreto5();
         validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado);
     }
+    //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="EtapaAluno">
     @Test
     public void deveRetornarEtapaAlunoPorCursoAlunoEEtapaNovo(){
-        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 2L);
+        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 3L);
         assertNotNull(etapaAluno);
         assertTrue(etapaAluno.getId()==null);
     }
@@ -124,29 +126,45 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveSalvarEtapaAluno(){
-        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 2L);
+        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 3L);
         assertNotNull(etapaAluno);
         assertTrue(etapaAluno.getId()==null);
         
-        cursoAlunoServiceImpl.salvarEtapaAluno(1L, 2L);
+        cursoAlunoServiceImpl.salvarEtapaAluno(1L, 3L);
         
-        EtapaAluno etapaAlunaSalva = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 2L);
+        EtapaAluno etapaAlunaSalva = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 3L);
         assertNotNull(etapaAlunaSalva);
         assertTrue(etapaAlunaSalva.getId()!=null);
     }
+    //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="RelatorioEtapa">
     @Test
     public void deveSalvarRelatorioEtapa(){
         RelatorioEtapa relatorioEtapa = new RelatorioEtapa();
-        relatorioEtapa.setEtapaAluno(new EtapaAluno(1L));
+        
+        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, null, null);
+        relatorioEtapa.setEtapaAluno(etapaAluno);
         relatorioEtapa.setPontuacao(100);
+        relatorioEtapa.setIdCursoAluno(1L);
         Set<PerguntaEtapaAluno> perguntasEtapasAlunos = new HashSet<>();
         perguntasEtapasAlunos.add(obterPerguntaEtapaAlunoValida1());
         perguntasEtapasAlunos.add(obterPerguntaEtapaAlunoValida2());
         relatorioEtapa.setPerguntasEtapasAlunos(perguntasEtapasAlunos);
+        relatorioEtapa.setGanhou(Boolean.TRUE);
         RelatorioEtapa salvo = cursoAlunoServiceImpl.salvarRelatorioEtapa(relatorioEtapa);
         assertNotNull(salvo);
         assertTrue(salvo.getId()!=null);
+    }
+    
+    @Test
+    public void deveRetornarRelatorioEtapaPorIdCurso(){
+        List<RelatorioEtapa> relatoriosEtapa = cursoAlunoServiceImpl.buscarRelatoriosEtapaPorIdEtapaAluno(1L);
+        assertTrue(relatoriosEtapa.size()==2);
+        List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
+        for (RelatorioEtapa r : relatoriosEtapa) {
+            assertTrue(ids.contains(r.getId()));
+        }
     }
     //</editor-fold>
     
