@@ -1,27 +1,33 @@
 tccApp.controller('CursarEtapaController', ['$scope', '$rootScope', '$routeParams', '$location', 'CursoAluno',
     function ($scope, $rootScope, $routeParams, $location, CursoAluno) {
         $scope.model = {
-            etapaAluno:null
+            etapaAluno: null,
+            jogo: null,
+            relatorios:[]
         };
-        var idCursoAluno = $routeParams.idCursoAluno;
-        var idEtapa = $routeParams.idEtapa;
-        var idEtapaAluno = $routeParams.idEtapaAluno;
+        $scope.idCursoAluno = $routeParams.idCursoAluno;
+        $scope.idEtapa = $routeParams.idEtapa;
+        $scope.idEtapaAluno = $routeParams.idEtapaAluno;
         
         $scope.voltar = function () {
-            var jogo = $scope.model.etapaAluno.etapa.jogo.id.toLowerCase();
-            $location.path("/aluno-cursando/"+idCursoAluno);
+            $location.path("/aluno-cursando/"+$scope.idCursoAluno);
         };
         
         $scope.jogar = function () {
-            var jogo = $scope.model.etapaAluno.etapa.jogo.id.toLowerCase();
-            $location.path("/jogos-simulado/"+jogo+"/"+idCursoAluno+"/"+idEtapa+"/"+idEtapaAluno);
+            $location.path("/jogos-simulado/"+$scope.model.jogo+"/"+$scope.idCursoAluno+"/"+$scope.idEtapa+"/"+$scope.idEtapaAluno);
         };
         
         var init = function () {
             $rootScope.appLoaded = false;
-            CursoAluno.buscarEtapaAlunoPorCursoAlunoEEtapa({'idCursoAluno': idCursoAluno, 'idEtapa': idEtapa}).$promise.then(function (etapaAluno) {
+            CursoAluno.buscarEtapaAlunoPorCursoAlunoEEtapa({'idCursoAluno': $scope.idCursoAluno, 'idEtapa': $scope.idEtapa}).$promise.then(function (etapaAluno) {
                 $scope.model.etapaAluno = etapaAluno;
-                $rootScope.appLoaded = true;
+                $scope.model.jogo = etapaAluno.etapa.jogo.id.toLowerCase();
+                CursoAluno.buscarRelatoriosEtapaPorIdEtapaAluno({'idEtapaAluno': $scope.idEtapaAluno}).$promise.then(function (relatorios) {
+                    $scope.model.relatorios = relatorios;
+                    $rootScope.appLoaded = true;
+                }, function (error) {
+                    $rootScope.appLoaded = true;
+                });
             }, function (error) {
                 $rootScope.appLoaded = true;
             });

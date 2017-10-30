@@ -166,6 +166,13 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
             assertTrue(ids.contains(r.getId()));
         }
     }
+    
+    @Test
+    public void deveRetornarRelatoriosEtapaPorId(){
+        RelatorioEtapa relatorioEtapa = cursoAlunoServiceImpl.buscarRelatoriosEtapaPorId(1L);
+        assertNotNull(relatorioEtapa);
+        assertEquals(new Long(1L), relatorioEtapa.getId());
+    }
     //</editor-fold>
     
     private void validarTabuleiro(TabuleiroCurso tabuleirosCursoAtual, TabuleiroCurso tabuleirosEsperado) {

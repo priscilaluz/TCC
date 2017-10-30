@@ -12,6 +12,9 @@ import br.com.tcc.common.support.SimNaoType;
 import br.com.tcc.common.util.ConstantesI18N;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,6 +24,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.Type;
 
 /**
@@ -68,6 +73,15 @@ public class PerguntaEtapaAluno extends AbstractIdBean<Long> {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "RESPOSTA_ESCOLHIDA_ID", nullable = true)
     private Resposta respostaEscolhida;
+    
+    @Transient
+    private Resposta respostaCorreta;
+    
+    @Transient
+    private Boolean ganhou;
+    
+    @Transient
+    private List<String> apostasFase;
     
     @Override
     public Long getId() {
@@ -141,5 +155,38 @@ public class PerguntaEtapaAluno extends AbstractIdBean<Long> {
 
     public void setRespostaEscolhida(Resposta respostaEscolhida) {
         this.respostaEscolhida = respostaEscolhida;
+    }
+
+    public Resposta getRespostaCorreta() {
+        if ((Hibernate.isInitialized(pergunta)) && (Hibernate.isInitialized(pergunta.getRespostas()))) {
+            for (Resposta resposta : pergunta.getRespostas()) {
+                if (resposta.getCorreta()){
+                    respostaCorreta = resposta;
+                }
+            }
+        }
+        return respostaCorreta;
+    }
+
+    public void setRespostaCorreta(Resposta respostaCorreta) {
+        this.respostaCorreta = respostaCorreta;
+    }
+
+    public Boolean getGanhou() {
+        ganhou = getRespostaCorreta()!=null;
+        return ganhou;
+    }
+
+    public void setGanhou(Boolean ganhou) {
+        this.ganhou = ganhou;
+    }
+
+    public List<String> getApostasFase() {
+        apostasFase = Arrays.asList(apostas.split(","));  
+        return apostasFase;
+    }
+
+    public void setApostasFase(List<String> apostasFase) {
+        this.apostasFase = apostasFase;
     }
 }

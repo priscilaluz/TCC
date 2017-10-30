@@ -12,3 +12,27 @@
         <button type="button" ng-click="jogar()" class="btn btn-block jogar-etapa">&nbsp;JOGAR</button>
     </form>
 </div>
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas">
+    <form class="form-horizontal" name="relatorioForm">
+        <table class="table table-condensed" id="tabela">
+            <thead class="table-font-title">
+                <tr>
+                    <th width="50"></th>
+                    <th>Relatório</th>
+                    <th width="200">Pontuação</th>
+                    <th width="200">Ganhou</th>
+                </tr>
+            </thead>
+            <tbody  class="table-font">
+                <tr ng-repeat="relatorio in model.relatorios">
+                    <td class="text-center">
+                        <a  href="#relatorio-etapa/{{idCursoAluno}}/{{idEtapa}}/{{idEtapaAluno}}/{{relatorio.id}}/{{model.jogo}}" style="color: #ff6624;"><i class="glyphicon glyphicon-search handCursor"></i></a>
+                    </td>
+                    <td>Relatório {{model.relatorios.length-$index}}</td>
+                    <td>{{relatorio.pontuacao}}</td>
+                    <td>{{relatorio.ganhou?'Sim':'Não'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

@@ -8,7 +8,7 @@
     <p class="col-lg-12 curso-titulo-concluido" ng-show="model.dica">Utilizou dica</p>
     <div class="col-lg-12" ng-repeat="resultado in model.resultados" style="padding-top: 20px;">
         <hr style="border: 1px dotted #d07171; margin-top: 0px;">
-        <p class="col-lg-12 curso-titulo-concluido">Pergunta {{resultado.pergunta.posicao}}: 
+        <p class="col-lg-12 curso-titulo-concluido">Pergunta {{$index+1}}: 
             <span ng-class="{'verdadeiro': resultado.ganhou, 'falso':!resultado.ganhou}">
                 <b>{{resultado.ganhou?'Achou':'Não Achou'}}</b>
             </span>

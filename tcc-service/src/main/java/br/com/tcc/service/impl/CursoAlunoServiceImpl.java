@@ -241,9 +241,19 @@ public class CursoAlunoServiceImpl {
         return relatorioEtapa;
     }
     
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = true)
     public List<RelatorioEtapa> buscarRelatoriosEtapaPorIdEtapaAluno(Long idEtapaAluno) {
-        BuscarRelatorioEtapa consulta = new BuscarRelatorioEtapa.Entities().whereIdEtapaAluno(idEtapaAluno);
+        BuscarRelatorioEtapa consulta = new BuscarRelatorioEtapa.Entities().whereIdEtapaAluno(idEtapaAluno).orderById();
         return dao.list(consulta);
+    }
+    
+    @Transactional(readOnly = true)
+    public RelatorioEtapa buscarRelatoriosEtapaPorId(Long idRelatorioEtapa) {
+        BuscarRelatorioEtapa consulta = new BuscarRelatorioEtapa.Entities()
+                .fetchPerguntaEtapaAluno(ConstantesI18N.FETCH)
+                .fetchPergunta(ConstantesI18N.FETCH)
+                .fetchResposta(ConstantesI18N.FETCH)
+                .whereIdRelatorioEtapa(idRelatorioEtapa);
+        return (RelatorioEtapa) dao.uniqueResult(consulta);
     }
 }

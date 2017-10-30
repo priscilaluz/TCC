@@ -102,6 +102,10 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/cursar-etapa/etapa.html',
         controller: 'CursarEtapaController'
       }).
+      when('/relatorio-etapa/:idCursoAluno/:idEtapa/:idEtapaAluno/:idRelatorio/:jogo', {
+        templateUrl: 'partials/relatorio/relatorio.html',
+        controller: 'RelatorioEtapaController'
+      }).
 
       otherwise({
         redirectTo: '/home'

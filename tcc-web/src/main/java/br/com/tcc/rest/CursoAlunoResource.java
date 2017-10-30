@@ -80,4 +80,18 @@ public class CursoAlunoResource {
         relatorioEtapa.setEtapaAluno(etapaAluno);
         return cursoAlunoService.salvarRelatorioEtapa(relatorioEtapa);
     }
+    
+    @GET
+    @Path("/relatoriosPorIdEtapaAluno")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<RelatorioEtapa> buscarRelatoriosEtapaPorIdEtapaAluno(@QueryParam("idEtapaAluno") Long idEtapaAluno) {
+        return cursoAlunoService.buscarRelatoriosEtapaPorIdEtapaAluno(idEtapaAluno);
+    }
+    
+    @GET
+    @Path("/relatoriosPorId")
+    @Produces(MediaType.APPLICATION_JSON)
+    public RelatorioEtapa buscarRelatoriosEtapaPorId(@QueryParam("idRelatorio") Long idRelatorio) {
+        return cursoAlunoService.buscarRelatoriosEtapaPorId(idRelatorio);
+    }
 }

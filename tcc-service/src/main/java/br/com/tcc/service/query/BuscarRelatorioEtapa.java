@@ -13,21 +13,45 @@ public abstract class BuscarRelatorioEtapa<T extends Serializable> extends Busin
 
     public static class Entities extends BuscarRelatorioEtapa<RelatorioEtapa> {
         public Entities() {
-            appendText("select r from RelatorioEtapa r ");
+            appendText("select re from RelatorioEtapa re ");
         }
     }
     
     public BuscarRelatorioEtapa fetchPerguntaEtapaAluno(String fetch) {
-        appendText(" left join "+fetch+" r.perguntasEtapasAlunos p ");
+        appendText(" left join "+fetch+" re.perguntasEtapasAlunos pea ");
+        return this;
+    }
+    
+    public BuscarRelatorioEtapa fetchPergunta(String fetch) {
+        appendText(" left join "+fetch+" pea.pergunta p ");
+        return this;
+    }
+    
+    public BuscarRelatorioEtapa fetchResposta(String fetch) {
+        appendText(" left join "+fetch+" p.respostas r ");
+        return this;
+    }
+    
+    public BuscarRelatorioEtapa whereIdRelatorioEtapa(Long idRelatorioEtapa) {
+        if (idRelatorioEtapa != null) {
+            appendText(getPreffixFilter());
+            appendText(" re.id = :idRelatorioEtapa ");
+            addParameter("idRelatorioEtapa", idRelatorioEtapa);
+        }    
         return this;
     }
     
     public BuscarRelatorioEtapa whereIdEtapaAluno(Long idEtapaAluno) {
         if (idEtapaAluno != null) {
             appendText(getPreffixFilter());
-            appendText(" r.etapaAluno.id = :idEtapaAluno ");
+            appendText(" re.etapaAluno.id = :idEtapaAluno ");
             addParameter("idEtapaAluno", idEtapaAluno);
         }    
+        return this;
+    }
+    
+    public BuscarRelatorioEtapa orderById() { 
+        appendText(" order by re.id desc ");
         return this;
     }
 }
