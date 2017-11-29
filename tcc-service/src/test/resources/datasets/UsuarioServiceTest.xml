@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset xmlns="test">
     <USUARIO ID = "1" NOME = "Joao" LOGIN = "JoaoL" EMAIL = "joao@email.com" SENHA = "1234" TIPO = "P"/>
+    <USUARIO ID = "2" NOME = "Maria" LOGIN = "MariaL" EMAIL = "maria@email.com" SENHA = "1234" TIPO = "A"/>
+    <USUARIO ID = "3" NOME = "Clara" LOGIN = "ClaraL" EMAIL = "clara@email.com" SENHA = "1234" TIPO = "P"/>
  
 </dataset>

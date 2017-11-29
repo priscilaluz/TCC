@@ -1,9 +1,12 @@
 package br.com.tcc.service.validator;
 
+import br.com.tcc.common.entity.Curso;
+import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.exception.PendencyManager;
 import br.com.tcc.common.util.ConstantesI18N;
 import br.com.tcc.common.support.AssertUtils;
+import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,6 +21,13 @@ public class UsuarioValidator {
         pm.assertNotEmpty(usuario.getSenha()).orRegister(ConstantesI18N.USUARIO_SENHA_OBRIGATORIA);
         pm.assertThat(emailJaExistente==0).orRegister(ConstantesI18N.USUARIO_EMAIL_JA_CADASTRADO);
         pm.assertThat(loginJaExistente==0).orRegister(ConstantesI18N.USUARIO_LOGIN_JA_CADASTRADO);
+        pm.verifyAll();
+    }
+
+    public void validarExcluirUsuario(List<Pergunta> perguntas, List<Curso> cursos){
+        PendencyManager pm = new PendencyManager();
+        pm.assertThat(perguntas.isEmpty()).orRegister(ConstantesI18N.PROFESSOR_EXCLUIR_PERGUNTA);
+        pm.assertThat(cursos.isEmpty()).orRegister(ConstantesI18N.PROFESSOR_EXCLUIR_CURSO);
         pm.verifyAll();
     }
     

@@ -17,6 +17,8 @@ public class ConstantesI18N {
     public static final String USUARIO_SENHA_OBRIGATORIA = "usuario.senha.obrigatoria";
     public static final String USUARIO_EMAIL_JA_CADASTRADO = "usuario.email.ja.cadastrado";
     public static final String USUARIO_LOGIN_JA_CADASTRADO = "usuario.login.ja.cadastrado";
+    public static final String PROFESSOR_EXCLUIR_PERGUNTA = "professor.excluir.pergunta";
+    public static final String PROFESSOR_EXCLUIR_CURSO = "professor.excluir.curso";
     
     //Pergunta
     public static final String PERGUNTA_OBRIGATORIA = "pergunta.obrigatoria";

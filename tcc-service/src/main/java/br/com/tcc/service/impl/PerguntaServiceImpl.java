@@ -8,7 +8,7 @@ package br.com.tcc.service.impl;
 import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
-import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.common.util.ConstantesI18N;
@@ -81,7 +81,7 @@ public class PerguntaServiceImpl {
     }
 
     @Transactional(readOnly = true)
-    public List<Pergunta> buscarPerguntaPorFiltro(Long idUsuario, String parteNome, Categoria categoria, TipoPergunta tipo, NivelPergunta nivel) {
+    public List<Pergunta> buscarPerguntaPorFiltro(Long idUsuario, String parteNome, CategoriaEnum categoria, TipoPergunta tipo, NivelPergunta nivel) {
         return dao.list(new BuscarPergunta.Entities()
                 .fetchUsuario(ConstantesI18N.FETCH)
                 .whereNivel(nivel)

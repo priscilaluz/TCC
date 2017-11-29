@@ -6,7 +6,7 @@
 package br.com.tcc.service.query;
 
 import br.com.tcc.common.entity.Pergunta;
-import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.service.persistence.BusinessFluentQuery;
@@ -68,7 +68,7 @@ public abstract class BuscarPergunta<T extends Serializable> extends BusinessFlu
         return this;
     }
     
-    public BuscarPergunta whereCategoria(Categoria categoria) {
+    public BuscarPergunta whereCategoria(CategoriaEnum categoria) {
         if (categoria != null) {
             appendText(getPreffixFilter());
             appendText(" p.categoria = :categoria ");

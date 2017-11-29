@@ -568,3 +568,26 @@ li{
     color: black;
     text-decoration: none;
 }
+.menu-adm{
+    color: #000000;
+    font-size: 45px;
+    font-family:cursive;
+    
+    background-color: #36906e;
+    border: #dff0d8 solid 1px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+}
+.menu-adm:hover {
+    color: #ffffff;
+    background-color: #295444;
+    border: #dff0d8 solid 1px;
+}
+
+.img-adm-menu{
+    height:200px;
+    display: block;
+    margin: 0 auto;
+}

@@ -1,0 +1,24 @@
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas">
+    <form class="form-horizontal" name="professorForm">
+        <fieldset>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="table table-condensed" id="tabela">
+                    <thead class="table-font-title">
+                        <tr>
+                            <th width="10"></th>
+                            <th width="10"></th>
+                            <th>Professor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-font">
+                        <tr ng-repeat="professor in model.professores">
+                            <td><a ng-click="excluirProfessor(professor.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove handCursor" title="Excluir"></i></a></td>
+                            <td><a ng-click="telaNovaEditar(professor.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-pencil handCursor" title="Editar"></i></a></td>
+                            <td>{{professor.nome}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+    </form>
+</div>

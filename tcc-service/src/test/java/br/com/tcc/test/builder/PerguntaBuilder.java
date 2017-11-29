@@ -3,7 +3,7 @@ package br.com.tcc.test.builder;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.entity.Usuario;
-import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.TipoPergunta;
 import java.util.Set;
@@ -33,7 +33,7 @@ public class PerguntaBuilder {
         return this;
     }
     
-    public PerguntaBuilder comCategoria(Categoria categoria){
+    public PerguntaBuilder comCategoria(CategoriaEnum categoria){
         pergunta.setCategoria(categoria);
         return this;
     }

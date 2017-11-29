@@ -6,6 +6,7 @@
 package br.com.tcc.service.query;
 
 import br.com.tcc.common.entity.Usuario;
+import br.com.tcc.common.enums.TipoUsuario;
 import br.com.tcc.service.persistence.BusinessFluentQuery;
 import java.io.Serializable;
 
@@ -21,6 +22,42 @@ public abstract class BuscarUsuario<T extends Serializable> extends BusinessFlue
         public Count() {
             appendText("select count(u) from Usuario u ");
         }
+    }
+
+    public BuscarUsuario whereId(Long id) {
+        if (id != null) {
+            appendText(getPreffixFilter());
+            appendText(" u.id = :id ");
+            addParameter("id", id);
+        }    
+        return this;
+    }
+
+    public BuscarUsuario whereIdNot(Long id) {
+        if (id != null) {
+            appendText(getPreffixFilter());
+            appendText(" u.id != :id ");
+            addParameter("id", id);
+        }    
+        return this;
+    }
+    
+    public BuscarUsuario whereNomeLike(String nome) {
+        if (nome != null && !nome.isEmpty()) {
+            appendText(getPreffixFilter());
+            appendText(" upper(u.nome) like upper(:nome) ");
+            addParameter("nome", "%"+nome+"%");
+        }    
+        return this;
+    }
+    
+    public BuscarUsuario whereTipo(TipoUsuario tipo) {
+        if (tipo != null) {
+            appendText(getPreffixFilter());
+            appendText(" u.tipo = :tipo ");
+            addParameter("tipo", tipo);
+        }    
+        return this;
     }
 
     public BuscarUsuario whereLogin(String login) {

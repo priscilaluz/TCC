@@ -6,6 +6,8 @@ import br.com.tcc.service.persistence.SimpleTestDao;
 import br.com.tcc.service.query.BuscarUsuario;
 import br.com.tcc.test.IntegrationBaseTestClass;
 import br.com.tcc.test.builder.UsuarioBuilder;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -32,6 +34,15 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     }
     
     @Test
+    public void deveSalvarProfessor(){
+        Usuario usuario = obterUsuarioValido();
+        
+        usuario = usuarioServiceImpl.salvarProfessor(usuario);
+        assertNotNull(usuario.getId());
+        assertEquals(dao.getById(Usuario.class, usuario.getId()), usuario);
+    }
+    
+    @Test
     public void deveRetornarUsuariosPorLogin(){
         List<Usuario> usuarios = dao.executeBusinnesQuery(new BuscarUsuario.Entities().whereLogin("JoaoL"));
         assertTrue(usuarios.size()==1);
@@ -41,6 +52,44 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     public void deveRetornarUsuariosPorEmail(){
         List<Usuario> usuarios = dao.executeBusinnesQuery(new BuscarUsuario.Entities().whereEmail("joao@email.com"));
         assertTrue(usuarios.size()==1);
+    }
+    
+    @Test
+    public void deveBuscarTodosProfessores(){        
+        List<Usuario> usuarios = usuarioServiceImpl.buscarProfessores(null);
+        assertTrue(usuarios.size()==2);
+        List<Long> ids = new ArrayList<>(Arrays.asList(1L, 3L));
+        for (Usuario u : usuarios) {
+            assertTrue(ids.contains(u.getId()));
+        }
+    }
+    
+    @Test
+    public void deveBuscarProfessoresPorNome(){        
+        List<Usuario> usuarios = usuarioServiceImpl.buscarProfessores("Cla");
+        assertTrue(usuarios.size()==1);
+        List<Long> ids = new ArrayList<>(Arrays.asList(3L));
+        for (Usuario u : usuarios) {
+            assertTrue(ids.contains(u.getId()));
+        }
+    }
+    
+    @Test
+    public void deveBuscarProfessorPorId(){
+        Usuario usuario = usuarioServiceImpl.buscarProfessorPorId(1L);
+        assertNotNull(usuario);
+        assertTrue(usuario.getId().equals(1L));
+    }
+    
+    @Test
+    public void deveExcluirProfessorePorId(){
+        List<Usuario> professores = dao.query("select p from Usuario p where p.id = 3");
+        assertTrue(professores.size() == 1);
+        
+        usuarioServiceImpl.excluirProfessores(3L);
+        
+        List<Usuario> professoresExcluida = dao.query("select p from Usuario p where p.id = 3");
+        assertTrue(professoresExcluida.isEmpty());
     }
     
     @Test

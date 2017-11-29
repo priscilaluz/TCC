@@ -269,7 +269,7 @@ ALTER TABLE `tcc`.`usuario`
 ADD COLUMN `TIPO` ENUM('A', 'P') NULL DEFAULT NULL AFTER `SENHA`;
 
 ALTER TABLE `tcc`.`usuario` 
-CHANGE COLUMN `TIPO` `TIPO` ENUM('A', 'P', 'T') NOT NULL DEFAULT 'A' COMMENT '\'A\'- Aluno, \'P\'- Professor, \'T\'- Ambos, aluno e professor' ;
+CHANGE COLUMN `TIPO` `TIPO` ENUM('A', 'P', 'T', 'D') NOT NULL DEFAULT 'A' COMMENT '\'A\'- Aluno, \'P\'- Professor, \'T\'- Ambos, aluno e professor' ;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -444,6 +444,36 @@ ADD CONSTRAINT `fk_pergunta_etapa_aluno_resposta1`
 
 ALTER TABLE `tcc`.`relatorio_etapa` 
 ADD COLUMN `GANHOU` VARCHAR(1) NOT NULL AFTER `ETAPA_ALUNO_ID`;
+
+CREATE TABLE IF NOT EXISTS `tcc`.`categoria` (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `DESCRICAO` VARCHAR(1000) NOT NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 60
+DEFAULT CHARACTER SET = utf8;
+
+ALTER TABLE `tcc`.`curso` 
+ADD COLUMN `categoria_ID` INT(11) NOT NULL AFTER `SITUACAO`,
+ADD INDEX `fk_curso_categoria1_idx` (`categoria_ID` ASC);
+
+ALTER TABLE `tcc`.`pergunta` 
+ADD COLUMN `categoria_ID` INT(11) NOT NULL AFTER `DICA`,
+ADD INDEX `fk_pergunta_categoria1_idx` (`categoria_ID` ASC);
+
+ALTER TABLE `tcc`.`curso` 
+ADD CONSTRAINT `fk_curso_categoria1`
+  FOREIGN KEY (`categoria_ID`)
+  REFERENCES `tcc`.`categoria` (`ID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `tcc`.`pergunta` 
+ADD CONSTRAINT `fk_pergunta_categoria1`
+  FOREIGN KEY (`categoria_ID`)
+  REFERENCES `tcc`.`categoria` (`ID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

@@ -9,7 +9,7 @@ import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
-import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.util.ConstantesI18N;
 import br.com.tcc.service.persistence.GenericDao;
@@ -99,7 +99,7 @@ public class CursoServiceImpl {
     }
 
     @Transactional(readOnly = true)
-    public List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, Categoria categoria, SituacaoCurso situacaoCurso) {
+    public List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, CategoriaEnum categoria, SituacaoCurso situacaoCurso) {
         return dao.list(new BuscarCurso.Entities()
                 .whereUsuario(idUsuario)
                 .whereNomeLike(parteNome)

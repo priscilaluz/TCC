@@ -42,6 +42,9 @@ tccApp.controller('LoginController', ['$scope', 'Usuario', 'growl', '$cookies', 
                 if (result && result.nome){
                     $rootScope.usuarioLogado = result;
                     $rootScope.autenticar = $cookies.getObject('usuarioLogado');
+                    $rootScope.isAdministrador = result.tipo.id === "D";
+                    $rootScope.isAluno = result.tipo.id === "A";
+                    $rootScope.isProfessor = result.tipo.id === "P";
                     $cookies.putObject('usuarioLogado', $rootScope.usuarioLogado);
                     $location.path("/home");
                 }else{

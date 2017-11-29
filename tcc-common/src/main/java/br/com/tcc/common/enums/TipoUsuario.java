@@ -10,6 +10,7 @@ public enum TipoUsuario {
 
     ALUNO ("A", "Aluno"),
     PROFESSOR  ("P", "Professor"),
+    ADMINISTRADOR  ("D", "Professor"),
     TODOS  ("T", "Todos");
 
     /**

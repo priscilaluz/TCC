@@ -2,7 +2,11 @@ tccApp.factory('Usuario', ['$resource', function ($resource) {
 
         var Usuario = $resource('/tcc/rest/usuario/:verbo/:id', {}, {
             save: {method: 'POST', params: {verbo: 'save'}, isArray: false},
-            buscarUsuario: {method: 'GET', params: {verbo: 'buscarUsuario'}, isArray: false}
+            saveProfessor: {method: 'POST', params: {verbo: 'saveProfessor'}, isArray: false},
+            buscarUsuario: {method: 'GET', params: {verbo: 'buscarUsuario'}, isArray: false},
+            buscarProfessores: {method: 'GET', params: {verbo: 'buscarProfessores'}, isArray: true},
+            buscarProfessorPorId: {method: 'GET', params: {verbo: 'buscarProfessorPorId'}, isArray: false},
+            deletarProfessor: {method: 'DELETE', params: {verbo: 'deletarProfessor'}, isArray: false}
         });
 
         return Usuario;

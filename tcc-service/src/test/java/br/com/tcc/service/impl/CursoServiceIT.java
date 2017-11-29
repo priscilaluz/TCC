@@ -5,7 +5,7 @@ import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Usuario;
-import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.service.persistence.SimpleTestDao;
@@ -116,7 +116,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorCategoria(){
-        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, null, Categoria.GEOGRAFIA, null);
+        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, null, CategoriaEnum.GEOGRAFIA, null);
         assertTrue(cursos.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(3L));
         for (Curso c : cursos) {
@@ -255,7 +255,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         
         Curso curso = CursoBuilder.nova()
                 .comUsuario(dao.getById(Usuario.class, 1L))
-                .comCategoria(Categoria.MATEMATICA)
+                .comCategoria(CategoriaEnum.MATEMATICA)
                 .comNome("Nome")
                 .comCodAcesso("CodAcesso")
                 .comSituacao(SituacaoCurso.CONCLUIDA)

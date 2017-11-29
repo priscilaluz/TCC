@@ -5,7 +5,7 @@
  */
 package br.com.tcc.common.entity;
 
-import br.com.tcc.common.enums.Categoria;
+import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.common.support.AbstractIdBean;
@@ -58,7 +58,7 @@ public class Pergunta extends AbstractIdBean<Long> {
         parameters = {@org.hibernate.annotations.Parameter(name = "enumClass",
                     value = "br.com.tcc.common.enums.Categoria")})
     @Column(name = "CATEGORIA", nullable = false)
-    private Categoria categoria;
+    private CategoriaEnum categoria;
     
     @Enumerated(EnumType.STRING)
     @Type(type = "br.com.tcc.common.support.GenericEnumUserType",
@@ -123,11 +123,11 @@ public class Pergunta extends AbstractIdBean<Long> {
         this.usuario = usuario;
     }
 
-    public Categoria getCategoria() {
+    public CategoriaEnum getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(CategoriaEnum categoria) {
         this.categoria = categoria;
     }
 

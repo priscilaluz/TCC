@@ -1,1 +1,7 @@
-<h1>{{titulo}}</h1>
+<div ng-show="isAdministrador" class="row" data-ng-include="'partials/home/homeAdm.html'"></div>
+<div ng-show="isProfessor">
+    <h1>{{titulo}}</h1>
+</div>
+<div ng-show="isAluno">
+    <h1>{{titulo}}</h1>
+</div>

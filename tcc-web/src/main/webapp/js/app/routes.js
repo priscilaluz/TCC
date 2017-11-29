@@ -106,6 +106,22 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/relatorio/relatorio.html',
         controller: 'RelatorioEtapaController'
       }).
+      when('/consultar-professor', {
+        templateUrl: 'partials/professor/consultar/professor-consulta.html',
+        controller: 'ProfessorConsultaController'
+      }).
+      when('/salvar-professor', {
+        templateUrl: 'partials/professor/salvar/professor-salvar.html',
+        controller: 'ProfessorSalvarController'
+      }).
+      when('/salvar-professor/:idProfessor', {
+        templateUrl: 'partials/professor/salvar/professor-salvar.html',
+        controller: 'ProfessorSalvarController'
+      }).
+      when('/consultar-categoria', {
+        templateUrl: 'partials/categoria/categoria.html',
+        controller: 'CategoriaController'
+      }).
 
       otherwise({
         redirectTo: '/home'

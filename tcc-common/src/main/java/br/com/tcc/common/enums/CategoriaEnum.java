@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * Enumeração Tipo Target
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum Categoria {
+public enum CategoriaEnum {
 
     PORTUGUES ("P", "Português"),
     MATEMATICA ("M", "Matemática"),
@@ -28,7 +28,7 @@ public enum Categoria {
      *
      * @param newId O identificador desta Enumeração
      */
-    private Categoria(final String newId, final String descricao) {
+    private CategoriaEnum(final String newId, final String descricao) {
         this.id = newId;
         this.descricao = descricao;
     }
@@ -58,12 +58,12 @@ public enum Categoria {
      *          <code>null</code> ou não estiver dentro dos valores
      *          possÃ­veis da enumeração.
      */
-    public static Categoria from(final String valor) {
+    public static CategoriaEnum from(final String valor) {
         if (valor == null) {
             throw new NullPointerException();
         }
 
-        for (Categoria e : Categoria.values()) {
+        for (CategoriaEnum e : CategoriaEnum.values()) {
             if (valor.equals(e.id) || valor.equals(e.name())) {
                 return e;
             }
