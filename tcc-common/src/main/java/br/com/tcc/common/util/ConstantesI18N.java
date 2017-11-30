@@ -68,4 +68,9 @@ public class ConstantesI18N {
     public static final String PERGUNTA_ETAPA_ALUNO_PERGUNTA_OBRIGATORIO = "pergunta.etapa.aluno.pergunta.obrigatorio";
     public static final String PERGUNTA_ETAPA_ALUNO_RELATORIOETAPA_OBRIGATORIO = "pergunta.etapa.aluno.relatorioetapa.obrigatorio";
     
+    //Categoria
+    public static final String CATEGORIA_OBRIGATORIA = "categoria.obrigatoria";
+    public static final String CATEGORIA_NOME_OBRIGATORIO = "categoria.nome.obrigatoria";
+    public static final String CATEGORIA_NOME_EXISTE = "categoria.nome.ja.existe";
+    
 }

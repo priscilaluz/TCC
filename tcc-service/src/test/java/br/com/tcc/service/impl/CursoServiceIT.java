@@ -1,11 +1,11 @@
 package br.com.tcc.service.impl;
 
+import br.com.tcc.common.entity.Categoria;
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Usuario;
-import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.service.persistence.SimpleTestDao;
@@ -116,9 +116,9 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorCategoria(){
-        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, null, CategoriaEnum.GEOGRAFIA, null);
+        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, null, 1L, null);
         assertTrue(cursos.size()==1);
-        List<Long> ids = new ArrayList<>(Arrays.asList(3L));
+        List<Long> ids = new ArrayList<>(Arrays.asList(2L));
         for (Curso c : cursos) {
             assertTrue(ids.contains(c.getId()));
         }
@@ -253,9 +253,10 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         etapas.add(obterEtapaValida1());
         etapas.add(obterEtapaValida2());
         
+        
         Curso curso = CursoBuilder.nova()
                 .comUsuario(dao.getById(Usuario.class, 1L))
-                .comCategoria(CategoriaEnum.MATEMATICA)
+                .comCategoria(new Categoria(1L))
                 .comNome("Nome")
                 .comCodAcesso("CodAcesso")
                 .comSituacao(SituacaoCurso.CONCLUIDA)

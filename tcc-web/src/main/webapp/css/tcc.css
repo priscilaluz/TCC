@@ -267,6 +267,18 @@ li {
     margin-top: 20px;
 }
 
+.vitoria {
+    background: rgb(37, 198, 205); /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #51d8d2, #534573); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #51d8d2, #534573); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #51d8d2, #534573); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #51d8d2, #534573); /* Standard syntax (must be last) */
+    border-radius: 10px;
+    color: #ffffff;
+    padding-top: 2px;
+    padding-bottom: 13px;
+}
+
 .grad1 {
     background: rgb(37, 198, 205); /* For browsers that do not support gradients */    
     background: -webkit-linear-gradient(left top, #6dcf55, #0b9ca2); /* For Safari 5.1 to 6.0 */

@@ -27,6 +27,11 @@ public abstract class BuscarEtapaAluno<T extends Serializable> extends BusinessF
         return this;
     }
     
+    public BuscarEtapaAluno fetchCurso(String fetch) {
+        appendText(" left join "+fetch+" e.curso curso ");
+        return this;
+    }
+    
     public BuscarEtapaAluno whereIdCursoAluno(Long id) {
         if (id != null) {
             appendText(getPreffixFilter());

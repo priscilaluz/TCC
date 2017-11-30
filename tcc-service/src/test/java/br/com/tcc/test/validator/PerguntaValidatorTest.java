@@ -3,7 +3,7 @@ package br.com.tcc.test.validator;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.entity.Usuario;
-import br.com.tcc.common.enums.CategoriaEnum;
+import br.com.tcc.common.entity.Categoria;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.common.exception.BusinessException;
@@ -106,7 +106,7 @@ public class PerguntaValidatorTest {
         respostas.add(obterRespostaValida2());
         
         Pergunta pergunta = PerguntaBuilder.nova()
-                .comCategoria(CategoriaEnum.MATEMATICA)
+                .comCategoria(new Categoria(1L))
                 .comDescricao("Descricao")
                 .comJustificativa("Justificativa")
                 .comTipo(TipoPergunta.MULTIPLAS_ESCOLHAS)

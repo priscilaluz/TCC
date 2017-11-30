@@ -5,9 +5,15 @@ tccApp.run(['$rootScope', 'growl', '$cookies', '$location', function ($rootScope
     });
     
     $rootScope.usuarioLogado = $cookies.getObject('usuarioLogado');
+    $rootScope.isAdministrador = $rootScope.usuarioLogado.tipo.id === "D";
+    $rootScope.isAluno = $rootScope.usuarioLogado.tipo.id === "A";
+    $rootScope.isProfessor = $rootScope.usuarioLogado.tipo.id === "P";
     
     $rootScope.logoff = function() {
         $rootScope.usuarioLogado = null;
+        $rootScope.isAdministrador = false;
+        $rootScope.isAluno = false;
+        $rootScope.isProfessor = false;
         $cookies.remove('usuarioLogado');
         $location.path("/login");
     };
@@ -119,8 +125,16 @@ tccApp.config(['$routeProvider', '$httpProvider',
         controller: 'ProfessorSalvarController'
       }).
       when('/consultar-categoria', {
-        templateUrl: 'partials/categoria/categoria.html',
-        controller: 'CategoriaController'
+        templateUrl: 'partials/categoria/consultar/categoria-consulta.html',
+        controller: 'CategoriaConsultaController'
+      }).
+      when('/salvar-categoria', {
+        templateUrl: 'partials/categoria/salvar/categoria-salvar.html',
+        controller: 'CategoriaSalvarController'
+      }).
+      when('/salvar-categoria/:idCategoria', {
+        templateUrl: 'partials/categoria/salvar/categoria-salvar.html',
+        controller: 'CategoriaSalvarController'
       }).
 
       otherwise({

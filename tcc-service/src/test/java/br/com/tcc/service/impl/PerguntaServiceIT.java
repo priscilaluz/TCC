@@ -1,10 +1,10 @@
 package br.com.tcc.service.impl;
 
 import br.com.tcc.common.entity.Anexo;
+import br.com.tcc.common.entity.Categoria;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.entity.Usuario;
-import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.service.persistence.SimpleTestDao;
@@ -100,7 +100,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorCategoria(){
-        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(null, null, CategoriaEnum.MATEMATICA, null, null);
+        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(null, null, 1L, null, null);
         assertTrue(perguntas.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
         for (Pergunta p : perguntas) {
@@ -130,7 +130,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorUsuarioDescricaoCategoria(){
-        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(1L, "Quanto é", CategoriaEnum.MATEMATICA, TipoPergunta.MULTIPLAS_ESCOLHAS, NivelPergunta.FACIL);
+        List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(1L, "Quanto é", 1L, TipoPergunta.MULTIPLAS_ESCOLHAS, NivelPergunta.FACIL);
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {
@@ -155,7 +155,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
         respostas.add(obterRespostaValida2());
         
         Pergunta pergunta = PerguntaBuilder.nova()
-                .comCategoria(CategoriaEnum.MATEMATICA)
+                .comCategoria(new Categoria(1L))
                 .comDescricao("Descricao")
                 .comJustificativa("Justificativa")
                 .comTipo(TipoPergunta.MULTIPLAS_ESCOLHAS)

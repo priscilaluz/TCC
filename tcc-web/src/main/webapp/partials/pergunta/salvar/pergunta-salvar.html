@@ -13,7 +13,7 @@
                 <label for="inputCategoria" class="col-lg-1 control-label label-font">Categoria:</label>
                 <div class="col-lg-3" ng-class="{'has-error': perguntaForm.categoria.$error.required}">
                     <select id="inputCategoria" name="categoria" class="form-control" ng-model="pergunta.categoria" required ng-disabled="!editar"
-                            ng-options="categoria.descricao for categoria in categorias track by categoria.id">
+                            ng-options="categoria.nome for categoria in categorias track by categoria.id">
                         <option value="">Categoria</option>
                     </select>
                 </div>

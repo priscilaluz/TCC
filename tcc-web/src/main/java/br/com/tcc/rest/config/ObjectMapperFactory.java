@@ -5,7 +5,6 @@
  */
 package br.com.tcc.rest.config;
 
-import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.SituacaoCurso;
@@ -30,7 +29,6 @@ public class ObjectMapperFactory {
             ObjectMapper mapper = new ObjectMapper();
             SimpleModule testModule = new SimpleModule("TccModule", new Version(1, 0, 0, null, null, null));
             // Inclusao dos Custom Deserializer para Enums
-            testModule.addDeserializer(CategoriaEnum.class, new EnumDeserializer(ReflectionUtils.findMethod(CategoriaEnum.class, "from", String.class)));
             testModule.addDeserializer(Jogo.class, new EnumDeserializer(ReflectionUtils.findMethod(Jogo.class, "from", String.class)));
             testModule.addDeserializer(SituacaoCurso.class, new EnumDeserializer(ReflectionUtils.findMethod(SituacaoCurso.class, "from", String.class)));
             testModule.addDeserializer(NivelPergunta.class, new EnumDeserializer(ReflectionUtils.findMethod(NivelPergunta.class, "from", String.class)));

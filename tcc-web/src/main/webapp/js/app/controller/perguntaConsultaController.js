@@ -1,5 +1,5 @@
-tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', 'Pergunta', 'Enums', '$location', 'growl',
-    function ($scope, $rootScope, Pergunta, Enums, $location, growl) {
+tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', 'Pergunta', 'Categoria', 'Enums', '$location', 'growl',
+    function ($scope, $rootScope, Pergunta, Categoria, Enums, $location, growl) {
         $scope.categorias = [];
         $scope.perguntas = [];
         $scope.tipos = [];
@@ -38,7 +38,7 @@ tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', 'Pergun
 
         var init = function () {
             $rootScope.appLoaded = false;
-            Enums.getCategorias(function (categorias) {
+            Categoria.buscarCategoriaPorFiltro(function (categorias) {
                 $scope.categorias = categorias;
                 
                 Enums.getTiposPergunta(function (tipos) {

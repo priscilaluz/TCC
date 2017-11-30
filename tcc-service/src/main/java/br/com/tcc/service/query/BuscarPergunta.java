@@ -6,7 +6,6 @@
 package br.com.tcc.service.query;
 
 import br.com.tcc.common.entity.Pergunta;
-import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.service.persistence.BusinessFluentQuery;
@@ -40,6 +39,11 @@ public abstract class BuscarPergunta<T extends Serializable> extends BusinessFlu
         appendText(" left join "+fetch+" p.usuario u ");
         return this;
     }
+    
+    public BuscarPergunta fetchCategoria(String fetch) {
+        appendText(" left join "+fetch+" p.categoria ca ");
+        return this;
+    }
 
     public BuscarPergunta whereId(Long id) {
         if (id != null) {
@@ -68,11 +72,11 @@ public abstract class BuscarPergunta<T extends Serializable> extends BusinessFlu
         return this;
     }
     
-    public BuscarPergunta whereCategoria(CategoriaEnum categoria) {
-        if (categoria != null) {
+    public BuscarPergunta whereCategoria(Long idCategoria) {
+        if (idCategoria != null) {
             appendText(getPreffixFilter());
-            appendText(" p.categoria = :categoria ");
-            addParameter("categoria", categoria);
+            appendText(" p.categoria.id = :idCategoria ");
+            addParameter("idCategoria", idCategoria);
         }    
         return this;
     }

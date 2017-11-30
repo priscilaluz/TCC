@@ -1,4 +1,9 @@
-<h1 class="title-fonte">Curso: {{model.tabuleiroCurso.nome}}</h1>
+<div class="vitoria">
+    <h1 class="title-fonte text-center" ng-show="model.tabuleiroCurso.situacao.id=='C'" style="font-size: 45px;">
+        Parabéns, você concluiu todas etapas!
+    </h1>
+</div>
+<h1 class="title-fonte text-center">Curso: {{model.tabuleiroCurso.nome}}</h1>
 <div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" style="margin-bottom: 50px;">
     <div class="col-md-12" style="background-image: url('img/tabuleiro/background/aventura3.jpeg'); height: 500px; width: 1106px;border-radius: 150px;">
         <h1 class="title-fonte" style="padding-left: 125px;"><b>Pontuação:</b> {{model.tabuleiroCurso.pontuacao}}</h1>

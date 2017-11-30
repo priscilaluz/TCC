@@ -1,5 +1,5 @@
-tccApp.controller('CursoTodosConsultarController', ['$scope', '$rootScope', 'Curso', 'Enums', '$modal', 'growl',
-    function ($scope, $rootScope, Curso, Enums, $modal, growl) {
+tccApp.controller('CursoTodosConsultarController', ['$scope', '$rootScope', 'Curso', 'Enums', '$modal', 'Categoria',
+    function ($scope, $rootScope, Curso, Enums, $modal, Categoria) {
         $scope.cursos = [];
         $scope.pesquisar = {};
 
@@ -30,7 +30,7 @@ tccApp.controller('CursoTodosConsultarController', ['$scope', '$rootScope', 'Cur
 
         var init = function () {
             $rootScope.appLoaded = false;
-            Enums.getCategorias(function (categorias) {
+            Categoria.buscarCategoriaPorFiltro(function (categorias) {
                 $scope.categorias = categorias;
                 
                 Enums.getSituacoesCurso(function (situacoes) {

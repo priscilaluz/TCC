@@ -5,7 +5,6 @@
  */
 package br.com.tcc.rest;
 
-import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.SituacaoCurso;
@@ -32,13 +31,6 @@ public class EnumsResource {
     @Path("/jogos")
     public List<Jogo> findAllJogos() {
         return Arrays.asList(Jogo.values());
-    }
-    
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/categorias")
-    public List<CategoriaEnum> findAllCategorias() {
-        return Arrays.asList(CategoriaEnum.values());
     }
     
     @GET

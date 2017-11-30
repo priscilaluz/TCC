@@ -1,0 +1,19 @@
+<h1 class="title-fonte">Nova Categoria</h1>
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" style="margin-bottom: 30px;">
+    <form class="form-horizontal" name="cadastraCategoriaForm" enctype="multipart/form-data">
+        <fieldset>
+            <div class="form-group">
+                <label for="inputNome1" class="col-lg-1 control-label label-font">Nome: </label>
+                <div class="col-lg-11" ng-class="{'has-error': cadastraCategoriaForm.nome.$error.required}">
+                    <input type="text" name="nome1" maxlength="45" ng-model="model.categoria.nome" class="form-control" id="inputNome1" required placeholder="Nome">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="button" ng-click="voltarTela()" class="btn btn-default1">Voltar</button>
+                    <button type="button" ng-click="salvarCategoria()" class="btn btn-modelo">Cadastrar</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

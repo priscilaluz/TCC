@@ -1,5 +1,5 @@
-tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routeParams', 'growl', 'Pergunta', 'Enums', 'AnexoService', '$location',
-    function ($scope, $rootScope, $routeParams, growl, Pergunta, Enums, AnexoService, $location) {
+tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routeParams', 'growl', 'Pergunta', 'Enums', 'Categoria', 'AnexoService', '$location',
+    function ($scope, $rootScope, $routeParams, growl, Pergunta, Enums, Categoria, AnexoService, $location) {
         $scope.pergunta = new Pergunta();
         $scope.pergunta.respostas = [];
         $scope.telaCadastro = false;
@@ -101,7 +101,7 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
 
         var init = function () {
             $rootScope.appLoaded = false;
-            Enums.getCategorias(function (categorias) {
+            Categoria.buscarCategoriaPorFiltro(function (categorias) {
                 $scope.categorias = categorias;
                 Enums.getTiposPergunta(function (tipos) {
                     $scope.tipos = tipos;

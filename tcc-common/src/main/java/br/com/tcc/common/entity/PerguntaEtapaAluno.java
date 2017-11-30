@@ -182,7 +182,7 @@ public class PerguntaEtapaAluno extends AbstractIdBean<Long> {
     }
 
     public List<String> getApostasFase() {
-        apostasFase = Arrays.asList(apostas.split(","));  
+        apostasFase = apostas!=null?Arrays.asList(apostas.split(",")):new ArrayList<String>();
         return apostasFase;
     }
 

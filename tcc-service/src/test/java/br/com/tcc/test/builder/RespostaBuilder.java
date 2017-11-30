@@ -2,10 +2,6 @@ package br.com.tcc.test.builder;
 
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
-import br.com.tcc.common.entity.Resposta;
-import br.com.tcc.common.entity.Usuario;
-import br.com.tcc.common.enums.CategoriaEnum;
-import java.util.Set;
 
 public class RespostaBuilder {
     private Resposta resposta;

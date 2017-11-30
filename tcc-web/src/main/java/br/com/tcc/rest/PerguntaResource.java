@@ -6,7 +6,6 @@
 package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.Pergunta;
-import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.service.impl.PerguntaServiceImpl;
@@ -53,12 +52,11 @@ public class PerguntaResource {
     @Path("/buscarPergunta")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Pergunta> buscarPerguntaPorFiltro(@QueryParam("idUsuario") Long idUsuario, 
-            @QueryParam("parteNome") String parteNome, @QueryParam("categoria") String idCategoria, 
+            @QueryParam("parteNome") String parteNome, @QueryParam("categoria") Long idCategoria, 
             @QueryParam("nivel") String idNivel, @QueryParam("tipo") String idTipo) {
-        CategoriaEnum categoria = idCategoria!=null?CategoriaEnum.from(idCategoria):null;
         NivelPergunta nivel = idNivel!=null?NivelPergunta.from(idNivel):null;
         TipoPergunta tipo = idTipo!=null?TipoPergunta.from(idTipo):null;
-        return perguntaService.buscarPerguntaPorFiltro(idUsuario, parteNome, categoria, tipo, nivel);
+        return perguntaService.buscarPerguntaPorFiltro(idUsuario, parteNome, idCategoria, tipo, nivel);
     }
     
     @GET

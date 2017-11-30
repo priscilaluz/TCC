@@ -89,6 +89,7 @@ public class CursoAlunoServiceImpl {
         tabuleiroCurso.setPontuacao(cursoAluno.getPontuacao());
         tabuleiroCurso.setAluno(cursoAluno.getAluno());
         tabuleiroCurso.setEtapaAtual(cursoAluno.getPosicaoAtual());
+        tabuleiroCurso.setSituacao(cursoAluno.getSituacao());
         
         List<TabuleiroEtapa> etapas = etapasPorCursoAluno(cursoAluno);
         List<TdHtmlEtapa> todasEtapas = tdEtapasPorTabuleiroEtapa(etapas);
@@ -193,7 +194,7 @@ public class CursoAlunoServiceImpl {
     @Transactional(readOnly = true)
     public EtapaAluno buscarEtapaAlunoPorCursoAlunoEEtapa(Long idEtapaAluno, Long idCursoAluno, Long idEtapa) {
         EtapaAluno etapaAluno = (EtapaAluno) dao.uniqueResult(new BuscarEtapaAluno.Entities()
-                .fetchCursoAluno(ConstantesI18N.FETCH).fetchEtapa(ConstantesI18N.FETCH)
+                .fetchCursoAluno(ConstantesI18N.FETCH).fetchEtapa(ConstantesI18N.FETCH).fetchCurso(ConstantesI18N.FETCH)
                 .whereIdEtapaAluno(idEtapaAluno).whereIdCursoAluno(idCursoAluno).whereIdEtapa(idEtapa));
         if (etapaAluno == null) {
             etapaAluno = new EtapaAluno();
@@ -235,6 +236,12 @@ public class CursoAlunoServiceImpl {
             cursoAluno.setPosicaoAtual((cursoAluno.getPosicaoAtual()>nivelEtapa)?cursoAluno.getPosicaoAtual():nivelEtapa);
             
             Integer pontuacao = pontuacaoPartida - pontuacaoSalva;
+            Curso curso = cursoService.buscarCursoPorId(relatorioEtapa.getEtapaAluno().getEtapa().getCurso().getId());
+            int qntEtapas = curso.getEtapas().size();
+            if (qntEtapas < cursoAluno.getPosicaoAtual()) {
+                cursoAluno.setSituacao(SituacaoCursoAluno.CONCLUIDA);
+            }
+            
             cursoAluno.setPontuacao(cursoAluno.getPontuacao()+pontuacao);
             dao.saveOrUpdate(cursoAluno);
         }

@@ -6,7 +6,6 @@
 package br.com.tcc.service.query;
 
 import br.com.tcc.common.entity.Curso;
-import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.service.persistence.BusinessFluentQuery;
 import java.io.Serializable;
@@ -59,6 +58,11 @@ public abstract class BuscarCurso<T extends Serializable> extends BusinessFluent
         appendText(" left join "+fetch+" c.usuario u ");
         return this;
     }
+    
+    public BuscarCurso fetchCategoria(String fetch) {
+        appendText(" left join "+fetch+" c.categoria ca ");
+        return this;
+    }
 
     public BuscarCurso whereId(Long id) {
         if (id != null) {
@@ -87,11 +91,11 @@ public abstract class BuscarCurso<T extends Serializable> extends BusinessFluent
         return this;
     }
     
-    public BuscarCurso whereCategoria(CategoriaEnum categoria) {
-        if (categoria != null) {
+    public BuscarCurso whereCategoria(Long idCategoria) {
+        if (idCategoria != null) {
             appendText(getPreffixFilter());
-            appendText(" c.categoria = :categoria ");
-            addParameter("categoria", categoria);
+            appendText(" c.categoria.id = :idCategoria ");
+            addParameter("idCategoria", idCategoria);
         }    
         return this;
     }

@@ -12,7 +12,7 @@
                 <label for="inputCategoria" class="col-lg-1 control-label label-font">Categoria:</label>
                 <div class="col-lg-5" ng-class="{'has-error': cursoForm.categoria.$error.required}">    
                     <select id="inputCategoria" name="categoria" class="form-control" ng-model="curso.categoria" required
-                            ng-options="categoria.descricao for categoria in categorias track by categoria.id">
+                            ng-options="categoria.nome for categoria in categorias track by categoria.id">
                         <option value="">Categoria</option>
                     </select>
                 </div>

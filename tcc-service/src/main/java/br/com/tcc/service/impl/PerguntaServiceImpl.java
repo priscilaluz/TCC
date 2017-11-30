@@ -8,7 +8,6 @@ package br.com.tcc.service.impl;
 import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
-import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.common.util.ConstantesI18N;
@@ -75,19 +74,21 @@ public class PerguntaServiceImpl {
         Pergunta pergunta = (Pergunta)dao.uniqueResult(new BuscarPergunta.Entities()
                 .fetchUsuario(ConstantesI18N.FETCH)
                 .fetchAnexo(ConstantesI18N.FETCH)
-                .fetchResposta(ConstantesI18N.FETCH).whereId(idPergunta));
+                .fetchResposta(ConstantesI18N.FETCH)
+                .fetchCategoria(ConstantesI18N.FETCH).whereId(idPergunta));
         pergunta.setIdAnexo(pergunta.getAnexo()!=null?pergunta.getAnexo().getId():null);
         return pergunta;
     }
 
     @Transactional(readOnly = true)
-    public List<Pergunta> buscarPerguntaPorFiltro(Long idUsuario, String parteNome, CategoriaEnum categoria, TipoPergunta tipo, NivelPergunta nivel) {
+    public List<Pergunta> buscarPerguntaPorFiltro(Long idUsuario, String parteNome, Long idCategoria, TipoPergunta tipo, NivelPergunta nivel) {
         return dao.list(new BuscarPergunta.Entities()
                 .fetchUsuario(ConstantesI18N.FETCH)
+                .fetchCategoria(ConstantesI18N.FETCH)
                 .whereNivel(nivel)
                 .whereTipo(tipo)
                 .whereUsuario(idUsuario)
                 .whereDescricaoLike(parteNome)
-                .whereCategoria(categoria));
+                .whereCategoria(idCategoria));
     }
 }

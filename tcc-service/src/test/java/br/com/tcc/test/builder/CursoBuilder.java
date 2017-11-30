@@ -1,10 +1,10 @@
 package br.com.tcc.test.builder;
 
 import br.com.tcc.common.entity.Anexo;
+import br.com.tcc.common.entity.Categoria;
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.Usuario;
-import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.SituacaoCurso;
 import java.util.Set;
 
@@ -23,7 +23,7 @@ public class CursoBuilder {
         return this.curso;
     }
     
-    public CursoBuilder comCategoria(CategoriaEnum categoria){
+    public CursoBuilder comCategoria(Categoria categoria){
         curso.setCategoria(categoria);
         return this;
     }

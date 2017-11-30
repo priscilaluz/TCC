@@ -9,7 +9,6 @@ import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
-import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.util.ConstantesI18N;
 import br.com.tcc.service.persistence.GenericDao;
@@ -72,6 +71,7 @@ public class CursoServiceImpl {
                 .fetchEtapas(ConstantesI18N.FETCH)
                 .fetchEtapasPerguntas(ConstantesI18N.FETCH)
                 .fetchPergunta(ConstantesI18N.FETCH)
+                .fetchCategoria(ConstantesI18N.FETCH)
                 .fetchResposta(ConstantesI18N.FETCH)
                 .fetchAnexo(ConstantesI18N.FETCH)
                 .whereId(idCurso)
@@ -86,6 +86,7 @@ public class CursoServiceImpl {
         Curso curso = (Curso) dao.uniqueResult(new BuscarCurso.Entities()
                 .fetchEtapas(ConstantesI18N.FETCH)
                 .fetchEtapasPerguntas(ConstantesI18N.FETCH)
+                .fetchCategoria(ConstantesI18N.FETCH)
                 .fetchPergunta(ConstantesI18N.FETCH)
                 .fetchResposta(ConstantesI18N.FETCH)
                 .fetchUsuario(ConstantesI18N.FETCH)
@@ -99,11 +100,12 @@ public class CursoServiceImpl {
     }
 
     @Transactional(readOnly = true)
-    public List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, CategoriaEnum categoria, SituacaoCurso situacaoCurso) {
+    public List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, Long idCategoria, SituacaoCurso situacaoCurso) {
         return dao.list(new BuscarCurso.Entities()
+                .fetchCategoria(ConstantesI18N.FETCH)
                 .whereUsuario(idUsuario)
                 .whereNomeLike(parteNome)
-                .whereCategoria(categoria)
+                .whereCategoria(idCategoria)
                 .whereSituacaoCurso(situacaoCurso));
     }
     

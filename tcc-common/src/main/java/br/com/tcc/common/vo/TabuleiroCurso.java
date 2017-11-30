@@ -7,6 +7,7 @@ package br.com.tcc.common.vo;
 
 import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Usuario;
+import br.com.tcc.common.enums.SituacaoCursoAluno;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +23,7 @@ public class TabuleiroCurso {
     private Integer etapaAtual;
     private Integer pontuacao;
     private Usuario aluno;
+    private SituacaoCursoAluno situacao;
     private Map<Integer,List<TdHtmlEtapa>> tabuleiros;
 
     public TabuleiroCurso() {}
@@ -80,6 +82,14 @@ public class TabuleiroCurso {
 
     public void setAluno(Usuario aluno) {
         this.aluno = aluno;
+    }
+
+    public SituacaoCursoAluno getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoCursoAluno situacao) {
+        this.situacao = situacao;
     }
 
     public Map<Integer, List<TdHtmlEtapa>> getTabuleiros() {

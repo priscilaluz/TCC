@@ -1,13 +1,12 @@
 package br.com.tcc.test.validator;
 
 import br.com.tcc.common.entity.Curso;
-import br.com.tcc.common.entity.CursoAluno;
+import br.com.tcc.common.entity.Categoria;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Resposta;
 import br.com.tcc.common.entity.Usuario;
-import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.exception.BusinessException;
@@ -172,7 +171,7 @@ public class CursoValidatorTest {
         
         Curso curso = CursoBuilder.nova()
                 .comUsuario(obterUsuarioValido())
-                .comCategoria(CategoriaEnum.MATEMATICA)
+                .comCategoria(new Categoria(1L))
                 .comNome("Nome")
                 .comCodAcesso("CodAcesso")
                 .comSituacao(SituacaoCurso.CONCLUIDA)
@@ -224,7 +223,7 @@ public class CursoValidatorTest {
         respostas.add(obterRespostaValida2());
         
         Pergunta pergunta = PerguntaBuilder.nova()
-                .comCategoria(CategoriaEnum.MATEMATICA)
+                .comCategoria(new Categoria(1L))
                 .comDescricao("Descricao")
                 .comJustificativa("Justificativa")
                 .comUsuario(obterUsuarioValido())

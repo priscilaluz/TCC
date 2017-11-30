@@ -1,126 +1,131 @@
 INSERT INTO `tcc`.`usuario` (`ID`, `NOME`, `LOGIN`, `EMAIL`, `SENHA`, `TIPO`) VALUES ('1', 'Pri Luz', 'PriLuz', 'pri-luz@email.com', '1234', 'T');
 INSERT INTO `tcc`.`usuario` (`ID`, `NOME`, `LOGIN`, `EMAIL`, `SENHA`, `TIPO`) VALUES ('2', 'Aluno', 'aluno', 'aluno@email.com', '1234', 'A');
 INSERT INTO `tcc`.`usuario` (`ID`, `NOME`, `LOGIN`, `EMAIL`, `SENHA`, `TIPO`) VALUES ('3', 'Professor', 'professor', 'professor@email.com', '1234', 'P');
+INSERT INTO `tcc`.`usuario` (`ID`, `NOME`, `LOGIN`, `EMAIL`, `SENHA`, `TIPO`) VALUES ('4', 'adm', 'adm', 'adm@email.com', '1234', 'D');
 
+INSERT INTO `tcc`.`categoria` (`ID`, `DESCRICAO`) VALUES ('1', 'Ingles');
+INSERT INTO `tcc`.`categoria` (`ID`, `DESCRICAO`) VALUES ('2', 'Portugues');
+INSERT INTO `tcc`.`categoria` (`ID`, `DESCRICAO`) VALUES ('3', 'Matematica');
+INSERT INTO `tcc`.`categoria` (`ID`, `DESCRICAO`) VALUES ('4', 'Historia');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('1', 'Pergunta 1', 'P', '3', 'Justificatica 1', 'ME', 'F', 'Dica 1');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('1', 'Pergunta 1', '2', '3', 'Justificatica 1', 'ME', 'F', 'Dica 1');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('1', 'Opções 1 Pergunta 1', 'N', '1');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('2', 'Opções 2 Pergunta 1', 'N', '1');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('3', 'Correta - Opções 3 Pergunta 1', 'S', '1');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('4', 'Opções 4 Pergunta 1', 'N', '1');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('5', 'Opções 5 Pergunta 1', 'N', '1');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('2', 'Pergunta 2', 'P', '3', 'Justificatica 2', 'ME', 'D', 'Dica 2');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('2', 'Pergunta 2', '2', '3', 'Justificatica 2', 'ME', 'D', 'Dica 2');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('6', 'Opções 1 Pergunta 2', 'N', '2');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('7', 'Correta - Opções 2 Pergunta 2', 'S', '2');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('8', 'Opções 3 Pergunta 2', 'N', '2');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('9', 'Opções 4 Pergunta 2', 'N', '2');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('10', 'Opções 5 Pergunta 2', 'N', '2');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('3', 'Pergunta 3', 'P', '3', 'Justificatica 3', 'ME', 'F', 'Dica 3');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('3', 'Pergunta 3', '2', '3', 'Justificatica 3', 'ME', 'F', 'Dica 3');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('11', 'Opções 1 Pergunta 3', 'N', '3');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('12', 'Correta - Opções 2 Pergunta 3', 'S', '3');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('13', 'Opções 3 Pergunta 3', 'N', '3');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('14', 'Opções 4 Pergunta 3', 'N', '3');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('15', 'Opções 5 Pergunta 3', 'N', '3');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('4', 'Pergunta 4', 'P', '3', 'Justificatica 4', 'ME', 'D', 'Dica 4');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('4', 'Pergunta 4', '2', '3', 'Justificatica 4', 'ME', 'D', 'Dica 4');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('16', 'Correta - Opções 1 Pergunta 4', 'S', '4');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('17', 'Opções 2 Pergunta 4', 'N', '4');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('18', 'Opções 3 Pergunta 4', 'N', '4');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('19', 'Opções 4 Pergunta 4', 'N', '4');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('20', 'Opções 5 Pergunta 4', 'N', '4');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('5', 'Pergunta 5', 'P', '3', 'Justificatica 5', 'ME', 'F', 'Dica 5');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('5', 'Pergunta 5', '2', '3', 'Justificatica 5', 'ME', 'F', 'Dica 5');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('21', 'Opções 1 Pergunta 5', 'N', '5');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('22', 'Opções 2 Pergunta 5', 'N', '5');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('23', 'Opções 3 Pergunta 5', 'N', '5');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('24', 'Opções 4 Pergunta 5', 'N', '5');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('25', 'Correta - Opções 5 Pergunta 5', 'S', '5');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('6', 'Pergunta 6', 'P', '3', 'Justificatica 6', 'ME', 'D', 'Dica 6');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('6', 'Pergunta 6', '2', '3', 'Justificatica 6', 'ME', 'D', 'Dica 6');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('26', 'Opções 1 Pergunta 6', 'N', '6');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('27', 'Opções 2 Pergunta 6', 'N', '6');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('28', 'Opções 3 Pergunta 6', 'N', '6');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('29', 'Opções 4 Pergunta 6', 'N', '6');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('30', 'Correta - Opções 5 Pergunta 6', 'S', '6');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('7', 'Pergunta 7', 'P', '3', 'Justificatica 7', 'ME', 'F', 'Dica 7');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('7', 'Pergunta 7', '2', '3', 'Justificatica 7', 'ME', 'F', 'Dica 7');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('31', 'Opções 1 Pergunta 7', 'N', '7');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('32', 'Opções 2 Pergunta 7', 'N', '7');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('33', 'Opções 3 Pergunta 7', 'N', '7');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('34', 'Correta - Opções 4 Pergunta 7', 'S', '7');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('35', 'Opções 5 Pergunta 7', 'N', '7');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('8', 'Pergunta 8', 'P', '3', 'Justificatica 8', 'ME', 'D', 'Dica 8');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('8', 'Pergunta 8', '2', '3', 'Justificatica 8', 'ME', 'D', 'Dica 8');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('36', 'Opções 1 Pergunta 8', 'N', '8');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('37', 'Opções 2 Pergunta 8', 'N', '8');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('38', 'Opções 3 Pergunta 8', 'N', '8');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('39', 'Correta - Opções 4 Pergunta 8', 'S', '8');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('40', 'Opções 5 Pergunta 8', 'N', '8');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('9', 'Pergunta 9', 'P', '3', 'Justificatica 9', 'ME', 'F', 'Dica 9');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('9', 'Pergunta 9', '2', '3', 'Justificatica 9', 'ME', 'F', 'Dica 9');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('41', 'Correta - Opções 1 Pergunta 9', 'S', '9');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('42', 'Opções 2 Pergunta 9', 'N', '9');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('43', 'Opções 3 Pergunta 9', 'N', '9');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('44', 'Opções 4 Pergunta 9', 'N', '9');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('45', 'Opções 5 Pergunta 9', 'N', '9');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('10', 'Pergunta 10', 'P', '3', 'Justificatica 10', 'ME', 'D', 'Dica 10');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('10', 'Pergunta 10', '2', '3', 'Justificatica 10', 'ME', 'D', 'Dica 10');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('46', 'Opções 1 Pergunta 10', 'N', '10');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('47', 'Correta - Opções 2 Pergunta 10', 'S', '10');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('48', 'Opções 3 Pergunta 10', 'N', '10');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('49', 'Opções 4 Pergunta 10', 'N', '10');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('50', 'Opções 5 Pergunta 10', 'N', '10');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('11', 'Pergunta 11 - Resposta: Água', 'P', '3', 'Justificatica 11', 'CL', 'D', 'Dica 11');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('11', 'Pergunta 11 - Resposta: Água', '2', '3', 'Justificatica 11', 'CL', 'D', 'Dica 11');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('51', 'Água', 'S', '11');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('12', 'Pergunta 12 - Resposta: Computador', 'P', '3', 'Justificatica 12', 'CL', 'D', 'Dica 12');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('12', 'Pergunta 12 - Resposta: Computador', '2', '3', 'Justificatica 12', 'CL', 'D', 'Dica 12');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('52', 'Computador', 'S', '12');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('13', 'Pergunta 13 - Resposta: Clonar', 'P', '3', 'Justificatica 13', 'CL', 'D', 'Dica 13');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('13', 'Pergunta 13 - Resposta: Clonar', '2', '3', 'Justificatica 13', 'CL', 'D', 'Dica 13');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('53', 'Clonar', 'S', '13');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('14', 'Pergunta 14 - Resposta: Maca', 'P', '3', 'Justificatica 14', 'CL', 'D', 'Dica 14');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('14', 'Pergunta 14 - Resposta: Maca', '2', '3', 'Justificatica 14', 'CL', 'D', 'Dica 14');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('54', 'Maca', 'S', '14');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('15', 'Pergunta 15 - Resposta: Facilidade', 'P', '3', 'Justificatica 15', 'CL', 'D', 'Dica 15');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('15', 'Pergunta 15 - Resposta: Facilidade', '2', '3', 'Justificatica 15', 'CL', 'D', 'Dica 15');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('55', 'Facilidade', 'S', '15');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('16', 'Pergunta 16 - Resposta: Comunicação', 'P', '3', 'Justificatica 16', 'CL', 'D', 'Dica 16');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('16', 'Pergunta 16 - Resposta: Comunicação', '2', '3', 'Justificatica 16', 'CL', 'D', 'Dica 16');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('56', 'Comunicação', 'S', '16');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('17', 'Pergunta 17 - Resposta: House', 'P', '3', 'Justificatica 17', 'CL', 'D', 'Dica 17');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('17', 'Pergunta 17 - Resposta: House', '2', '3', 'Justificatica 17', 'CL', 'D', 'Dica 17');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('57', 'House', 'S', '17');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('18', 'Pergunta 18 - Resposta: Celular', 'P', '3', 'Justificatica 18', 'CL', 'D', 'Dica 18');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('18', 'Pergunta 18 - Resposta: Celular', '2', '3', 'Justificatica 18', 'CL', 'D', 'Dica 18');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('58', 'Celular', 'S', '18');
 
-INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
-					  VALUES ('19', 'Pergunta 19 - Resposta: Espelho', 'P', '3', 'Justificatica 19', 'CL', 'D', 'Dica 19');
+INSERT INTO `tcc`.`pergunta` (`ID`, `DESCRICAO`, `CATEGORIA_ID`, `USUARIO_ID`, `JUSTIFICATIVA`, `TIPO`, `NIVEL`, `DICA`) 
+					  VALUES ('19', 'Pergunta 19 - Resposta: Espelho', '2', '3', 'Justificatica 19', 'CL', 'D', 'Dica 19');
 INSERT INTO `tcc`.`resposta` (`ID`, `DESCRICAO`, `CORRETA`, `PERGUNTA_ID`) VALUES ('59', 'Espelho', 'S', '19');
 
 
-INSERT INTO `tcc`.`curso` (`ID`, `NOME`, `ASSUNTO_GERAL`, `COD_ACESSO`, `CATEGORIA`, `USUARIO_ID`, `SITUACAO`) VALUES ('1', 'Lorem Ipsum é simplesmente Lorem Ipsum é simp', 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.', 'AAAAA12345', 'P', '3', 'C');
+INSERT INTO `tcc`.`curso` (`ID`, `NOME`, `ASSUNTO_GERAL`, `COD_ACESSO`, `CATEGORIA_ID`, `USUARIO_ID`, `SITUACAO`) VALUES ('1', 'Lorem Ipsum é simplesmente Lorem Ipsum é simp', 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.', 'AAAAA12345', '2', '3', 'C');
 
 INSERT INTO `tcc`.`etapa` (`ID`, `ASSUNTO`, `NIVEL`, `JOGO`, `CURSO_ID`) VALUES ('1', 'É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de \"Conteúdo aqui, conteúdo aqui\", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por \'lorem ipsum\' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).', '1', 'A', '1');
 INSERT INTO `tcc`.`etapa` (`ID`, `ASSUNTO`, `NIVEL`, `JOGO`, `CURSO_ID`) VALUES ('2', 'Ao contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC. Richard McClintock, um professor de latim do Hampden-Sydney College na Virginia, pesquisou uma das mais obscuras palavras em latim, consectetur, oriunda de uma passagem de Lorem Ipsum, e, procurando por entre citações da palavra na literatura clássica, descobriu a sua indubitável origem. Lorem Ipsum vem das seções 1.10.32 e 1.10.33 do \"de Finibus Bonorum et Malorum\" (Os Extremos do Bem e do Mal), de Cícero, escrito em 45 AC. Este livro é um tratado de teoria da ética muito popular na época da Renascença. A primeira linha de Lorem Ipsum, \"Lorem Ipsum dolor sit amet...\" vem de uma linha na seção 1.10.32.', '2', 'F', '1');

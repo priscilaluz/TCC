@@ -1,5 +1,5 @@
-tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParams', '$modal', 'growl', 'Enums', 'Curso', 'Etapa', 'Pergunta', 'AnexoService',
-    function ($scope, $rootScope, $routeParams, $modal, growl, Enums, Curso, Etapa, Pergunta, AnexoService) {
+tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParams', '$modal', 'growl', 'Enums', 'Curso', 'Etapa', 'Categoria', 'AnexoService',
+    function ($scope, $rootScope, $routeParams, $modal, growl, Enums, Curso, Etapa, Categoria, AnexoService) {
         $scope.categorias = [];
         $scope.curso = new Curso();
         var idCurso = null;
@@ -242,7 +242,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
         var carregarTela = true;
         var init = function () {
             $rootScope.appLoaded = false;
-            Enums.getCategorias(function (result) {
+            Categoria.buscarCategoriaPorFiltro(function (result) {
                 $scope.categorias = result;
                 $rootScope.appLoaded = true;
                 if ($routeParams.idCurso) {

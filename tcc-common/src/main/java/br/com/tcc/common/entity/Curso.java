@@ -5,7 +5,6 @@
  */
 package br.com.tcc.common.entity;
 
-import br.com.tcc.common.enums.CategoriaEnum;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;
@@ -55,17 +54,9 @@ public class Curso extends AbstractIdBean<Long> {
     @Column(name = "COD_ACESSO", nullable = false)
     private String codAcesso;
     
-    @Enumerated(EnumType.STRING)
-    @Type(type = "br.com.tcc.common.support.GenericEnumUserType",
-            parameters = {
-                @org.hibernate.annotations.Parameter(name = "enumClass",
-                        value = "br.com.tcc.common.enums.Categoria")})
-    @Column(name = "CATEGORIA", nullable = false)
-    private CategoriaEnum categoria;
-//    
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "CATEGORIA_ID", nullable = false)
-//    private Categoria categoria;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CATEGORIA_ID", nullable = false)
+    private Categoria categoria;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ANEXO_ID", nullable = true)
@@ -136,11 +127,11 @@ public class Curso extends AbstractIdBean<Long> {
         this.codAcesso = codAcesso;
     }
     
-    public CategoriaEnum getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
     
-    public void setCategoria(CategoriaEnum categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
     
