@@ -118,7 +118,7 @@ public class Usuario extends AbstractIdBean<Long> {
     }
 
     public Avatar getAvatar() {
-        return avatar;
+        return avatar!=null?avatar:Avatar.PESSOA;
     }
 
     public void setAvatar(Avatar avatar) {
