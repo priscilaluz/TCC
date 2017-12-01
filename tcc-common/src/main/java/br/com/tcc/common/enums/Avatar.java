@@ -8,11 +8,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Avatar {
 
+    PESSOA  ("PE", "img/avatar/pessoa.png"),
     REI ("RE", "img/avatar/rei.png"),
     RAINHA ("RA", "img/avatar/rainha.png"),
     INVESTIGADOR ("IO", "img/avatar/investigador.png"),
-    INVESTIGADORA  ("IA", "img/avatar/investigadora.png"),
-    PESSOA  ("PE", "img/avatar/pessoa.png");
+    INVESTIGADORA  ("IA", "img/avatar/investigadora.png");
 
     /**
      * Id.
