@@ -26,7 +26,7 @@ tccApp.controller('UsuarioController', ['$scope', '$rootScope', 'Usuario', 'Enum
             $scope.usuario.avatar = $scope.avatares[index];
         };
         
-        $scope.salvar = function (index) {
+        $scope.salvar = function () {
             $rootScope.appLoaded = false;
             $scope.usuario.$save(function () {
                 growl.success('Alteração salva com sucesso.',{title: 'Sucesso'});
