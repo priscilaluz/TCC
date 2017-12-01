@@ -5,6 +5,7 @@
  */
 package br.com.tcc.common.entity;
 
+import br.com.tcc.common.enums.Avatar;
 import br.com.tcc.common.enums.TipoUsuario;
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;
@@ -51,6 +52,13 @@ public class Usuario extends AbstractIdBean<Long> {
                     value = "br.com.tcc.common.enums.TipoUsuario")})
     @Column(name = "TIPO", nullable = false)
     private TipoUsuario tipo;
+    
+    @Enumerated(EnumType.STRING)
+    @Type(type = "br.com.tcc.common.support.GenericEnumUserType",
+        parameters = {@org.hibernate.annotations.Parameter(name = "enumClass",
+                    value = "br.com.tcc.common.enums.Avatar")})
+    @Column(name = "AVATAR", nullable = false)
+    private Avatar avatar;
 
     public Usuario() {
     }
@@ -109,4 +117,11 @@ public class Usuario extends AbstractIdBean<Long> {
         this.tipo = tipo;
     }
 
+    public Avatar getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Avatar avatar) {
+        this.avatar = avatar;
+    }
 }

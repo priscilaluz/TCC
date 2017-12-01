@@ -5,6 +5,7 @@
  */
 package br.com.tcc.rest;
 
+import br.com.tcc.common.enums.Avatar;
 import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.SituacaoCurso;
@@ -62,5 +63,12 @@ public class EnumsResource {
             return TipoPergunta.COMPLETAR_LACUNA;
         }
         return TipoPergunta.MULTIPLAS_ESCOLHAS;
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/avatar")
+    public List<Avatar> findAllAvatar() {
+        return Arrays.asList(Avatar.values());
     }
 }

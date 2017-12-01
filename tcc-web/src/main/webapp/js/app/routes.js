@@ -136,6 +136,10 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/categoria/salvar/categoria-salvar.html',
         controller: 'CategoriaSalvarController'
       }).
+      when('/usuario', {
+        templateUrl: 'partials/usuario/usuario.html',
+        controller: 'UsuarioController'
+      }).
 
       otherwise({
         redirectTo: '/home'

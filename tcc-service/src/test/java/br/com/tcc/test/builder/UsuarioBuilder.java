@@ -1,6 +1,7 @@
 package br.com.tcc.test.builder;
 
 import br.com.tcc.common.entity.Usuario;
+import br.com.tcc.common.enums.Avatar;
 import br.com.tcc.common.enums.TipoUsuario;
 
 public class UsuarioBuilder {
@@ -40,6 +41,11 @@ public class UsuarioBuilder {
     
     public UsuarioBuilder comTipoUsuario(TipoUsuario tipo){
         usuario.setTipo(tipo);
+        return this;
+    }
+    
+    public UsuarioBuilder comAvatar(Avatar avatar){
+        usuario.setAvatar(avatar);
         return this;
     }
 }
