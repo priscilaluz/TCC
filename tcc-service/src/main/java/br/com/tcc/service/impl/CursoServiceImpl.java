@@ -108,12 +108,13 @@ public class CursoServiceImpl {
     }
 
     @Transactional(readOnly = true)
-    public List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, Long idCategoria, SituacaoCurso situacaoCurso) {
+    public List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, Long idCategoria, SituacaoCurso situacaoCurso, DisponibilidadeCurso disponibilidade) {
         return dao.list(new BuscarCurso.Entities()
                 .fetchCategoria(ConstantesI18N.FETCH)
                 .whereUsuario(idUsuario)
                 .whereNomeLike(parteNome)
                 .whereCategoria(idCategoria)
+                .whereDisponibilidadeCurso(disponibilidade)
                 .whereSituacaoCurso(situacaoCurso));
     }
     

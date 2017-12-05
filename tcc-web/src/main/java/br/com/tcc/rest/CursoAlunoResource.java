@@ -94,4 +94,11 @@ public class CursoAlunoResource {
     public RelatorioEtapa buscarRelatoriosEtapaPorId(@QueryParam("idRelatorio") Long idRelatorio) {
         return cursoAlunoService.buscarRelatoriosEtapaPorId(idRelatorio);
     }
+    
+    @GET
+    @Path("/alunosPorIdCurso")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CursoAluno> buscarCursoAlunoPorIdCurso(@QueryParam("idCurso") Long idCurso) {
+        return cursoAlunoService.buscarCursoAlunoPorIdCurso(idCurso);
+    }
 }

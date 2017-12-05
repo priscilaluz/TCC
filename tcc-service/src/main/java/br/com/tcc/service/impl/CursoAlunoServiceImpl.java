@@ -271,4 +271,11 @@ public class CursoAlunoServiceImpl {
                 .whereIdRelatorioEtapa(idRelatorioEtapa);
         return (RelatorioEtapa) dao.uniqueResult(consulta);
     }
+    
+    @Transactional(readOnly = true)
+    public List<CursoAluno> buscarCursoAlunoPorIdCurso(Long idCurso) {
+        return dao.list(new BuscarCursoAluno.Entities().fetchCurso("")
+                .fetchAluno(ConstantesI18N.FETCH)
+                .whereIdCurso(idCurso));
+    }
 }

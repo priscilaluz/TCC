@@ -7,14 +7,16 @@
                         <tr>
                             <th>Aluno</th>
                             <th width="150">Etapa</th>
-                            <th width="200">Pontuação</th>
+                            <th width="150">Pontuação</th>
+                            <th width="150">Situação</th>
                         </tr>
                     </thead>
                     <tbody class="table-font">
-                        <tr ng-repeat="aluno in alunos">
-                            <td>{{aluno.nome}}</td>
-                            <td>{{aluno.etapa}}</td>
-                            <td>{{aluno.pontuacao}}</td>
+                        <tr ng-repeat="cursoAluno in cursosAlunos">
+                            <td>{{cursoAluno.aluno.nome}}</td>
+                            <td>{{cursoAluno.posicaoAtual}}</td>
+                            <td>{{cursoAluno.pontuacao}}</td>
+                            <td>{{cursoAluno.situacao.descricao}}</td>
                         </tr>
                     </tbody>
                 </table>

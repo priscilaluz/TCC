@@ -1,5 +1,5 @@
-tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParams', '$modal', 'growl', 'Enums', 'Curso', 'Etapa', 'Categoria', 'AnexoService',
-    function ($scope, $rootScope, $routeParams, $modal, growl, Enums, Curso, Etapa, Categoria, AnexoService) {
+tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParams', '$modal', 'growl', 'Enums', 'Curso', 'CursoAluno', 'Etapa', 'Categoria', 'AnexoService',
+    function ($scope, $rootScope, $routeParams, $modal, growl, Enums, Curso, CursoAluno, Etapa, Categoria, AnexoService) {
         $scope.categorias = [];
         $scope.curso = new Curso();
         var idCurso = null;
@@ -115,7 +115,13 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
             Curso.buscarCursoCompletoPorId({'idCurso': id}, function (result) {
                 $scope.curso = result;
                 $scope.cursoCompleto = $scope.curso.situacao.id==='C';
-                $rootScope.appLoaded = true;
+                
+                CursoAluno.buscarCursoAlunoPorIdCurso({'idCurso': id}, function (cursosAlunos) {
+                    $scope.cursosAlunos = cursosAlunos;
+                    $rootScope.appLoaded = true;
+                }, function (error) {
+                    $rootScope.appLoaded = true;
+                });
             }, function (error) {
                 $rootScope.appLoaded = true;
             });

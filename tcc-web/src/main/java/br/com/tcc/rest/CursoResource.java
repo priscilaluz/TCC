@@ -83,7 +83,7 @@ public class CursoResource {
             @QueryParam("parteNome") String parteNome, @QueryParam("categoria") Long idCategoria,
             @QueryParam("situacao") String idSituacao) {
         SituacaoCurso situacaoCurso = idSituacao!=null?SituacaoCurso.from(idSituacao):null;
-        return cursoService.buscarCursoPorFiltro(idUsuario, parteNome, idCategoria, situacaoCurso);
+        return cursoService.buscarCursoPorFiltro(idUsuario, parteNome, idCategoria, situacaoCurso, null);
     }
     
     @GET
@@ -91,7 +91,7 @@ public class CursoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Curso> buscarCursoPorFiltro(@QueryParam("parteNome") String parteNome, 
             @QueryParam("categoria") Long idCategoria) {
-        return cursoService.buscarCursoPorFiltro(null, parteNome, idCategoria, SituacaoCurso.CONCLUIDA);
+        return cursoService.buscarCursoPorFiltro(null, parteNome, idCategoria, SituacaoCurso.CONCLUIDA, DisponibilidadeCurso.ABERTO);
     }
     
     @GET
