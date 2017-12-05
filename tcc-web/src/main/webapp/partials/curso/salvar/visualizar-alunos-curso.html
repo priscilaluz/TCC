@@ -1,0 +1,24 @@
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas">
+    <form class="form-horizontal" name="alunoForm">
+        <fieldset>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="table table-condensed" id="tabela">
+                    <thead class="table-font-title">
+                        <tr>
+                            <th>Aluno</th>
+                            <th width="150">Etapa</th>
+                            <th width="200">Pontuação</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-font">
+                        <tr ng-repeat="aluno in alunos">
+                            <td>{{aluno.nome}}</td>
+                            <td>{{aluno.etapa}}</td>
+                            <td>{{aluno.pontuacao}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+    </form>
+</div>

@@ -9,6 +9,7 @@ import br.com.tcc.common.entity.Anexo;
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
 import br.com.tcc.common.entity.EtapaPergunta;
+import br.com.tcc.common.enums.DisponibilidadeCurso;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.util.ConstantesI18N;
 import br.com.tcc.service.persistence.GenericDao;
@@ -17,6 +18,7 @@ import br.com.tcc.service.query.BuscarEtapa;
 import br.com.tcc.service.query.ExcluirEtapaPerguntaPorCurso;
 import br.com.tcc.service.query.ExcluirEtapaPerguntaPorEtapa;
 import br.com.tcc.service.query.ExcluirEtapaPorCurso;
+import br.com.tcc.service.query.UpdateDisponibilidadeCurso;
 import br.com.tcc.service.validator.CursoValidator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +52,7 @@ public class CursoServiceImpl {
             dao.remove(anexoRemover);
         }
         validador.validarSalvarCurso(curso);
+        curso.setDisponibilidade(DisponibilidadeCurso.FECHADO);
         dao.saveOrUpdate(curso);
         return curso;
     }
@@ -63,6 +66,11 @@ public class CursoServiceImpl {
             dao.remove(curso.getAnexo());
         }
         dao.remove(curso);
+    }
+
+    @Transactional(readOnly = false)
+    public void updateDisponibilidadeCurso(Long idCurso, DisponibilidadeCurso disponibilidade) {
+        dao.executeDML(new UpdateDisponibilidadeCurso(idCurso, disponibilidade));
     }
 
     @Transactional(readOnly = true)

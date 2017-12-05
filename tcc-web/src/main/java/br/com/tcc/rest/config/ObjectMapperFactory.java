@@ -6,6 +6,7 @@
 package br.com.tcc.rest.config;
 
 import br.com.tcc.common.enums.Avatar;
+import br.com.tcc.common.enums.DisponibilidadeCurso;
 import br.com.tcc.common.enums.Jogo;
 import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.SituacaoCurso;
@@ -36,6 +37,7 @@ public class ObjectMapperFactory {
             testModule.addDeserializer(TipoPergunta.class, new EnumDeserializer(ReflectionUtils.findMethod(TipoPergunta.class, "from", String.class)));
             testModule.addDeserializer(TipoUsuario.class, new EnumDeserializer(ReflectionUtils.findMethod(TipoUsuario.class, "from", String.class)));
             testModule.addDeserializer(Avatar.class, new EnumDeserializer(ReflectionUtils.findMethod(Avatar.class, "from", String.class)));
+            testModule.addDeserializer(DisponibilidadeCurso.class, new EnumDeserializer(ReflectionUtils.findMethod(DisponibilidadeCurso.class, "from", String.class)));
             testModule.addDeserializer(InputStream.class, new StreamDeserializer());
             testModule.addSerializer(new StreamSerializer());
             mapper.registerModule(testModule);

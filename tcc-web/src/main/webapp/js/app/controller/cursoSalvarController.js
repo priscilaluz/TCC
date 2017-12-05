@@ -121,6 +121,16 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
             });
         };
         
+        $scope.alteraDisponibilidade = function (id, idDisponibilidade) {
+            $rootScope.appLoaded = false;
+            Curso.updateDisponibilidade({'idCurso': id, 'idDisponibilidade': idDisponibilidade}, function (result) {
+                $rootScope.appLoaded = true;
+                buscarCursoConcluido(id);
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        };
+        
         var carregarEtapaIncial = function (curso) {
             $scope.numeroEtapa = curso.ultimaEtapa;
             $scope.abaEtapa = (curso.ultimaEtapa && curso.ultimaEtapa > 0);

@@ -4,7 +4,7 @@
         <hr class="hr-margin">
         <div class="col-xs-12 barra-rolagem-professor">
             <div class="col-xs-12" ng-repeat="curso in cursos" style="padding: 0px; border-bottom: 1px dotted #cdc8fd;">
-                <a class="pointer font-professor-home" style="color: #cdc8fd;">{{curso.nome}}</a>
+                <a class="pointer font-professor-home" ng-href="#/criar-curso/{{curso.id}}/{{curso.situacao.id}}" style="color: #cdc8fd;">{{curso.nome}}</a>
             </div>
         </div>
     </div>

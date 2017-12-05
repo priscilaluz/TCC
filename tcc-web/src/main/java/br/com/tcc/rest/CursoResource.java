@@ -7,6 +7,7 @@ package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Etapa;
+import br.com.tcc.common.enums.DisponibilidadeCurso;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.service.impl.CursoServiceImpl;
 import java.util.List;
@@ -105,5 +106,15 @@ public class CursoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Curso buscarCursoCompletoPorId(@QueryParam("idCurso") Long idCurso) {
         return cursoService.buscarCursoPorIdConcluido(idCurso);
+    }
+    
+    @GET
+    @Path("/updateDisponibilidade")
+    @Produces(MediaType.APPLICATION_JSON)
+    public boolean updateDisponibilidadeCurso(@QueryParam("idCurso") Long idCurso, @QueryParam("idDisponibilidade") String idDisponibilidade) {
+        if (idDisponibilidade != null) {
+            cursoService.updateDisponibilidadeCurso(idCurso, DisponibilidadeCurso.from(idDisponibilidade));
+        }
+        return true;
     }
 }

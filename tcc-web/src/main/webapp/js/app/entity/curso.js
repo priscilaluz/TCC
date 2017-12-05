@@ -6,6 +6,7 @@ tccApp.factory('Curso', ['$resource', function ($resource) {
             buscarCursoCompletoPorId: {method: 'GET', params: {verbo: 'buscarCompletoPorId'}, isArray: false},
             buscarCursos: {method: 'GET', params: {verbo: 'buscarCurso'}, isArray: true},
             buscarCursosAluno: {method: 'GET', params: {verbo: 'buscarCursosAluno'}, isArray: true},
+            updateDisponibilidade: {method: 'GET', params: {verbo: 'updateDisponibilidade'}, isArray: false},
             deletarCurso: {method: 'DELETE', params: {verbo: 'deletarCurso'}, isArray: false}
         });
 

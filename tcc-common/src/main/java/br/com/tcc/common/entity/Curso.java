@@ -5,6 +5,7 @@
  */
 package br.com.tcc.common.entity;
 
+import br.com.tcc.common.enums.DisponibilidadeCurso;
 import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.support.AbstractIdBean;
 import br.com.tcc.common.util.ConstantesI18N;
@@ -73,6 +74,14 @@ public class Curso extends AbstractIdBean<Long> {
                         value = "br.com.tcc.common.enums.SituacaoCurso")})
     @Column(name = "SITUACAO", nullable = false)
     private SituacaoCurso situacao;
+    
+    @Enumerated(EnumType.STRING)
+    @Type(type = "br.com.tcc.common.support.GenericEnumUserType",
+            parameters = {
+                @org.hibernate.annotations.Parameter(name = "enumClass",
+                        value = "br.com.tcc.common.enums.DisponibilidadeCurso")})
+    @Column(name = "DISPONIBILIDADE", nullable = false)
+    private DisponibilidadeCurso disponibilidade;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "curso")
     private Set<Etapa> etapas = new HashSet<Etapa>();
@@ -168,6 +177,14 @@ public class Curso extends AbstractIdBean<Long> {
     
     public void setSituacao(SituacaoCurso situacao) {
         this.situacao = situacao;
+    }
+
+    public DisponibilidadeCurso getDisponibilidade() {
+        return disponibilidade;
+    }
+
+    public void setDisponibilidade(DisponibilidadeCurso disponibilidade) {
+        this.disponibilidade = disponibilidade;
     }
     
     public Long getIdAnexo() {
