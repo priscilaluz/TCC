@@ -8,7 +8,9 @@ package br.com.tcc.service.impl;
 import br.com.tcc.common.entity.Curso;
 import br.com.tcc.common.entity.Pergunta;
 import br.com.tcc.common.entity.Usuario;
+import br.com.tcc.common.enums.SituacaoCurso;
 import br.com.tcc.common.enums.TipoUsuario;
+import br.com.tcc.common.vo.DadoProfessor;
 import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarUsuario;
 import br.com.tcc.service.validator.UsuarioValidator;
@@ -35,6 +37,9 @@ public class UsuarioServiceImpl {
     
     @Autowired
     private CursoServiceImpl cursoService;
+    
+    @Autowired
+    private CursoAlunoServiceImpl cursoAlunoService;
 
     @Transactional(readOnly = false)
     public Usuario salvarUsuario(Usuario usuario) {
@@ -76,5 +81,15 @@ public class UsuarioServiceImpl {
         validador.validarExcluirUsuario(perguntas, cursos);
         Usuario professores = buscarProfessorPorId(idProfessores);
         dao.remove(professores);
+    }
+    
+    @Transactional(readOnly = false)
+    public DadoProfessor dadosProfessor(Long idProfessores) {
+        DadoProfessor dado = new DadoProfessor();
+        dado.setQntAluno(cursoAlunoService.buscarCountCursoAlunoPorProfessor(idProfessores));
+        dado.setQntCursoRascunho(cursoService.buscarCountCursoPorFiltro(idProfessores, SituacaoCurso.RASCUNHO));
+        dado.setQntCursoConcluidos(cursoService.buscarCountCursoPorFiltro(idProfessores, SituacaoCurso.CONCLUIDA));
+        dado.setQntPerguntas(perguntaService.buscarCountPerguntaPorFiltro(idProfessores));
+        return dado;
     }
 }

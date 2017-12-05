@@ -91,4 +91,9 @@ public class PerguntaServiceImpl {
                 .whereDescricaoLike(parteNome)
                 .whereCategoria(idCategoria));
     }
+    
+    @Transactional(readOnly = true)
+    public Long buscarCountPerguntaPorFiltro(Long idUsuario) {
+        return (Long) dao.uniqueResult(new BuscarPergunta.Count().fetchUsuario("").whereUsuario(idUsuario));
+    }
 }

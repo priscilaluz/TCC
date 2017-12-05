@@ -606,3 +606,99 @@ li{
     display: block;
     margin: 0 auto;
 }
+
+.menu-professor-fonte{
+    color: #420303;
+    font-size: 20px;
+    font-family:cursive;
+}
+
+.menu-professor{
+    border: #dff0d8 solid 1px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    
+    background: #d35e4c; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #abece2, #61b697); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #abece2, #61b697); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #abece2, #61b697); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #abece2, #61b697); /* Standard syntax (must be last) */
+}
+
+.menu-professor:hover {
+    color: #ffffff;
+    border: #dff0d8 solid 1px;
+    
+    background: #d35e4c; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #7fe4d5, #42ad86); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #7fe4d5, #42ad86); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #7fe4d5, #42ad86); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #7fe4d5, #42ad86); /* Standard syntax (must be last) */
+}
+
+.img-professor-menu{
+    height:100px;
+    display: block;
+    margin: 0 auto;
+}
+
+.professor-menu-background {
+    background: #d35e4c; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #fd6c16, #d4b253); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #fd6c16, #d4b253); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #fd6c16, #d4b253); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #fd6c16, #d4b253); /* Standard syntax (must be last) */
+    /*border: #f7a7a7 dotted 3px;*/
+    padding-top: 25px;
+    border-radius: 6px;
+    height: 390px;
+}
+
+.ranking-menu-background {
+    background: #d35e4c; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #c76dff, #70aba8); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #c76dff, #70aba8); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #c76dff, #70aba8); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #c76dff, #70aba8); /* Standard syntax (must be last) */
+    padding-top: 25px;
+    border-radius: 6px;
+    height: 390px;
+}
+
+.hr-margin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.barra-rolagem-professor {
+    height: 285px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.font-professor-home {
+    font-family:cursive;
+    font-size: 15px;
+}
+
+.dados-professor-home {
+    font-family:cursive;
+    color: #054645;
+    font-size: 17px;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}

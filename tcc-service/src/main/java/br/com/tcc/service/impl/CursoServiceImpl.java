@@ -109,6 +109,13 @@ public class CursoServiceImpl {
                 .whereSituacaoCurso(situacaoCurso));
     }
     
+    @Transactional(readOnly = true)
+    public Long buscarCountCursoPorFiltro(Long idUsuario, SituacaoCurso situacaoCurso) {
+        return (Long) dao.uniqueResult(new BuscarCurso.Count()
+                .whereUsuario(idUsuario)
+                .whereSituacaoCurso(situacaoCurso));
+    }
+    
     @Transactional(readOnly = false)
     public Etapa salvarEtapa(Etapa etapa) {
         validador.validarSalvarEtapa(etapa);

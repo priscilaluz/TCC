@@ -18,8 +18,19 @@ public abstract class BuscarCursoAluno<T extends Serializable> extends BusinessF
         }
     }
     
+    public static class Count extends BuscarCursoAluno<Long> {
+        public Count() {
+            appendText("select count(ca) from CursoAluno ca ");
+        }
+    }
+    
     public BuscarCursoAluno fetchCurso(String fetch) {
         appendText(" left join "+fetch+" ca.curso c ");
+        return this;
+    }
+    
+    public BuscarCursoAluno fetchProfessor(String fetch) {
+        appendText(" left join "+fetch+" c.usuario u ");
         return this;
     }
     
@@ -56,6 +67,15 @@ public abstract class BuscarCursoAluno<T extends Serializable> extends BusinessF
             appendText(getPreffixFilter());
             appendText(" a.id = :idAluno ");
             addParameter("idAluno", id);
+        }    
+        return this;
+    }
+
+    public BuscarCursoAluno whereIdProfessor(Long idProfessor) {
+        if (idProfessor != null) {
+            appendText(getPreffixFilter());
+            appendText(" u.id = :idProfessor ");
+            addParameter("idProfessor", idProfessor);
         }    
         return this;
     }

@@ -76,6 +76,14 @@ public class CursoAlunoServiceImpl {
     }
     
     @Transactional(readOnly = true)
+    public Long buscarCountCursoAlunoPorProfessor(Long idProfessor) {
+        return (Long) dao.uniqueResult(new BuscarCursoAluno.Count()
+                .fetchCurso("")
+                .fetchProfessor("")
+                .whereIdProfessor(idProfessor));
+    }
+    
+    @Transactional(readOnly = true)
     public TabuleiroCurso buscarCursoAlunoPorIdCursoAluno(Long idCursoAluno) {
         CursoAluno cursoAluno = (CursoAluno) dao.uniqueResult(new BuscarCursoAluno.Entities()
                 .fetchAluno(ConstantesI18N.FETCH).fetchCurso(ConstantesI18N.FETCH)

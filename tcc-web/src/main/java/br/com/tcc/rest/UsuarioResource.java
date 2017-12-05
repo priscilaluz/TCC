@@ -6,6 +6,7 @@
 package br.com.tcc.rest;
 
 import br.com.tcc.common.entity.Usuario;
+import br.com.tcc.common.vo.DadoProfessor;
 import br.com.tcc.service.impl.UsuarioServiceImpl;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -73,6 +74,13 @@ public class UsuarioResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Usuario buscarProfessorPorId(@QueryParam("idProfessores") Long idProfessores) {
         return usuarioService.buscarProfessorPorId(idProfessores);
+    }
+    
+    @GET
+    @Path("/dadosProfessor")
+    @Produces(MediaType.APPLICATION_JSON)
+    public DadoProfessor dadosProfessor(@QueryParam("idProfessores") Long idProfessores) {
+        return usuarioService.dadosProfessor(idProfessores);
     }
     
 }

@@ -5,9 +5,11 @@ tccApp.run(['$rootScope', 'growl', '$cookies', '$location', function ($rootScope
     });
     
     $rootScope.usuarioLogado = $cookies.getObject('usuarioLogado');
-    $rootScope.isAdministrador = $rootScope.usuarioLogado.tipo.id === "D";
-    $rootScope.isAluno = $rootScope.usuarioLogado.tipo.id === "A";
-    $rootScope.isProfessor = $rootScope.usuarioLogado.tipo.id === "P";
+    if ($rootScope.usuarioLogado) {
+        $rootScope.isAdministrador = $rootScope.usuarioLogado.tipo.id === "D";
+        $rootScope.isAluno = $rootScope.usuarioLogado.tipo.id === "A";
+        $rootScope.isProfessor = $rootScope.usuarioLogado.tipo.id === "P";
+    }
     
     $rootScope.logoff = function() {
         $rootScope.usuarioLogado = null;
