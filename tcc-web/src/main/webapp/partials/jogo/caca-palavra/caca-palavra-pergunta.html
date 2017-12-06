@@ -20,7 +20,7 @@
     <div class="form-group">
         <div class="col-md-5">
             <div class="col-md-12" ng-repeat="linha in model.matrizCompleta">
-                <div class="col-md-1 cedula handCursor noselect" ng-repeat="dado in linha" ng-style="dado.style"
+                <div class="col-md-1 cedula pointer noselect" ng-repeat="dado in linha" ng-style="dado.style"
                      ng-mousedown="mouseDownCelula($parent.$index, $index)"
                      ng-mouseup="mouseUpCelula($parent.$index, $index)"
                      ng-mouseover="mouseOverCelula($parent.$index, $index)"

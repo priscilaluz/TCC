@@ -1,5 +1,6 @@
 tccApp.controller('CacaPalavraController', ['$scope', '$rootScope', '$routeParams', '$modal', '$location', '$timeout', 'Jogo', 'RelatorioEtapa',
 function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, RelatorioEtapa) {
+    $rootScope.telaHomeAluno = false;
     var tamanhoMatriz = 12;
     var indexMatriz = -1;
     var corSelecionada = '#5396d4';

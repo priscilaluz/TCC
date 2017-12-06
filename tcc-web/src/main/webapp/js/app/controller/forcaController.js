@@ -1,5 +1,6 @@
 tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$modal', '$location', '$timeout', 'Jogo', 'RelatorioEtapa',
     function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, RelatorioEtapa) {
+        $rootScope.telaHomeAluno = false;
         $rootScope.contagem = true;
         var imgCampoVazio = "img/jogos/forca/Letras/CampoVazio.png";
         var espaco = "img/jogos/forca/Letras/espaco.png";

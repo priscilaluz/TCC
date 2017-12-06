@@ -1,5 +1,6 @@
 tccApp.controller('CursoConsultarCrieiController', ['$scope', '$rootScope', 'Curso', 'Categoria', 'Enums', '$location', 'growl',
     function ($scope, $rootScope, Curso, Categoria, Enums, $location, growl) {
+        $rootScope.telaHomeAluno = false;
         $scope.cursos = [];
         $scope.pesquisar = {};
 

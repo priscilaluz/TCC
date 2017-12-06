@@ -1,5 +1,6 @@
 tccApp.controller('CategoriaConsultaController', ['$scope', '$rootScope', '$location', 'Categoria', 'growl',
     function ($scope, $rootScope, $location, Categoria, growl) {
+        $rootScope.telaHomeAluno = false;
         $scope.model = {
             nomeCategoria: null,
             categoria: []

@@ -17,12 +17,12 @@
                         <tr ng-repeat="pergunta in perguntas">
                             <td>
                                 <a ng-show="pergunta.usuario.id==usuarioLogado.id" ng-click="excluirPergunta($index)" style="color: #ff6624;">
-                                    <i class="glyphicon glyphicon-remove handCursor" title="Excluir"></i></a>
+                                    <i class="glyphicon glyphicon-remove pointer" title="Excluir"></i></a>
                             </td>
                             <td>
                                 <a ng-click="telaNovaEditarPergunta(pergunta.id)" style="color: #ff6624;">
-                                    <i class="glyphicon glyphicon-pencil handCursor" ng-show="pergunta.usuario.id==usuarioLogado.id"title="Editar"></i>
-                                    <i class="glyphicon glyphicon-zoom-in handCursor" ng-show="pergunta.usuario.id!=usuarioLogado.id"title="Visualizar"></i></a>
+                                    <i class="glyphicon glyphicon-pencil pointer" ng-show="pergunta.usuario.id==usuarioLogado.id"title="Editar"></i>
+                                    <i class="glyphicon glyphicon-zoom-in pointer" ng-show="pergunta.usuario.id!=usuarioLogado.id"title="Visualizar"></i></a>
                             </td>
                             <td>{{pergunta.descricao.substring(0, 220)+(pergunta.descricao.length>220?'...':'')}}</td>
                             <td>{{pergunta.tipo.descricao}}</td>

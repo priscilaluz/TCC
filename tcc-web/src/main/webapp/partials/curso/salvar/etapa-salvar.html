@@ -22,7 +22,7 @@
                            href="rest/anexo/download?arquivo={{etapa.anexo.nomeArquivo}}&idAnexo={{etapa.anexo.id}}">
                             &nbsp;{{etapa.anexo.nomeArquivo}}
                         </a>
-                        &nbsp;<i ng-show="etapa.anexo" class="glyphicon glyphicon-remove handCursor"
+                        &nbsp;<i ng-show="etapa.anexo" class="glyphicon glyphicon-remove pointer"
                            ng-click="removerArquivo()"></i>
                     </label>
                 </div>
@@ -52,7 +52,7 @@
                     </thead>
                     <tbody class="table-font">
                         <tr ng-repeat="pergunta in perguntasEtapa">
-                            <td><a ng-click="excluirPergunta($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove handCursor"></i></a></td>
+                            <td><a ng-click="excluirPergunta($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove pointer"></i></a></td>
                             <td>{{pergunta.descricao}}</td>
                             <td>
                                 <a href="" ng-click="dadosPergunta(pergunta)"><i class="glyphicon glyphicon-info-sign botao-add" style="font-size: 26px;"></i></a>

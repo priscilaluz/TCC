@@ -1,5 +1,6 @@
 tccApp.controller('ProfessorSalvarController', ['$scope', '$rootScope', '$routeParams', '$location', 'Usuario', 'growl',
     function ($scope, $rootScope, $routeParams, $location, Usuario, growl) {
+        $rootScope.telaHomeAluno = false;
         $scope.model = {
             professor:  new Usuario()
         };

@@ -1,5 +1,6 @@
 tccApp.controller('ProfessorConsultaController', ['$scope', '$rootScope', '$location', 'Usuario', 'growl',
     function ($scope, $rootScope, $location, Usuario, growl) {
+        $rootScope.telaHomeAluno = false;
         $scope.model = {
             nomeProfessor: null,
             professores: []

@@ -1,5 +1,6 @@
 tccApp.controller('LoginController', ['$scope', 'Usuario', 'growl', '$cookies', '$rootScope', '$location',
     function ($scope, Usuario, growl, $cookies, $rootScope, $location) {
+        $rootScope.telaHomeAluno = false;
         $cookies.remove('usuarioLogado');
         $scope.usuario = new Usuario();
         $rootScope.usuarioLogado = null;

@@ -26,7 +26,7 @@ public class PerguntaValidatorTest {
     public void naoDeveSalvarSemPergunta(){
         Pergunta p = null;
         try {
-            validator.validarSalvarPergunta(p);
+            validator.validarSalvarPergunta(p, 0L);
             fail();
         } catch (BusinessException ex) {
             assertEquals(ConstantesI18N.PERGUNTA_OBRIGATORIA, ex.getMessage());
@@ -37,7 +37,7 @@ public class PerguntaValidatorTest {
         Pergunta p = obterPerguntaValida();
         try {
             p.setCategoria(null);
-            validator.validarSalvarPergunta(p);
+            validator.validarSalvarPergunta(p, 0L);
             fail();
         } catch (BusinessException ex) {
             assertEquals(ConstantesI18N.PERGUNTA_CATEGORIA_OBRIGATORIA, ex.getMessage());
@@ -48,7 +48,7 @@ public class PerguntaValidatorTest {
         Pergunta p = obterPerguntaValida();
         try {
             p.setDescricao(null);
-            validator.validarSalvarPergunta(p);
+            validator.validarSalvarPergunta(p, 0L);
             fail();
         } catch (BusinessException ex) {
             assertEquals(ConstantesI18N.PERGUNTA_DESCRICAO_OBRIGATORIA, ex.getMessage());
@@ -59,7 +59,7 @@ public class PerguntaValidatorTest {
         Pergunta p = obterPerguntaValida();
         try {
             p.setTipo(null);
-            validator.validarSalvarPergunta(p);
+            validator.validarSalvarPergunta(p, 0L);
             fail();
         } catch (BusinessException ex) {
             assertEquals(ConstantesI18N.PERGUNTA_TIPO_OBRIGATORIA, ex.getMessage());
@@ -70,7 +70,7 @@ public class PerguntaValidatorTest {
         Pergunta p = obterPerguntaValida();
         try {
             p.setNivel(null);
-            validator.validarSalvarPergunta(p);
+            validator.validarSalvarPergunta(p, 0L);
             fail();
         } catch (BusinessException ex) {
             assertEquals(ConstantesI18N.PERGUNTA_NIVEL_OBRIGATORIA, ex.getMessage());
@@ -81,7 +81,7 @@ public class PerguntaValidatorTest {
         Pergunta p = obterPerguntaValida();
         try {
             p.setUsuario(null);
-            validator.validarSalvarPergunta(p);
+            validator.validarSalvarPergunta(p, 0L);
             fail();
         } catch (BusinessException ex) {
             assertEquals(ConstantesI18N.PERGUNTA_USUARIO_OBRIGATORIA, ex.getMessage());
@@ -92,10 +92,20 @@ public class PerguntaValidatorTest {
         Pergunta p = obterPerguntaValida();
         try {
             p.setRespostas(new HashSet<Resposta>());
-            validator.validarSalvarPergunta(p);
+            validator.validarSalvarPergunta(p, 0L);
             fail();
         } catch (BusinessException ex) {
             assertEquals(ConstantesI18N.PERGUNTA_RESPOSTA_OBRIGATORIA, ex.getMessage());
+        }
+    }
+    @Test
+    public void naoDeveSalvarJaCadastradaEmCurso(){
+        Pergunta p = obterPerguntaValida();
+        try {
+            validator.validarSalvarPergunta(p, 2L);
+            fail();
+        } catch (BusinessException ex) {
+            assertEquals(ConstantesI18N.PERGUNTA_JA_CADASTRADA_NO_CURSO, ex.getMessage());
         }
     }
     //</editor-fold>

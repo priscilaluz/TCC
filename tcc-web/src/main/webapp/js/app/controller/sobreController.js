@@ -1,3 +1,3 @@
-tccApp.controller('SobreController', ['$scope', function ($scope) {
-        
+tccApp.controller('SobreController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+    $rootScope.telaHomeAluno = false;
 }]);

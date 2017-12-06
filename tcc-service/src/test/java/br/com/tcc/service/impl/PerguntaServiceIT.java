@@ -46,9 +46,9 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveEditarPergunta(){
-        Pergunta perguntaAntes = perguntaServiceImpl.buscarPerguntaPorId(1L);
-        assertEquals(perguntaAntes.getDescricao(), "Pergunta 1 da Quanto é atividade de matemática");
-        List<Resposta> respostasAntes = dao.query("select r from Resposta r where r.pergunta.id = 1");
+        Pergunta perguntaAntes = perguntaServiceImpl.buscarPerguntaPorId(4L);
+        assertEquals(perguntaAntes.getDescricao(), "Pergunta 4 da atividade de matemática");
+        List<Resposta> respostasAntes = dao.query("select r from Resposta r where r.pergunta.id = 4");
         assertTrue(respostasAntes.size() == 2);
         
         perguntaAntes.setDescricao("Pergunta 1 AAA");
@@ -57,9 +57,9 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
         perguntaAntes.setIdAnexo(1L);
         perguntaServiceImpl.salvarPergunta(perguntaAntes);
         
-        Pergunta perguntaEditado = perguntaServiceImpl.buscarPerguntaPorId(1L);
+        Pergunta perguntaEditado = perguntaServiceImpl.buscarPerguntaPorId(4L);
         assertEquals(perguntaEditado.getDescricao(), "Pergunta 1 AAA");
-        List<Resposta> respostasDepois = dao.query("select r from Resposta r where r.pergunta.id = 1");
+        List<Resposta> respostasDepois = dao.query("select r from Resposta r where r.pergunta.id = 4");
         assertTrue(respostasDepois.size() == 1);
     }
     
@@ -101,8 +101,8 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     @Test
     public void deveRetornarPerguntaPorCategoria(){
         List<Pergunta> perguntas = perguntaServiceImpl.buscarPerguntaPorFiltro(null, null, 1L, null, null);
-        assertTrue(perguntas.size()==2);
-        List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
+        assertTrue(perguntas.size()==3);
+        List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L, 4L));
         for (Pergunta p : perguntas) {
             assertTrue(ids.contains(p.getId()));
         }

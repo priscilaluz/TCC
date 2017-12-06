@@ -1,5 +1,6 @@
 tccApp.controller('CursoTodosConsultarController', ['$scope', '$rootScope', 'Curso', 'Enums', '$modal', 'Categoria',
     function ($scope, $rootScope, Curso, Enums, $modal, Categoria) {
+        $rootScope.telaHomeAluno = false;
         $scope.cursos = [];
         $scope.pesquisar = {};
 

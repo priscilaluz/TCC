@@ -1,5 +1,6 @@
 tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', 'Pergunta', 'Categoria', 'Enums', '$location', 'growl',
     function ($scope, $rootScope, Pergunta, Categoria, Enums, $location, growl) {
+        $rootScope.telaHomeAluno = false;
         $scope.categorias = [];
         $scope.perguntas = [];
         $scope.tipos = [];

@@ -1,5 +1,6 @@
 tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParams', '$modal', 'growl', 'Enums', 'Curso', 'CursoAluno', 'Etapa', 'Categoria', 'AnexoService',
     function ($scope, $rootScope, $routeParams, $modal, growl, Enums, Curso, CursoAluno, Etapa, Categoria, AnexoService) {
+        $rootScope.telaHomeAluno = false;
         $scope.categorias = [];
         $scope.curso = new Curso();
         var idCurso = null;

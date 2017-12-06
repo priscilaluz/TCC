@@ -12,6 +12,7 @@ import br.com.tcc.common.enums.NivelPergunta;
 import br.com.tcc.common.enums.TipoPergunta;
 import br.com.tcc.common.util.ConstantesI18N;
 import br.com.tcc.service.persistence.GenericDao;
+import br.com.tcc.service.query.BuscarEtapaPergunta;
 import br.com.tcc.service.query.BuscarPergunta;
 import br.com.tcc.service.query.ExcluirRespostaPorPergunta;
 import br.com.tcc.service.validator.PerguntaValidator;
@@ -38,6 +39,12 @@ public class PerguntaServiceImpl {
 
     @Transactional(readOnly = false)
     public Pergunta salvarPergunta(Pergunta pergunta) {
+        Long qntEtapasPerguntas = 0L;
+        if (pergunta.getId() != null) {
+            qntEtapasPerguntas = (Long) dao.uniqueResult(new BuscarEtapaPergunta.Count()
+                .fetchPergunta("").wherePergunta(pergunta.getId()));
+        }
+        
         Anexo anexo = pergunta.getAnexo();
         if (anexo != null) {
             anexo.setId(pergunta.getIdAnexo());
@@ -46,7 +53,7 @@ public class PerguntaServiceImpl {
             Anexo anexoRemover = dao.get(Anexo.class, pergunta.getIdAnexo());
             dao.remove(anexoRemover);
         }
-        validador.validarSalvarPergunta(pergunta);
+        validador.validarSalvarPergunta(pergunta, qntEtapasPerguntas);
         if (pergunta.getId() != null){
             dao.executeDML(new ExcluirRespostaPorPergunta(pergunta.getId()));
         }

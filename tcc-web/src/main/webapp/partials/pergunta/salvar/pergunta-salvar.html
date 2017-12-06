@@ -62,7 +62,7 @@
                     <tbody class="table-font">
                         <tr ng-repeat="resposta in pergunta.respostas">
                             <td ng-show="editar">
-                                <a ng-click="excluirOpcao($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove handCursor"></i></a>
+                                <a ng-click="excluirOpcao($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove pointer"></i></a>
                             </td>
                             <td>{{resposta.descricao}}</td>
                             <td ng-show="editar">
@@ -98,7 +98,7 @@
                            href="rest/anexo/download?arquivo={{pergunta.anexo.nomeArquivo}}&idAnexo={{pergunta.anexo.id}}">
                             &nbsp;{{pergunta.anexo.nomeArquivo}}
                         </a>
-                        &nbsp;<i ng-show="pergunta.anexo" class="glyphicon glyphicon-remove handCursor"
+                        &nbsp;<i ng-show="pergunta.anexo" class="glyphicon glyphicon-remove pointer"
                            ng-click="removerArquivo()"></i>
                     </label>
                     

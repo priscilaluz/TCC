@@ -5,7 +5,7 @@
     <p class="col-lg-4 curso-titulo-concluido">Categoria: <span class="curso-nao-titulo-concluido">{{curso.categoria.nome}}</span></p>
     <p class="col-lg-4 curso-titulo-concluido">Código de Acesso: <span class="curso-nao-titulo-concluido">{{curso.codAcesso}}</span></p>
     
-    <div class="col-md-12 handCursor menuCursosParticipoDiv grad1" 
+    <div class="col-md-12 pointer menuCursosParticipoDiv grad1" 
              ng-click="model.dadoGeral = !model.dadoGeral" data-toggle="collapse" data-target="#dadoGeral">
             <h3 class="menuCursosParticipoH3">
                 Dados Gerais do Curso
@@ -14,7 +14,7 @@
             </h3>
         </div>
         <div class="row collapse" id="dadoGeral" data-ng-include="'partials/curso/salvar/visualizar-curso-dados.html'"></div>
-        <div class="col-md-12 handCursor menuCursosParticipoDiv grad1" 
+        <div class="col-md-12 pointer menuCursosParticipoDiv grad1" 
              ng-click="model.aluno = !model.aluno" data-toggle="collapse" data-target="#listaAluno">
             <h3 class="menuCursosParticipoH3">
                 Alunos

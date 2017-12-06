@@ -1,5 +1,6 @@
 tccApp.controller('RelatorioEtapaController', ['$scope', '$rootScope', '$routeParams', '$location', 'CursoAluno',
     function ($scope, $rootScope, $routeParams, $location, CursoAluno) {
+        $rootScope.telaHomeAluno = false;
         $scope.model = {
             jogo: $routeParams.jogo
         };

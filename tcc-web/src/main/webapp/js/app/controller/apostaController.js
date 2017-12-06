@@ -1,5 +1,6 @@
 tccApp.controller('ApostaController', ['$scope', '$rootScope', '$routeParams', '$modal', '$location', '$timeout', 'Jogo', 'RelatorioEtapa',
 function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, RelatorioEtapa) {
+    $rootScope.telaHomeAluno = false;
     var tempoPadraoPergunta = 60;
     var pontuacaoInicial = 1000;
     var pontuacaoInicialFase = pontuacaoInicial;

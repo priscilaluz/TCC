@@ -28,6 +28,7 @@ public class ConstantesI18N {
     public static final String PERGUNTA_RESPOSTA_OBRIGATORIA = "pergunta.resposta.obrigatoria";
     public static final String PERGUNTA_TIPO_OBRIGATORIA = "pergunta.tipo.obrigatoria";
     public static final String PERGUNTA_NIVEL_OBRIGATORIA = "pergunta.nivel.obrigatoria";
+    public static final String PERGUNTA_JA_CADASTRADA_NO_CURSO = "pergunta.ja.cadastrada.no.curso";
     
     //Curso
     public static final String CURSO_OBRIGATORIO = "curso.obrigatorio";

@@ -1,5 +1,6 @@
 tccApp.controller('QuizController', ['$scope', '$rootScope', '$routeParams', '$modal', '$location', '$timeout', 'Jogo', 'RelatorioEtapa',
 function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, RelatorioEtapa) {
+    $rootScope.telaHomeAluno = false;
     $rootScope.contagem = true;
     $scope.count = 0;
     var idCursoAluno = $routeParams.idCursoAluno;

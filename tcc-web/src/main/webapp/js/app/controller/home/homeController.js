@@ -1,5 +1,6 @@
 tccApp.controller('HomeController', ['$scope', '$rootScope',
     function ($scope, $rootScope) {
+        $rootScope.telaHomeAluno = false;
         $rootScope.appLoaded = true;
         $scope.init = function (){
             $scope.titulo = "TELA INICIAL";

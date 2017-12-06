@@ -1,5 +1,6 @@
 tccApp.controller('MeusCursoAlunoController', ['$scope', '$rootScope', '$location', 'CursoAluno',
     function ($scope, $rootScope, $location, CursoAluno) {
+        $rootScope.telaHomeAluno = false;
         $scope.model = {
             cursosAndamento: null,
             cursosConcluido: null,

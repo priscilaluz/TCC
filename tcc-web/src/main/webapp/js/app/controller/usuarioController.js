@@ -1,5 +1,6 @@
 tccApp.controller('UsuarioController', ['$scope', '$rootScope', 'Usuario', 'Enums', '$cookies', 'growl',
     function ($scope, $rootScope, Usuario, Enums, $cookies, growl) {
+        $rootScope.telaHomeAluno = false;
         $scope.usuario = new Usuario();
         $scope.backgroundAvatar = [];
         var backgroundAvatarOriginal = {"background": "linear-gradient(#58a287, #c3dac1, #e1f7df)"};

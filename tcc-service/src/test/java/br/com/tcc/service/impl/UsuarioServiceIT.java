@@ -1,6 +1,7 @@
 package br.com.tcc.service.impl;
 
 import br.com.tcc.common.entity.Usuario;
+import br.com.tcc.common.enums.Avatar;
 import br.com.tcc.common.enums.TipoUsuario;
 import br.com.tcc.service.persistence.SimpleTestDao;
 import br.com.tcc.service.query.BuscarUsuario;
@@ -105,6 +106,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
                 .comEmail("teste@a.com")
                 .comLogin("TesteLogin")
                 .comSenha("1234")
+                .comAvatar(Avatar.PESSOA)
                 .comTipoUsuario(TipoUsuario.PROFESSOR)
                 .build();
         return categoria;

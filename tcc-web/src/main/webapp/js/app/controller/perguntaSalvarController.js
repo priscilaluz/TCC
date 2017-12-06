@@ -1,5 +1,6 @@
 tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routeParams', 'growl', 'Pergunta', 'Enums', 'Categoria', 'AnexoService', '$location',
     function ($scope, $rootScope, $routeParams, growl, Pergunta, Enums, Categoria, AnexoService, $location) {
+        $rootScope.telaHomeAluno = false;
         $scope.pergunta = new Pergunta();
         $scope.pergunta.respostas = [];
         $scope.telaCadastro = false;

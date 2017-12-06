@@ -9,19 +9,21 @@
                             <th width="10"></th>
                             <th>Curso</th>
                             <th width="100">Situação</th>
+                            <th width="130">Disponibilidade</th>
                             <th width="100">Categoria</th>
                         </tr>
                     </thead>
                     <tbody  class="table-font">
                         <tr ng-repeat="curso in cursos">
                             <td>
-                                <a ng-click="excluirCurso($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove handCursor"></i></a>
+                                <a ng-click="excluirCurso($index)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove pointer"></i></a>
                             </td>
                             <td>
-                                <a ng-click="telaNovaEditarCurso(curso.id, curso.situacao.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-pencil handCursor"></i></a>
+                                <a ng-click="telaNovaEditarCurso(curso.id, curso.situacao.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-pencil pointer"></i></a>
                             </td>
                             <td>{{curso.nome}}</td>
                             <td>{{curso.situacao.descricao}}</td>
+                            <td>{{curso.disponibilidade.descricao}}</td>
                             <td>{{curso.categoria.nome}}</td>
                         </tr>
                     </tbody>
