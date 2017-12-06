@@ -30,10 +30,5 @@
             </div>
         </nav>
     </div>
-    <div class="col-md-12" style="padding-bottom: 0px; font-family:cursive; font-size: 17px; color: #ffffff;" ng-hide="isAdministrador">
-        <div class="col-md-4 col-md-offset-1">
-        <p >{{usuarioLogado.nome}}</p>
-        </div>
-    </div>
-    <div class="col-md-12 linhaBranca"></div>
+    <div class="col-md-12"ng-class="{'linhaBranca': !telaHomeAluno,'homeLinhaBranca': telaHomeAluno}"></div>
 </div>

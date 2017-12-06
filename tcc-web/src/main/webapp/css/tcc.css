@@ -333,6 +333,12 @@ li {
     background-image: url('../img/linha.png');
     background-repeat: repeat-x;
 }
+.homeLinhaBranca{
+    margin-top: -2px;
+    padding-top: 2px;
+    background-image: url('../img/linha.png');
+    background-repeat: repeat-x;
+}
 
 .btn-modelo {
     font-family:cursive;
@@ -701,9 +707,21 @@ li{
 
 .aluno-pagina-principal {
     background: #d35e4c; /* For browsers that do not support gradients */    
-    background: -webkit-linear-gradient(left top, #c76dff, #70aba8); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #c76dff, #70aba8); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #c76dff, #70aba8); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #c76dff, #70aba8); /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(left top, #61b697, #d2c895); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #61b697, #d2c895); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #61b697, #d2c895); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #61b697, #d2c895); /* Standard syntax (must be last) */
     height: 300px;
+}
+
+.background-home-aluno-1tens {
+    border-radius: 100px;
+    height: 255px;
+    padding-top: 95px;
+}
+.background-home-aluno-1tem-1-3 {
+    background-image: radial-gradient(farthest-corner at center center, #de662e 0%, #ff9b6d 100%);
+}
+.background-home-aluno-1tem-2-4 {
+    background-image: radial-gradient(farthest-corner at center center, #f9aa58 0%, #ff972b 100%);
 }
