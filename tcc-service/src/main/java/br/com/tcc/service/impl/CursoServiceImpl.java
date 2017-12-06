@@ -183,6 +183,7 @@ public class CursoServiceImpl {
         return (Etapa) dao.uniqueResult(new BuscarEtapa.Entities()
                 .fetchEtapaPergunta(ConstantesI18N.FETCH)
                 .fetchPergunta(ConstantesI18N.FETCH)
+                .fetchPerguntaAnexo(ConstantesI18N.FETCH)
                 .fetchResposta(ConstantesI18N.FETCH, resposta)
                 .fetchAnexo(ConstantesI18N.FETCH)
                 .whereIdEtapa(idEtapa));

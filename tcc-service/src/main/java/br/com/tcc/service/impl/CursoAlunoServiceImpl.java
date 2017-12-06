@@ -87,6 +87,7 @@ public class CursoAlunoServiceImpl {
     public TabuleiroCurso buscarCursoAlunoPorIdCursoAluno(Long idCursoAluno) {
         CursoAluno cursoAluno = (CursoAluno) dao.uniqueResult(new BuscarCursoAluno.Entities()
                 .fetchAluno(ConstantesI18N.FETCH).fetchCurso(ConstantesI18N.FETCH)
+                .fetchCursoAnexo(ConstantesI18N.FETCH)
                 .fetchEtapas(ConstantesI18N.FETCH)
                 .whereIdCursoAluno(idCursoAluno));
         TabuleiroCurso tabuleiroCurso = new TabuleiroCurso();
@@ -202,7 +203,8 @@ public class CursoAlunoServiceImpl {
     @Transactional(readOnly = true)
     public EtapaAluno buscarEtapaAlunoPorCursoAlunoEEtapa(Long idEtapaAluno, Long idCursoAluno, Long idEtapa) {
         EtapaAluno etapaAluno = (EtapaAluno) dao.uniqueResult(new BuscarEtapaAluno.Entities()
-                .fetchCursoAluno(ConstantesI18N.FETCH).fetchEtapa(ConstantesI18N.FETCH).fetchCurso(ConstantesI18N.FETCH)
+                .fetchCursoAluno(ConstantesI18N.FETCH).fetchEtapa(ConstantesI18N.FETCH)
+                .fetchEtapa(ConstantesI18N.FETCH).fetchEtapaAnexo(ConstantesI18N.FETCH)
                 .whereIdEtapaAluno(idEtapaAluno).whereIdCursoAluno(idCursoAluno).whereIdEtapa(idEtapa));
         if (etapaAluno == null) {
             etapaAluno = new EtapaAluno();

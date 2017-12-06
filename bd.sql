@@ -35,7 +35,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tcc`.`ANEXO` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `NOME` VARCHAR(20) NOT NULL,
+  `NOME` VARCHAR(100) NOT NULL,
   `BYTES` BLOB(16535) NOT NULL,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;

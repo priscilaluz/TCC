@@ -29,6 +29,11 @@ public abstract class BuscarCursoAluno<T extends Serializable> extends BusinessF
         return this;
     }
     
+    public BuscarCursoAluno fetchCursoAnexo(String fetch) {
+        appendText(" left join "+fetch+" c.anexo canexo ");
+        return this;
+    }
+    
     public BuscarCursoAluno fetchProfessor(String fetch) {
         appendText(" left join "+fetch+" c.usuario u ");
         return this;
