@@ -9,10 +9,8 @@
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 ">
 
-    <context:component-scan base-package="br.com.tcc"></context:component-scan>
+    <context:component-scan base-package="tcc"></context:component-scan>
     <context:annotation-config/>
-    
-    
     
     <bean id="propertiesConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -45,7 +43,7 @@
         </property>
         <property name="packagesToScan">
             <list>
-                <value>br.com.tcc.common.entity</value>
+                <value>tcc.common.entity</value>
             </list>
         </property>
     </bean>
@@ -57,10 +55,10 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
     <!-- DAO -->
-    <bean id="dao" class="br.com.tcc.service.persistence.GenericDao">
+    <bean id="dao" class="tcc.service.persistence.GenericDao">
         <property name="sessionFactory" ref="sessionFactory"/>
         <property name="customTransactionHandler">
-            <bean class="br.com.tcc.service.persistence.SpringBasedTransactionHandler">
+            <bean class="tcc.service.persistence.SpringBasedTransactionHandler">
                 <constructor-arg ref="transactionManager"/>
             </bean>
         </property>

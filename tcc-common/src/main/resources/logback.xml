@@ -32,7 +32,7 @@
         </encoder>
     </appender>
 
-    <logger name="br.com.tcc">
+    <logger name="tcc">
         <level value="${severity-app}" />
         <appender-ref ref="logfile-app" />
     </logger>

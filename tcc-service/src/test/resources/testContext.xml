@@ -23,10 +23,10 @@
         <property name="ignoreUnresolvablePlaceholders" value="true"/>
     </bean>
     
-    <bean id="simpleTestDao" class="br.com.tcc.service.persistence.SimpleTestDao">
+    <bean id="simpleTestDao" class="tcc.service.persistence.SimpleTestDao">
         <constructor-arg name="dao" ref="dao"/>
     </bean>
     
-    <bean id="mailSender" class="br.com.tcc.service.mock.MailSenderMock"/> 
+    <bean id="mailSender" class="tcc.service.mock.MailSenderMock"/> 
 
 </beans>
