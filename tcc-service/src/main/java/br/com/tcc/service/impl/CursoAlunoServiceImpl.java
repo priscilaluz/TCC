@@ -14,6 +14,7 @@ import br.com.tcc.common.entity.RelatorioEtapa;
 import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.common.util.ConstantesI18N;
+import br.com.tcc.common.vo.MeuAndamento;
 import br.com.tcc.common.vo.TabuleiroCurso;
 import br.com.tcc.common.vo.TabuleiroEtapa;
 import br.com.tcc.common.vo.TdHtmlEtapa;
@@ -21,6 +22,7 @@ import br.com.tcc.service.persistence.GenericDao;
 import br.com.tcc.service.query.BuscarCursoAluno;
 import br.com.tcc.service.query.BuscarEtapaAluno;
 import br.com.tcc.service.query.BuscarRelatorioEtapa;
+import br.com.tcc.service.query.ContarAlunosPosicaoNoCurso;
 import br.com.tcc.service.validator.CursoAlunoValidator;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -204,7 +206,7 @@ public class CursoAlunoServiceImpl {
     public EtapaAluno buscarEtapaAlunoPorCursoAlunoEEtapa(Long idEtapaAluno, Long idCursoAluno, Long idEtapa) {
         EtapaAluno etapaAluno = (EtapaAluno) dao.uniqueResult(new BuscarEtapaAluno.Entities()
                 .fetchCursoAluno(ConstantesI18N.FETCH).fetchEtapa(ConstantesI18N.FETCH)
-                .fetchEtapa(ConstantesI18N.FETCH).fetchEtapaAnexo(ConstantesI18N.FETCH)
+                .fetchEtapa(ConstantesI18N.FETCH).fetchCurso(ConstantesI18N.FETCH).fetchEtapaAnexo(ConstantesI18N.FETCH)
                 .whereIdEtapaAluno(idEtapaAluno).whereIdCursoAluno(idCursoAluno).whereIdEtapa(idEtapa));
         if (etapaAluno == null) {
             etapaAluno = new EtapaAluno();
@@ -279,5 +281,24 @@ public class CursoAlunoServiceImpl {
         return dao.list(new BuscarCursoAluno.Entities().fetchCurso("")
                 .fetchAluno(ConstantesI18N.FETCH)
                 .whereIdCurso(idCurso));
+    }
+    
+    @Transactional(readOnly = true)
+    public List<MeuAndamento> buscarProprioAndamento(Long idAluno) {
+        List<CursoAluno> cursosAlunos = buscarCursoAlunoPorAlunoSituacao(idAluno, null);
+        List<MeuAndamento> andamentos = new ArrayList<>();
+        for (CursoAluno cursosAluno : cursosAlunos) {
+            MeuAndamento andamento = new MeuAndamento();
+            andamento.setIdCursoAluno(cursosAluno.getId());
+            andamento.setNomeCurso(cursosAluno.getCurso().getNome());
+            andamento.setEtapa(cursosAluno.getPosicaoAtual());
+            andamento.setPontuacao(cursosAluno.getPontuacao());
+            Long colocacao = (Long) dao.uniqueResult(new ContarAlunosPosicaoNoCurso(idAluno, cursosAluno.getCurso().getId(),
+                    cursosAluno.getPontuacao(), cursosAluno.getPosicaoAtual()));
+            andamento.setColocacao(colocacao+1);
+            andamentos.add(andamento);
+        }
+        
+        return andamentos;
     }
 }

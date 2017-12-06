@@ -8,7 +8,8 @@ tccApp.factory('CursoAluno', ['$resource', function ($resource) {
             salvarEtapaAluno: {method: 'GET', params: {verbo: 'salvarEtapaAluno'}, isArray: false},
             buscarRelatoriosEtapaPorId: {method: 'GET', params: {verbo: 'relatoriosPorId'}, isArray: false},
             buscarRelatoriosEtapaPorIdEtapaAluno: {method: 'GET', params: {verbo: 'relatoriosPorIdEtapaAluno'}, isArray: true},
-            buscarCursoAlunoPorIdCurso: {method: 'GET', params: {verbo: 'alunosPorIdCurso'}, isArray: true}
+            buscarCursoAlunoPorIdCurso: {method: 'GET', params: {verbo: 'alunosPorIdCurso'}, isArray: true},
+            buscarProprioAndamento: {method: 'GET', params: {verbo: 'proprioAndamento'}, isArray: true}
         });
 
         return CursoAluno;

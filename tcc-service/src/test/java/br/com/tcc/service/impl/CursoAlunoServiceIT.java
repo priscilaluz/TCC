@@ -8,6 +8,7 @@ import br.com.tcc.common.entity.RelatorioEtapa;
 import br.com.tcc.common.entity.Usuario;
 import br.com.tcc.common.enums.SituacaoCursoAluno;
 import br.com.tcc.common.util.ConstantesI18N;
+import br.com.tcc.common.vo.MeuAndamento;
 import br.com.tcc.common.vo.TabuleiroCurso;
 import br.com.tcc.common.vo.TabuleiroEtapa;
 import br.com.tcc.common.vo.TdHtmlEtapa;
@@ -99,6 +100,25 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         TabuleiroCurso tabuleiroCursoAtual = cursoAlunoServiceImpl.buscarCursoAlunoPorIdCursoAluno(5L);
         TabuleiroCurso tabuleiroEsperado = obterTabuleiroCursoCorreto5();
         validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado);
+    }
+    
+    @Test
+    public void deveBuscarProprioAndamento(){
+        List<MeuAndamento> andamentosRecebido = cursoAlunoServiceImpl.buscarProprioAndamento(5L);
+        assertEquals(1, andamentosRecebido.size());
+        MeuAndamento andamentoRecebido = andamentosRecebido.get(0);
+        MeuAndamento andamentoEsperando = new MeuAndamento();
+        andamentoEsperando.setColocacao(5L);
+        andamentoEsperando.setEtapa(4);
+        andamentoEsperando.setIdCursoAluno(9L);
+        andamentoEsperando.setNomeCurso("Curso 8");
+        andamentoEsperando.setPontuacao(100);
+        
+        assertEquals(andamentoEsperando.getColocacao(), andamentoRecebido.getColocacao());
+        assertEquals(andamentoEsperando.getEtapa(), andamentoRecebido.getEtapa());
+        assertEquals(andamentoEsperando.getIdCursoAluno(), andamentoRecebido.getIdCursoAluno());
+        assertEquals(andamentoEsperando.getNomeCurso(), andamentoRecebido.getNomeCurso());
+        assertEquals(andamentoEsperando.getPontuacao(), andamentoRecebido.getPontuacao());
     }
     //</editor-fold>
     

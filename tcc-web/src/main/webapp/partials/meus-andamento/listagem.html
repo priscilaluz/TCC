@@ -1,0 +1,26 @@
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas">
+    <form class="form-horizontal" name="andamentoForm">
+        <fieldset>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="table table-condensed" id="tabela">
+                    <thead class="table-font-title">
+                        <tr>
+                            <th>Curso</th>
+                            <th width="100">Etapa</th>
+                            <th width="150">Pontuação</th>
+                            <th width="120">Colocação</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-font">
+                        <tr ng-repeat="andamento in model.meusAndamentos">
+                            <td>{{andamento.nomeCurso}}</td>
+                            <td>{{andamento.etapa}}</td>
+                            <td>{{andamento.pontuacao}}</td>
+                            <td>{{andamento.colocacao}}º</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+    </form>
+</div>

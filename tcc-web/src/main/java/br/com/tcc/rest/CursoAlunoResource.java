@@ -9,6 +9,7 @@ import br.com.tcc.common.entity.CursoAluno;
 import br.com.tcc.common.entity.EtapaAluno;
 import br.com.tcc.common.entity.RelatorioEtapa;
 import br.com.tcc.common.enums.SituacaoCursoAluno;
+import br.com.tcc.common.vo.MeuAndamento;
 import br.com.tcc.common.vo.TabuleiroCurso;
 import br.com.tcc.service.impl.CursoAlunoServiceImpl;
 import java.util.List;
@@ -100,5 +101,12 @@ public class CursoAlunoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<CursoAluno> buscarCursoAlunoPorIdCurso(@QueryParam("idCurso") Long idCurso) {
         return cursoAlunoService.buscarCursoAlunoPorIdCurso(idCurso);
+    }
+    
+    @GET
+    @Path("/proprioAndamento")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<MeuAndamento> buscarProprioAndamento(@QueryParam("idAluno") Long idAluno) {
+        return cursoAlunoService.buscarProprioAndamento(idAluno);
     }
 }
