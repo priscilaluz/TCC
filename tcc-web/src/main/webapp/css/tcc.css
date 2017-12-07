@@ -715,13 +715,34 @@ li{
 }
 
 .background-home-aluno-1tens {
-    border-radius: 100px;
-    height: 255px;
-    padding-top: 95px;
+    border-radius: 80px;
+    height: 200px;
+    padding-top: 72px;
 }
 .background-home-aluno-1tem-1-3 {
     background-image: radial-gradient(farthest-corner at center center, #de662e 0%, #ff9b6d 100%);
 }
+.background-home-aluno-1tem-1-3:hover {
+    background-image: radial-gradient(farthest-corner at center center, #ffb592 0%, #fd8047 100%);
+}
 .background-home-aluno-1tem-2-4 {
     background-image: radial-gradient(farthest-corner at center center, #f9aa58 0%, #ff972b 100%);
+}
+.background-home-aluno-1tem-2-4:hover {
+    background-image: radial-gradient(farthest-corner at center center, #ffba7e 0%, #ff972b 100%);
+}
+
+.item-fonte-aluno{
+    color: #ffffff;
+    font-size: 28px;
+    font-family:cursive;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.rodape-home {
+    background-color: #278a66;
+    border: #8ac4ae solid 1px;
+    padding-bottom: 30px;
+    padding-top: 30px;
 }
