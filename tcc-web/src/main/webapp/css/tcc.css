@@ -248,6 +248,12 @@ li {
     margin-top: 5px;
     margin-left: 150px;
 }
+.logoImagem-rodape{
+    width: 195px; 
+    height: 80px; 
+    margin-top: 5px;
+    margin-left: 50px;
+}
 
 .fontBaltazar{
     font-family:cursive;
@@ -745,4 +751,17 @@ li{
     border: #8ac4ae solid 1px;
     padding-bottom: 30px;
     padding-top: 30px;
+}
+
+.rodape-manual-fonte{
+    color: #ffffff;
+    font-size: 30px;
+    font-family:cursive;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.rodape-manual-fonte:hover {
+    color: #dff0d8;
+    background-color: transparent;
 }

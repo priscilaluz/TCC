@@ -1,5 +1,6 @@
 tccApp.controller('HomeProfessorController', ['$scope', '$rootScope', '$location', 'Curso', 'Usuario',
     function ($scope, $rootScope, $location, Curso, Usuario) {
+        $rootScope.telaHomeAluno = false;
         
         $scope.pergunta = function () {
             $location.path("/consultar-pergunta");

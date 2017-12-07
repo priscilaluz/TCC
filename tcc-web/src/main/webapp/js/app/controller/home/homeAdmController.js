@@ -1,5 +1,6 @@
 tccApp.controller('HomeAdmController', ['$scope', '$rootScope', '$location',
     function ($scope, $rootScope, $location) {
+        $rootScope.telaHomeAluno = false;
         
         $scope.mouseoverProfessor = function () {
             $scope.srcProfessor = "img/professor-on.png";
