@@ -8,15 +8,15 @@
             <label class="col-lg-4 control-label label-font" style="color: #105a05; text-align:left; font-size: 35px;">{{usuario.email}}</label>
         </div>
         <div class="form-group">
-            <label for="inputNome" class="col-lg-2 control-label label-font">Nome: </label>
+            <label for="nomeUsuario" class="col-lg-2 control-label label-font">Nome: </label>
             <div class="col-lg-10" ng-class="{'has-error': usuarioForm.nome.$error.required}">
-                <input type="text" name="nome" maxlength="45" ng-model="usuario.nome" class="form-control" id="inputNome" required placeholder="Nome">
+                <input type="text" name="nomeUsuario" maxlength="45" ng-model="usuario.nome" class="form-control" id="nomeUsuario" required placeholder="Nome">
             </div>
         </div>
         <div class="form-group">
-            <label for="inputSenha" class="col-lg-2 control-label label-font">Senha: </label>
+            <label for="senhaUsuario" class="col-lg-2 control-label label-font">Senha: </label>
             <div class="col-lg-10" ng-class="{'has-error': usuarioForm.senha.$error.required}">
-                <input type="text" name="senha" maxlength="45" ng-model="usuario.senha" class="form-control" id="inputSenha" required placeholder="Senha">
+                <input type="text" name="senhaUsuario" maxlength="45" ng-model="usuario.senha" class="form-control" id="senhaUsuario" required placeholder="Senha">
             </div>
         </div>
         <div class="form-group">

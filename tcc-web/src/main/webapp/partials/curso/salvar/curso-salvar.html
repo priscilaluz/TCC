@@ -3,9 +3,9 @@
     <form class="form-horizontal" name="cursoForm" ng-submit="salvarCurso('R')" enctype="multipart/form-data">
         <fieldset>
             <div class="form-group">
-                <label for="inputNome" class="col-lg-1 control-label label-font">Curso:</label>
+                <label for="inputNomeCurso" class="col-lg-1 control-label label-font">Curso:</label>
                 <div class="col-lg-11" ng-class="{'has-error': cursoForm.nome.$error.required}">
-                    <input type="text" name="nome" maxlength="45" ng-model="curso.nome" class="form-control" id="inputNome" required placeholder="Curso">
+                    <input type="text" name="nome" maxlength="45" ng-model="curso.nome" class="form-control" id="inputNomeCurso" required placeholder="Curso">
                 </div>
             </div>
             <div class="form-group">

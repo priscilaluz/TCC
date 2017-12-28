@@ -1,9 +1,9 @@
 <form class="form-horizontal" name="cadastrarForm" ng-submit="cadastrar()">
     <fieldset>
         <div class="form-group">
-            <label for="inputNome" class="col-lg-2 control-label label-font">Nome: </label>
+            <label for="inputNomeCadastro" class="col-lg-2 control-label label-font">Nome: </label>
             <div class="col-lg-10" ng-class="{'has-error': cadastrarForm.nome.$error.required}">
-                <input type="text" name="nome" maxlength="45" ng-model="usuario.nome" class="form-control" id="inputNome" required placeholder="Nome">
+                <input type="text" name="nome" maxlength="45" ng-model="usuario.nome" class="form-control" id="inputNomeCadastro" required placeholder="Nome">
             </div>
         </div>
         <div class="form-group">

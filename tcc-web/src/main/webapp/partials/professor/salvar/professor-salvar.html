@@ -3,9 +3,9 @@
     <form class="form-horizontal" name="cadastrarProfForm" enctype="multipart/form-data">
         <fieldset>
             <div class="form-group">
-                <label for="inputNome1" class="col-lg-1 control-label label-font">Nome: </label>
+                <label for="inputNomeProfessor" class="col-lg-1 control-label label-font">Nome: </label>
                 <div class="col-lg-11" ng-class="{'has-error': cadastrarProfForm.nome.$error.required}">
-                    <input type="text" name="nome1" maxlength="45" ng-model="model.professor.nome" class="form-control" id="inputNome1" required placeholder="Nome">
+                    <input type="text" name="nome1" maxlength="45" ng-model="model.professor.nome" class="form-control" id="inputNomeProfessor" required placeholder="Nome">
                 </div>
             </div>
             <div class="form-group">
@@ -21,13 +21,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputSenha1" class="col-lg-1 control-label label-font">Senha: </label>
+                <label for="inputSenhaProfesso" class="col-lg-1 control-label label-font">Senha: </label>
                 <div class="col-lg-11" ng-class="{'has-error': cadastrarProfForm.senha.$error.required}">
-                    <input type="password" name="senha1" maxlength="45" ng-model="model.professor.senha" class="form-control" id="inputSenha1" required placeholder="Senha">
+                    <input type="password" name="inputSenhaProfesso" maxlength="45" ng-model="model.professor.senha" class="form-control" id="inputSenhaProfesso" required placeholder="Senha">
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
+                <div class="col-lg-12 text-right">
                     <button type="button" ng-click="voltarTela()" class="btn btn-default1">Voltar</button>
                     <button type="button" ng-click="salvarProfessor()" class="btn btn-modelo">Cadastrar</button>
                 </div>

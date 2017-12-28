@@ -13,7 +13,7 @@ public class CategoriaValidator {
         AssertUtils.assertNotNull(categoria, ConstantesI18N.CATEGORIA_OBRIGATORIA);
         PendencyManager pm = new PendencyManager();
         pm.assertNotNull(categoria.getNome()).orRegister(ConstantesI18N.CATEGORIA_NOME_OBRIGATORIO);
-        pm.assertThat(nomeNaoExiste).orRegister(ConstantesI18N.CATEGORIA_NOME_EXISTE);
+        pm.assertThat(categoria.getNome() == null || nomeNaoExiste).orRegister(ConstantesI18N.CATEGORIA_NOME_EXISTE);
         pm.verifyAll();
     }
 }
