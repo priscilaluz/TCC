@@ -1,8 +1,8 @@
-tccApp.controller('HomeAlunoController', ['$scope', '$rootScope',
-    function ($scope, $rootScope) {
+tccApp.controller('HomeAlunoController', ['$scope', '$rootScope', '$location',
+    function ($scope, $rootScope, $location) {
         $rootScope.telaHomeAluno = true;
-        $scope.init = function (){
-            
+        $scope.direcionarPara = function (url) {
+            $location.path(url);
         };
         
         $scope.init();

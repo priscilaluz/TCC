@@ -29,6 +29,7 @@ import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringBean;
 import org.unitils.spring.annotation.SpringBeanByType;
+import tcc.common.business.CursoAlunoService;
 
 @DataSet("/datasets/CursoAlunoServiceTest.xml")
 public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
@@ -37,19 +38,19 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
     private SimpleTestDao dao;
     
     @SpringBean("CursoAlunoServiceImpl")
-    private CursoAlunoServiceImpl cursoAlunoServiceImpl;
+    private CursoAlunoService cursoAlunoService;
     
     //<editor-fold defaultstate="collapsed" desc="CursoAluno">
     @Test
     public void deveEntrarNoCurso(){
-        CursoAluno cursoAluno = cursoAlunoServiceImpl.entrarCurso(1L, 1L, "ABCDE12345");
+        CursoAluno cursoAluno = cursoAlunoService.entrarCurso(1L, 1L, "ABCDE12345");
         assertNotNull(cursoAluno.getId());
         assertEquals(dao.getById(CursoAluno.class, cursoAluno.getId()), cursoAluno);
     }
     
     @Test
     public void deveRetornarCursoAlunoPorUsuario(){
-        List<CursoAluno> cursosAlunos = cursoAlunoServiceImpl.buscarCursoAlunoPorAlunoSituacao(3L, null);
+        List<CursoAluno> cursosAlunos = cursoAlunoService.buscarCursoAlunoPorAlunoSituacao(3L, null);
         assertTrue(cursosAlunos.size()==4);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 3L, 4L, 5L));
         for (CursoAluno c : cursosAlunos) {
@@ -59,7 +60,7 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoAlunoPorSituacao(){
-        List<CursoAluno> cursosAlunos = cursoAlunoServiceImpl.buscarCursoAlunoPorAlunoSituacao(null, SituacaoCursoAluno.EM_ANDAMENTO);
+        List<CursoAluno> cursosAlunos = cursoAlunoService.buscarCursoAlunoPorAlunoSituacao(null, SituacaoCursoAluno.EM_ANDAMENTO);
         assertTrue(cursosAlunos.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 3L));
         for (CursoAluno c : cursosAlunos) {
@@ -69,42 +70,42 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarAlunoPorIdCursoAluno1(){
-        TabuleiroCurso tabuleiroCursoAtual = cursoAlunoServiceImpl.buscarCursoAlunoPorIdCursoAluno(1L);
+        TabuleiroCurso tabuleiroCursoAtual = cursoAlunoService.buscarCursoAlunoPorIdCursoAluno(1L);
         TabuleiroCurso tabuleiroEsperado = obterTabuleiroCursoCorreto1();
         validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado);
     }
     
     @Test
     public void deveRetornarAlunoPorIdCursoAluno2(){
-        TabuleiroCurso tabuleiroCursoAtual = cursoAlunoServiceImpl.buscarCursoAlunoPorIdCursoAluno(2L);
+        TabuleiroCurso tabuleiroCursoAtual = cursoAlunoService.buscarCursoAlunoPorIdCursoAluno(2L);
         TabuleiroCurso tabuleiroEsperado = obterTabuleiroCursoCorreto2();
         validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado);
     }
     
     @Test
     public void deveRetornarAlunoPorIdCursoAluno3(){
-        TabuleiroCurso tabuleiroCursoAtual = cursoAlunoServiceImpl.buscarCursoAlunoPorIdCursoAluno(3L);
+        TabuleiroCurso tabuleiroCursoAtual = cursoAlunoService.buscarCursoAlunoPorIdCursoAluno(3L);
         TabuleiroCurso tabuleiroEsperado = obterTabuleiroCursoCorreto3();
         validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado);
     }
     
     @Test
     public void deveRetornarAlunoPorIdCursoAluno4(){
-        TabuleiroCurso tabuleiroCursoAtual = cursoAlunoServiceImpl.buscarCursoAlunoPorIdCursoAluno(4L);
+        TabuleiroCurso tabuleiroCursoAtual = cursoAlunoService.buscarCursoAlunoPorIdCursoAluno(4L);
         TabuleiroCurso tabuleiroEsperado = obterTabuleiroCursoCorreto4();
         validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado);
     }
     
     @Test
     public void deveRetornarAlunoPorIdCursoAluno5(){
-        TabuleiroCurso tabuleiroCursoAtual = cursoAlunoServiceImpl.buscarCursoAlunoPorIdCursoAluno(5L);
+        TabuleiroCurso tabuleiroCursoAtual = cursoAlunoService.buscarCursoAlunoPorIdCursoAluno(5L);
         TabuleiroCurso tabuleiroEsperado = obterTabuleiroCursoCorreto5();
         validarTabuleiro(tabuleiroCursoAtual, tabuleiroEsperado);
     }
     
     @Test
     public void deveBuscarProprioAndamento(){
-        List<MeuAndamento> andamentosRecebido = cursoAlunoServiceImpl.buscarProprioAndamento(5L);
+        List<MeuAndamento> andamentosRecebido = cursoAlunoService.buscarProprioAndamento(5L);
         assertEquals(1, andamentosRecebido.size());
         MeuAndamento andamentoRecebido = andamentosRecebido.get(0);
         MeuAndamento andamentoEsperando = new MeuAndamento();
@@ -125,34 +126,34 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
     //<editor-fold defaultstate="collapsed" desc="EtapaAluno">
     @Test
     public void deveRetornarEtapaAlunoPorCursoAlunoEEtapaNovo(){
-        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 3L);
+        EtapaAluno etapaAluno = cursoAlunoService.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 3L);
         assertNotNull(etapaAluno);
         assertTrue(etapaAluno.getId()==null);
     }
     
     @Test
     public void deveRetornarEtapaAlunoPorCursoAlunoEEtapa(){
-        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 1L);
+        EtapaAluno etapaAluno = cursoAlunoService.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 1L);
         assertNotNull(etapaAluno);
         assertEquals(new Long(1), etapaAluno.getId());
     }
     
     @Test
     public void deveRetornarEtapaAlunoPorEtapaAlunoId(){
-        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, null, null);
+        EtapaAluno etapaAluno = cursoAlunoService.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, null, null);
         assertNotNull(etapaAluno);
         assertEquals(new Long(1), etapaAluno.getId());
     }
     
     @Test
     public void deveSalvarEtapaAluno(){
-        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 3L);
+        EtapaAluno etapaAluno = cursoAlunoService.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 3L);
         assertNotNull(etapaAluno);
         assertTrue(etapaAluno.getId()==null);
         
-        cursoAlunoServiceImpl.salvarEtapaAluno(1L, 3L);
+        cursoAlunoService.salvarEtapaAluno(1L, 3L);
         
-        EtapaAluno etapaAlunaSalva = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 3L);
+        EtapaAluno etapaAlunaSalva = cursoAlunoService.buscarEtapaAlunoPorCursoAlunoEEtapa(null, 1L, 3L);
         assertNotNull(etapaAlunaSalva);
         assertTrue(etapaAlunaSalva.getId()!=null);
     }
@@ -163,7 +164,7 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
     public void deveSalvarRelatorioEtapa(){
         RelatorioEtapa relatorioEtapa = new RelatorioEtapa();
         
-        EtapaAluno etapaAluno = cursoAlunoServiceImpl.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, null, null);
+        EtapaAluno etapaAluno = cursoAlunoService.buscarEtapaAlunoPorCursoAlunoEEtapa(1L, null, null);
         relatorioEtapa.setEtapaAluno(etapaAluno);
         relatorioEtapa.setPontuacao(100);
         relatorioEtapa.setIdCursoAluno(1L);
@@ -172,14 +173,14 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         perguntasEtapasAlunos.add(obterPerguntaEtapaAlunoValida2());
         relatorioEtapa.setPerguntasEtapasAlunos(perguntasEtapasAlunos);
         relatorioEtapa.setGanhou(Boolean.TRUE);
-        RelatorioEtapa salvo = cursoAlunoServiceImpl.salvarRelatorioEtapa(relatorioEtapa);
+        RelatorioEtapa salvo = cursoAlunoService.salvarRelatorioEtapa(relatorioEtapa);
         assertNotNull(salvo);
         assertTrue(salvo.getId()!=null);
     }
     
     @Test
     public void deveRetornarRelatorioEtapaPorIdCurso(){
-        List<RelatorioEtapa> relatoriosEtapa = cursoAlunoServiceImpl.buscarRelatoriosEtapaPorIdEtapaAluno(1L);
+        List<RelatorioEtapa> relatoriosEtapa = cursoAlunoService.buscarRelatoriosEtapaPorIdEtapaAluno(1L);
         assertTrue(relatoriosEtapa.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
         for (RelatorioEtapa r : relatoriosEtapa) {
@@ -189,7 +190,7 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarRelatoriosEtapaPorId(){
-        RelatorioEtapa relatorioEtapa = cursoAlunoServiceImpl.buscarRelatoriosEtapaPorId(1L);
+        RelatorioEtapa relatorioEtapa = cursoAlunoService.buscarRelatoriosEtapaPorId(1L);
         assertNotNull(relatorioEtapa);
         assertEquals(new Long(1L), relatorioEtapa.getId());
     }

@@ -1,0 +1,307 @@
+2018-04-24 20:53:00 DEBUG [org.hibernate.SQL] - 
+    select
+        pergunta0_.ID as ID1_7_0_,
+        usuario1_.ID as ID1_11_1_,
+        anexo2_.ID as ID1_0_2_,
+        respostas3_.ID as ID1_10_3_,
+        categoria4_.ID as ID1_1_4_,
+        pergunta0_.ANEXO_ID as ANEXO_ID7_7_0_,
+        pergunta0_.CATEGORIA_ID as CATEGORI8_7_0_,
+        pergunta0_.DESCRICAO as DESCRICA2_7_0_,
+        pergunta0_.DICA as DICA3_7_0_,
+        pergunta0_.JUSTIFICATIVA as JUSTIFIC4_7_0_,
+        pergunta0_.NIVEL as NIVEL5_7_0_,
+        pergunta0_.TIPO as TIPO6_7_0_,
+        pergunta0_.USUARIO_ID as USUARIO_9_7_0_,
+        usuario1_.AVATAR as AVATAR2_11_1_,
+        usuario1_.EMAIL as EMAIL3_11_1_,
+        usuario1_.LOGIN as LOGIN4_11_1_,
+        usuario1_.NOME as NOME5_11_1_,
+        usuario1_.SENHA as SENHA6_11_1_,
+        usuario1_.TIPO as TIPO7_11_1_,
+        anexo2_.BYTES as BYTES2_0_2_,
+        anexo2_.NOME as NOME3_0_2_,
+        respostas3_.CORRETA as CORRETA2_10_3_,
+        respostas3_.DESCRICAO as DESCRICA3_10_3_,
+        respostas3_.PERGUNTA_ID as PERGUNTA4_10_3_,
+        respostas3_.PERGUNTA_ID as PERGUNTA4_7_0__,
+        respostas3_.ID as ID1_10_0__,
+        categoria4_.DESCRICAO as DESCRICA2_1_4_ 
+    from
+        test.PERGUNTA pergunta0_ 
+    left outer join
+        test.USUARIO usuario1_ 
+            on pergunta0_.USUARIO_ID=usuario1_.ID 
+    left outer join
+        test.ANEXO anexo2_ 
+            on pergunta0_.ANEXO_ID=anexo2_.ID 
+    left outer join
+        test.RESPOSTA respostas3_ 
+            on pergunta0_.ID=respostas3_.PERGUNTA_ID 
+    left outer join
+        test.CATEGORIA categoria4_ 
+            on pergunta0_.CATEGORIA_ID=categoria4_.ID 
+    where
+        pergunta0_.ID=?
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    select
+        pergunta0_.ID as ID1_7_0_,
+        usuario1_.ID as ID1_11_1_,
+        categoria2_.ID as ID1_1_2_,
+        pergunta0_.ANEXO_ID as ANEXO_ID7_7_0_,
+        pergunta0_.CATEGORIA_ID as CATEGORI8_7_0_,
+        pergunta0_.DESCRICAO as DESCRICA2_7_0_,
+        pergunta0_.DICA as DICA3_7_0_,
+        pergunta0_.JUSTIFICATIVA as JUSTIFIC4_7_0_,
+        pergunta0_.NIVEL as NIVEL5_7_0_,
+        pergunta0_.TIPO as TIPO6_7_0_,
+        pergunta0_.USUARIO_ID as USUARIO_9_7_0_,
+        usuario1_.AVATAR as AVATAR2_11_1_,
+        usuario1_.EMAIL as EMAIL3_11_1_,
+        usuario1_.LOGIN as LOGIN4_11_1_,
+        usuario1_.NOME as NOME5_11_1_,
+        usuario1_.SENHA as SENHA6_11_1_,
+        usuario1_.TIPO as TIPO7_11_1_,
+        categoria2_.DESCRICAO as DESCRICA2_1_2_ 
+    from
+        test.PERGUNTA pergunta0_ 
+    left outer join
+        test.USUARIO usuario1_ 
+            on pergunta0_.USUARIO_ID=usuario1_.ID 
+    left outer join
+        test.CATEGORIA categoria2_ 
+            on pergunta0_.CATEGORIA_ID=categoria2_.ID 
+    where
+        pergunta0_.TIPO=?
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    select
+        pergunta0_.ID as ID1_7_0_,
+        usuario1_.ID as ID1_11_1_,
+        categoria2_.ID as ID1_1_2_,
+        pergunta0_.ANEXO_ID as ANEXO_ID7_7_0_,
+        pergunta0_.CATEGORIA_ID as CATEGORI8_7_0_,
+        pergunta0_.DESCRICAO as DESCRICA2_7_0_,
+        pergunta0_.DICA as DICA3_7_0_,
+        pergunta0_.JUSTIFICATIVA as JUSTIFIC4_7_0_,
+        pergunta0_.NIVEL as NIVEL5_7_0_,
+        pergunta0_.TIPO as TIPO6_7_0_,
+        pergunta0_.USUARIO_ID as USUARIO_9_7_0_,
+        usuario1_.AVATAR as AVATAR2_11_1_,
+        usuario1_.EMAIL as EMAIL3_11_1_,
+        usuario1_.LOGIN as LOGIN4_11_1_,
+        usuario1_.NOME as NOME5_11_1_,
+        usuario1_.SENHA as SENHA6_11_1_,
+        usuario1_.TIPO as TIPO7_11_1_,
+        categoria2_.DESCRICAO as DESCRICA2_1_2_ 
+    from
+        test.PERGUNTA pergunta0_ 
+    left outer join
+        test.USUARIO usuario1_ 
+            on pergunta0_.USUARIO_ID=usuario1_.ID 
+    left outer join
+        test.CATEGORIA categoria2_ 
+            on pergunta0_.CATEGORIA_ID=categoria2_.ID 
+    where
+        pergunta0_.TIPO=?
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    select
+        pergunta0_.ID as ID1_7_0_,
+        usuario1_.ID as ID1_11_1_,
+        categoria2_.ID as ID1_1_2_,
+        pergunta0_.ANEXO_ID as ANEXO_ID7_7_0_,
+        pergunta0_.CATEGORIA_ID as CATEGORI8_7_0_,
+        pergunta0_.DESCRICAO as DESCRICA2_7_0_,
+        pergunta0_.DICA as DICA3_7_0_,
+        pergunta0_.JUSTIFICATIVA as JUSTIFIC4_7_0_,
+        pergunta0_.NIVEL as NIVEL5_7_0_,
+        pergunta0_.TIPO as TIPO6_7_0_,
+        pergunta0_.USUARIO_ID as USUARIO_9_7_0_,
+        usuario1_.AVATAR as AVATAR2_11_1_,
+        usuario1_.EMAIL as EMAIL3_11_1_,
+        usuario1_.LOGIN as LOGIN4_11_1_,
+        usuario1_.NOME as NOME5_11_1_,
+        usuario1_.SENHA as SENHA6_11_1_,
+        usuario1_.TIPO as TIPO7_11_1_,
+        categoria2_.DESCRICAO as DESCRICA2_1_2_ 
+    from
+        test.PERGUNTA pergunta0_ 
+    left outer join
+        test.USUARIO usuario1_ 
+            on pergunta0_.USUARIO_ID=usuario1_.ID 
+    left outer join
+        test.CATEGORIA categoria2_ 
+            on pergunta0_.CATEGORIA_ID=categoria2_.ID 
+    where
+        upper(pergunta0_.DESCRICAO) like upper(?)
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    select
+        pergunta0_.ID as ID1_7_0_,
+        usuario1_.ID as ID1_11_1_,
+        categoria2_.ID as ID1_1_2_,
+        pergunta0_.ANEXO_ID as ANEXO_ID7_7_0_,
+        pergunta0_.CATEGORIA_ID as CATEGORI8_7_0_,
+        pergunta0_.DESCRICAO as DESCRICA2_7_0_,
+        pergunta0_.DICA as DICA3_7_0_,
+        pergunta0_.JUSTIFICATIVA as JUSTIFIC4_7_0_,
+        pergunta0_.NIVEL as NIVEL5_7_0_,
+        pergunta0_.TIPO as TIPO6_7_0_,
+        pergunta0_.USUARIO_ID as USUARIO_9_7_0_,
+        usuario1_.AVATAR as AVATAR2_11_1_,
+        usuario1_.EMAIL as EMAIL3_11_1_,
+        usuario1_.LOGIN as LOGIN4_11_1_,
+        usuario1_.NOME as NOME5_11_1_,
+        usuario1_.SENHA as SENHA6_11_1_,
+        usuario1_.TIPO as TIPO7_11_1_,
+        categoria2_.DESCRICAO as DESCRICA2_1_2_ 
+    from
+        test.PERGUNTA pergunta0_ 
+    left outer join
+        test.USUARIO usuario1_ 
+            on pergunta0_.USUARIO_ID=usuario1_.ID 
+    left outer join
+        test.CATEGORIA categoria2_ 
+            on pergunta0_.CATEGORIA_ID=categoria2_.ID 
+    where
+        pergunta0_.CATEGORIA_ID=?
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    select
+        usuario0_.ID as ID1_11_0_,
+        usuario0_.AVATAR as AVATAR2_11_0_,
+        usuario0_.EMAIL as EMAIL3_11_0_,
+        usuario0_.LOGIN as LOGIN4_11_0_,
+        usuario0_.NOME as NOME5_11_0_,
+        usuario0_.SENHA as SENHA6_11_0_,
+        usuario0_.TIPO as TIPO7_11_0_ 
+    from
+        test.USUARIO usuario0_ 
+    where
+        usuario0_.ID=?
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    insert 
+    into
+        test.ANEXO
+        (ID, BYTES, NOME) 
+    values
+        (default, ?, ?)
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    insert 
+    into
+        test.PERGUNTA
+        (ID, ANEXO_ID, CATEGORIA_ID, DESCRICAO, DICA, JUSTIFICATIVA, NIVEL, TIPO, USUARIO_ID) 
+    values
+        (default, ?, ?, ?, ?, ?, ?, ?, ?)
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    insert 
+    into
+        test.RESPOSTA
+        (ID, CORRETA, DESCRICAO, PERGUNTA_ID) 
+    values
+        (default, ?, ?, ?)
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    insert 
+    into
+        test.RESPOSTA
+        (ID, CORRETA, DESCRICAO, PERGUNTA_ID) 
+    values
+        (default, ?, ?, ?)
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    select
+        pergunta0_.ID as ID1_7_0_,
+        pergunta0_.ANEXO_ID as ANEXO_ID7_7_0_,
+        pergunta0_.CATEGORIA_ID as CATEGORI8_7_0_,
+        pergunta0_.DESCRICAO as DESCRICA2_7_0_,
+        pergunta0_.DICA as DICA3_7_0_,
+        pergunta0_.JUSTIFICATIVA as JUSTIFIC4_7_0_,
+        pergunta0_.NIVEL as NIVEL5_7_0_,
+        pergunta0_.TIPO as TIPO6_7_0_,
+        pergunta0_.USUARIO_ID as USUARIO_9_7_0_ 
+    from
+        test.PERGUNTA pergunta0_ 
+    where
+        pergunta0_.ID=?
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    select
+        resposta0_.ID as ID1_10_,
+        resposta0_.CORRETA as CORRETA2_10_,
+        resposta0_.DESCRICAO as DESCRICA3_10_,
+        resposta0_.PERGUNTA_ID as PERGUNTA4_10_ 
+    from
+        test.RESPOSTA resposta0_ 
+    where
+        resposta0_.PERGUNTA_ID=6
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    select
+        pergunta0_.ID as ID1_7_,
+        pergunta0_.ANEXO_ID as ANEXO_ID7_7_,
+        pergunta0_.CATEGORIA_ID as CATEGORI8_7_,
+        pergunta0_.DESCRICAO as DESCRICA2_7_,
+        pergunta0_.DICA as DICA3_7_,
+        pergunta0_.JUSTIFICATIVA as JUSTIFIC4_7_,
+        pergunta0_.NIVEL as NIVEL5_7_,
+        pergunta0_.TIPO as TIPO6_7_,
+        pergunta0_.USUARIO_ID as USUARIO_9_7_ 
+    from
+        test.PERGUNTA pergunta0_ 
+    where
+        pergunta0_.ID=1
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    select
+        resposta0_.ID as ID1_10_,
+        resposta0_.CORRETA as CORRETA2_10_,
+        resposta0_.DESCRICAO as DESCRICA3_10_,
+        resposta0_.PERGUNTA_ID as PERGUNTA4_10_ 
+    from
+        test.RESPOSTA resposta0_ 
+    where
+        resposta0_.PERGUNTA_ID=1
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    delete 
+    from
+        test.RESPOSTA 
+    where
+        PERGUNTA_ID=?
+2018-04-24 20:53:01 DEBUG [org.hibernate.SQL] - 
+    select
+        pergunta0_.ID as ID1_7_0_,
+        usuario1_.ID as ID1_11_1_,
+        anexo2_.ID as ID1_0_2_,
+        respostas3_.ID as ID1_10_3_,
+        categoria4_.ID as ID1_1_4_,
+        pergunta0_.ANEXO_ID as ANEXO_ID7_7_0_,
+        pergunta0_.CATEGORIA_ID as CATEGORI8_7_0_,
+        pergunta0_.DESCRICAO as DESCRICA2_7_0_,
+        pergunta0_.DICA as DICA3_7_0_,
+        pergunta0_.JUSTIFICATIVA as JUSTIFIC4_7_0_,
+        pergunta0_.NIVEL as NIVEL5_7_0_,
+        pergunta0_.TIPO as TIPO6_7_0_,
+        pergunta0_.USUARIO_ID as USUARIO_9_7_0_,
+        usuario1_.AVATAR as AVATAR2_11_1_,
+        usuario1_.EMAIL as EMAIL3_11_1_,
+        usuario1_.LOGIN as LOGIN4_11_1_,
+        usuario1_.NOME as NOME5_11_1_,
+        usuario1_.SENHA as SENHA6_11_1_,
+        usuario1_.TIPO as TIPO7_11_1_,
+        anexo2_.BYTES as BYTES2_0_2_,
+        anexo2_.NOME as NOME3_0_2_,
+        respostas3_.CORRETA as CORRETA2_10_3_,
+        respostas3_.DESCRICAO as DESCRICA3_10_3_,
+        respostas3_.PERGUNTA_ID as PERGUNTA4_10_3_,
+        respostas3_.PERGUNTA_ID as PERGUNTA4_7_0__,
+        respostas3_.ID as ID1_10_0__,
+        categoria4_.DESCRICAO as DESCRICA2_1_4_ 
+    from
+        test.PERGUNTA pergunta0_ 
+    left outer join
+        test.USUARIO usuario1_ 
+            on pergunta0_.USUARIO_ID=usuario1_.ID 
+    left outer join
+        test.ANEXO anexo2_ 
+            on pergunta0_.ANEXO_ID=anexo2_.ID 
+    left outer join
+        test.RESPOSTA respostas3_ 
+            on pergunta0_.ID=respostas3_.PERGUNTA_ID 
+    left outer join
+        test.CATEGORIA categoria4_ 
+            on pergunta0_.CATEGORIA_ID=categoria4_.ID 
+    where
+        pergunta0_.ID=?

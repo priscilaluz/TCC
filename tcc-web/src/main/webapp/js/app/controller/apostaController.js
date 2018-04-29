@@ -94,7 +94,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
             inicializarBotao();
             tempoPergunta();
-        } else {
+        } else if (idEtapaAluno) {
             $timeout.cancel(timeoutTempoPorPergunta);
             $scope.model.pergunta = null;
             $scope.model.anexoString = null;
@@ -112,16 +112,17 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
                 } else {
                     $scope.model.resultado = true;
                 }
-                if ($scope.model.pontuacao < pontuacaoMinima) {
-                    $scope.model.perdeuJogo = true;
-                    tempoImagemFimDeJogo();
-                } else {
-                    $scope.model.resultado = true;
-                }
                 $rootScope.appLoaded = true;
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
+        } else {
+            if ($scope.model.pontuacao < pontuacaoMinima) {
+                $scope.model.perdeuJogo = true;
+                tempoImagemFimDeJogo();
+            } else {
+                $scope.model.resultado = true;
+            }
         }
     };       
                 

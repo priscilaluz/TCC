@@ -83,7 +83,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
                 $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
                 $scope.model.letrasEscolhidas = [];
                 inicializarLetras();
-            } else {
+            } else if (idEtapaAluno) {
                 $scope.model.anexoString = null;
                 $scope.model.pergunta = null;
                 var relatorioEtapa = new RelatorioEtapa();
@@ -104,6 +104,13 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
                 }, function (error) {
                     $rootScope.appLoaded = true;
                 });
+            } else {
+                if ($scope.model.pontuacao < pontuacaoMinima) {
+                    $scope.model.perdeuJogo = true;
+                    tempoImagemFimDeJogo();
+                } else {
+                    $scope.model.resultado = true;
+                }
             }
         };
         

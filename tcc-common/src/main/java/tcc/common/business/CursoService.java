@@ -22,7 +22,7 @@ public interface CursoService {
     
     Curso buscarCursoPorIdConcluido(Long idCurso);
     
-    List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, Long idCategoria, SituacaoCurso situacaoCurso, DisponibilidadeCurso disponibilidade);
+    List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, Long idCategoria, SituacaoCurso situacaoCurso, DisponibilidadeCurso disponibilidade, Long idAluno);
     
     Long buscarCountCursoPorFiltro(Long idUsuario, SituacaoCurso situacaoCurso);
     

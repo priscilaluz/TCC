@@ -298,7 +298,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             }
             tamanhoMatriz = $scope.model.cacaPalavraLista.cacaPalavra[indexMatriz].tamanhoMatriz;
             backgroundMatriz();
-        } else {
+        } else if (idEtapaAluno) {
             $scope.model.anexoString = null;
             $scope.model.pergunta = null;
             var relatorioEtapa = new RelatorioEtapa();
@@ -325,6 +325,13 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
+        } else {
+            if ($scope.model.pontuacao < pontuacaoMinima) {
+                $scope.model.perdeuJogo = true;
+                tempoImagemFimDeJogo();
+            } else {
+                $scope.model.resultado = true;
+            }
         }
     };
     

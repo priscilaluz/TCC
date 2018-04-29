@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringBean;
 import org.unitils.spring.annotation.SpringBeanByType;
+import tcc.common.business.UsuarioService;
 
 @DataSet("/datasets/UsuarioServiceTest.xml")
 public class UsuarioServiceIT extends IntegrationBaseTestClass{
@@ -23,13 +24,13 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     private SimpleTestDao dao;
     
     @SpringBean("UsuarioServiceImpl")
-    private UsuarioServiceImpl usuarioServiceImpl;
+    private UsuarioService usuarioService;
     
     @Test
     public void deveSalvarUsuario(){
         Usuario usuario = obterUsuarioValido();
         
-        usuario = usuarioServiceImpl.salvarUsuario(usuario);
+        usuario = usuarioService.salvarUsuario(usuario);
         assertNotNull(usuario.getId());
         assertEquals(dao.getById(Usuario.class, usuario.getId()), usuario);
     }
@@ -38,7 +39,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     public void deveSalvarProfessor(){
         Usuario usuario = obterUsuarioValido();
         
-        usuario = usuarioServiceImpl.salvarProfessor(usuario);
+        usuario = usuarioService.salvarProfessor(usuario);
         assertNotNull(usuario.getId());
         assertEquals(dao.getById(Usuario.class, usuario.getId()), usuario);
     }
@@ -57,7 +58,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveBuscarTodosProfessores(){        
-        List<Usuario> usuarios = usuarioServiceImpl.buscarProfessores(null);
+        List<Usuario> usuarios = usuarioService.buscarProfessores(null);
         assertTrue(usuarios.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 3L));
         for (Usuario u : usuarios) {
@@ -67,7 +68,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveBuscarProfessoresPorNome(){        
-        List<Usuario> usuarios = usuarioServiceImpl.buscarProfessores("Cla");
+        List<Usuario> usuarios = usuarioService.buscarProfessores("Cla");
         assertTrue(usuarios.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(3L));
         for (Usuario u : usuarios) {
@@ -77,7 +78,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveBuscarProfessorPorId(){
-        Usuario usuario = usuarioServiceImpl.buscarProfessorPorId(1L);
+        Usuario usuario = usuarioService.buscarProfessorPorId(1L);
         assertNotNull(usuario);
         assertTrue(usuario.getId().equals(1L));
     }
@@ -87,7 +88,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
         List<Usuario> professores = dao.query("select p from Usuario p where p.id = 3");
         assertTrue(professores.size() == 1);
         
-        usuarioServiceImpl.excluirProfessores(3L);
+        usuarioService.excluirProfessores(3L);
         
         List<Usuario> professoresExcluida = dao.query("select p from Usuario p where p.id = 3");
         assertTrue(professoresExcluida.isEmpty());
@@ -95,7 +96,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarUsuarioPorLoginSenha(){
-        Usuario usuario = usuarioServiceImpl.buscarUsuarioPorLoginSenha("JoaoL", "1234");
+        Usuario usuario = usuarioService.buscarUsuarioPorLoginSenha("JoaoL", "1234");
         assertNotNull(usuario);
         assertTrue(usuario.getId().equals(1L));
     }

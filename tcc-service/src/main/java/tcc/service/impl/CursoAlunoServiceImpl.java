@@ -314,4 +314,13 @@ public class CursoAlunoServiceImpl implements CursoAlunoService {
         
         return andamentos;
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public boolean alunoPertenceCurso(Long idAluno, Long idCurso) {
+        Long qntAlunoCurso = (Long) dao.uniqueResult(new BuscarCursoAluno.Count()
+                .fetchAluno("").fetchCurso("")
+                .whereIdAluno(idAluno).whereIdCurso(idCurso));
+        return qntAlunoCurso > 0;
+    }
 }

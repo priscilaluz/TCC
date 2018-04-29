@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringBean;
 import org.unitils.spring.annotation.SpringBeanByType;
+import tcc.common.business.AnexoService;
 
 @DataSet("/datasets/AnexoServiceTest.xml")
 public class AnexoServiceIT extends IntegrationBaseTestClass{
@@ -20,21 +21,21 @@ public class AnexoServiceIT extends IntegrationBaseTestClass{
     private SimpleTestDao dao;
     
     @SpringBean("AnexoServiceImpl")
-    private AnexoServiceImpl anexoServiceImpl;
+    private AnexoService anexoService;
     
     //<editor-fold defaultstate="collapsed" desc="Anexo">
     @Test
     public void deveSalvarAnexo(){
         Anexo anexo = obterAnexoValida();
         
-        anexo = anexoServiceImpl.salvarAnexo(anexo);
+        anexo = anexoService.salvarAnexo(anexo);
         assertNotNull(anexo.getId());
         assertEquals(dao.getById(Anexo.class, anexo.getId()), anexo);
     }
     
     @Test
     public void deveRetornarAnexoPorId(){
-        Anexo anexo = anexoServiceImpl.buscarAnexoPorId(1L);
+        Anexo anexo = anexoService.buscarAnexoPorId(1L);
         assertNotNull(anexo);
     }
     
@@ -43,7 +44,7 @@ public class AnexoServiceIT extends IntegrationBaseTestClass{
         List<Anexo> anexo = dao.query("select c from Anexo c where c.id = 1");
         assertTrue(anexo.size() == 1);
         
-        anexoServiceImpl.excluirAnexo(1L);
+        anexoService.excluirAnexo(1L);
         
         List<Anexo> anexoExcluida = dao.query("select c from Anexo c where c.id = 1");
         assertTrue(anexoExcluida.isEmpty());

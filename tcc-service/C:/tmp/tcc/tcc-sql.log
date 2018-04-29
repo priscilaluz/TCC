@@ -1,0 +1,26 @@
+2018-04-24 20:53:03 DEBUG [org.hibernate.SQL] - 
+    select
+        categoria0_.ID as ID1_1_0_,
+        categoria0_.DESCRICAO as DESCRICA2_1_0_ 
+    from
+        test.CATEGORIA categoria0_ 
+    where
+        categoria0_.ID=?
+2018-04-24 20:53:03 DEBUG [org.hibernate.SQL] - 
+    select
+        categoria0_.ID as ID1_1_,
+        categoria0_.DESCRICAO as DESCRICA2_1_ 
+    from
+        test.CATEGORIA categoria0_ 
+    where
+        upper(categoria0_.DESCRICAO) like upper(?)
+2018-04-24 20:53:03 DEBUG [org.hibernate.SQL] - 
+    select
+        categoria0_.ID as ID1_1_,
+        categoria0_.DESCRICAO as DESCRICA2_1_ 
+    from
+        test.CATEGORIA categoria0_ 
+    where
+        categoria0_.ID=? 
+    order by
+        categoria0_.DESCRICAO

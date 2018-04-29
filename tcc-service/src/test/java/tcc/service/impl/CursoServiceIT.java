@@ -24,6 +24,7 @@ import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringBean;
 import org.unitils.spring.annotation.SpringBeanByType;
+import tcc.common.business.CursoService;
 
 @DataSet("/datasets/CursoServiceTest.xml")
 public class CursoServiceIT extends IntegrationBaseTestClass{
@@ -32,7 +33,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     private SimpleTestDao dao;
     
     @SpringBean("CursoServiceImpl")
-    private CursoServiceImpl cursoServiceImpl;
+    private CursoService cursoService;
     
     //<editor-fold defaultstate="collapsed" desc="Curso">
     @Test
@@ -41,7 +42,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         curso.setSituacao(SituacaoCurso.RASCUNHO);
         curso.setEtapas(new HashSet<Etapa>());
         
-        curso = cursoServiceImpl.salvarCurso(curso);
+        curso = cursoService.salvarCurso(curso);
         assertNotNull(curso.getId());
         assertEquals(dao.getById(Curso.class, curso.getId()), curso);
         List<Etapa> etapas = dao.query("select e from Etapa e where e.curso.id = "+curso.getId().toString());
@@ -50,13 +51,13 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveEditarCurso(){        
-        Curso cursoAtual = cursoServiceImpl.buscarCursoPorId(1L);
+        Curso cursoAtual = cursoService.buscarCursoPorId(1L);
         assertEquals(cursoAtual.getNome(), "Curso História");
         
         cursoAtual.setNome("Curso Nome Novo");
-        cursoServiceImpl.salvarCurso(cursoAtual);
+        cursoService.salvarCurso(cursoAtual);
         
-        Curso cursoEditado = cursoServiceImpl.buscarCursoPorId(1L);
+        Curso cursoEditado = cursoService.buscarCursoPorId(1L);
         assertEquals(cursoEditado.getNome(), "Curso Nome Novo");
     }
     
@@ -64,14 +65,14 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     public void deveSalvarCurso(){
         Curso curso = obterCursoValida();
         
-        curso = cursoServiceImpl.salvarCurso(curso);
+        curso = cursoService.salvarCurso(curso);
         assertNotNull(curso.getId());
         assertEquals(dao.getById(Curso.class, curso.getId()), curso);
     }
     
     @Test
     public void deveRetornarCursoPorId(){
-        Curso curso = cursoServiceImpl.buscarCursoPorId(1L);
+        Curso curso = cursoService.buscarCursoPorId(1L);
         assertNotNull(curso);
         assertTrue(curso.getEtapas().size() == 2);
         for (Etapa etapa : curso.getEtapas()) {
@@ -86,7 +87,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         List<Etapa> etapa = dao.query("select e from Etapa e where e.curso.id = 1");
         assertTrue(etapa.size() == 2);
         
-        cursoServiceImpl.excluirCurso(1L);
+        cursoService.excluirCurso(1L);
         
         List<Curso> cursoExcluida = dao.query("select c from Curso c where c.id = 1");
         assertTrue(cursoExcluida.isEmpty());
@@ -96,7 +97,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorUsuario(){
-        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(1L, null, null, null, null);
+        List<Curso> cursos = cursoService.buscarCursoPorFiltro(1L, null, null, null, null, null);
         assertTrue(cursos.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
         for (Curso c : cursos) {
@@ -106,7 +107,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorParteDaDescricao(){
-        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, "Matemática", null, null, null);
+        List<Curso> cursos = cursoService.buscarCursoPorFiltro(null, "Matemática", null, null, null, null);
         assertTrue(cursos.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(2L));
         for (Curso c : cursos) {
@@ -116,7 +117,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorCategoria(){
-        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, null, 1L, null, null);
+        List<Curso> cursos = cursoService.buscarCursoPorFiltro(null, null, 1L, null, null, null);
         assertTrue(cursos.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(2L));
         for (Curso c : cursos) {
@@ -126,7 +127,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorSituacao(){
-        List<Curso> cursos = cursoServiceImpl.buscarCursoPorFiltro(null, null, null, SituacaoCurso.CONCLUIDA, null);
+        List<Curso> cursos = cursoService.buscarCursoPorFiltro(null, null, null, SituacaoCurso.CONCLUIDA, null, 1L);
         assertTrue(cursos.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(2L, 3L));
         for (Curso c : cursos) {
@@ -136,7 +137,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoConcluidoPorId(){
-        Curso curso = cursoServiceImpl.buscarCursoPorIdConcluido(1L);
+        Curso curso = cursoService.buscarCursoPorIdConcluido(1L);
         assertNotNull(curso);
         assertTrue(curso.getEtapas().size() == 2);
         for (Etapa etapa : curso.getEtapas()) {
@@ -146,7 +147,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarEtapaPorId(){
-        Etapa etapa = cursoServiceImpl.buscarEtapaPorId(1L, true);
+        Etapa etapa = cursoService.buscarEtapaPorId(1L, true);
         assertNotNull(etapa);
         assertTrue(etapa.getEtapasPerguntas().size() == 1);
     }
@@ -160,7 +161,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         Etapa etapa = obterEtapaValida1();
         etapa.setCurso(curso);
         
-        etapa = cursoServiceImpl.salvarEtapa(etapa);
+        etapa = cursoService.salvarEtapa(etapa);
         assertNotNull(etapa.getId());
         assertEquals(dao.getById(Etapa.class, etapa.getId()), etapa);
         List<EtapaPergunta> perguntas = dao.query("select e from EtapaPergunta e where e.etapa.id = "+etapa.getId().toString());
@@ -185,7 +186,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         ep2.setPergunta(dao.getById(Pergunta.class, 1L));
         etapaAtual.getEtapasPerguntas().add(ep2);
         
-        cursoServiceImpl.salvarEtapa(etapaAtual);
+        cursoService.salvarEtapa(etapaAtual);
         
         Etapa etapaEditado = dao.getById(Etapa.class, 1L);
         assertEquals(etapaEditado.getAssunto(), "Etapa Nome Novo");
@@ -204,7 +205,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         assertTrue(!etapaComNivelAtualizado.isEmpty());
         assertEquals(etapaComNivelAtualizado.get(0).getNivel(), new Integer(2));
         
-        cursoServiceImpl.excluirEtapa(1L, 1L);
+        cursoService.excluirEtapa(1L, 1L);
         
         List<Etapa> etapaExcluida = dao.query("select e from Etapa e where e.id = 1");
         assertTrue(etapaExcluida.isEmpty());
@@ -218,7 +219,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarEtapaPorIdCurso(){
-        List<Etapa> etapas = cursoServiceImpl.buscarEtapa(1L, null);
+        List<Etapa> etapas = cursoService.buscarEtapa(1L, null);
         assertTrue(etapas.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
         for (Etapa e : etapas) {
@@ -228,7 +229,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarEtapaPorNivel(){
-        List<Etapa> etapas = cursoServiceImpl.buscarEtapa(null, 1);
+        List<Etapa> etapas = cursoService.buscarEtapa(null, 1);
         assertTrue(etapas.size()==3);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 3L, 4L));
         for (Etapa e : etapas) {
@@ -238,7 +239,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarEtapaPorIdCursoNivel(){
-        List<Etapa> etapas = cursoServiceImpl.buscarEtapa(1L, 1);
+        List<Etapa> etapas = cursoService.buscarEtapa(1L, 1);
         assertTrue(etapas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Etapa e : etapas) {

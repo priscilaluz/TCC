@@ -7,7 +7,7 @@ tccApp.controller('CursoTodosConsultarController', ['$scope', '$rootScope', 'Cur
         $scope.pesquisarCurso = function () {
             $rootScope.appLoaded = false;
             var idCategoria = $scope.pesquisar.categoria ? $scope.pesquisar.categoria.id : null;
-            Curso.buscarCursosAluno({'parteNome': $scope.pesquisar.descricao,
+            Curso.buscarCursosAluno({'idAluno': $rootScope.usuarioLogado.id, 'parteNome': $scope.pesquisar.descricao,
                 'categoria': idCategoria}, function (result) {
                 $scope.cursos = result;
                 $rootScope.appLoaded = true;

@@ -1,7 +1,6 @@
 package tcc.service.validator;
 
 import tcc.common.entity.Curso;
-import tcc.common.entity.CursoAluno;
 import tcc.common.entity.Etapa;
 import tcc.common.exception.PendencyManager;
 import tcc.common.util.ConstantesI18N;

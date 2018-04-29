@@ -1,0 +1,138 @@
+2018-04-24 20:53:03 DEBUG [org.hibernate.SQL] - 
+    select
+        etapaaluno0_.ID as ID1_5_0_,
+        cursoaluno1_.ID as ID1_3_1_,
+        etapa2_.ID as ID1_4_2_,
+        curso4_.ID as ID1_2_3_,
+        anexo5_.ID as ID1_0_4_,
+        etapaaluno0_.CURSO_ALUNO_ID as CURSO_AL3_5_0_,
+        etapaaluno0_.ETAPA_ID as ETAPA_ID4_5_0_,
+        etapaaluno0_.PONTUACAO as PONTUACA2_5_0_,
+        cursoaluno1_.USUARIO_ID as USUARIO_5_3_1_,
+        cursoaluno1_.CURSO_ID as CURSO_ID6_3_1_,
+        cursoaluno1_.PONTUACAO as PONTUACA2_3_1_,
+        cursoaluno1_.POSICAO_ATUAL as POSICAO_3_3_1_,
+        cursoaluno1_.SITUACAO as SITUACAO4_3_1_,
+        etapa2_.ANEXO_ID as ANEXO_ID5_4_2_,
+        etapa2_.ASSUNTO as ASSUNTO2_4_2_,
+        etapa2_.CURSO_ID as CURSO_ID6_4_2_,
+        etapa2_.JOGO as JOGO3_4_2_,
+        etapa2_.NIVEL as NIVEL4_4_2_,
+        curso4_.ANEXO_ID as ANEXO_ID7_2_3_,
+        curso4_.ASSUNTO_GERAL as ASSUNTO_2_2_3_,
+        curso4_.CATEGORIA_ID as CATEGORI8_2_3_,
+        curso4_.COD_ACESSO as COD_ACES3_2_3_,
+        curso4_.DISPONIBILIDADE as DISPONIB4_2_3_,
+        curso4_.NOME as NOME5_2_3_,
+        curso4_.SITUACAO as SITUACAO6_2_3_,
+        curso4_.USUARIO_ID as USUARIO_9_2_3_,
+        anexo5_.BYTES as BYTES2_0_4_,
+        anexo5_.NOME as NOME3_0_4_ 
+    from
+        test.ETAPA_ALUNO etapaaluno0_ 
+    left outer join
+        test.CURSO_ALUNO cursoaluno1_ 
+            on etapaaluno0_.CURSO_ALUNO_ID=cursoaluno1_.ID 
+    left outer join
+        test.ETAPA etapa2_ 
+            on etapaaluno0_.ETAPA_ID=etapa2_.ID 
+    left outer join
+        test.CURSO curso4_ 
+            on etapa2_.CURSO_ID=curso4_.ID 
+    left outer join
+        test.ANEXO anexo5_ 
+            on etapa2_.ANEXO_ID=anexo5_.ID 
+    where
+        etapaaluno0_.ID=?
+2018-04-24 20:53:03 DEBUG [org.hibernate.SQL] - 
+    select
+        relatorioe0_.ID as ID1_9_0_,
+        perguntase1_.ID as ID1_8_1_,
+        pergunta2_.ID as ID1_7_2_,
+        respostas3_.ID as ID1_10_3_,
+        relatorioe0_.ETAPA_ALUNO_ID as ETAPA_AL4_9_0_,
+        relatorioe0_.GANHOU as GANHOU2_9_0_,
+        relatorioe0_.PONTUACAO as PONTUACA3_9_0_,
+        perguntase1_.APOSTAS as APOSTAS2_8_1_,
+        perguntase1_.DICA as DICA3_8_1_,
+        perguntase1_.PERGUNTA_ID as PERGUNTA7_8_1_,
+        perguntase1_.PONTUACAO as PONTUACA4_8_1_,
+        perguntase1_.PULO as PULO5_8_1_,
+        perguntase1_.RELATORIO_ETAPA_ID as RELATORI8_8_1_,
+        perguntase1_.RESPOSTA_ESCOLHIDA_ID as RESPOSTA9_8_1_,
+        perguntase1_.TEMPO_ACABOU as TEMPO_AC6_8_1_,
+        perguntase1_.RELATORIO_ETAPA_ID as RELATORI8_9_0__,
+        perguntase1_.ID as ID1_8_0__,
+        pergunta2_.ANEXO_ID as ANEXO_ID7_7_2_,
+        pergunta2_.CATEGORIA_ID as CATEGORI8_7_2_,
+        pergunta2_.DESCRICAO as DESCRICA2_7_2_,
+        pergunta2_.DICA as DICA3_7_2_,
+        pergunta2_.JUSTIFICATIVA as JUSTIFIC4_7_2_,
+        pergunta2_.NIVEL as NIVEL5_7_2_,
+        pergunta2_.TIPO as TIPO6_7_2_,
+        pergunta2_.USUARIO_ID as USUARIO_9_7_2_,
+        respostas3_.CORRETA as CORRETA2_10_3_,
+        respostas3_.DESCRICAO as DESCRICA3_10_3_,
+        respostas3_.PERGUNTA_ID as PERGUNTA4_10_3_,
+        respostas3_.PERGUNTA_ID as PERGUNTA4_7_1__,
+        respostas3_.ID as ID1_10_1__ 
+    from
+        test.RELATORIO_ETAPA relatorioe0_ 
+    left outer join
+        test.PERGUNTA_ETAPA_ALUNO perguntase1_ 
+            on relatorioe0_.ID=perguntase1_.RELATORIO_ETAPA_ID 
+    left outer join
+        test.PERGUNTA pergunta2_ 
+            on perguntase1_.PERGUNTA_ID=pergunta2_.ID 
+    left outer join
+        test.RESPOSTA respostas3_ 
+            on pergunta2_.ID=respostas3_.PERGUNTA_ID 
+    where
+        relatorioe0_.ID=?
+2018-04-24 20:53:03 DEBUG [org.hibernate.SQL] - 
+    select
+        categoria0_.ID as ID1_1_,
+        categoria0_.DESCRICAO as DESCRICA2_1_ 
+    from
+        test.CATEGORIA categoria0_ 
+    where
+        categoria0_.ID=3
+2018-04-24 20:53:03 DEBUG [org.hibernate.SQL] - 
+    select
+        categoria0_.ID as ID1_1_,
+        categoria0_.DESCRICAO as DESCRICA2_1_ 
+    from
+        test.CATEGORIA categoria0_ 
+    where
+        categoria0_.ID=? 
+    order by
+        categoria0_.DESCRICAO
+2018-04-24 20:53:03 DEBUG [org.hibernate.SQL] - 
+    delete 
+    from
+        test.CATEGORIA 
+    where
+        ID=?
+2018-04-24 20:53:03 DEBUG [org.hibernate.SQL] - 
+    select
+        categoria0_.ID as ID1_1_,
+        categoria0_.DESCRICAO as DESCRICA2_1_ 
+    from
+        test.CATEGORIA categoria0_ 
+    where
+        categoria0_.ID=3
+2018-04-24 20:53:03 DEBUG [org.hibernate.SQL] - 
+    select
+        categoria0_.ID as ID1_1_,
+        categoria0_.DESCRICAO as DESCRICA2_1_ 
+    from
+        test.CATEGORIA categoria0_ 
+    where
+        upper(categoria0_.DESCRICAO)=upper(?)
+2018-04-24 20:53:03 DEBUG [org.hibernate.SQL] - 
+    insert 
+    into
+        test.CATEGORIA
+        (ID, DESCRICAO) 
+    values
+        (default, ?)

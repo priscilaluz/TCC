@@ -36,4 +36,5 @@ public interface CursoAlunoService {
 
     List<MeuAndamento> buscarProprioAndamento(Long idAluno);
 
+    boolean alunoPertenceCurso(Long idAluno, Long idCurso);
 }

@@ -92,7 +92,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             $scope.model.pergunta = $scope.model.perguntas[$scope.model.posicao];
             $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
             $scope.tempoPergunta();
-        } else {
+        } else if (idEtapaAluno) {
             $scope.model.anexoString = null;
             $scope.model.pergunta = null;
             var relatorioEtapa = new RelatorioEtapa();
@@ -114,6 +114,14 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
+        } else {
+            if ($scope.model.pontuacao < pontuacaoMinima) {
+                $scope.model.perdeuJogo = true;
+                tempoImagemFimDeJogo();
+            } else {
+                $timeout.cancel(timeoutTempoPorPergunta);
+                $scope.model.resultado = true;
+            }
         }
     };
     

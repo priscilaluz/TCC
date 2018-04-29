@@ -95,6 +95,9 @@ public class Curso extends AbstractIdBean<Long> {
     @Transient
     private List<Etapa> etapasLista = new ArrayList<Etapa>();
     
+    @Transient
+    private boolean alunoPertence;
+    
     public Curso() {
     }
     
@@ -221,5 +224,13 @@ public class Curso extends AbstractIdBean<Long> {
     
     public void setEtapasLista(List<Etapa> etapasLista) {
         this.etapasLista = etapasLista;
+    }
+
+    public boolean isAlunoPertence() {
+        return alunoPertence;
+    }
+
+    public void setAlunoPertence(boolean alunoPertence) {
+        this.alunoPertence = alunoPertence;
     }
 }

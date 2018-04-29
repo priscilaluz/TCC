@@ -25,6 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import tcc.common.business.AnexoService;
+import tcc.common.business.CursoAlunoService;
 import tcc.common.business.CursoService;
 
 /**
@@ -42,6 +43,9 @@ public class CursoServiceImpl implements CursoService {
 
     @Autowired
     private AnexoService anexoService;
+    
+    @Autowired
+    private CursoAlunoService cursoAlunoService;
     
     @Override
     @Transactional(readOnly = false)
@@ -116,14 +120,21 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, Long idCategoria, SituacaoCurso situacaoCurso, DisponibilidadeCurso disponibilidade) {
-        return dao.list(new BuscarCurso.Entities()
+    public List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, Long idCategoria, SituacaoCurso situacaoCurso, 
+            DisponibilidadeCurso disponibilidade, Long idAluno) {
+        List<Curso> cursos =  dao.list(new BuscarCurso.Entities()
                 .fetchCategoria(ConstantesI18N.FETCH)
                 .whereUsuario(idUsuario)
                 .whereNomeLike(parteNome)
                 .whereCategoria(idCategoria)
                 .whereDisponibilidadeCurso(disponibilidade)
                 .whereSituacaoCurso(situacaoCurso));
+        if (idAluno != null) {
+            for (Curso curso : cursos) {
+                curso.setAlunoPertence(cursoAlunoService.alunoPertenceCurso(idAluno, curso.getId()));
+            }
+        }
+        return cursos;
     }
     
     @Override
