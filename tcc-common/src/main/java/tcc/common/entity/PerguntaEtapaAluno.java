@@ -173,7 +173,7 @@ public class PerguntaEtapaAluno extends AbstractIdBean<Long> {
     }
 
     public Boolean getGanhou() {
-        ganhou = getRespostaCorreta()!=null;
+        ganhou = getRespostaEscolhida()!=null;
         return ganhou;
     }
 

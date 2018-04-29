@@ -51,6 +51,7 @@ tccApp.controller('UsuarioController', ['$scope', '$rootScope', 'Usuario', 'Enum
             $scope.usuario.nome = $rootScope.usuarioLogado.nome;
             $scope.usuario.senha = $rootScope.usuarioLogado.senha;
             $scope.usuario.avatar = $rootScope.usuarioLogado.avatar;
+            $scope.usuario.tipo = $rootScope.usuarioLogado.tipo;
             
             $rootScope.appLoaded = false;
             Enums.getAvatares(function (avatares) {

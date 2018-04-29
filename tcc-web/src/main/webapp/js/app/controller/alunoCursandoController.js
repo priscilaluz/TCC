@@ -23,7 +23,8 @@ tccApp.controller('AlunoCursandoController', ['$scope', '$rootScope', '$routePar
                 $rootScope.appLoaded = false;
                 CursoAluno.salvarEtapaAluno({'idCursoAluno': idCursoAluno, 'idEtapa': etapa.idEtapa}).$promise.then(function (etapaAluno) {
                     $rootScope.appLoaded = true;
-                    $location.path("/cursar-etapa/"+idCursoAluno+"/"+etapa.idEtapa+"/"+etapaAluno.id);
+                    var cursoAberta = !$scope.model.tabuleiroCurso.cursoEncerrado?"S":"N";
+                    $location.path("/cursar-etapa/"+idCursoAluno+"/"+etapa.idEtapa+"/"+etapaAluno.id+"/"+cursoAberta);
                 }, function (error) {
                     $rootScope.appLoaded = true;
                 });

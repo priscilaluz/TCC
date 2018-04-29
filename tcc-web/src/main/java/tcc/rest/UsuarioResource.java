@@ -20,6 +20,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import tcc.common.business.UsuarioService;
+import tcc.common.enums.TipoUsuario;
 
 /**
  *
@@ -37,6 +38,7 @@ public class UsuarioResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Usuario save(Usuario usuario) {
+        usuario.setTipo(usuario.getTipo()!=null?usuario.getTipo():TipoUsuario.ALUNO);
         return usuarioService.salvarUsuario(usuario);
     }
     
@@ -45,7 +47,8 @@ public class UsuarioResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Usuario saveProfessor(Usuario usuario) {
-        return usuarioService.salvarProfessor(usuario);
+        usuario.setTipo(TipoUsuario.PROFESSOR);
+        return usuarioService.salvarUsuario(usuario);
     }
     
     @GET

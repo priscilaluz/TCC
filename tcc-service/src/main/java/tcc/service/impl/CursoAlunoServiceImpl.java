@@ -35,6 +35,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import tcc.common.business.CursoAlunoService;
 import tcc.common.business.CursoService;
+import tcc.common.enums.DisponibilidadeCurso;
 
 /**
  *
@@ -101,6 +102,7 @@ public class CursoAlunoServiceImpl implements CursoAlunoService {
         TabuleiroCurso tabuleiroCurso = new TabuleiroCurso();
         tabuleiroCurso.setNome(cursoAluno.getCurso().getNome());
         tabuleiroCurso.setAssuntoGeral(cursoAluno.getCurso().getAssuntoGeral());
+        tabuleiroCurso.setCursoEncerrado(DisponibilidadeCurso.ENCERRADO.equals(cursoAluno.getCurso().getDisponibilidade()));
         tabuleiroCurso.setAnexo(cursoAluno.getCurso().getAnexo());
         tabuleiroCurso.setIdCurso(cursoAluno.getCurso().getId());
         tabuleiroCurso.setPontuacao(cursoAluno.getPontuacao());

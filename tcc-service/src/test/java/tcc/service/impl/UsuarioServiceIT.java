@@ -16,6 +16,7 @@ import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringBean;
 import org.unitils.spring.annotation.SpringBeanByType;
 import tcc.common.business.UsuarioService;
+import tcc.common.vo.DadoProfessor;
 
 @DataSet("/datasets/UsuarioServiceTest.xml")
 public class UsuarioServiceIT extends IntegrationBaseTestClass{
@@ -31,15 +32,6 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
         Usuario usuario = obterUsuarioValido();
         
         usuario = usuarioService.salvarUsuario(usuario);
-        assertNotNull(usuario.getId());
-        assertEquals(dao.getById(Usuario.class, usuario.getId()), usuario);
-    }
-    
-    @Test
-    public void deveSalvarProfessor(){
-        Usuario usuario = obterUsuarioValido();
-        
-        usuario = usuarioService.salvarProfessor(usuario);
         assertNotNull(usuario.getId());
         assertEquals(dao.getById(Usuario.class, usuario.getId()), usuario);
     }
@@ -99,6 +91,16 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
         Usuario usuario = usuarioService.buscarUsuarioPorLoginSenha("JoaoL", "1234");
         assertNotNull(usuario);
         assertTrue(usuario.getId().equals(1L));
+    }
+    
+    @Test
+    public void deveRetornarDadosProfessor(){
+        DadoProfessor dadoProfessor = usuarioService.dadosProfessor(1L);
+        assertNotNull(dadoProfessor);
+        assertEquals(Long.valueOf(1L), dadoProfessor.getQntAluno());
+        assertEquals(Long.valueOf(1L), dadoProfessor.getQntCursoConcluidos());
+        assertEquals(Long.valueOf(1L), dadoProfessor.getQntCursoRascunho());
+        assertEquals(Long.valueOf(1L), dadoProfessor.getQntPerguntas());
     }
     
     private Usuario obterUsuarioValido() {

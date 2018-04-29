@@ -77,7 +77,32 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             $timeout(proximaPergunta, 400);
         } else {
             $scope.model.perdeuJogo = true;
+            salvarResultadoJogo(false);
         }
+    };
+    
+    var salvarResultadoJogo = function (ganhou) {
+        $timeout.cancel(timeoutTempoPorPergunta);
+        $scope.model.pergunta = null;
+        $scope.model.anexoString = null;
+        var relatorioEtapa = new RelatorioEtapa();
+        relatorioEtapa.etapaAluno = {'id': idEtapaAluno};
+        relatorioEtapa.pontuacao = $scope.model.pontuacao;
+        relatorioEtapa.perguntasEtapasAlunos = $scope.model.resultados;
+        relatorioEtapa.idCursoAluno = idCursoAluno;
+        relatorioEtapa.ganhou = ganhou;
+        $rootScope.appLoaded = false;
+        relatorioEtapa.$save(function () {
+            if ($scope.model.pontuacao < pontuacaoMinima) {
+                $scope.model.perdeuJogo = true;
+                tempoImagemFimDeJogo();
+            } else {
+                $scope.model.resultado = true;
+            }
+            $rootScope.appLoaded = true;
+        }, function (error) {
+            $rootScope.appLoaded = true;
+        });
     };
     
     var proximaPergunta = function (){
@@ -95,27 +120,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             inicializarBotao();
             tempoPergunta();
         } else if (idEtapaAluno) {
-            $timeout.cancel(timeoutTempoPorPergunta);
-            $scope.model.pergunta = null;
-            $scope.model.anexoString = null;
-            var relatorioEtapa = new RelatorioEtapa();
-            relatorioEtapa.etapaAluno = {'id': idEtapaAluno};
-            relatorioEtapa.pontuacao = $scope.model.pontuacao;
-            relatorioEtapa.perguntasEtapasAlunos = $scope.model.resultados;
-            relatorioEtapa.idCursoAluno = idCursoAluno;
-            relatorioEtapa.ganhou = ($scope.model.pontuacao >= pontuacaoMinima);
-            $rootScope.appLoaded = false;
-            relatorioEtapa.$save(function () {
-                if ($scope.model.pontuacao < pontuacaoMinima) {
-                    $scope.model.perdeuJogo = true;
-                    tempoImagemFimDeJogo();
-                } else {
-                    $scope.model.resultado = true;
-                }
-                $rootScope.appLoaded = true;
-            }, function (error) {
-                $rootScope.appLoaded = true;
-            });
+            salvarResultadoJogo($scope.model.pontuacao >= pontuacaoMinima);
         } else {
             if ($scope.model.pontuacao < pontuacaoMinima) {
                 $scope.model.perdeuJogo = true;
@@ -169,7 +174,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
     
     var barraDeProgresso = function () {
         var porcentagem = ($scope.model.posicao+1)/$scope.model.perguntas.length*100;
-        $scope.barraProgresso = {width: porcentagem+'%'};
+        $scope.barraProgresso = {width: Math.round(porcentagem)+'%'};
     };
 
     var atualizarPorcentagemBarra = function () {
@@ -222,8 +227,10 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
         $scope.model.perguntas = perguntas;
         $scope.model.pergunta = perguntas[$scope.model.posicao];
         $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
-        $scope.model.maxFichas = pontuacaoInicial * Math.pow(2, $scope.model.perguntas.length);
-        pontuacaoMinima = $scope.model.maxFichas*5/10;
+        var qntPerguntas = $scope.model.perguntas.length;
+        $scope.model.maxFichas = pontuacaoInicial * Math.pow(2, qntPerguntas);
+        var setentaPorcento = Math.round(qntPerguntas*70/100);
+        pontuacaoMinima = pontuacaoInicial * Math.pow(2, setentaPorcento);
         $scope.telaInit = false;
         $rootScope.contagem = true;
         $scope.count = 0;

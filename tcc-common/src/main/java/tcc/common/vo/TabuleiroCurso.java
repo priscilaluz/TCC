@@ -24,6 +24,7 @@ public class TabuleiroCurso {
     private Integer pontuacao;
     private Usuario aluno;
     private SituacaoCursoAluno situacao;
+    private boolean cursoEncerrado;
     private Map<Integer,List<TdHtmlEtapa>> tabuleiros;
 
     public TabuleiroCurso() {}
@@ -90,6 +91,14 @@ public class TabuleiroCurso {
 
     public void setSituacao(SituacaoCursoAluno situacao) {
         this.situacao = situacao;
+    }
+
+    public boolean isCursoEncerrado() {
+        return cursoEncerrado;
+    }
+
+    public void setCursoEncerrado(boolean cursoEncerrado) {
+        this.cursoEncerrado = cursoEncerrado;
     }
 
     public Map<Integer, List<TdHtmlEtapa>> getTabuleiros() {

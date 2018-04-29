@@ -251,7 +251,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
     var barraDeProgresso = function () {
         var porcentagem = (perguntasTotaisEncontradas) / $scope.model.cacaPalavraLista.qntPergunta * 100;
         $scope.barraProgresso = {
-            width: porcentagem + '%'
+            width: Math.round(porcentagem) + '%'
         };
     };
     
@@ -304,9 +304,18 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             var relatorioEtapa = new RelatorioEtapa();
             relatorioEtapa.etapaAluno = {'id': idEtapaAluno};
             relatorioEtapa.pontuacao = $scope.model.pontuacao;
-            relatorioEtapa.perguntasEtapasAlunos = $scope.model.resultados;
             relatorioEtapa.idCursoAluno = idCursoAluno;
             relatorioEtapa.ganhou = ($scope.model.pontuacao >= pontuacaoMinima);
+            if (relatorioEtapa.ganhou) {
+                relatorioEtapa.perguntasEtapasAlunos = $scope.model.resultados;
+            } else {
+                relatorioEtapa.perguntasEtapasAlunos = [];
+                for (var i = 0; i < $scope.model.resultados.length; i++) {
+                    if ($scope.model.resultados[i].respostaEscolhida){
+                        relatorioEtapa.perguntasEtapasAlunos.push($scope.model.resultados[i]);
+                    }
+                }
+            }
             $rootScope.appLoaded = false;
             if ($scope.model.pontuacao < pontuacaoMinima) {
                 $scope.model.perdeuJogo = true;

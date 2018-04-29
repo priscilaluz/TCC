@@ -12,8 +12,6 @@ public interface UsuarioService {
     
     Usuario salvarUsuario(Usuario usuario);
     
-    Usuario salvarProfessor(Usuario usuario);
-    
     Usuario buscarUsuarioPorLoginSenha(String login, String senha);
     
     List<Usuario> buscarProfessores(String nome);

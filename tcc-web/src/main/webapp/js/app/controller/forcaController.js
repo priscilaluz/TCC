@@ -209,7 +209,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
         var barraDeProgresso = function () {
             var porcentagem = ($scope.model.posicao + 1) / $scope.model.perguntas.length * 100;
             $scope.barraProgresso = {
-                width: porcentagem + '%'
+                width: Math.round(porcentagem) + '%'
             };
         };
 

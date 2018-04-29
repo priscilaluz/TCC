@@ -8,6 +8,7 @@ tccApp.controller('CursarEtapaController', ['$scope', '$rootScope', '$routeParam
         $scope.idCursoAluno = $routeParams.idCursoAluno;
         $scope.idEtapa = $routeParams.idEtapa;
         $scope.idEtapaAluno = $routeParams.idEtapaAluno;
+        $scope.cursoAberto = $routeParams.aberto==="S";
         
         $scope.voltar = function () {
             $location.path("/aluno-cursando/"+$scope.idCursoAluno);

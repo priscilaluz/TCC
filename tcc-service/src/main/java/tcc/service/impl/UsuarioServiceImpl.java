@@ -50,17 +50,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     public Usuario salvarUsuario(Usuario usuario) {
         Long emailJaExistente = (Long) dao.uniqueResult(new BuscarUsuario.Count().whereEmail(usuario.getEmail()).whereIdNot(usuario.getId()));
         Long loginJaExistente = (Long) dao.uniqueResult(new BuscarUsuario.Count().whereLogin(usuario.getLogin()).whereIdNot(usuario.getId()));
-        usuario.setTipo(TipoUsuario.ALUNO);
-        validador.validarSalvarUsuario(usuario, emailJaExistente, loginJaExistente);
-        return dao.saveOrUpdate(usuario);
-    }
-
-    @Override
-    @Transactional(readOnly = false)
-    public Usuario salvarProfessor(Usuario usuario) {
-        Long emailJaExistente = (Long) dao.uniqueResult(new BuscarUsuario.Count().whereEmail(usuario.getEmail()).whereIdNot(usuario.getId()));
-        Long loginJaExistente = (Long) dao.uniqueResult(new BuscarUsuario.Count().whereLogin(usuario.getLogin()).whereIdNot(usuario.getId()));
-        usuario.setTipo(TipoUsuario.PROFESSOR);
         validador.validarSalvarUsuario(usuario, emailJaExistente, loginJaExistente);
         return dao.saveOrUpdate(usuario);
     }

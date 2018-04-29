@@ -5,8 +5,8 @@ public class ConstantesI18N {
     //public static final String SCHEMA = "test";
     public static final String FETCH = "fetch";
     
-    public static final String TABULEIRO_IMG_ON = "img/tabuleiro/on/*.png";
-    public static final String TABULEIRO_IMG_OFF = "img/tabuleiro/off/*.png";
+    public static final String TABULEIRO_IMG_ON = "img/tabuleiro/onAberta/*.png";
+    public static final String TABULEIRO_IMG_OFF = "img/tabuleiro/offAberta/*.png";
     public static final String TABULEIRO_IMG_DESABILITADO = "img/tabuleiro/desabilitada/*.png";
     
     //Usuario

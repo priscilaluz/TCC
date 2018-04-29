@@ -29,7 +29,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
     var barraDeProgresso = function () {
         var porcentagem = ($scope.model.posicao+1)/$scope.model.perguntas.length*100;
         $scope.barraProgresso = {
-            width: porcentagem+'%'
+            width: Math.round(porcentagem)+'%'
         };
     };
     
