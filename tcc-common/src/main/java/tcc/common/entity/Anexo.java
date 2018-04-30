@@ -34,8 +34,7 @@ public class Anexo extends AbstractIdBean<Long> {
     @Column(name = "NOME", nullable = false)
     private String nomeArquivo;
     
-    
-    @Column(name = "BYTES", nullable = false)
+    @Transient
     private byte[] bytes;
     
     @Transient

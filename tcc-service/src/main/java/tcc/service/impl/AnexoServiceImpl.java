@@ -10,11 +10,13 @@ import tcc.service.persistence.GenericDao;
 import tcc.service.query.BuscarAnexo;
 import tcc.service.validator.AnexoValidator;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import tcc.common.business.AnexoService;
+import tcc.common.util.ConstantesI18N;
 
 /**
  *
@@ -28,12 +30,22 @@ public class AnexoServiceImpl implements AnexoService {
 
     @Autowired
     private AnexoValidator validador;
+    
+    @Autowired
+    private AnexoFileSystemManager anexoFileSystemManager;
 
     @Override
     @Transactional(readOnly = false)
     public Anexo salvarAnexo(Anexo anexo) {
         validador.validarSalvarAnexo(anexo);
         dao.saveOrUpdate(anexo);
+        try {
+            anexoFileSystemManager.setRootPath(ConstantesI18N.rootPath);
+            InputStream myInputStream = new ByteArrayInputStream(anexo.getBytes()); 
+            anexoFileSystemManager.sendAnexo(anexo.getId(), myInputStream);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         return anexo;
     }
 
@@ -42,6 +54,12 @@ public class AnexoServiceImpl implements AnexoService {
     public void excluirAnexo(Long idAnexo) {
         Anexo anexo = dao.get(Anexo.class, idAnexo);
         dao.remove(anexo);
+        try {
+            anexoFileSystemManager.setRootPath(ConstantesI18N.rootPath);
+            anexoFileSystemManager.excluirAnexo(idAnexo);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -53,8 +71,14 @@ public class AnexoServiceImpl implements AnexoService {
     @Override
     @Transactional(readOnly = true)
     public InputStream obterBytesAnexo(Long idAnexo) {
-        Anexo anexo = (Anexo) dao.uniqueResult(new BuscarAnexo.Entities().whereId(idAnexo));
-        return new ByteArrayInputStream(anexo.getBytes());
+        InputStream dados;
+        try {
+            anexoFileSystemManager.setRootPath(ConstantesI18N.rootPath);
+            dados = anexoFileSystemManager.getAnexo(idAnexo);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return dados;
     }
     
     @Override
