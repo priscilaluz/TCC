@@ -1,0 +1,17 @@
+tcc/rest/config/TccJacksonFeature.class
+tcc/rest/config/TccJacksonFeature$TccJacksonJaxbJsonProvider.class
+tcc/rest/EnumsResource.class
+tcc/rest/config/ObjectMapperFactory.class
+tcc/rest/CursoAlunoResource.class
+tcc/rest/CursoResource.class
+tcc/rest/config/StreamSerializer.class
+tcc/rest/config/TccResourceConfig.class
+tcc/web/ListContainer.class
+tcc/rest/config/EnumDeserializer.class
+tcc/rest/config/TccExceptionHandler.class
+tcc/rest/UsuarioResource.class
+tcc/rest/PerguntaResource.class
+tcc/rest/AnexoResource.class
+tcc/rest/CategoriaResource.class
+tcc/rest/config/StreamDeserializer.class
+tcc/rest/JogoResource.class

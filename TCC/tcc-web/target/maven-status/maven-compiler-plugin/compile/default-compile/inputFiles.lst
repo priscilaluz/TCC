@@ -1,0 +1,16 @@
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/EnumsResource.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/config/StreamSerializer.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/config/TccJacksonFeature.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/CursoResource.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/config/ObjectMapperFactory.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/PerguntaResource.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/CategoriaResource.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/UsuarioResource.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/JogoResource.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/web/ListContainer.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/config/TccResourceConfig.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/config/TccExceptionHandler.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/AnexoResource.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/config/EnumDeserializer.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/CursoAlunoResource.java
+/Users/priscilaluz/Documents/GitHub/TCC/TCC/tcc-web/src/main/java/tcc/rest/config/StreamDeserializer.java
