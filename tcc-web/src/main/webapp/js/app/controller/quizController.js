@@ -44,10 +44,18 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
     $scope.selecionarResposta = function(resposta) {
         $timeout.cancel(timeoutTempoPorPergunta);
         if (resposta.correta) {
-            $scope.model.pontuacao = $scope.model.pontuacao+pontuacaoPorPergunta;
+            addPontuacao($scope.model.dica, 0.75);
         }
         
         addAoRelatorioFinal(resposta, false, $scope.model.dica);
+    };
+    
+    var addPontuacao = function (partePonto, porcento) {
+        var pontoPergunta = pontuacaoPorPergunta;
+        if (partePonto) {
+            pontoPergunta = pontuacaoPorPergunta * porcento;
+        }
+        $scope.model.pontuacao = $scope.model.pontuacao+pontoPergunta;
     };
     
     $scope.tempoPergunta = function () {
@@ -139,6 +147,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
     $scope.pularPergunta = function () {
         $scope.model.pulo = true;
         $scope.model.qntPulo--;
+        addPontuacao($scope.model.pulo, 0.5);
         addAoRelatorioFinal(null, true, false);
     };
     

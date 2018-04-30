@@ -49,6 +49,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
                 obj = {'dica': dica, 'pergunta': pergunta};
                 $scope.model.dica = true;
                 $scope.model.qntDica--;
+                $scope.model.pontuacao = $scope.model.pontuacao-25;
                 break;
             }
         }

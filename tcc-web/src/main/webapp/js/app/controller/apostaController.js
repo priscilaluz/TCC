@@ -59,6 +59,9 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
         if (tempoAcabou && !$scope.apostou()) {
             $scope.model.pontuacao = $scope.model.pontuacao - 200;
         }
+        if ($scope.model.dica) {
+            $scope.model.pontuacao = $scope.model.pontuacao - 100;
+        }
         if ($scope.model.pulo) {
             $scope.model.pontuacao = $scope.model.pontuacao - 100;
         }

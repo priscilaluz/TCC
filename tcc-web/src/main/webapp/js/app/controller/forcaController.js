@@ -5,6 +5,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
         var imgCampoVazio = "img/jogos/forca/Letras/CampoVazio.png";
         var espaco = "img/jogos/forca/Letras/espaco.png";
         var pontuacaoMinima = 0;
+        var pontuacaoPorPergunta = 100;
         var idCursoAluno = $routeParams.idCursoAluno;
         var idEtapa = $routeParams.idEtapa;
         var idEtapaAluno = $routeParams.idEtapaAluno;
@@ -53,6 +54,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
         $scope.pularPergunta = function () {
             $scope.model.pulo = true;
             $scope.model.qntPulo--;
+            addPontuacao($scope.model.pulo, 0.5);
             addAoRelatorioFinal(null);
         };
 
@@ -187,7 +189,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
                 }
             }
             if (todasLetra) {
-                $scope.model.pontuacao = $scope.model.pontuacao + 100;
+                addPontuacao($scope.model.dica, 0.75);
                 addAoRelatorioFinal(true);
             }
             if (!contemLetra) {
@@ -199,6 +201,14 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
                     addAoRelatorioFinal(false);
                 }
             }
+        };
+        
+        var addPontuacao = function (partePonto, porcento) {
+            var pontoPergunta = pontuacaoPorPergunta;
+            if (partePonto) {
+                pontoPergunta = pontuacaoPorPergunta * porcento;
+            }
+            $scope.model.pontuacao = $scope.model.pontuacao+pontoPergunta;
         };
 
         var contagemInicial = function () {
@@ -243,7 +253,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
             $scope.model.perguntas = perguntas;
             $scope.model.pergunta = perguntas[$scope.model.posicao];
             $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
-            var pontuacaoMaxima = perguntas.length*100;
+            var pontuacaoMaxima = perguntas.length*pontuacaoPorPergunta;
             pontuacaoMinima = pontuacaoMaxima*7/10;
             inicializarLetras();
             $rootScope.appLoaded = true;
