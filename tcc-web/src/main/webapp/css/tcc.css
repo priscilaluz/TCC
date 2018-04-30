@@ -35,7 +35,7 @@
     height: 32px;
     width: 32px;
     border-radius: 3px;
-    font-family:cursive;
+    font-family:Optima;
     font-size: 15px;
     color: #ffffff;
 } 
@@ -55,7 +55,7 @@
     width: 100%;
 }
 .btn-resposta-quiz {
-    font-family:cursive;
+    font-family:Optima;
     font-size: 130%;
     font-weight: bold;
     color: #ffffff;
@@ -70,7 +70,7 @@
     border-color: #adadad;
 }
 .btn-pular-dica {
-    font-family:cursive;
+    font-family:Optima;
     font-size: 130%;
     font-weight: bold;
     color: #ffffff;
@@ -107,7 +107,7 @@
     padding-bottom: 10px;
     font-size: 35px;
     border-radius: 20px;
-    font-family: cursive;
+    font-family: Optima;
     background: #d35e4c; /* For browsers that do not support gradients */    
     background: -webkit-linear-gradient(left top, #00311f, #37b2ce); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(bottom right, #00311f, #37b2ce); /* For Opera 11.1 to 12.0 */
@@ -124,7 +124,7 @@
 .jogos-font{
     color: #522e2e;
     font-size: 22px;
-    font-family:cursive;
+    font-family:Optima;
     background-color: #f2ffed;
 }
 .btn-file {
@@ -133,7 +133,7 @@
     background-color: #ff8f00;
     border-color: #ff6f00;
     color: #ffffff;
-    font-family: cursive;
+    font-family: Optima;
     font-size: 125%;
     font-weight: bold;
 }
@@ -169,7 +169,7 @@
     color: red;
 }
 .title-fonte{
-    font-family: cursive;
+    font-family: Optima;
     color: #ffffff;
 }
 .botao-add{
@@ -185,7 +185,7 @@
 .table-font{
     color: #522e2e;
     font-size: 15px;
-    font-family:cursive;
+    font-family:Optima;
     background-color: #f2ffed;
 }
 
@@ -193,32 +193,32 @@
     background-color: #c5dabd;
     color: #522e2e;
     font-size: 16px;
-    font-family:cursive;
+    font-family:Optima;
 }
 
 .curso-titulo-concluido{
     color: #ff6624;
     font-size: 21px;
-    font-family:cursive;
+    font-family:Optima;
 }
 
 .curso-nao-titulo-concluido{
     color: #5d0f0f;
     font-size:20px;
-    font-family:cursive;
+    font-family:Optima;
 }
 
 .curso-etapa-concluido{
     color: #5d0f0f;
     font-size: 23px;
-    font-family:cursive;
+    font-family:Optima;
     font-weight: bold;
 }
 
 .label-font{
     color: #ff6624;
     font-size: 19px;
-    font-family:cursive;
+    font-family:Optima;
 }
 
 li {
@@ -232,7 +232,7 @@ li {
 .menu-fonte{
     color: #ffffff;
     font-size: 30px;
-    font-family:cursive;
+    font-family:Optima;
     font-weight: bold;
     background-color: transparent;
 }
@@ -256,12 +256,12 @@ li {
 }
 
 .fontBaltazar{
-    font-family:cursive;
+    font-family:Optima;
     color: #ffffff;
 }
 
 .menuCursosParticipoH3{
-    font-family:cursive;
+    font-family:Optima;
     color: #ffffff;
     margin-top: 10px;
 }
@@ -302,7 +302,7 @@ li {
 .menu-cursos-font{
     color: #ffffff;
     font-size: 16px;
-    font-family:cursive;
+    font-family:Optima;
 }
 
 .cursos-menu{
@@ -347,7 +347,7 @@ li {
 }
 
 .btn-modelo {
-    font-family:cursive;
+    font-family:Optima;
     font-size: 125%;
     font-weight: bold;
     color: #ffffff;
@@ -362,7 +362,7 @@ li {
 }
 
 .btn-modelo-tabuleiros {
-    font-family:cursive;
+    font-family:Optima;
     font-size: 125%;
     font-weight: bold;
     color: #ffffff;
@@ -377,7 +377,7 @@ li {
 }
 
 .btn-modelo-voltar {
-    font-family:cursive;
+    font-family:Optima;
     font-size: 125%;
     font-weight: bold;
     color: #0d1318;
@@ -392,7 +392,7 @@ li {
 }
 
 .btn-default1 {
-    font-family:cursive;
+    font-family:Optima;
     font-size: 125%;
     font-weight: bold;
     color: #333;
@@ -445,7 +445,7 @@ li {
 }
 
 .btn-circle {
-    font-family:cursive;
+    font-family:Optima;
     text-align: center;
     padding: 7px 20px;
     font-size: 16px;
@@ -494,13 +494,13 @@ li {
 .fonte-titulo-opcoes{
     color: #810000;
     font-size: 25px;
-    font-family:cursive;
+    font-family:Optima;
 }
 
 li{
     color: #fc4b00;
     font-size: 17px;
-    font-family:cursive;
+    font-family:Optima;
 }
 
 /* Os estilos abaixo foram extendidos do bootstrap para atender aos campos textarea de texto formatado*/
@@ -594,7 +594,7 @@ li{
 .menu-adm{
     color: #000000;
     font-size: 45px;
-    font-family:cursive;
+    font-family:Optima;
     
     background-color: #36906e;
     border: #dff0d8 solid 1px;
@@ -618,7 +618,7 @@ li{
 .menu-professor-fonte{
     color: #420303;
     font-size: 20px;
-    font-family:cursive;
+    font-family:Optima;
 }
 
 .menu-professor{
@@ -687,12 +687,12 @@ li{
 }
 
 .font-professor-home {
-    font-family:cursive;
+    font-family:Optima;
     font-size: 15px;
 }
 
 .dados-professor-home {
-    font-family:cursive;
+    font-family:Optima;
     color: #054645;
     font-size: 17px;
 }
@@ -741,7 +741,7 @@ li{
 .item-fonte-aluno{
     color: #ffffff;
     font-size: 28px;
-    font-family:cursive;
+    font-family:Optima;
     font-weight: bold;
     background-color: transparent;
 }
@@ -756,7 +756,7 @@ li{
 .rodape-manual-fonte{
     color: #ffffff;
     font-size: 30px;
-    font-family:cursive;
+    font-family:Optima;
     font-weight: bold;
     background-color: transparent;
 }

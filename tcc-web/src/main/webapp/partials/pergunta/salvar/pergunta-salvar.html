@@ -5,8 +5,8 @@
             <div class="form-group">
                 <label for="inputDescricao" class="col-lg-1 control-label label-font">Pergunta:</label>
                 <div class="col-lg-11" ng-class="{'has-error': perguntaForm.descricao.$error.required}">
-                    <input type="text" name="descricao" maxlength="1000" ng-model="pergunta.descricao" ng-disabled="!editar"
-                           class="form-control" id="inputDescricao" required placeholder="Pergunta">
+                    <textarea id="inputDescricao" name="descricao" ng-model="pergunta.descricao" class="form-control" rows="5" 
+                              ng-disabled="!editar" maxlength="1000" required></textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -56,7 +56,7 @@
                         <tr>
                             <th width="1" ng-show="editar"></th>
                             <th>Opção</th>
-                            <th width="125" ng-show="editar">Resposta correta</th>
+                            <th width="130" ng-show="editar">Resposta correta</th>
                         </tr>
                     </thead>
                     <tbody class="table-font">
