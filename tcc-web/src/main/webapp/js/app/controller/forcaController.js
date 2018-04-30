@@ -148,6 +148,7 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
             var tils = ["Ã", "Õ"];
             var circunflexos = ["Â", "Ê", "Î", "Ô", "Û"];
             var graves = ["À", "È", "Ì", "Ò", "Ù"];
+            var cedilha = ["Ç"];
 
             if (agudos.indexOf(letraAcento) >= 0) {
                 return letraSemAcento + "agudo";
@@ -160,6 +161,9 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
             }
             if (graves.indexOf(letraAcento) >= 0) {
                 return letraSemAcento + "grave";
+            }
+            if (cedilha.indexOf(letraAcento) >= 0) {
+                return "Ccedilha";
             }
             return letraAcento;
         };
