@@ -40,7 +40,7 @@ public class AnexoServiceImpl implements AnexoService {
         validador.validarSalvarAnexo(anexo);
         dao.saveOrUpdate(anexo);
         try {
-            anexoFileSystemManager.setRootPath(ConstantesI18N.rootPath);
+            anexoFileSystemManager.setRootPath(ConstantesI18N.ROOT_PATH);
             InputStream myInputStream = new ByteArrayInputStream(anexo.getBytes()); 
             anexoFileSystemManager.sendAnexo(anexo.getId(), myInputStream);
         } catch (IOException e) {
@@ -55,7 +55,7 @@ public class AnexoServiceImpl implements AnexoService {
         Anexo anexo = dao.get(Anexo.class, idAnexo);
         dao.remove(anexo);
         try {
-            anexoFileSystemManager.setRootPath(ConstantesI18N.rootPath);
+            anexoFileSystemManager.setRootPath(ConstantesI18N.ROOT_PATH);
             anexoFileSystemManager.excluirAnexo(idAnexo);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -73,7 +73,7 @@ public class AnexoServiceImpl implements AnexoService {
     public InputStream obterBytesAnexo(Long idAnexo) {
         InputStream dados;
         try {
-            anexoFileSystemManager.setRootPath(ConstantesI18N.rootPath);
+            anexoFileSystemManager.setRootPath(ConstantesI18N.ROOT_PATH);
             dados = anexoFileSystemManager.getAnexo(idAnexo);
         } catch (Exception e) {
             throw new RuntimeException(e);
