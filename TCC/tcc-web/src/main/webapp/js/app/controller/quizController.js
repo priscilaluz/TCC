@@ -6,6 +6,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
     var idCursoAluno = $routeParams.idCursoAluno;
     var idEtapa = $routeParams.idEtapa;
     var idEtapaAluno = $routeParams.idEtapaAluno;
+    var aberto = $routeParams.aberto;
     var timeoutTempoPorPergunta = null;
     var tempoPergunta = 30;
     var pontuacaoPorPergunta = 100;
@@ -35,7 +36,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
     
     $scope.voltar = function () {
         if (idCursoAluno && idEtapa){
-            $location.path("/cursar-etapa/"+idCursoAluno+"/"+idEtapa+"/"+idEtapaAluno);
+            $location.path("/cursar-etapa/"+idCursoAluno+"/"+idEtapa+"/"+idEtapaAluno+"/"+aberto);
         } else {
             $location.path("/jogos");
         }

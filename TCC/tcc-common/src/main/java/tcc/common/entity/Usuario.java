@@ -5,6 +5,7 @@
  */
 package tcc.common.entity;
 
+import java.util.Date;
 import tcc.common.enums.Avatar;
 import tcc.common.enums.TipoUsuario;
 import tcc.common.support.AbstractIdBean;
@@ -17,6 +18,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import org.hibernate.annotations.Type;
 
 /**
@@ -45,6 +47,14 @@ public class Usuario extends AbstractIdBean<Long> {
     
     @Column(name = "SENHA", nullable = false)
     private String senha;
+    
+    @Column(name = "DATA_CADASTRO", nullable = false)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date dataCadastro;
+    
+    @Column(name = "DATA_ULTIMO_ACESSO", nullable = false)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date dataUltimoAcesso;
     
     @Enumerated(EnumType.STRING)
     @Type(type = "tcc.common.support.GenericEnumUserType",
@@ -107,6 +117,22 @@ public class Usuario extends AbstractIdBean<Long> {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Date getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public Date getDataUltimoAcesso() {
+        return dataUltimoAcesso;
+    }
+
+    public void setDataUltimoAcesso(Date dataUltimoAcesso) {
+        this.dataUltimoAcesso = dataUltimoAcesso;
     }
 
     public TipoUsuario getTipo() {

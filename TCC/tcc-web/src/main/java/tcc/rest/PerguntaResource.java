@@ -53,10 +53,11 @@ public class PerguntaResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Pergunta> buscarPerguntaPorFiltro(@QueryParam("idUsuario") Long idUsuario, 
             @QueryParam("parteNome") String parteNome, @QueryParam("categoria") Long idCategoria, 
-            @QueryParam("nivel") String idNivel, @QueryParam("tipo") String idTipo) {
+            @QueryParam("nivel") String idNivel, @QueryParam("tipo") String idTipo, 
+            @QueryParam("idCurso") Long idCurso) {
         NivelPergunta nivel = idNivel!=null?NivelPergunta.from(idNivel):null;
         TipoPergunta tipo = idTipo!=null?TipoPergunta.from(idTipo):null;
-        return perguntaService.buscarPerguntaPorFiltro(idUsuario, parteNome, idCategoria, tipo, nivel);
+        return perguntaService.buscarPerguntaPorFiltro(idUsuario, parteNome, idCategoria, tipo, nivel, idCurso);
     }
     
     @GET

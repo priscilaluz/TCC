@@ -82,19 +82,19 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/jogo/aposta/aposta.html',
         controller: 'ApostaController'
       }).
-      when('/jogos-simulado/q/:idCursoAluno/:idEtapa/:idEtapaAluno', {
+      when('/jogos-simulado/q/:idCursoAluno/:idEtapa/:idEtapaAluno/:aberto', {
         templateUrl: 'partials/jogo/quiz/quiz.html',
         controller: 'QuizController'
       }).
-      when('/jogos-simulado/f/:idCursoAluno/:idEtapa/:idEtapaAluno', {
+      when('/jogos-simulado/f/:idCursoAluno/:idEtapa/:idEtapaAluno/:aberto', {
         templateUrl: 'partials/jogo/forca/forca.html',
         controller: 'ForcaController'
       }).
-      when('/jogos-simulado/c/:idCursoAluno/:idEtapa/:idEtapaAluno', {
+      when('/jogos-simulado/c/:idCursoAluno/:idEtapa/:idEtapaAluno/:aberto', {
         templateUrl: 'partials/jogo/caca-palavra/caca-palavra.html',
         controller: 'CacaPalavraController'
       }).
-      when('/jogos-simulado/a/:idCursoAluno/:idEtapa/:idEtapaAluno', {
+      when('/jogos-simulado/a/:idCursoAluno/:idEtapa/:idEtapaAluno/:aberto', {
         templateUrl: 'partials/jogo/aposta/aposta.html',
         controller: 'ApostaController'
       }).
@@ -110,7 +110,7 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/cursar-etapa/etapa.html',
         controller: 'CursarEtapaController'
       }).
-      when('/relatorio-etapa/:idCursoAluno/:idEtapa/:idEtapaAluno/:idRelatorio/:jogo', {
+      when('/relatorio-etapa/:idCursoAluno/:idEtapa/:idEtapaAluno/:idRelatorio/:jogo/:aberto', {
         templateUrl: 'partials/relatorio/relatorio.html',
         controller: 'RelatorioEtapaController'
       }).

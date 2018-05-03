@@ -13,6 +13,7 @@ tccApp.controller('AdicionarPerguntaController', ['$scope', '$rootScope', '$moda
         var idCategoria = obj.idCategoria;
         var idUsuario = obj.idUsuario;
         var jogo = obj.jogo;
+        var idCurso = obj.idCurso;
         var tipoPergunta = null;
 
         $scope.selecionarTodas = function () {
@@ -35,7 +36,7 @@ tccApp.controller('AdicionarPerguntaController', ['$scope', '$rootScope', '$moda
             var idNivel = $scope.pesquisar.nivel ? $scope.pesquisar.nivel.id : null;
             var usuario = ($scope.pesquisar.minhasPerguntas)?idUsuario:null;
             Pergunta.buscarPerguntas({'idUsuario': usuario, 'parteNome': $scope.pesquisar.parteNome,
-                'categoria': idCategoria, 'nivel': idNivel, 'tipo': tipoPergunta.id}, function (result) {
+                'categoria': idCategoria, 'nivel': idNivel, 'tipo': tipoPergunta.id, 'idCurso': idCurso}, function (result) {
                 $scope.model.perguntas = result;
                 $rootScope.appLoaded = true;
             }, function (error) {

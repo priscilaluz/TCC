@@ -94,7 +94,8 @@ public class PerguntaServiceImpl implements PerguntaService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Pergunta> buscarPerguntaPorFiltro(Long idUsuario, String parteNome, Long idCategoria, TipoPergunta tipo, NivelPergunta nivel) {
+    public List<Pergunta> buscarPerguntaPorFiltro(Long idUsuario, String parteNome, Long idCategoria, 
+            TipoPergunta tipo, NivelPergunta nivel, Long idCurso) {
         return dao.list(new BuscarPergunta.Entities()
                 .fetchUsuario(ConstantesI18N.FETCH)
                 .fetchCategoria(ConstantesI18N.FETCH)
@@ -102,7 +103,8 @@ public class PerguntaServiceImpl implements PerguntaService {
                 .whereTipo(tipo)
                 .whereUsuario(idUsuario)
                 .whereDescricaoLike(parteNome)
-                .whereCategoria(idCategoria));
+                .whereCategoria(idCategoria)
+                .whereCursoNaoTem(idCurso));
     }
     
     @Override

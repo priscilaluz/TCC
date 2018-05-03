@@ -1,21 +1,39 @@
-tccApp.controller('CursarEtapaController', ['$scope', '$rootScope', '$routeParams', '$location', 'CursoAluno',
-    function ($scope, $rootScope, $routeParams, $location, CursoAluno) {
+tccApp.controller('CursarEtapaController', ['$scope', '$rootScope', '$routeParams', '$location', '$modal', 'CursoAluno',
+    function ($scope, $rootScope, $routeParams, $location, $modal, CursoAluno) {
         $scope.model = {
             etapaAluno: null,
             jogo: null,
+            aberto: "N",
             relatorios:[]
         };
         $scope.idCursoAluno = $routeParams.idCursoAluno;
         $scope.idEtapa = $routeParams.idEtapa;
         $scope.idEtapaAluno = $routeParams.idEtapaAluno;
         $scope.cursoAberto = $routeParams.aberto==="S";
+        $scope.model.aberto = $routeParams.aberto;
+        var jogo;
         
         $scope.voltar = function () {
             $location.path("/aluno-cursando/"+$scope.idCursoAluno);
         };
         
         $scope.jogar = function () {
-            $location.path("/jogos-simulado/"+$scope.model.jogo+"/"+$scope.idCursoAluno+"/"+$scope.idEtapa+"/"+$scope.idEtapaAluno);
+            var obj = {jogo: jogo,
+                idCursoAluno: $scope.idCursoAluno, 
+                idEtapa: $scope.idEtapa, 
+                idEtapaAluno: $scope.idEtapaAluno,
+                aberto: $scope.model.aberto};
+            var url = 'partials/jogo/explicacao-jogo.html';
+            $modal.open({
+                templateUrl: url,
+                controller: 'ExplicacaoJogoController',
+                size: 'lg',
+                resolve: {obj: function () {return obj;}}
+            }).result.then(function (result) {
+                // Modal retorno
+            }, function () {
+                // Modal cancelado
+            });
         };
         
         var init = function () {
@@ -23,6 +41,7 @@ tccApp.controller('CursarEtapaController', ['$scope', '$rootScope', '$routeParam
             CursoAluno.buscarEtapaAlunoPorCursoAlunoEEtapa({'idCursoAluno': $scope.idCursoAluno, 'idEtapa': $scope.idEtapa}).$promise.then(function (etapaAluno) {
                 $scope.model.etapaAluno = etapaAluno;
                 $scope.model.jogo = etapaAluno.etapa.jogo.id.toLowerCase();
+                jogo = etapaAluno.etapa.jogo;
                 CursoAluno.buscarRelatoriosEtapaPorIdEtapaAluno({'idEtapaAluno': $scope.idEtapaAluno}).$promise.then(function (relatorios) {
                     $scope.model.relatorios = relatorios;
                     $rootScope.appLoaded = true;

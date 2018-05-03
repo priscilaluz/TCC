@@ -8,9 +8,10 @@ tccApp.controller('RelatorioEtapaController', ['$scope', '$rootScope', '$routePa
         var idCursoAluno = $routeParams.idCursoAluno;
         var idEtapa = $routeParams.idEtapa;
         var idEtapaAluno = $routeParams.idEtapaAluno;
+        var aberto = $routeParams.aberto;
         
         $scope.voltar = function () {
-            $location.path("/cursar-etapa/"+idCursoAluno+"/"+idEtapa+"/"+idEtapaAluno);
+            $location.path("/cursar-etapa/"+idCursoAluno+"/"+idEtapa+"/"+idEtapaAluno+"/"+aberto);
         };
         
         var init = function () {

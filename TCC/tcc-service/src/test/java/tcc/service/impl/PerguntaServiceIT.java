@@ -81,7 +81,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorUsuario(){
-        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(1L, null, null, null, null);
+        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(1L, null, null, null, null, null);
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {
@@ -91,7 +91,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorParteDaDescricao(){
-        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(null, "Quanto é", null, null, null);
+        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(null, "Quanto é", null, null, null, null);
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {
@@ -101,7 +101,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorCategoria(){
-        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(null, null, 1L, null, null);
+        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(null, null, 1L, null, null, null);
         assertTrue(perguntas.size()==3);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L, 4L));
         for (Pergunta p : perguntas) {
@@ -111,7 +111,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorTipo(){
-        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null);
+        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null, null);
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {
@@ -121,7 +121,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorNivel(){
-        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null);
+        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null, null);
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {
@@ -131,7 +131,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorUsuarioDescricaoCategoria(){
-        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(1L, "Quanto é", 1L, TipoPergunta.MULTIPLAS_ESCOLHAS, NivelPergunta.FACIL);
+        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(1L, "Quanto é", 1L, TipoPergunta.MULTIPLAS_ESCOLHAS, NivelPergunta.FACIL, null);
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {

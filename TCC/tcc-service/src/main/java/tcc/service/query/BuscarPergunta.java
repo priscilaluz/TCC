@@ -98,4 +98,18 @@ public abstract class BuscarPergunta<T extends Serializable> extends BusinessFlu
         }    
         return this;
     }
+    
+    public BuscarPergunta whereCursoNaoTem(Long idCurso) {
+        if (idCurso != null) {
+            appendText(getPreffixFilter());
+            appendText(" p.id not in ");
+            appendText(" (select pe.id from Pergunta pe ");
+            appendText(" left join pe.etapasPerguntas ep ");
+            appendText(" left join ep.etapa e ");
+            appendText(" left join e.curso c ");
+            appendText(" where c.id = :idCurso) ");
+            addParameter("idCurso", idCurso);
+        }    
+        return this;
+    }
 }

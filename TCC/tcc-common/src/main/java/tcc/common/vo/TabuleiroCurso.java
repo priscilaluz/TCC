@@ -25,6 +25,7 @@ public class TabuleiroCurso {
     private Usuario aluno;
     private SituacaoCursoAluno situacao;
     private boolean cursoEncerrado;
+    private Integer qntTabuleiro;
     private Map<Integer,List<TdHtmlEtapa>> tabuleiros;
 
     public TabuleiroCurso() {}
@@ -107,5 +108,13 @@ public class TabuleiroCurso {
 
     public void setTabuleiros(Map<Integer, List<TdHtmlEtapa>> tabuleiros) {
         this.tabuleiros = tabuleiros;
+    }
+
+    public Integer getQntTabuleiro() {
+        return tabuleiros.entrySet().size();
+    }
+
+    public void setQntTabuleiro(Integer qntTabuleiro) {
+        this.qntTabuleiro = qntTabuleiro;
     }
 }

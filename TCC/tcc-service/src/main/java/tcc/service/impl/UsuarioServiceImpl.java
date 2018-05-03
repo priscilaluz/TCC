@@ -5,6 +5,7 @@
  */
 package tcc.service.impl;
 
+import java.util.Date;
 import tcc.common.entity.Curso;
 import tcc.common.entity.Pergunta;
 import tcc.common.entity.Usuario;
@@ -51,13 +52,18 @@ public class UsuarioServiceImpl implements UsuarioService {
         Long emailJaExistente = (Long) dao.uniqueResult(new BuscarUsuario.Count().whereEmail(usuario.getEmail()).whereIdNot(usuario.getId()));
         Long loginJaExistente = (Long) dao.uniqueResult(new BuscarUsuario.Count().whereLogin(usuario.getLogin()).whereIdNot(usuario.getId()));
         validador.validarSalvarUsuario(usuario, emailJaExistente, loginJaExistente);
+        usuario.setDataCadastro(new Date());
+        usuario.setDataUltimoAcesso(new Date());
         return dao.saveOrUpdate(usuario);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Usuario buscarUsuarioPorLoginSenha(String login, String senha) {
-        return (Usuario) dao.uniqueResult(new BuscarUsuario.Entities().whereLogin(login).whereSenha(senha));
+        Usuario usuario = (Usuario) dao.uniqueResult(new BuscarUsuario.Entities().whereLogin(login).whereSenha(senha));
+        usuario.setDataUltimoAcesso(new Date());
+        dao.saveOrUpdate(usuario);
+        return usuario;
     }
     
     @Override
@@ -75,7 +81,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     @Transactional(readOnly = false)
     public void excluirProfessores(Long idProfessores) {
-        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(idProfessores, null, null, null, null);
+        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(idProfessores, null, null, null, null, null);
         List<Curso> cursos = cursoService.buscarCursoPorFiltro(idProfessores, null, null, null, null, null);
         validador.validarExcluirUsuario(perguntas, cursos);
         Usuario professores = buscarProfessorPorId(idProfessores);

@@ -361,6 +361,12 @@ li {
     border-color: #adadad;
 }
 
+.btn-tabuleiro-pag {
+    font-family:Optima;
+    font-size: 125%;
+    color: #282d26;
+}
+
 .btn-modelo-tabuleiros {
     font-family:Optima;
     font-size: 125%;

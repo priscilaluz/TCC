@@ -37,12 +37,15 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `tcc`.`usuario`
 -- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `tcc`.`usuario` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NOME` VARCHAR(45) NOT NULL,
   `LOGIN` VARCHAR(45) NOT NULL,
   `EMAIL` VARCHAR(45) NOT NULL,
   `SENHA` VARCHAR(45) NOT NULL,
+  `DATA_CADASTRO` DATETIME NOT NULL,
+  `DATA_ULTIMO_ACESSO` DATETIME NOT NULL,
   `TIPO` ENUM('A', 'P', 'T', 'D') NOT NULL DEFAULT 'A' COMMENT '\'A\'- Aluno, \'P\'- Professor, \'T\'- Ambos, aluno e professor',
   `AVATAR` ENUM('RE', 'RA', 'IO', 'IA', 'PE') NULL DEFAULT NULL,
   PRIMARY KEY (`ID`))

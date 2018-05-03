@@ -13,6 +13,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
     var idCursoAluno = $routeParams.idCursoAluno;
     var idEtapa = $routeParams.idEtapa;
     var idEtapaAluno = $routeParams.idEtapaAluno;
+    var aberto = $routeParams.aberto;
     $scope.count = 0;
     $scope.imagem1 = true;
     $scope.model = {
@@ -31,7 +32,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
     
     $scope.voltar = function () {
         if (idCursoAluno && idEtapa){
-            $location.path("/cursar-etapa/"+idCursoAluno+"/"+idEtapa+"/"+idEtapaAluno);
+            $location.path("/cursar-etapa/"+idCursoAluno+"/"+idEtapa+"/"+idEtapaAluno+"/"+aberto);
         } else {
             $location.path("/jogos");
         }

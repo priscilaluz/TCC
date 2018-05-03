@@ -81,6 +81,9 @@ public class Pergunta extends AbstractIdBean<Long> {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pergunta")
     private Set<Resposta> respostas = new HashSet<Resposta>();
     
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pergunta")
+    private Set<EtapaPergunta> etapasPerguntas = new HashSet<EtapaPergunta>();
+    
     @Transient
     private Long idAnexo;
     
@@ -190,4 +193,14 @@ public class Pergunta extends AbstractIdBean<Long> {
     public void setIdAnexo(Long idAnexo) {
         this.idAnexo = idAnexo;
     }
+
+    public Set<EtapaPergunta> getEtapasPerguntas() {
+        return etapasPerguntas;
+    }
+
+    public void setEtapasPerguntas(Set<EtapaPergunta> etapasPerguntas) {
+        this.etapasPerguntas = etapasPerguntas;
+    }
+
+    
 }

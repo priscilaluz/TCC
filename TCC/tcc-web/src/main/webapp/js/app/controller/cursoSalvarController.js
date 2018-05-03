@@ -175,7 +175,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
         };
         
         $scope.addPergunta = function () {
-            var obj = {idCategoria: $scope.curso.categoria.id, perguntasEtapa:$scope.perguntasEtapa, 
+            var obj = {idCurso: $scope.curso.id, idCategoria: $scope.curso.categoria.id, perguntasEtapa:$scope.perguntasEtapa, 
                 idUsuario: $rootScope.usuarioLogado.id, jogo: $scope.etapa.jogo.id};
             $modal.open({
                 templateUrl: 'partials/curso/salvar/add-perguntas.html',

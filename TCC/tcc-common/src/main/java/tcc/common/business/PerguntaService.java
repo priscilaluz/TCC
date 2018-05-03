@@ -17,7 +17,7 @@ public interface PerguntaService {
     
     Pergunta buscarPerguntaPorId(Long idPergunta);
     
-    List<Pergunta> buscarPerguntaPorFiltro(Long idUsuario, String parteNome, Long idCategoria, TipoPergunta tipo, NivelPergunta nivel);
+    List<Pergunta> buscarPerguntaPorFiltro(Long idUsuario, String parteNome, Long idCategoria, TipoPergunta tipo, NivelPergunta nivel,  Long idCurso);
     
     Long buscarCountPerguntaPorFiltro(Long idUsuario);
     
