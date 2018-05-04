@@ -50,7 +50,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveBuscarTodosProfessores(){        
-        List<Usuario> usuarios = usuarioService.buscarProfessores(null);
+        List<Usuario> usuarios = usuarioService.buscarUsuarios(null, TipoUsuario.PROFESSOR, null);
         assertTrue(usuarios.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 3L));
         for (Usuario u : usuarios) {
@@ -60,7 +60,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveBuscarProfessoresPorNome(){        
-        List<Usuario> usuarios = usuarioService.buscarProfessores("Cla");
+        List<Usuario> usuarios = usuarioService.buscarUsuarios("Cla", TipoUsuario.PROFESSOR, null);
         assertTrue(usuarios.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(3L));
         for (Usuario u : usuarios) {

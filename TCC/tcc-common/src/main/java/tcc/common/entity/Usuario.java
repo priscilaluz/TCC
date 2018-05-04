@@ -6,6 +6,8 @@
 package tcc.common.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import tcc.common.enums.Avatar;
 import tcc.common.enums.TipoUsuario;
 import tcc.common.support.AbstractIdBean;
@@ -14,9 +16,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import org.hibernate.annotations.Type;
@@ -69,6 +73,9 @@ public class Usuario extends AbstractIdBean<Long> {
                     value = "tcc.common.enums.Avatar")})
     @Column(name = "AVATAR", nullable = false)
     private Avatar avatar;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "aluno")
+    private Set<CursoAluno> alunos = new HashSet<CursoAluno>();
 
     public Usuario() {
     }
@@ -149,5 +156,13 @@ public class Usuario extends AbstractIdBean<Long> {
 
     public void setAvatar(Avatar avatar) {
         this.avatar = avatar;
+    }
+
+    public Set<CursoAluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(Set<CursoAluno> alunos) {
+        this.alunos = alunos;
     }
 }

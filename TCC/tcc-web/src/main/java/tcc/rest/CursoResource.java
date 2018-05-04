@@ -5,6 +5,8 @@
  */
 package tcc.rest;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import tcc.common.entity.Curso;
 import tcc.common.entity.Etapa;
 import tcc.common.enums.DisponibilidadeCurso;
@@ -123,5 +125,17 @@ public class CursoResource {
             cursoService.updateDisponibilidadeCurso(idCurso, DisponibilidadeCurso.from(idDisponibilidade));
         }
         return true;
+    }
+    
+    @GET
+    @Path("/addAlunosAoCurso")
+    @Produces(MediaType.APPLICATION_JSON)
+    public boolean addAlunosAoCurso(@QueryParam("idCurso") Long idCurso, @QueryParam("idAlunos") String idAlunos) {
+        List<Long> idsAluno = new ArrayList<>();
+        List<String> idsAlunoString = Arrays.asList(idAlunos.split(","));
+        for (String string : idsAlunoString) {
+            idsAluno.add(Long.valueOf(string));
+        }
+        return cursoService.addAlunosAoCurso(idCurso, idsAluno);
     }
 }

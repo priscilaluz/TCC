@@ -86,6 +86,19 @@ public abstract class BuscarUsuario<T extends Serializable> extends BusinessFlue
         }    
         return this;
     }
+    
+    public BuscarUsuario whereCursoNaoTem(Long idCurso) {
+        if (idCurso != null) {
+            appendText(getPreffixFilter());
+            appendText(" u.id not in ");
+            appendText(" (select u1.id from Usuario u1 ");
+            appendText(" left join u1.alunos a ");
+            appendText(" left join a.curso c ");
+            appendText(" where c.id = :idCurso) ");
+            addParameter("idCurso", idCurso);
+        }    
+        return this;
+    }
 
     
 }

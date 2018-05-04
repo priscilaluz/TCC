@@ -1,0 +1,48 @@
+<!-- loagind app -->
+<div class="loading_app" data-ng-hide="appLoaded" style="z-index: 999; width: 100%; height: 100%; position: absolute; top: 0px ; left: 0px;">
+    <p style="text-align:center; margin: auto; position: absolute;top: 50%;left: 41%;">
+        <img src="img/reload.gif">
+    </p>
+</div>
+<div class="modal-header" style="background-color: #cbe8ba;">
+    <h3 class="modal-title title-fonte">Adicionar Alunos ao Curso</h3>
+</div>
+<div class="modal-body" style="height: 400px;">
+    <form role="form" name="alunoForm" class="form-horizontal" enctype="multipart/form-data" ng-submit="buscarAlunos()">
+        <div class="col-md-12" style="padding-left: 0px; padding-right: 0px;">
+            <label for="parteNome" class="col-md-1 control-label label-font">Aluno:</label>
+            <div class="col-md-9">
+                <input type="text" maxlength="1000" name="parteNome" ng-model="pesquisar.parteNome" class="form-control" id="parteNome" placeholder="Aluno">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-modelo pull-right">
+                    <i class="glyphicon glyphicon-search"></i>&nbsp;Pesquisar</button>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center" style="padding-left: 0px; padding-right: 0px; padding-top: 10px; overflow: auto; height: 200px !important;">
+            <table class="table table-condensed" id="tabela">
+                <thead class="table-font-title">
+                    <tr>
+                        <th width="10">
+                            <input class="pull-right" ng-change="selecionarTodas()" id="selecionar" type="checkbox" name="selecionar" ng-model="model.todos">
+                        </th>
+                        <th>Aluno</th>
+                    </tr>
+                </thead>
+                <tbody class="table-font">
+                    <tr ng-repeat="aluno in model.alunos">
+                        <td><input class="pull-right" id="selecionar" type="checkbox" name="selecionar" ng-change="selecionar()" ng-model="aluno.selecionar"></td>
+                        <td>{{aluno.nome}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <span ng-show="model.alunos.length===0">Nenhum aluno para esse filtro.</span>
+        </div>
+    </form>
+</div>
+<div class="modal-footer" style="background-color: #cbe8ba;">
+    <button type="button" class="btn btn-default" data-ng-click="fechar()" style="font-size: 120%;">
+        <i class="glyphicon glyphicon-remove-sign"></i>&nbsp;Fechar</button>
+    <button type="button" class="btn btn-modelo" data-ng-click="adicionar()" style="font-size: 120%;">
+        <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Adicionar</button>
+</div>

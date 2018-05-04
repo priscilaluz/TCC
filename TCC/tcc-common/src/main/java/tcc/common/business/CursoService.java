@@ -36,4 +36,6 @@ public interface CursoService {
     
     Etapa buscarEtapaPorId(Long idEtapa, boolean resposta);
     
+    boolean addAlunosAoCurso(Long idCurso, List<Long> idsAluno);
+    
 }

@@ -68,8 +68,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     
     @Override
     @Transactional(readOnly = true)
-    public List<Usuario> buscarProfessores(String nome) {
-        return dao.list(new BuscarUsuario.Entities().whereNomeLike(nome).whereTipo(TipoUsuario.PROFESSOR));
+    public List<Usuario> buscarUsuarios(String nome, TipoUsuario tipo, Long idCurso) {
+        return dao.list(new BuscarUsuario.Entities().whereNomeLike(nome).whereTipo(tipo).whereCursoNaoTem(idCurso));
     }
     
     @Override

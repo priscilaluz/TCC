@@ -111,18 +111,20 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
             });
         };
         
+        var buscarCursoAlunoPorIdCurso = function (id) {
+            CursoAluno.buscarCursoAlunoPorIdCurso({'idCurso': id}, function (cursosAlunos) {
+                $scope.cursosAlunos = cursosAlunos;
+                $rootScope.appLoaded = true;
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        };
         var buscarCursoConcluido = function (id) {
             $rootScope.appLoaded = false;
             Curso.buscarCursoCompletoPorId({'idCurso': id}, function (result) {
                 $scope.curso = result;
                 $scope.cursoCompleto = $scope.curso.situacao.id==='C';
-                
-                CursoAluno.buscarCursoAlunoPorIdCurso({'idCurso': id}, function (cursosAlunos) {
-                    $scope.cursosAlunos = cursosAlunos;
-                    $rootScope.appLoaded = true;
-                }, function (error) {
-                    $rootScope.appLoaded = true;
-                });
+                buscarCursoAlunoPorIdCurso(id);
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
@@ -194,6 +196,20 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
             for (var i = 0; i < $scope.perguntasEtapa.length; i++) {
                 $scope.perguntasEtapa[i].posicao = i+1;
             }
+        };
+        
+        $scope.addAlunos = function () {
+            var obj = {idCurso: $scope.curso.id};
+            $modal.open({
+                templateUrl: 'partials/curso/salvar/add-alunos.html',
+                controller: 'AdicionarAlunoController',
+                size: 'lg',
+                resolve: {obj: function () {return obj;}}
+            }).result.then(function (result) {
+                buscarCursoAlunoPorIdCurso();
+            }, function () {
+                // Modal cancelado
+            });
         };
         
         //=== === === === === === ANEXO === === === === === ===//

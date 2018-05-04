@@ -189,6 +189,16 @@ public class CursoServiceImpl implements CursoService {
     
     @Override
     @Transactional(readOnly = false)
+    public boolean addAlunosAoCurso(Long idCurso, List<Long> idsAluno) {
+        Curso curso = buscarCursoPorId(idCurso);
+        for (Long idAluno : idsAluno) {
+            cursoAlunoService.entrarCurso(idCurso, idAluno, curso.getCodAcesso());
+        }
+        return true;
+    }
+    
+    @Override
+    @Transactional(readOnly = false)
     public Etapa salvarEtapa(Etapa etapa) {
         validador.validarSalvarEtapa(etapa);
         Anexo anexo = etapa.getAnexo();
