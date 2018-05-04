@@ -52,15 +52,14 @@ public class CursoServiceImpl implements CursoService {
     @Override
     @Transactional(readOnly = false)
     public Curso salvarCurso(Curso curso) {
-        Anexo anexo = curso.getAnexo();
-        if (anexo != null) {
-            anexo.setId(curso.getIdAnexo());
-            curso.setAnexo(anexoService.salvarAnexo(anexo));
-        } else if (curso.getIdAnexo() != null) {
-            Anexo anexoRemover = dao.get(Anexo.class, curso.getIdAnexo());
-            dao.remove(anexoRemover);
-        }
         validador.validarSalvarCurso(curso);
+        Anexo anexo = curso.getAnexo();
+        if (anexo != null && anexo.getId() == null) {
+            curso.setAnexo(anexoService.salvarAnexo(anexo));
+        }
+        if (curso.getIdAnexoExcluido() != null) {
+            anexoService.excluirAnexo(curso.getIdAnexoExcluido());
+        }
         curso.setDisponibilidade(DisponibilidadeCurso.FECHADO);
         dao.saveOrUpdate(curso);
         return curso;
@@ -139,7 +138,6 @@ public class CursoServiceImpl implements CursoService {
                 .fetchAnexo(ConstantesI18N.FETCH)
                 .whereId(idCurso)
                 .orderByNivel());
-        curso.setIdAnexo(curso.getAnexo()!=null?curso.getAnexo().getId():null);
         curso.setUltimaEtapa(curso.getEtapas().size());
         return curso;
     }
@@ -158,7 +156,6 @@ public class CursoServiceImpl implements CursoService {
                 .fetchAnexoEtapa(ConstantesI18N.FETCH)
                 .whereId(idCurso)
                 .orderByNivel());
-        curso.setIdAnexo(curso.getAnexo()!=null?curso.getAnexo().getId():null);
         curso.setUltimaEtapa(curso.getEtapas().size());
         return curso;
     }
@@ -195,12 +192,11 @@ public class CursoServiceImpl implements CursoService {
     public Etapa salvarEtapa(Etapa etapa) {
         validador.validarSalvarEtapa(etapa);
         Anexo anexo = etapa.getAnexo();
-        if (anexo != null) {
-            anexo.setId(etapa.getIdAnexo());
+        if (anexo != null && anexo.getId() == null) {
             etapa.setAnexo(anexoService.salvarAnexo(anexo));
-        } else if (etapa.getIdAnexo() != null) {
-            Anexo anexoRemover = dao.get(Anexo.class, etapa.getIdAnexo());
-            dao.remove(anexoRemover);
+        }
+        if (etapa.getIdAnexoExcluido() != null) {
+            anexoService.excluirAnexo(etapa.getIdAnexoExcluido());
         }
         if (etapa.getId() != null) {
             dao.executeDML(new ExcluirEtapaPerguntaPorEtapa(etapa.getId()));
@@ -240,9 +236,6 @@ public class CursoServiceImpl implements CursoService {
                 .whereIdCurso(idCurso)
                 .whereNivel(nivel)
                 .orderByNivel());
-        for (Etapa etapa : etapas) {
-            etapa.setIdAnexo(etapa.getAnexo()!=null?etapa.getAnexo().getId():null);
-        }
         return etapas;
     }
     

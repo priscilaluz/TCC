@@ -5,6 +5,8 @@
  */
 package tcc.service.impl;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import tcc.common.entity.Anexo;
 import tcc.common.entity.Pergunta;
 import tcc.common.entity.Resposta;
@@ -48,15 +50,16 @@ public class PerguntaServiceImpl implements PerguntaService {
                 .fetchPergunta("").wherePergunta(pergunta.getId()));
         }
         
-        Anexo anexo = pergunta.getAnexo();
-        if (anexo != null) {
-            anexo.setId(pergunta.getIdAnexo());
-            pergunta.setAnexo(anexoService.salvarAnexo(anexo));
-        } else if (pergunta.getIdAnexo() != null) {
-            Anexo anexoRemover = dao.get(Anexo.class, pergunta.getIdAnexo());
-            dao.remove(anexoRemover);
-        }
         validador.validarSalvarPergunta(pergunta, qntEtapasPerguntas);
+        Anexo anexo = pergunta.getAnexo();
+        if (anexo != null && anexo.getId() == null) {
+            InputStream inputStream = new ByteArrayInputStream(anexo.getBytes());
+            anexo.setArquivo(inputStream);
+            pergunta.setAnexo(anexoService.salvarAnexo(anexo));
+        }
+        if (pergunta.getIdAnexoExcluido()!= null) {
+            anexoService.excluirAnexo(pergunta.getIdAnexoExcluido());
+        }
         if (pergunta.getId() != null){
             dao.executeDML(new ExcluirRespostaPorPergunta(pergunta.getId()));
         }
@@ -88,7 +91,6 @@ public class PerguntaServiceImpl implements PerguntaService {
                 .fetchAnexo(ConstantesI18N.FETCH)
                 .fetchResposta(ConstantesI18N.FETCH)
                 .fetchCategoria(ConstantesI18N.FETCH).whereId(idPergunta));
-        pergunta.setIdAnexo(pergunta.getAnexo()!=null?pergunta.getAnexo().getId():null);
         return pergunta;
     }
 

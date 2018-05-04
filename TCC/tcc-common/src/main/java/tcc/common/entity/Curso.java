@@ -87,7 +87,7 @@ public class Curso extends AbstractIdBean<Long> {
     private Set<Etapa> etapas = new HashSet<Etapa>();
     
     @Transient
-    private Long idAnexo;
+    private Long idAnexoExcluido;
     
     @Transient
     private int ultimaEtapa;
@@ -189,13 +189,13 @@ public class Curso extends AbstractIdBean<Long> {
     public void setDisponibilidade(DisponibilidadeCurso disponibilidade) {
         this.disponibilidade = disponibilidade;
     }
-    
-    public Long getIdAnexo() {
-        return idAnexo;
+
+    public Long getIdAnexoExcluido() {
+        return idAnexoExcluido;
     }
-    
-    public void setIdAnexo(Long idAnexo) {
-        this.idAnexo = idAnexo;
+
+    public void setIdAnexoExcluido(Long idAnexoExcluido) {
+        this.idAnexoExcluido = idAnexoExcluido;
     }
     
     public int getUltimaEtapa() {

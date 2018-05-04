@@ -68,7 +68,7 @@ public class Etapa extends AbstractIdBean<Long> implements Comparator<Etapa> {
     private Set<EtapaPergunta> etapasPerguntas = new HashSet<EtapaPergunta>();
     
     @Transient
-    private Long idAnexo;
+    private Long idAnexoExcluido;
     
     @Transient
     private Long idCurso;
@@ -148,12 +148,12 @@ public class Etapa extends AbstractIdBean<Long> implements Comparator<Etapa> {
         this.idCurso = idCurso;
     }
 
-    public Long getIdAnexo() {
-        return idAnexo;
+    public Long getIdAnexoExcluido() {
+        return idAnexoExcluido;
     }
 
-    public void setIdAnexo(Long idAnexo) {
-        this.idAnexo = idAnexo;
+    public void setIdAnexoExcluido(Long idAnexoExcluido) {
+        this.idAnexoExcluido = idAnexoExcluido;
     }
 
     @Override

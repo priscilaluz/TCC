@@ -73,6 +73,7 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
         //=== === === === === === ANEXO === === === === === ===//
         $scope.removerArquivo = function () {
             document.getElementById('file').value = "";
+            $scope.pergunta.idAnexoExcluido = $scope.pergunta.anexo.id;
             $scope.anexo = null;
             $scope.pergunta.anexo = null;
         };

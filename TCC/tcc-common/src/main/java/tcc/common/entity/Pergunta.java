@@ -85,7 +85,7 @@ public class Pergunta extends AbstractIdBean<Long> {
     private Set<EtapaPergunta> etapasPerguntas = new HashSet<EtapaPergunta>();
     
     @Transient
-    private Long idAnexo;
+    private Long idAnexoExcluido;
     
     @Transient
     private int posicao;
@@ -186,13 +186,15 @@ public class Pergunta extends AbstractIdBean<Long> {
         this.nivel = nivel;
     }
 
-    public Long getIdAnexo() {
-        return idAnexo;
+    public Long getIdAnexoExcluido() {
+        return idAnexoExcluido;
     }
 
-    public void setIdAnexo(Long idAnexo) {
-        this.idAnexo = idAnexo;
+    public void setIdAnexoExcluido(Long idAnexoExcluido) {
+        this.idAnexoExcluido = idAnexoExcluido;
     }
+
+    
 
     public Set<EtapaPergunta> getEtapasPerguntas() {
         return etapasPerguntas;

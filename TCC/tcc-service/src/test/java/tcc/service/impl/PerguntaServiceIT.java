@@ -55,7 +55,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
         perguntaAntes.setDescricao("Pergunta 1 AAA");
         perguntaAntes.setRespostas(new HashSet<Resposta>());
         perguntaAntes.getRespostas().add(obterRespostaValida1());
-        perguntaAntes.setIdAnexo(1L);
+        perguntaAntes.setIdAnexoExcluido(1L);
         perguntaService.salvarPergunta(perguntaAntes);
         
         Pergunta perguntaEditado = perguntaService.buscarPerguntaPorId(4L);
