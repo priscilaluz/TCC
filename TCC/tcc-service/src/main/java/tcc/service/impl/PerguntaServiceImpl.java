@@ -24,6 +24,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import tcc.common.business.AnexoService;
 import tcc.common.business.PerguntaService;
+import tcc.service.persistence.OrderBy;
+import tcc.service.persistence.Pagination;
 
 /**
  *
@@ -98,7 +100,7 @@ public class PerguntaServiceImpl implements PerguntaService {
     @Transactional(readOnly = true)
     public List<Pergunta> buscarPerguntaPorFiltro(Long idUsuario, String parteNome, Long idCategoria, 
             TipoPergunta tipo, NivelPergunta nivel, Long idCurso) {
-        return dao.list(new BuscarPergunta.Entities()
+        BuscarPergunta queryPergunta = new BuscarPergunta.Entities()
                 .fetchUsuario(ConstantesI18N.FETCH)
                 .fetchCategoria(ConstantesI18N.FETCH)
                 .whereNivel(nivel)
@@ -106,7 +108,10 @@ public class PerguntaServiceImpl implements PerguntaService {
                 .whereUsuario(idUsuario)
                 .whereDescricaoLike(parteNome)
                 .whereCategoria(idCategoria)
-                .whereCursoNaoTem(idCurso));
+                .whereCursoNaoTem(idCurso);
+        Pagination pagination = new Pagination(5, 0);
+        queryPergunta.setPagination(pagination);
+        return dao.list(queryPergunta);
     }
     
     @Override
