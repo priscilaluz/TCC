@@ -1,0 +1,31 @@
+Aposta
+1-Suas fichas
+2-Tempo para fazer suas aposta
+3-Você pode pagar 100 fichas em uma dica por partida
+4-Você pode pagar 50 fichas para pular uma pergunta por partida
+5-Se o tempo acabar e você não fizer nenhuma aposta você perde 200 pontos
+6-Você pode apostar todas suas fichas em uma única resposta...
+7-Ou dividir em várias
+8-Quantidade de fichas que você tem
+
+Caça-palavra
+2-A cada resposta achada você acumulará 100 pontos
+3-Você pode pagar 25 pontos em uma dica por partida
+4-Se você não encontra mais nenhuma resposta pode passar adiante
+5-Leia a pergunta
+6-Arraste o mouse do início ao fim da palavra e Divirta-se
+
+Forca
+1-Seus pontos
+2-Você pode pagar 25 pontos por um dica (apenas uma por partida)
+3-Você pode pagar 50 pontos por um pulo (apenas uma por partida)
+4-Leia a pergunta
+5-Selecione as letras que formam a resposta
+6-Caso você selecione uma letra que não faça parte da resposta...
+
+Quiz
+2-Seus pontos
+3-Tempo para responder a pergunta
+4-Você pode pagar 25 pontos por um dica (apenas uma por partida)
+5-Você pode pagar 50 pontos por um pulo (apenas uma por partida)
+Fonte: Calibri tamanho 15
