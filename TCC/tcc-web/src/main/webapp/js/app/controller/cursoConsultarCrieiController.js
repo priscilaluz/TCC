@@ -1,5 +1,5 @@
-tccApp.controller('CursoConsultarCrieiController', ['$scope', '$rootScope', 'Curso', 'Categoria', 'Enums', '$location', 'growl',
-    function ($scope, $rootScope, Curso, Categoria, Enums, $location, growl) {
+tccApp.controller('CursoConsultarCrieiController', ['$scope', '$rootScope', '$modal', 'Curso', 'Categoria', 'Enums', '$location', 'growl',
+    function ($scope, $rootScope, $modal, Curso, Categoria, Enums, $location, growl) {
         $rootScope.telaHomeAluno = false;
         $scope.cursos = [];
         $scope.pesquisar = {};
@@ -34,6 +34,20 @@ tccApp.controller('CursoConsultarCrieiController', ['$scope', '$rootScope', 'Cur
                 comId = "/"+idCurso+"/"+situacao;
             }
             $location.path("/criar-curso"+comId);
+        };
+        
+        $scope.copiarCurso = function (index) {
+            var obj = {'nomeCurso': $scope.cursos[index].nome, 'idCurso': $scope.cursos[index].id, 'idUsuario': $scope.usuarioLogado.id};
+            $modal.open({
+                templateUrl: 'partials/curso/consultar-meus-professor/copiar-curso.html',
+                controller: 'CopiarCursoController',
+                size: 'lg',
+                resolve: {obj: function () {return obj;}}
+            }).result.then(function (cursoId) {
+                $scope.telaNovaEditarCurso(cursoId, "R");
+            }, function () {
+                // Modal cancelado
+            });
         };
 
         var init = function () {

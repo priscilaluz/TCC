@@ -5,6 +5,7 @@
  */
 package tcc.service.impl;
 
+import java.util.HashSet;
 import tcc.common.entity.Anexo;
 import tcc.common.entity.Curso;
 import tcc.common.entity.Etapa;
@@ -27,6 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tcc.common.business.AnexoService;
 import tcc.common.business.CursoAlunoService;
 import tcc.common.business.CursoService;
+import tcc.common.entity.Usuario;
 
 /**
  *
@@ -62,6 +64,49 @@ public class CursoServiceImpl implements CursoService {
         curso.setDisponibilidade(DisponibilidadeCurso.FECHADO);
         dao.saveOrUpdate(curso);
         return curso;
+    }
+    
+    @Override
+    @Transactional(readOnly = false)
+    public Curso copiarCurso(String nomeCurso, Long idCurso, Long idUsuario) {
+        Curso curso = buscarCursoPorId(idCurso);
+        Curso cursoCopia = new Curso();
+        cursoCopia.setNome(nomeCurso);
+        cursoCopia.setAssuntoGeral(curso.getAssuntoGeral());
+        cursoCopia.setCodAcesso(curso.getCodAcesso());
+        cursoCopia.setCategoria(curso.getCategoria());
+        cursoCopia.setUsuario(new Usuario(idUsuario));
+        cursoCopia.setSituacao(SituacaoCurso.RASCUNHO);
+        cursoCopia.setDisponibilidade(DisponibilidadeCurso.FECHADO);
+        if (curso.getAnexo() != null) {
+            Anexo anexo = new Anexo();
+            anexo.setNomeArquivo(curso.getAnexo().getNomeArquivo());
+            anexo.setArquivo(anexoService.obterBytesAnexo(curso.getAnexo().getId()));
+        }
+        cursoCopia = salvarCurso(cursoCopia);
+        if (!curso.getEtapasLista().isEmpty()) {
+            for (Etapa etapa : curso.getEtapasLista()) {
+                Etapa etapaNova = new Etapa();
+                etapaNova.setAssunto(etapa.getAssunto());
+                etapaNova.setNivel(etapa.getNivel());
+                etapaNova.setJogo(etapa.getJogo());
+                etapaNova.setCurso(cursoCopia);
+                if (etapa.getAnexo() != null) {
+                    Anexo anexo = new Anexo();
+                    anexo.setNomeArquivo(etapa.getAnexo().getNomeArquivo());
+                    anexo.setArquivo(anexoService.obterBytesAnexo(etapa.getAnexo().getId()));
+                }
+                etapaNova.setEtapasPerguntas(new HashSet<EtapaPergunta>());
+                for (EtapaPergunta etapaPergunta : etapa.getEtapasPerguntas()) {
+                    EtapaPergunta etapaPerguntaNova = new EtapaPergunta();
+                    etapaPerguntaNova.setPergunta(etapaPergunta.getPergunta());
+                    etapaNova.getEtapasPerguntas().add(etapaPerguntaNova);
+                }
+                salvarEtapa(etapaNova);
+            }
+        }
+    
+        return cursoCopia;
     }
 
     @Override

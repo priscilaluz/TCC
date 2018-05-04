@@ -14,6 +14,8 @@ public interface CursoService {
     
     Curso salvarCurso(Curso curso);
     
+    Curso copiarCurso(String nomeCurso, Long idCurso, Long idUsuario);
+    
     void excluirCurso(Long idCurso);
     
     void updateDisponibilidadeCurso(Long idCurso, DisponibilidadeCurso disponibilidade);

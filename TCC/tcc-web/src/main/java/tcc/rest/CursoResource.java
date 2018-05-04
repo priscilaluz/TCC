@@ -42,6 +42,13 @@ public class CursoResource {
         return cursoService.salvarCurso(curso);
     }
     
+    @GET
+    @Path("/copiarCurso")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Curso copiarCurso(@QueryParam("nomeCurso") String nomeCurso, @QueryParam("idCurso") Long idCurso, @QueryParam("idUsuario") Long idUsuario) {
+        return cursoService.copiarCurso(nomeCurso, idCurso, idUsuario);
+    }
+    
     @POST
     @Path("/etapa/save")
     @Produces(MediaType.APPLICATION_JSON)
