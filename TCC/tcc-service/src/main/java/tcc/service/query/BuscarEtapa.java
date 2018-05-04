@@ -13,7 +13,7 @@ public abstract class BuscarEtapa<T extends Serializable> extends BusinessFluent
 
     public static class Entities extends BuscarEtapa<Etapa> {
         public Entities() {
-            appendText("select e from Etapa e ");
+            appendText("select DISTINCT e from Etapa e ");
         }
     }
     
