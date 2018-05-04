@@ -41,7 +41,7 @@ public class AnexoServiceImpl implements AnexoService {
         dao.saveOrUpdate(anexo);
         try {
             anexoFileSystemManager.setRootPath(ConstantesI18N.ROOT_PATH);
-            InputStream myInputStream = new ByteArrayInputStream(anexo.getBytes()); 
+            InputStream myInputStream = (anexo.getArquivo() != null) ? anexo.getArquivo() : new ByteArrayInputStream(anexo.getBytes()); 
             anexoFileSystemManager.sendAnexo(anexo.getId(), myInputStream);
         } catch (IOException e) {
             throw new RuntimeException(e);
