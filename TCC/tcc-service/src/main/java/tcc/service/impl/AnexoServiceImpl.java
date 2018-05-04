@@ -9,7 +9,7 @@ import tcc.common.entity.Anexo;
 import tcc.service.persistence.GenericDao;
 import tcc.service.query.BuscarAnexo;
 import tcc.service.validator.AnexoValidator;
-import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +74,7 @@ public class AnexoServiceImpl implements AnexoService {
         try {
             anexoFileSystemManager.setRootPath(ConstantesI18N.ROOT_PATH);
             dados = anexoFileSystemManager.getAnexo(idAnexo);
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
         return dados;
