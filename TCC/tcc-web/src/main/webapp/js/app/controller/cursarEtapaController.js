@@ -23,14 +23,13 @@ tccApp.controller('CursarEtapaController', ['$scope', '$rootScope', '$routeParam
                 idEtapa: $scope.idEtapa, 
                 idEtapaAluno: $scope.idEtapaAluno,
                 aberto: $scope.model.aberto};
-            var url = 'partials/jogo/explicacao-jogo.html';
             $modal.open({
-                templateUrl: url,
+                templateUrl: 'partials/jogo/explicacao-jogo.html',
                 controller: 'ExplicacaoJogoController',
                 size: 'lg',
                 resolve: {obj: function () {return obj;}}
-            }).result.then(function (result) {
-                // Modal retorno
+            }).result.then(function (urlJogo) {
+                 $location.path(urlJogo);
             }, function () {
                 // Modal cancelado
             });

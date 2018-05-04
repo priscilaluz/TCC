@@ -771,3 +771,13 @@ li{
     color: #dff0d8;
     background-color: transparent;
 }
+
+.container-explicacao {
+    width: 870px;
+    height: auto;
+}
+
+.container-explicacao img {
+    width: 100%;
+    height: auto;
+}

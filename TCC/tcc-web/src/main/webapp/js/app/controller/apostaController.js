@@ -64,7 +64,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             $scope.model.pontuacao = $scope.model.pontuacao - 100;
         }
         if ($scope.model.pulo) {
-            $scope.model.pontuacao = $scope.model.pontuacao - 100;
+            $scope.model.pontuacao = $scope.model.pontuacao - 50;
         }
         if ($scope.model.pontuacao > 0) {
             $scope.respostaIncorreta = {

@@ -9,10 +9,19 @@
 </div>
 <div class="modal-body">
     <form role="form" name="perguntaForm" class="form-horizontal" enctype="multipart/form-data">
-        
+        <div class="container-explicacao text-center">
+            <p class="btn-tabuleiro-pag"><b>Pagina</b> {{model.pagina}} <b>de</b> {{model.ultimaPagina}}</p>
+            <img ng-src="{{model.url}}"/>
+            <button type="button" class="btn btn-modelo-tabuleiros" ng-click="anterior()" ng-disabled="model.pagina===1">
+                <i class="glyphicon glyphicon-arrow-left pull-right"></i></button>
+            <button type="button" class="btn btn-modelo-tabuleiros" ng-click="proxima()" ng-disabled="model.pagina===model.ultimaPagina">
+                <i class="glyphicon glyphicon-arrow-right pull-right"></i></button>
+        </div>
     </form>
 </div>
 <div class="modal-footer" style="background-color: #cbe8ba;">
     <button type="button" class="btn btn-default" data-ng-click="fechar()" style="font-size: 120%;">
         <i class="glyphicon glyphicon-remove-sign"></i>&nbsp;Fechar</button>
+    <button type="button" class="btn btn-modelo" data-ng-click="jogar()" style="font-size: 120%;">
+        <i class="glyphicon glyphicon-thumbs-up"></i>&nbsp;Jogar</button>
 </div>
