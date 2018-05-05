@@ -1,0 +1,21 @@
+<!-- loagind app -->
+<div class="loading_app" data-ng-hide="appLoaded" style="z-index: 999; width: 100%; height: 100%; position: absolute; top: 0px ; left: 0px;">
+    <p style="text-align:center; margin: auto; position: absolute;top: 50%;left: 41%;">
+        <img src="img/reload.gif">
+    </p>
+</div>
+<div class="modal-header" style="background-color: #cbe8ba;">
+    <h3 class="modal-title title-fonte">{{model.aviso.titulo}}</h3>
+</div>
+<div class="modal-body" style="height: 300px;">
+    <form role="form" name="verAvisoForm" class="form-horizontal" enctype="multipart/form-data">
+        <div class="col-xs-12 col-sm-12 col-md-12" style="padding-left: 0px; padding-right: 0px; padding-top: 10px; overflow: auto; height: 272px !important;">
+            <p class="text-right"><b>{{model.aviso.dataModificao | date: 'dd/MM/yyyy hh:mm'}}&nbsp;</b></p>
+            <p style="word-wrap:break-word; white-space: pre-wrap;">{{model.aviso.descricao}}</p>
+        </div>
+    </form>
+</div>
+<div class="modal-footer" style="background-color: #cbe8ba;">
+    <button type="button" class="btn btn-default" data-ng-click="fechar()" style="font-size: 120%;">
+        <i class="glyphicon glyphicon-remove-sign"></i>&nbsp;Fechar</button>
+</div>

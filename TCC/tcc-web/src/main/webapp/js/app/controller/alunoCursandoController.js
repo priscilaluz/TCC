@@ -1,5 +1,5 @@
-tccApp.controller('AlunoCursandoController', ['$scope', '$rootScope', '$routeParams', '$location', 'CursoAluno',
-    function ($scope, $rootScope, $routeParams, $location, CursoAluno) {
+tccApp.controller('AlunoCursandoController', ['$scope', '$rootScope', '$routeParams', '$location', '$modal', 'CursoAluno',
+    function ($scope, $rootScope, $routeParams, $location, $modal, CursoAluno) {
         $rootScope.telaHomeAluno = false;
         $scope.model = {
             tabuleiroCurso: null,
@@ -7,6 +7,20 @@ tccApp.controller('AlunoCursandoController', ['$scope', '$rootScope', '$routePar
             pagina: null
         };
         var idCursoAluno = $routeParams.id;
+        
+        $scope.avisos = function () {
+            var obj = {idCurso: $scope.model.tabuleiroCurso.idCurso};
+            $modal.open({
+                templateUrl: 'partials/curso/consultar-todos-aluno/buscar-avisos.html',
+                controller: 'BuscarAvisosController',
+                size: 'lg',
+                resolve: {obj: function () {return obj;}}
+            }).result.then(function (result) {
+                buscarAvisos();
+            }, function () {
+                // Modal cancelado
+            });
+        };
         
         $scope.anterior = function () {
             $scope.model.pagina = $scope.model.pagina-1;
@@ -96,6 +110,7 @@ tccApp.controller('AlunoCursandoController', ['$scope', '$rootScope', '$routePar
                         $scope.model.paginaAtual[index].etapa5.imagemDesabilitado;
             }
         };
+        
         var init = function () {
             $rootScope.appLoaded = false;
             CursoAluno.buscarCursoAlunoPorIdCursoAluno({'idCursoAluno': idCursoAluno}).$promise.then(function (tabuleiroCurso) {
