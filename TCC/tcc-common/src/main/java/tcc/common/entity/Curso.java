@@ -86,6 +86,9 @@ public class Curso extends AbstractIdBean<Long> {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "curso")
     private Set<Etapa> etapas = new HashSet<Etapa>();
     
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "curso")
+    private Set<Aviso> avisos = new HashSet<Aviso>();
+    
     @Transient
     private Long idAnexoExcluido;
     
@@ -94,6 +97,9 @@ public class Curso extends AbstractIdBean<Long> {
     
     @Transient
     private List<Etapa> etapasLista = new ArrayList<Etapa>();
+    
+    @Transient
+    private List<Aviso> avisosLista = new ArrayList<Aviso>();
     
     @Transient
     private boolean alunoPertence;
@@ -232,5 +238,33 @@ public class Curso extends AbstractIdBean<Long> {
 
     public void setAlunoPertence(boolean alunoPertence) {
         this.alunoPertence = alunoPertence;
+    }
+
+    public Set<Aviso> getAvisos() {
+        return avisos;
+    }
+
+    public void setAvisos(Set<Aviso> avisos) {
+        this.avisos = avisos;
+    }
+
+    public List<Aviso> getAvisosLista() {
+        if (Hibernate.isInitialized(avisos)) {
+            avisosLista = new ArrayList<>(avisos);
+            Collections.sort(avisosLista, new Comparator<Aviso>() {
+                @Override
+                public int compare(Aviso a1, Aviso a2) {
+                    if (a1 == null || a2 == null) {
+                        return 0;
+                    }
+                    return (a1.getId() > a2.getId()) ? 1 : -1;
+                }
+            });
+        }
+        return avisosLista;
+    }
+
+    public void setAvisosLista(List<Aviso> avisosLista) {
+        this.avisosLista = avisosLista;
     }
 }

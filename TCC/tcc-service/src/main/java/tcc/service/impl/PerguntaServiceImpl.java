@@ -24,8 +24,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import tcc.common.business.AnexoService;
 import tcc.common.business.PerguntaService;
-import tcc.service.persistence.OrderBy;
-import tcc.service.persistence.Pagination;
 
 /**
  *
@@ -109,8 +107,8 @@ public class PerguntaServiceImpl implements PerguntaService {
                 .whereDescricaoLike(parteNome)
                 .whereCategoria(idCategoria)
                 .whereCursoNaoTem(idCurso);
-        Pagination pagination = new Pagination(5, 0);
-        queryPergunta.setPagination(pagination);
+//        Pagination pagination = new Pagination(5, 0);
+//        queryPergunta.setPagination(pagination);
         return dao.list(queryPergunta);
     }
     

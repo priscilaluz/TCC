@@ -90,6 +90,25 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 8
 DEFAULT CHARACTER SET = utf8;
 
+-- -----------------------------------------------------
+-- Table `tcc`.`aviso`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `tcc`.`aviso` (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `TITULO` VARCHAR(100) NOT NULL,
+  `DESCRICAO` VARCHAR(5000) NOT NULL,
+  `DATA_MODIFICACAO` DATETIME NOT NULL,
+  `CURSO_ID` INT(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  INDEX `fk_AVISO_CURSO1_idx` (`CURSO_ID` ASC),
+  CONSTRAINT `fk_AVISO_CURSO1`
+    FOREIGN KEY (`CURSO_ID`)
+    REFERENCES `tcc`.`curso` (`ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 47
+DEFAULT CHARACTER SET = utf8;
 
 -- -----------------------------------------------------
 -- Table `tcc`.`curso_aluno`

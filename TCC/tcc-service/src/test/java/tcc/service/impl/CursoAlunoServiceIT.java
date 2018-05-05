@@ -121,6 +121,12 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         assertEquals(andamentoEsperando.getNomeCurso(), andamentoRecebido.getNomeCurso());
         assertEquals(andamentoEsperando.getPontuacao(), andamentoRecebido.getPontuacao());
     }
+    
+    @Test
+    public void deveBuscarCursoAlunoPorIdCurso(){
+        List<CursoAluno> cursosAlunos = cursoAlunoService.buscarCursoAlunoPorIdCurso(1L);
+        assertEquals(1, cursosAlunos.size());
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="EtapaAluno">

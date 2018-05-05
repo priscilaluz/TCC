@@ -1,6 +1,7 @@
 package tcc.common.business;
 
 import java.util.List;
+import tcc.common.entity.Aviso;
 import tcc.common.entity.Curso;
 import tcc.common.entity.Etapa;
 import tcc.common.enums.DisponibilidadeCurso;
@@ -37,5 +38,9 @@ public interface CursoService {
     Etapa buscarEtapaPorId(Long idEtapa, boolean resposta);
     
     boolean addAlunosAoCurso(Long idCurso, List<Long> idsAluno);
+    
+    Aviso salvarAviso(Aviso aviso);
+    
+    void excluirAviso(Long idAviso);
     
 }

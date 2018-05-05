@@ -5,6 +5,7 @@
  */
 package tcc.service.impl;
 
+import java.util.Date;
 import java.util.HashSet;
 import tcc.common.entity.Anexo;
 import tcc.common.entity.Curso;
@@ -28,6 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tcc.common.business.AnexoService;
 import tcc.common.business.CursoAlunoService;
 import tcc.common.business.CursoService;
+import tcc.common.entity.Aviso;
 import tcc.common.entity.Usuario;
 
 /**
@@ -136,6 +138,7 @@ public class CursoServiceImpl implements CursoService {
                 .fetchCategoria(ConstantesI18N.FETCH)
                 .fetchResposta(ConstantesI18N.FETCH)
                 .fetchAnexo(ConstantesI18N.FETCH)
+                .fetchAvisos(ConstantesI18N.FETCH)
                 .whereId(idCurso)
                 .orderByNivel());
         curso.setUltimaEtapa(curso.getEtapas().size());
@@ -259,5 +262,19 @@ public class CursoServiceImpl implements CursoService {
                 .fetchResposta(ConstantesI18N.FETCH, resposta)
                 .fetchAnexo(ConstantesI18N.FETCH)
                 .whereIdEtapa(idEtapa));
+    }
+    
+    @Override
+    @Transactional(readOnly = false)
+    public Aviso salvarAviso(Aviso aviso) {
+        aviso.setDataModificao(new Date());
+        return dao.saveOrUpdate(aviso);
+    }
+    
+    @Override
+    @Transactional(readOnly = false)
+    public void excluirAviso(Long idAviso) {
+        Aviso avisoRemover = dao.get(Aviso.class, idAviso);
+        dao.remove(avisoRemover);
     }
 }

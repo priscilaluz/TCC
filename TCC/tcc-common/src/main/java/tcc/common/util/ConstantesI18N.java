@@ -4,7 +4,8 @@ public class ConstantesI18N {
     public static final String SCHEMA = "tcc";
     //public static final String SCHEMA = "test";
     public static final String FETCH = "fetch";
-    public static final String ROOT_PATH = "C:/Users/ADM/Documents/Anexos";
+    //public static final String ROOT_PATH = "C:/Users/ADM/Documents/Anexos";
+    public static final String ROOT_PATH = "/Users/priscilaluz/Documents/Anexo";
     
     public static final String TABULEIRO_IMG_ON = "img/tabuleiro/onAberta/*.png";
     public static final String TABULEIRO_IMG_OFF = "img/tabuleiro/offAberta/*.png";

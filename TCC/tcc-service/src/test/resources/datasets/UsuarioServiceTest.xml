@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset xmlns="test">
-    <USUARIO ID = "1" NOME = "Joao" LOGIN = "JoaoL" EMAIL = "joao@email.com" SENHA = "1234" TIPO = "P" AVATAR="PE"/>
-    <USUARIO ID = "2" NOME = "Maria" LOGIN = "MariaL" EMAIL = "maria@email.com" SENHA = "1234" TIPO = "A" AVATAR="PE"/>
-    <USUARIO ID = "3" NOME = "Clara" LOGIN = "ClaraL" EMAIL = "clara@email.com" SENHA = "1234" TIPO = "P" AVATAR="PE"/>
+    <USUARIO ID = "1" NOME = "Joao" LOGIN = "JoaoL" EMAIL = "joao@email.com" SENHA = "1234" TIPO = "P" AVATAR="PE" DATA_CADASTRO="2018-05-02 21:46:22" DATA_ULTIMO_ACESSO="2018-05-02 21:46:22"/>
+    <USUARIO ID = "2" NOME = "Maria" LOGIN = "MariaL" EMAIL = "maria@email.com" SENHA = "1234" TIPO = "A" AVATAR="PE" DATA_CADASTRO="2018-05-02 21:46:22" DATA_ULTIMO_ACESSO="2018-05-02 21:46:22"/>
+    <USUARIO ID = "3" NOME = "Clara" LOGIN = "ClaraL" EMAIL = "clara@email.com" SENHA = "1234" TIPO = "P" AVATAR="PE" DATA_CADASTRO="2018-05-02 21:46:22" DATA_ULTIMO_ACESSO="2018-05-02 21:46:22"/>
  
     <CATEGORIA ID = "1" DESCRICAO = "Matematica"/>
     

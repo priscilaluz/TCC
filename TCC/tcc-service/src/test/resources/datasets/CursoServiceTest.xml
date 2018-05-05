@@ -7,6 +7,7 @@
 
     <USUARIO ID = "1" NOME = "Joao" LOGIN = "JoaoL" EMAIL = "joao@email.com" SENHA = "1234" TIPO = "T" AVATAR="PE"/>
     <USUARIO ID = "2" NOME = "Maria" LOGIN = "MariaL" EMAIL = "maria@email.com" SENHA = "12345" TIPO = "T" AVATAR="PE"/>
+    <USUARIO ID = "3" NOME = "Julia" LOGIN = "Julia" EMAIL = "julia@email.com" SENHA = "12345" TIPO = "T" AVATAR="PE"/>
                  
     <PERGUNTA ID = "1" DESCRICAO = "Pergunta 1 da Quanto é atividade de matemática" JUSTIFICATIVA = "A resposta certa é pq..." CATEGORIA_ID = "1" USUARIO_ID = "1"/>
     <PERGUNTA ID = "2" DESCRICAO = "Pergunta 2 da atividade de matemática" JUSTIFICATIVA = "A resposta certa é pq..." CATEGORIA_ID = "1" USUARIO_ID = "2"/>
@@ -34,4 +35,6 @@
     <CURSO_ALUNO ID = "1" CURSO_ID = "2" USUARIO_ID = "2" SITUACAO = "A" POSICAO_ATUAL = "1" PONTUACAO = "0"/>
     <CURSO_ALUNO ID = "2" CURSO_ID = "2" USUARIO_ID = "1" SITUACAO = "C" POSICAO_ATUAL = "1" PONTUACAO = "100"/>
     <CURSO_ALUNO ID = "3" CURSO_ID = "3" USUARIO_ID = "1" SITUACAO = "A" POSICAO_ATUAL = "1" PONTUACAO = "0"/>
+    
+    <AVISO ID = "1" TITULO = "Titulo" DESCRICAO = "Descricao" DATA_MODIFICACAO = "2018-05-02 21:46:22" CURSO_ID = "3"/>
 </dataset>

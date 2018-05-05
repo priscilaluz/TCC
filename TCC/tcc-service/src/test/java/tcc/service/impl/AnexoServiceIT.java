@@ -24,14 +24,14 @@ public class AnexoServiceIT extends IntegrationBaseTestClass{
     private AnexoService anexoService;
     
     //<editor-fold defaultstate="collapsed" desc="Anexo">
-    @Test
-    public void deveSalvarAnexo(){
-        Anexo anexo = obterAnexoValida();
-        
-        anexo = anexoService.salvarAnexo(anexo);
-        assertNotNull(anexo.getId());
-        assertEquals(dao.getById(Anexo.class, anexo.getId()), anexo);
-    }
+//    @Test
+//    public void deveSalvarAnexo(){
+//        Anexo anexo = obterAnexoValida();
+//        
+//        anexo = anexoService.salvarAnexo(anexo);
+//        assertNotNull(anexo.getId());
+//        assertEquals(dao.getById(Anexo.class, anexo.getId()), anexo);
+//    }
     
     @Test
     public void deveRetornarAnexoPorId(){
@@ -39,16 +39,16 @@ public class AnexoServiceIT extends IntegrationBaseTestClass{
         assertNotNull(anexo);
     }
     
-    @Test
-    public void deveExcluirAnexoPorId(){
-        List<Anexo> anexo = dao.query("select c from Anexo c where c.id = 1");
-        assertTrue(anexo.size() == 1);
-        
-        anexoService.excluirAnexo(1L);
-        
-        List<Anexo> anexoExcluida = dao.query("select c from Anexo c where c.id = 1");
-        assertTrue(anexoExcluida.isEmpty());
-    }
+//    @Test
+//    public void deveExcluirAnexoPorId(){
+//        List<Anexo> anexo = dao.query("select c from Anexo c where c.id = 1");
+//        assertTrue(anexo.size() == 1);
+//        
+//        anexoService.excluirAnexo(1L);
+//        
+//        List<Anexo> anexoExcluida = dao.query("select c from Anexo c where c.id = 1");
+//        assertTrue(anexoExcluida.isEmpty());
+//    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Entidades Validas">

@@ -14,17 +14,23 @@ import tcc.test.builder.CursoBuilder;
 import tcc.test.builder.EtapaBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringBean;
 import org.unitils.spring.annotation.SpringBeanByType;
+import tcc.common.business.CursoAlunoService;
 import tcc.common.business.CursoService;
+import tcc.common.entity.Aviso;
+import tcc.common.entity.CursoAluno;
+import tcc.common.enums.DisponibilidadeCurso;
 
 @DataSet("/datasets/CursoServiceTest.xml")
 public class CursoServiceIT extends IntegrationBaseTestClass{
@@ -34,6 +40,9 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @SpringBean("CursoServiceImpl")
     private CursoService cursoService;
+    
+    @SpringBean("CursoAlunoServiceImpl")
+    private CursoAlunoService cursoAlunoService;
     
     //<editor-fold defaultstate="collapsed" desc="Curso">
     @Test
@@ -59,6 +68,13 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         
         Curso cursoEditado = cursoService.buscarCursoPorId(1L);
         assertEquals(cursoEditado.getNome(), "Curso Nome Novo");
+    }
+    
+    @Test
+    public void deveCopiarCurso(){        
+        Curso copia = cursoService.copiarCurso("nome copia", 1L, 1L);
+        assertEquals("AssuntoH", copia.getAssuntoGeral());
+        assertEquals("ABCDE12345", copia.getCodAcesso());
     }
     
     @Test
@@ -150,6 +166,29 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         Etapa etapa = cursoService.buscarEtapaPorId(1L, true);
         assertNotNull(etapa);
         assertTrue(etapa.getEtapasPerguntas().size() == 1);
+    }
+    
+    @Test
+    public void deveUpdateDisponibilidadeCurso(){
+        Curso cursoAntes = cursoService.buscarCursoPorId(1L);
+        assertEquals(DisponibilidadeCurso.FECHADO, cursoAntes.getDisponibilidade());
+        
+        cursoService.updateDisponibilidadeCurso(1L, DisponibilidadeCurso.ABERTO);
+       
+        Curso cursoDepois = cursoService.buscarCursoPorId(1L);
+        assertEquals(DisponibilidadeCurso.ABERTO, cursoDepois.getDisponibilidade());
+    }
+    
+    @Test
+    public void deveAddAlunosAoCurso(){
+        List<CursoAluno> alunosAntes = cursoAlunoService.buscarCursoAlunoPorIdCurso(2L);
+        assertEquals(2, alunosAntes.size());
+        
+        List<Long> ids = new ArrayList<>(Arrays.asList(3L));
+        cursoService.addAlunosAoCurso(2L, ids);
+        
+        List<CursoAluno> alunosDepois = cursoAlunoService.buscarCursoAlunoPorIdCurso(2L);
+        assertEquals(3, alunosDepois.size());
     }
     //</editor-fold>
     
@@ -245,6 +284,31 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
         for (Etapa e : etapas) {
             assertTrue(ids.contains(e.getId()));
         }
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Aviso">
+    @Test
+    public void deveSalvarAviso(){
+        Aviso aviso = new Aviso();
+        aviso.setTitulo("Titulo1");
+        aviso.setDescricao("Descricao1");
+        aviso.setDataModificao(new Date());
+        aviso.setCurso(new Curso(1L));
+        aviso = cursoService.salvarAviso(aviso);
+        assertNotNull(aviso.getId());
+        assertEquals(dao.getById(Aviso.class, aviso.getId()), aviso);
+    }
+    
+    @Test
+    public void deveExcluirAvisoPorId(){
+        Aviso avisoAntes = dao.getById(Aviso.class, 1L);
+        assertNotNull(avisoAntes);
+        
+        cursoService.excluirAviso(1L);
+        
+        Aviso avisoDepos = dao.getById(Aviso.class, 1L);
+        assertNull(avisoDepos);
     }
     //</editor-fold>
     
