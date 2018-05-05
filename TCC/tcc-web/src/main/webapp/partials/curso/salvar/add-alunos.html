@@ -32,7 +32,7 @@
                 <tbody class="table-font">
                     <tr ng-repeat="aluno in model.alunos">
                         <td><input class="pull-right" id="selecionar" type="checkbox" name="selecionar" ng-change="selecionar()" ng-model="aluno.selecionar"></td>
-                        <td>{{aluno.nome}}</td>
+                        <td class="pull-left">{{aluno.nome}}</td>
                     </tr>
                 </tbody>
             </table>

@@ -1,0 +1,31 @@
+<!-- loagind app -->
+<div class="loading_app" data-ng-hide="appLoaded" style="z-index: 999; width: 100%; height: 100%; position: absolute; top: 0px ; left: 0px;">
+    <p style="text-align:center; margin: auto; position: absolute;top: 50%;left: 41%;">
+        <img src="img/reload.gif">
+    </p>
+</div>
+<div class="modal-header" style="background-color: #cbe8ba;">
+    <h3 class="modal-title title-fonte">Adicionar Avisos aos Alunos</h3>
+</div>
+<div class="modal-body" style="height: 193px;">
+    <form role="form" name="avisoForm" class="form-horizontal" enctype="multipart/form-data">
+        <div class="col-md-12" style="padding-left: 0px; padding-right: 0px;">
+            <label for="titulo" class="col-md-2 control-label label-font">Título:</label>
+            <div class="col-md-10" ng-class="{'has-error': avisoForm.titulo.$error.required}">
+                <input type="text" maxlength="100" name="titulo" ng-model="model.aviso.titulo" class="form-control" id="titulo" placeholder="Título" required>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-left: 0px; padding-right: 0px; padding-top: 5px;">
+            <label for="descricao" class="col-lg-2 control-label label-font pull-left">Descrição:</label>
+            <div class="col-lg-10" ng-class="{'has-error': avisoForm.descricao.$error.required}">
+                <textarea id="descricao" name="descricao" ng-model="model.aviso.descricao" class="form-control" rows="5" maxlength="1000" required></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer" style="background-color: #cbe8ba;">
+    <button type="button" class="btn btn-default" data-ng-click="fechar()" style="font-size: 120%;">
+        <i class="glyphicon glyphicon-remove-sign"></i>&nbsp;Fechar</button>
+    <button type="button" class="btn btn-modelo pull-right" ng-click="salvarAviso()" ng-disabled="avisoForm.$invalid">
+        <i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Salvar</button>
+</div>

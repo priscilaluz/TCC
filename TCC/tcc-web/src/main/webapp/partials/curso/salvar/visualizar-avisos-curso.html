@@ -1,0 +1,26 @@
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas">
+    <form class="form-horizontal" name="alunoForm">
+        <fieldset>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="table table-condensed" id="tabela">
+                    <thead class="table-font-title">
+                        <tr>
+                            <th width="10"></th>
+                            <th width="10"></th>
+                            <th>Titulo</th>
+                            <th width="150">Data</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-font">
+                        <tr ng-repeat="aviso in avisos">
+                            <td><a ng-click="excluirAviso(aviso.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove pointer" title="Excluir"></i></a></td>
+                            <td><a ng-click="editarAviso(aviso.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-pencil pointer" title="Editar"></i></a></td>
+                            <td>{{aviso.titulo}}</td>
+                            <td>{{aviso.dataModificao | date: 'dd/MM/yyyy hh:mm'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+    </form>
+</div>

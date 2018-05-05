@@ -43,4 +43,8 @@ public interface CursoService {
     
     void excluirAviso(Long idAviso);
     
+    Aviso buscarAvisosPorId(Long id);
+    
+    List<Aviso> buscarAvisosPorCurso(Long idCurso);
+    
 }

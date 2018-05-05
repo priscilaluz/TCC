@@ -1,10 +1,12 @@
-tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParams', '$modal', 'growl', 'Enums', 'Curso', 'CursoAluno', 'Etapa', 'Categoria', 'AnexoService',
-    function ($scope, $rootScope, $routeParams, $modal, growl, Enums, Curso, CursoAluno, Etapa, Categoria, AnexoService) {
+tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParams', '$modal', 'growl', 'Enums', 'Curso', 'CursoAluno', 'Etapa', 'Categoria', 'Aviso', 'AnexoService',
+    function ($scope, $rootScope, $routeParams, $modal, growl, Enums, Curso, CursoAluno, Etapa, Categoria, Aviso, AnexoService) 
+    {
         $rootScope.telaHomeAluno = false;
         $scope.categorias = [];
         $scope.curso = new Curso();
         var idCurso = null;
         $scope.model = {
+            aviso:false,
             anexo: null,
             pergunta: null
         };
@@ -206,7 +208,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
                 size: 'lg',
                 resolve: {obj: function () {return obj;}}
             }).result.then(function (result) {
-                buscarCursoAlunoPorIdCurso();
+                init();
             }, function () {
                 // Modal cancelado
             });
@@ -259,6 +261,62 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
         };
         //=== === === === === === ANEXO === === === === === ===//
         
+        //=== === === === === === AVISO === === === === === ===//
+        $scope.addAvisos = function () {
+            var obj = {idCurso: $scope.curso.id};
+            modalAviso(obj);
+        };
+        
+        var modalAviso = function (obj) {
+            $modal.open({
+                templateUrl: 'partials/curso/salvar/add-avisos.html',
+                controller: 'AdicionarAvisoController',
+                size: 'lg',
+                resolve: {obj: function () {return obj;}}
+            }).result.then(function (result) {
+                buscarAvisos();
+            }, function () {
+                // Modal cancelado
+            });
+        };
+        
+        $scope.abrirFecharAviso = function () {
+            $scope.model.aviso = !$scope.model.aviso;
+            if ($scope.model.aviso) {
+                buscarAvisos();
+            }
+        };
+        
+        var buscarAvisos = function () {
+            Aviso.buscarTodos({'idCurso': $scope.curso.id}, function (result) {
+                $scope.avisos = result;
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        };
+        
+        $scope.excluirAviso = function (idAviso) {
+            $rootScope.appLoaded = false;
+            Aviso.deletar({'idAviso': idAviso}).$promise.then(function (result) {
+                growl.success('Aviso excluído com sucesso.',{title: 'Operação bem sucedida'});
+                buscarAvisos();
+                $rootScope.appLoaded = true;
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        };
+        
+        $scope.editarAviso = function (idAviso) {
+            $rootScope.appLoaded = false;
+            Aviso.buscarById({'idAviso': idAviso}).$promise.then(function (aviso) {
+                var obj = {idCurso: $scope.curso.id, aviso: aviso};
+                modalAviso(obj);
+                $rootScope.appLoaded = true;
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        };
+        //=== === === === === === AVISO === === === === === ===//
         $scope.dadosPergunta = function (pergunta) {
             $modal.open({
                 templateUrl: 'partials/curso/salvar/dados-pergunta.html',

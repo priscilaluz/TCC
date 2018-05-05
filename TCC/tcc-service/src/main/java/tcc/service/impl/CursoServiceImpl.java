@@ -31,6 +31,7 @@ import tcc.common.business.CursoAlunoService;
 import tcc.common.business.CursoService;
 import tcc.common.entity.Aviso;
 import tcc.common.entity.Usuario;
+import tcc.service.query.BuscarAviso;
 
 /**
  *
@@ -277,5 +278,17 @@ public class CursoServiceImpl implements CursoService {
     public void excluirAviso(Long idAviso) {
         Aviso avisoRemover = dao.get(Aviso.class, idAviso);
         dao.remove(avisoRemover);
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Aviso buscarAvisosPorId(Long id) {
+        return (Aviso) dao.uniqueResult(new BuscarAviso.Entities().whereId(id));
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<Aviso> buscarAvisosPorCurso(Long idCurso) {
+        return dao.list(new BuscarAviso.Entities().whereIdCurso(idCurso));
     }
 }

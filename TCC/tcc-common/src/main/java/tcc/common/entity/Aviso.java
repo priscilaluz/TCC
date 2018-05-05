@@ -20,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 
 /**
  *
@@ -50,6 +51,9 @@ public class Aviso extends AbstractIdBean<Long> implements Comparator<Aviso> {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CURSO_ID", nullable = false)
     private Curso curso;
+    
+    @Transient
+    private Long idCurso;
     
     public Aviso(Long id) {
         this.id = id;
@@ -97,6 +101,14 @@ public class Aviso extends AbstractIdBean<Long> implements Comparator<Aviso> {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    public Long getIdCurso() {
+        return idCurso;
+    }
+
+    public void setIdCurso(Long idCurso) {
+        this.idCurso = idCurso;
     }
 
     @Override

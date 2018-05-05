@@ -7,6 +7,7 @@ package tcc.rest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import tcc.common.entity.Curso;
 import tcc.common.entity.Etapa;
 import tcc.common.enums.DisponibilidadeCurso;
@@ -24,6 +25,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import tcc.common.business.CursoService;
+import tcc.common.entity.Aviso;
 
 /**
  *
@@ -137,5 +139,36 @@ public class CursoResource {
             idsAluno.add(Long.valueOf(string));
         }
         return cursoService.addAlunosAoCurso(idCurso, idsAluno);
+    }
+    
+    @POST
+    @Path("/aviso/save")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Aviso save(Aviso aviso) {
+        aviso.setDataModificao(new Date());
+        aviso.setCurso(new Curso(aviso.getIdCurso()));
+        return cursoService.salvarAviso(aviso);
+    }
+    
+    @DELETE
+    @Path("/aviso/deletar")
+    public Response excluirAviso(@QueryParam("idAviso") Long idAviso) {
+        cursoService.excluirAviso(idAviso);
+        return Response.noContent().build();
+    }
+    
+    @GET
+    @Path("/aviso/buscarById")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Aviso buscarAvisoPorId(@QueryParam("idAviso") Long idAviso) {
+        return cursoService.buscarAvisosPorId(idAviso);
+    }
+    
+    @GET
+    @Path("/aviso/buscarTodos")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Aviso> buscarTodosAvisosPorCurso(@QueryParam("idCurso") Long idCurso) {
+        return cursoService.buscarAvisosPorCurso(idCurso);
     }
 }
