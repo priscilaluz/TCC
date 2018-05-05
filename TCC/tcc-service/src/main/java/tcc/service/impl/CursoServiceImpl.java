@@ -157,6 +157,7 @@ public class CursoServiceImpl implements CursoService {
                 .fetchUsuario(ConstantesI18N.FETCH)
                 .fetchAnexo(ConstantesI18N.FETCH)
                 .fetchAnexoEtapa(ConstantesI18N.FETCH)
+                .fetchAvisos(ConstantesI18N.FETCH)
                 .whereId(idCurso)
                 .orderByNivel());
         curso.setUltimaEtapa(curso.getEtapas().size());
