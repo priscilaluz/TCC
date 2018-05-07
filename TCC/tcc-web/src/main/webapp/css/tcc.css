@@ -665,7 +665,7 @@ li{
 }
 
 .img-professor-menu{
-    height:100px;
+    height:90px;
     display: block;
     margin: 0 auto;
 }
@@ -740,8 +740,8 @@ li{
 
 .background-home-aluno-itens {
     border-radius: 50px;
-    height: 130px;
-    padding-top: 43px;
+    height: 150px;
+    padding-top: 13px;
 }
 .background-home-aluno-item {
     background-image: radial-gradient(farthest-corner at center center, #ffa705 0%, #cc672d 100%);
@@ -752,7 +752,7 @@ li{
 
 .item-fonte-aluno{
     color: #ffffff;
-    font-size: 28px;
+    font-size: 25px;
     font-family:Optima;
     font-weight: bold;
     background-color: transparent;
