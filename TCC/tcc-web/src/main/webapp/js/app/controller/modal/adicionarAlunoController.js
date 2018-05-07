@@ -47,10 +47,10 @@ tccApp.controller('AdicionarAlunoController', ['$scope', '$rootScope', '$modalIn
             Curso.addAlunosAoCurso({'idCurso': idCurso, 'idAlunos': alunosId.toString()}, function (result) {
                 $scope.model.alunos = result;
                 $rootScope.appLoaded = true;
+                $modalInstance.close(alunosId);
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
-            $modalInstance.close(alunosId);
         };
 
         $scope.fechar = function () {

@@ -208,7 +208,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
                 size: 'lg',
                 resolve: {obj: function () {return obj;}}
             }).result.then(function (result) {
-                init();
+                buscarCursoAlunoPorIdCurso($scope.curso.id);
             }, function () {
                 // Modal cancelado
             });
