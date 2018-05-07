@@ -11,7 +11,8 @@ public enum Jogo {
     APOSTA ("A", "Aposta"),
     FORCA ("F", "Forca"),
     CACA_PALAVRA ("C", "Caça Palavra"),
-    QUIZ  ("Q", "Quiz");
+    QUIZ  ("Q", "Quiz"),
+    JOGO_DA_VELHA  ("V", "Jogo da Velha");
 
     /**
      * Id.

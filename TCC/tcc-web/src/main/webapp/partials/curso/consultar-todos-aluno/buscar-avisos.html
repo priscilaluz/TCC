@@ -5,7 +5,7 @@
     </p>
 </div>
 <div class="modal-header" style="background-color: #cbe8ba;">
-    <h3 class="modal-title title-fonte">Avisos</h3>
+    <h3 class="modal-title title-fonte-modal">Avisos</h3>
 </div>
 <div class="modal-body" style="height: 400px;">
     <form role="form" name="avisoForm" class="form-horizontal" enctype="multipart/form-data">
@@ -21,7 +21,7 @@
                 <tbody class="table-font">
                     <tr ng-repeat="aviso in model.avisos">
                         <td><a ng-click="visualizar(aviso)" style="color: #ff6624;"><i class="glyphicon glyphicon-zoom-in pointer" title="Visualizar"></i></a></td>
-                        <td class="pull-left">{{aviso.titulo}}</td>
+                        <td class="text-left">{{aviso.titulo}}</td>
                         <td>{{aviso.dataModificao | date: 'dd/MM/yyyy hh:mm'}}</td>
                     </tr>
                 </tbody>

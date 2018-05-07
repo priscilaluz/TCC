@@ -112,7 +112,19 @@ public class JogoResource {
     }
     
     @GET
-    @Path("/quizForcaAposta")
+    @Path("/jogoDaVelhaApresentacao")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Pergunta> buscarPerguntasDaApresentacaoDoJogoDaVelha() {
+        List<Pergunta> perguntas = new ArrayList<>();
+        perguntas.add(obterPerguntaCacaPalavraModelo1());
+        perguntas.add(obterPerguntaCacaPalavraModelo2());
+        perguntas.add(obterPerguntaCacaPalavraModelo3());
+        perguntas.add(obterPerguntaApostaModelo1());
+        return perguntas;
+    }
+    
+    @GET
+    @Path("/jogoGerais")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Pergunta> buscarPerguntaDosJogosQuizForcaAposta(@QueryParam("idEtapa") Long idEtapa) {
         Etapa etapa = cursoService.buscarEtapaPorId(idEtapa, true);

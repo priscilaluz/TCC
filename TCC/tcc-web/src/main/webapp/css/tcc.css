@@ -109,17 +109,17 @@
     border-radius: 20px;
     font-family: Optima;
     background: #d35e4c; /* For browsers that do not support gradients */    
-    background: -webkit-linear-gradient(left top, #00311f, #37b2ce); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #00311f, #37b2ce); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #00311f, #37b2ce); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #00311f, #37b2ce); /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(left top, #ffbc00, #d66c00); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #ffbc00, #d66c00); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #ffbc00, #d66c00); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #ffbc00, #d66c00); /* Standard syntax (must be last) */
 }
 .jogar-etapa:hover {
     color: #ffffff;
-    background: -webkit-linear-gradient(left top, #37b2ce, #26ad37); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #37b2ce, #26ad37); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #37b2ce, #26ad37); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #37b2ce, #26ad37); /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(left top, #d66c00, #ffbc00); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #d66c00, #ffbc00); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #d66c00, #ffbc00); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #d66c00, #ffbc00); /* Standard syntax (must be last) */
 }
 .jogos-font{
     color: #522e2e;
@@ -171,6 +171,10 @@
 .title-fonte{
     font-family: Optima;
     color: #ffffff;
+}
+.title-fonte-modal{
+    font-family: Optima;
+    color: #800d01;
 }
 .botao-add{
     border-radius: 22px;
@@ -300,7 +304,7 @@ li {
     background: linear-gradient(to bottom right, #0b9ca2, #6dcf55); /* Standard syntax (must be last) */
 }
 .menu-cursos-font{
-    color: #ffffff;
+    color: #0c1b3e;
     font-size: 16px;
     font-family:Optima;
 }
@@ -313,17 +317,17 @@ li {
     border-radius: 119px;
     
     background: #d35e4c; /* For browsers that do not support gradients */    
-    background: -webkit-linear-gradient(left top, #53d4a3, #37b2ce); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #53d4a3, #37b2ce); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #53d4a3, #37b2ce); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #53d4a3, #37b2ce); /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(left top, #ffa400, #fbd682); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #ffa400, #fbd682); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #ffa400, #fbd682); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #ffa400, #fbd682); /* Standard syntax (must be last) */
 }
 .cursos-menu:hover {
     background: #d35e4c; /* For browsers that do not support gradients */    
-    background: -webkit-linear-gradient(left top, #37b2ce, #53d4a3); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #37b2ce, #53d4a3); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #37b2ce, #53d4a3); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #37b2ce, #53d4a3); /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(left top, #fbd682, #ffa400); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #fbd682, #ffa400); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #fbd682, #ffa400); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #fbd682, #ffa400); /* Standard syntax (must be last) */
     border: #dff0d8 solid 1px;
 }
 
@@ -602,7 +606,11 @@ li{
     font-size: 45px;
     font-family:Optima;
     
-    background-color: #36906e;
+    background: rgb(37, 198, 205); /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #ffc986, #01b544); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #ffc986, #01b544); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #ffc986, #01b544); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #ffc986, #01b544); /* Standard syntax (must be last) */
     border: #dff0d8 solid 1px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -610,8 +618,12 @@ li{
     border-radius: 8px;
 }
 .menu-adm:hover {
-    color: #ffffff;
-    background-color: #295444;
+    color: #000000;
+    background: rgb(37, 198, 205); /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #01b544, #ffc986); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #01b544, #ffc986); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #01b544, #ffc986); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #01b544, #ffc986); /* Standard syntax (must be last) */
     border: #dff0d8 solid 1px;
 }
 
@@ -726,22 +738,16 @@ li{
     height: 300px;
 }
 
-.background-home-aluno-1tens {
-    border-radius: 10px;
-    height: 200px;
-    padding-top: 72px;
+.background-home-aluno-itens {
+    border-radius: 50px;
+    height: 130px;
+    padding-top: 43px;
 }
-.background-home-aluno-1tem-1-3 {
-    background-image: radial-gradient(farthest-corner at center center, #319872 0%, #174a37 100%);
+.background-home-aluno-item {
+    background-image: radial-gradient(farthest-corner at center center, #ffa705 0%, #cc672d 100%);
 }
-.background-home-aluno-1tem-1-3:hover {
-    background-image: radial-gradient(farthest-corner at center center, #3cbb8c 0%, #174a37 100%);
-}
-.background-home-aluno-1tem-2-4 {
-    background-image: radial-gradient(farthest-corner at center center, #3cbb8c 0%, #174a37 100%);
-}
-.background-home-aluno-1tem-2-4:hover {
-    background-image: radial-gradient(farthest-corner at center center, #319872 0%, #174a37 100%);
+.background-home-aluno-item:hover {
+    background-image: radial-gradient(farthest-corner at center center, #ffa705 0%, #ff8138 100%);
 }
 
 .item-fonte-aluno{
