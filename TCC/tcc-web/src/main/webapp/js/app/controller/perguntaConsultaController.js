@@ -1,5 +1,5 @@
-tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', 'Pergunta', 'Categoria', 'Enums', '$location', 'growl',
-    function ($scope, $rootScope, Pergunta, Categoria, Enums, $location, growl) {
+tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', '$modal', 'Pergunta', 'Categoria', 'Enums', '$location', 'growl',
+    function ($scope, $rootScope, $modal, Pergunta, Categoria, Enums, $location, growl) {
         $rootScope.telaHomeAluno = false;
         $scope.categorias = [];
         $scope.perguntas = [];
@@ -22,13 +22,29 @@ tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', 'Pergun
             });
         };
 
-        $scope.excluirPergunta = function (index) {
-            $rootScope.appLoaded = false;
-            Pergunta.deletarPergunta({'id': $scope.perguntas[index].id}).$promise.then(function (result) {
-                growl.success('Pergunta excluída com sucesso.',{title: 'Operação bem sucedida'});
-                $scope.pesquisarPergunta();
-            }, function (error) {
-                $rootScope.appLoaded = true;
+        $scope.excluirPergunta = function (pergunta) {
+            var infor = {titulo:'Deseja realmente excluir pergunta?', campos: []};
+            infor.campos.push({titulo: 'Descrição:', descricao: pergunta.descricao});
+            infor.campos.push({titulo: 'Nível:', descricao: pergunta.nivel.descricao});
+            infor.campos.push({titulo: 'Tipo:', descricao: pergunta.tipo.descricao});
+            infor.campos.push({titulo: 'Categoria:', descricao: pergunta.categoria.nome});
+            $modal.open({
+                templateUrl: 'partials/confirmar-exclusao.html',
+                controller: 'ConfirmarExclusaoController',
+                size: 'md',
+                resolve: {infor: function () {return infor;}}
+            }).result.then(function (excluir) {
+                if (excluir) {
+                    $rootScope.appLoaded = false;
+                    Pergunta.deletarPergunta({'id': pergunta.id}).$promise.then(function (result) {
+                        growl.success('Pergunta excluída com sucesso.',{title: 'Operação bem sucedida'});
+                        $scope.pesquisarPergunta();
+                    }, function (error) {
+                        $rootScope.appLoaded = true;
+                    });
+                }
+            }, function () {
+                // Modal cancelado
             });
         };
         

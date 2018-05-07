@@ -17,7 +17,7 @@
                     <tbody  class="table-font">
                         <tr ng-repeat="curso in cursos">
                             <td>
-                                <a ng-click="excluirCurso($index)" style="color: #ff6624;" title="Excluir Curso"><i class="glyphicon glyphicon-remove pointer"></i></a>
+                                <a ng-click="excluirCurso(curso)" style="color: #ff6624;" title="Excluir Curso"><i class="glyphicon glyphicon-remove pointer"></i></a>
                             </td>
                             <td>
                                 <a ng-click="telaNovaEditarCurso(curso.id, curso.situacao.id)" style="color: #ff6624;" title="Edi†ar Curso"><i class="glyphicon glyphicon-pencil pointer"></i></a>

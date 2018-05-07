@@ -14,14 +14,27 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
         $scope.abaEtapa = false;
         $scope.numeroEtapa = 0;
         
-        $scope.deletarEtapa = function (id) {
-            $rootScope.appLoaded = false;
-            Etapa.deletar({'idCurso': $scope.curso.id, 'idEtapa':id}).$promise.then(function (result) {
-                growl.success('Etapa excluída com sucesso.',{title: 'Operação bem sucedida'});
-                $scope.voltar();
-                $rootScope.appLoaded = true;
-            }, function (error) {
-                $rootScope.appLoaded = true;
+        $scope.excluirEtapa = function (etapa) {
+            var infor = {titulo:'Deseja realmente excluir etapa?', campos: []};
+            infor.campos.push({titulo: 'Etapa:', descricao: etapa.nivel});
+            $modal.open({
+                templateUrl: 'partials/confirmar-exclusao.html',
+                controller: 'ConfirmarExclusaoController',
+                size: 'md',
+                resolve: {infor: function () {return infor;}}
+            }).result.then(function (excluir) {
+                if (excluir) {
+                    $rootScope.appLoaded = false;
+                    Etapa.deletar({'idCurso': $scope.curso.id, 'idEtapa':etapa.id}).$promise.then(function (result) {
+                        growl.success('Etapa excluída com sucesso.',{title: 'Operação bem sucedida'});
+                        $scope.voltar();
+                        $rootScope.appLoaded = true;
+                    }, function (error) {
+                        $rootScope.appLoaded = true;
+                    });
+                }
+            }, function () {
+                // Modal cancelado
             });
         };
         
@@ -295,14 +308,27 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
             });
         };
         
-        $scope.excluirAviso = function (idAviso) {
-            $rootScope.appLoaded = false;
-            Aviso.deletar({'idAviso': idAviso}).$promise.then(function (result) {
-                growl.success('Aviso excluído com sucesso.',{title: 'Operação bem sucedida'});
-                buscarAvisos();
-                $rootScope.appLoaded = true;
-            }, function (error) {
-                $rootScope.appLoaded = true;
+        $scope.excluirAviso = function (aviso) {
+            var infor = {titulo:'Deseja realmente excluir aviso?', campos: []};
+            infor.campos.push({titulo: 'Título:', descricao: aviso.titulo});
+            $modal.open({
+                templateUrl: 'partials/confirmar-exclusao.html',
+                controller: 'ConfirmarExclusaoController',
+                size: 'md',
+                resolve: {infor: function () {return infor;}}
+            }).result.then(function (excluir) {
+                if (excluir) {
+                    $rootScope.appLoaded = false;
+                    Aviso.deletar({'idAviso': aviso.id}).$promise.then(function (result) {
+                        growl.success('Aviso excluído com sucesso.',{title: 'Operação bem sucedida'});
+                        buscarAvisos();
+                        $rootScope.appLoaded = true;
+                    }, function (error) {
+                        $rootScope.appLoaded = true;
+                    });
+                }
+            }, function () {
+                // Modal cancelado
             });
         };
         

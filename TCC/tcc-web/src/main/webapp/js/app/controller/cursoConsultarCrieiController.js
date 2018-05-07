@@ -18,13 +18,29 @@ tccApp.controller('CursoConsultarCrieiController', ['$scope', '$rootScope', '$mo
             });
         };
 
-        $scope.excluirCurso = function (index) {
-            $rootScope.appLoaded = false;
-            Curso.deletarCurso({'id': $scope.cursos[index].id}).$promise.then(function (result) {
-                growl.success('Curso excluída com sucesso.',{title: 'Operação bem sucedida'});
-                $scope.pesquisarCurso();
-            }, function (error) {
-                $rootScope.appLoaded = true;
+        $scope.excluirCurso = function (curso) {
+            var infor = {titulo:'Deseja realmente excluir curso?', campos: []};
+            infor.campos.push({titulo: 'Nome:', descricao: curso.nome});
+            infor.campos.push({titulo: 'Situação:', descricao: curso.situacao.descricao});
+            infor.campos.push({titulo: 'Disponibilidade:', descricao: curso.disponibilidade.descricao});
+            infor.campos.push({titulo: 'Categoria:', descricao: curso.categoria.nome});
+            $modal.open({
+                templateUrl: 'partials/confirmar-exclusao.html',
+                controller: 'ConfirmarExclusaoController',
+                size: 'md',
+                resolve: {infor: function () {return infor;}}
+            }).result.then(function (excluir) {
+                if (excluir) {
+                    $rootScope.appLoaded = false;
+                    Curso.deletarCurso({'id': curso.id}).$promise.then(function (result) {
+                        growl.success('Curso excluída com sucesso.',{title: 'Operação bem sucedida'});
+                        $scope.pesquisarCurso();
+                    }, function (error) {
+                        $rootScope.appLoaded = true;
+                    });
+                }
+            }, function () {
+                // Modal cancelado
             });
         };
         

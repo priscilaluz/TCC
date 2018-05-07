@@ -13,7 +13,7 @@
                     </thead>
                     <tbody class="table-font">
                         <tr ng-repeat="aviso in avisos">
-                            <td><a ng-click="excluirAviso(aviso.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove pointer" title="Excluir"></i></a></td>
+                            <td><a ng-click="excluirAviso(aviso)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove pointer" title="Excluir"></i></a></td>
                             <td><a ng-click="editarAviso(aviso.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-pencil pointer" title="Editar"></i></a></td>
                             <td>{{aviso.titulo}}</td>
                             <td>{{aviso.dataModificao | date: 'dd/MM/yyyy hh:mm'}}</td>

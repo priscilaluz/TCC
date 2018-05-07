@@ -14,7 +14,7 @@
                     </thead>
                     <tbody class="table-font">
                         <tr ng-repeat="professor in model.professores">
-                            <td><a ng-click="excluirProfessor(professor.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove pointer" title="Excluir"></i></a></td>
+                            <td><a ng-click="excluirProfessor(professor)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove pointer" title="Excluir"></i></a></td>
                             <td><a ng-click="telaNovaEditar(professor.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-pencil pointer" title="Editar"></i></a></td>
                             <td>{{professor.nome}}</td>
                             <td>{{professor.login}}</td>

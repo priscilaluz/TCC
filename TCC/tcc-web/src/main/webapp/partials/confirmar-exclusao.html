@@ -1,0 +1,16 @@
+<div class="modal-content">
+<div class="modal-header" style="background-color: #d89a9a;">
+    <h3 class="modal-title title-fonte-modal" style="color: #060202;">{{titulo}}</h3>
+</div>
+<div class="modal-body" style="height: auto;">
+    <div ng-repeat="campo in campos">
+        <p class="curso-nao-titulo-concluido" style="color: #162321;"><b>{{campo.titulo}} </b>{{campo.descricao}}</p>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-ng-click="confirmar(false)" style="font-size: 120%;">
+        <i class="glyphicon glyphicon-remove-sign"></i>&nbsp;Não</button>
+    <button type="button" class="btn btn-success" data-ng-click="confirmar(true)" style="font-size: 120%;">
+        <i class="glyphicon glyphicon-ok-sign"></i>&nbsp;Sim</button>
+</div>
+</div>

@@ -1,5 +1,5 @@
-tccApp.controller('CategoriaConsultaController', ['$scope', '$rootScope', '$location', 'Categoria', 'growl',
-    function ($scope, $rootScope, $location, Categoria, growl) {
+tccApp.controller('CategoriaConsultaController', ['$scope', '$rootScope', '$modal', '$location', 'Categoria', 'growl',
+    function ($scope, $rootScope, $modal, $location, Categoria, growl) {
         $rootScope.telaHomeAluno = false;
         $scope.model = {
             nomeCategoria: null,
@@ -16,14 +16,27 @@ tccApp.controller('CategoriaConsultaController', ['$scope', '$rootScope', '$loca
             });
         };
         
-        $scope.excluirCategoria = function (id) {
-            $rootScope.appLoaded = false;
-            Categoria.deletarCategoria({'idCategoria':id}).$promise.then(function (result) {
-                growl.success('Categoria excluída com sucesso.',{title: 'Operação bem sucedida'});
-                $scope.pesquisar();
-                $rootScope.appLoaded = true;
-            }, function (error) {
-                $rootScope.appLoaded = true;
+        $scope.excluirCategoria = function (categoria) {
+            var infor = {titulo:'Deseja realmente excluir categoria?', campos: []};
+            infor.campos.push({titulo: 'Nome:', descricao: categoria.nome});
+            $modal.open({
+                templateUrl: 'partials/confirmar-exclusao.html',
+                controller: 'ConfirmarExclusaoController',
+                size: 'md',
+                resolve: {infor: function () {return infor;}}
+            }).result.then(function (excluir) {
+                if (excluir) {
+                    $rootScope.appLoaded = false;
+                    Categoria.deletarCategoria({'idCategoria':categoria.id}).$promise.then(function (result) {
+                        growl.success('Categoria excluída com sucesso.',{title: 'Operação bem sucedida'});
+                        $scope.pesquisar();
+                        $rootScope.appLoaded = true;
+                    }, function (error) {
+                        $rootScope.appLoaded = true;
+                    });
+                }
+            }, function () {
+                // Modal cancelado
             });
         };
         
