@@ -35,7 +35,7 @@ tccApp.controller('CategoriaConsultaController', ['$scope', '$rootScope', '$moda
                     $rootScope.appLoaded = false;
                     Categoria.deletarCategoria({'idCategoria':categoria.id}).$promise.then(function (result) {
                         growl.success('Categoria excluída com sucesso.',{title: 'Operação bem sucedida'});
-                        $scope.pesquisar();
+                        $scope.pesquisar(1);
                         $rootScope.appLoaded = true;
                     }, function (error) {
                         $rootScope.appLoaded = true;
