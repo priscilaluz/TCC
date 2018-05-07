@@ -14,6 +14,7 @@ import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringBean;
 import org.unitils.spring.annotation.SpringBeanByType;
 import tcc.common.business.CategoriaService;
+import tcc.common.vo.ListaPaginacao;
 
 @DataSet("/datasets/CategoriaServiceTest.xml")
 public class CategoriaServiceIT extends IntegrationBaseTestClass{
@@ -35,7 +36,8 @@ public class CategoriaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveBuscarCategoriaPorNome(){        
-        List<Categoria> categorias = categoriaService.buscarCategoriaPorFiltro("ue");
+        ListaPaginacao listaPaginacao = categoriaService.buscarCategoriaPorFiltro("ue", 1);
+        List<Categoria> categorias = (List<Categoria>)(Object)listaPaginacao.getLista();
         assertTrue(categorias.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(2L, 4L));
         for (Categoria c : categorias) {

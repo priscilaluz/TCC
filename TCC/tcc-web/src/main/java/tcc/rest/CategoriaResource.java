@@ -19,6 +19,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import tcc.common.business.CategoriaService;
+import tcc.common.vo.ListaPaginacao;
 
 /**
  *
@@ -56,7 +57,7 @@ public class CategoriaResource {
     @GET
     @Path("/buscarPorFiltro")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Categoria> buscarCategoriaPorFiltro(@QueryParam("parteNome") String parteNome) {
-        return categoriaService.buscarCategoriaPorFiltro(parteNome);
+    public ListaPaginacao buscarCategoriaPorFiltro(@QueryParam("parteNome") String parteNome, @QueryParam("paginaAtual") Integer paginaAtual) {
+        return categoriaService.buscarCategoriaPorFiltro(parteNome, paginaAtual);
     }
 }

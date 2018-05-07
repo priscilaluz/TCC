@@ -19,6 +19,19 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <pagination class="pagination-md" style="color: #000000"
+                    ng-model="paginaAtual"
+                    total-items="paginacao.numDeItens"
+                    max-size="paginacao.qntPaginaMostrarTela"
+                    items-per-page="paginacao.qntPorPagina"
+                    ng-change="pesquisar(paginaAtual)"
+                    boundary-links="true"
+                    previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                    rotate="false">
+                </pagination>
+            </div>
         </fieldset>
     </form>
 </div>

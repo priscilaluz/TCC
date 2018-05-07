@@ -1,9 +1,7 @@
 package tcc.common.business;
 
-import java.io.InputStream;
-import java.util.List;
-import tcc.common.entity.Anexo;
 import tcc.common.entity.Categoria;
+import tcc.common.vo.ListaPaginacao;
 
 /**
  *
@@ -17,6 +15,5 @@ public interface CategoriaService {
     
     Categoria buscarCategoriaPorId(Long idCategoria);
     
-    List<Categoria> buscarCategoriaPorFiltro(String parteNome);
-    
+    ListaPaginacao buscarCategoriaPorFiltro(String parteNome, Integer paginaAtual);
 }

@@ -1,15 +1,21 @@
 tccApp.controller('CategoriaConsultaController', ['$scope', '$rootScope', '$modal', '$location', 'Categoria', 'growl',
     function ($scope, $rootScope, $modal, $location, Categoria, growl) {
         $rootScope.telaHomeAluno = false;
+        $scope.paginaAtual = null;
+        $scope.paginacao = {paginaAtual: null, numDeItens: null, qntPaginaMostrarTela: null, qntPorPagina: null};
+        
         $scope.model = {
             nomeCategoria: null,
             categoria: []
         };
         
-        $scope.pesquisar = function () {
+        $scope.pesquisar = function (paginaAtual) {
             $rootScope.appLoaded = false;
-            Categoria.buscarCategoriaPorFiltro({'nome': $scope.model.nomeCategoria},function (result) {
-                $scope.model.categorias = result;
+            Categoria.buscarCategoriaPorFiltro({'parteNome': $scope.model.nomeCategoria, 
+                    'paginaAtual': paginaAtual-1},function (result) {
+                $scope.model.categorias = result.lista;
+                $scope.paginacao = result.paginacao;
+                $scope.paginaAtual = result.paginacao.paginaAtual+1;
                 $rootScope.appLoaded = true;
             },function(error) {
                 $rootScope.appLoaded = true;

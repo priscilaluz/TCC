@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import tcc.common.business.CategoriaService;
+import tcc.common.vo.ListaPaginacao;
+import tcc.common.vo.Paginacao;
+import tcc.service.persistence.Pagination;
 
 /**
  *
@@ -55,7 +58,12 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Categoria> buscarCategoriaPorFiltro(String parteNome) {
-        return dao.list(new BuscarCategoria.Entities().whereNomeLike(parteNome));
+    public ListaPaginacao buscarCategoriaPorFiltro(String parteNome, Integer paginaAtual) {
+        Long numDeItens = (Long) dao.uniqueResult(new BuscarCategoria.Count().whereNomeLike(parteNome));
+        Pagination pagination = new Pagination(Paginacao.DEFAULT_QNT_POR_PAG, paginaAtual);
+        BuscarCategoria query = new BuscarCategoria.Entities().whereNomeLike(parteNome);
+        query.setPagination(pagination);
+        List categorias = dao.list(query);
+        return new ListaPaginacao(categorias, new Paginacao(numDeItens, paginaAtual));
     }
 }
