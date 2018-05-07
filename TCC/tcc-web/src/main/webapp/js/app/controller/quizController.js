@@ -94,11 +94,11 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
         $scope.respostaIncorreta = {};
         $scope.respostaCorreta = {};
         $scope.idReposta = null;
-        $scope.model.tempo = tempoPergunta;
         $scope.model.posicao++;
         barraDeProgresso();
         if (($scope.model.posicao) < $scope.model.perguntas.length) {
             $scope.model.pergunta = $scope.model.perguntas[$scope.model.posicao];
+            $scope.model.tempo = $scope.model.pergunta.tempoPergunta+1;
             $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
             $scope.tempoPergunta();
         } else if (idEtapaAluno) {

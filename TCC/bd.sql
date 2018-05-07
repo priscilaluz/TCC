@@ -203,6 +203,7 @@ CREATE TABLE IF NOT EXISTS `tcc`.`pergunta` (
   `ANEXO_ID` INT(11) NULL DEFAULT NULL,
   `TIPO` ENUM('ME', 'CL') NOT NULL COMMENT 'Tipo de Pergunta: \'ME\'-multiplas escolhas, \'CL\'-completar lacuna',
   `NIVEL` ENUM('F', 'M', 'D') NOT NULL COMMENT '\'F\'-fácil, \'M\'-médio, \'D\'-difícil',
+  `TEMPO` ENUM('T', 'S', 'N') NOT NULL COMMENT '\'T\'-trinta segundos, \'S\'-sessenta segundos, \'N\'-noventa segundos',
   `DICA` VARCHAR(500) NULL DEFAULT NULL,
   `CATEGORIA_ID` INT(11) NOT NULL,
   PRIMARY KEY (`ID`),

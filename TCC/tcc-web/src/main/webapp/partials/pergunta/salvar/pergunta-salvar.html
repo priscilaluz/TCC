@@ -11,21 +11,27 @@
             </div>
             <div class="form-group">
                 <label for="inputCategoria" class="col-lg-1 control-label label-font">Categoria:</label>
-                <div class="col-lg-3" ng-class="{'has-error': perguntaForm.categoria.$error.required}">
+                <div class="col-lg-2" ng-class="{'has-error': perguntaForm.categoria.$error.required}">
                     <select id="inputCategoria" name="categoria" class="form-control" ng-model="pergunta.categoria" required ng-disabled="!editar"
                             ng-options="categoria.nome for categoria in categorias track by categoria.id">
                         <option value="">Categoria</option>
                     </select>
                 </div>
                 <label for="nivel" class="col-lg-1 control-label label-font">Nível:</label>
-                <div class="col-lg-3" ng-class="{'has-error': perguntaForm.nivel.$error.required}">
+                <div class="col-lg-2" ng-class="{'has-error': perguntaForm.nivel.$error.required}">
                     <select id="nivel" name="nivel" class="form-control" ng-model="pergunta.nivel" required ng-disabled="!editar"
                             ng-options="nivel.descricao for nivel in niveis track by nivel.id">
                         <option value="">Nível</option>
                     </select>
                 </div>
+                <label for="tempo" class="col-lg-1 control-label label-font">Tempo:</label>
+                <div class="col-lg-2" ng-class="{'has-error': perguntaForm.tempo.$error.required}">
+                    <select id="tempo" name="tempo" class="form-control" ng-model="pergunta.tempo" required ng-disabled="!editar"
+                            ng-options="tempo.descricao for tempo in tempos track by tempo.id">
+                    </select>
+                </div>
                 <label for="tipo" class="col-lg-1 control-label label-font">Tipo:</label>
-                <div class="col-lg-3" ng-class="{'has-error': perguntaForm.tipo.$error.required}">
+                <div class="col-lg-2" ng-class="{'has-error': perguntaForm.tipo.$error.required}">
                     <select id="tipo" name="tipo" class="form-control" ng-model="pergunta.tipo" required ng-disabled="!editar"
                             ng-options="tipo.descricao for tipo in tipos track by tipo.id" ng-change="changeTipo()">
                         <option value="">Tipo</option>

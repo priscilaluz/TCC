@@ -20,6 +20,7 @@ import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module.Feature;
 import java.io.InputStream;
 import java.util.TimeZone;
 import org.springframework.util.ReflectionUtils;
+import tcc.common.enums.TempoPergunta;
 
 /**
  *
@@ -35,6 +36,7 @@ public class ObjectMapperFactory {
             testModule.addDeserializer(SituacaoCurso.class, new EnumDeserializer(ReflectionUtils.findMethod(SituacaoCurso.class, "from", String.class)));
             testModule.addDeserializer(NivelPergunta.class, new EnumDeserializer(ReflectionUtils.findMethod(NivelPergunta.class, "from", String.class)));
             testModule.addDeserializer(TipoPergunta.class, new EnumDeserializer(ReflectionUtils.findMethod(TipoPergunta.class, "from", String.class)));
+            testModule.addDeserializer(TempoPergunta.class, new EnumDeserializer(ReflectionUtils.findMethod(TempoPergunta.class, "from", String.class)));
             testModule.addDeserializer(TipoUsuario.class, new EnumDeserializer(ReflectionUtils.findMethod(TipoUsuario.class, "from", String.class)));
             testModule.addDeserializer(Avatar.class, new EnumDeserializer(ReflectionUtils.findMethod(Avatar.class, "from", String.class)));
             testModule.addDeserializer(DisponibilidadeCurso.class, new EnumDeserializer(ReflectionUtils.findMethod(DisponibilidadeCurso.class, "from", String.class)));

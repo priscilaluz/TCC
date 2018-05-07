@@ -26,6 +26,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import org.hibernate.annotations.Type;
+import tcc.common.enums.TempoPergunta;
 
 /**
  *
@@ -70,6 +71,13 @@ public class Pergunta extends AbstractIdBean<Long> {
     @Column(name = "NIVEL", nullable = false)
     private NivelPergunta nivel;
     
+    @Enumerated(EnumType.STRING)
+    @Type(type = "tcc.common.support.GenericEnumUserType",
+        parameters = {@org.hibernate.annotations.Parameter(name = "enumClass",
+                    value = "tcc.common.enums.TempoPergunta")})
+    @Column(name = "TEMPO", nullable = false)
+    private TempoPergunta tempo;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USUARIO_ID", nullable = false)
     private Usuario usuario;
@@ -89,6 +97,9 @@ public class Pergunta extends AbstractIdBean<Long> {
     
     @Transient
     private int posicao;
+    
+    @Transient
+    private int tempoPergunta;
 
     public Pergunta() {}
 
@@ -186,6 +197,14 @@ public class Pergunta extends AbstractIdBean<Long> {
         this.nivel = nivel;
     }
 
+    public TempoPergunta getTempo() {
+        return tempo;
+    }
+
+    public void setTempo(TempoPergunta tempo) {
+        this.tempo = tempo;
+    }
+
     public Long getIdAnexoExcluido() {
         return idAnexoExcluido;
     }
@@ -204,5 +223,16 @@ public class Pergunta extends AbstractIdBean<Long> {
         this.etapasPerguntas = etapasPerguntas;
     }
 
-    
+    public int getTempoPergunta() {
+        if (TempoPergunta.SESSENTA_SEGUNDOS.equals(tempo)) {
+            return 60;
+        }else if (TempoPergunta.NOVENTA_SEGUNDOS.equals(tempo)) {
+            return 90;
+        }
+        return 30;
+    }
+
+    public void setTempoPergunta(int tempoPergunta) {
+        this.tempoPergunta = tempoPergunta;
+    }
 }

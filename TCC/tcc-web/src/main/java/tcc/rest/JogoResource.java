@@ -33,6 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import tcc.common.business.AnexoService;
 import tcc.common.business.CursoService;
+import tcc.common.enums.TempoPergunta;
 
 /**
  *
@@ -232,6 +233,7 @@ public class JogoResource {
         pergunta.setDescricao("Quanto é o valor de x na equação: x-5=10?");
         pergunta.setJustificativa("x=10+5/n x=15");
         pergunta.setDica("x=10+5");
+        pergunta.setTempo(TempoPergunta.SESSENTA_SEGUNDOS);
 //        Anexo anexo = new Anexo();
 //        anexo.setNomeArquivo("paisagens.jpg");
 //        anexo.setBytes(ReadImageAsByteArray("paisagens.jpg"));
@@ -277,6 +279,7 @@ public class JogoResource {
         pergunta.setPosicao(2);
         pergunta.setDescricao("Como se escreve o substantivo que significa aquilo que se desvia ou exclui de regras e padrões?");
         pergunta.setDica("Existe um X na resposta.");
+        pergunta.setTempo(TempoPergunta.NOVENTA_SEGUNDOS);
         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta1 = new Resposta();
@@ -361,6 +364,7 @@ public class JogoResource {
         pergunta.setDescricao("O Brasil é de que continente?");
         pergunta.setDica("O Brasil fica na America.");
         pergunta.setJustificativa("O Brasil fica na América, mais precisamente no subcontinente América do Sul. A Argentina, Bolívia, Chile, Colômbia, Equador, Guiana, Paraguai, Peru, Suriname, Uruguai e Venezuela são outros países localizados na América do Sul.");
+        pergunta.setTempo(TempoPergunta.TRINTA_SEGUNDOS);
         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta1 = new Resposta();
@@ -407,6 +411,7 @@ public class JogoResource {
         anexo.setNomeArquivo("MonaLisa.jpg");
         anexo.setBytes(ReadImageAsByteArray("MonaLisa.jpg"));
         pergunta.setAnexo(anexo);
+        pergunta.setTempo(TempoPergunta.SESSENTA_SEGUNDOS);
         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta1 = new Resposta();
@@ -545,6 +550,7 @@ public class JogoResource {
         pergunta.setDescricao("Quanto é o valor de x na equação: x-5=10?");
         pergunta.setJustificativa("x=10+5/n x=15");
         pergunta.setDica("x=10+5");
+        pergunta.setTempo(TempoPergunta.SESSENTA_SEGUNDOS);
         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta1 = new Resposta();
@@ -580,6 +586,7 @@ public class JogoResource {
         pergunta.setPosicao(2);
         pergunta.setDescricao("Como se escreve o substantivo que significa aquilo que se desvia ou exclui de regras e padrões?");
         pergunta.setDica("Existe um X na resposta.");
+        pergunta.setTempo(TempoPergunta.SESSENTA_SEGUNDOS);
         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta1 = new Resposta();
@@ -616,7 +623,8 @@ public class JogoResource {
         pergunta.setDescricao("\"Cinquenta anos em cinco\" foi o bordão de qual popular presidente?");
         pergunta.setJustificativa("O Governo Juscelino Kubitschek é o período de governo vivido entre 1956 e 1961[1]. Sua eleição foi marcada pelo plano de ação \"Cinquenta anos em cinco\", marca do desenvolvimentismo, já que o ideal era trazer ao Brasil o desenvolvimento econômico e social. Segundo JK, se com outros governantes este processo levaria cinquenta anos, com ele levaria apenas cinco[2]. Trouxe diversas empresas estrangeiras para o país, entre elas, as automobilísticas Chrysler e Ford através do Grupo Executivo da Indústria Automobilística, já que ele queria incentivar o comércio de carros, além de televisões e outros bens de consumo. Em resumo, procurou alinhar a economia brasileira à economia americana.");
         pergunta.setDica("Segundo JK, se com outros governantes este processo levaria cinquenta anos, com ele levaria apenas cinco");
-        
+        pergunta.setTempo(TempoPergunta.TRINTA_SEGUNDOS);
+         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta1 = new Resposta();
         resposta1.setId(11L);
@@ -652,6 +660,7 @@ public class JogoResource {
         pergunta.setDescricao("O Brasil é de que continente?");
         pergunta.setDica("O Brasil fica na America.");
         pergunta.setJustificativa("O Brasil fica na América, mais precisamente no subcontinente América do Sul. A Argentina, Bolívia, Chile, Colômbia, Equador, Guiana, Paraguai, Peru, Suriname, Uruguai e Venezuela são outros países localizados na América do Sul.");
+        pergunta.setTempo(TempoPergunta.NOVENTA_SEGUNDOS);
         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta1 = new Resposta();
@@ -692,6 +701,7 @@ public class JogoResource {
         anexo.setNomeArquivo("MonaLisa.jpg");
         anexo.setBytes(ReadImageAsByteArray("MonaLisa.jpg"));
         pergunta.setAnexo(anexo);
+        pergunta.setTempo(TempoPergunta.SESSENTA_SEGUNDOS);
         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta1 = new Resposta();
@@ -731,6 +741,7 @@ public class JogoResource {
         pergunta.setDescricao("São consideradas a menor parte dos organismos vivos, sendo, portanto, elementos estruturais e funcionais.");
         pergunta.setJustificativa("O corpo humano é formado por uma quantidade enorme de células. As células são consideradas a menor parte dos organismos vivos, sendo, portanto, elementos estruturais e funcionais.");
         pergunta.setDica("O corpo humano é pluricelular");
+        pergunta.setTempo(TempoPergunta.SESSENTA_SEGUNDOS);
         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta = new Resposta();
@@ -749,6 +760,7 @@ public class JogoResource {
         pergunta.setDescricao("Primeiro nome do 20º Presidente do Brasil. O destaque do governo de foi a chamada política desenvolvimentista, ou seja, fazer o Brasil crescer e se desenvolver “cinqüenta anos em cinco”.");
         pergunta.setJustificativa("Mineiro de Diamantina, Juscelino Kubitschek de Oliveira foi o 20º Presidente do Brasil. Mas seus feitos o consagraram como um dos principais dentre muitos que já passaram por este cargo.");
         pergunta.setDica("Kubitschek");
+        pergunta.setTempo(TempoPergunta.SESSENTA_SEGUNDOS);
         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta = new Resposta();
@@ -767,6 +779,7 @@ public class JogoResource {
         pergunta.setDescricao("A palavra 'pequeno' é o que na frase: 'O cachorro era pequeno'.");
         pergunta.setJustificativa("Substantivos são palavras que dão nomes aos seres. O significado de “seres”, porém, não é o biológico. Seres, neste contexto, pode significar pessoas, lugares, grupos, indivíduos, animais, elementos mitológicos ou da natureza. O conceito de seres é muito mais abrangente do que aquele ao qual estamos habituados. Em termos gerais, os substantivos são nomes, não só de seres, mas também de emoções, sensações e diversos outros elementos que podem ser nomeados.");
         pergunta.setDica("Pode ser pronome, substantivo, adjetivo ou verbo.");
+        pergunta.setTempo(TempoPergunta.SESSENTA_SEGUNDOS);
         
         Set<Resposta> respostas = new HashSet<>();
         Resposta resposta = new Resposta();

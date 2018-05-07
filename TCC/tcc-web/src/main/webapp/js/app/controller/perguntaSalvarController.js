@@ -107,14 +107,18 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
                 $scope.categorias = categorias;
                 Enums.getTiposPergunta(function (tipos) {
                     $scope.tipos = tipos;
-                    Enums.getNiveisPergunta(function (niveis) {
-                        $scope.niveis = niveis;
-                        $rootScope.appLoaded = true;
-                        if ($routeParams.idPergunta) {
-                            buscarPerguntaPorId($routeParams.idPergunta);
-                        } else {
-                            $scope.editar = true;
-                        }
+                    Enums.getTemposPergunta(function (tempos) {
+                        $scope.tempos = tempos;
+                        $scope.pergunta.tempo = tempos[0];
+                        Enums.getNiveisPergunta(function (niveis) {
+                            $scope.niveis = niveis;
+                            $rootScope.appLoaded = true;
+                            if ($routeParams.idPergunta) {
+                                buscarPerguntaPorId($routeParams.idPergunta);
+                            } else {
+                                $scope.editar = true;
+                            }
+                        }, function (error) {$rootScope.appLoaded = true;});
                     }, function (error) {$rootScope.appLoaded = true;});
                 }, function (error) {$rootScope.appLoaded = true;});
             }, function (error) {$rootScope.appLoaded = true;});

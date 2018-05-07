@@ -18,6 +18,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.springframework.stereotype.Component;
+import tcc.common.enums.TempoPergunta;
 
 /**
  *
@@ -53,6 +54,13 @@ public class EnumsResource {
     @Path("/tipoPergunta")
     public List<TipoPergunta> findAllTipoPergunta() {
         return Arrays.asList(TipoPergunta.values());
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/tempoPergunta")
+    public List<TempoPergunta> findAllTempoPergunta() {
+        return Arrays.asList(TempoPergunta.values());
     }
     
     @GET

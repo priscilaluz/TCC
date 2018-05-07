@@ -96,17 +96,27 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
         relatorioEtapa.idCursoAluno = idCursoAluno;
         relatorioEtapa.ganhou = ganhou;
         $rootScope.appLoaded = false;
-        relatorioEtapa.$save(function () {
+         if (idEtapaAluno) {
+            relatorioEtapa.$save(function () {
+                if ($scope.model.pontuacao < pontuacaoMinima) {
+                    $scope.model.perdeuJogo = true;
+                    tempoImagemFimDeJogo();
+                } else {
+                    $scope.model.resultado = true;
+                }
+                $rootScope.appLoaded = true;
+            }, function (error) {
+                $rootScope.appLoaded = true;
+            });
+        } else {
+            $rootScope.appLoaded = true;
             if ($scope.model.pontuacao < pontuacaoMinima) {
                 $scope.model.perdeuJogo = true;
                 tempoImagemFimDeJogo();
             } else {
                 $scope.model.resultado = true;
             }
-            $rootScope.appLoaded = true;
-        }, function (error) {
-            $rootScope.appLoaded = true;
-        });
+        }
     };
     
     var proximaPergunta = function (){
@@ -120,6 +130,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
         barraDeProgresso();
         if (($scope.model.posicao) < $scope.model.perguntas.length) {
             $scope.model.pergunta = $scope.model.perguntas[$scope.model.posicao];
+            $scope.model.tempo = $scope.model.pergunta.tempoPergunta+1;
             $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
             inicializarBotao();
             tempoPergunta();
