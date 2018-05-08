@@ -66,4 +66,10 @@ public class CategoriaServiceImpl implements CategoriaService {
         List categorias = dao.list(query);
         return new ListaPaginacao(categorias, new Paginacao(numDeItens, paginaAtual));
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<Categoria> buscarCategorias() {
+        return dao.list(new BuscarCategoria.Entities());
+    }
 }

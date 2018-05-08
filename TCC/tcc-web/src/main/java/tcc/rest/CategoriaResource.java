@@ -5,6 +5,7 @@
  */
 package tcc.rest;
 
+import java.util.List;
 import tcc.common.entity.Categoria;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -58,5 +59,12 @@ public class CategoriaResource {
     @Produces(MediaType.APPLICATION_JSON)
     public ListaPaginacao buscarCategoriaPorFiltro(@QueryParam("parteNome") String parteNome, @QueryParam("paginaAtual") Integer paginaAtual) {
         return categoriaService.buscarCategoriaPorFiltro(parteNome, paginaAtual);
+    }
+    
+    @GET
+    @Path("/buscarTodas")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Categoria> buscarCategorias() {
+        return categoriaService.buscarCategorias();
     }
 }

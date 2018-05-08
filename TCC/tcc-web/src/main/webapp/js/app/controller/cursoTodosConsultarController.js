@@ -31,7 +31,7 @@ tccApp.controller('CursoTodosConsultarController', ['$scope', '$rootScope', 'Cur
 
         var init = function () {
             $rootScope.appLoaded = false;
-            Categoria.buscarCategoriaPorFiltro(function (categorias) {
+            Categoria.buscarTodasCategoria(function (categorias) {
                 $scope.categorias = categorias;
                 
                 Enums.getSituacoesCurso(function (situacoes) {

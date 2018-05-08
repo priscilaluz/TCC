@@ -4,6 +4,7 @@ tccApp.factory('Categoria', ['$resource', function ($resource) {
             save: {method: 'POST', params: {verbo: 'save'}, isArray: false},
             deletarCategoria: {method: 'DELETE', params: {verbo: 'deletar'}, isArray: false},
             buscarCategoriaPorId: {method: 'GET', params: {verbo: 'buscarPorId'}, isArray: false},
+            buscarTodasCategoria: {method: 'GET', params: {verbo: 'buscarTodas'}, isArray: true},
             buscarCategoriaPorFiltro: {method: 'GET', params: {verbo: 'buscarPorFiltro'}, isArray: false}
         });
 

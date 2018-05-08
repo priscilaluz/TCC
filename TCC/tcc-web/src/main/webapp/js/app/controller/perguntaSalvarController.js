@@ -103,7 +103,7 @@ tccApp.controller('PerguntaSalvarController', ['$scope', '$rootScope', '$routePa
 
         var init = function () {
             $rootScope.appLoaded = false;
-            Categoria.buscarCategoriaPorFiltro(function (categorias) {
+            Categoria.buscarTodasCategoria(function (categorias) {
                 $scope.categorias = categorias;
                 Enums.getTiposPergunta(function (tipos) {
                     $scope.tipos = tipos;

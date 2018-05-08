@@ -359,7 +359,7 @@ tccApp.controller('CursoSalvarController', ['$scope', '$rootScope', '$routeParam
         var carregarTela = true;
         var init = function () {
             $rootScope.appLoaded = false;
-            Categoria.buscarCategoriaPorFiltro(function (result) {
+            Categoria.buscarTodasCategoria(function (result) {
                 $scope.categorias = result;
                 $rootScope.appLoaded = true;
                 if ($routeParams.idCurso) {

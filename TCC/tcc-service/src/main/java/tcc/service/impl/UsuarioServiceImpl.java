@@ -72,12 +72,23 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     @Transactional(readOnly = true)
     public ListaPaginacao buscarUsuarios(String nome, TipoUsuario tipo, Long idCurso, Integer paginaAtual) {
-        Pagination pagination = new Pagination(Paginacao.DEFAULT_QNT_POR_PAG, paginaAtual);
         Long numDeItens = (Long) dao.uniqueResult(new BuscarUsuario.Count().whereNomeLike(nome).whereTipo(tipo).whereCursoNaoTem(idCurso));
         BuscarUsuario query = new BuscarUsuario.Entities().whereNomeLike(nome).whereTipo(tipo).whereCursoNaoTem(idCurso);
+        Pagination pagination = new Pagination(Paginacao.DEFAULT_QNT_POR_PAG, paginaAtual);
         query.setPagination(pagination);
-        List usuarios = dao.list(new BuscarUsuario.Entities().whereNomeLike(nome).whereTipo(tipo).whereCursoNaoTem(idCurso));
+        List usuarios = dao.list(query);
         return new ListaPaginacao(usuarios, new Paginacao(numDeItens, paginaAtual));
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<Usuario> buscarAlunos(String nome, TipoUsuario tipo, Long idCurso) {
+        BuscarUsuario query = new BuscarUsuario.Entities().whereNomeLike(nome).whereTipo(tipo).whereCursoNaoTem(idCurso);
+        List<Usuario> usuarios = dao.list(query);
+        for (Usuario usuario : usuarios) {
+            usuario.setSenha(null);
+        }
+        return usuarios;
     }
     
     @Override
