@@ -23,6 +23,9 @@ import tcc.common.business.CursoAlunoService;
 import tcc.common.business.CursoService;
 import tcc.common.business.PerguntaService;
 import tcc.common.business.UsuarioService;
+import tcc.common.vo.ListaPaginacao;
+import tcc.common.vo.Paginacao;
+import tcc.service.persistence.Pagination;
 
 /**
  *
@@ -68,8 +71,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     
     @Override
     @Transactional(readOnly = true)
-    public List<Usuario> buscarUsuarios(String nome, TipoUsuario tipo, Long idCurso) {
-        return dao.list(new BuscarUsuario.Entities().whereNomeLike(nome).whereTipo(tipo).whereCursoNaoTem(idCurso));
+    public ListaPaginacao buscarUsuarios(String nome, TipoUsuario tipo, Long idCurso, Integer paginaAtual) {
+        Pagination pagination = new Pagination(Paginacao.DEFAULT_QNT_POR_PAG, paginaAtual);
+        Long numDeItens = (Long) dao.uniqueResult(new BuscarUsuario.Count().whereNomeLike(nome).whereTipo(tipo).whereCursoNaoTem(idCurso));
+        BuscarUsuario query = new BuscarUsuario.Entities().whereNomeLike(nome).whereTipo(tipo).whereCursoNaoTem(idCurso);
+        query.setPagination(pagination);
+        List usuarios = dao.list(new BuscarUsuario.Entities().whereNomeLike(nome).whereTipo(tipo).whereCursoNaoTem(idCurso));
+        return new ListaPaginacao(usuarios, new Paginacao(numDeItens, paginaAtual));
     }
     
     @Override

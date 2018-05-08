@@ -1,9 +1,9 @@
 package tcc.common.business;
 
-import java.util.List;
 import tcc.common.entity.Usuario;
 import tcc.common.enums.TipoUsuario;
 import tcc.common.vo.DadoProfessor;
+import tcc.common.vo.ListaPaginacao;
 
 /**
  *
@@ -15,7 +15,7 @@ public interface UsuarioService {
     
     Usuario buscarUsuarioPorLoginSenha(String login, String senha);
     
-    List<Usuario> buscarUsuarios(String nome, TipoUsuario tipo, Long idCurso);
+    ListaPaginacao buscarUsuarios(String nome, TipoUsuario tipo, Long idCurso, Integer paginaAtual);
     
     Usuario buscarProfessorPorId(Long id);
     

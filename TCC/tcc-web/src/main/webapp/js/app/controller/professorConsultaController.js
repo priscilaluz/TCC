@@ -1,15 +1,19 @@
 tccApp.controller('ProfessorConsultaController', ['$scope', '$rootScope', '$modal', '$location', 'Usuario', 'growl',
     function ($scope, $rootScope, $modal, $location, Usuario, growl) {
         $rootScope.telaHomeAluno = false;
+        $scope.paginaAtual = null;
+        $scope.paginacao = {paginaAtual: null, numDeItens: null, qntPaginaMostrarTela: null, qntPorPagina: null};
         $scope.model = {
             nomeProfessor: null,
             professores: []
         };
         
-        $scope.pesquisar = function () {
+        $scope.pesquisar = function (paginaAtual) {
             $rootScope.appLoaded = false;
-            Usuario.buscarProfessores({'nome': $scope.model.nomeProfessor},function (result) {
-                $scope.model.professores = result;
+            Usuario.buscarProfessores({'nome': $scope.model.nomeProfessor, 'paginaAtual': paginaAtual-1},function (result) {
+                $scope.model.professores = result.lista;
+                $scope.paginacao = result.paginacao;
+                $scope.paginaAtual = result.paginacao.paginaAtual+1;
                 $rootScope.appLoaded = true;
             },function(error) {
                 $rootScope.appLoaded = true;

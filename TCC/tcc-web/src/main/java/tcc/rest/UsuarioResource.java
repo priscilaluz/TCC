@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import tcc.common.business.UsuarioService;
 import tcc.common.enums.TipoUsuario;
+import tcc.common.vo.ListaPaginacao;
 
 /**
  *
@@ -61,15 +62,15 @@ public class UsuarioResource {
     @GET
     @Path("/buscarProfessores")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Usuario> buscarProfessores(@QueryParam("nome") String nome) {
-        return usuarioService.buscarUsuarios(nome, TipoUsuario.PROFESSOR, null);
+    public ListaPaginacao buscarProfessores(@QueryParam("nome") String nome, @QueryParam("paginaAtual") Integer paginaAtual) {
+        return usuarioService.buscarUsuarios(nome, TipoUsuario.PROFESSOR, null, paginaAtual);
     }
     
     @GET
     @Path("/buscarAlunos")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Usuario> buscarAlunos(@QueryParam("nome") String nome, @QueryParam("idCurso") Long idCurso) {
-        return usuarioService.buscarUsuarios(nome, TipoUsuario.ALUNO, idCurso);
+    public ListaPaginacao buscarAlunos(@QueryParam("nome") String nome, @QueryParam("idCurso") Long idCurso, @QueryParam("paginaAtual") Integer paginaAtual) {
+        return usuarioService.buscarUsuarios(nome, TipoUsuario.ALUNO, idCurso, paginaAtual);
     }
     
     @DELETE

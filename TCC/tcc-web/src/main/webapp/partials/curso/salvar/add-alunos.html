@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center" style="padding-left: 0px; padding-right: 0px; padding-top: 10px; overflow: auto; height: 200px !important;">
-            <table class="table table-condensed" id="tabela">
+            <table class="table table-condensed" id="tabela" style="margin-bottom: 0px;">
                 <thead class="table-font-title">
                     <tr>
                         <th width="10">
@@ -34,9 +34,21 @@
                         <td><input class="pull-right" id="selecionar" type="checkbox" name="selecionar" ng-change="selecionar()" ng-model="aluno.selecionar"></td>
                         <td class="pull-left">{{aluno.nome}}</td>
                     </tr>
+                    <tr ng-show="!model.alunos.length" class="text-center"><td colspan="2">Nenhum item encontrado</td></tr>
                 </tbody>
             </table>
-            <span ng-show="model.alunos.length===0">Nenhum aluno para esse filtro.</span>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center" ng-show="model.alunos.length">
+                    <pagination class="pagination-md" style="color: #000000"
+                        ng-model="paginaAtualAluno"
+                        total-items="paginacaoAluno.numDeItens"
+                        max-size="paginacaoAluno.qntPaginaMostrarTela"
+                        items-per-page="paginacaoAluno.qntPorPagina"
+                        ng-change="buscarAlunos(paginaAtualAluno)"
+                        boundary-links="true"
+                        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                        rotate="false">
+                    </pagination>
+                </div>
         </div>
     </form>
 </div>

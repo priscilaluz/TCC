@@ -1,5 +1,8 @@
 tccApp.controller('AdicionarAlunoController', ['$scope', '$rootScope', '$modalInstance', 'obj', 'Usuario', 'Curso',
     function ($scope, $rootScope, $modalInstance, obj, Usuario, Curso) {
+        $scope.paginaAtualAluno = null;
+        $scope.paginacaoAluno = {paginaAtual: null, numDeItens: null, qntPaginaMostrarTela: null, qntPorPagina: null};
+        
         $scope.pesquisar = {
             minhasAlunos: true,
             parteNome: null
@@ -26,10 +29,12 @@ tccApp.controller('AdicionarAlunoController', ['$scope', '$rootScope', '$modalIn
             }
         };
 
-        $scope.buscarAlunos = function () {
+        $scope.buscarAlunos = function (paginaAtual) {
             $rootScope.appLoaded = false;
-            Usuario.buscarAlunos({'nome': $scope.pesquisar.parteNome, 'idCurso': idCurso}, function (result) {
-                $scope.model.alunos = result;
+            Usuario.buscarAlunos({'nome': $scope.pesquisar.parteNome, 'idCurso': idCurso, 'paginaAtual': paginaAtual-1}, function (result) {
+                $scope.model.alunos = result.lista;
+                $scope.paginacaoAluno = result.paginacao;
+                $scope.paginaAtualAluno = result.paginacao.paginaAtual+1;
                 $rootScope.appLoaded = true;
             }, function (error) {
                 $rootScope.appLoaded = true;

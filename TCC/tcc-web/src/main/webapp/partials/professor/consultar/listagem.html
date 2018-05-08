@@ -2,7 +2,7 @@
     <form class="form-horizontal" name="professorForm">
         <fieldset>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <table class="table table-condensed" id="tabela">
+                <table class="table table-condensed" id="tabela" style="margin-bottom: 0px;">
                     <thead class="table-font-title">
                         <tr>
                             <th width="10"></th>
@@ -20,8 +20,21 @@
                             <td>{{professor.login}}</td>
                             <td>{{professor.email}}</td>
                         </tr>
+                        <tr ng-show="!model.professores.length" class="text-center"><td colspan="5">Nenhum item encontrado</td></tr>
                     </tbody>
                 </table>
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center" ng-show="model.professores.length">
+                    <pagination class="pagination-md" style="color: #000000"
+                        ng-model="paginaAtual"
+                        total-items="paginacao.numDeItens"
+                        max-size="paginacao.qntPaginaMostrarTela"
+                        items-per-page="paginacao.qntPorPagina"
+                        ng-change="pesquisar(paginaAtual)"
+                        boundary-links="true"
+                        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                        rotate="false">
+                    </pagination>
+                </div>
             </div>
         </fieldset>
     </form>

@@ -17,6 +17,7 @@ import org.unitils.spring.annotation.SpringBean;
 import org.unitils.spring.annotation.SpringBeanByType;
 import tcc.common.business.UsuarioService;
 import tcc.common.vo.DadoProfessor;
+import tcc.common.vo.ListaPaginacao;
 
 @DataSet("/datasets/UsuarioServiceTest.xml")
 public class UsuarioServiceIT extends IntegrationBaseTestClass{
@@ -50,7 +51,8 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveBuscarTodosProfessores(){        
-        List<Usuario> usuarios = usuarioService.buscarUsuarios(null, TipoUsuario.PROFESSOR, null);
+        ListaPaginacao lista = usuarioService.buscarUsuarios(null, TipoUsuario.PROFESSOR, null, 1);
+        List<Usuario> usuarios = (List<Usuario>)(Object)lista.getLista();
         assertTrue(usuarios.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 3L));
         for (Usuario u : usuarios) {
@@ -60,7 +62,8 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveBuscarProfessoresPorNome(){        
-        List<Usuario> usuarios = usuarioService.buscarUsuarios("Cla", TipoUsuario.PROFESSOR, null);
+        ListaPaginacao lista = usuarioService.buscarUsuarios("Cla", TipoUsuario.PROFESSOR, null, 1);
+        List<Usuario> usuarios = (List<Usuario>)(Object)lista.getLista();
         assertTrue(usuarios.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(3L));
         for (Usuario u : usuarios) {
