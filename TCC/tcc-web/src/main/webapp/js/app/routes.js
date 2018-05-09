@@ -66,6 +66,10 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/jogo/jogos.html',
         controller: 'JogoController'
       }).
+      when('/jogos-simulado/jogovelha', {
+        templateUrl: 'partials/jogo/jogovelha/jogovelha.html',
+        controller: 'JogoVelhaController'
+      }).
       when('/jogos-simulado/quiz/:idPergunta?', {
         templateUrl: 'partials/jogo/quiz/quiz.html',
         controller: 'QuizController'

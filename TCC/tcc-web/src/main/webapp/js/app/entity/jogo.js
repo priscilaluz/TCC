@@ -5,7 +5,7 @@ tccApp.factory('Jogo', ['$resource', function ($resource) {
             buscarPerguntaDaApresentacaoDoJogoForca: {method: 'GET', params: {verbo: 'forcaApresentacao'}, isArray: true},
             buscarPerguntaDaApresentacaoDoJogoAposta: {method: 'GET', params: {verbo: 'apostaApresentacao'}, isArray: true},
             buscarPerguntasDaApresentacaoDoJogoCacaPalavra: {method: 'GET', params: {verbo: 'cacaPalavraApresentacao'}, isArray: false},
-            buscarPerguntasDaApresentacaoDoDaVelhaApresentacao: {method: 'GET', params: {verbo: 'jogoDaVelhaApresentacao'}, isArray: false},
+            buscarPerguntasDaApresentacaoDoDaVelhaApresentacao: {method: 'GET', params: {verbo: 'jogoDaVelhaApresentacao'}, isArray: true},
             buscarPerguntasDoJogoGerais: {method: 'GET', params: {verbo: 'jogoGerais'}, isArray: true},
             buscarPerguntasDoJogoCacaPalavra: {method: 'GET', params: {verbo: 'cacaPalavra'}, isArray: false}
         });

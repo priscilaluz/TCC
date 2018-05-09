@@ -1,5 +1,8 @@
 tccApp.controller('JogoController', ['$scope', '$rootScope', '$location', '$modal',
     function ($scope, $rootScope, $location, $modal) {
+        $scope.simularJogoVelha = function () {
+            $location.path("/jogos-simulado/jogovelha");
+        };
         $scope.simularJogo = function (jogo) {
             var obj = {jogo: jogo,
                 idCursoAluno: 0, 

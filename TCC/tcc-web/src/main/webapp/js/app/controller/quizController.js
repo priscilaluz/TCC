@@ -188,14 +188,14 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
     
     var iniciarJogo = function (perguntas) {
         $scope.model.perguntas = perguntas;
-            $scope.model.pergunta = perguntas[$scope.model.posicao];
-            var pontuacaoMaxima = perguntas.length*pontuacaoPorPergunta;
-            pontuacaoMinima = pontuacaoMaxima*7/10;
-            $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
-            $rootScope.appLoaded = true;
-            $scope.telaInit = false;
-            barraDeProgresso();
-            $scope.contagemInicial();
+        $scope.model.pergunta = perguntas[$scope.model.posicao];
+        var pontuacaoMaxima = perguntas.length*pontuacaoPorPergunta;
+        pontuacaoMinima = pontuacaoMaxima*7/10;
+        $scope.model.anexoString = exibirAnexo($scope.model.pergunta.anexo);
+        $rootScope.appLoaded = true;
+        $scope.telaInit = false;
+        barraDeProgresso();
+        $scope.contagemInicial();
     };
     
     var init = function () {

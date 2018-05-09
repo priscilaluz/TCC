@@ -117,10 +117,10 @@ public class JogoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Pergunta> buscarPerguntasDaApresentacaoDoJogoDaVelha() {
         List<Pergunta> perguntas = new ArrayList<>();
-        perguntas.add(obterPerguntaCacaPalavraModelo1());
-        perguntas.add(obterPerguntaCacaPalavraModelo2());
-        perguntas.add(obterPerguntaCacaPalavraModelo3());
-        perguntas.add(obterPerguntaApostaModelo1());
+        perguntas.add(obterPerguntaQuizModelo1());
+        perguntas.add(obterPerguntaQuizModelo2());
+        perguntas.add(obterPerguntaQuizModelo3());
+        perguntas.add(obterPerguntaQuizModelo4());
         return perguntas;
     }
     
