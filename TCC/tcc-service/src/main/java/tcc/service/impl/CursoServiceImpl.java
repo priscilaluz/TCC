@@ -36,7 +36,6 @@ import tcc.common.vo.ListaPaginacao;
 import tcc.common.vo.Paginacao;
 import tcc.service.persistence.Pagination;
 import tcc.service.query.BuscarAviso;
-import tcc.service.query.BuscarCategoria;
 
 /**
  *

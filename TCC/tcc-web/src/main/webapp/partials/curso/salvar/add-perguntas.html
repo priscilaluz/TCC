@@ -8,7 +8,7 @@
     <h3 class="modal-title title-fonte-modal">Adicionar Perguntas a Etapa</h3>
 </div>
 <div class="modal-body" style="height: 400px;">
-    <form role="form" name="perguntaForm" class="form-horizontal" enctype="multipart/form-data" ng-submit="buscarPerguntas()">
+    <form role="form" name="perguntaForm" class="form-horizontal" enctype="multipart/form-data" ng-submit="buscarPerguntas(1)">
         <div class="col-md-12" style="padding-left: 0px; padding-right: 0px;">
             <label for="parteNome" class="col-md-2 control-label label-font">Pergunta:</label>
             <div class="col-md-10">
@@ -49,9 +49,21 @@
                         <td>{{pergunta.descricao.substring(0, 220)+(pergunta.descricao.length>220?'...':'')}}</td>
                         <td>{{pergunta.nivel.descricao}}</td>
                     </tr>
+                    <tr ng-show="!model.perguntas.length" class="text-center"><td colspan="3">Nenhuma pergunta encontrada</td></tr>
                 </tbody>
             </table>
-            <span ng-show="model.perguntas.length===0">Nenhuma pergunta para esse filtro.</span>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center" ng-show="model.perguntas.length">
+                <pagination class="pagination-md" style="color: #000000"
+                    ng-model="paginaAtual"
+                    total-items="paginacao.numDeItens"
+                    max-size="paginacao.qntPaginaMostrarTela"
+                    items-per-page="paginacao.qntPorPagina"
+                    ng-change="buscarPerguntas(paginaAtual)"
+                    boundary-links="true"
+                    previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                    rotate="false">
+                </pagination>
+            </div>
         </div>
     </form>
 </div>

@@ -1,5 +1,8 @@
 tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', '$modal', 'Pergunta', 'Categoria', 'Enums', '$location', 'growl',
     function ($scope, $rootScope, $modal, Pergunta, Categoria, Enums, $location, growl) {
+        $scope.paginaAtual = null;
+        $scope.paginacao = {paginaAtual: null, numDeItens: null, qntPaginaMostrarTela: null, qntPorPagina: null};
+        
         $rootScope.telaHomeAluno = false;
         $scope.categorias = [];
         $scope.perguntas = [];
@@ -7,15 +10,17 @@ tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', '$modal
         $scope.niveis = [];
         $scope.pesquisar = {'minhasPerguntas': false};
 
-        $scope.pesquisarPergunta = function () {
+        $scope.pesquisarPergunta = function (paginaAtual) {
             $rootScope.appLoaded = false;
             var idCategoria = $scope.pesquisar.categoria ? $scope.pesquisar.categoria.id : null;
             var idNivel = $scope.pesquisar.nivel ? $scope.pesquisar.nivel.id : null;
             var idTipo = $scope.pesquisar.tipo ? $scope.pesquisar.tipo.id : null;
             var idUsuario = $scope.pesquisar.minhasPerguntas ? $scope.usuarioLogado.id : null;
             Pergunta.buscarPerguntas({'idUsuario': idUsuario,'parteNome': $scope.pesquisar.descricao,
-                'categoria': idCategoria,'nivel': idNivel,'tipo': idTipo}, function (result) {
-                $scope.perguntas = result;
+                'categoria': idCategoria,'nivel': idNivel,'tipo': idTipo, 'paginaAtual': paginaAtual-1}, function (result) {
+                $scope.perguntas = result.lista;
+                $scope.paginacao = result.paginacao;
+                $scope.paginaAtual = result.paginacao.paginaAtual+1;
                 $rootScope.appLoaded = true;
             }, function (error) {
                 $rootScope.appLoaded = true;

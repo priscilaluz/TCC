@@ -23,6 +23,7 @@ import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringBean;
 import org.unitils.spring.annotation.SpringBeanByType;
 import tcc.common.business.PerguntaService;
+import tcc.common.vo.ListaPaginacao;
 
 @DataSet("/datasets/PerguntaServiceTest.xml")
 public class PerguntaServiceIT extends IntegrationBaseTestClass{
@@ -81,7 +82,8 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorUsuario(){
-        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(1L, null, null, null, null, null);
+        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(1L, null, null, null, null, null, 1);
+        List<Pergunta> perguntas = (List<Pergunta>)(Object)listaPaginacao.getLista();
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {
@@ -91,7 +93,8 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorParteDaDescricao(){
-        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(null, "Quanto é", null, null, null, null);
+        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(null, "Quanto é", null, null, null, null, 1);
+        List<Pergunta> perguntas = (List<Pergunta>)(Object)listaPaginacao.getLista();
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {
@@ -101,7 +104,8 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorCategoria(){
-        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(null, null, 1L, null, null, null);
+        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(null, null, 1L, null, null, null, 1);
+        List<Pergunta> perguntas = (List<Pergunta>)(Object)listaPaginacao.getLista();
         assertTrue(perguntas.size()==3);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L, 4L));
         for (Pergunta p : perguntas) {
@@ -111,7 +115,8 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorTipo(){
-        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null, null);
+        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null, null, 1);
+        List<Pergunta> perguntas = (List<Pergunta>)(Object)listaPaginacao.getLista();
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {
@@ -121,7 +126,8 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorNivel(){
-        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null, null);
+        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null, null, 1);
+        List<Pergunta> perguntas = (List<Pergunta>)(Object)listaPaginacao.getLista();
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {
@@ -131,7 +137,8 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorUsuarioDescricaoCategoria(){
-        List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(1L, "Quanto é", 1L, TipoPergunta.MULTIPLAS_ESCOLHAS, NivelPergunta.FACIL, null);
+        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(1L, "Quanto é", 1L, TipoPergunta.MULTIPLAS_ESCOLHAS, NivelPergunta.FACIL, null, 1);
+        List<Pergunta> perguntas = (List<Pergunta>)(Object)listaPaginacao.getLista();
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
         for (Pergunta p : perguntas) {

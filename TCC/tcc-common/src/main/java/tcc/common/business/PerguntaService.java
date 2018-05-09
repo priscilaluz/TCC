@@ -1,9 +1,9 @@
 package tcc.common.business;
 
-import java.util.List;
 import tcc.common.entity.Pergunta;
 import tcc.common.enums.NivelPergunta;
 import tcc.common.enums.TipoPergunta;
+import tcc.common.vo.ListaPaginacao;
 
 /**
  *
@@ -17,8 +17,11 @@ public interface PerguntaService {
     
     Pergunta buscarPerguntaPorId(Long idPergunta);
     
-    List<Pergunta> buscarPerguntaPorFiltro(Long idUsuario, String parteNome, Long idCategoria, TipoPergunta tipo, NivelPergunta nivel,  Long idCurso);
+    ListaPaginacao buscarPerguntaPorFiltro(Long idUsuario, String parteNome, Long idCategoria, 
+            TipoPergunta tipo, NivelPergunta nivel, Long idCurso, Integer paginaAtual);
     
+    Long buscarCountPerguntaPorProfessor(Long idUsuario);
+            
     Long buscarCountPerguntaPorFiltro(Long idUsuario);
     
 }

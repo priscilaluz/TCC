@@ -21,6 +21,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import tcc.common.business.PerguntaService;
+import tcc.common.vo.ListaPaginacao;
 
 /**
  *
@@ -51,13 +52,13 @@ public class PerguntaResource {
     @GET
     @Path("/buscarPergunta")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Pergunta> buscarPerguntaPorFiltro(@QueryParam("idUsuario") Long idUsuario, 
+    public ListaPaginacao buscarPerguntaPorFiltro(@QueryParam("idUsuario") Long idUsuario, 
             @QueryParam("parteNome") String parteNome, @QueryParam("categoria") Long idCategoria, 
             @QueryParam("nivel") String idNivel, @QueryParam("tipo") String idTipo, 
-            @QueryParam("idCurso") Long idCurso) {
+            @QueryParam("idCurso") Long idCurso, @QueryParam("paginaAtual") Integer paginaAtual) {
         NivelPergunta nivel = idNivel!=null?NivelPergunta.from(idNivel):null;
         TipoPergunta tipo = idTipo!=null?TipoPergunta.from(idTipo):null;
-        return perguntaService.buscarPerguntaPorFiltro(idUsuario, parteNome, idCategoria, tipo, nivel, idCurso);
+        return perguntaService.buscarPerguntaPorFiltro(idUsuario, parteNome, idCategoria, tipo, nivel, idCurso, paginaAtual);
     }
     
     @GET

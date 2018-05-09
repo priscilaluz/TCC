@@ -1,5 +1,8 @@
 tccApp.controller('AdicionarPerguntaController', ['$scope', '$rootScope', '$modalInstance', 'obj', 'Pergunta', 'Enums',
     function ($scope, $rootScope, $modalInstance, obj, Pergunta, Enums) {
+        $scope.paginaAtual = null;
+        $scope.paginacao = {paginaAtual: null, numDeItens: null, qntPaginaMostrarTela: null, qntPorPagina: null};
+        
         $scope.pesquisar = {
             minhasPerguntas: true,
             nivel: null,
@@ -32,12 +35,15 @@ tccApp.controller('AdicionarPerguntaController', ['$scope', '$rootScope', '$moda
             }
         };
 
-        $scope.buscarPerguntas = function () {
+        $scope.buscarPerguntas = function (paginaAtual) {
             var idNivel = $scope.pesquisar.nivel ? $scope.pesquisar.nivel.id : null;
             var usuario = ($scope.pesquisar.minhasPerguntas)?idUsuario:null;
             Pergunta.buscarPerguntas({'idUsuario': usuario, 'parteNome': $scope.pesquisar.parteNome,
-                'categoria': idCategoria, 'nivel': idNivel, 'tipo': tipoPergunta.id, 'idCurso': idCurso}, function (result) {
-                $scope.model.perguntas = result;
+                'categoria': idCategoria, 'nivel': idNivel, 'tipo': tipoPergunta.id, 'idCurso': idCurso, 
+                'paginaAtual': paginaAtual-1}, function (result) {
+                $scope.model.perguntas = result.lista;
+                $scope.paginacao = result.paginacao;
+                $scope.paginaAtual = result.paginacao.paginaAtual+1;
                 $rootScope.appLoaded = true;
             }, function (error) {
                 $rootScope.appLoaded = true;

@@ -29,8 +29,21 @@
                             <td>{{pergunta.nivel.descricao}}</td>
                             <td>{{pergunta.categoria.nome}}</td>
                         </tr>
+                        <tr ng-show="!perguntas.length" class="text-center"><td colspan="6">Nenhuma pergunta encontrada</td></tr>
                     </tbody>
                 </table>
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center" ng-show="perguntas.length">
+                    <pagination class="pagination-md" style="color: #000000"
+                        ng-model="paginaAtual"
+                        total-items="paginacao.numDeItens"
+                        max-size="paginacao.qntPaginaMostrarTela"
+                        items-per-page="paginacao.qntPorPagina"
+                        ng-change="pesquisarPergunta(paginaAtual)"
+                        boundary-links="true"
+                        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                        rotate="false">
+                    </pagination>
+                </div>
             </div>
         </fieldset>
     </form>
