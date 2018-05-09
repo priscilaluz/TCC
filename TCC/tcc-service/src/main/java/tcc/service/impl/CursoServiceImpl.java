@@ -5,6 +5,7 @@
  */
 package tcc.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import tcc.common.entity.Anexo;
@@ -31,7 +32,11 @@ import tcc.common.business.CursoAlunoService;
 import tcc.common.business.CursoService;
 import tcc.common.entity.Aviso;
 import tcc.common.entity.Usuario;
+import tcc.common.vo.ListaPaginacao;
+import tcc.common.vo.Paginacao;
+import tcc.service.persistence.Pagination;
 import tcc.service.query.BuscarAviso;
+import tcc.service.query.BuscarCategoria;
 
 /**
  *
@@ -48,10 +53,10 @@ public class CursoServiceImpl implements CursoService {
 
     @Autowired
     private AnexoService anexoService;
-    
+
     @Autowired
     private CursoAlunoService cursoAlunoService;
-    
+
     @Override
     @Transactional(readOnly = false)
     public Curso salvarCurso(Curso curso) {
@@ -67,7 +72,7 @@ public class CursoServiceImpl implements CursoService {
         dao.saveOrUpdate(curso);
         return curso;
     }
-    
+
     @Override
     @Transactional(readOnly = false)
     public Curso copiarCurso(String nomeCurso, Long idCurso, Long idUsuario) {
@@ -107,7 +112,7 @@ public class CursoServiceImpl implements CursoService {
                 salvarEtapa(etapaNova);
             }
         }
-    
+
         return cursoCopia;
     }
 
@@ -132,7 +137,7 @@ public class CursoServiceImpl implements CursoService {
     @Override
     @Transactional(readOnly = true)
     public Curso buscarCursoPorId(Long idCurso) {
-        Curso curso = (Curso) dao.uniqueResult(new BuscarCurso.Entities()
+        Curso curso = (Curso) dao.uniqueResult(new BuscarCurso.Entities(false)
                 .fetchEtapas(ConstantesI18N.FETCH)
                 .fetchEtapasPerguntas(ConstantesI18N.FETCH)
                 .fetchPergunta(ConstantesI18N.FETCH)
@@ -149,7 +154,7 @@ public class CursoServiceImpl implements CursoService {
     @Override
     @Transactional(readOnly = true)
     public Curso buscarCursoPorIdConcluido(Long idCurso) {
-        Curso curso = (Curso) dao.uniqueResult(new BuscarCurso.Entities()
+        Curso curso = (Curso) dao.uniqueResult(new BuscarCurso.Entities(false)
                 .fetchEtapas(ConstantesI18N.FETCH)
                 .fetchEtapasPerguntas(ConstantesI18N.FETCH)
                 .fetchCategoria(ConstantesI18N.FETCH)
@@ -167,31 +172,49 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, Long idCategoria, SituacaoCurso situacaoCurso, 
-            DisponibilidadeCurso disponibilidade, Long idAluno) {
-        List<Curso> cursos =  dao.list(new BuscarCurso.Entities()
-                .fetchCategoria(ConstantesI18N.FETCH)
+    public List<Curso> buscarCursoPorIdProfessor(Long idProfessor) {
+        return dao.list(new BuscarCurso.Entities(false).whereUsuario(idProfessor));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public ListaPaginacao buscarCursoPorFiltro(Long idUsuario, String parteNome, Long idCategoria, SituacaoCurso situacaoCurso,
+            DisponibilidadeCurso disponibilidade, Long idAluno, Integer paginaAtual) {
+        BuscarCurso queryCont = queryBuscarCursoPorFiltro(idUsuario, parteNome, idCategoria, situacaoCurso, disponibilidade, true, "");
+        Long numDeItens = (Long) dao.uniqueResult(queryCont);
+        Pagination pagination = new Pagination(Paginacao.DEFAULT_QNT_POR_PAG, paginaAtual);
+        BuscarCurso queryList = queryBuscarCursoPorFiltro(idUsuario, parteNome, idCategoria, situacaoCurso, disponibilidade, false, ConstantesI18N.FETCH);
+        queryList.setPagination(pagination);
+        List<Curso> cursos = dao.list(queryList);
+        List<Object> lista = new ArrayList<>();
+        for (Curso curso : cursos) {
+            if (idAluno != null) {
+                curso.setAlunoPertence(cursoAlunoService.alunoPertenceCurso(idAluno, curso.getId()));
+            }
+            lista.add((Object) curso);
+        }
+        return new ListaPaginacao(lista, new Paginacao(numDeItens, paginaAtual));
+    }
+
+    private BuscarCurso queryBuscarCursoPorFiltro(Long idUsuario, String parteNome, Long idCategoria, SituacaoCurso situacaoCurso,
+            DisponibilidadeCurso disponibilidade, boolean cont, String fetch) {
+        return new BuscarCurso.Entities(cont)
+                .fetchCategoria(fetch)
                 .whereUsuario(idUsuario)
                 .whereNomeLike(parteNome)
                 .whereCategoria(idCategoria)
                 .whereDisponibilidadeCurso(disponibilidade)
-                .whereSituacaoCurso(situacaoCurso));
-        if (idAluno != null) {
-            for (Curso curso : cursos) {
-                curso.setAlunoPertence(cursoAlunoService.alunoPertenceCurso(idAluno, curso.getId()));
-            }
-        }
-        return cursos;
+                .whereSituacaoCurso(situacaoCurso);
     }
-    
+
     @Override
     @Transactional(readOnly = true)
     public Long buscarCountCursoPorFiltro(Long idUsuario, SituacaoCurso situacaoCurso) {
-        return (Long) dao.uniqueResult(new BuscarCurso.Count()
+        return (Long) dao.uniqueResult(new BuscarCurso.Entities(true)
                 .whereUsuario(idUsuario)
                 .whereSituacaoCurso(situacaoCurso));
     }
-    
+
     @Override
     @Transactional(readOnly = false)
     public boolean addAlunosAoCurso(Long idCurso, List<Long> idsAluno) {
@@ -201,7 +224,7 @@ public class CursoServiceImpl implements CursoService {
         }
         return true;
     }
-    
+
     @Override
     @Transactional(readOnly = false)
     public Etapa salvarEtapa(Etapa etapa) {
@@ -231,7 +254,7 @@ public class CursoServiceImpl implements CursoService {
         dao.executeDML(new ExcluirEtapaPerguntaPorEtapa(idEtapa));
         Etapa etapaRemover = dao.get(Etapa.class, idEtapa);
         dao.remove(etapaRemover);
-        
+
         int nivel = 1;
         List<Etapa> etapas = buscarEtapa(idCurso, null);
         for (Etapa etapa : etapas) {
@@ -240,7 +263,7 @@ public class CursoServiceImpl implements CursoService {
             nivel++;
         }
     }
-    
+
     @Override
     @Transactional(readOnly = true)
     public List<Etapa> buscarEtapa(Long idCurso, Integer nivel) {
@@ -253,7 +276,7 @@ public class CursoServiceImpl implements CursoService {
                 .orderByNivel());
         return etapas;
     }
-    
+
     @Override
     @Transactional(readOnly = true)
     public Etapa buscarEtapaPorId(Long idEtapa, boolean resposta) {
@@ -265,27 +288,27 @@ public class CursoServiceImpl implements CursoService {
                 .fetchAnexo(ConstantesI18N.FETCH)
                 .whereIdEtapa(idEtapa));
     }
-    
+
     @Override
     @Transactional(readOnly = false)
     public Aviso salvarAviso(Aviso aviso) {
         aviso.setDataModificao(new Date());
         return dao.saveOrUpdate(aviso);
     }
-    
+
     @Override
     @Transactional(readOnly = false)
     public void excluirAviso(Long idAviso) {
         Aviso avisoRemover = dao.get(Aviso.class, idAviso);
         dao.remove(avisoRemover);
     }
-    
+
     @Override
     @Transactional(readOnly = true)
     public Aviso buscarAvisosPorId(Long id) {
         return (Aviso) dao.uniqueResult(new BuscarAviso.Entities().whereId(id));
     }
-    
+
     @Override
     @Transactional(readOnly = true)
     public List<Aviso> buscarAvisosPorCurso(Long idCurso) {

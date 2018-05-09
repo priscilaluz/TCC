@@ -101,8 +101,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Transactional(readOnly = false)
     public void excluirProfessores(Long idProfessores) {
         List<Pergunta> perguntas = perguntaService.buscarPerguntaPorFiltro(idProfessores, null, null, null, null, null);
-        List<Curso> cursos = cursoService.buscarCursoPorFiltro(idProfessores, null, null, null, null, null);
-        validador.validarExcluirUsuario(perguntas, cursos);
+        Long qndCursos = cursoService.buscarCountCursoPorFiltro(idProfessores, null);
+        validador.validarExcluirUsuario(perguntas, qndCursos);
         Usuario professores = buscarProfessorPorId(idProfessores);
         dao.remove(professores);
     }

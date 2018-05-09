@@ -24,10 +24,10 @@ public class UsuarioValidator {
         pm.verifyAll();
     }
 
-    public void validarExcluirUsuario(List<Pergunta> perguntas, List<Curso> cursos){
+    public void validarExcluirUsuario(List<Pergunta> perguntas, Long qndCursos){
         PendencyManager pm = new PendencyManager();
         pm.assertThat(perguntas.isEmpty()).orRegister(ConstantesI18N.PROFESSOR_EXCLUIR_PERGUNTA);
-        pm.assertThat(cursos.isEmpty()).orRegister(ConstantesI18N.PROFESSOR_EXCLUIR_CURSO);
+        pm.assertThat(qndCursos>0).orRegister(ConstantesI18N.PROFESSOR_EXCLUIR_CURSO);
         pm.verifyAll();
     }
     

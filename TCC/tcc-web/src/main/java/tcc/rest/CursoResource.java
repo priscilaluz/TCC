@@ -26,6 +26,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import tcc.common.business.CursoService;
 import tcc.common.entity.Aviso;
+import tcc.common.vo.CursoVO;
+import tcc.common.vo.ListaPaginacao;
 
 /**
  *
@@ -88,21 +90,33 @@ public class CursoResource {
     }
     
     @GET
+    @Path("/buscarCursoNome")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CursoVO> buscarCursoPorFiltro(@QueryParam("idUsuario") Long idUsuario) {
+        List<CursoVO> cursosVO = new ArrayList<>();
+        List<Curso> cursos = cursoService.buscarCursoPorIdProfessor(idUsuario);
+        for (Curso curso : cursos) {
+            cursosVO.add(new CursoVO(curso.getId(), curso.getNome(), curso.getSituacao()));
+        }
+        return cursosVO;
+    }
+    
+    @GET
     @Path("/buscarCurso")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Curso> buscarCursoPorFiltro(@QueryParam("idUsuario") Long idUsuario, 
+    public ListaPaginacao buscarCursoPorFiltro(@QueryParam("idUsuario") Long idUsuario, 
             @QueryParam("parteNome") String parteNome, @QueryParam("categoria") Long idCategoria,
-            @QueryParam("situacao") String idSituacao) {
+            @QueryParam("situacao") String idSituacao, @QueryParam("paginaAtual") Integer paginaAtual) {
         SituacaoCurso situacaoCurso = idSituacao!=null?SituacaoCurso.from(idSituacao):null;
-        return cursoService.buscarCursoPorFiltro(idUsuario, parteNome, idCategoria, situacaoCurso, null, null);
+        return cursoService.buscarCursoPorFiltro(idUsuario, parteNome, idCategoria, situacaoCurso, null, null, paginaAtual);
     }
     
     @GET
     @Path("/buscarCursosAluno")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Curso> buscarCursoPorFiltro(@QueryParam("idAluno") Long idAluno, @QueryParam("parteNome") String parteNome, 
-            @QueryParam("categoria") Long idCategoria) {
-        return cursoService.buscarCursoPorFiltro(null, parteNome, idCategoria, SituacaoCurso.CONCLUIDA, DisponibilidadeCurso.ABERTO, idAluno);
+    public ListaPaginacao buscarCursoPorFiltro(@QueryParam("idAluno") Long idAluno, @QueryParam("parteNome") String parteNome, 
+            @QueryParam("categoria") Long idCategoria, @QueryParam("paginaAtual") Integer paginaAtual) {
+        return cursoService.buscarCursoPorFiltro(null, parteNome, idCategoria, SituacaoCurso.CONCLUIDA, DisponibilidadeCurso.ABERTO, idAluno, paginaAtual);
     }
     
     @GET

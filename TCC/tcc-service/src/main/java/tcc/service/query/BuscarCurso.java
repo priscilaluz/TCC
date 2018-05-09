@@ -14,14 +14,12 @@ import java.io.Serializable;
 public abstract class BuscarCurso<T extends Serializable> extends BusinessFluentQuery<T, BuscarCurso> {
 
     public static class Entities extends BuscarCurso<Curso> {
-        public Entities() {
-            appendText("select c from Curso c ");
-        }
-    }
-    
-    public static class Count extends BuscarCurso<Long> {
-        public Count() {
-            appendText("select count(c) from Curso c ");
+        public Entities(boolean cont) {
+            if (cont) {
+                appendText("select count(c) from Curso c ");
+            } else {
+                appendText("select c from Curso c ");
+            }
         }
     }
     

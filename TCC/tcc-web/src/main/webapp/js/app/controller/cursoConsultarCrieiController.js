@@ -3,15 +3,18 @@ tccApp.controller('CursoConsultarCrieiController', ['$scope', '$rootScope', '$mo
         $rootScope.telaHomeAluno = false;
         $scope.cursos = [];
         $scope.pesquisar = {};
+        $scope.paginaAtual = null;
+        $scope.paginacao = {paginaAtual: null, numDeItens: null, qntPaginaMostrarTela: null, qntPorPagina: null};
 
-        $scope.pesquisarCurso = function () {
+        $scope.pesquisarCurso = function (paginaAtual) {
             $rootScope.appLoaded = false;
             var idCategoria = $scope.pesquisar.categoria ? $scope.pesquisar.categoria.id : null;
             var idSituacao = $scope.pesquisar.situacao ? $scope.pesquisar.situacao.id : null;
-            Curso.buscarCursos({'idUsuario': $scope.usuarioLogado.id,
-                'parteNome': $scope.pesquisar.descricao,
-                'categoria': idCategoria, 'situacao':idSituacao}, function (result) {
-                $scope.cursos = result;
+            Curso.buscarCursos({'idUsuario': $scope.usuarioLogado.id, 'parteNome': $scope.pesquisar.descricao,
+                'categoria': idCategoria, 'situacao':idSituacao, 'paginaAtual': paginaAtual-1}, function (result) {
+                $scope.cursos = result.lista;
+                $scope.paginacao = result.paginacao;
+                $scope.paginaAtual = result.paginacao.paginaAtual+1;
                 $rootScope.appLoaded = true;
             }, function (error) {
                 $rootScope.appLoaded = true;

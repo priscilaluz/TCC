@@ -31,6 +31,7 @@ import tcc.common.business.CursoService;
 import tcc.common.entity.Aviso;
 import tcc.common.entity.CursoAluno;
 import tcc.common.enums.DisponibilidadeCurso;
+import tcc.common.vo.ListaPaginacao;
 
 @DataSet("/datasets/CursoServiceTest.xml")
 public class CursoServiceIT extends IntegrationBaseTestClass{
@@ -113,7 +114,8 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorUsuario(){
-        List<Curso> cursos = cursoService.buscarCursoPorFiltro(1L, null, null, null, null, null);
+        ListaPaginacao listaPaginacao = cursoService.buscarCursoPorFiltro(1L, null, null, null, null, null, 1);
+        List<Curso> cursos = (List<Curso>)(Object)listaPaginacao.getLista();
         assertTrue(cursos.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
         for (Curso c : cursos) {
@@ -123,7 +125,8 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorParteDaDescricao(){
-        List<Curso> cursos = cursoService.buscarCursoPorFiltro(null, "Matemática", null, null, null, null);
+        ListaPaginacao listaPaginacao = cursoService.buscarCursoPorFiltro(null, "Matemática", null, null, null, null, 1);
+        List<Curso> cursos = (List<Curso>)(Object)listaPaginacao.getLista();
         assertTrue(cursos.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(2L));
         for (Curso c : cursos) {
@@ -133,7 +136,8 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorCategoria(){
-        List<Curso> cursos = cursoService.buscarCursoPorFiltro(null, null, 1L, null, null, null);
+        ListaPaginacao listaPaginacao = cursoService.buscarCursoPorFiltro(null, null, 1L, null, null, null, 1);
+        List<Curso> cursos = (List<Curso>)(Object)listaPaginacao.getLista();
         assertTrue(cursos.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(2L));
         for (Curso c : cursos) {
@@ -143,7 +147,8 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorSituacao(){
-        List<Curso> cursos = cursoService.buscarCursoPorFiltro(null, null, null, SituacaoCurso.CONCLUIDA, null, 1L);
+        ListaPaginacao listaPaginacao = cursoService.buscarCursoPorFiltro(null, null, null, SituacaoCurso.CONCLUIDA, null, 1L, 1);
+        List<Curso> cursos = (List<Curso>)(Object)listaPaginacao.getLista();
         assertTrue(cursos.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(2L, 3L));
         for (Curso c : cursos) {

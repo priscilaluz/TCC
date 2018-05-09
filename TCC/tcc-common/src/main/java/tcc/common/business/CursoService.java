@@ -6,6 +6,7 @@ import tcc.common.entity.Curso;
 import tcc.common.entity.Etapa;
 import tcc.common.enums.DisponibilidadeCurso;
 import tcc.common.enums.SituacaoCurso;
+import tcc.common.vo.ListaPaginacao;
 
 /**
  *
@@ -25,7 +26,10 @@ public interface CursoService {
     
     Curso buscarCursoPorIdConcluido(Long idCurso);
     
-    List<Curso> buscarCursoPorFiltro(Long idUsuario, String parteNome, Long idCategoria, SituacaoCurso situacaoCurso, DisponibilidadeCurso disponibilidade, Long idAluno);
+    List<Curso> buscarCursoPorIdProfessor(Long idProfessor);
+    
+    ListaPaginacao buscarCursoPorFiltro(Long idUsuario, String parteNome, Long idCategoria, SituacaoCurso situacaoCurso, 
+            DisponibilidadeCurso disponibilidade, Long idAluno, Integer paginaAtual);
     
     Long buscarCountCursoPorFiltro(Long idUsuario, SituacaoCurso situacaoCurso);
     

@@ -30,8 +30,21 @@
                             <td>{{curso.disponibilidade.descricao}}</td>
                             <td>{{curso.categoria.nome}}</td>
                         </tr>
+                        <tr ng-show="!cursos.length" class="text-center"><td colspan="7">Nenhum curso encontrado</td></tr>
                     </tbody>
                 </table>
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center" ng-show="cursos.length">
+                    <pagination class="pagination-md" style="color: #000000"
+                        ng-model="paginaAtual"
+                        total-items="paginacao.numDeItens"
+                        max-size="paginacao.qntPaginaMostrarTela"
+                        items-per-page="paginacao.qntPorPagina"
+                        ng-change="pesquisarCurso(paginaAtual)"
+                        boundary-links="true"
+                        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                        rotate="false">
+                    </pagination>
+                </div>
             </div>
         </fieldset>
     </form>

@@ -20,7 +20,7 @@ tccApp.controller('HomeProfessorController', ['$scope', '$rootScope', '$location
         
         $scope.init = function (){
             $rootScope.appLoaded = false;
-            Curso.buscarCursos({'idUsuario': $rootScope.usuarioLogado.id}, function (result) {
+            Curso.buscarCursosNome({'idUsuario': $rootScope.usuarioLogado.id}, function (result) {
                 $scope.cursos = result;
                 $rootScope.appLoaded = true;
                 Usuario.dadosProfessor({'idProfessores': $rootScope.usuarioLogado.id}, function (professor) {
