@@ -6,7 +6,7 @@ tccApp.factory('Usuario', ['$resource', function ($resource) {
             buscarUsuario: {method: 'GET', params: {verbo: 'buscarUsuario'}, isArray: false},
             dadosProfessor: {method: 'GET', params: {verbo: 'dadosProfessor'}, isArray: false},
             buscarProfessores: {method: 'GET', params: {verbo: 'buscarProfessores'}, isArray: false},
-            buscarAlunos: {method: 'GET', params: {verbo: 'buscarAlunos'}, isArray: true},
+            buscarAlunos: {method: 'GET', params: {verbo: 'buscarAlunos'}, isArray: false},
             buscarProfessorPorId: {method: 'GET', params: {verbo: 'buscarProfessorPorId'}, isArray: false},
             deletarProfessor: {method: 'DELETE', params: {verbo: 'deletarProfessor'}, isArray: false}
         });

@@ -69,8 +69,8 @@ public class UsuarioResource {
     @GET
     @Path("/buscarAlunos")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Usuario> buscarAlunos(@QueryParam("nome") String nome, @QueryParam("idCurso") Long idCurso) {
-        return usuarioService.buscarAlunos(nome, TipoUsuario.ALUNO, idCurso);
+    public ListaPaginacao buscarAlunos(@QueryParam("nome") String nome, @QueryParam("idCurso") Long idCurso, @QueryParam("paginaAtual") Integer paginaAtual) {
+        return usuarioService.buscarUsuarios(nome, TipoUsuario.ALUNO, idCurso, paginaAtual);
     }
     
     @DELETE

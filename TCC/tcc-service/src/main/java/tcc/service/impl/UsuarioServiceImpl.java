@@ -82,17 +82,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     
     @Override
     @Transactional(readOnly = true)
-    public List<Usuario> buscarAlunos(String nome, TipoUsuario tipo, Long idCurso) {
-        BuscarUsuario query = new BuscarUsuario.Entities().whereNomeLike(nome).whereTipo(tipo).whereCursoNaoTem(idCurso);
-        List<Usuario> usuarios = dao.list(query);
-        for (Usuario usuario : usuarios) {
-            usuario.setSenha(null);
-        }
-        return usuarios;
-    }
-    
-    @Override
-    @Transactional(readOnly = true)
     public Usuario buscarProfessorPorId(Long id) {
         return (Usuario) dao.uniqueResult(new BuscarUsuario.Entities().whereId(id).whereTipo(TipoUsuario.PROFESSOR));
     }
