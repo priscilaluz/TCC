@@ -607,10 +607,10 @@ li{
     font-family:Optima;
     
     background: rgb(37, 198, 205); /* For browsers that do not support gradients */    
-    background: -webkit-linear-gradient(left top, #ffc986, #01b544); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #ffc986, #01b544); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #ffc986, #01b544); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #ffc986, #01b544); /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(left top, #ff9900, #292928); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #ff9900, #292928); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #ff9900, #292928); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #ff9900, #292928); /* Standard syntax (must be last) */
     border: #dff0d8 solid 1px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -620,10 +620,10 @@ li{
 .menu-adm:hover {
     color: #000000;
     background: rgb(37, 198, 205); /* For browsers that do not support gradients */    
-    background: -webkit-linear-gradient(left top, #01b544, #ffc986); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #01b544, #ffc986); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #01b544, #ffc986); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #01b544, #ffc986); /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(left top, #ffb100, #292928); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #ffb100, #292928); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #ffb100, #292928); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #ffb100, #292928); /* Standard syntax (must be last) */
     border: #dff0d8 solid 1px;
 }
 
