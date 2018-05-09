@@ -10,9 +10,12 @@
 <div class="modal-body">
     <form role="form" name="perguntaForm" class="form-horizontal" enctype="multipart/form-data">
         <div class="container-explicacao text-center">
-            <p class="btn-tabuleiro-pag"><b>Pagina</b> {{model.pagina}} <b>de</b> {{model.ultimaPagina}}</p>
-            <img ng-src="{{model.url}}"/>
-            <button type="button" class="btn btn-modelo-tabuleiros" ng-click="anterior()" ng-disabled="model.pagina===1">
+            <p class="btn-tabuleiro-pag"><b>Pagina</b> {{model.pagina+1}} <b>de</b> {{model.ultimaPagina+1}}</p>
+            <div class="col-md-12">
+                <img style="width: 75%" ng-show="model.pagina>0" ng-src="{{model.pagina?model.url:''}}"/>
+            </div>
+            <div class="col-md-12" ng-show="model.pagina===0" data-ng-include="model.htmlIntroducao"></div>
+            <button type="button" class="btn btn-modelo-tabuleiros" ng-click="anterior()" ng-disabled="model.pagina===0">
                 <i class="glyphicon glyphicon-arrow-left pull-right"></i></button>
             <button type="button" class="btn btn-modelo-tabuleiros" ng-click="proxima()" ng-disabled="model.pagina===model.ultimaPagina">
                 <i class="glyphicon glyphicon-arrow-right pull-right"></i></button>

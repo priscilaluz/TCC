@@ -2,14 +2,15 @@ tccApp.controller('ExplicacaoJogoController', ['$scope', '$modalInstance', 'obj'
     function ($scope, $modalInstance, obj) {
         $scope.model = {
             url: "",
+            htmlIntroducao: "partials/jogo/explicacao-introducao-:jogo.html",
             explicacao: null,
-            pagina: 1,
-            ultimaPagina: 1,
+            pagina: 0,
+            ultimaPagina: 0,
             jogo: obj.jogo.descricao
         };
         
         var urlPadrao = "img/jogos/explicacao/:jogo/:pagina.png";
-        var pastaJogo = "";
+        var jogoNome = "";
         var jogo = obj.jogo;
         var idCursoAluno = obj.idCursoAluno;
         var idEtapa = obj.idEtapa;
@@ -27,7 +28,7 @@ tccApp.controller('ExplicacaoJogoController', ['$scope', '$modalInstance', 'obj'
         
         $scope.anterior = function () {
             var pagina = $scope.model.pagina - 1;
-            if (pagina > 0){
+            if (pagina >= 0){
                 $scope.model.url = urlPadrao.replace(":pagina", pagina);
                 $scope.model.pagina--;
             }
@@ -43,23 +44,25 @@ tccApp.controller('ExplicacaoJogoController', ['$scope', '$modalInstance', 'obj'
         
         var init = function () {
             if (obj.jogo.id==="A") {
-                pastaJogo = "aposta";
+                jogoNome = "aposta";
                 $scope.model.ultimaPagina = 8;
             }
             if (obj.jogo.id==="Q") {
-                pastaJogo = "quiz";
+                jogoNome = "quiz";
                 $scope.model.ultimaPagina = 6;
             }
             if (obj.jogo.id==="F") {
-                pastaJogo = "forca";
+                jogoNome = "forca";
                 $scope.model.ultimaPagina = 7;
             }
             if (obj.jogo.id==="C") {
-                pastaJogo = "caca-palavra";
+                jogoNome = "caca-palavra";
                 $scope.model.ultimaPagina = 6;
             }
-            urlPadrao = urlPadrao.replace(":jogo", pastaJogo);
+            urlPadrao = urlPadrao.replace(":jogo", jogoNome);
             $scope.model.url = urlPadrao.replace(":pagina", $scope.model.pagina);
+            
+            $scope.model.htmlIntroducao = $scope.model.htmlIntroducao.replace(":jogo", jogoNome);
         };
         init();
     }]);
