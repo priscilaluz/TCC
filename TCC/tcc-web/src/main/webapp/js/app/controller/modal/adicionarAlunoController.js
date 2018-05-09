@@ -1,7 +1,7 @@
 tccApp.controller('AdicionarAlunoController', ['$scope', '$rootScope', '$modalInstance', 'obj', 'Usuario', 'Curso',
     function ($scope, $rootScope, $modalInstance, obj, Usuario, Curso) {
-        $scope.paginaAtualAluno = null;
-        $scope.paginacaoAluno = {paginaAtual: null, numDeItens: null, qntPaginaMostrarTela: null, qntPorPagina: null};
+        $scope.paginaAtual = null;
+        $scope.paginacao = {paginaAtual: null, numDeItens: null, qntPaginaMostrarTela: null, qntPorPagina: null};
         
         $scope.pesquisar = {
             minhasAlunos: true,

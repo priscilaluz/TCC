@@ -4,14 +4,14 @@
         <fieldset>
             <div class="form-group">
                 <label for="nome" class="col-lg-1 control-label label-font">Professor:</label>
-                <div class="col-lg-11">
+                <div class="col-lg-7">
                     <input type="text" maxlength="45" name="nome" id="nome" ng-model="model.nomeProfessor" class="form-control" placeholder="Professor">
                 </div>
-            </div>
-            <div class="col-lg-12" style="margin-top: 15px;">
+                <div class="col-lg-4">
                 <button type="submit" class="btn btn-modelo pull-right"> <i class="glyphicon glyphicon-search"></i>&nbsp;Pesquisar</button>
                 <button type="button" class="btn btn-modelo pull-right" style="margin-right: 5px;" ng-click="telaNovaEditar()">
                     <i class="glyphicon glyphicon-plus"></i>&nbsp;Novo Professor</button>
+            </div>
             </div>
         </fieldset>
     </form>
