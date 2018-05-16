@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/tcc">
+<Context antiJARLocking="true" path="/gaminfor">
   <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" name="tcc" password="root" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/tcc" username="root"/>
 </Context>

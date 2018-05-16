@@ -7,7 +7,6 @@ package tcc.rest;
 
 import tcc.common.entity.Usuario;
 import tcc.common.vo.DadoProfessor;
-import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
