@@ -787,3 +787,30 @@ li{
     width: 100%;
     height: auto;
 }
+
+.jogo-velha {
+    cursor:pointer;
+    background-image: radial-gradient(farthest-corner at center center, #ffa705 0%, #ff8138 100%);
+    height: 67px;
+    border-style: dashed;
+    border-color: #424242;
+    font-size: 50px;
+    font-family:Optima;
+    text-align: center;
+    padding-top: 0px;
+}
+.jogo-velha:hover {
+    background-image: radial-gradient(farthest-corner at center center, #ffa705 0%, #f16d20 100%);
+}
+.jogo-velha-venceu {
+    background-image: radial-gradient(farthest-corner at center center, #446f23 0%, #58a220 100%);
+}
+.jogo-velha-venceu:hover {
+    background-image: radial-gradient(farthest-corner at center center, #58a220 0%, #446f23 100%);
+}
+.jogo-velha-perdeu {
+    background-image: radial-gradient(farthest-corner at center center, #d20000 0%, #f1610d 100%);
+}
+.jogo-velha-perdeu:hover {
+    background-image: radial-gradient(farthest-corner at center center, #f1610d 0%, #d20000 100%);
+}

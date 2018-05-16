@@ -59,6 +59,10 @@ tccApp.controller('ExplicacaoJogoController', ['$scope', '$modalInstance', 'obj'
                 jogoNome = "caca-palavra";
                 $scope.model.ultimaPagina = 6;
             }
+            if (obj.jogo.id==="V") {
+                jogoNome = "velha";
+                $scope.model.ultimaPagina = 1;
+            }
             urlPadrao = urlPadrao.replace(":jogo", jogoNome);
             $scope.model.url = urlPadrao.replace(":pagina", $scope.model.pagina);
             

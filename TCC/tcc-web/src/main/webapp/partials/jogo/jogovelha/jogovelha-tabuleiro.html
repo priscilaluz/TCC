@@ -1,0 +1,75 @@
+<div class="col-md-8" ng-show="!contagem || telaInit"><h1 class="title-fonte">Jogo da Velha</h1></div>
+<div class="col-md-4" ng-show="!contagem || telaInit" style="margin-top: 20px;">
+    <button type="button" ng-click="voltar()" class="btn btn-pular-dica pull-right">
+        <i class="glyphicon glyphicon-arrow-left"></i>&nbsp;Voltar</button>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" ng-show="!contagem && !telaInit" style="margin-bottom: 30px;">
+    <div class="form-group">
+        
+        <p class="col-lg-12 curso-titulo-concluido" style="font-size: 30px; color: #1d6c84;">
+            Venceu {{model.qntVitoriasAtuais}} de {{model.qntVitoriasNecessaria}} necessárias.
+        </p>
+        <div class="col-lg-9" ng-show="mostrarPergunta && !model.venceuJogoAtual && !model.perdeuJogoAtual" style="border-radius: 20px;background-color: #1b6d85; padding-bottom: 30px; font-size: 10px;">
+            <h3 class="title-fonte text-center" style="font-size: 17px;">{{model.pergunta.descricao}}</h3>
+            <img id="imgPergunta" alt="imgPergunta" ng-show="model.anexoString" ng-src="{{model.anexoString}}" />
+            <button  ng-repeat="resposta in model.pergunta.respostas" style="margin-top: 10px;" ng-style="resposta.correta ? respostaCorreta : (idReposta == resposta.id) ? respostaIncorreta : {}"
+                     type="button" ng-click="selecionarResposta(resposta)" class="btn btn-resposta-quiz btn-block">{{resposta.descricao}}</button>
+        </div>
+        
+        <div class="col-lg-9" ng-show="!mostrarPergunta && !model.venceuJogoAtual && !model.perdeuJogoAtual" style="border-radius: 20px;background-color: #1b6d85; padding-bottom: 30px; font-size: 10px;">
+            <h3 class="title-fonte text-center" style="font-size: 17px;">Faça sua jogada...</h3>
+        </div>
+        <div class="col-lg-9" ng-show="model.venceuJogoAtual" style="border-radius: 20px;background-color: #1e8c0a; padding-bottom: 30px; font-size: 10px;">
+            <h3 class="title-fonte text-center" style="font-size: 17px;">Parabéns, você venceu {{model.qntVitoriasAtuais}} jogo(s)!!!</h3>
+        </div>
+        <div class="col-lg-9" ng-show="model.perdeuJogoAtual" style="border-radius: 20px;background-color: #ec5941; padding-bottom: 30px; font-size: 10px;">
+            <h3 class="title-fonte text-center" style="font-size: 17px;">Que pena, você pedeu esse jogo, mas talvez ainda não tenha perdido a batalha!</h3>
+        </div>
+        
+        <div class="col-lg-3">
+            <div class="col-md-12">
+                <div class="col-xm-4 col-sm-4 col-md-4 jogo-velha" ng-click="fazerJogada(0, 0)" style="border-width: 0px 1px 1px 0px;"
+                      ng-class="{'jogo-velha-venceu': model.matriz[0][0].cor == 'V', 'jogo-velha-perdeu': model.matriz[0][0].cor == 'P'}">
+                    {{model.matriz[0][0].valor}}
+                </div>
+                <div class="col-xm-4 col-sm-4 col-md-4 jogo-velha" ng-click="fazerJogada(0, 1)" style="border-width: 0px 1px 1px 1px;"
+                     ng-class="{'jogo-velha-venceu': model.matriz[0][1].cor == 'V', 'jogo-velha-perdeu': model.matriz[0][1].cor == 'P'}">
+                    {{model.matriz[0][1].valor}}
+                </div>
+                <div class="col-xm-4 col-sm-4 col-md-4 jogo-velha" ng-click="fazerJogada(0, 2)" style="border-width: 0px 0px 1px 1px;"
+                     ng-class="{'jogo-velha-venceu': model.matriz[0][2].cor == 'V', 'jogo-velha-perdeu': model.matriz[0][2].cor == 'P'}">
+                    {{model.matriz[0][2].valor}}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-xm-4 col-sm-4 col-md-4 jogo-velha" ng-click="fazerJogada(1, 0)" style="border-width: 1px 1px 1px 0px;"
+                     ng-class="{'jogo-velha-venceu': model.matriz[1][0].cor == 'V', 'jogo-velha-perdeu': model.matriz[1][0].cor == 'P'}">
+                    {{model.matriz[1][0].valor}}
+                </div>
+                <div class="col-xm-4 col-sm-4 col-md-4 jogo-velha" ng-click="fazerJogada(1, 1)" style="border-width: 1px 1px 1px 1px;"
+                     ng-class="{'jogo-velha-venceu': model.matriz[1][1].cor == 'V', 'jogo-velha-perdeu': model.matriz[1][1].cor == 'P'}">
+                    {{model.matriz[1][1].valor}}
+                </div>
+                <div class="col-xm-4 col-sm-4 col-md-4 jogo-velha" ng-click="fazerJogada(1, 2)" style="border-width: 1px 0px 1px 1px;"
+                     ng-class="{'jogo-velha-venceu': model.matriz[1][2].cor == 'V', 'jogo-velha-perdeu': model.matriz[1][2].cor == 'P'}">
+                    {{model.matriz[1][2].valor}}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-xm-4 col-sm-4 col-md-4 jogo-velha" ng-click="fazerJogada(2, 0)" style="border-width: 1px 1px 0px 0px;"
+                     ng-class="{'jogo-velha-venceu': model.matriz[2][0].cor == 'V', 'jogo-velha-perdeu': model.matriz[2][0].cor == 'P'}">
+                    {{model.matriz[2][0].valor}}
+                </div>
+                <div class="col-xm-4 col-sm-4 col-md-4 jogo-velha" ng-click="fazerJogada(2, 1)" style="border-width: 1px 1px 0px 1px;"
+                     ng-class="{'jogo-velha-venceu': model.matriz[2][1].cor == 'V', 'jogo-velha-perdeu': model.matriz[2][1].cor == 'P'}">
+                    {{model.matriz[2][1].valor}}
+                </div>
+                <div class="col-xm-4 col-sm-4 col-md-4 jogo-velha" ng-click="fazerJogada(2, 2)" style="border-width: 1px 0px 0px 1px;"
+                     ng-class="{'jogo-velha-venceu': model.matriz[2][2].cor == 'V', 'jogo-velha-perdeu': model.matriz[2][2].cor == 'P'}">
+                    {{model.matriz[2][2].valor}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

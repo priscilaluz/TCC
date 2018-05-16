@@ -1,0 +1,35 @@
+<div class="col-md-8" ng-show="!contagem || telaInit"><h1 class="title-fonte">Quiz</h1></div>
+<div class="col-md-4" ng-show="!contagem || telaInit" style="margin-top: 20px;">
+    <button type="button" ng-click="voltar()" class="btn btn-pular-dica pull-right">
+            <i class="glyphicon glyphicon-arrow-left"></i>&nbsp;Voltar</button>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas" ng-show="!contagem && !telaInit" style="margin-bottom: 30px;">
+    <h3>Pontos: {{model.pontuacao}}</h3>
+    <div class="col-lg-12" ng-repeat="resultado in model.resultados" style="padding-top: 20px;">
+        <hr style="border: 1px dotted #d07171; margin-top: 0px;">
+        <p class="col-lg-12 curso-titulo-concluido">Pergunta {{$index+1}}:</p>
+        <p class="col-lg-12"><span class="curso-nao-titulo-concluido">{{resultado.pergunta.descricao}}</span></p>
+
+        <p class="col-lg-12 curso-titulo-concluido" ng-show="!resultado.pulo && !resultado.respostaEscolhida">Tempo para responder a pergunta acabou.</p>
+        <p class="col-lg-12 curso-titulo-concluido" ng-show="resultado.dica">Utilizou dica</p>
+        <p class="col-lg-12 curso-titulo-concluido" ng-show="resultado.pulo">Pulou</p>
+        <p class="col-lg-12 curso-titulo-concluido" ng-show="resultado.respostaEscolhida">Resposta Escolhida</p>
+        <div class="col-lg-12" ng-show="resultado.respostaEscolhida">
+            <p class="col-lg-12 curso-nao-titulo-concluido">({{resultado.respostaEscolhida.correta?'V':'F'}})
+            <span ng-class="{'verdadeiro': resultado.respostaEscolhida.correta, 'falso':!resultado.respostaEscolhida.correta}">
+                {{resultado.respostaEscolhida.descricao}}</span></p>
+        </div>
+        
+        <p class="col-lg-12 curso-titulo-concluido">Resposta Correta</p>
+        <div class="col-lg-12">
+            <p class="col-lg-12 curso-nao-titulo-concluido">({{resultado.respostaCorreta.correta?'V':'F'}})
+            <span ng-class="{'verdadeiro': resultado.respostaCorreta.correta, 'falso':!resultado.respostaCorreta.correta}">
+                {{resultado.respostaCorreta.descricao}}</span></p>
+        </div>
+        
+        
+        <p class="col-lg-12 curso-titulo-concluido" ng-show="resultado.pergunta.justificativa">Justificativa:
+            <span class="curso-nao-titulo-concluido">{{resultado.pergunta.justificativa}}</span></p>
+
+    </div>
+</div>
