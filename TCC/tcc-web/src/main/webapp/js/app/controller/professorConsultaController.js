@@ -35,7 +35,7 @@ tccApp.controller('ProfessorConsultaController', ['$scope', '$rootScope', '$moda
                     $rootScope.appLoaded = false;
                     Usuario.deletarProfessor({'idProfessores':professor.id}).$promise.then(function (result) {
                         growl.success('Professor excluído com sucesso.',{title: 'Operação bem sucedida'});
-                        $scope.pesquisar();
+                        $scope.pesquisar($scope.paginaAtual);
                         $rootScope.appLoaded = true;
                     }, function (error) {
                         $rootScope.appLoaded = true;

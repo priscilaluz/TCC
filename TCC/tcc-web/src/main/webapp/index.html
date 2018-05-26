@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app='tccapp'>
     <head>
-        <title>AmbaGame</title>
+        <title>GameInfor</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
@@ -40,7 +40,10 @@
                 </span>
             </div>
             <div class="col-md-2 text-center" style="margin-left: 10px;">
-                <a class="rodape-manual-fonte pointer">
+                <a class="rodape-manual-fonte pointer" href="rest/anexo/manualAdm" ng-show="isAdministrador">
+                    <span class="item-fonte-aluno" style="font-size: 25px;">Manual</span>
+                </a>
+                <a class="rodape-manual-fonte pointer" ng-show="!isAdministrador">
                     <span class="item-fonte-aluno" style="font-size: 25px;">Manual</span>
                 </a>
             </div>

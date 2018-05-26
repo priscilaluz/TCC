@@ -6,8 +6,6 @@
 package tcc.service.impl;
 
 import java.util.Date;
-import tcc.common.entity.Curso;
-import tcc.common.entity.Pergunta;
 import tcc.common.entity.Usuario;
 import tcc.common.enums.SituacaoCurso;
 import tcc.common.enums.TipoUsuario;

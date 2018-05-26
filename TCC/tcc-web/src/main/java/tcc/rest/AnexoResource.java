@@ -73,4 +73,14 @@ public class AnexoResource {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).type(MediaType.TEXT_HTML).build();
         }
     }
+    
+    @GET
+    @Path("/manualAdm")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public Response imprimirManualAdm() {
+        String arquivo = "Manual_do_Administrador.pdf";
+        InputStream pdf = anexoService.imprimirManual(arquivo);
+        return Response.ok(pdf, MediaType.APPLICATION_OCTET_STREAM_TYPE).
+                header("Content-Disposition", "attachment; filename=\"" + arquivo + "\"").build();
+    }
 }

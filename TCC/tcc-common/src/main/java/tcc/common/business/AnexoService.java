@@ -19,4 +19,5 @@ public interface AnexoService {
     
     InputStream downloadImgMonaLisa(String imagem);
     
+    InputStream imprimirManual(String manual);
 }

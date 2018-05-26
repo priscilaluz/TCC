@@ -84,4 +84,9 @@ public class AnexoServiceImpl implements AnexoService {
     public InputStream downloadImgMonaLisa(String imagem){
         return getClass().getResourceAsStream("/icons/".concat(imagem));
     }
+    
+    @Override
+    public InputStream imprimirManual(String manual) {
+        return getClass().getResourceAsStream("/icons/".concat(manual));
+    }
 }

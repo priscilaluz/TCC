@@ -127,7 +127,7 @@ public class PerguntaServiceImpl implements PerguntaService {
     @Override
     @Transactional(readOnly = true)
     public Long buscarCountPerguntaPorProfessor(Long idUsuario) {
-        return (Long) dao.uniqueResult(new BuscarPergunta.Entities(true).whereUsuario(idUsuario));
+        return (Long) dao.uniqueResult(new BuscarPergunta.Entities(true).fetchUsuario("").whereUsuario(idUsuario));
     }
     
     @Override
