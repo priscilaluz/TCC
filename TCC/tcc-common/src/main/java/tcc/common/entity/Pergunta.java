@@ -100,6 +100,9 @@ public class Pergunta extends AbstractIdBean<Long> {
     
     @Transient
     private int tempoPergunta;
+    
+    @Transient
+    private int pontos;
 
     public Pergunta() {}
 
@@ -224,15 +227,42 @@ public class Pergunta extends AbstractIdBean<Long> {
     }
 
     public int getTempoPergunta() {
-        if (TempoPergunta.SESSENTA_SEGUNDOS.equals(tempo)) {
-            return 60;
-        }else if (TempoPergunta.NOVENTA_SEGUNDOS.equals(tempo)) {
-            return 90;
+        if (null == tempo) {
+            tempoPergunta = 30;
+        }else switch (tempo) {
+            case SESSENTA_SEGUNDOS:
+                tempoPergunta = 60;
+                break;
+            case NOVENTA_SEGUNDOS:
+                tempoPergunta = 90;
+                break;
+            default:
+                tempoPergunta = 30;
+                break;
         }
-        return 30;
+        return tempoPergunta;
     }
 
     public void setTempoPergunta(int tempoPergunta) {
         this.tempoPergunta = tempoPergunta;
+    }
+
+    public int getPontos() {
+        if (null != nivel) switch (nivel) {
+            case MEDIO:
+                pontos = 150;
+                break;
+            case DIFICIL:
+                pontos = 200;
+                break;
+            default:
+                pontos = 100;
+                break;
+        }
+        return pontos;
+    }
+
+    public void setPontos(int pontos) {
+        this.pontos = pontos;
     }
 }

@@ -202,7 +202,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
         $rootScope.appLoaded = false;
         $scope.telaInit = true;
         if (idCursoAluno && idEtapa) {
-            Jogo.buscarPerguntaDosJogosQuizForcaAposta({'idEtapa': idEtapa}).$promise.then(function (perguntas) {
+            Jogo.buscarPerguntasDoJogoGerais({'idEtapa': idEtapa}).$promise.then(function (perguntas) {
                 iniciarJogo(perguntas);
             }, function (error) {
                 $rootScope.appLoaded = true;
