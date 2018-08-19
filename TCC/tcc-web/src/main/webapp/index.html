@@ -32,18 +32,19 @@
             </div>
             <div class="col-md-6 text-center">
                 <span class="item-fonte-aluno" style="font-size: 35px;">
-                    <a class="rodape-manual-fonte pointer"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>&nbsp;
-                    <a class="rodape-manual-fonte pointer"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>&nbsp;
-                    <a class="rodape-manual-fonte pointer"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>&nbsp;
-                    <a class="rodape-manual-fonte pointer"><i class="fa fa-phone-square" aria-hidden="true"></i></a>&nbsp;
-                    <a class="rodape-manual-fonte pointer"><i class="fa fa-github-square" aria-hidden="true"></i></a>&nbsp;
+                    <a class="rodape-manual-fonte pointer"><i class="fa fa-envelope-square" aria-hidden="true" title="gameinforbr@gmail.com"></i></a>&nbsp;
+                    <a class="rodape-manual-fonte pointer"><i class="fa fa-phone-square" aria-hidden="true" title="(71) 98731-4460"></i></a>&nbsp;
+                    <a class="rodape-manual-fonte pointer" href="https://github.com/priscilaluz/TCC"><i class="fa fa-github-square" aria-hidden="true"></i></a>&nbsp;
                 </span>
             </div>
             <div class="col-md-2 text-center" style="margin-left: 10px;">
-                <a class="rodape-manual-fonte pointer" href="rest/anexo/manualAdm" ng-show="isAdministrador">
+                <a class="rodape-manual-fonte pointer" href="manual/Manual_do_Administrador.pdff" ng-show="isAdministrador" target="blank">
                     <span class="item-fonte-aluno" style="font-size: 25px;">Manual</span>
                 </a>
-                <a class="rodape-manual-fonte pointer" ng-show="!isAdministrador">
+                <a class="rodape-manual-fonte pointer" href="manual/Manual_do_Professor.pdff" ng-show="isProfessor" target="blank">
+                    <span class="item-fonte-aluno" style="font-size: 25px;">Manual</span>
+                </a>
+                <a class="rodape-manual-fonte pointer" href="manual/Manual_do_Aluno.pdf" ng-show="isAluno" target="blank">
                     <span class="item-fonte-aluno" style="font-size: 25px;">Manual</span>
                 </a>
             </div>
