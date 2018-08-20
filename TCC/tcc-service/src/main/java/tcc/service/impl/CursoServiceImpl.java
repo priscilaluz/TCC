@@ -188,7 +188,9 @@ public class CursoServiceImpl implements CursoService {
         List<Object> lista = new ArrayList<>();
         for (Curso curso : cursos) {
             if (idAluno != null) {
-                curso.setAlunoPertence(cursoAlunoService.alunoPertenceCurso(idAluno, curso.getId()));
+                Long idCursoAluno = cursoAlunoService.cursoAlunoId(idAluno, curso.getId());
+                curso.setAlunoPertence(idCursoAluno!=null);
+                curso.setIdCursoAluno(idCursoAluno);
             }
             lista.add((Object) curso);
         }

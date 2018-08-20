@@ -14,7 +14,7 @@
                         <tr ng-repeat="curso in cursos">
                             <td>
                                 <a ng-click="entrarNoCurso(curso.id)" style="color: #ff6624;" ng-show="!curso.alunoPertence" title="Entrar no curso"><i class="glyphicon glyphicon-log-in pointer"></i></a>
-                                <i ng-show="curso.alunoPertence" class="glyphicon glyphicon-ok" style="color: #ff6624;" title="Aluno já pertence ao curso"></i>
+                                <a ng-click="estudarCurso(curso.idCursoAluno)"><i ng-show="curso.alunoPertence" class="glyphicon glyphicon-ok" style="color: #ff6624;" title="Aluno já pertence ao curso"></i></a>
                             </td>
                             <td>{{curso.nome}}</td>
                             <td>{{curso.categoria.nome}}</td>

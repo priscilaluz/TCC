@@ -319,10 +319,10 @@ public class CursoAlunoServiceImpl implements CursoAlunoService {
     
     @Override
     @Transactional(readOnly = true)
-    public boolean alunoPertenceCurso(Long idAluno, Long idCurso) {
-        Long qntAlunoCurso = (Long) dao.uniqueResult(new BuscarCursoAluno.Count()
+    public Long cursoAlunoId(Long idAluno, Long idCurso) {
+        Long idCursoAluno = (Long) dao.uniqueResult(new BuscarCursoAluno.IdSelecionado()
                 .fetchAluno("").fetchCurso("")
                 .whereIdAluno(idAluno).whereIdCurso(idCurso));
-        return qntAlunoCurso > 0;
+        return idCursoAluno;
     }
 }

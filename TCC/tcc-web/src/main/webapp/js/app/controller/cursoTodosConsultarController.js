@@ -1,5 +1,5 @@
-tccApp.controller('CursoTodosConsultarController', ['$scope', '$rootScope', 'Curso', 'Enums', '$modal', 'Categoria',
-    function ($scope, $rootScope, Curso, Enums, $modal, Categoria) {
+tccApp.controller('CursoTodosConsultarController', ['$scope', '$rootScope', 'Curso', 'Enums', '$modal', '$location', 'Categoria',
+    function ($scope, $rootScope, Curso, Enums, $modal, $location, Categoria) {
         $rootScope.telaHomeAluno = false;
         $scope.cursos = [];
         $scope.pesquisar = {};
@@ -18,6 +18,10 @@ tccApp.controller('CursoTodosConsultarController', ['$scope', '$rootScope', 'Cur
             }, function (error) {
                 $rootScope.appLoaded = true;
             });
+        };
+        
+        $scope.estudarCurso = function (idCursoAluno) {
+            $location.path("/aluno-cursando/"+idCursoAluno);
         };
 
         $scope.entrarNoCurso = function (idCurso) {

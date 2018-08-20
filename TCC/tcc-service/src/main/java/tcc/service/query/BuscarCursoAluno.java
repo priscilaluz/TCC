@@ -24,6 +24,12 @@ public abstract class BuscarCursoAluno<T extends Serializable> extends BusinessF
         }
     }
     
+    public static class IdSelecionado extends BuscarCursoAluno<Long> {
+        public IdSelecionado() {
+            appendText("select ca.id from CursoAluno ca ");
+        }
+    }
+    
     public BuscarCursoAluno fetchCurso(String fetch) {
         appendText(" left join "+fetch+" ca.curso c ");
         return this;

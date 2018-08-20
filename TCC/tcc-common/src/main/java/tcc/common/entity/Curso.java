@@ -104,6 +104,9 @@ public class Curso extends AbstractIdBean<Long> {
     @Transient
     private boolean alunoPertence;
     
+    @Transient
+    private Long idCursoAluno;
+    
     public Curso() {
     }
     
@@ -238,6 +241,14 @@ public class Curso extends AbstractIdBean<Long> {
 
     public void setAlunoPertence(boolean alunoPertence) {
         this.alunoPertence = alunoPertence;
+    }
+
+    public Long getIdCursoAluno() {
+        return idCursoAluno;
+    }
+
+    public void setIdCursoAluno(Long idCursoAluno) {
+        this.idCursoAluno = idCursoAluno;
     }
 
     public Set<Aviso> getAvisos() {
