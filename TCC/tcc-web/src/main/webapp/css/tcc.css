@@ -28,17 +28,47 @@
                                   supported by Chrome and Opera */
 }
 
-.cedula {
-    border: 1px double #d2d2d2;
-    padding-top: 7px;
-    padding-left: 9px;
-    height: 32px;
-    width: 32px;
-    border-radius: 3px;
-    font-family:Optima;
-    font-size: 15px;
-    color: #ffffff;
-} 
+@media (min-width: 768px) {
+    .cedula {
+        border: 1px double #d2d2d2;
+        padding-top: 7px;
+        padding-left: 9px;
+        height: 20px;
+        width: 20px;
+        border-radius: 3px;
+        font-family:Optima;
+        font-size: 10px;
+        color: #ffffff;
+    }
+}
+/* md */
+@media (min-width: 992px) {
+    .cedula {
+        border: 1px double #d2d2d2;
+        padding-top: 7px;
+        padding-left: 9px;
+        height: 25px;
+        width: 25px;
+        border-radius: 3px;
+        font-family:Optima;
+        font-size: 10px;
+        color: #ffffff;
+    }
+}
+/* lg */
+@media (min-width: 1200px) {
+    .cedula {
+        border: 1px double #d2d2d2;
+        padding-top: 7px;
+        padding-left: 9px;
+        height: 32px;
+        width: 32px;
+        border-radius: 3px;
+        font-family:Optima;
+        font-size: 12px;
+        color: #ffffff;
+    }
+}
 .cedula-selcionada {
     background-color: #9bcffd;
 } 
@@ -813,4 +843,50 @@ li{
 }
 .jogo-velha-perdeu:hover {
     background-image: radial-gradient(farthest-corner at center center, #f1610d 0%, #d20000 100%);
+}
+
+@media (min-width: 768px) {
+    .cedula-tabuleiro-tam-img {
+        width: 100px;
+    }
+}
+/* md */
+@media (min-width: 992px) {
+    .cedula-tabuleiro-tam-img {
+        width: 150px;
+    }
+}
+/* lg */
+@media (min-width: 1200px) {
+    .cedula-tabuleiro-tam-img {
+        width: 200px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .tabuleiro-fundo-img {
+        background-image: url('../img/tabuleiro/background/aventura3.jpeg');
+        height: 300px;
+        width: 700px;
+        border-radius: 150px;
+    }
+}
+/* md */
+@media (min-width: 992px) {
+    .tabuleiro-fundo-img {
+        background-image: url('../img/tabuleiro/background/aventura3.jpeg');
+        height: 400px;
+        width: 900px;
+        border-radius: 150px;
+    }
+}
+/* lg */
+@media (min-width: 1200px) {
+    .tabuleiro-fundo-img {
+        background-image: url('../img/tabuleiro/background/aventura3.jpeg');
+        height: 500px;
+        width: 1106px;
+        border-radius: 150px;
+    }
 }
