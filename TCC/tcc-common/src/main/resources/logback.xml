@@ -4,11 +4,11 @@
 
     <appender name="logfile-app" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <append>true</append>
-        <file>C:/tmp/tcc/tcc.log</file>
-        <!--<file>/home3/priluz/log/tcc.log</file>-->
+        <!--<file>C:/tmp/tcc/tcc.log</file>-->
+        <file>/home3/priluz/log/tcc.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <!--<fileNamePattern>/home3/priluz/log/tcc/tcc.log.%i</fileNamePattern>-->
-            <fileNamePattern>C:/tmp/tcc/tcc/tcc.log.%i</fileNamePattern>
+            <fileNamePattern>/home3/priluz/log/tcc/tcc.log.%i</fileNamePattern>
+            <!--<fileNamePattern>C:/tmp/tcc/tcc/tcc.log.%i</fileNamePattern>-->
             <maxIndex>1000</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
@@ -21,11 +21,11 @@
     
     <appender name="logfile-sql" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <append>true</append>
-        <file>C:/tmp/tcc/tcc-sql.log</file>
-        <!--<file>/home3/priluz/log/tcc-sql.log</file>-->
+        <!--<file>C:/tmp/tcc/tcc-sql.log</file>-->
+        <file>/home3/priluz/log/tcc-sql.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <fileNamePattern>C:/tmp/tcc/tcc/tcc-sql.log.%i</fileNamePattern>
-            <!--<fileNamePattern>/home3/priluz/log/tcc/tcc-sql.log.%i</fileNamePattern>-->
+            <!--<fileNamePattern>C:/tmp/tcc/tcc/tcc-sql.log.%i</fileNamePattern>-->
+            <fileNamePattern>/home3/priluz/log/tcc/tcc-sql.log.%i</fileNamePattern>
             <maxIndex>1000</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">

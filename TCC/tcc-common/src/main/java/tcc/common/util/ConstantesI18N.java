@@ -1,9 +1,9 @@
 package tcc.common.util;
 
 public class ConstantesI18N {
-    //public static final String SCHEMA = "";
-    public static final String SCHEMA = "tcc";
-    //public static final String SCHEMA = "test";
+    public static final String SCHEMA = "priluz_gameinfor";
+//    public static final String SCHEMA = "tcc";
+//    public static final String SCHEMA = "test";
     public static final String FETCH = "fetch";
     //public static final String ROOT_PATH = "C:/Users/ADM/Documents/Anexos";
     public static final String ROOT_PATH = "/Users/priscilaluz/Documents/Anexo";

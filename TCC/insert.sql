@@ -1,3 +1,5 @@
+INSERT INTO `tcc`.`usuario` (`ID`, `NOME`, `LOGIN`, `EMAIL`, `SENHA`, `TIPO`) VALUES ('1', 'adm', 'adm', 'priscila.farias145@gmail.com', '1234pri1234', 'D');
+
 INSERT INTO `tcc`.`usuario` (`ID`, `NOME`, `LOGIN`, `EMAIL`, `SENHA`, `TIPO`) VALUES ('1', 'adm', 'adm', 'adm@email.com', '1234', 'D');
 INSERT INTO `tcc`.`usuario` (`ID`, `NOME`, `LOGIN`, `EMAIL`, `SENHA`, `TIPO`) VALUES ('2', 'Aluno2', 'aluno2', 'aluno2@email.com', '1234', 'A');
 INSERT INTO `tcc`.`usuario` (`ID`, `NOME`, `LOGIN`, `EMAIL`, `SENHA`, `TIPO`) VALUES ('3', 'Aluno3', 'aluno3', 'aluno3@email.com', '1234', 'A');
