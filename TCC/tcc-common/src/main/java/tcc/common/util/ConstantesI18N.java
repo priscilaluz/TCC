@@ -77,5 +77,7 @@ public class ConstantesI18N {
     public static final String CATEGORIA_OBRIGATORIA = "categoria.obrigatoria";
     public static final String CATEGORIA_NOME_OBRIGATORIO = "categoria.nome.obrigatoria";
     public static final String CATEGORIA_NOME_EXISTE = "categoria.nome.ja.existe";
+    public static final String CATEGORIA_EXCLUIR_PERGUNTA = "categoria.excluir.pergunta";
+    public static final String CATEGORIA_EXCLUIR_CURSO = "categoria.excluir.curso";
     
 }
