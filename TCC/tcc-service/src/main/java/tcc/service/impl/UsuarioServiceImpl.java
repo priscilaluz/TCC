@@ -89,8 +89,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     @Transactional(readOnly = false)
     public void excluirProfessores(Long idProfessores) {
-        Long qndPerguntas = perguntaService.buscarCountPerguntaPorProfessor(idProfessores);
-        Long qndCursos = cursoService.buscarCountCursoPorFiltro(idProfessores, null);
+        Long qndPerguntas = perguntaService.buscarCountPerguntaPorFiltro(idProfessores, null);
+        Long qndCursos = cursoService.buscarCountCursoPorFiltro(idProfessores, null, null);
         validador.validarExcluirUsuario(qndPerguntas, qndCursos);
         Usuario professores = buscarProfessorPorId(idProfessores);
         dao.remove(professores);
@@ -101,9 +101,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     public DadoProfessor dadosProfessor(Long idProfessores) {
         DadoProfessor dado = new DadoProfessor();
         dado.setQntAluno(cursoAlunoService.buscarCountCursoAlunoPorProfessor(idProfessores));
-        dado.setQntCursoRascunho(cursoService.buscarCountCursoPorFiltro(idProfessores, SituacaoCurso.RASCUNHO));
-        dado.setQntCursoConcluidos(cursoService.buscarCountCursoPorFiltro(idProfessores, SituacaoCurso.CONCLUIDA));
-        dado.setQntPerguntas(perguntaService.buscarCountPerguntaPorFiltro(idProfessores));
+        dado.setQntCursoRascunho(cursoService.buscarCountCursoPorFiltro(idProfessores, SituacaoCurso.RASCUNHO, null));
+        dado.setQntCursoConcluidos(cursoService.buscarCountCursoPorFiltro(idProfessores, SituacaoCurso.CONCLUIDA, null));
+        dado.setQntPerguntas(perguntaService.buscarCountPerguntaPorFiltro(idProfessores, null));
         return dado;
     }
 }

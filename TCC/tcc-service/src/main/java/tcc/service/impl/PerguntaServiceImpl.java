@@ -126,13 +126,9 @@ public class PerguntaServiceImpl implements PerguntaService {
     
     @Override
     @Transactional(readOnly = true)
-    public Long buscarCountPerguntaPorProfessor(Long idUsuario) {
-        return (Long) dao.uniqueResult(new BuscarPergunta.Entities(true).fetchUsuario("").whereUsuario(idUsuario));
-    }
-    
-    @Override
-    @Transactional(readOnly = true)
-    public Long buscarCountPerguntaPorFiltro(Long idUsuario) {
-        return (Long) dao.uniqueResult(new BuscarPergunta.Entities(true).fetchUsuario("").whereUsuario(idUsuario));
+    public Long buscarCountPerguntaPorFiltro(Long idUsuario, Long idCategoria) {
+        return (Long) dao.uniqueResult(new BuscarPergunta.Entities(true)
+                .fetchUsuario("").fetchCategoria("")
+                .whereUsuario(idUsuario).whereCategoria(idCategoria));
     }
 }

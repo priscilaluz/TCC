@@ -16,4 +16,11 @@ public class CategoriaValidator {
         pm.assertThat(categoria.getNome() == null || nomeNaoExiste).orRegister(ConstantesI18N.CATEGORIA_NOME_EXISTE);
         pm.verifyAll();
     }
+    
+    public void validarExcluirCategoria(Long qndPerguntas, Long qndCursos){
+        PendencyManager pm = new PendencyManager();
+        pm.assertThat(qndPerguntas==0).orRegister(ConstantesI18N.CATEGORIA_EXCLUIR_PERGUNTA);
+        pm.assertThat(qndCursos==0).orRegister(ConstantesI18N.CATEGORIA_EXCLUIR_CURSO);
+        pm.verifyAll();
+    }
 }

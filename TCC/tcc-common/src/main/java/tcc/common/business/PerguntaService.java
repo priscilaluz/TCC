@@ -20,8 +20,6 @@ public interface PerguntaService {
     ListaPaginacao buscarPerguntaPorFiltro(Long idUsuario, String parteNome, Long idCategoria, 
             TipoPergunta tipo, NivelPergunta nivel, Long idCurso, Integer paginaAtual);
     
-    Long buscarCountPerguntaPorProfessor(Long idUsuario);
-            
-    Long buscarCountPerguntaPorFiltro(Long idUsuario);
+    Long buscarCountPerguntaPorFiltro(Long idUsuario, Long idCategoria);
     
 }

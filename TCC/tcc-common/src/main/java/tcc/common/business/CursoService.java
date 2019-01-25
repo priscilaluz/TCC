@@ -2,6 +2,7 @@ package tcc.common.business;
 
 import java.util.List;
 import tcc.common.entity.Aviso;
+import tcc.common.entity.Categoria;
 import tcc.common.entity.Curso;
 import tcc.common.entity.Etapa;
 import tcc.common.enums.DisponibilidadeCurso;
@@ -31,7 +32,7 @@ public interface CursoService {
     ListaPaginacao buscarCursoPorFiltro(Long idUsuario, String parteNome, Long idCategoria, SituacaoCurso situacaoCurso, 
             DisponibilidadeCurso disponibilidade, Long idAluno, Integer paginaAtual);
     
-    Long buscarCountCursoPorFiltro(Long idUsuario, SituacaoCurso situacaoCurso);
+    Long buscarCountCursoPorFiltro(Long idUsuario, SituacaoCurso situacaoCurso, Long idCategoria);
     
     Etapa salvarEtapa(Etapa etapa);
     

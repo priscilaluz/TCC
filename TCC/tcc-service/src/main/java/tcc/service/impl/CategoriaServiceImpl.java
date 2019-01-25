@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import tcc.common.business.CategoriaService;
+import tcc.common.business.CursoService;
+import tcc.common.business.PerguntaService;
 import tcc.common.vo.ListaPaginacao;
 import tcc.common.vo.Paginacao;
 import tcc.service.persistence.Pagination;
@@ -31,6 +33,12 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Autowired
     private CategoriaValidator validador;
     
+    @Autowired
+    private CursoService cursoService;
+    
+    @Autowired
+    private PerguntaService perguntaService;
+    
     @Override
     @Transactional(readOnly = false)
     public Categoria salvarCategoria(Categoria categoria) {
@@ -43,6 +51,9 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
     @Transactional(readOnly = false)
     public void excluirCategoria(Long idCategoria) {
+        Long qndPerguntas = perguntaService.buscarCountPerguntaPorFiltro(null, idCategoria);
+        Long qndCursos = cursoService.buscarCountCursoPorFiltro(null, null, idCategoria);
+        validador.validarExcluirCategoria(qndPerguntas, qndCursos);
         Categoria categoria = buscarCategoriaPorId(idCategoria);
         dao.remove(categoria);
     }

@@ -31,6 +31,7 @@ import tcc.common.business.AnexoService;
 import tcc.common.business.CursoAlunoService;
 import tcc.common.business.CursoService;
 import tcc.common.entity.Aviso;
+import tcc.common.entity.Categoria;
 import tcc.common.entity.Usuario;
 import tcc.common.vo.ListaPaginacao;
 import tcc.common.vo.Paginacao;
@@ -210,10 +211,11 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     @Transactional(readOnly = true)
-    public Long buscarCountCursoPorFiltro(Long idUsuario, SituacaoCurso situacaoCurso) {
+    public Long buscarCountCursoPorFiltro(Long idUsuario, SituacaoCurso situacaoCurso, Long idCategoria) {
         return (Long) dao.uniqueResult(new BuscarCurso.Entities(true)
                 .whereUsuario(idUsuario)
-                .whereSituacaoCurso(situacaoCurso));
+                .whereSituacaoCurso(situacaoCurso)
+                .whereCategoria(idCategoria));
     }
 
     @Override

@@ -802,16 +802,6 @@ li{
     background-color: transparent;
 }
 
-.container-explicacao {
-    width: 870px;
-    height: auto;
-}
-
-.container-explicacao img {
-    width: 100%;
-    height: auto;
-}
-
 .jogo-velha {
     cursor:pointer;
     background-image: radial-gradient(farthest-corner at center center, #ffa705 0%, #ff8138 100%);
@@ -875,6 +865,16 @@ li{
         display: block;
         margin: 0 auto;
     }
+    
+    .container-explicacao {
+        width: 550px;
+        height: auto;
+    }
+
+    .container-explicacao img {
+        width: 100%;
+        height: auto;
+    }
 }
 /* md */
 @media (min-width: 992px) {
@@ -894,6 +894,16 @@ li{
         display: block;
         margin: 0 auto;
     }
+    
+    .container-explicacao {
+        width: 870px;
+        height: auto;
+    }
+
+    .container-explicacao img {
+        width: 100%;
+        height: auto;
+    }
 }
 /* lg */
 @media (min-width: 1200px) {
@@ -912,5 +922,15 @@ li{
         height:90px;
         display: block;
         margin: 0 auto;
+    }
+    
+    .container-explicacao {
+        width: 870px;
+        height: auto;
+    }
+
+    .container-explicacao img {
+        width: 100%;
+        height: auto;
     }
 }
