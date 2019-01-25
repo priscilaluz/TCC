@@ -1,0 +1,82 @@
+\select@language {english}
+\contentsline {chapter}{List of Figures}{xix}{chapter*.6}
+\contentsline {chapter}{List of Tables}{xxi}{chapter*.8}
+\contentsline {chapter}{List of Acronyms}{xxiii}{chapter*.9}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}Problem Statement}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Overview of the Proposed Solution}{3}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Context}{3}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Outline of the Proposal}{5}{subsection.1.3.2}
+\contentsline {section}{\numberline {1.4}Out of Scope}{6}{section.1.4}
+\contentsline {section}{\numberline {1.5}Statement of the Contributions}{6}{section.1.5}
+\contentsline {section}{\numberline {1.6}Dissertation Structure}{7}{section.1.6}
+\contentsline {chapter}{\numberline {2}An Overview on Software Product Lines and CASE tools}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Software Product Lines}{10}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Introduction}{10}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}The Benefits}{11}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}The SPL Development Process}{14}{subsection.2.1.3}
+\contentsline {subsubsection}{Core Asset Development}{15}{subsubsection*.17}
+\contentsline {subsubsection}{Product Development}{17}{subsubsection*.18}
+\contentsline {subsubsection}{Management}{18}{subsubsection*.19}
+\contentsline {section}{\numberline {2.2}CASE Tools}{18}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Benefits of CASE tools}{18}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Application Lifecycle Management}{19}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Tools Comparison}{21}{section.2.3}
+\contentsline {section}{\numberline {2.4}Summary}{25}{section.2.4}
+\contentsline {chapter}{\numberline {3}SPLICE - Software Product Line Integrated Construction Environment}{27}{chapter.3}
+\contentsline {section}{\numberline {3.1}Introduction}{27}{section.3.1}
+\contentsline {section}{\numberline {3.2}Tool Requirements}{28}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Functional Requirements}{28}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2} Non-Functional Requirements}{29}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}A lightweight SPL metamodel}{30}{section.3.3}
+\contentsline {section}{\numberline {3.4}SPLICE Architecture and Technologies}{35}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Architecture Overview}{36}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Architecture Components}{37}{subsection.3.4.2}
+\contentsline {section}{\numberline {3.5}Implementation}{42}{section.3.5}
+\contentsline {section}{\numberline {3.6}SPLICE in action}{43}{section.3.6}
+\contentsline {subsubsection}{Main Screen}{43}{subsubsection*.29}
+\contentsline {subsubsection}{Metamodel}{44}{subsubsection*.30}
+\contentsline {subsubsection}{Issue Tracking}{46}{subsubsection*.31}
+\contentsline {subsubsection}{Traceability}{46}{subsubsection*.32}
+\contentsline {subsubsection}{Product Selection}{48}{subsubsection*.33}
+\contentsline {subsubsection}{Change history and Timeline}{49}{subsubsection*.34}
+\contentsline {subsubsection}{Control Panel}{49}{subsubsection*.35}
+\contentsline {subsubsection}{Agile Planning}{49}{subsubsection*.36}
+\contentsline {subsubsection}{\acf {VCS} view}{51}{subsubsection*.37}
+\contentsline {subsubsection}{Automatic reports generation}{51}{subsubsection*.38}
+\contentsline {section}{\numberline {3.7}Summary}{54}{section.3.7}
+\contentsline {chapter}{\numberline {4}Case study : RescueME SPL}{55}{chapter.4}
+\contentsline {section}{\numberline {4.1} Introduction }{55}{section.4.1}
+\contentsline {section}{\numberline {4.2} Definition }{55}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Context}{55}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Research Questions}{56}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Data collection}{57}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Survey Design}{57}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Developing the Survey Instrument}{58}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Evaluating the Survey Instrument}{58}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Expert Opinion}{58}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Analyzing the data}{59}{subsection.4.3.5}
+\contentsline {section}{\numberline {4.4}Results}{59}{section.4.4}
+\contentsline {subsubsection}{Tool usage difficulties}{60}{subsubsection*.39}
+\contentsline {subsubsection}{Tool interference in workflow}{60}{subsubsection*.40}
+\contentsline {subsubsection}{Assets creation difficulties}{60}{subsubsection*.41}
+\contentsline {subsubsection}{Blame changes}{60}{subsubsection*.42}
+\contentsline {subsubsection}{Traceability}{60}{subsubsection*.43}
+\contentsline {subsubsection}{Expected traceability links}{61}{subsubsection*.44}
+\contentsline {subsubsection}{Traceability links navigation}{61}{subsubsection*.45}
+\contentsline {subsubsection}{Reporting}{61}{subsubsection*.46}
+\contentsline {subsubsection}{Tool Helpfulness}{61}{subsubsection*.47}
+\contentsline {subsubsection}{Positive points}{62}{subsubsection*.48}
+\contentsline {subsubsection}{Negative points}{62}{subsubsection*.49}
+\contentsline {subsubsection}{Suggestions}{62}{subsubsection*.50}
+\contentsline {section}{\numberline {4.5}Threats to validity}{63}{section.4.5}
+\contentsline {section}{\numberline {4.6}Findings}{63}{section.4.6}
+\contentsline {section}{\numberline {4.7}Summary}{64}{section.4.7}
+\contentsline {chapter}{\numberline {5}Conclusion}{65}{chapter.5}
+\contentsline {section}{\numberline {5.1}Research Contribution}{66}{section.5.1}
+\contentsline {section}{\numberline {5.2}Future Work}{66}{section.5.2}
+\contentsline {chapter}{Bibliography}{68}{section.5.2}
+\contentsline {chapter}{Appendix}{75}{section*.53}
+\contentsline {chapter}{\numberline {A}Case Study Instruments}{77}{appendix.A}
+\contentsline {section}{\numberline {A.1}Form for Expert Survey}{77}{section.A.1}

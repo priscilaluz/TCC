@@ -69,8 +69,8 @@ public class GenericDao extends HibernateCrudDao {
      * @return Lista retornada pela execução da consulta
      */
     public <T extends Serializable> List<T> list(BusinessQuery<T> businessQuery) {
-        return QueryHelper.list(businessQuery, getCurrentSession());
-    }
+            return QueryHelper.list(businessQuery, getCurrentSession());
+        }
 
     /**
      * Executa a query fornecida.

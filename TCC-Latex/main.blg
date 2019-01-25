@@ -1,0 +1,35 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
+A level-1 auxiliary file: chapters/introduction/main.aux
+A level-1 auxiliary file: chapters/background/main.aux
+A level-1 auxiliary file: chapters/proposed_solution/main.aux
+A level-1 auxiliary file: chapters/experiment/main.aux
+A level-1 auxiliary file: chapters/conclusion/main.aux
+The style file: natbib.bst
+A level-1 auxiliary file: appendix/experiment-instruments.aux
+Database file #1: references.bib
+Warning--entry type for "ribeiro2010" isn't style-file defined
+--line 1072 of file references.bib
+Warning--entry type for "oliveira2009" isn't style-file defined
+--line 1082 of file references.bib
+Warning--entry type for "machado:msc:2010" isn't style-file defined
+--line 1092 of file references.bib
+Warning--entry type for "neto:msc:2010" isn't style-file defined
+--line 1102 of file references.bib
+Warning--entry type for "filho:msc:2010" isn't style-file defined
+--line 1112 of file references.bib
+Warning--entry type for "neiva:msc:2009" isn't style-file defined
+--line 1130 of file references.bib
+Warning--entry type for "lisboa:msc:2008" isn't style-file defined
+--line 1151 of file references.bib
+Too many commas in name 1 of "Melo, Buregio, Eduardo Santana Almeida, Meira" for entry CoreICSR
+while executing---line 1207 of file natbib.bst
+Too many commas in name 1 of "Melo, Buregio, Eduardo Santana Almeida, Meira" for entry CoreICSR
+while executing---line 1207 of file natbib.bst
+Warning--can't use both author and editor fields in CavalcantiInTech2012
+Too many commas in name 1 of "Melo, Buregio, Eduardo Santana Almeida, Meira" for entry CoreICSR
+while executing---line 1279 of file natbib.bst
+Too many commas in name 1 of "Melo, Buregio, Eduardo Santana Almeida, Meira" for entry CoreICSR
+while executing---line 1279 of file natbib.bst
+Warning--can't use both author and editor fields in Pohl2005
+Warning--empty publisher in Pohl2005
+(There were 4 error messages)

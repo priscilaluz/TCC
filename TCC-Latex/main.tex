@@ -1,0 +1,169 @@
+%% RiSE Latex Template - version 0.5
+%%
+%% RiSE's latex template for thesis and dissertations
+%% http://risetemplate.sourceforge.net
+%%
+%% (c) 2012 Yguaratã Cerqueira Cavalcanti (yguarata@gmail.com)
+%%          Vinicius Cardoso Garcia (vinicius.garcia@gmail.com)
+%%
+%% This document was initially based on UFPEThesis template, from Paulo Gustavo
+%% S. Fonseca.
+%%
+%% ACKNOWLEDGEMENTS
+%%
+%% We would like to thanks the RiSE's researchers community, the 
+%% students from Federal University of Pernambuco, and other users that have
+%% been contributing to this projects with comments and patches.
+%%
+%% GENERAL INSTRUCTIONS
+%%
+%% We strongly recommend you to compile your documents using pdflatex command.
+%% It is also recommend use the texlipse plugin for Eclipse to edit your documents.
+%%
+%% Options for \documentclass command:
+%%         * Idiom
+%%           pt   - Portguese (default)
+%%           en   - English
+%%
+%%         * Text type
+%%           bsc  - B.Sc. Thesis
+%%           msc  - M.Sc. Thesis (default)
+%%           qual - PHD qualification (not tested yet)
+%%           prop - PHD proposal (not tested yet)
+%%           phd  - PHD thesis
+%%
+%%         * Media
+%%           scr  - to eletronic version (PDF) / see the users guide
+%%
+%%         * Pagination
+%%           oneside - unique face press
+%%           twoside - two faces press
+%%
+%%		   * Line spacing
+%%           singlespacing  - the same as using \linespread{1}
+%%           onehalfspacing - the same as using \linespread{1.3}
+%%           doublespacing  - the same as using \linespread{1.6}
+%%
+%% Reference commands. Use the following commands to make references in your
+%% text:
+%%          \figref  -- for Figure reference
+%%          \tabref  -- for Table reference
+%%          \eqnref  -- for equation reference
+%%          \chapref -- for chapter reference
+%%          \secref  -- for section reference
+%%          \appref  -- for appendix reference
+%%          \axiref  -- for axiom reference
+%%          \conjref -- for conjecture reference
+%%          \defref  -- for definition reference
+%%          \lemref  -- for lemma reference
+%%          \theoref -- for theorem reference
+%%          \corref  -- for corollary reference
+%%          \propref -- for proprosition reference
+%%          \pgref   -- for page reference
+%%
+%%          Example: See \chapref{chap:introduction}. It will produce 
+%%                   'See Chapter 1', in case of English language.
+
+\documentclass[en,twoside,onehalfspacing,bsc]{risethesis}
+
+\usepackage{natbib}
+\usepackage{babel}
+\usepackage{supertabular}
+\usepackage{microtype}
+\usepackage{lscape}
+
+%% Change the following pdf author attribute name to your name.
+\usepackage[linkcolor=blue,citecolor=blue,urlcolor=blue,colorlinks,pdfpagelabels,pdftitle={Bruno Cabral's Bachelor Thesis},pdfauthor={Bruno Cabral}]{hyperref}
+
+\address{SALVADOR}
+
+\universitypt{Universidade Federal da Bahia}
+\universityen{Federal University of Bahia}
+
+\departmentpt{Depertamento de Ci\^{e}ncia da Computa\c{c}\~{a}o}
+\departmenten{Computer Science Department}
+
+\programpt{Programa Multiinstitucional de P\'{o}s-gradua\c{c}\~{a}o em Ci\^{e}ncia da Computa\c{c}\~{a}o}
+\programen{Graduate in Computer Science}
+
+\majorfieldpt{Ci\^{e}ncia da Computa\c{c}\~{a}o}
+\majorfielden{Computer Science}
+
+\title{SPLICE: A flexible SPL lifecycle management tool}
+\date{February/2014}
+
+\author{Bruno Souza Cabral}
+\adviser{Eduardo Santana de Almeida}
+\coadviser{Tassio Ferreira Vale}
+
+\begin{document}
+
+\frontmatter
+\frontpage
+\presentationpage
+
+\begin{dedicatory}
+I dedicate this dissertation to my family, girlfriend, friends and
+professors who gave me all necessary support to get here.
+\end{dedicatory}
+
+\acknowledgements
+I would like to thank my beautiful family and friends. Especially to my dad, Charles, who always advised me and took care of all boring stuff in my life, so I could have time to concentrate; My mom, Eneida, who is a super mother, always worked insanely long periods and still have time to take care, cook and groom us; My sister, Debóra,  who had to handle my hugs and rants every half hour during my academic life. I truly love them and appreciate all the support they have given me. I would also like to express l my gratitude for my girlfriend, Bruna, for having an endless patience, and offering me a warm shoulder during my entire journey.
+
+I would like to thanks Dr. Eduardo Almeida. He was the first professor to believe in my capacity, never gave up on me and kept me on the academic track during my times of doubt. He is someone who I truly admire and always been an inspirational figure for me. I also want to show all my gratitude to Dr. Cássio Prazeres for being an amazing advisor and for always being there during my graduation.
+
+Finally, I would like to express my appreciation to Tassio Vale, my co-advisor, who pushed me to work, patiently revised my thesis multiple times and pointed me the way during the thesis writing.
+
+
+
+
+\begin{epigraph}[]{Edward V Berard}
+Walking on water and developing software from a specification are easy if both are frozen
+\end{epigraph}
+
+\resumo
+% Escreva seu resumo no arquivo resumo.tex
+\input{resumo}
+
+\abstract
+% Write your abstract in a file called abstract.tex
+\input{abstract}
+
+% Summary (tables of contents)
+\tableofcontents
+
+% List of figures
+\listoffigures
+
+% List of tables
+\listoftables
+
+% List of acronyms
+% Acronyms manual: http://linorg.usp.br/CTAN/macros/latex/contrib/acronym/acronym.pdf
+\listofacronyms
+\input{acronyms}
+
+% List of listings
+%\lstlistoflistings
+
+\mainmatter
+
+\include{chapters/introduction/main}
+\include{chapters/background/main}
+\include{chapters/proposed_solution/main}
+\include{chapters/experiment/main}
+\include{chapters/conclusion/main}
+
+
+\bibliographystyle{natbib}
+\addcontentsline{toc}{chapter}{\bibliographytocname}
+\bibliography{references}
+
+% Appendix
+\clearpage
+\addappheadtotoc
+\appendix
+\appendixpage
+\include{appendix/experiment-instruments}
+
+\end{document}

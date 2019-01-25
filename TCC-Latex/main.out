@@ -1,0 +1,81 @@
+\BOOKMARK [0][-]{chapter*.6}{List of Figures}{}% 1
+\BOOKMARK [0][-]{chapter*.8}{List of Tables}{}% 2
+\BOOKMARK [0][-]{chapter*.9}{List of Acronyms}{}% 3
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 4
+\BOOKMARK [1][-]{section.1.1}{Motivation}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.2}{Problem Statement}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.3}{Overview of the Proposed Solution}{chapter.1}% 7
+\BOOKMARK [2][-]{subsection.1.3.1}{Context}{section.1.3}% 8
+\BOOKMARK [2][-]{subsection.1.3.2}{Outline of the Proposal}{section.1.3}% 9
+\BOOKMARK [1][-]{section.1.4}{Out of Scope}{chapter.1}% 10
+\BOOKMARK [1][-]{section.1.5}{Statement of the Contributions}{chapter.1}% 11
+\BOOKMARK [1][-]{section.1.6}{Dissertation Structure}{chapter.1}% 12
+\BOOKMARK [0][-]{chapter.2}{An Overview on Software Product Lines and CASE tools}{}% 13
+\BOOKMARK [1][-]{section.2.1}{Software Product Lines}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.1.1}{Introduction}{section.2.1}% 15
+\BOOKMARK [2][-]{subsection.2.1.2}{The Benefits}{section.2.1}% 16
+\BOOKMARK [2][-]{subsection.2.1.3}{The SPL Development Process}{section.2.1}% 17
+\BOOKMARK [3][-]{subsubsection*.17}{Core Asset Development}{subsection.2.1.3}% 18
+\BOOKMARK [3][-]{subsubsection*.18}{Product Development}{subsection.2.1.3}% 19
+\BOOKMARK [3][-]{subsubsection*.19}{Management}{subsection.2.1.3}% 20
+\BOOKMARK [1][-]{section.2.2}{CASE Tools}{chapter.2}% 21
+\BOOKMARK [2][-]{subsection.2.2.1}{Benefits of CASE tools}{section.2.2}% 22
+\BOOKMARK [2][-]{subsection.2.2.2}{Application Lifecycle Management}{section.2.2}% 23
+\BOOKMARK [1][-]{section.2.3}{Tools Comparison}{chapter.2}% 24
+\BOOKMARK [1][-]{section.2.4}{Summary}{chapter.2}% 25
+\BOOKMARK [0][-]{chapter.3}{SPLICE - Software Product Line Integrated Construction Environment}{}% 26
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.2}{Tool Requirements}{chapter.3}% 28
+\BOOKMARK [2][-]{subsection.3.2.1}{Functional Requirements}{section.3.2}% 29
+\BOOKMARK [2][-]{subsection.3.2.2}{ Non-Functional Requirements}{section.3.2}% 30
+\BOOKMARK [1][-]{section.3.3}{A lightweight SPL metamodel}{chapter.3}% 31
+\BOOKMARK [1][-]{section.3.4}{SPLICE Architecture and Technologies}{chapter.3}% 32
+\BOOKMARK [2][-]{subsection.3.4.1}{Architecture Overview}{section.3.4}% 33
+\BOOKMARK [2][-]{subsection.3.4.2}{Architecture Components}{section.3.4}% 34
+\BOOKMARK [1][-]{section.3.5}{Implementation}{chapter.3}% 35
+\BOOKMARK [1][-]{section.3.6}{SPLICE in action}{chapter.3}% 36
+\BOOKMARK [2][-]{subsubsection*.29}{Main Screen}{section.3.6}% 37
+\BOOKMARK [3][-]{subsubsection*.30}{Metamodel}{subsubsection*.29}% 38
+\BOOKMARK [3][-]{subsubsection*.31}{Issue Tracking}{subsubsection*.29}% 39
+\BOOKMARK [3][-]{subsubsection*.32}{Traceability}{subsubsection*.29}% 40
+\BOOKMARK [3][-]{subsubsection*.33}{Product Selection}{subsubsection*.29}% 41
+\BOOKMARK [3][-]{subsubsection*.34}{Change history and Timeline}{subsubsection*.29}% 42
+\BOOKMARK [3][-]{subsubsection*.35}{Control Panel}{subsubsection*.29}% 43
+\BOOKMARK [3][-]{subsubsection*.36}{Agile Planning}{subsubsection*.29}% 44
+\BOOKMARK [3][-]{subsubsection*.37}{Version control systems \040\(VCS\) view}{subsubsection*.29}% 45
+\BOOKMARK [3][-]{subsubsection*.38}{Automatic reports generation}{subsubsection*.29}% 46
+\BOOKMARK [1][-]{section.3.7}{Summary}{chapter.3}% 47
+\BOOKMARK [0][-]{chapter.4}{Case study : RescueME SPL}{}% 48
+\BOOKMARK [1][-]{section.4.1}{ Introduction }{chapter.4}% 49
+\BOOKMARK [1][-]{section.4.2}{ Definition }{chapter.4}% 50
+\BOOKMARK [2][-]{subsection.4.2.1}{Context}{section.4.2}% 51
+\BOOKMARK [2][-]{subsection.4.2.2}{Research Questions}{section.4.2}% 52
+\BOOKMARK [1][-]{section.4.3}{Data collection}{chapter.4}% 53
+\BOOKMARK [2][-]{subsection.4.3.1}{Survey Design}{section.4.3}% 54
+\BOOKMARK [2][-]{subsection.4.3.2}{Developing the Survey Instrument}{section.4.3}% 55
+\BOOKMARK [2][-]{subsection.4.3.3}{Evaluating the Survey Instrument}{section.4.3}% 56
+\BOOKMARK [2][-]{subsection.4.3.4}{Expert Opinion}{section.4.3}% 57
+\BOOKMARK [2][-]{subsection.4.3.5}{Analyzing the data}{section.4.3}% 58
+\BOOKMARK [1][-]{section.4.4}{Results}{chapter.4}% 59
+\BOOKMARK [2][-]{subsubsection*.39}{Tool usage difficulties}{section.4.4}% 60
+\BOOKMARK [3][-]{subsubsection*.40}{Tool interference in workflow}{subsubsection*.39}% 61
+\BOOKMARK [3][-]{subsubsection*.41}{Assets creation difficulties}{subsubsection*.39}% 62
+\BOOKMARK [3][-]{subsubsection*.42}{Blame changes}{subsubsection*.39}% 63
+\BOOKMARK [3][-]{subsubsection*.43}{Traceability}{subsubsection*.39}% 64
+\BOOKMARK [3][-]{subsubsection*.44}{Expected traceability links}{subsubsection*.39}% 65
+\BOOKMARK [3][-]{subsubsection*.45}{Traceability links navigation}{subsubsection*.39}% 66
+\BOOKMARK [3][-]{subsubsection*.46}{Reporting}{subsubsection*.39}% 67
+\BOOKMARK [3][-]{subsubsection*.47}{Tool Helpfulness}{subsubsection*.39}% 68
+\BOOKMARK [3][-]{subsubsection*.48}{Positive points}{subsubsection*.39}% 69
+\BOOKMARK [3][-]{subsubsection*.49}{Negative points}{subsubsection*.39}% 70
+\BOOKMARK [3][-]{subsubsection*.50}{Suggestions}{subsubsection*.39}% 71
+\BOOKMARK [1][-]{section.4.5}{Threats to validity}{chapter.4}% 72
+\BOOKMARK [1][-]{section.4.6}{Findings}{chapter.4}% 73
+\BOOKMARK [1][-]{section.4.7}{Summary}{chapter.4}% 74
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 75
+\BOOKMARK [1][-]{section.5.1}{Research Contribution}{chapter.5}% 76
+\BOOKMARK [1][-]{section.5.2}{Future Work}{chapter.5}% 77
+\BOOKMARK [0][-]{section.5.2}{Bibliography}{}% 78
+\BOOKMARK [0][-]{section*.53}{Appendix}{}% 79
+\BOOKMARK [0][-]{appendix.A}{Case Study Instruments}{}% 80
+\BOOKMARK [1][-]{section.A.1}{Form for Expert Survey}{appendix.A}% 81

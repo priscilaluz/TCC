@@ -1,0 +1,207 @@
+<root>
+
+\hline RF01 & Cadastro de Aluno & Permitir que o aluno possa realizar cadastro no sistema & Alto ﻿\\
+    
+\hline RF02 & Crud de Professores & Permitir que o administrador possa realizar cadastro, edição, consulta e exclusão de professores no sistema & Alto ﻿\\
+    
+\hline RF03 & Fazer Login & Permitir que um usuário tenha acesso às informações e funcionalidades do sistema. & Alto ﻿\\
+    
+\hline RF04 & Fazer Logoff & Permitir que o usuário saia do sistema. & Alto ﻿\\
+    
+\hline RF05 & Crud de Pergunta & Permitir que ao professor criar, excluir, editar e consultar perguntas. & Alto ﻿\\
+    
+\hline RF06 & Crud de Curso & Permitir que ao professor criar, excluir, editar e consultar cursos. & Alto ﻿\\
+    
+\hline RF07 & Crud de Etapa & Permitir que ao professor criar, excluir, editar e consultar etapas. & Alto ﻿\\
+    
+\hline RF08 & Lógica do Jogo Quiz & Criar lógica que permita ao professor associar o jogo Quiz em sua etapa através de uma série de perguntas. & Alto ﻿\\
+    
+\hline RF09 & Lógica do Jogo Aposta & Criar lógica que permita ao professor associar o jogo Aposta em sua etapa através de uma série de perguntas. & Médio ﻿\\
+    
+\hline RF10 & Lógica do Jogo Palavra Cruzada & Criar lógica que permita ao professor associar o jogo Palavra Cruzada em sua etapa através de uma série de perguntas. & Médio ﻿\\
+    
+\hline RF11 & Lógica do Jogo Forca & Criar lógica que permita ao professor associar o jogo Forca em sua etapa através de uma série de perguntas. & Médio ﻿\\
+    
+\hline RF12 & Lógica do Tabuleiro & Criar lógica que permita que uma série de etapas seja distribuídas em um tabuleiro. & Alto ﻿\\
+    
+\hline RF13 & Acompanhar andamento dos alunos & Permitir ao professor acompanhar o andamento dos alunos que estão participando do seu curso. & Médio ﻿\\
+    
+\hline RF14 & Consultar Cursos & Permitir ao aluno consultar os cursos que os professores disponibilizaram. & Alto ﻿\\
+    
+\hline RF15 & Associar Aluno ao Curso & Permitir ao aluno entrar em um curso através de um código de acesso. & Alto ﻿\\
+    
+\hline RF16 & Fazer o Curso & Permitir ao aluno entrar e responder as etapas dos cursos que participa. & Alto ﻿\\
+    
+\hline RF17 & Acompanhar o próprio andamento & Permitir ao aluno acompanhar o seu próprio andamento nos cursos que ele participa ou participou. & Médio ﻿\\
+    
+\hline RF18 & Tela Sobre & Permitir ao usuário acessar a tela de descrição do sistema. & Baixo ﻿\\
+    
+\hline RF19 & Editar Perfil & Permitir ao usuário editar os dados do seu perfil & Baixo ﻿\\
+    
+\hline RF20 & Tela Inicial & Permitir ao usuário acessar a tel & a inicial do sistema. & Médio ﻿\\
+    
+\hline RF21 & Crud Categoria & Permitir que ao administrador criar, excluir, editar e consultar categorias de pergunta & Alto ﻿\\
+
+
+
+\subsection{Caso de Uso 01 - Cadastrar Aluno}
+\label{sc:case1}
+\begin{center}
+\begin{longtable}{p{8cm}|p{8cm}}
+    \hline
+    \textbf{Ator Principal} & Usu\'{a}rio \\
+    \hline
+    \textbf{Resumo} & O usuário fará seu cadastro no sistema \\
+    \hline
+    \textbf{Pr\'{e}-condi\c{c}\~{o}es} & 1. Usuário estar conectado à Internet\\
+    \hline
+    \textbf{A\c{c}\~{o}es do Ator} & \textbf{A\c{c}\~{o}es do Sistema} \\
+    
+    \hline
+    1. Seleciona botão "Cadastrar" na tela de inicial & \\
+    \hline
+    2. Preencher os campos requisitados & \\
+    \hline
+    3. Seleciona botão "Cadastrar" para submeter os dados & \\
+    \hline
+    & 4. Envia os dados via web-service \\
+    \hline
+    & 5. Efetua o cadastro \\
+    \hline
+    \hline
+    \textbf{Restri\c{c}\~{o}es/Valida\c{c}\~{o}es} & -------\\
+\hline
+\caption{Caso de Uso 01 - Cadastrar Usu\'{a}rio}
+\end{longtable}
+\end{center}
+
+
+
+
+
+\subsection{Caso de Uso 02 - Cadastrar Professor}
+\label{sc:case2}
+\begin{center}
+\begin{longtable}{p{8cm}|p{8cm}}
+    \hline
+    \textbf{Ator Principal} & Administrador \\
+    \hline
+    \textbf{Resumo} & O administrador fará o cadastro de um professor no sistema \\
+    \hline
+    \textbf{Pr\'{e}-condi\c{c}\~{o}es} & 1. Usuário estar logado no sistema; 2. Usuário ter o perfil de administrador \\
+    \hline
+    \textbf{A\c{c}\~{o}es do Ator} & \textbf{A\c{c}\~{o}es do Sistema} \\
+    
+    \hline
+    1. Seleciona botão "Cadastrar Professor" na tela de inicial & \\
+    \hline
+    2. Preencher os campos requisitados & \\
+    \hline
+    3. Seleciona botão "Cadastrar" para submeter os dados & \\
+    \hline
+    & 4. Envia os dados via web-service \\
+    \hline
+    & 5. Efetua o cadastro \\
+    \hline
+    \hline
+    \textbf{Restri\c{c}\~{o}es/Valida\c{c}\~{o}es} & -------\\
+\hline
+\caption{Caso de Uso 02 - Cadastrar Professor}
+\end{longtable}
+\end{center}
+
+
+
+\subsection{Caso de Uso 03 - Fazer Login}
+\label{sc:case3}
+\begin{center}
+\begin{longtable}{p{8cm}|p{8cm}}
+    \hline
+    \textbf{Ator Principal} & Usuário \\
+    \hline
+    \textbf{Resumo} & O usuário entrará no sistema \\
+    \hline
+    \textbf{Pr\'{e}-condi\c{c}\~{o}es} & 1. Usuário estar conectado à Internet \\
+    \hline
+    \textbf{A\c{c}\~{o}es do Ator} & \textbf{A\c{c}\~{o}es do Sistema} \\
+    
+    \hline
+    1. Seleciona botão "Login" na tela de inicial & \\
+    \hline
+    2. Preencher o login e a senha & \\
+    \hline
+    3. Seleciona botão "Login" para submeter os dados & \\
+    \hline
+    & 4. Envia os dados via web-service \\
+    \hline
+    & 5. Validar se login e senha são válidos \\
+    \hline
+    & 6. Abrir sessão de acesso ao sistemas \\
+    \hline
+    \hline
+    \textbf{Restri\c{c}\~{o}es/Valida\c{c}\~{o}es} & -------\\
+\hline
+\caption{Caso de Uso 03 - Fazer Login}
+\end{longtable}
+\end{center}
+
+
+\subsection{Caso de Uso 04 - Fazer Logoff}
+\label{sc:case4}
+\begin{center}
+\begin{longtable}{p{8cm}|p{8cm}}
+    \hline
+    \textbf{Ator Principal} & Usuário \\
+    \hline
+    \textbf{Resumo} & O usuário sairá do sistema \\
+    \hline
+    \textbf{Pr\'{e}-condi\c{c}\~{o}es} & 1. Usuário estar logado no sistema \\
+    \hline
+    \textbf{A\c{c}\~{o}es do Ator} & \textbf{A\c{c}\~{o}es do Sistema} \\
+    
+    \hline
+    1. Seleciona botão "Sair" no menu & \\
+    \hline
+    & 2. Fechar a sessão do usuário \\
+    \hline
+    \hline
+    \textbf{Restri\c{c}\~{o}es/Valida\c{c}\~{o}es} & -------\\
+\hline
+\caption{Caso de Uso 04 - Fazer Logoff}
+\end{longtable}
+\end{center}
+
+
+\subsection{Caso de Uso 05 - Alterar Cadastro do Usuário}
+\label{sc:case5}
+\begin{center}
+\begin{longtable}{p{8cm}|p{8cm}}
+    \hline
+    \textbf{Ator Principal} & Professor ou Aluno \\
+    \hline
+    \textbf{Resumo} & O usuário modificará algum dado do seu cadastro \\
+    \hline
+    \textbf{Pr\'{e}-condi\c{c}\~{o}es} & 1. Usuário estar logado no sistema \\
+    \hline
+    \textbf{A\c{c}\~{o}es do Ator} & \textbf{A\c{c}\~{o}es do Sistema} \\
+    
+    \hline
+    1. Seleciona botão "Perfil" no menu & \\
+    \hline
+    2. Alterar algum dado do perfil2. Alterar algum dado do perfil \\
+    \hline
+    3. Seleciona botão "Salvar" para submeter os dados \\
+    \hline
+    & 4. Envia os dados via web-service \\
+    \hline
+    & 5. Efetuar edição do dados \\
+    \hline
+    & 6. Mensagem de dado editado com sucesso \\
+    \hline
+    \hline
+    \textbf{Restri\c{c}\~{o}es/Valida\c{c}\~{o}es} & -------\\
+\hline
+\caption{Caso de Uso 05 - Alterar Cadastro do Usuário}
+\end{longtable}
+\end{center}
+</root>
