@@ -1,5 +1,5 @@
 <div class="col-xs-12 col-sm-12 col-md-12" ng-controller="HomeProfessorController">
-    <div class="col-xs-3 ranking-menu-background">
+    <div class="col-xs-12 col-sm-3 col-md-3 ranking-menu-background">
         <p class="text-center menu-professor-fonte" style="background-color: #d8e7e8; font-size: 24px;">Meus Cursos</p>
         <hr class="hr-margin">
         <div class="col-xs-12 barra-rolagem-professor">
@@ -8,36 +8,36 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-6" style="padding: 0px;">
-        <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-6 col-md-6" style="padding: 0px;">
+        <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="col-xs-12 menu-professor menu-professor-fonte pointer" ng-click="pergunta()">
-                <img ng-src="img/menu-professor/pergunta.png" class="img-responsive img-professor-menu"/>
+                <img ng-src="img/menu-professor/pergunta.png" class="img-responsive img-professor-menu2"/>
                 <p class="text-center">Banco de Perguntas</p>
             </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="col-xs-12 menu-professor menu-professor-fonte pointer" ng-click="criarCurso()">
                 <img  ng-src="img/menu-professor/criar-curso.png" class="img-responsive img-professor-menu"/>
                 <p class="text-center">Criar Cursos</p>
             </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="col-xs-12 menu-professor menu-professor-fonte pointer" ng-click="jogos()">
                 <img ng-src="img/menu-professor/simulador-jogos.png" class="img-responsive img-professor-menu"/>
                 <p class="text-center">Simular Jogos</p>
             </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="col-xs-12 menu-professor menu-professor-fonte pointer" ng-click="tabuleiro()">
-                <img ng-src="img/menu-professor/simulador-tabuleiro.png" class="img-responsive img-professor-menu"/>
+                <img ng-src="img/menu-professor/simulador-tabuleiro.png" class="img-responsive img-professor-menu2"/>
                 <p class="text-center">Simular Tabuleiro</p>
             </div>
         </div>
     </div>
-    <div class="col-xs-3 professor-menu-background">
+    <div class="col-xs-12 col-sm-3 col-md-3 professor-menu-background">
         <p class="text-center menu-professor-fonte" style="background-color: #ffe5c5; font-size: 24px;">Professor</p>
         <hr class="hr-margin">
-        <div class="col-xs-12">
+        <div class="col-xs-12 barra-rolagem-professor">
             <div class="col-xs-12" style="padding: 0px;">
                 <span class="dados-professor-home"><b>Nome: </b>{{usuarioLogado.nome}}</span><br><br><br>
                 

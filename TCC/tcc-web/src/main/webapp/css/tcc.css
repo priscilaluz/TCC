@@ -694,12 +694,6 @@ li{
     background: linear-gradient(to bottom right, #7fe4d5, #42ad86); /* Standard syntax (must be last) */
 }
 
-.img-professor-menu{
-    height:90px;
-    display: block;
-    margin: 0 auto;
-}
-
 .professor-menu-background {
     background: #d35e4c; /* For browsers that do not support gradients */    
     background: -webkit-linear-gradient(left top, #fd6c16, #d4b253); /* For Safari 5.1 to 6.0 */
@@ -871,6 +865,16 @@ li{
         width: 700px;
         border-radius: 150px;
     }
+    .img-professor-menu{
+        height:90px;
+        display: block;
+        margin: 0 auto;
+    }
+    .img-professor-menu2{
+        height:60px;
+        display: block;
+        margin: 0 auto;
+    }
 }
 /* md */
 @media (min-width: 992px) {
@@ -880,6 +884,16 @@ li{
         width: 900px;
         border-radius: 150px;
     }
+    .img-professor-menu{
+        height:90px;
+        display: block;
+        margin: 0 auto;
+    }
+    .img-professor-menu2{
+        height:90px;
+        display: block;
+        margin: 0 auto;
+    }
 }
 /* lg */
 @media (min-width: 1200px) {
@@ -888,5 +902,15 @@ li{
         height: 500px;
         width: 1106px;
         border-radius: 150px;
+    }
+    .img-professor-menu{
+        height:90px;
+        display: block;
+        margin: 0 auto;
+    }
+    .img-professor-menu2{
+        height:90px;
+        display: block;
+        margin: 0 auto;
     }
 }
