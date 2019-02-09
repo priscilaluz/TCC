@@ -1,5 +1,5 @@
 <div class="row" data-ng-include="'partials/jogo/contagem.html'"></div>
 <div class="row" data-ng-include="'partials/jogo/aposta/aposta-pergunta.html'" ng-show="!model.resultado && !contagem && !telaInit && !model.perdeuJogo"></div>
-<div class="row" data-ng-include="'partials/jogo/ganhou.html'" ng-show="model.resultado && !model.perdeuJogo"></div>
-<div class="row" data-ng-include="'partials/jogo/aposta/aposta-resultado.html'" ng-show="model.resultado && !model.perdeuJogo"></div>
+<div class="row" data-ng-include="'partials/jogo/ganhou.html'" ng-show="model.resultado && !model.perdeuJogo && !model.mostrarRelatorio"></div>
+<div class="row" data-ng-include="'partials/jogo/aposta/aposta-resultado.html'" ng-show="model.resultado && model.mostrarRelatorio"></div>
 <div class="row" data-ng-include="'partials/jogo/perdeu.html'" ng-show="model.perdeuJogo"></div>

@@ -27,6 +27,10 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
         resultado: false
     };
     
+    $scope.mostrarResultado = function () {
+        $scope.model.mostrarRelatorio = true;
+    };
+    
     var barraDeProgresso = function () {
         var porcentagem = ($scope.model.posicao+1)/$scope.model.perguntas.length*100;
         $scope.barraProgresso = {
@@ -118,6 +122,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
                 } else {
                     $timeout.cancel(timeoutTempoPorPergunta);
                     $scope.model.resultado = true;
+                    tempoImagemFimDeJogo();
                 }
                 $rootScope.appLoaded = true;
             }, function (error) {
@@ -130,6 +135,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             } else {
                 $timeout.cancel(timeoutTempoPorPergunta);
                 $scope.model.resultado = true;
+                tempoImagemFimDeJogo();
             }
         }
     };

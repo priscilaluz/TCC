@@ -30,6 +30,10 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
         resultados: []
     };
     
+    $scope.mostrarResultado = function () {
+        $scope.model.mostrarRelatorio = true;
+    };
+    
     $scope.voltar = function () {
         if (idCursoAluno && idEtapa){
             $location.path("/cursar-etapa/"+idCursoAluno+"/"+idEtapa+"/"+idEtapaAluno+"/"+aberto);
@@ -324,14 +328,15 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
                 tempoImagemFimDeJogo();
             } else {
                 $scope.model.resultado = true;
+                tempoImagemFimDeJogo();
             }
             relatorioEtapa.$save(function () {
                 if ($scope.model.pontuacao < pontuacaoMinima) {
                     $scope.model.perdeuJogo = true;
-                    tempoImagemFimDeJogo();
                 } else {
                     $scope.model.resultado = true;
                 }
+                tempoImagemFimDeJogo();
                 $rootScope.appLoaded = true;
             }, function (error) {
                 $rootScope.appLoaded = true;
@@ -339,10 +344,10 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
         } else {
             if ($scope.model.pontuacao < pontuacaoMinima) {
                 $scope.model.perdeuJogo = true;
-                tempoImagemFimDeJogo();
             } else {
                 $scope.model.resultado = true;
             }
+            tempoImagemFimDeJogo();
         }
     };
     

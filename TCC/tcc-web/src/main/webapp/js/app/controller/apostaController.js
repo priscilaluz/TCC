@@ -28,6 +28,9 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
         qntDica: 1,
         posicao: 0
     };
+    $scope.mostrarResultado = function () {
+        $scope.model.mostrarRelatorio = true;
+    };
     
     $scope.voltar = function () {
         if (idCursoAluno && idEtapa){
@@ -103,6 +106,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
                     tempoImagemFimDeJogo();
                 } else {
                     $scope.model.resultado = true;
+                    tempoImagemFimDeJogo();
                 }
                 $rootScope.appLoaded = true;
             }, function (error) {
@@ -115,6 +119,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
                 tempoImagemFimDeJogo();
             } else {
                 $scope.model.resultado = true;
+                tempoImagemFimDeJogo();
             }
         }
     };
@@ -142,6 +147,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
                 tempoImagemFimDeJogo();
             } else {
                 $scope.model.resultado = true;
+                tempoImagemFimDeJogo();
             }
         }
     };       

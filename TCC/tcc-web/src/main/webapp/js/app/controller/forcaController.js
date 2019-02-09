@@ -28,6 +28,10 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
         };
         var erro = 1;
         $scope.model.forcaImg = "img/jogos/forca/Bonecos/forca" + erro + ".png";
+        
+        $scope.mostrarResultado = function () {
+            $scope.model.mostrarRelatorio = true;
+        };
 
         $scope.voltar = function () {
             if (idCursoAluno && idEtapa){
@@ -99,10 +103,10 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
                 relatorioEtapa.$save(function () {
                     if ($scope.model.pontuacao < pontuacaoMinima) {
                         $scope.model.perdeuJogo = true;
-                        tempoImagemFimDeJogo();
                     } else {
                         $scope.model.resultado = true;
                     }
+                    tempoImagemFimDeJogo();
                     $rootScope.appLoaded = true;
                 }, function (error) {
                     $rootScope.appLoaded = true;
@@ -110,10 +114,10 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
             } else {
                 if ($scope.model.pontuacao < pontuacaoMinima) {
                     $scope.model.perdeuJogo = true;
-                    tempoImagemFimDeJogo();
                 } else {
                     $scope.model.resultado = true;
                 }
+                tempoImagemFimDeJogo();
             }
         };
         

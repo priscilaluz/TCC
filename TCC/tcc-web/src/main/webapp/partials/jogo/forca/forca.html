@@ -1,4 +1,5 @@
 <div class="row" data-ng-include="'partials/jogo/contagem.html'" ng-show="!model.resultado && !model.perdeuJogo"></div>
 <div class="row" data-ng-include="'partials/jogo/forca/forca-pergunta.html'" ng-show="!model.resultado && !model.perdeuJogo"></div>
-<div class="row" data-ng-include="'partials/jogo/forca/forca-resultado.html'" ng-show="model.resultado && !model.perdeuJogo"></div>
+<div class="row" data-ng-include="'partials/jogo/ganhou.html'" ng-show="model.resultado && !model.perdeuJogo && !model.mostrarRelatorio"></div>
+<div class="row" data-ng-include="'partials/jogo/forca/forca-resultado.html'" ng-show="model.resultado && model.mostrarRelatorio"></div>
 <div class="row" data-ng-include="'partials/jogo/perdeu.html'" ng-show="model.perdeuJogo"></div>
