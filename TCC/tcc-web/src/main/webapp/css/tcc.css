@@ -263,25 +263,6 @@ li {
     font-size: 20px;
 }
 
-.menu-fonte{
-    color: #ffffff;
-    font-size: 30px;
-    font-family:Optima;
-    font-weight: bold;
-    background-color: transparent;
-}
-
-.menu-fonte:hover {
-    color: #dff0d8;
-    background-color: transparent;
-}
-
-.logoImagem{
-    width: 230px; 
-    height: 100px; 
-    margin-top: 5px;
-    margin-left: 150px;
-}
 .logoImagem-rodape{
     width: 195px; 
     height: 80px; 
@@ -829,30 +810,43 @@ li{
     background-image: radial-gradient(farthest-corner at center center, #f1610d 0%, #d20000 100%);
 }
 
-@media (min-width: 768px) {
-    .cedula-tabuleiro-tam-img {
-        width: 100px;
-    }
-}
-/* md */
-@media (min-width: 992px) {
-    .cedula-tabuleiro-tam-img {
-        width: 150px;
-    }
-}
-/* lg */
-@media (min-width: 1200px) {
-    .cedula-tabuleiro-tam-img {
-        width: 200px;
-    }
+.menu-fonte:hover {
+    color: #dff0d8;
+    background-color: transparent;
 }
 
-
-@media (min-width: 768px) {
+@media (max-width: 450px) {
+    .contagem-tamanho {
+        height:100px;
+    }
+    .modal-exclusao {
+        width: 370px;
+    }
+    .modal-dialog {
+        width: 370px;
+    }
+    .perdeu-ganhar-jogo-tamanho1 {
+        height:40px;padding-left: 9%;
+    }
+    .perdeu-ganhar-jogo-tamanho2 {
+        height:35px;padding-left: 5%;
+    }
+        
+}
+@media (max-width: 768px) {
+    .perdeu-ganhar-jogo-tamanho1 {
+        height:40px;padding-left: 9%;
+    }
+    .perdeu-ganhar-jogo-tamanho2 {
+        height:35px;padding-left: 5%;
+    }
+    .contagem-tamanho {
+        height:200px;
+    }
     .tabuleiro-fundo-img {
         background-image: url('../img/tabuleiro/background/aventura3.jpeg');
-        height: 300px;
-        width: 700px;
+        height: 200px;
+        width: 315px;
         border-radius: 150px;
     }
     .img-professor-menu{
@@ -875,9 +869,50 @@ li{
         width: 100%;
         height: auto;
     }
+    .cedula-tabuleiro-tam-img {
+        width: 60px;
+    }
+    .logoImagem{
+        width: 110px; 
+        height: 50px; 
+        margin-top: 5px;
+        margin-left: 20px;
+    }
+    .menu-fonte{
+        color: #ffffff;
+        font-size: 25px;
+        font-family:Optima;
+        font-weight: bold;
+        background-color: transparent;
+    }
+    .login-img-cor{
+        width: 200px;
+        height: 200px;
+    }
+    .login-img-posicao{
+        padding-top: 10px;
+        padding-left: 90px;
+    }
+    .confg-botao-login-cadastro{
+        margin-top:10px;
+    }
+    .login-cadastro-posicao{
+        padding-top: 0px;
+        padding-right: 0px;
+    }
 }
 /* md */
-@media (min-width: 992px) {
+@media (min-width: 768px) {
+    
+    .perdeu-ganhar-jogo-tamanho1 {
+        height:90px;padding-left: 9%;
+    }
+    .perdeu-ganhar-jogo-tamanho2 {
+        height:95px;padding-left: 5%;
+    }
+    .contagem-tamanho {
+        height:300px;
+    }
     .tabuleiro-fundo-img {
         background-image: url('../img/tabuleiro/background/aventura3.jpeg');
         height: 400px;
@@ -903,6 +938,45 @@ li{
     .container-explicacao img {
         width: 100%;
         height: auto;
+    }
+    .cedula-tabuleiro-tam-img {
+        width: 150px;
+    }
+    .logoImagem{
+        width: 230px; 
+        height: 100px; 
+        margin-top: 5px;
+        margin-left: 50px;
+    }
+    .menu-fonte{
+        color: #ffffff;
+        font-size: 30px;
+        font-family:Optima;
+        font-weight: bold;
+        background-color: transparent;
+    }
+    .login-img-cor{
+        width: 251px;
+        height: 261px;
+    }
+    .login-img-posicao{
+        padding-top: 56px;
+        padding-left: 150px;
+    }
+    .confg-botao-login-cadastro{
+        margin-top: 25px;
+    }
+    .login-cadastro-posicao{
+        padding-top: 90px;
+        padding-right: 100px;
+    }
+}
+/* md */
+@media (max-width: 991px) {
+    .img-professor-menu2{
+        height:61px;
+        display: block;
+        margin: 0 auto;
     }
 }
 /* lg */
@@ -932,5 +1006,36 @@ li{
     .container-explicacao img {
         width: 100%;
         height: auto;
+    }
+    .cedula-tabuleiro-tam-img {
+        width: 200px;
+    }
+    .logoImagem{
+        width: 230px; 
+        height: 100px; 
+        margin-top: 5px;
+        margin-left: 150px;
+    }
+    .menu-fonte{
+        color: #ffffff;
+        font-size: 30px;
+        font-family:Optima;
+        font-weight: bold;
+        background-color: transparent;
+    }
+    .login-img-cor{
+        width: 403px;
+        height: 361px;
+    }
+    .login-img-posicao{
+        padding-top: 56px;
+        padding-left: 150px;
+    }
+    .confg-botao-login-cadastro{
+        margin-top: 25px;
+    }
+    .login-cadastro-posicao{
+        padding-top: 90px;
+        padding-right: 100px;
     }
 }

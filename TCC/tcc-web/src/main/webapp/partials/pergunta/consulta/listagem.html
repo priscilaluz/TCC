@@ -8,8 +8,8 @@
                             <th width="10"></th>
                             <th width="10"></th>
                             <th>Pergunta</th>
-                            <th width="130">Nível</th>
-                            <th width="100">Tipo</th>
+                            <th width="100" class="hidden-xs">Tipo</th>
+                            <th width="130" class="hidden-xs">Nível</th>
                             <th width="100">Categoria</th>
                         </tr>
                     </thead>
@@ -25,8 +25,8 @@
                                     <i class="glyphicon glyphicon-zoom-in pointer" ng-show="pergunta.usuario.id!=usuarioLogado.id"title="Visualizar"></i></a>
                             </td>
                             <td>{{pergunta.descricao.substring(0, 220)+(pergunta.descricao.length>220?'...':'')}}</td>
-                            <td>{{pergunta.tipo.descricao}}</td>
-                            <td>{{pergunta.nivel.descricao}}</td>
+                            <td class="hidden-xs">{{pergunta.tipo.descricao}}</td>
+                            <td class="hidden-xs">{{pergunta.nivel.descricao}}</td>
                             <td>{{pergunta.categoria.nome}}</td>
                         </tr>
                         <tr ng-show="!perguntas.length" class="text-center"><td colspan="6">Nenhuma pergunta encontrada</td></tr>

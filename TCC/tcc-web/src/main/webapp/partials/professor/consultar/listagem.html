@@ -8,8 +8,8 @@
                             <th width="10"></th>
                             <th width="10"></th>
                             <th>Professor</th>
-                            <th>Login</th>
-                            <th>Email</th>
+                            <th class="hidden-xs">Login</th>
+                            <th class="hidden-xs">Email</th>
                         </tr>
                     </thead>
                     <tbody class="table-font">
@@ -17,8 +17,8 @@
                             <td><a ng-click="excluirProfessor(professor)" style="color: #ff6624;"><i class="glyphicon glyphicon-remove pointer" title="Excluir"></i></a></td>
                             <td><a ng-click="telaNovaEditar(professor.id)" style="color: #ff6624;"><i class="glyphicon glyphicon-pencil pointer" title="Editar"></i></a></td>
                             <td>{{professor.nome}}</td>
-                            <td>{{professor.login}}</td>
-                            <td>{{professor.email}}</td>
+                            <td class="hidden-xs">{{professor.login}}</td>
+                            <td class="hidden-xs">{{professor.email}}</td>
                         </tr>
                         <tr ng-show="!model.professores.length" class="text-center"><td colspan="5">Nenhum item encontrado</td></tr>
                     </tbody>

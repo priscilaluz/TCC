@@ -3,13 +3,13 @@
          data-ng-include="'partials/login/tela-principal.html'">
     </div>
     <div class="col-md-12" ng-show="telaCadastro || telaLogin">
-        <div class="col-md-6" style="padding-top: 56px; padding-left: 150px;">
-            <img src="img/todosIcons.png" alt="logo" style="width: 403px;height: 361px;"/>
+        <div class="col-xs-12 col-sm-6 col-md-6 login-img-posicao">
+            <img src="img/todosIcons.png" alt="logo" class="login-img-cor"/>
         </div>
-        <div class="col-md-6" style="padding-top: 90px; padding-right: 100px;" ng-show="telaLogin"
+        <div class="col-xs-12 col-sm-6 col-md-6 login-cadastro-posicao" ng-show="telaLogin"
              data-ng-include="'partials/login/logar.html'">
         </div>
-        <div class="col-md-6" style="padding-top: 90px; padding-right: 100px;" ng-show="telaCadastro"
+        <div class="col-xs-12 col-sm-6 col-md-6 login-cadastro-posicao" ng-show="telaCadastro"
              data-ng-include="'partials/login/cadastrar.html'">
         </div>
     </div>
