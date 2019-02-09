@@ -1,5 +1,8 @@
 tccApp.controller('AlunoCursandoController', ['$scope', '$rootScope', '$routeParams', '$location', '$modal', 'CursoAluno',
     function ($scope, $rootScope, $routeParams, $location, $modal, CursoAluno) {
+        if (!$rootScope.isAluno) {
+            $location.path("/home");
+        }
         $rootScope.telaHomeAluno = false;
         $scope.model = {
             tabuleiroCurso: null,

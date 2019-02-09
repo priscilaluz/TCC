@@ -1,5 +1,8 @@
 tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', '$modal', 'Pergunta', 'Categoria', 'Enums', '$location', 'growl',
     function ($scope, $rootScope, $modal, Pergunta, Categoria, Enums, $location, growl) {
+        if (!$rootScope.isProfessor) {
+            $location.path("/home");
+        }
         $scope.paginaAtual = null;
         $scope.paginacao = {paginaAtual: null, numDeItens: null, qntPaginaMostrarTela: null, qntPorPagina: null};
         

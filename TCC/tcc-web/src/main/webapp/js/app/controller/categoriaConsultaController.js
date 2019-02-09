@@ -1,5 +1,8 @@
 tccApp.controller('CategoriaConsultaController', ['$scope', '$rootScope', '$modal', '$location', 'Categoria', 'growl',
     function ($scope, $rootScope, $modal, $location, Categoria, growl) {
+        if (!$rootScope.isAdministrador) {
+            $location.path("/home");
+        }
         $rootScope.telaHomeAluno = false;
         $scope.paginaAtual = null;
         $scope.paginacao = {paginaAtual: null, numDeItens: null, qntPaginaMostrarTela: null, qntPorPagina: null};

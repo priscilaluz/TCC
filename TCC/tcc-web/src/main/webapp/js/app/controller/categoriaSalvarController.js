@@ -1,5 +1,8 @@
 tccApp.controller('CategoriaSalvarController', ['$scope', '$rootScope', '$routeParams', '$location', 'Categoria', 'growl',
     function ($scope, $rootScope, $routeParams, $location, Categoria, growl) {
+        if (!$rootScope.isAdministrador) {
+            $location.path("/home");
+        }
         $rootScope.telaHomeAluno = false;
         $scope.model = {
             categoria:  new Categoria()
