@@ -22,11 +22,11 @@
 %% OPTIONS 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\DeclareOption{pt}{%
+\DeclareOption{en}{%
   \let\@language=0%
   \PassOptionsToPackage{brazil}{babel}}
 
-\DeclareOption{en}{%
+\DeclareOption{pt}{%
   \let\@language=1%
   \PassOptionsToPackage{brazil,english}{babel}}
 
@@ -91,19 +91,10 @@
 \RequirePackage[scaled=0.92]{helvet}
 \RequirePackage{courier}
 \RequirePackage{appendix}
-\RequirePackage[printonlyused,withpage]{acronym}
+\RequirePackage{acronym}
 \RequirePackage{fancybox}
-\RequirePackage{fancyhdr}
 \RequirePackage{setspace}
-\RequirePackage[top=3.00cm,left=3.00cm,bottom=2.00cm,right=2.00cm]{geometry}
-\RequirePackage[calcwidth]{titlesec}
-\RequirePackage{psboxit}
-\RequirePackage[avantgarde]{quotchap}
-\RequirePackage[nottoc, notlof, notlot]{tocbibind}
-\RequirePackage{indentfirst}
-\RequirePackage{enumitem}
-\RequirePackage{natbib}
-\RequirePackage{lastpage}
+\RequirePackage{listings}
 
 \if\@scr0
   \RequirePackage{graphicx}
@@ -150,7 +141,6 @@
 
 % Portuguese
 \if\@language0
-  \RequirePackage[portuguese]{babel}
   \gdef\@bachelordissertation{Trabalho de Graduação}
   \gdef\@mastersdissertation{Dissertação de Mestrado}
   \gdef\@phdqualifying{Monografia de Qualificação}
@@ -165,6 +155,8 @@
   \gdef\@femalecoadvisertitle{Co-Orientadora}
   \gdef\@notdefined{NÃO DEFINIDO}
   \gdef\acknowledgementsname{Agradecimentos}
+  \gdef\lstlistlistingname{Lista de Códigos Fonte}
+  \gdef\lstlistingname{Código Fonte}
   \gdef\@axiomname{Axioma}
   \gdef\@conjecturename{Conjectura}
   \gdef\@defname{Definição}
@@ -180,13 +172,9 @@
   \gdef\@textby{Por}
   \gdef\@sectionname{Seção}
   \gdef\@appendixname{Apêndice}
-  \gdef\@tocname{Sumário}
-  \newcommand\bibliographytocname{Referências}
-  \renewcommand{\bibname}{\bibliographytocname}
+  \newcommand\bibliographytocname{Referências Bibliográficas}
   \renewcommand{\appendixtocname}{Apêndice}
   \renewcommand{\appendixpagename}{Apêndice}
-  \gdef\@listoftablesname{Lista de Tabelas}
-  \gdef\@listoffiguresname{Lista de Figuras}
   \gdef\@pagename{página}
   \gdef\@listacronymname{Acrônimos}
   \gdef\@colophontext{%
@@ -198,7 +186,6 @@
   \fi}
 % English
   \else\if\@language1
-  \RequirePackage[english]{babel}
   \gdef\@bachelordissertation{B.Sc. Dissertation}
   \gdef\@mastersdissertation{M.Sc. Dissertation}
   \gdef\@phdqualifying{Ph.D. Thesis Qualification}
@@ -227,13 +214,9 @@
   \gdef\@equationame{equation}
   \gdef\@chaptername{Chapter}
   \gdef\@sectionname{Section}
-  \gdef\@tocname{Contents}
-  \gdef\@listoftablesname{List of Tables}
-  \gdef\@listoffiguresname{List of Figures}
   \renewcommand{\appendixtocname}{Appendix}
   \renewcommand{\appendixpagename}{Appendix}
-  \newcommand\bibliographytocname{References}
-  \renewcommand{\bibname}{\bibliographytocname}
+  \newcommand\bibliographytocname{Bibliography}
   \gdef\@pagename{page}
   \gdef\@listacronymname{Acronyms}
   \gdef\@colophontext{%
@@ -254,7 +237,7 @@
 
 \def\universitypt#1{%
   \gdef\@universitypt{#1}}
-\def\@universitypt{Universidade Federal de Pernambuco}
+\def\@universitypt{Universidade Federal da Bahia}
 
 \def\universityen#1{%
   \gdef\@universityen{#1}}
@@ -383,62 +366,9 @@ requirements for the degree of \@degree\ in \@majorfielden.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Chapter formats
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\formatFrontmatterChapter}{
-   \titlespacing*{\chapter}{0pt}{-34pt}{40pt}
-   \titleformat{\chapter}[display]{
-     \centering\normalfont
-   }{
-     \chaptertitlename~\thechapter
-   }{20pt}{\normalsize}
-}
-
-\renewcommand{\frontmatter}{\formatFrontmatterChapter}
-\renewcommand{\backmatter}{\frontmatter}
-
-\newcommand{\MainChapterFormat}{
-   \renewcommand{\chapnumfont}{%     % define font for chapter number
-     \usefont{T1}{pnc}{b}{n}%      % choose New Chancery, bold, normal shape
-    \fontsize{18}{100}%          % font size 100pt, baselineskip 100pt
-     \selectfont%                  % activate font
-   }
-   
-   \colorlet{chapnumcol}{gray!85}  % color for chapter number
-
-   \titleformat{\chapter}[display]
-     {\bfseries}
-     {\chapnumfont\textcolor{chapnumcol}{\thechapter}}
-     {-24pt}
-     {\normalsize}
-}
-
-\newcommand{\formatMainmatterChapter}{
-%    \titlespacing*{\chapter}{0pt}{-65pt}{40pt}
-   \MainChapterFormat
-}
-
-\newcommand{\formatAppendixmatterChapter}{
-%    \titlespacing*{\chapter}{0pt}{-63pt}{40pt}
-   \MainChapterFormat
-}
-
-\renewcommand{\mainmatter}{
-  \formatMainmatterChapter
-  \pagestyle{fancy}
-  \acresetall % Reset all acronyms
-}
-
-\newcommand{\appendixmatter}{
-  \formatAppendixmatterChapter
-  \pagestyle{fancy}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PAGE LAYOUT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Line spacing
 \if\@linespacing0
   \singlespacing
 \else\if\@linespacing1
@@ -446,46 +376,15 @@ requirements for the degree of \@degree\ in \@majorfielden.
 \else\if\@linespacing2
   \doublespacing
 \fi\fi\fi
+  
+\setlength{\topmargin}{0mm}
+\setlength{\textheight}{\paperheight-\headheight-\headsep-\footskip-2in}
+\setlength{\oddsidemargin}{0mm}
+\setlength{\evensidemargin}{0mm}
+\setlength{\marginparwidth}{0mm}
+\setlength{\marginparsep}{0mm}
+\setlength{\textwidth}{\paperwidth-2.45in}
 
-%% Paragraphs
-\setlength\parindent{1.30cm}
-
-%% Lists, enumerations, etc.
-\setlist[itemize]{leftmargin=\parindent+\labelwidth-\labelsep, label={\tiny$\blacksquare$}}
-\setlist[enumerate]{leftmargin=\parindent+\labelwidth-\labelsep}
-
-%% Appendix
-
-\newcommand{\theappendix}{%
-  \appendixmatter
-  \if@openright\cleardoublepage\else\clearpage\fi
-  \addappheadtotoc
-  \appendix
-  \begingroup
-    \let\ps@plain\ps@empty
-    \appendixpage
-  \endgroup}
-
-%% References
-
-\newenvironment{references}
-{
-	\backmatter
-	\bibliographystyle{abnt}
-	\setlength{\bibhang}{0pt}
-	\singlespacing % Change to singlespacing for the references
-	\begingroup
-	\raggedright
-	\renewcommand{\bibname}{\bibliographytocname}
-}
-{
-	\endgroup
-	\onehalfspacing % Put onehalfspacing back
-}
-
-%% Captions (Tables, Figures, etc.)
-
-% \captionsetup{justification=centering}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%         STANDARD STYLE           %%%%%%%%%%%%%%%%%%%
@@ -510,31 +409,35 @@ requirements for the degree of \@degree\ in \@majorfielden.
   \begin{center}
   \includegraphics[scale=0.65]{cinlogo} \\
   \vfill
-  \begin{center}
-    {\normalsize\bfseries{\MakeUppercase{\@title}}}
-    \vskip1\baselineskip
-    \if\@language0
-        {\normalsize \bfseries{Por}}
-    \else
-        {\normalsize \bfseries{By}}
-    \fi
-    \vskip1\baselineskip
-    \normalsize \textit{\bfseries{\MakeUppercase{\@author}}}
-    \vskip1\baselineskip
-    {{\normalsize \bfseries{\@texttype}}}\\
-  \end{center}
-  \vspace{0.2cm}
+  %\begin{minipage}{110mm}
+    \begin{center}
+      {\Large {``\@title''}}\\
+      \vskip\baselineskip
+      {\large \@textby}
+      \vskip\baselineskip
+      {\LARGE \textbf{\@author}}
+      \vskip\baselineskip
+      {{\large \@texttype}}\\
+    \end{center}
+  %\end{minipage}\\
+  \vspace{1.4cm}
   \includegraphics[width=1cm]{ufpelogo} \\
+  %{\sf\large \@university
+  %\if\@showinstitute1\\
+  %\@institute\fi
+  %\if\@showdepartment1\\
+  %\@department\fi
+  %} \\
   \if\@language0
     {\fontfamily{times}\selectfont \tiny \@universitypt\\}
   \else
     {\fontfamily{times}\selectfont \tiny \@universityen\\}
   \fi
-  {\fontfamily{times}\selectfont \tiny posgraduacao@cin.ufpe.br\\}
-  {\fontfamily{times}\selectfont \tiny \url{www.cin.ufpe.br/~posgraduacao}\\}
+  {\fontfamily{times}\selectfont \tiny ceapgmat@ufba.br\\}
+  {\fontfamily{times}\selectfont \tiny \url{wiki.dcc.ufba.br/PMCC/}\\}
   \vskip\baselineskip
   \vskip\baselineskip
-  \@address/\@date
+  \@address , \@date
   \end{center}
 }
 
@@ -546,133 +449,73 @@ requirements for the degree of \@degree\ in \@majorfielden.
 \def\presentationpage{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \thispagestyle{empty}
+  
+	\begin{figure}[ht]
+	\begin{minipage}[b]{2.2cm}
+	  \includegraphics[width=2.2cm]{ufpelogo}
+	\end{minipage}
+	\hspace{0.2cm}
+	\begin{minipage}[b]{16cm}
+	  {
+		  \if\@language0
+    		  \sf\Large
+    		  \@universitypt
+    		  \vskip 0.1cm
+    		  \if\@showinstitute1
+              \\
+    		    \@institutept
+    		    \vskip 0.1cm
+    		  \fi
+    		  \if\@showdepartment1
+    		    \@departmentpt
+    		    \vskip 0.1cm
+    		  \fi
+    		  \@programpt
+    	  \else
+    	      \sf\Large
+              \@universityen
+              \vskip 0.1cm
+              \if\@showinstitute1
+              \\
+                \@instituteen
+                \vskip 0.1cm
+              \fi
+              \if\@showdepartment1
+                \@departmenten
+                \vskip 0.1cm
+              \fi
+              \@programen
+    	  \fi
+	  }
+	\end{minipage}
+	\end{figure}
   \vskip 25mm
   \begin{center}
-  {\Large \@author}
-  \vfill
-  \begin{center}
-	{\large\bfseries{\MakeUppercase{\@title}}}\\
-  \end{center}
-  \vskip 38mm
+  \large \@author
+  \vskip\baselineskip
+  \vskip\baselineskip
+  {\Large\bfseries{``\@title''}}\\
+  \vskip 28mm
   \begin{flushright}
     \begin{minipage}{100mm}
     \quotefonti %
     \@presentationtext
     \vskip2\baselineskip
-    \end{minipage}
-  \end{flushright}
-  \flushleft{
+    \flushright{
+    	%\begin{center}
+    	%\begin{tabular}{rl}
     	{\quotefont \@advisertitle:} \@adviser\\
     	\if\@showcoadviser1{\quotefont\@coadvisertitle:} \@coadviser\\\fi
-  }
+    	%\end{tabular}
+    	%\end{center}
+    }
+    \end{minipage}
+  \end{flushright}
   \vfill
- \begin{center}
-  		\@address
-  		\\
-  		\@date
-  \end{center}
-  \end{center}
-  \setcounter{page}{1}
-}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Ficha catalografica
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Ficha catalografica (Dados internacionais de
-% catalogação-na-publicacao)
-\newenvironment{fichacatalografica}{%
-    \clearpage
-    \thispagestyle{empty}
-    \singlespacing
-    \footnotesize
-}{%   
-    \onehalfspacing
-    \normalsize
-}%
-
-\newcommand{\FakeFichaCatalografica}{
-	\vspace*{\fill}						% Posição verticaL
-	\hrule							% Linha horizontal
-	\begin{center}					% Minipage Centralizado
-	\begin{minipage}[c]{12.5cm}		% Largura
-	
-	\@author
-	
-	\hspace{0.5cm} \@title  / \@author. --
-	\@address, \@date-
-	
-	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
-	
-	\hspace{0.5cm} \@advisertitle~\@adviser\\
-	
-	\hspace{0.5cm}
-	\parbox[t]{\textwidth}{\@texttype~--~\@universitypt,
-	\@date.}\\
-	
-	\hspace{0.5cm}
-		1. Palavra-chave1.
-		2. Palavra-chave2.
-		I. Orientador.
-		II. Universidade xxx.
-		III. Faculdade de xxx.
-		IV. Título\\ 			
-	
-	\hspace{8.75cm} CDU 02:141:005.7\\
-	
-	\end{minipage}
-	\end{center}
-	\hrule
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Banca
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\def\banca{%
-  \if@openright\cleardoublepage\else\clearpage\fi
-  \thispagestyle{empty}
-  \noindent
-  Tese de doutorado apresentada por \textbf{\@author} ao programa de Pós-Graduação em
-  Ciência da Computação do Centro de Informática da Universidade Federal de
-  Pernambuco, sob o título \textbf{\@title}, orientada pelo \textbf{Prof.
-  \@adviser} e aprovada pela banca examinadora formada pelos professores:
-  
-  \vspace{5\baselineskip}
-  
-  \begin{center}
-  
-  -----------------------------------------------------------------------\\
-  Prof. André Luis de Medeiros Santos\\
-  Centro de Informática/UFPE
-  
-  \vspace{\baselineskip}
-  -----------------------------------------------------------------------\\
-  Prof. Alexandre Marcos Lins de Vasconselos\\
-  Centro de Informática/UFPE
-  
-  \vspace{\baselineskip}
-  -----------------------------------------------------------------------\\
-  Prof. Christina von Flach Garcia Chavez\\
-  Departamento de Ciência da Computação/UFBA
-  
-  \vspace{\baselineskip}
-  -----------------------------------------------------------------------\\
-  Prof. Leonardo Gresta Paulino Murta\\
-  Instituto de Computação/UFF
-  
-  \vspace{\baselineskip}
-  -----------------------------------------------------------------------\\
-  Prof. Jones Oliveira de Albuquerque\\
-  Departamento de Estatística e Informática/UFRPE
-  
-  \vfill
-  \@address
-  \\
-  \@date
-  
+  \@address , \@date
   \end{center}
 }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Dedicatory
@@ -699,9 +542,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\acknowledgements{%
-  \pagestyle{empty}
-  \chapter*{\acknowledgementsname}
-  \thispagestyle{empty}}
+  \chapter*{\acknowledgementsname}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -710,10 +551,8 @@ requirements for the degree of \@degree\ in \@majorfielden.
 
 \def\resumo{%
   %\onehalfspacing
-  \pagestyle{empty}
   \gdef\@keywordsname{\keywordsnamePT}
-  \chapter*{\resumoname}
-  \thispagestyle{empty}}
+  \chapter*{\resumoname}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -723,9 +562,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
 \def\abstract{%
   %\onehalfspacing
   \gdef\@keywordsname{\keywordsnameEN}
-  \pagestyle{empty}
-  \chapter*{\abstrname}
-  \thispagestyle{empty}}
+  \chapter*{\abstrname}}
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Keywords
@@ -741,24 +578,10 @@ requirements for the degree of \@degree\ in \@majorfielden.
 %% Quotations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newenvironment{citationblock}%
-  {%
-  \begin{spacing}{1.}
-   \small
-   \begin{list}{}{%
-       \setlength{\listparindent}{0cm}%
-       \setlength{\itemindent}{\listparindent}%
-       \setlength{\rightmargin}{0cm}%
-       \setlength{\leftmargin}{4cm}%
-       \setlength{\parsep}{0pt}}%
-    \item\relax}%
-  {\end{list}\end{spacing}}
-
 \def\epigraph{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \thispagestyle{empty}
-  ~\\
-  \vfill
+  ~\\\vfill
   \begin{quotation}}
 \def\endepigraph{\end{quotation}}
 
@@ -791,92 +614,107 @@ requirements for the degree of \@degree\ in \@majorfielden.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Table of contents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setcounter{tocdepth}{4}
 
-\renewcommand\tableofcontents{%
-
-   \pagestyle{empty}
-
-   \chapter*{\@tocname}
-
-   \thispagestyle{empty}
-
-   \@starttoc{toc}
-
-   \thispagestyle{empty}}
+ \renewcommand\tableofcontents{%
+   \chapter*{\contentsname}
+   \@starttoc{toc}}
  
+\setcounter{tocdepth}{3}
 
 \renewcommand\listoffigures{%
-   \pagestyle{empty}
-   \chapter*{\@listoffiguresname}
-   \thispagestyle{empty}
+   \chapter*{\listfigurename}
+   \addcontentsline{toc}{chapter}{\listfigurename}
    \@starttoc{lof}}
 
 \renewcommand\listoftables{%
-   \pagestyle{empty}
-   \chapter*{\@listoftablesname}
-   \thispagestyle{empty}
+   \chapter*{\listtablename}
+   \addcontentsline{toc}{chapter}{\listtablename}
    \@starttoc{lot}}
 
 \newcommand{\listofacronyms}{%
-   \pagestyle{empty}
    \if\@language1
       \chapter*{\acronymname}
-      \thispagestyle{empty}
+      \addcontentsline{toc}{chapter}{\acronymname}
    \else\if\@language0
       \chapter*{\acronimoname}
-      \thispagestyle{empty}
+      \addcontentsline{toc}{chapter}{\acronimoname}
    \fi\fi}
+
+\renewcommand\lstlistoflistings{%
+   \chapter*{\lstlistlistingname}
+   \addcontentsline{toc}{chapter}{\lstlistlistingname}
+   \@starttoc{lol}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Some codes coming from phdthesis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% change the equation number appearance
+%% load up the AMS math package
+ \RequirePackage{amsmath}
+% 
+% %% load up the fancy box making package
+ \RequirePackage{fancybox}
 % 
 % %% make the equation numbers have little ovals around them
  \def\tagform@#1{\maketag@@@{\cornersize{0.8}\ovalbox{\ignorespaces\sffamily{#1}\unskip\@@italiccorr}}}
 % 
 % %% Load up PS insertion package
+ \RequirePackage{psboxit}
  \PScommands
- 
+% 
+% %% Load up fancy headers and footers package
+ \RequirePackage{fancyhdr}
+% 
 % %% now reset the headers and footers
  \fancyhead{}
  \fancyfoot{}
- 
-% %% put the page numbers on the top in a nice box
+ \fancyhead[RO]{\sffamily \rightmark}
+ \fancyhead[LE]{\sffamily \leftmark}
+% 
+% %% put the page numbers on the bottom in a nice box
 % %% even side pages
- \fancyhead[LE]{%
- 	\rule{0cm}{4mm}\color{black}{\thepage}\hfill\leftmark
+ \fancyfoot[LE]{%
+ 	\rule{0cm}{4mm}\color{black}{ \thepage}
  }
- 
 % 
 % %% odd side pages
- \fancyhead[RO]{
- 	\rule{0cm}{4mm}\color{black}{\rightmark}\hfill\thepage
- }
-
-% Header style of the chapter page
-\fancypagestyle{plain}{
-  \fancyhead{}
-  \fancyfoot{}
-  \fancyhead{\hfill\thepage}
-  \renewcommand{\headrulewidth}{0pt}
+ \fancyfoot[RO]{
+ 	\hspace{\textwidth}\rule{0cm}{4mm}\color{black}{ \thepage}
  }
 % 
+% %% make the bottom line above the page number box
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footruleskip}{0mm}
+% 
 % %% bring the style into effect
-
  \pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{% 
-	\markboth{\MakeUppercase{% 
-			\ #1}}{}}
+% 
+% %% now redefine the plain style pages (chapter pages, contents pages)
+% %% to have the same page number stuff on the bottom
+\fancypagestyle{plain}{
+ \fancyhf{}
+ \fancyfoot[RO]{\hspace{\textwidth}\rule{0cm}{4mm}\color{black}{\thepage}}
+ \renewcommand{\headrulewidth}{0pt}
+ \renewcommand{\footrulewidth}{0.5pt}
+}
+% 
+% 
+% %% now change the chapter style
+% %% load up the quotchap package
+\RequirePackage[avantgarde]{quotchap}
 % 
 % %% make the quotation appear next to the chapter number
 \renewcommand\chapterheadstartvskip{\vspace*{-5\baselineskip}}
+% 
+% %% now change the section heading to have a line beneath it
+% %% load up the fancy title-style package
+\RequirePackage[calcwidth]{titlesec}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sectioning
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\setcounter{secnumdepth}{4}
+% \setcounter{secnumdepth}{4}
 % 
 % \def\part{%
 % 	\if@openright\cleardoublepage\else\clearpage\fi
@@ -908,6 +746,29 @@ requirements for the degree of \@degree\ in \@majorfielden.
 %      \null\vfil
 %      {\huge\bfseries #1\par}}
 %      \vfil}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\global\renewenvironment{thebibliography}[1]
+     {\chapter*{\bibname}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Tables and figures

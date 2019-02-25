@@ -1,10 +1,27 @@
-\select@language {english}
+\babel@toc {brazil}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Functionalities each tool supports}}{24}{table.2.1}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Project statistics}}{42}{table.3.1}
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Experts Selected}}{59}{table.4.1}
-\addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{Requisitos funcionais do sistema}}{13}{table.3.1}
+\contentsline {table}{\numberline {3.2}{Requisitos funcionais do sistema}}{14}{table.3.2}
+\contentsline {table}{\numberline {3.3}{Caso de Uso 01 - Cadastrar Usu\'{a}rio}}{17}{table.3.3}
+\contentsline {table}{\numberline {3.4}{Caso de Uso 02 - Cadastrar Professor}}{17}{table.3.4}
+\contentsline {table}{\numberline {3.5}{Caso de Uso 03 - Fazer Login}}{18}{table.3.5}
+\contentsline {table}{\numberline {3.6}{Caso de Uso 04 - Fazer Logoff}}{18}{table.3.6}
+\contentsline {table}{\numberline {3.7}{Caso de Uso 05 - Alterar Cadastro do Usu\IeC {\'a}rio}}{19}{table.3.7}
+\contentsline {table}{\numberline {3.8}{Caso de Uso 06 - Cadastrar Pergunta}}{20}{table.3.8}
+\contentsline {table}{\numberline {3.9}{Caso de Uso 07 - Alterar Pergunta}}{20}{table.3.9}
+\contentsline {table}{\numberline {3.10}{Caso de Uso 08 - Excluir Pergunta}}{21}{table.3.10}
+\contentsline {table}{\numberline {3.11}{Caso de Uso 09 - Consultar Pergunta}}{22}{table.3.11}
+\contentsline {table}{\numberline {3.12}{Caso de Uso 10 - Cadastrar Curso}}{23}{table.3.12}
+\contentsline {table}{\numberline {3.13}{Caso de Uso 11 - Alterar Curso}}{23}{table.3.13}
+\contentsline {table}{\numberline {3.14}{Caso de Uso 12 - Excluir Curso}}{24}{table.3.14}
+\contentsline {table}{\numberline {3.15}{Caso de Uso 13 - Consultar Curso}}{24}{table.3.15}
+\contentsline {table}{\numberline {3.16}{Caso de Uso 14 - Acompanhar andamento dos alunos}}{25}{table.3.16}
+\contentsline {table}{\numberline {3.17}{Caso de Uso 15 - Entrar em Curso}}{26}{table.3.17}
+\contentsline {table}{\numberline {3.18}{Caso de Uso 16 - Fazer Curso}}{27}{table.3.18}
+\contentsline {table}{\numberline {3.19}{Caso de Uso 17 - Acompanhar pr\IeC {\'o}prio andamento}}{27}{table.3.19}
+\contentsline {table}{\numberline {3.20}{Caso de Uso 18 - Cadastrar Categorias de Perguntas}}{28}{table.3.20}
+\contentsline {table}{\numberline {3.21}{Caso de Uso 19 - Alterar Categorias de Perguntas}}{29}{table.3.21}
+\contentsline {table}{\numberline {3.22}{Caso de Uso 20 - Excluir Categorias de Perguntas}}{29}{table.3.22}
+\contentsline {table}{\numberline {3.23}{Caso de Uso 21 - Consultar Categorias de Perguntas}}{30}{table.3.23}

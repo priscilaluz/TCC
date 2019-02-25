@@ -65,36 +65,37 @@
 %%                   'See Chapter 1', in case of English language.
 
 \documentclass[en,twoside,onehalfspacing,bsc]{risethesis}
-
+\usepackage[utf8]{inputenc}  
 \usepackage{natbib}
 \usepackage{babel}
 \usepackage{supertabular}
 \usepackage{microtype}
+\usepackage{longtable}
 \usepackage{lscape}
+\usepackage{float}
 
 %% Change the following pdf author attribute name to your name.
-\usepackage[linkcolor=blue,citecolor=blue,urlcolor=blue,colorlinks,pdfpagelabels,pdftitle={Bruno Cabral's Bachelor Thesis},pdfauthor={Bruno Cabral}]{hyperref}
+\usepackage[linkcolor=blue,citecolor=blue,urlcolor=blue,colorlinks,pdfpagelabels,pdftitle={Priscila Farias Luz},pdfauthor={Priscila Luz}]{hyperref}
 
 \address{SALVADOR}
 
 \universitypt{Universidade Federal da Bahia}
 \universityen{Federal University of Bahia}
 
-\departmentpt{Depertamento de Ci\^{e}ncia da Computa\c{c}\~{a}o}
+\departmentpt{Depertamento de Ciência da Computação}
 \departmenten{Computer Science Department}
 
-\programpt{Programa Multiinstitucional de P\'{o}s-gradua\c{c}\~{a}o em Ci\^{e}ncia da Computa\c{c}\~{a}o}
+\programpt{Graduação em Sistemas de Informação}
 \programen{Graduate in Computer Science}
 
-\majorfieldpt{Ci\^{e}ncia da Computa\c{c}\~{a}o}
+\majorfieldpt{Sistemas de Informação}
 \majorfielden{Computer Science}
 
-\title{SPLICE: A flexible SPL lifecycle management tool}
-\date{February/2014}
+\title{GameInfor: Uma Plataforma de Ensino que Utiliza Gamificaç\~{a}o}
+\date{Junho/2019}
 
-\author{Bruno Souza Cabral}
-\adviser{Eduardo Santana de Almeida}
-\coadviser{Tassio Ferreira Vale}
+\author{Priscila Farias Luz}
+\adviser{Pauleany Sim\~{o}es de Morais}
 
 \begin{document}
 
@@ -103,45 +104,37 @@
 \presentationpage
 
 \begin{dedicatory}
-I dedicate this dissertation to my family, girlfriend, friends and
-professors who gave me all necessary support to get here.
+Dedico este trabalho aos meus pais por terem me apoiado e dado forças em todos os momentos da minha vida. 
 \end{dedicatory}
 
 \acknowledgements
-I would like to thank my beautiful family and friends. Especially to my dad, Charles, who always advised me and took care of all boring stuff in my life, so I could have time to concentrate; My mom, Eneida, who is a super mother, always worked insanely long periods and still have time to take care, cook and groom us; My sister, Debóra,  who had to handle my hugs and rants every half hour during my academic life. I truly love them and appreciate all the support they have given me. I would also like to express l my gratitude for my girlfriend, Bruna, for having an endless patience, and offering me a warm shoulder during my entire journey.
+Agradeço 
 
-I would like to thanks Dr. Eduardo Almeida. He was the first professor to believe in my capacity, never gave up on me and kept me on the academic track during my times of doubt. He is someone who I truly admire and always been an inspirational figure for me. I also want to show all my gratitude to Dr. Cássio Prazeres for being an amazing advisor and for always being there during my graduation.
-
-Finally, I would like to express my appreciation to Tassio Vale, my co-advisor, who pushed me to work, patiently revised my thesis multiple times and pointed me the way during the thesis writing.
-
-
-
-
-\begin{epigraph}[]{Edward V Berard}
-Walking on water and developing software from a specification are easy if both are frozen
+\begin{epigraph}[]{LEVY, 2000}
+A inteligência coletiva é uma inteligência distribuída por toda a parte, continuamente valorizada, coordenada em tempo real e que resulta na mobilização efetiva das competências. A base e o objetivo da inteligência coletiva é o enriquecimento mútuo das pessoas.
 \end{epigraph}
 
 \resumo
 % Escreva seu resumo no arquivo resumo.tex
-\input{resumo}
+% \%input{resumo}
 
 \abstract
 % Write your abstract in a file called abstract.tex
-\input{abstract}
+% \input{abstract}
 
 % Summary (tables of contents)
 \tableofcontents
 
 % List of figures
-\listoffigures
+% \listoffigures
 
 % List of tables
 \listoftables
 
 % List of acronyms
 % Acronyms manual: http://linorg.usp.br/CTAN/macros/latex/contrib/acronym/acronym.pdf
-\listofacronyms
-\input{acronyms}
+% \listofacronyms
+% \input{acronyms}
 
 % List of listings
 %\lstlistoflistings
@@ -149,21 +142,18 @@ Walking on water and developing software from a specification are easy if both a
 \mainmatter
 
 \include{chapters/introduction/main}
-\include{chapters/background/main}
-\include{chapters/proposed_solution/main}
-\include{chapters/experiment/main}
-\include{chapters/conclusion/main}
+% \include{chapters/referencial_teorico/main}
+\include{chapters/trabalhos_relacionados/main}
+\include{chapters/proposta/main}
+% \include{chapters/avaliacao/main}
+% \include{chapters/conclusao/main}
+
 
 
 \bibliographystyle{natbib}
 \addcontentsline{toc}{chapter}{\bibliographytocname}
 \bibliography{references}
 
-% Appendix
-\clearpage
-\addappheadtotoc
-\appendix
-\appendixpage
-\include{appendix/experiment-instruments}
+
 
 \end{document}

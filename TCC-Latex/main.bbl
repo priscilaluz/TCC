@@ -1,365 +1,47 @@
 \begin{thebibliography}{}
 
-\bibitem[Almeida {\em et~al.}(2004)Almeida, Alvaro, Lucr\'{e}dio, Garcia, and
-  Meira]{Almeida2004}
-Almeida, E.~S., Alvaro, A., Lucr\'{e}dio, D., Garcia, V.~C., and Meira, S.
-  R.~L. (2004).
-\newblock Rise project: Towards a robust framework for software reuse.
-\newblock In {\em IEEE International Conference on Information Reuse and
-  Integration (IRI)\/}, pages 48--53, Las Vegas, NV, USA.
+\bibitem[Mathias(2019)Mathias]{desafioeducadores}
+Mathias, Augusto and Palma Sanchez, Renata and Mendonça, Miriam and Andrade, Morato (2019).
+\newblock {\em Incentivar H{\'a}bitos de Sono Adequados: Um Desafio para os Educadores\/}.
+\newblock Pinho SZ, Saglietti JRC, eds. Núcleos de Ensino da Unesp.
 
-\bibitem[Alvaro {\em et~al.}(2006)Alvaro, Almeida, and Meira]{Alvaro2006}
-Alvaro, A., Almeida, E.~S., and Meira, S.~L. (2006).
-\newblock A software component quality model: A preliminary evaluation.
-\newblock In {\em Proceedings of the 32nd EUROMICRO Conference on Software
-  Engineering and Advanced Applications (EUROMICRO'06)\/}, pages 28--37,
-  Washington, DC, USA. IEEE Computer Society.
+\bibitem[Marcelo Luis Fardo(2013)Marcelo Luis Fardo]{gamificacaoaplicada}
+Marcelo Luis Fardo (2013).
+\newblock {\em A Gamifica{\c c}{\~a}o Aplicada Em Ambientes de Aprendizagem\/}.
+\newblock RENOTE.
 
-\bibitem[Anquetil {\em et~al.}(2010)Anquetil, Kulesza, Mitschke, Moreira,
-  Royer, Rummler, and Sousa]{Anquetil2010}
-Anquetil, N., Kulesza, U., Mitschke, R., Moreira, A., Royer, J.-C., Rummler,
-  A., and Sousa, A. (2010).
-\newblock A model-driven traceability framework for software product lines.
-\newblock {\em Softw. Syst. Model.}, {\bf 9}(4), 427--451.
+\bibitem[Firas Layth Khaleel(1994)Firas Layth Khaleel]{ieee2015}
+Firas Layth Khaleel (2016).
+\newblock User-Enjoyable Learning Environment Based on Gamification Elements
+\newblock {\em IEEE Network\/}, {\bf 8}(5), 22--32.
 
-\bibitem[Ara\'{u}jo {\em et~al.}(2013)Ara\'{u}jo, Goul\~{a}o, Moreira,
-  Sim\~{a}o, Amaral, and Baniassad]{Araujo2013}
-Ara\'{u}jo, J.~a., Goul\~{a}o, M., Moreira, A., Sim\~{a}o, I., Amaral, V., and
-  Baniassad, E. (2013).
-\newblock Advanced modularity for building spl feature models: A model-driven
-  approach.
-\newblock In {\em Proceedings of the 28th Annual ACM Symposium on Applied
-  Computing\/}, SAC '13, pages 1246--1253, New York, NY, USA. ACM.
+\bibitem[P. E. Anderson and C. Turner and J. Dierksheide and R. McCauley(2014)P. E. Anderson and C. Turner and J. Dierksheide and R. McCauley]{extensiblegamification}
+P. E. Anderson and C. Turner and J. Dierksheide and R. McCauley (2014).
+\newblock An extensible online environment for teaching data science concepts through gamification
+\newblock {\em IEEE Network\/}, {\bf 8}(5), 1--8.
 
-\bibitem[Bayer and Widen(2002)Bayer and Widen]{Bayer2001}
-Bayer, J. and Widen, T. (2002).
-\newblock Introducing traceability to product lines.
-\newblock In {\em Revised Papers from the 4th International Workshop on
-  Software Product-Family Engineering\/}, PFE '01, pages 409--416, London, UK,
-  UK. Springer-Verlag.
+\bibitem[Gomes, V. y Soares(2011)Gomes, V. y Soares]{GomesZuin}
+Gomes, V. y Soares (2011).
+\newblock Professores, tecnologias digitais e a distração concentrada
+\newblock Educar em Revista
 
-\bibitem[Baysal {\em et~al.}(2013)Baysal, Holmes, and Godfrey]{Baysal2013}
-Baysal, O., Holmes, R., and Godfrey, M.~W. (2013).
-\newblock Situational awareness: Personalizing issue tracking systems.
-\newblock In {\em Proceedings of the 2013 International Conference on Software
-  Engineering\/}, ICSE '13, pages 1185--1188, Piscataway, NJ, USA. IEEE Press.
+\bibitem[Ivar~Jacobson and {\"O}vergaard(1993)Ivar~Jacobson and
+  {\"O}vergaard]{jacobson93}
+Ivar~Jacobson, Magnus~Christerson, P.~J. and {\"O}vergaard, G. (1993).
+\newblock {\em Object-Oriented Software Engineering -- A Use Case Driven
+  Approach\/}.
+\newblock Addison-Wesley.
 
-\bibitem[Birk and Heller(2007)Birk and Heller]{Birk2007}
-Birk, A. and Heller, G. (2007).
-\newblock Challenges for requirements engineering and management in software
-  product line development.
-\newblock In {\em Proceedings of the 13th International Working Conference on
-  Requirements Engineering: Foundation for Software Quality\/}, REFSQ'07, pages
-  300--305, Berlin, Heidelberg. Springer-Verlag.
 
-\bibitem[Brito(2007)Brito]{Brito2007}
-Brito, K.~S. (2007).
-\newblock {\em LIFT: A Legacy InFormation retrieval Tool\/}.
-\newblock Master's thesis, Federal University of Pernambuco, Recife,
-  Pernambuco, Brazil.
+\bibitem[Dewayne E. Perry(1992)Dewayne E. Perry]{Perry1992}
+Dewayne E. Perry (1992).
+\newblock Foundations for the Study of Software Architecture
+\newblock ACM SIGSOFT
 
-\bibitem[Buhne {\em et~al.}(2005)Buhne, Lauenroth, and Pohl]{Buhne2005}
-Buhne, S., Lauenroth, K., and Pohl, K. (2005).
-\newblock Modelling requirements variability across product lines.
-\newblock In {\em Proceedings of the 13th IEEE International Conference on
-  Requirements Engineering\/}, RE '05, pages 41--52, Washington, DC, USA. IEEE
-  Computer Society.
 
-\bibitem[Bui {\em et~al.}(2010)Bui, Yu, and Thain]{Bui2010}
-Bui, P., Yu, L., and Thain, D. (2010).
-\newblock Weaver: Integrating distributed computing abstractions into
-  scientific workflows using python.
-\newblock In {\em Proceedings of the 19th ACM International Symposium on High
-  Performance Distributed Computing\/}, HPDC '10, pages 636--643, New York, NY,
-  USA. ACM.
-
-\bibitem[Capilla {\em et~al.}(2013)Capilla, Bosch, and ~]{rafael2013systems}
-Capilla, R., Bosch, J., and ~, K. (2013).
-\newblock {\em Systems and Software Variability Management: Concepts, Tools and
-  Experiences\/}.
-\newblock SpringerLink : B{\"u}cher. Springer.
-
-\bibitem[Cavalcanti {\em et~al.}(2011a)Cavalcanti, de~Almeida, and
-  Meira]{Cavalcanti:2011:ERP:2000259.2000286}
-Cavalcanti, R. d.~O., de~Almeida, E.~S., and Meira, S.~R. (2011a).
-\newblock Extending the riple-de process with quality attribute variability
-  realization.
-\newblock In {\em Proceedings of the Joint ACM SIGSOFT Conference -- QoSA and
-  ACM SIGSOFT Symposium -- ISARCS on Quality of Software Architectures -- QoSA
-  and Architecting Critical Systems -- ISARCS\/}, QoSA-ISARCS '11, pages
-  159--164, New York, NY, USA. ACM.
-
-\bibitem[Cavalcanti {\em et~al.}(2011b)Cavalcanti, do~Carmo~Machado, da~Mota,
-  Neto, Lobato, de~Almeida, and de~Lemos~Meira]{Cavalcanti:2011}
-Cavalcanti, Y.~a.~C., do~Carmo~Machado, I., da~Mota, P.~A., Neto, S., Lobato,
-  L.~L., de~Almeida, E.~S., and de~Lemos~Meira, S.~R. (2011b).
-\newblock Towards metamodel support for variability and traceability in
-  software product lines.
-\newblock In {\em Proceedings of the 5th Workshop on Variability Modeling of
-  Software-Intensive Systems\/}, VaMoS '11, pages 49--57, New York, NY, USA.
-  ACM.
-
-\bibitem[Cavalcanti {\em et~al.}(2008)Cavalcanti, Martins, Almeida, and
-  Meira]{CavalcantiFISL2008}
-Cavalcanti, Y.~C., Martins, A.~C., Almeida, E.~S., and Meira, S. R.~L. (2008).
-\newblock Avoiding duplicate cr reports in open source software projects.
-\newblock In {\em The 9th International Free Software Forum (IFSF'08)\/}, Porto
-  Alegre, Brazil.
-
-\bibitem[Cavalcanti {\em et~al.}(2012)Cavalcanti, do~Carmo~Machado, da~Mota
-  Silveira~Neto, and Lobato]{CavalcantiInTech2012}
-Cavalcanti, Y.~C., do~Carmo~Machado, I., da~Mota Silveira~Neto, P.~A., and
-  Lobato, L.~L. (2012).
-\newblock {\em {Software Product Line - Advanced Topic}\/}, chapter Handling
-  Variability and Traceability over SPL Disciplines, pages 3--22.
-\newblock InTech.
-
-\bibitem[Chhibber {\em et~al.}(1992)Chhibber, Apostolakis, and
-  Okrent]{Chhibber1992}
-Chhibber, S., Apostolakis, G., and Okrent, D. (1992).
-\newblock A taxonomy of issues related to the use of expert judgments in
-  probabilistic safety studies.
-\newblock {\em Reliability Engineering System Safety\/}, {\bf 38}(1–2), 27 --
-  45.
-
-\bibitem[Clements and Northrop(2002)Clements and
-  Northrop]{clements2002software}
-Clements, P. and Northrop, L. (2002).
-\newblock {\em Software Product Lines: Practices and Patterns\/}.
-\newblock The SEI series in software engineering. Addison Wesley Professional.
-
-\bibitem[da~Mota Silveira~Neto(2010)da~Mota Silveira~Neto]{neto:msc:2010}
-da~Mota Silveira~Neto, P.~A. (2010).
-\newblock A regression testing approach for software product lines
-  architectures.
-
-\bibitem[de~Oliveira(2009)de~Oliveira]{oliveira2009}
-de~Oliveira, T. H.~B. (2009).
-\newblock Riple-em: A process to manage evolution in software product lines.
-
-\bibitem[de~Souza~Filho(2010)de~Souza~Filho]{filho:msc:2010}
-de~Souza~Filho, E.~D. (2010).
-\newblock Riple-de: A domain design process for software product lines.
-
-\bibitem[Dhungana {\em et~al.}(2007)Dhungana, Rabiser, Gr\"{u}nbacher, and
-  Neumayer]{Dhungana2007}
-Dhungana, D., Rabiser, R., Gr\"{u}nbacher, P., and Neumayer, T. (2007).
-\newblock Integrated tool support for software product line engineering.
-\newblock In {\em Proceedings of the Twenty-second IEEE/ACM International
-  Conference on Automated Software Engineering\/}, ASE '07, pages 533--534, New
-  York, NY, USA. ACM.
-
-\bibitem[Dhungana {\em et~al.}(2011)Dhungana, Grünbacher, and
-  Rabiser]{Dhungana}
-Dhungana, D., Grünbacher, P., and Rabiser, R. (2011).
-\newblock The dopler meta-tool for decision-oriented variability modeling: a
-  multiple case study.
-\newblock {\em Automated Software Engineering\/}, {\bf 18}(1), 77--114.
-
-\bibitem[do~Carmo~Machado(2010)do~Carmo~Machado]{machado:msc:2010}
-do~Carmo~Machado, I. (2010).
-\newblock Riple-te: A software product lines testing process.
-
-\bibitem[Durao(2008)Durao]{Durao2008}
-Durao, F.~A. (2008).
-\newblock {\em Semantic Layer Applied to a Source Code Search Engine\/}.
-\newblock Master's thesis, Federal University of Pernambuco, Recife,
-  Pernambuco, Brazil.
-
-\bibitem[Garcia {\em et~al.}(2008)Garcia, Lisboa, {a}o, Almeida, and
-  Meira]{Garcia2008a}
-Garcia, V.~C., Lisboa, L.~B., {a}o, F. A.~D., Almeida, E.~S., and Meira, S.
-  R.~L. (2008).
-\newblock A lightweight technology change management approach to facilitating
-  reuse adoption.
-\newblock In {\em 2nd Brazilian Symposium on Software Components,
-  Architectures, and Reuse (SBCARS'08)\/}, Porto Alegre, Brazil.
-
-\bibitem[Goeschl {\em et~al.}(2010)Goeschl, Herp, and Wais]{Goeschl2010}
-Goeschl, S., Herp, M., and Wais, C. (2010).
-\newblock When agile meets oo testing: A case study.
-\newblock In {\em Proceedings of the 1st Workshop on Testing Object-Oriented
-  Systems\/}, ETOOS '10, pages 10:1--10:5, New York, NY, USA. ACM.
-
-\bibitem[Hochm\"{u}ller(2011)Hochm\"{u}ller]{Hochmuller2011}
-Hochm\"{u}ller, E. (2011).
-\newblock The requirements engineer as a liaison officer in agile software
-  development.
-\newblock In {\em Proceedings of the 1st Workshop on Agile Requirements
-  Engineering\/}, AREW '11, pages 2:1--2:4, New York, NY, USA. ACM.
-
-\bibitem[K{\"a}{\"a}ri{\"a}inen and teknillinen
-  tutkimuskeskus(2011)K{\"a}{\"a}ri{\"a}inen and teknillinen
-  tutkimuskeskus]{kaariainen2011towards}
-K{\"a}{\"a}ri{\"a}inen, J. and teknillinen tutkimuskeskus, V. (2011).
-\newblock {\em Towards an Application Lifecycle Management Framework\/}.
-\newblock VTT julkaisuja. VTT.
-
-\bibitem[Kang {\em et~al.}(1990)Kang, Cohen, Hess, Novak, and
-  Peterson]{Kang1990}
-Kang, K.~C., Cohen, S.~G., Hess, J.~A., Novak, W.~E., and Peterson, A.~S.
-  (1990).
-\newblock Feature-oriented domain analysis (foda) feasibility study.
-\newblock Technical report, Carnegie-Mellon University Software Engineering
-  Institute.
-
-\bibitem[Kitchenham and Pfleeger(2008)Kitchenham and Pfleeger]{Kitchenham2008}
-Kitchenham, B. and Pfleeger, S. (2008).
-\newblock Personal opinion surveys.
-\newblock In F.~Shull, J.~Singer, and D.~Sjøberg, editors, {\em Guide to
-  Advanced Empirical Software Engineering\/}, pages 63--92. Springer London.
-
-\bibitem[Kääriäinen and Välimäki(2009)Kääriäinen and
-  Välimäki]{Jukka:2009}
-Kääriäinen, J. and Välimäki, A. (2009).
-\newblock Applying application lifecycle management for the development of
-  complex systems: Experiences from the automation industry.
-\newblock In R.~O’Connor, N.~Baddoo, J.~Cuadrago~Gallego, R.~Rejas~Muslera,
-  K.~Smolander, and R.~Messnarz, editors, {\em Software Process Improvement\/},
-  volume~42 of {\em Communications in Computer and Information Science\/},
-  pages 149--160. Springer Berlin Heidelberg.
-
-\bibitem[Lacheiner and Ramler(2011)Lacheiner and Ramler]{lacheiner2011}
-Lacheiner, H. and Ramler, R. (2011).
-\newblock Application lifecycle management as infrastructure for software
-  process improvement and evolution: Experience and insights from industry.
-\newblock In {\em Software Engineering and Advanced Applications (SEAA), 2011
-  37th EUROMICRO Conference on\/}, pages 286--293.
-
-\bibitem[Lisboa(2008)Lisboa]{lisboa:msc:2008}
-Lisboa, L.~B. (2008).
-\newblock Toolday - a tool for domain analysis.
-
-\bibitem[Martins {\em et~al.}(2008)Martins, Garcia, Almeida, and
-  Meira]{Martins2008}
-Martins, A.~C., Garcia, V.~C., Almeida, E.~S., and Meira, S. R.~L. (2008).
-\newblock Enhancing components search in a reuse environment using discovered
-  knowledge techniques.
-\newblock In {\em 2nd Brazilian Symposium on Software Components,
-  Architectures, and Reuse (SBCARS'08)\/}, Porto Alegre, Brazil.
-
-\bibitem[Mascena(2006)Mascena]{Mascena2006}
-Mascena, J. C. C.~P. (2006).
-\newblock {\em ADMIRE: Asset Development Metric-based Integrated Reuse
-  Environment\/}.
-\newblock Master's thesis, Federal Uniersity of Pernambuco, Recife, Pernambuco,
-  Brazil.
-
-\bibitem[Melo(2008)Melo]{CoreICSR}
-Melo, Buregio, E. S. A.~M. (2008).
-\newblock A reuse repository system: The core system.
-\newblock In {\em Proc. of ICSR\/}.
-
-\bibitem[Mendes(2008)Mendes]{Mendes2008}
-Mendes, R.~C. (2008).
-\newblock {\em Search and Retrieval of Reusable Source Code using Faceted
-  Classification Approach\/}.
-\newblock Master's thesis, Federal University of Pernambuco, Recife,
-  Pernambuco, Brazil.
-
-\bibitem[Moraes(2010)Moraes]{Moraes2010}
-Moraes, M. B.~S. (2010).
-\newblock {\em A scoping approach for software product lines\/}.
-\newblock Master's thesis, Federal University of Pernambuco, Recife,
-  Pernambuco, Brazil.
-
-\bibitem[Nascimento(2008)Nascimento]{Nascimento2008}
-Nascimento, L.~M. (2008).
-\newblock {\em Core Assets Development in SPL - Towards a Practical Approach
-  for the Mobile Game Domain\/}.
-\newblock Master's thesis, Federal University of Pernambuco, Recife,
-  Pernambuco, Brazil.
-
-\bibitem[Neiva(2009)Neiva]{neiva:msc:2009}
-Neiva, D. F.~S. (2009).
-\newblock Riple-re: A requirements engineering process for software product
-  lines.
-
-\bibitem[Pohl {\em et~al.}(2005)Pohl, B\"{o}ckle, and van~der Linden]{Pohl2005}
-Pohl, K., B\"{o}ckle, G., and van~der Linden, F. (2005).
-\newblock {\em Software Product Line Engineering: Foundations, Principles, and
-  Techniques\/}.
-
-\bibitem[{Python Software Foundation}(2014){Python Software
-  Foundation}]{python2014}
-{Python Software Foundation} (2014).
-\newblock {Python Programming Language}.
-\newblock http://www.python.org. Last access on Jan/2014.
-
-\bibitem[Ribeiro(2010)Ribeiro]{ribeiro2010}
-Ribeiro, H. B.~G. (2010).
-\newblock An approach to implement core assets in service-oriented product
-  lines.
-
-\bibitem[Sanders and Langford(2008)Sanders and Langford]{Sanders2008}
-Sanders, I.~D. and Langford, S. (2008).
-\newblock Students' perceptions of python as a first programming language at
-  wits.
-\newblock {\em SIGCSE Bull.}, {\bf 40}(3), 365--365.
-
-\bibitem[Santos {\em et~al.}(2006)Santos, {a}o, Martins, Mendes, Melo, Garcia,
-  Almeida, and Meira]{Santos2006}
-Santos, E. C.~R., {a}o, F. A.~D., Martins, A.~C., Mendes, R., Melo, C., Garcia,
-  V.~C., Almeida, E.~S., and Meira, S. R.~L. (2006).
-\newblock Towards an effective context-aware proactive asset search and
-  retrieval tool.
-\newblock In {\em 6th Workshop on Component-Based Development (WDBC'06)\/},
-  pages 105--112, Recife, Pernambuco, Brazil.
-
-\bibitem[Schubanz {\em et~al.}(2013)Schubanz, Pleuss, Pradhan, Botterweck, and
-  Thurimella]{Schubanz2013}
-Schubanz, M., Pleuss, A., Pradhan, L., Botterweck, G., and Thurimella, A.~K.
-  (2013).
-\newblock Model-driven planning and monitoring of long-term software product
-  line evolution.
-\newblock In {\em Proceedings of the Seventh International Workshop on
-  Variability Modelling of Software-intensive Systems\/}, VaMoS '13, pages
-  18:1--18:5, New York, NY, USA. ACM.
-
-\bibitem[Schwaber(2006)Schwaber]{Schwaber2006}
-Schwaber, C. (2006).
-\newblock {The Changing Face Of Application Life-Cycle Management by Carey
-  Schwaber - Forrester Research}.
-
-\bibitem[Seidl {\em et~al.}(2012)Seidl, Heidenreich, and Assmann]{Seidl2012}
-Seidl, C., Heidenreich, F., and Assmann, U. (2012).
-\newblock Co-evolution of models and feature mapping in software product lines.
-\newblock In {\em Proceedings of the 16th International Software Product Line
-  Conference - Volume 1\/}, SPLC '12, pages 76--85, New York, NY, USA. ACM.
-
-\bibitem[Shaye(2008)Shaye]{Shaye2008}
-Shaye, S. (2008).
-\newblock Transitioning a team to agile test methods.
-\newblock In {\em Agile, 2008. AGILE '08. Conference\/}, pages 470--477.
-
-\bibitem[Sommerville(2007)Sommerville]{Sommerville2007}
-Sommerville, I. (2007).
-\newblock {\em Software Engineering\/}.
-\newblock Addison Wesley, 8 edition.
-
-\bibitem[Sommerville(2011)Sommerville]{Sommerville2011}
+\bibitem[Sommerville(2011)Sommerville]{SOMMERVILLE2011}
 Sommerville, I. (2011).
-\newblock {\em Software Engineering\/}.
-\newblock Addison Wesley, 9 edition.
-
-\bibitem[Times(2012)Times]{GmTop2012}
-Times, N.~Y. (2012).
-\newblock G.m. regains the top spot in global automaking.
-
-\bibitem[Uikey and Suman(2012)Uikey and Suman]{Uikey2012}
-Uikey, N. and Suman, U. (2012).
-\newblock An empirical study to design an effective agile project management
-  framework.
-\newblock In {\em Proceedings of the CUBE International Information Technology
-  Conference\/}, CUBE '12, pages 385--390, New York, NY, USA. ACM.
-
-\bibitem[Vanderlei {\em et~al.}(2007)Vanderlei, {a}o, Martins, Garcia, Almeida,
-  and Meira]{Vanderlei2007}
-Vanderlei, T.~A., {a}o, F. A.~D., Martins, A.~C., Garcia, V.~C., Almeida,
-  E.~S., and Meira, S. R.~L. (2007).
-\newblock A cooperative classification mechanism for search and retrieval
-  software components.
-\newblock In {\em Proceedings of the 2007 ACM symposium on Applied computing
-  (SAC'07)\/}, pages 866--871, New York, NY, USA. ACM.
+\newblock {\em Engenharia de Software\/}.
+\newblock Person Prentice Hall, 9 edition.
 
 \end{thebibliography}
