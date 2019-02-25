@@ -1,0 +1,90 @@
+\chapter{\textit{Crowdsourcing}}
+\label{ch:crowdsourcing}
+
+\begin{quotation}[Daren C. Brabham, 2008]{Daren Brabham, 2008}
+Crowdsourcing is a model for problem solving, not merely a model for doing business.
+\end{quotation}
+
+Este capítulo apresenta uma técnica para solucionar problemas através do conhecimento coletivo denominada \textit{Crowdsourcing}, mostrando seus principais conceitos e definições, bem como discutindo os três principais desafios dessa técnica: o recrutamento, o projeto de tarefas e o controle de qualidade. Por fim, a Gamificação é mostrada como uma das soluções para os principais problemas enfrentados no uso de  \textit{Crowdsourcing}.
+
+\section{\textit{Crowdsourcing}}
+\label{sc:crowdsourcing}
+
+De acordo com \cite{brabham2008}, \textit{Crowdsourcing} é um modelo de produção para solucionar problemas com base na inteligência e, sobretudo, conhecimento coletivo. Segundo \cite{schenk2009}, o termo é um neologismo derivado das palavras Crowd (multidão) e Outsourcing (terceirização) e tem o objetivo de subcontratar um grande número de indivíduos anônimos a fim de resolver desafios.  Conforme \cite{Paraschakis2013}, o termo \textit{crowdsourcing} foi popularizado por Jeff Howe em seu artigo “\textit{The rise of crowdsourcing}” \citep{howe2006} da revista Wired, onde o jornalista mostrou a situação vivida por muitas empresas que buscavam aproveitar a participação coletiva para seu próprio empreendimento.  
+
+Segundo \cite{Hu2012}, \textit{crowdsourcing} é um convite aberto para recrutar uma multidão de pessoas para resolver um problema em conjunto. Em termos gerais, isto pode ser considerado um meio de agregação de trabalho a partir de uma quantidade massiva de pessoas \citep{surowiecki2005}. Ademais, para \cite{pintado2011},  esse modo de produção colaborativa realizada por esse grande número de usuários não possui nenhuma forma de gestão formal.
+
+Em \cite{pintado2011}, a Wikipedia é mostrada como exemplo do uso de inteligência coletiva e \textit{crowdsourcing}. Inicialmente chamada de Nupedia, o objetivo de seus fundadores era criar uma enciclopédia virtual através da colaboração de profissionais das mais diversas áreas. Contudo, a burocracia existente na aprovação de cada verbete sinalizou que o projeto não seria viável desse modo. Então, foi criado um novo site e, desta vez, permitindo que qualquer pessoal, seja esta profissional ou não, pudesse criar, bem como alterar o conteúdo dos verbetes. O resultado foi a criação de milhares de verbetes em poucos meses após a mudança. A ação de editar ou criar um verbete era tão simples, rápida e intuitiva que as pessoas se sentiam motivadas a participarem do projeto \citep{pintado2011}. Assim, o esforço coletivo desempenhado por milhões de colaboradores propiciou a criação da maior enciclopédia virtual, onde os verbetes seguem sendo atualizados até hoje.   
+
+Para \cite{pintado2011}, o \textit{crowdsourcing} se configura, portanto, “\textit{como uma rede global de talentos que não necessariamente leva em consideração as vias formais de especialização}”, o que de acordo com \cite{surowiecki2005} e \citep{Hu2012}, não causa perda de qualidade da informação gerada. Pelo contrário, conforme  \cite{surowiecki2005}, fatores relativos à coletividade são determinantes para o sucesso desse processo. As propriedades das soluções de \textit{crowdsourcing} eficazes são descritas por ele no livro \textit{The Wisdom of Crowds} \citep{surowiecki2005}: 
+
+\begin{enumerate}
+\item \textbf{Diversidade de opinião}: "cada pessoa deve ter alguma informação pessoal, mesmo que seja apenas uma interpretação excêntrica dos fatos conhecidos." 
+\item \textbf{Independência}: "as opiniões das pessoas não são determinadas pelas opiniões dos que os rodeiam." 
+\item \textbf{Descentralização}: "as pessoas são capazes de se especializar e trabalhar com conhecimento local. "
+\item \textbf{Agregação}: "a existência de algum mecanismo para transformar avaliações pessoais em decisões coletivas."
+\end{enumerate}
+
+Ainda segundo \cite{surowiecki2005}, uma multidão heterogênea pode sugerir uma grande quantidade de soluções diferentes para um determinado problema, o que pode ser extremamente difícil para um grupo de profissionais onde as expertises são mais homogêneas. No entanto, para que os sistemas de \textit{crowdsourcing} sejam eficazes, é necessário estar atento a três problemas críticos \citep{Hu2012}:  disponibilidade da multidão (recrutamento), projeto de tarefas e controle de qualidade. Em primeiro lugar, os sistemas de \textit{crowdsourcing} precisam recrutar pessoas para executar as tarefas; em segundo lugar, as tarefas devem atender a especialização, tempo disponível e, sobretudo, esforço dos colaboradores; por fim, os sistemas precisam assegurar que os usuários completaram as tarefas de maneira correta. Por exemplo, a natureza das tarefas, normalmente, está diretamente relacionada ao tamanho, a motivação e ao possível viés da população potencial \citep{Hu2012}. Estes três problemas são discutidos separadamente nas seções subsequentes.
+
+\subsection{Recrutamento}
+Para \cite{Hu2012}, quaisquer sistema de \textit{crowdsourcing} deve, primeiramente, recrutar pessoas para desempenhar suas tarefas. Todavia, encontrar essas pessoas nem sempre é algo tão simples. O recrutamento geralmente fica mais difícil quando as tarefas são mais complexas. Por exemplo, encontrar pessoas que possam descrever os objetos existente em uma determinada foto é algo relativamente fácil \citep{Von2004}, enquanto que encontrar pessoas que possam traduzir um documento de uma determinada língua para outra \citep{Zaidan2011} pode não ser uma missão tão simples. Nesse sentido, conforme \cite{Hu2012}, é mais fácil encontrar colaboradores se as tarefas de um sistema envolvem apenas as habilidades diárias. Isto é, se todo mundo tem as habilidades para realizar as tarefas, tais sistemas possuem uma população muito grande para recrutar. 
+
+Enquanto a tarefa de compreender e descrever as imagens é um problema muito difícil de se resolver computacionalmente  \citep{Von2004}, é uma tarefa bastante fácil para a maioria dos seres humanos. Assim, o sistema criado por  \cite{Von2004}, cujo principal objetivo é compreender e descrever imagens conseguiu atrair uma grande quantidade de colaboradores. Não obstante, recrutar usuários com habilidades menos comuns é mais difícil, haja vista que nem todo mundo é capaz de realizar determinadas tarefas. Por exemplo, no trabalho realizado por \cite{Zaidan2011} , onde o objetivo era fazer com que vários documentos fossem traduzidos de uma língua para outra através do trabalho coletivo, o usuário precisa saber  falar, no mínimo, duas línguas diferentes.
+
+Para determinadas tarefas o recrutamento se torna ainda mais difícil, pois é necessário que o usuário, além de disponível, esteja motivado à colaborar. Por exemplo,  para fazer com que usuários possam notificar possíveis incidentes ocorridos no trânsitos (e.g. engarrafamentos, acidentes, barreiras e etc.) a fim de alertar a população, além do usuário precisar estar vivenciando ou, ao menos, ciente do incidente, é preciso fazer com que este sinta-se motivado a colaborar com a divulgação dessa informação.  Isto é, para algumas tarefas a disponibilidade da multidão é um grande problema, pois é mais difícil encontrar pessoas dispostas e motivadas \citep{Hu2012}. 
+
+Uma solução comum é o emprego de pagamento de bônus para os bons colaboradores, de modo a mantê-los presentes e ativos no sistemas, bem como atrair e motivar novos usuários \citep{Hu2012}. Uma técnica muito utilizada para o engajamento de usuários em diversos sistemas de \textit{crowdsourcing} é conhecida como Gamificação, e é apresentada na próxima seção.   
+
+
+\subsection{Projeto de Tarefas}
+O projeto  de tarefas no crowdsoursing é considerado uma questão central, pois, assim como o recrutamento, está intimamente ligada à motivação do usuário, bem como a qualidade dos resultados \citep{Hu2012}. 
+
+Segundo \cite{Hu2012}, muitas tarefas são projetadas de modo a fazer com que o usuário perceba que está colaborando, bem como pode estar diretamente relacionada ao objetivo do mesmo. Não obstante, tarefas também podem ser projetadas para que o usuário não necessite, explicitamente, executar um comando para estar colaborando, assim como esta tarefa pode não estar diretamente relacionada ao objetivo do usuário. Por exemplo, uma aplicação onde a finalidade é informar a atual situação do trânsito em uma determinada cidade pode ser projetada para que o usuário informe o local exato onde está ocorrendo um possível congestionamento, para tanto, tendo que informar as coordenadas e depois clicar em botão para executar a ação de colaborar, bem como pode ser projetada de modo que o usuário não tenha que informar, explicitamente, as coordenadas, muito menos clicar em nenhum botão. Isto é, a tarefa pode ser projetada para que o usuário envie sua localização e velocidade em intervalos de tempo previamente definidos e, a partir da quantidade de pessoas que estão na mesma região e com uma velocidade muito baixa, pressupor um possível congestionamento. 
+
+Analogamente, ainda considerando o exemplo, o objetivo do usuário pode ser realmente informar o congestionamento e a tarefa está associada diretamente a isto, como o objetivo deste pode ser, apenas, visualizar os locais de lentidão no trânsito, mas ainda assim está colaborando enviando sua localização e velocidade em intervalos de tempo. Isto é muito importante, pois em um sistema como esse, onde o público potencial pode estar dirigindo, em um local perigo ou com pouco tempo disponível, a forma como a tarefa é projetada pode ser crucial para o sucesso do sistema.    
+
+Ainda de acordo com \cite{Hu2012}, outro ponto considerado importante é o tamanho da tarefa que é atribuída ao usuário. Para ele, muitas vezes é melhor decompor a tarefa em subtarefas menores para diminuir a carga de trabalho do colaborador. Tomando como exemplo um sistema onde o objetivo principal é utilizar a inteligência coletiva para alertar a população dos incidentes que estão ocorrendo em uma determinada cidade, a tarefa de informar o incidente pode ser projetada para que o usuário tenha que escrever em um campo de texto o tipo de incidente (e.g. engarrafamento, barreiras, incêndio e etc.) e as coordenadas do local do fato, como pode ser projetada de modo que o usuário necessite, apenas, escolher numa lista os possíveis tipos de incidentes, consequentemente, diminuindo bastante sua carga de trabalho.  
+
+
+\subsection{Controle de Qualidade}
+
+A partir do momento que um sistema de \textit{crowdsourcing} faz um convite aberto ao público, é de fundamental importância que este posso garantir alta qualidade à seus usuários. De acordo com \cite{Hu2012}, Controle de Qualidade em sistemas de \textit{crowdsourcing}  confia na redundância, cuja lógica é que, havendo muitos usuários, alguns esforços destes colaboradores podem ser “perdidos“ para obtenção de resultados de alta qualidade.
+	
+Ainda segundo \cite{Hu2012}, uma maneira simples de usar redundância é implantar a mesma tarefa para vários usuários e comparar a saída. Existem diversas formas de agregar a saída de tarefas repetidas, mas a mais simples é aceitar apenas a resposta de maior aceitação. Nesse sentido, o voto poderia ser um exemplo de aplicar a regra da maioria.
+	
+Para exemplificar, iremos utilizar, novamente,  o sistema que notifica incidentes de trânsitos em uma cidade qualquer. Imagine agora que existe um grande número de pessoas vivenciando um engarrafamento e todos são usuários desse sistema, bem como a grande maioria tem costume de utilizar o sistema para lançar notificações de trânsito lento. Certamente, depois de um certo tempo teríamos várias notificações de trânsito lento para um mesmo local. Contudo, ao invés de mostrar todos esses alertas repetidos, essas saídas poderiam ser agregadas de modo a mostrar a informação mais completa do real cenário do trânsito na região. Deste modo, o sistema estaria se utilizando da redundância, ou seja, dos esforços realizados pelos usuários para prover uma informação de qualidade para todo público potencial da aplicação em questão.  
+
+\section{Gamificação}
+Para \cite{deterding2011}, a Gamificação consiste no uso de técnicas comumente utilizadas em jogos para impulsionar o engajamento, bem como motivar ações em processos que não são jogos. Ou seja, a ideia é atribuir a uma determinada atividade características e dinâmicas que os jogos utilizam, de modo que as pessoas que executam estas atividades sintam as mesmas sensações  provocadas pelos jogos \citep{pereira2011}. Segundo \cite{duggan2013}, o objetivo é, exatamente, tornar tarefas rotineiras em algo divertido e, sobretudo, prazeroso de realizar, assim, como pode ser observado claramente na figura \figref{fig:exampleFigPiano}. 
+
+\begin{figure}[htp]
+\begin{center}
+  \includegraphics[width=9cm]{images/escada_gamificacao.png}
+  \caption[Caso Volkswagem]{Exemplo do caso Volkswagem  - Teoria da Diversão (thefuntheory.com)}
+  \label{fig:exampleFigPiano}
+\end{center}
+\end{figure}
+
+	
+De acordo com \cite{hagglund2012}, a maioria das pessoas gostam de jogar pelo menos algum tipo de jogo. Esconde-esconde, xadrez ou os mais recentes games de computador são exemplos de jogos que estão sendo jogados todos os dias. Não obstante, na vida cotidiana, essas pessoas precisam realizar tarefas estressantes ou que, simplesmente, não se sentem motivadas a fazerem. Com a introdução de elementos de jogos, essas atividades poderiam, também, se tornar divertidas, gratificantes e agradáveis, onde as pessoas iriam, possivelmente, querer participar dessas tarefas proativamente e de forma contínua. Para  \cite{hagglund2012}, esse processo caracteriza a  gamificação.  
+	
+Como exemplo, além do que já fora ilustrado na figura \figref{fig:exampleFigPiano}, a Gamificação aplicada a  educação  pode fazer com que os alunos sintam-se mais motivados a frequentarem as escolas, bem como corroborar o aprendizado. No trabalho, pode fazer com que os funcionários se sintam mais animados com o serviço de modo a aumentarem a produtividade.  Nos sistemas de crowdsoursing, essa técnica pode engajar e motivar as pessoas a executaram as tarefas, tornando essa ação cada vez mais frequente. Consequentemente, aumentando a capacidade de recrutamento e, sobretudo, melhorando a forma com que as tarefas são projetadas.          
+
+Segundo \cite{pereira2011}, existem várias técnicas e artifícios de jogos que podem ser utilizados em uma gamificação. Embasado pelo trabalho feito por \cite{lands2011}, ele destaca as seguintes técnicas como as principais:
+
+\begin{itemize}
+\item \textbf{Medalhas e insígnias} – consiste na premiação por metas, através de medalhas que simbolizem a conquista, de modo que outras pessoas vejam o empenho do jogador e sinta-se motivado a ter o mesmo desempenho que este;
+\item \textbf{Níveis} -  Atividades separadas por níveis para que o jogador fique ciente de qual nível ele esta e quanto ele falta para que possa evoluir;
+\item \textbf{Rankings} – tem o objetivo de criar rivalidade e, consequentemente, aumentar o foco no objetivo. Pois, a ideia é que os jogadores competitivos sempre estarão em busca do primeiro lugar;
+\item \textbf{Barra de Progresso} – estímulo visual de modo a mostrar ao usuário qual é o seu progresso diante ao objetivo final;
+\item \textbf{Moeda Virtual} – consiste em disponibilizar moedas virtuais para que possam ser trocadas posteriormente por itens ou premiações reais.
+\item \textbf{Sistemas de pontos} – uma vez que existem pontuações diferentes para atividades diferentes, o usuário perceberá que algumas atividades podem ser mais importantes que outras;
+\item \textbf{Desafio entre os usuários} – permite que o usuário possa ser comparado a outro e buscar meios de vencê-lo;
+\item \textbf{Bônus}: oferecer uma premiação extra para o usuário que consegue completar uma determinada tarefa;
+\item \textbf{Colaboração em comunidade} – aumentar a interatividade entre os usuários;
+\item \textbf{Pontuação por tempo} – acaba atribuindo um senso de urgência, fazendo com que os usuários priorizem determinadas tarefas.
+\end{itemize}
+
+Na proposta deste trabalho, a gamificação é utilizada como parte do processo de estímulo  a execução das tarefas de colaboração existente no sistema. Tais tarefas são explicadas detalhadamente no próximo capítulo.
+
