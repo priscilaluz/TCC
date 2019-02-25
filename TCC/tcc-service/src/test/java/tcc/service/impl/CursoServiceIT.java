@@ -114,7 +114,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorUsuario(){
-        ListaPaginacao listaPaginacao = cursoService.buscarCursoPorFiltro(1L, null, null, null, null, null, 1);
+        ListaPaginacao listaPaginacao = cursoService.buscarCursoPorFiltro(1L, null, null, null, null, null, 0);
         List<Curso> cursos = (List<Curso>)(Object)listaPaginacao.getLista();
         assertTrue(cursos.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L));
@@ -125,7 +125,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorParteDaDescricao(){
-        ListaPaginacao listaPaginacao = cursoService.buscarCursoPorFiltro(null, "Matemática", null, null, null, null, 1);
+        ListaPaginacao listaPaginacao = cursoService.buscarCursoPorFiltro(null, "Matemática", null, null, null, null, 0);
         List<Curso> cursos = (List<Curso>)(Object)listaPaginacao.getLista();
         assertTrue(cursos.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(2L));
@@ -136,7 +136,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorCategoria(){
-        ListaPaginacao listaPaginacao = cursoService.buscarCursoPorFiltro(null, null, 1L, null, null, null, 1);
+        ListaPaginacao listaPaginacao = cursoService.buscarCursoPorFiltro(null, null, 1L, null, null, null, 0);
         List<Curso> cursos = (List<Curso>)(Object)listaPaginacao.getLista();
         assertTrue(cursos.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(2L));
@@ -147,7 +147,7 @@ public class CursoServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarCursoPorSituacao(){
-        ListaPaginacao listaPaginacao = cursoService.buscarCursoPorFiltro(null, null, null, SituacaoCurso.CONCLUIDA, null, 1L, 1);
+        ListaPaginacao listaPaginacao = cursoService.buscarCursoPorFiltro(null, null, null, SituacaoCurso.CONCLUIDA, null, 1L, 0);
         List<Curso> cursos = (List<Curso>)(Object)listaPaginacao.getLista();
         assertTrue(cursos.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(2L, 3L));

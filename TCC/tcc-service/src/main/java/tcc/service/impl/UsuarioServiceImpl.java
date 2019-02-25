@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tcc.common.business.CursoAlunoService;
 import tcc.common.business.CursoService;
 import tcc.common.business.PerguntaService;
+import tcc.common.business.PremioService;
 import tcc.common.business.UsuarioService;
 import tcc.common.vo.ListaPaginacao;
 import tcc.common.vo.Paginacao;
@@ -46,6 +47,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     
     @Autowired
     private CursoAlunoService cursoAlunoService;
+    
+    @Autowired
+    private PremioService premioService;
 
     @Override
     @Transactional(readOnly = false)
@@ -55,7 +59,11 @@ public class UsuarioServiceImpl implements UsuarioService {
         validador.validarSalvarUsuario(usuario, emailJaExistente, loginJaExistente);
         usuario.setDataCadastro(new Date());
         usuario.setDataUltimoAcesso(new Date());
-        return dao.saveOrUpdate(usuario);
+        usuario = dao.saveOrUpdate(usuario);
+        if (TipoUsuario.ALUNO.equals(usuario.getTipo())) {
+            premioService.cadastrarPremio(usuario);
+        }
+        return usuario;
     }
 
     @Override

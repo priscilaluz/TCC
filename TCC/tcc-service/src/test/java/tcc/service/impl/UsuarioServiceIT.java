@@ -51,7 +51,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveBuscarTodosProfessores(){        
-        ListaPaginacao lista = usuarioService.buscarUsuarios(null, TipoUsuario.PROFESSOR, null, 1);
+        ListaPaginacao lista = usuarioService.buscarUsuarios(null, TipoUsuario.PROFESSOR, null, 0);
         List<Usuario> usuarios = (List<Usuario>)(Object)lista.getLista();
         assertTrue(usuarios.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 3L));
@@ -62,7 +62,7 @@ public class UsuarioServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveBuscarProfessoresPorNome(){        
-        ListaPaginacao lista = usuarioService.buscarUsuarios("Cla", TipoUsuario.PROFESSOR, null, 1);
+        ListaPaginacao lista = usuarioService.buscarUsuarios("Cla", TipoUsuario.PROFESSOR, null, 0);
         List<Usuario> usuarios = (List<Usuario>)(Object)lista.getLista();
         assertTrue(usuarios.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(3L));

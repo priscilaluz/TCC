@@ -7,6 +7,7 @@ import tcc.common.entity.Usuario;
 import tcc.common.enums.NivelPergunta;
 import tcc.common.enums.TipoPergunta;
 import java.util.Set;
+import tcc.common.enums.TempoPergunta;
 
 public class PerguntaBuilder {
     private Pergunta pergunta;
@@ -45,6 +46,11 @@ public class PerguntaBuilder {
     
     public PerguntaBuilder comTipo(TipoPergunta tipo){
         pergunta.setTipo(tipo);
+        return this;
+    }
+    
+    public PerguntaBuilder comTempo(TempoPergunta tempo){
+        pergunta.setTempo(tempo);
         return this;
     }
     

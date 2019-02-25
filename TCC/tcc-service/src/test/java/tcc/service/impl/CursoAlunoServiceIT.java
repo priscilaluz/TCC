@@ -174,6 +174,7 @@ public class CursoAlunoServiceIT extends IntegrationBaseTestClass{
         relatorioEtapa.setEtapaAluno(etapaAluno);
         relatorioEtapa.setPontuacao(100);
         relatorioEtapa.setIdCursoAluno(1L);
+        relatorioEtapa.setIdAluno(1L);
         Set<PerguntaEtapaAluno> perguntasEtapasAlunos = new HashSet<>();
         perguntasEtapasAlunos.add(obterPerguntaEtapaAlunoValida1());
         perguntasEtapasAlunos.add(obterPerguntaEtapaAlunoValida2());

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context antiJARLocking="true" path="/tcc">
-<!--  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver"
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver"
             name="tcc" password="root" type="javax.sql.DataSource"
-            url="jdbc:mysql://localhost:3306/tcc" username="root"/>-->
+            url="jdbc:mysql://localhost:3306/tcc" username="root"/>
   
-  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" name="tcc"
+<!--  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" name="tcc"
         password="gH5q{RM{m0ob" type="javax.sql.DataSource"
         url="jdbc:mysql://mysql3000.mochahost.com:3306/priluz_gameinfor?zeroDateTimeBehavior=convertToNull"
-        username="priluz_tcc"/>
+        username="priluz_tcc"/>-->
 </Context>

@@ -311,6 +311,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             relatorioEtapa.etapaAluno = {'id': idEtapaAluno};
             relatorioEtapa.pontuacao = $scope.model.pontuacao;
             relatorioEtapa.idCursoAluno = idCursoAluno;
+            relatorioEtapa.idAluno = $rootScope.usuarioLogado.id;
             relatorioEtapa.ganhou = ($scope.model.pontuacao >= pontuacaoMinima);
             if (relatorioEtapa.ganhou) {
                 relatorioEtapa.perguntasEtapasAlunos = $scope.model.resultados;

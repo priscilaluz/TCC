@@ -154,6 +154,10 @@ tccApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/meus-andamento/listagem.html',
         controller: 'MeusAndamentoController'
       }).
+      when('/minhas-medalhas', {
+        templateUrl: 'partials/minhas-medalhas/listagem.html',
+        controller: 'MinhasMedalhasController'
+      }).
 
       otherwise({
         redirectTo: '/home'

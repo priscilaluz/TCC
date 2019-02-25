@@ -35,6 +35,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import tcc.common.business.CursoAlunoService;
 import tcc.common.business.CursoService;
+import tcc.common.business.PremioService;
 import tcc.common.enums.DisponibilidadeCurso;
 
 /**
@@ -52,6 +53,9 @@ public class CursoAlunoServiceImpl implements CursoAlunoService {
     
     @Autowired
     private CursoService cursoService;
+    
+    @Autowired
+    private PremioService premioService;
     
     @Override
     @Transactional(readOnly = false)
@@ -256,17 +260,22 @@ public class CursoAlunoServiceImpl implements CursoAlunoService {
             Integer nivelEtapa = etapaAluno.getEtapa().getNivel()+1;
             
             CursoAluno cursoAluno = dao.get(CursoAluno.class, relatorioEtapa.getIdCursoAluno());
+            boolean cursoSituacaoEraConcluida = SituacaoCursoAluno.CONCLUIDA.equals(cursoAluno.getSituacao());
             cursoAluno.setPosicaoAtual((cursoAluno.getPosicaoAtual()>nivelEtapa)?cursoAluno.getPosicaoAtual():nivelEtapa);
             
             Integer pontuacao = pontuacaoPartida - pontuacaoSalva;
             Curso curso = cursoService.buscarCursoPorId(relatorioEtapa.getEtapaAluno().getEtapa().getCurso().getId());
             int qntEtapas = curso.getEtapas().size();
+            int cursoConcluido = 0;
             if (qntEtapas < cursoAluno.getPosicaoAtual()) {
                 cursoAluno.setSituacao(SituacaoCursoAluno.CONCLUIDA);
+                cursoConcluido = cursoSituacaoEraConcluida?0:1;
             }
             
             cursoAluno.setPontuacao(cursoAluno.getPontuacao()+pontuacao);
             dao.saveOrUpdate(cursoAluno);
+            
+            premioService.atualizarPremio(relatorioEtapa, cursoConcluido, pontuacao);
         }
         return relatorioEtapa;
     }

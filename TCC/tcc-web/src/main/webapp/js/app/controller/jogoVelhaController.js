@@ -177,6 +177,7 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
             relatorioEtapa.pontuacao = $scope.model.pontuacao;
             relatorioEtapa.perguntasEtapasAlunos = $scope.model.resultados;
             relatorioEtapa.idCursoAluno = idCursoAluno;
+            relatorioEtapa.idAluno = $rootScope.usuarioLogado.id;
             relatorioEtapa.ganhou = venceu;
             $rootScope.appLoaded = false;
             relatorioEtapa.$save(function () {

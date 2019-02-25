@@ -56,6 +56,9 @@ public class RelatorioEtapa extends AbstractIdBean<Long> {
     @Transient
     private Long idCursoAluno;
     
+    @Transient
+    private Long idAluno;
+    
     @Override
     public Long getId() {
         return id;
@@ -104,5 +107,13 @@ public class RelatorioEtapa extends AbstractIdBean<Long> {
 
     public void setIdCursoAluno(Long idCursoAluno) {
         this.idCursoAluno = idCursoAluno;
+    }
+
+    public Long getIdAluno() {
+        return idAluno;
+    }
+
+    public void setIdAluno(Long idAluno) {
+        this.idAluno = idAluno;
     }
 }

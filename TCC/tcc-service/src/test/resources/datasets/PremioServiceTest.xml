@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset xmlns="test">
+    <USUARIO ID = "1" NOME = "Joao" LOGIN = "JoaoL" EMAIL = "joao@email.com" SENHA = "1234" TIPO = "P" AVATAR="PE" DATA_CADASTRO="2018-05-02 21:46:22" DATA_ULTIMO_ACESSO="2018-05-02 21:46:22"/>
+    <USUARIO ID = "2" NOME = "Maria" LOGIN = "MariaL" EMAIL = "maria@email.com" SENHA = "1234" TIPO = "A" AVATAR="PE" DATA_CADASTRO="2018-05-02 21:46:22" DATA_ULTIMO_ACESSO="2018-05-02 21:46:22"/>
+    
+    <PREMIO ID = "1"
+        USUARIO_ID = "2"
+        QNT_PERGUNTA_FACIL_RESPONDIDA = "1"
+        QNT_PERGUNTA_MEDIA_RESPONDIDA = "2"
+        QNT_PERGUNTA_DIFICIL_RESPONDIDA = "3"
+        QNT_ETAPA_VENCIDA = "4"
+        QNT_CURSO_CONCLUIDO = "5"
+        QNT_ETAPA_SEM_PULO = "6"
+        QNT_ETAPA_SEM_DICA = "7"
+        QNT_PONTOS_ACUMULADOS = "8"
+    />
+</dataset>

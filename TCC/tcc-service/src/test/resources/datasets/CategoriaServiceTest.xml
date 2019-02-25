@@ -4,4 +4,5 @@
     <CATEGORIA ID = "2" DESCRICAO = "Portugues"/>
     <CATEGORIA ID = "3" DESCRICAO = "Geografia"/>
     <CATEGORIA ID = "4" DESCRICAO = "Hisuetoria"/>
+    <CATEGORIA ID = "10" DESCRICAO = "Excluir"/>
 </dataset>

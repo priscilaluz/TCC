@@ -36,7 +36,7 @@ public class CategoriaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveBuscarCategoriaPorNome(){        
-        ListaPaginacao listaPaginacao = categoriaService.buscarCategoriaPorFiltro("ue", 1);
+        ListaPaginacao listaPaginacao = categoriaService.buscarCategoriaPorFiltro("ue", 0);
         List<Categoria> categorias = (List<Categoria>)(Object)listaPaginacao.getLista();
         assertTrue(categorias.size()==2);
         List<Long> ids = new ArrayList<>(Arrays.asList(2L, 4L));
@@ -54,12 +54,12 @@ public class CategoriaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveExcluirProfessorePorId(){
-        List<Categoria> categorias = dao.query("select c from Categoria c where c.id = 3");
+        List<Categoria> categorias = dao.query("select c from Categoria c where c.id = 10");
         assertTrue(categorias.size() == 1);
         
-        categoriaService.excluirCategoria(3L);
+        categoriaService.excluirCategoria(10L);
         
-        List<Usuario> professoresExcluida = dao.query("select c from Categoria c where c.id = 3");
+        List<Usuario> professoresExcluida = dao.query("select c from Categoria c where c.id = 10");
         assertTrue(professoresExcluida.isEmpty());
     }
     

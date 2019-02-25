@@ -23,6 +23,7 @@ import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringBean;
 import org.unitils.spring.annotation.SpringBeanByType;
 import tcc.common.business.PerguntaService;
+import tcc.common.enums.TempoPergunta;
 import tcc.common.vo.ListaPaginacao;
 
 @DataSet("/datasets/PerguntaServiceTest.xml")
@@ -82,7 +83,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorUsuario(){
-        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(1L, null, null, null, null, null, 1);
+        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(1L, null, null, null, null, null, 0);
         List<Pergunta> perguntas = (List<Pergunta>)(Object)listaPaginacao.getLista();
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
@@ -93,7 +94,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorParteDaDescricao(){
-        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(null, "Quanto é", null, null, null, null, 1);
+        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(null, "Quanto é", null, null, null, null, 0);
         List<Pergunta> perguntas = (List<Pergunta>)(Object)listaPaginacao.getLista();
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
@@ -104,7 +105,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorCategoria(){
-        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(null, null, 1L, null, null, null, 1);
+        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(null, null, 1L, null, null, null, 0);
         List<Pergunta> perguntas = (List<Pergunta>)(Object)listaPaginacao.getLista();
         assertTrue(perguntas.size()==3);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L, 2L, 4L));
@@ -115,7 +116,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorTipo(){
-        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null, null, 1);
+        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null, null, 0);
         List<Pergunta> perguntas = (List<Pergunta>)(Object)listaPaginacao.getLista();
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
@@ -126,7 +127,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorNivel(){
-        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null, null, 1);
+        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(null, null, null, TipoPergunta.MULTIPLAS_ESCOLHAS, null, null, 0);
         List<Pergunta> perguntas = (List<Pergunta>)(Object)listaPaginacao.getLista();
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
@@ -137,7 +138,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
     
     @Test
     public void deveRetornarPerguntaPorUsuarioDescricaoCategoria(){
-        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(1L, "Quanto é", 1L, TipoPergunta.MULTIPLAS_ESCOLHAS, NivelPergunta.FACIL, null, 1);
+        ListaPaginacao listaPaginacao = perguntaService.buscarPerguntaPorFiltro(1L, "Quanto é", 1L, TipoPergunta.MULTIPLAS_ESCOLHAS, NivelPergunta.FACIL, null, 0);
         List<Pergunta> perguntas = (List<Pergunta>)(Object)listaPaginacao.getLista();
         assertTrue(perguntas.size()==1);
         List<Long> ids = new ArrayList<>(Arrays.asList(1L));
@@ -168,6 +169,7 @@ public class PerguntaServiceIT extends IntegrationBaseTestClass{
                 .comJustificativa("Justificativa")
                 .comTipo(TipoPergunta.MULTIPLAS_ESCOLHAS)
                 .comNivel(NivelPergunta.FACIL)
+                .comTempo(TempoPergunta.TRINTA_SEGUNDOS)
                 .comDica("Dica")
                 .comUsuario(dao.getById(Usuario.class, 1L))
                 .comRespostas(respostas)
