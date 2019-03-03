@@ -1049,4 +1049,12 @@ li{
         padding-top: 90px;
         padding-right: 100px;
     }
+    .premio{
+        height: 180px;
+    }
+    .sem-premios {
+        display: block;
+        margin: 0 auto;
+        height: 200px;
+    }
 }

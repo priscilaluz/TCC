@@ -1,3 +1,59 @@
 <div class="col-xs-12 col-sm-12 col-md-12 fundo-todas-telas">
-    {{model.premio}}
+    <img class="premio" src="img/premios/venceu-1-forca.png" title="Venceu {{model.premio.qntForcaVencida}} jogo(s) da forca até o momento" ng-show="model.premio.qntForcaVencida>=1 && model.premio.qntForcaVencida<10">
+    <img class="premio" src="img/premios/venceu-10-forca.png" title="Venceu {{model.premio.qntForcaVencida}} jogo(s) da forca até o momento" ng-show="model.premio.qntForcaVencida>=10 && model.premio.qntForcaVencida<100">
+    <img class="premio" src="img/premios/venceu-100-forca.png" title="Venceu {{model.premio.qntForcaVencida}} jogo(s) da forca até o momento" ng-show="model.premio.qntForcaVencida>=100">
+    
+    <img class="premio" src="img/premios/venceu-1-caca-palavras.png" title="Venceu {{model.premio.qntCacaPalavrasVencida}} jogo(s) da caça-palavras até o momento" ng-show="model.premio.qntCacaPalavrasVencida>=1 && model.premio.qntCacaPalavrasVencida<10">
+    <img class="premio" src="img/premios/venceu-10-caca-palavras.png" title="Venceu {{model.premio.qntCacaPalavrasVencida}} jogo(s) da caça-palavras até o momento" ng-show="model.premio.qntCacaPalavrasVencida>=10 && model.premio.qntCacaPalavrasVencida<100">
+    <img class="premio" src="img/premios/venceu-10-caca-palavras.png" title="Venceu {{model.premio.qntCacaPalavrasVencida}} jogo(s) da caça-palavras até o momento" ng-show="model.premio.qntCacaPalavrasVencida>=100">
+    
+    <img class="premio" src="img/premios/venceu-1-jogo-velha.png" title="Venceu {{model.premio.qntJogoDaVelhaVencida}} jogo(s) da velha até o momento" ng-show="model.premio.qntJogoDaVelhaVencida>=1 && model.premio.qntJogoDaVelhaVencida<10">
+    <img class="premio" src="img/premios/venceu-10-jogo-velha.png" title="Venceu {{model.premio.qntJogoDaVelhaVencida}} jogo(s) da velha até o momento" ng-show="model.premio.qntJogoDaVelhaVencida>=10 && model.premio.qntJogoDaVelhaVencida<100">
+    <img class="premio" src="img/premios/venceu-100-jogo-velha.png" title="Venceu {{model.premio.qntJogoDaVelhaVencida}} jogo(s) da velha até o momento" ng-show="model.premio.qntJogoDaVelhaVencida>=100">
+    
+    <img class="premio" src="img/premios/venceu-1-aposta.png" title="Venceu {{model.premio.qntApostaVencida}} jogo(s) de aposta até o momento" ng-show="model.premio.qntApostaVencida>=1 && model.premio.qntApostaVencida<10">
+    <img class="premio" src="img/premios/venceu-10-aposta.png" title="Venceu {{model.premio.qntApostaVencida}} jogo(s) de aposta até o momento" ng-show="model.premio.qntApostaVencida>=10 && model.premio.qntApostaVencida<100">
+    <img class="premio" src="img/premios/venceu-100-aposta.png" title="Venceu {{model.premio.qntApostaVencida}} jogo(s) de aposta até o momento" ng-show="model.premio.qntApostaVencida>=100">
+    
+    <img class="premio" src="img/premios/venceu-1-quiz.png" title="Venceu {{model.premio.qntQuizVencidos}} jogo(s) quiz até o momento" ng-show="model.premio.qntQuizVencidos>=1 && model.premio.qntQuizVencidos<10">
+    <img class="premio" src="img/premios/venceu-10-quiz.png" title="Venceu {{model.premio.qntQuizVencidos}} jogo(s) quiz até o momento" ng-show="model.premio.qntQuizVencidos>=10 && model.premio.qntQuizVencidos<100">
+    <img class="premio" src="img/premios/venceu-100-quiz.png" title="Venceu {{model.premio.qntQuizVencidos}} jogo(s) quiz até o momento" ng-show="model.premio.qntQuizVencidos>=100">
+    
+    <img class="premio" src="img/premios/acertou-10-perg-faceis.png" title="Acertou {{model.premio.qntPergFacilCorreta}} perguntas até o momento" ng-show="model.premio.qntPergFacilCorreta>=10 && model.premio.qntPergFacilCorreta<100">
+    <img class="premio" src="img/premios/acertou-100-perg-faceis.png" title="Acertou {{model.premio.qntPergFacilCorreta}} perguntas até o momento" ng-show="model.premio.qntPergFacilCorreta>=100 && model.premio.qntPergFacilCorreta<1000">
+    <img class="premio" src="img/premios/acertou-1000-perg-faceis.png" title="Acertou {{model.premio.qntPergFacilCorreta}} perguntas até o momento" ng-show="model.premio.qntPergFacilCorreta>=1000">
+    
+    <img class="premio" src="img/premios/acertou-10-perg-medias.png" title="Acertou {{model.premio.qntPergMediaCorreta}} perguntas até o momento" ng-show="model.premio.qntPergMediaCorreta>=10 && model.premio.qntPergMediaCorreta<100">
+    <img class="premio" src="img/premios/acertou-100-perg-medias.png" title="Acertou {{model.premio.qntPergMediaCorreta}} perguntas até o momento" ng-show="model.premio.qntPergMediaCorreta>=100 && model.premio.qntPergMediaCorreta<1000">
+    <img class="premio" src="img/premios/acertou-1000-perg-medias.png" title="Acertou {{model.premio.qntPergMediaCorreta}} perguntas até o momento" ng-show="model.premio.qntPergMediaCorreta>=1000">
+    
+    <img class="premio" src="img/premios/acertou-10-perg-dificeis.png" title="Acertou {{model.premio.qntPergDificilCorreta}} perguntas até o momento" ng-show="model.premio.qntPergDificilCorreta>=10 && model.premio.qntPergDificilCorreta<100">
+    <img class="premio" src="img/premios/acertou-100-perg-dificeis.png" title="Acertou {{model.premio.qntPergDificilCorreta}} perguntas até o momento" ng-show="model.premio.qntPergDificilCorreta>=100 && model.premio.qntPergDificilCorreta<1000">
+    <img class="premio" src="img/premios/acertou-1000-perg-dificeis.png" title="Acertou {{model.premio.qntPergDificilCorreta}} perguntas até o momento" ng-show="model.premio.qntPergDificilCorreta>=1000">
+    
+    <img class="premio" src="img/premios/venceu-10-apostas-arriscadas.png" title="Apostou tudo e venceu {{model.premio.qntApostaTudoEmUmaPergVencida}} vezes" ng-show="model.premio.qntApostaTudoEmUmaPergVencida>=10 && model.premio.qntApostaTudoEmUmaPergVencida<100">
+    <img class="premio" src="img/premios/venceu-100-apostas-arriscadas.png" title="Apostou tudo e venceu {{model.premio.qntApostaTudoEmUmaPergVencida}} vezes" ng-show="model.premio.qntApostaTudoEmUmaPergVencida>=100 && model.premio.qntApostaTudoEmUmaPergVencida<1000">
+    <img class="premio" src="img/premios/venceu-1000-apostas-arriscadas.png" title="Apostou tudo e venceu {{model.premio.qntApostaTudoEmUmaPergVencida}} vezes" ng-show="model.premio.qntApostaTudoEmUmaPergVencida>=1000">
+    
+    <img class="premio" src="img/premios/1-etapa-concluida.png" title="Venceu {{model.premio.qntEtapaVencida}} etapa até o momento" ng-show="model.premio.qntEtapaVencida>=1 && model.premio.qntEtapaVencida<10">
+    <img class="premio" src="img/premios/10-etapa-concluida.png" title="Venceu {{model.premio.qntEtapaVencida}} etapa até o momento" ng-show="model.premio.qntEtapaVencida>=10 && model.premio.qntEtapaVencida<100">
+    <img class="premio" src="img/premios/100-etapa-concluida.png" title="Venceu {{model.premio.qntEtapaVencida}} etapa até o momento" ng-show="model.premio.qntEtapaVencida>=100">
+    
+    <img class="premio" src="img/premios/venceu-1-etapa-sem-pular.png" title="Venceu {{model.premio.qntEtapaSemPulo}} etapa sem pulo até o momento" ng-show="model.premio.qntEtapaSemPulo>=1 && model.premio.qntEtapaSemPulo<10">
+    <img class="premio" src="img/premios/venceu-10-etapa-sem-pular.png" title="Venceu {{model.premio.qntEtapaSemPulo}} etapa sem pulo até o momento" ng-show="model.premio.qntEtapaSemPulo>=10 && model.premio.qntEtapaSemPulo<100">
+    <img class="premio" src="img/premios/venceu-100-etapa-sem-pular.png" title="Venceu {{model.premio.qntEtapaSemPulo}} etapa sem pulo até o momento" ng-show="model.premio.qntEtapaSemPulo>=100">
+    
+    <img class="premio" src="img/premios/venceu-1-etapa-sem-dica.png" title="Venceu {{model.premio.qntEtapaSemDica}} etapa sem dica até o momento" ng-show="model.premio.qntEtapaSemDica>=1 && model.premio.qntEtapaSemDica<10">
+    <img class="premio" src="img/premios/venceu-10-etapa-sem-dica.png" title="Venceu {{model.premio.qntEtapaSemDica}} etapa sem dica até o momento" ng-show="model.premio.qntEtapaSemDica>=10 && model.premio.qntEtapaSemDica<100">
+    <img class="premio" src="img/premios/venceu-100-etapa-sem-dica.png" title="Venceu {{model.premio.qntEtapaSemDica}} etapa sem dica até o momento" ng-show="model.premio.qntEtapaSemDica>=100">
+    
+    <img class="premio" src="img/premios/conquistou-1000-pontos.png" title="{{model.premio.qntPontosAcumulados}} pontos acumulados" ng-show="model.premio.qntPontosAcumulados>=1000 && model.premio.qntPontosAcumulados<10000">
+    <img class="premio" src="img/premios/conquistou-10000-pontos.png" title="{{model.premio.qntPontosAcumulados}} pontos acumulados" ng-show="model.premio.qntPontosAcumulados>=10000 && model.premio.qntPontosAcumulados<100000">
+    <img class="premio" src="img/premios/conquistou-100000-pontos.png" title="{{model.premio.qntPontosAcumulados}} pontos acumulados" ng-show="model.premio.qntPontosAcumulados>=100000">
+    
+    <img class="premio" src="img/premios/1-curso-concluido.png" title="Concluiu {{model.premio.qntCursoConcluido}} curso(s)" ng-show="model.premio.qntCursoConcluido>=1 && model.premio.qntCursoConcluido<10">
+    <img class="premio" src="img/premios/10-curso-concluido.png" title="Concluiu {{model.premio.qntCursoConcluido}} cursos" ng-show="model.premio.qntCursoConcluido>=10 && model.premio.qntCursoConcluido<100">
+    <img class="premio" src="img/premios/100-curso-concluido.png" title="Concluiu {{model.premio.qntCursoConcluido}} cursos" ng-show="model.premio.qntCursoConcluido>=100">
+    <img class="sem-premios" src="img/premios/0-premios.png" ng-show="model.nenhumPremio">
+    <!--{{model.premio}}-->
 </div>
