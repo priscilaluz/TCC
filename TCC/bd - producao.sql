@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `priluz_gameinfor`.`ETAPA` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `ASSUNTO` VARCHAR(5000) NOT NULL,
   `NIVEL` INT(11) NOT NULL,
-  `JOGO` ENUM('Q', 'A', 'F', 'C') NOT NULL COMMENT 'Tipo de Jogo: \'Q\'-Quiz, \'A\'-Aposta, \'F\'-Forca, \'C\'-Caça Palavras',
+  `JOGO` ENUM('Q', 'A', 'F', 'C', 'V') NOT NULL COMMENT 'Tipo de Jogo: \'Q\'-Quiz, \'A\'-Aposta, \'F\'-Forca, \'C\'-Caça Palavras, \'V\'Jogo da velha',
   `CURSO_ID` INT(11) NOT NULL,
   `ANEXO_ID` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`),
