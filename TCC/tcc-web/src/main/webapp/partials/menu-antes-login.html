@@ -4,8 +4,9 @@
     </div>
     <div class="col-xs-8 col-md-3">
         <div class="form-group confg-botao-login-cadastro pull-right">
-            <button type="button" ng-click="logarTela()" class="btn btn-modelo btn-lg">Login</button>
-            <button type="button" ng-click="cadastrarTela()" class="btn btn-modelo btn-lg">Cadastrar</button>
+            <button type="button" ng-click="logarTela()" class="btn btn-modelo btn-lg" ng-hide="telaSobre">Login</button>
+            <button type="button" ng-click="cadastrarTela()" class="btn btn-modelo btn-lg" ng-hide="telaSobre">Cadastrar</button>
+            <button type="button" ng-click="telaLogin()" class="btn btn-modelo btn-lg" ng-show="telaSobre">Home</button>
         </div>
     </div>
     <div class="col-md-12 linhaBranca"></div>

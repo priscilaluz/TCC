@@ -36,6 +36,10 @@ tccApp.controller('LoginController', ['$scope', 'Usuario', 'growl', '$cookies', 
                 $rootScope.appLoaded = true;
             });
         };
+        
+        $scope.sobre = function () {
+            $location.path("/sobre");
+        };
 
         $scope.logar = function () {
             $rootScope.appLoaded = false;
