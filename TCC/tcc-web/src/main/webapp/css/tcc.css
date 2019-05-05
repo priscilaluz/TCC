@@ -1,3 +1,18 @@
+main {
+    display: block;
+    min-height: 100vh;
+    min-height: -webkit-calc(100vh - 102px);
+    min-height: -moz-calc(100vh - 102px);
+    min-height: calc(100vh - 102px);
+    position: relative;
+    width: 100%;
+}
+footer {
+    display: block;
+    min-height: 100px;
+    width: 100%;
+}
+
 .pointer {
     cursor:pointer
 }
