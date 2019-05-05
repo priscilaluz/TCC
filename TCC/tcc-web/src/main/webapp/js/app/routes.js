@@ -1,4 +1,14 @@
-tccApp.run(['$rootScope', 'growl', '$cookies', '$location', function ($rootScope, growl, $cookies, $location) {
+tccApp.run(['$rootScope', 'growl', '$cookies', '$location', 'Conexao', function ($rootScope, growl, $cookies, $location, Conexao) {
+    if (!$rootScope.conexao) {
+        Conexao.buscar({}).$promise.then(function (conexao) {
+            $rootScope.conexao = true;
+            console.log(conexao.nome);
+        }, function (error) {
+            $rootScope.conexao = true;
+            console.log(conexao.nome);
+        });
+    }
+    
     $rootScope.appLoaded = true;
     $rootScope.$on('snRequestException', function (event, data) { 
         growl.error(data.message,{title: 'Error'});

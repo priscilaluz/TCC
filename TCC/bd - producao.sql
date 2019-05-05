@@ -356,3 +356,12 @@ DEFAULT CHARACTER SET = utf8;
 
 
 INSERT INTO `priluz_gameinfor`.`USUARIO` (`ID`, `NOME`, `LOGIN`, `EMAIL`, `SENHA`, `TIPO`) VALUES ('1', 'adm', 'adm', 'priscila.farias145@gmail.com', '1234pri1234', 'D');
+
+
+
+CREATE TABLE `priluz_gameinfor`.`CONEXAO` (
+  `ID` INT NOT NULL,
+  `NOME` VARCHAR(2) NOT NULL,
+  PRIMARY KEY (`ID`));
+
+INSERT INTO `priluz_gameinfor`.`CONEXAO` (`ID`, `NOME`) VALUES ('1', 'OK');

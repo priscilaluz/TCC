@@ -69,12 +69,15 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     @Transactional(readOnly = true)
     public Usuario buscarUsuarioPorLoginSenha(String login, String senha) {
-        Usuario usuario = (Usuario) dao.uniqueResult(new BuscarUsuario.Entities().whereLogin(login).whereSenha(senha));
-        if (usuario != null) {
-            usuario.setDataUltimoAcesso(new Date());
-            dao.saveOrUpdate(usuario);
+        if (login != null && senha != null) {
+            Usuario usuario = (Usuario) dao.uniqueResult(new BuscarUsuario.Entities().whereLogin(login).whereSenha(senha));
+            if (usuario != null) {
+                usuario.setDataUltimoAcesso(new Date());
+                dao.saveOrUpdate(usuario);
+            }
+            return usuario;
         }
-        return usuario;
+        return null;
     }
     
     @Override
