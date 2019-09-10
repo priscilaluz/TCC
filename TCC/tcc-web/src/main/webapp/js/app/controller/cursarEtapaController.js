@@ -18,7 +18,10 @@ tccApp.controller('CursarEtapaController', ['$scope', '$rootScope', '$routeParam
         };
         
         $scope.jogar = function () {
-            var obj = {jogo: jogo,
+            var urlJogo = "/jogos-simulado/"+jogo.id.toLowerCase()+"/"+$scope.idCursoAluno
+                    +"/"+$scope.idEtapa+"/"+$scope.idEtapaAluno+"/"+$scope.model.aberto;
+            $location.path(urlJogo);
+            /*var obj = {jogo: jogo,
                 idCursoAluno: $scope.idCursoAluno, 
                 idEtapa: $scope.idEtapa, 
                 idEtapaAluno: $scope.idEtapaAluno,
@@ -32,7 +35,7 @@ tccApp.controller('CursarEtapaController', ['$scope', '$rootScope', '$routeParam
                  $location.path(urlJogo);
             }, function () {
                 // Modal cancelado
-            });
+            });*/
         };
         
         var init = function () {
