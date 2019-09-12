@@ -867,7 +867,7 @@ li{
         height:200px;
     }
     .tabuleiro-fundo-img {
-        background-image: url('../img/tabuleiro/background/aventura3.jpeg');
+        background-image: url('../img/tabuleiro/background/aventura3.jpg');
         height: 200px;
         width: 315px;
         border-radius: 150px;
@@ -940,7 +940,7 @@ li{
         height:300px;
     }
     .tabuleiro-fundo-img {
-        background-image: url('../img/tabuleiro/background/aventura3.jpeg');
+        background-image: url('../img/tabuleiro/background/aventura3.jpg');
         height: 400px;
         width: 900px;
         border-radius: 150px;
@@ -1008,7 +1008,7 @@ li{
 /* lg */
 @media (min-width: 1200px) {
     .tabuleiro-fundo-img {
-        background-image: url('../img/tabuleiro/background/aventura3.jpeg');
+        background-image: url('../img/tabuleiro/background/aventura3.jpg');
         height: 500px;
         width: 1106px;
         border-radius: 150px;
