@@ -12,6 +12,7 @@ import tcc.service.validator.AnexoValidator;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -78,6 +79,20 @@ public class AnexoServiceImpl implements AnexoService {
             throw new RuntimeException(e);
         }
         return dados;
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public byte[] obterOsBytesAnexo(Long idAnexo) {
+        byte[] bytes;
+        try {
+            anexoFileSystemManager.setRootPath(ConstantesI18N.ROOT_PATH);
+            InputStream dados = anexoFileSystemManager.getAnexo(idAnexo);
+            bytes =  IOUtils.toByteArray(dados);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return bytes;
     }
     
     @Override

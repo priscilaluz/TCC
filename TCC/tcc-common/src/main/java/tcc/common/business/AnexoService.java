@@ -15,6 +15,8 @@ public interface AnexoService {
     
     Anexo buscarAnexoPorId(Long idAnexo);
     
+    byte[] obterOsBytesAnexo(Long idAnexo);
+    
     InputStream obterBytesAnexo(Long idAnexo);
     
     InputStream downloadImgMonaLisa(String imagem);

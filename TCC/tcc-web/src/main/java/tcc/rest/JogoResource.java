@@ -29,6 +29,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import tcc.common.business.AnexoService;
@@ -132,7 +133,12 @@ public class JogoResource {
         Set<EtapaPergunta> etapasPerguntas = etapa.getEtapasPerguntas();
         List<Pergunta> perguntas = new ArrayList<>();
         for (EtapaPergunta etapaPergunta : etapasPerguntas) {
-            perguntas.add(etapaPergunta.getPergunta());
+            Pergunta pergunta = etapaPergunta.getPergunta();
+            if (pergunta.getAnexo() != null) {
+                byte[] anexo = anexoService.obterOsBytesAnexo(pergunta.getAnexo().getId());
+                pergunta.getAnexo().setBytes(anexo);
+            }
+            perguntas.add(pergunta);
         }
         return perguntas;
     }
