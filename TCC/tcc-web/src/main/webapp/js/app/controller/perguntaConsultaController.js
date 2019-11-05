@@ -46,7 +46,7 @@ tccApp.controller('PerguntaConsultaController', ['$scope', '$rootScope', '$modal
                     $rootScope.appLoaded = false;
                     Pergunta.deletarPergunta({'id': pergunta.id}).$promise.then(function (result) {
                         growl.success('Pergunta excluída com sucesso.',{title: 'Operação bem sucedida'});
-                        $scope.pesquisarPergunta();
+                        $scope.pesquisarPergunta(0);
                     }, function (error) {
                         $rootScope.appLoaded = true;
                     });
