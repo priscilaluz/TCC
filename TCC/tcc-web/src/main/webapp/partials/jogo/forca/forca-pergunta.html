@@ -16,8 +16,8 @@
             <p class="col-lg-12 curso-titulo-concluido" style="font-size: 30px;">Pontuação: {{model.pontuacao}}</p>
         </div>
         <div class="col-md-12" style="background-color: #1b6d85; margin-bottom: 25px;">
-            <h3 class="title-fonte text-center">{{model.pergunta.descricao}}</h3>
-            <div class="col-md-12" style="background-color: #1b6d85; padding-bottom: 25px;text-align: center;">
+            <p class="title-fonte text-center" style="white-space: pre-line; text-align: justify; font-size: 15px;">{{model.pergunta.descricao}}</>
+            <div class="col-md-12" style="background-color: #1b6d85; padding-bottom: 2px;text-align: center;">
                 <img id="imgPergunta" alt="imgPergunta" ng-show="model.anexoString" ng-src="{{model.anexoString}}" style="text-align: center;"/>
             </div>
         </div>
