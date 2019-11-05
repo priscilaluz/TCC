@@ -35,6 +35,7 @@ import org.springframework.stereotype.Component;
 import tcc.common.business.AnexoService;
 import tcc.common.business.CursoService;
 import tcc.common.enums.TempoPergunta;
+import tcc.common.vo.TodasPesguntas;
 
 /**
  *
@@ -151,7 +152,8 @@ public class JogoResource {
     }
     
     private CacaPalavraLista gerarCacaPalavra(List<Pergunta> perguntasTodas) {
-        Integer qntPerguntas = perguntasTodas.size();
+        TodasPesguntas todasPesguntas = new TodasPesguntas(perguntasTodas);
+        Integer qntPerguntas = todasPesguntas.getPerguntas().size();
         List<CacaPalavra> lista = new ArrayList<>();
         
         int qntMatriz = (qntPerguntas/tamanhoMatriz) + 1;
@@ -160,7 +162,7 @@ public class JogoResource {
         for (int i = 0; i < qntMatriz; i++) {
             int tamanhoSubList = qntPerguntaPorMatriz+(i*qntPerguntaPorMatriz);
             tamanhoSubList = (i == (qntMatriz-1))?tamanhoSubList+resto:tamanhoSubList;
-            List<Pergunta> perguntas = perguntasTodas.subList(i*qntPerguntaPorMatriz, tamanhoSubList);
+            List<Pergunta> perguntas = todasPesguntas.getPerguntas().subList(i*qntPerguntaPorMatriz, tamanhoSubList);
             lista.add(new CacaPalavra(null, perguntas, tamanhoMatriz));
         }
         
@@ -184,7 +186,7 @@ public class JogoResource {
             }
             cacaPalavra.setMatriz(matriz);
         }
-        return new CacaPalavraLista(lista, qntPerguntas);
+        return new CacaPalavraLista(lista, qntPerguntas, todasPesguntas.getIntroducaoUnida().getIntroducao());
     }
     private Letra[][] criarMatriz(List<String> respostas) {
         Letra[][] matriz = new Letra[tamanhoMatriz][tamanhoMatriz];

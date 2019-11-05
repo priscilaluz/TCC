@@ -103,6 +103,9 @@ public class Pergunta extends AbstractIdBean<Long> {
     
     @Transient
     private int pontos;
+    
+    @Transient
+    private String partePergunta;
 
     public Pergunta() {}
 
@@ -216,7 +219,14 @@ public class Pergunta extends AbstractIdBean<Long> {
         this.idAnexoExcluido = idAnexoExcluido;
     }
 
-    
+    public String getPartePergunta() {
+        return partePergunta;
+    }
+
+    public void setPartePergunta(String partePergunta) {
+        this.partePergunta = partePergunta;
+    }
+
 
     public Set<EtapaPergunta> getEtapasPerguntas() {
         return etapasPerguntas;

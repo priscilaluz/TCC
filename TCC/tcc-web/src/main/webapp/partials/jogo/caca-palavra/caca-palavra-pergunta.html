@@ -30,9 +30,14 @@
             </div>
         </div>
         <div class="col-md-12 col-lg-7" style="padding-left: 0px;padding-right: 0px;">
+            <div class="col-md-12" style="border: #cbe8ba solid 1px; margin-bottom: 3px; background-color: #f1fff3;" ng-show="model.cacaPalavraLista.introducaoUnica">
+                <p><b>INTRODUÇÃO DO DESAFIO</b></p>
+                <span class="title-fonte" style="color: black; white-space: pre-line;">{{model.cacaPalavraLista.introducaoUnica}}</span>
+                <hr>
+            </div>
             <div class="col-md-12" style="border: #cbe8ba solid 1px; margin-bottom: 3px;" ng-style="pergunta.style"
                  ng-repeat="pergunta in model.perguntas">
-                <p class="title-fonte text-center" style="color: black" ng-style="pergunta.style">{{pergunta.descricao}}</p>
+                <span class="title-fonte" style="color: black; white-space: pre-line;" ng-style="pergunta.style">{{pergunta.partePergunta}}</span>
                 <div class="col-md-12" style="padding-bottom: 5px;text-align: center;">
                     <img id="imgPergunta" alt="imgPergunta" ng-show="model.anexosString[$index]" ng-src="{{model.anexosString[$index]}}" style="text-align: center;"/>
                 </div>

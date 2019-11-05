@@ -12,14 +12,16 @@ import java.util.List;
  * @author ADM
  */
 public class CacaPalavraLista {
+    private String introducaoUnica;
     private List<CacaPalavra> cacaPalavra;
     private Integer qntPergunta;
 
     public CacaPalavraLista() {}
 
-    public CacaPalavraLista(List<CacaPalavra> cacaPalavra, Integer qntPergunta) {
+    public CacaPalavraLista(List<CacaPalavra> cacaPalavra, Integer qntPergunta, String introducaoUnica) {
         this.cacaPalavra = cacaPalavra;
         this.qntPergunta = qntPergunta;
+        this.introducaoUnica = introducaoUnica;
     }
 
     public List<CacaPalavra> getCacaPalavra() {
@@ -36,5 +38,13 @@ public class CacaPalavraLista {
 
     public void setQntPergunta(Integer qntPergunta) {
         this.qntPergunta = qntPergunta;
+    }
+
+    public String getIntroducaoUnica() {
+        return introducaoUnica;
+    }
+
+    public void setIntroducaoUnica(String introducaoUnica) {
+        this.introducaoUnica = introducaoUnica;
     }
 }
