@@ -45,7 +45,12 @@ tccApp.controller('CursarEtapaController', ['$scope', '$rootScope', '$routeParam
                 $scope.model.jogo = etapaAluno.etapa.jogo.id.toLowerCase();
                 jogo = etapaAluno.etapa.jogo;
                 CursoAluno.buscarRelatoriosEtapaPorIdEtapaAluno({'idEtapaAluno': $scope.idEtapaAluno}).$promise.then(function (relatorios) {
-                    $scope.model.relatorios = relatorios;
+                    for (var i = 0; i < relatorios.length; i++) {
+                        if (relatorios[i].ganhou) {
+                            $scope.model.relatorios = relatorios;
+                            break;
+                        }
+                    }
                     $rootScope.appLoaded = true;
                 }, function (error) {
                     $rootScope.appLoaded = true;
