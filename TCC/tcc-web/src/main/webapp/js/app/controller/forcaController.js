@@ -32,6 +32,10 @@ tccApp.controller('ForcaController', ['$scope', '$rootScope', '$routeParams', '$
         $scope.mostrarResultado = function () {
             $scope.model.mostrarRelatorio = true;
         };
+        
+        $scope.voltarTabuleiro = function () {
+            $location.path("/aluno-cursando/"+idCursoAluno);
+        };
 
         $scope.voltar = function () {
             if (idCursoAluno && idEtapa){

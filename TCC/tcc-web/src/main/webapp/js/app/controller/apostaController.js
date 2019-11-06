@@ -32,6 +32,10 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
         $scope.model.mostrarRelatorio = true;
     };
     
+    $scope.voltarTabuleiro = function () {
+        $location.path("/aluno-cursando/"+idCursoAluno);
+    };
+    
     $scope.voltar = function () {
         if (idCursoAluno && idEtapa){
             $location.path("/cursar-etapa/"+idCursoAluno+"/"+idEtapa+"/"+idEtapaAluno+"/"+aberto);

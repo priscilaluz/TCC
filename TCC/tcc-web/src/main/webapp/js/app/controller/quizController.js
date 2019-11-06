@@ -31,6 +31,10 @@ function ($scope, $rootScope, $routeParams, $modal, $location, $timeout, Jogo, R
         $scope.model.mostrarRelatorio = true;
     };
     
+    $scope.voltarTabuleiro = function () {
+        $location.path("/aluno-cursando/"+idCursoAluno);
+    };
+    
     var barraDeProgresso = function () {
         var porcentagem = ($scope.model.posicao+1)/$scope.model.perguntas.length*100;
         $scope.barraProgresso = {
