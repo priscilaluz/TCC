@@ -303,7 +303,7 @@ public class CursoAlunoServiceImpl implements CursoAlunoService {
     public List<CursoAluno> buscarCursoAlunoPorIdCurso(Long idCurso) {
         return dao.list(new BuscarCursoAluno.Entities().fetchCurso("")
                 .fetchAluno(ConstantesI18N.FETCH)
-                .whereIdCurso(idCurso));
+                .whereIdCurso(idCurso).orderByPontuacaoEtapa());
     }
     
     @Override

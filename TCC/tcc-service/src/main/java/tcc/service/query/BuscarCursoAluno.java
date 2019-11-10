@@ -99,4 +99,9 @@ public abstract class BuscarCursoAluno<T extends Serializable> extends BusinessF
         }    
         return this;
     }
+    
+    public BuscarCursoAluno orderByPontuacaoEtapa() { 
+        appendText(" order by ca.pontuacao desc, ca.posicaoAtual desc, a.nome ");
+        return this;
+    }
 }

@@ -54,13 +54,14 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     @Transactional(readOnly = false)
     public Usuario salvarUsuario(Usuario usuario) {
+        boolean novo = usuario.getId()==null;
         Long emailJaExistente = (Long) dao.uniqueResult(new BuscarUsuario.Count().whereEmail(usuario.getEmail()).whereIdNot(usuario.getId()));
         Long loginJaExistente = (Long) dao.uniqueResult(new BuscarUsuario.Count().whereLogin(usuario.getLogin()).whereIdNot(usuario.getId()));
         validador.validarSalvarUsuario(usuario, emailJaExistente, loginJaExistente);
         usuario.setDataCadastro(new Date());
         usuario.setDataUltimoAcesso(new Date());
         usuario = dao.saveOrUpdate(usuario);
-        if (TipoUsuario.ALUNO.equals(usuario.getTipo())) {
+        if (TipoUsuario.ALUNO.equals(usuario.getTipo()) && novo) {
             premioService.cadastrarPremio(usuario);
         }
         return usuario;
